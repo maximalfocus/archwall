@@ -4,9 +4,13 @@ Every post's diagram.svg is drawn with these primitives so the home page reads a
 grey rounded groups, lighter sub-groups, white cards with a coloured left bar, slate arrows,
 system sans-serif text, white background. No icons or clip-art.
 
+Every diagram is W x H = 1200 x 900 (4:3), so cards on the home page line up and a phone
+screen gets a tall enough picture. Lay stages out in two columns and wrap (snake) instead of
+stretching them into one long row.
+
     from archdiagram import Diagram
-    d = Diagram(1540, 600, "Title", "One-paragraph description for screen readers.")
-    d.group(24, 16, 472, 300, "Group")
+    d = Diagram("Title", "One-paragraph description for screen readers.")
+    d.group(24, 16, 552, 300, "Group")
     d.card(48, 96, "Coding|Agent", "coding")    # "|" breaks lines
     d.arrow("M212 126H236")
     d.save("diagram.svg")
@@ -46,9 +50,12 @@ def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+W, H = 1200, 900
+
+
 class Diagram:
-    def __init__(self, w, h, title, desc):
-        self.w, self.h, self.title, self.desc, self.o = w, h, title, desc, []
+    def __init__(self, title, desc):
+        self.w, self.h, self.title, self.desc, self.o = W, H, title, desc, []
 
     def raw(self, s):
         self.o.append(s)
@@ -89,6 +96,18 @@ class Diagram:
 
     def note(self, x, y, s, anchor="middle"):
         self.text(x, y, s, "lb", anchor)
+
+    def legend(self, x, y, kinds, labels=None):
+        """Row of role colours, e.g. legend(x, y, ["coding", "critic"]). labels overrides the names."""
+        for i, k in enumerate(kinds):
+            cx = x + i * 120
+            self.raw(f'<rect x="{cx}" y="{y - 11}" width="5" height="16" rx="2" fill="{KIND[k]}"/>')
+            self.text(cx + 12, y + 2, (labels or kinds)[i], "lb", "start")
+
+    def pill(self, x, y, w, h, label, cls="human"):
+        """Rounded input/output box outside the main flow (the human ask, the final output)."""
+        self.rect(x, y, w, h, cls, h / 2)
+        self.text(x + w / 2, y + h / 2 + 5, label, "q")
 
     def number(self, x, y, n):
         self.raw(f'<circle cx="{x}" cy="{y}" r="11" class="num"/>')
