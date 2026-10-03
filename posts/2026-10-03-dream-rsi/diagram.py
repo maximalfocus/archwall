@@ -5,56 +5,63 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from archdiagram import Diagram  # noqa: E402
 
-d = Diagram(1540, 430, "Dream-RSI loop",
-            "1 Online explore: the exploration policy guides a coding agent, which grows a discovery tree. "
+d = Diagram("Dream-RSI loop",
+            "1 Online explore: the exploration policy (code) guides a coding agent, which grows a discovery tree. "
             "2 Each tree becomes an exact replay simulator, added to a growing pool. "
-            "3 A policy-development agent revises the policy M times in a row; each version is scored by replay over the whole pool at zero executions, and the scores and traces go into its history for the next revision. "
-            "The best policy, never worse than the current one, is deployed for the next round.")
-A, B, C, GW = 24, 534, 1044, 472
+            "3 A policy-development agent revises the policy M times in a row; each version is scored by replay over "
+            "the whole pool at zero executions, and the scores and traces go into its history for the next revision. "
+            "The best version, never worse than the current one, is deployed for the next round.")
+A, B, GW, CW = 24, 624, 552, 180
 
-# 1 online explore
-d.group(A, 16, GW, 330, "Online explore", 1)
-d.sub(A + 12, 56, GW - 24, 120, "Discovery run")
-d.card(A + 28, 96, "Exploration policy|(code)", "plan")
-d.card(A + 280, 96, "Coding|agent", "coding")
-d.arrow(f"M{A+192} 126H{A+274}"); d.note(A + 233, 116, "guides")
-d.sub(A + 12, 192, GW - 24, 140, "Recorded")
-d.card(A + 280, 226, "Discovery|tree", "data")
-d.note(A + 362, 310, "every attempt + its real result")
-d.arrow(f"M{A+362} 156V220")
+# 1 online explore (top left)
+d.group(A, 16, GW, 380, "Online explore", 1)
+d.sub(A + 12, 60, GW - 24, 130, "Discovery run")
+d.card(A + 30, 104, "Exploration policy|(code)", "plan", w=CW)
+d.card(A + 342, 104, "Coding|agent", "coding", w=CW)
+d.arrow(f"M{A+210} 134H{A+336}"); d.note(A + 273, 124, "guides")
+d.sub(A + 12, 206, GW - 24, 176, "Recorded")
+d.card(A + 342, 250, "Discovery|tree", "data", w=CW)
+d.note(A + 432, 340, "every attempt +")
+d.note(A + 432, 358, "its real result")
+d.arrow(f"M{A+432} 164V244")
 
-# 2 replay simulator
-d.group(B, 16, GW, 330, "Build replay simulator", 2)
-d.sub(B + 12, 56, GW - 24, 120, "Each tree becomes a world")
-d.card(B + 28, 96, "Discovery|tree", "data")
-d.card(B + 280, 96, "Replay|simulator", "critic")
-d.arrow(f"M{B+192} 126H{B+274}"); d.note(B + 233, 116, "exact")
-d.sub(B + 12, 192, GW - 24, 140, "Simulator pool")
+# 2 replay simulator (top right)
+d.group(B, 16, GW, 380, "Build replay simulator", 2)
+d.sub(B + 12, 60, GW - 24, 130, "Each tree becomes a world")
+d.card(B + 30, 104, "Discovery|tree", "data", w=CW)
+d.card(B + 342, 104, "Replay|simulator", "critic", w=CW)
+d.arrow(f"M{B+210} 134H{B+336}"); d.note(B + 273, 124, "exact")
+d.sub(B + 12, 206, GW - 24, 176, "Simulator pool")
 for i, t in enumerate(["Tree 1", "Tree 2", "… Tree t"]):
-    d.card(B + 28 + i * 140, 226, t, "data", w=128)
-d.note(B + GW / 2, 310, "one more world every round")
-d.arrow(f"M{B+362} 156V220")
+    d.card(B + 30 + i * 170, 250, t, "data", w=152)
+d.note(B + GW / 2, 349, "one more world every round")
+d.arrow(f"M{B+432} 164V244")
 
-d.arrow(f"M{A+GW-12} 256H{A+GW+19}V126H{B+22}"); d.note(A + GW + 19, 286, "store")
+d.arrow(f"M{A+522} 280H{A+GW+24}V134H{B+24}"); d.note(A + GW + 24, 300, "store")
 
-# 3 dream
-d.group(C, 16, GW, 330, "Dream a better policy", 3)
-d.sub(C + 12, 56, GW - 24, 180, "Inner loop · zero executions")
-d.card(C + 28, 92, "Policy-dev|agent", "plan")
-d.card(C + 280, 92, "Revised policy|πᵐ⁺¹", "coding")
-d.card(C + 280, 166, "Replay over|the whole pool", "critic")
-d.card(C + 28, 166, "History H|scores + traces", "data")
-d.arrow(f"M{C+192} 122H{C+274}"); d.note(C + 233, 112, "revise")
-d.arrow(f"M{C+362} 152V160")
-d.arrow(f"M{C+280} 196H{C+198}"); d.note(C + 239, 186, "store")
-d.arrow(f"M{C+110} 166V158"); d.note(C + 122, 162, "next revision", "start")
-d.arrow(f"M{C+236} 236V256"); d.note(C + 250, 252, "after M revisions, pick the best", "start")
-d.card(C + 76, 262, "Best policy, never worse|(the current one is a candidate too)", "plan", w=320, h=56)
+# 3 dream (bottom, full width)
+C, CY = 24, 436
+d.group(C, CY, 1152, 380, "Dream a better policy", 3)
+d.sub(C + 12, CY + 44, 740, 324, "Inner loop · zero executions")
+d.card(C + 48, CY + 100, "Policy-dev|agent", "plan", w=200, h=64)
+d.card(C + 500, CY + 100, "Revised policy|πᵐ⁺¹", "coding", w=200, h=64)
+d.card(C + 500, CY + 240, "Replay over|the whole pool", "critic", w=200, h=64)
+d.card(C + 48, CY + 240, "History H|scores + traces", "data", w=200, h=64)
+d.arrow(f"M{C+248} {CY+132}H{C+494}"); d.note(C + 371, CY + 122, "revise")
+d.arrow(f"M{C+600} {CY+164}V{CY+234}")
+d.arrow(f"M{C+500} {CY+272}H{C+254}"); d.note(C + 377, CY + 262, "store")
+d.arrow(f"M{C+148} {CY+240}V{CY+170}"); d.note(C + 160, CY + 210, "next revision", "start")
+d.arrow(f"M{C+752} {CY+196}H{C+838}"); d.note(C + 984, CY + 124, "after M revisions,")
+d.note(C + 984, CY + 142, "pick the best")
+d.card(C + 844, CY + 156, "Best policy|never worse", "plan", w=280, h=80)
+d.note(C + 960, CY + 262, "the current policy is")
+d.note(C + 960, CY + 280, "a candidate too")
 
-d.arrow(f"M{B+GW-12} 262H{B+GW+19}V206H{C+6}"); d.note(B + GW + 19, 286, "replay")
+d.arrow(f"M{B+GW/2} 396V{CY+84}H{C+758}")  # pool -> inner loop
+d.note(B + GW / 2 + 12, 418, "replay against", "start")
 
 # back to step 1
-d.arrow(f"M{C+236} 318V390H{A+110}V162", back=True)
-d.note((A + C) / 2 + 120, 412, "deploy the best policy → next round explores further")
+d.arrow(f"M{C+1100} {CY+236}V858H12V134H{A+24}", back=True)
+d.note(600, 884, "deploy the best policy → the next round explores further")
 
 d.save(Path(__file__).with_name("diagram.svg"))
