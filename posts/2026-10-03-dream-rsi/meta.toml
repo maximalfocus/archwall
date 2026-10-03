@@ -1,0 +1,8 @@
+title_zh = "Dream-RSI：拿旧记录当模拟器，在梦里改策略"
+title_en = "Dream-RSI: dream on old runs to explore better"
+date = "2026-10-03"
+tags = ["agents", "self-improvement", "exploration", "simulator"]
+figure = "diagram.svg"
+alt_zh = "Dream-RSI 循环：在线探索长出发现树，树变成回放模拟器进池子，在池子里回放打分挑出最好的策略，再上线"
+alt_en = "Dream-RSI loop: explore online to grow a discovery tree, turn trees into a replay simulator pool, score new policies by replay, deploy the best"
+source = "https://dream-rsi.com/"
