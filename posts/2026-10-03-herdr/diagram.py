@@ -11,8 +11,8 @@ d = Diagram("herdr architecture",
             "2 One server per session owns every pane: a real PTY running the agent, parsed into terminal state by "
             "libghostty-vt. A screen detector and the agents' own reports decide working, blocked, done or idle. "
             "3 A socket API lets agents and scripts spawn panes, prompt each other and wait on state. "
-            "4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, the saved "
-            "layout, and opt-in pane history.")
+            "4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, "
+            "opt-in pane history, and the saved layout.")
 A, B, GW, CW = 24, 624, 552, 180
 
 # 1 clients (top left)
@@ -63,11 +63,11 @@ d.arrow(f"M{B+400} {CY}V416"); d.note(B + 388, 436, "commands", "end")
 
 # 4 restart and restore (bottom left)
 d.group(A, CY, GW, 370, "If the server stops", 4)
-d.sub(A + 12, CY + 44, GW - 24, 314, "Bring back what it can, strongest first")
+d.sub(A + 12, CY + 44, GW - 24, 314, "Bring back what it can")
 rows = [("Live handoff|processes survive", "coding", "updates, opt-in"),
         ("Agent resume command|claude --resume <id>", "plan", "same conversation"),
-        ("Saved layout|session.json", "data", "fresh shell, same dir"),
-        ("Pane history", "data", "opt-in, may hold secrets")]
+        ("Pane history", "data", "opt-in, may hold secrets"),
+        ("Saved layout|session.json", "data", "fresh shell, same dir")]
 for i, (t, k, n) in enumerate(rows):
     y = CY + 88 + i * 66
     d.card(A + 30, y, t, k, w=260, h=56)

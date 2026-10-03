@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">herdr architecture</title>
-<desc id="d">1 Clients (local TUI, remote over SSH, direct attach) only draw and send keys; detaching leaves work running. 2 One server per session owns every pane: a real PTY running the agent, parsed into terminal state by libghostty-vt. A screen detector and the agents' own reports decide working, blocked, done or idle. 3 A socket API lets agents and scripts spawn panes, prompt each other and wait on state. 4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, the saved layout, and opt-in pane history.</desc>
+<desc id="d">1 Clients (local TUI, remote over SSH, direct attach) only draw and send keys; detaching leaves work running. 2 One server per session owns every pane: a real PTY running the agent, parsed into terminal state by libghostty-vt. A screen detector and the agents' own reports decide working, blocked, done or idle. 3 A socket API lets agents and scripts spawn panes, prompt each other and wait on state. 4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, opt-in pane history, and the saved layout.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -120,7 +120,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="192.25" y="474" class="numt" text-anchor="middle" >4</text>
 <text x="208.25" y="476" class="gt" text-anchor="start" >If the server stops</text>
 <rect x="36" y="490" width="528" height="314" rx="9" class="sub"/>
-<text x="300.0" y="514" class="st" text-anchor="middle" >Bring back what it can, strongest first</text>
+<text x="300.0" y="514" class="st" text-anchor="middle" >Bring back what it can</text>
 <rect x="54" y="534" width="260" height="56" rx="8" class="agent"/>
 <rect x="54" y="544" width="5" height="36" rx="2" fill="#2f6fd6"/>
 <text x="187.0" y="558.0" class="ag" text-anchor="middle" >Live handoff</text>
@@ -133,13 +133,13 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="334" y="633" class="lb" text-anchor="start" >same conversation</text>
 <rect x="54" y="666" width="260" height="56" rx="8" class="agent"/>
 <rect x="54" y="676" width="5" height="36" rx="2" fill="#5b6675"/>
-<text x="187.0" y="690.0" class="ag" text-anchor="middle" >Saved layout</text>
-<text x="187.0" y="710.0" class="ag" text-anchor="middle" >session.json</text>
-<text x="334" y="699" class="lb" text-anchor="start" >fresh shell, same dir</text>
+<text x="187.0" y="700.0" class="ag" text-anchor="middle" >Pane history</text>
+<text x="334" y="699" class="lb" text-anchor="start" >opt-in, may hold secrets</text>
 <rect x="54" y="732" width="260" height="56" rx="8" class="agent"/>
 <rect x="54" y="742" width="5" height="36" rx="2" fill="#5b6675"/>
-<text x="187.0" y="766.0" class="ag" text-anchor="middle" >Pane history</text>
-<text x="334" y="765" class="lb" text-anchor="start" >opt-in, may hold secrets</text>
+<text x="187.0" y="756.0" class="ag" text-anchor="middle" >Saved layout</text>
+<text x="187.0" y="776.0" class="ag" text-anchor="middle" >session.json</text>
+<text x="334" y="765" class="lb" text-anchor="start" >fresh shell, same dir</text>
 <path d="M684 416V431H300.0V446" class="flow"/>
 <text x="312.0" y="426" class="lb" text-anchor="start" >save</text>
 <text x="600" y="868" class="lb" text-anchor="middle" >one Rust binary · shared facts live in the server and go out through the API; looks stay in the client</text>
