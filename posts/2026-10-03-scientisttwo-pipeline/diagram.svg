@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1540 616" width="1540" height="616" role="img" aria-labelledby="t d">
+<title id="t">ScientistTwo closed-loop research pipeline</title>
+<desc id="d">Idea Generator, Evaluator and Analyzer in the top row feed a Writer Agent, Peer-Review Agent and Meta-Review Agent in the bottom row; ideas loop back for evolution and refinement, and the meta-review loops back to the Analyzer until the paper clears the bar.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<linearGradient id="pio" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe0f7"/><stop offset="1" stop-color="#d7eedc"/></linearGradient>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;fill:#1f2a37}
+.gt{font-size:21px;font-weight:700}
+.st{font-size:16px;font-weight:700}
+.ag{font-size:15px}
+.q{font-size:14px;fill:#3d4a5c}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+</style>
+<rect width="1540" height="616" rx="18" fill="#ffffff"/>
+<rect x="16" y="16" width="164" height="134" rx="12" class="human"/>
+<text x="98" y="46" class="gt" text-anchor="middle" >Human</text>
+<text x="98" y="74" class="q" text-anchor="middle" >“I want to build an</text>
+<text x="98" y="94" class="q" text-anchor="middle" >efficient tabular</text>
+<text x="98" y="114" class="q" text-anchor="middle" >foundation model”</text>
+<path d="M16 170 L98 196 L180 170 V356 L98 382 L16 356 Z" fill="url(#pio)"/>
+<text x="98" y="282" class="gt" text-anchor="middle" fill="#3d4a5c">Pioneering</text>
+<rect x="16" y="400" width="164" height="140" rx="12" class="front"/>
+<text x="98" y="428" class="gt" text-anchor="middle" >Expanded</text>
+<text x="98" y="452" class="gt" text-anchor="middle" >Frontier</text>
+<rect x="30" y="468" width="136" height="60" rx="8" class="agent"/>
+<text x="98" y="492" class="st" text-anchor="middle" >Outputs</text>
+<text x="98" y="514" class="q" text-anchor="middle" >paper · code</text>
+<rect x="204" y="16" width="400" height="304" rx="12" class="grp"/>
+<text x="404.0" y="46" class="gt" text-anchor="middle" >Idea Generator</text>
+<rect x="216" y="56" width="376" height="112" rx="9" class="sub"/>
+<text x="404.0" y="80" class="st" text-anchor="middle" >Seed Idea Generator</text>
+<rect x="228" y="96" width="164" height="60" rx="8" class="agent"/>
+<text x="313.0" y="122.0" class="ag" text-anchor="middle" >Limitation</text>
+<text x="313.0" y="142.0" class="ag" text-anchor="middle" >Extractor</text>
+<rect x="416" y="96" width="164" height="60" rx="8" class="agent"/>
+<rect x="416" y="106" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="501.0" y="122.0" class="ag" text-anchor="middle" >Novelty</text>
+<text x="501.0" y="142.0" class="ag" text-anchor="middle" >Checker</text>
+<path d="M392 126H410" class="flow"/>
+<rect x="216" y="188" width="376" height="120" rx="9" class="sub"/>
+<text x="404.0" y="212" class="st" text-anchor="middle" >Idea Evolver</text>
+<g transform="translate(248 244)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<text x="264" y="250" class="ag" text-anchor="start" >Good idea</text>
+<g transform="translate(248 274)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
+<text x="264" y="280" class="ag" text-anchor="start" >Bad idea</text>
+<path d="M364 262H428" class="flow"/>
+<g transform="translate(448 260)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
+<text x="466" y="268" class="ag" text-anchor="start" >New Idea</text>
+<rect x="634" y="16" width="400" height="304" rx="12" class="grp"/>
+<text x="834.0" y="46" class="gt" text-anchor="middle" >Evaluator</text>
+<rect x="646" y="56" width="376" height="112" rx="9" class="sub"/>
+<text x="834.0" y="80" class="st" text-anchor="middle" >Subset Experiment Agent</text>
+<rect x="658" y="96" width="164" height="60" rx="8" class="agent"/>
+<rect x="658" y="106" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="743.0" y="122.0" class="ag" text-anchor="middle" >Coding</text>
+<text x="743.0" y="142.0" class="ag" text-anchor="middle" >Agent</text>
+<rect x="846" y="96" width="164" height="60" rx="8" class="agent"/>
+<rect x="846" y="106" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="931.0" y="122.0" class="ag" text-anchor="middle" >Critic</text>
+<text x="931.0" y="142.0" class="ag" text-anchor="middle" >Agent</text>
+<path d="M826 126 A8 8 0 0 1 839.6 120.4" class="cyc"/>
+<path d="M842 126 A8 8 0 0 1 828.4 131.6" class="cyc"/>
+<path d="M834 168V182" class="flow"/>
+<rect x="646" y="188" width="376" height="120" rx="9" class="sub"/>
+<text x="834.0" y="212" class="st" text-anchor="middle" >Full-Set Experiment Agent</text>
+<rect x="658" y="232" width="164" height="60" rx="8" class="agent"/>
+<rect x="658" y="242" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="743.0" y="258.0" class="ag" text-anchor="middle" >Coding</text>
+<text x="743.0" y="278.0" class="ag" text-anchor="middle" >Agent</text>
+<rect x="846" y="232" width="164" height="60" rx="8" class="agent"/>
+<rect x="846" y="242" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="931.0" y="258.0" class="ag" text-anchor="middle" >Critic</text>
+<text x="931.0" y="278.0" class="ag" text-anchor="middle" >Agent</text>
+<path d="M826 262 A8 8 0 0 1 839.6 256.4" class="cyc"/>
+<path d="M842 262 A8 8 0 0 1 828.4 267.6" class="cyc"/>
+<rect x="1064" y="16" width="400" height="304" rx="12" class="grp"/>
+<text x="1264.0" y="46" class="gt" text-anchor="middle" >Analyzer</text>
+<rect x="1076" y="56" width="376" height="112" rx="9" class="sub"/>
+<text x="1264.0" y="80" class="st" text-anchor="middle" >Ablation Study Agent</text>
+<rect x="1088" y="96" width="164" height="60" rx="8" class="agent"/>
+<rect x="1088" y="106" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="1173.0" y="122.0" class="ag" text-anchor="middle" >Planning</text>
+<text x="1173.0" y="142.0" class="ag" text-anchor="middle" >Agent</text>
+<rect x="1276" y="96" width="164" height="60" rx="8" class="agent"/>
+<rect x="1276" y="106" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="1361.0" y="122.0" class="ag" text-anchor="middle" >Coding</text>
+<text x="1361.0" y="142.0" class="ag" text-anchor="middle" >Agent</text>
+<path d="M1252 126H1270" class="flow"/>
+<path d="M1264 168V182" class="flow"/>
+<rect x="1076" y="188" width="376" height="120" rx="9" class="sub"/>
+<text x="1264.0" y="212" class="st" text-anchor="middle" >Idea Refiner</text>
+<rect x="1088" y="232" width="164" height="60" rx="8" class="agent"/>
+<rect x="1088" y="242" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="1173.0" y="258.0" class="ag" text-anchor="middle" >Critic</text>
+<text x="1173.0" y="278.0" class="ag" text-anchor="middle" >Agent</text>
+<path d="M1252 262H1288" class="flow"/>
+<g transform="translate(1308 260)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
+<text x="1326" y="268" class="ag" text-anchor="start" >New Idea</text>
+<path d="M180 80H200" class="flow"/>
+<path d="M592 100H640" class="flow"/>
+<g transform="translate(619 88)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
+<path d="M592 224H618V136H640" class="flow"/>
+<g transform="translate(619 180)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
+<path d="M646 284H598" class="flow"/>
+<g transform="translate(610 300)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<g transform="translate(630 300)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
+<path d="M1022 226H1048V112H1070" class="flow"/>
+<g transform="translate(1049 160)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<path d="M1076 284H1028" class="flow"/>
+<g transform="translate(1049 300)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
+<path d="M1264 320V374" class="flow"/>
+<rect x="1064" y="380" width="400" height="160" rx="12" class="grp"/>
+<text x="1264.0" y="410" class="gt" text-anchor="middle" >Writer Agent</text>
+<rect x="1276" y="444" width="164" height="60" rx="8" class="agent"/>
+<rect x="1276" y="454" width="5" height="40" rx="2" fill="#8a5cc7"/>
+<text x="1361.0" y="470.0" class="ag" text-anchor="middle" >Initial</text>
+<text x="1361.0" y="490.0" class="ag" text-anchor="middle" >Drafter</text>
+<rect x="1088" y="444" width="164" height="60" rx="8" class="agent"/>
+<rect x="1088" y="454" width="5" height="40" rx="2" fill="#8a5cc7"/>
+<text x="1173.0" y="470.0" class="ag" text-anchor="middle" >Draft</text>
+<text x="1173.0" y="490.0" class="ag" text-anchor="middle" >Enhancer</text>
+<path d="M1276 474H1258" class="flow"/>
+<path d="M1036 460 A13 13 0 0 1 1058.1 450.9" class="cyc"/>
+<path d="M1062 460 A13 13 0 0 1 1039.9 469.1" class="cyc"/>
+<rect x="634" y="380" width="400" height="160" rx="12" class="grp"/>
+<text x="834.0" y="410" class="gt" text-anchor="middle" >Peer-Review Agent</text>
+<rect x="846" y="444" width="164" height="60" rx="8" class="agent"/>
+<rect x="846" y="454" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="931.0" y="470.0" class="ag" text-anchor="middle" >Review</text>
+<text x="931.0" y="490.0" class="ag" text-anchor="middle" >Agent</text>
+<rect x="658" y="444" width="164" height="60" rx="8" class="agent"/>
+<rect x="658" y="454" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="743.0" y="470.0" class="ag" text-anchor="middle" >Rebuttal</text>
+<text x="743.0" y="490.0" class="ag" text-anchor="middle" >Agent</text>
+<path d="M846 474H828" class="flow"/>
+<path d="M634 460H610" class="flow"/>
+<rect x="204" y="380" width="400" height="160" rx="12" class="grp"/>
+<text x="404.0" y="410" class="gt" text-anchor="middle" >Meta-Review Agent</text>
+<rect x="416" y="444" width="164" height="60" rx="8" class="agent"/>
+<rect x="416" y="454" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="501.0" y="470.0" class="ag" text-anchor="middle" >Critic</text>
+<text x="501.0" y="490.0" class="ag" text-anchor="middle" >Agent</text>
+<rect x="228" y="444" width="164" height="60" rx="8" class="agent"/>
+<text x="313.0" y="470.0" class="ag" text-anchor="middle" >Idea</text>
+<text x="313.0" y="490.0" class="ag" text-anchor="middle" >Refiner</text>
+<path d="M416 474H398" class="flow"/>
+<path d="M204 460H186" class="flow"/>
+<path d="M310 540V572H1524V150H1470" class="flow back"/>
+<text x="849.0" y="590" class="q" text-anchor="middle" fill="#5b6675">revise until it clears the bar → back to analysis</text>
+</svg>
