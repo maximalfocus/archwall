@@ -1,0 +1,8 @@
+title_zh = "herdr：编码智能体在后台一直跑"
+title_en = "herdr: a home where coding agents keep running"
+date = "2026-10-03"
+tags = ["agents", "terminal", "runtime", "client-server"]
+figure = "diagram.svg"
+alt_zh = "herdr 架构：客户端只画屏幕、发按键；每个会话一个服务端，管着所有面板和智能体状态；另有 socket API 给智能体和脚本用；服务端停了，尽量恢复"
+alt_en = "herdr architecture: clients only draw and send keys; one server per session owns every pane and agent state; a socket API serves agents and scripts; if the server stops, herdr restores what it can"
+source = "https://github.com/herdrdev/herdr"
