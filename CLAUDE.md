@@ -12,5 +12,8 @@ Architecture-diagram site; see README.md for layout and build.
 ## Post rules
 
 - Body ≤ 300 words (en) / 300 hanzi (zh), both languages, same content.
+- Voice, everywhere from the home page to the post: short, plain, down-to-earth. Say it the way you'd explain it to a colleague.
+  No AI filler: no "it's worth noting", no stacked adjectives, no em-dash asides, no summary that repeats the body.
+  Short sentences, everyday words; keep only jargon the diagram itself uses.
 - The figure is an SVG, hand-made or redrawn (no raster screenshots), and appears both on the home page and in the post.
 - Numbers and claims must match the source; cite it in `source`.
