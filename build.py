@@ -76,7 +76,6 @@ def page(title_zh, title_en, body, root, desc=""):
 <main>
 {body}
 </main>
-<footer>{bi(esc(SITE['footer_zh']), esc(SITE['footer_en']))}</footer>
 <button id="lang-toggle" type="button" aria-label="中文 / English">EN</button>
 <script src="{root}static/site.js" defer></script>
 </body>
