@@ -64,7 +64,7 @@ d.arrow(f"M{B+400} {CY}V416"); d.note(B + 388, 436, "commands", "end")
 # 4 restart and restore (bottom left)
 d.group(A, CY, GW, 370, "If the server stops", 4)
 d.sub(A + 12, CY + 44, GW - 24, 314, "Bring back what it can")
-rows = [("Live handoff|processes survive", "coding", "updates, opt-in"),
+rows = [("Live handoff|best effort", "coding", "updates, opt-in"),
         ("Agent resume command|claude --resume <id>", "plan", "same conversation"),
         ("Pane history", "data", "opt-in, may hold secrets"),
         ("Saved layout|session.json", "data", "fresh shell, same dir")]
