@@ -8,14 +8,14 @@ from archdiagram import Diagram  # noqa: E402
 d = Diagram(1540, 430, "Dream-RSI loop",
             "1 Online explore: the exploration policy guides a coding agent, which grows a discovery tree. "
             "2 Each tree becomes an exact replay simulator, added to a growing pool. "
-            "3 A policy agent proposes new policies and scores them by replaying them over the whole pool, at zero executions. "
+            "3 A policy-development agent revises the policy M times in a row; each version is scored by replay over the whole pool at zero executions, and the scores and traces go into its history for the next revision. "
             "The best policy, never worse than the current one, is deployed for the next round.")
 A, B, C, GW = 24, 534, 1044, 472
 
 # 1 online explore
 d.group(A, 16, GW, 330, "Online explore", 1)
 d.sub(A + 12, 56, GW - 24, 120, "Discovery run")
-d.card(A + 28, 96, "Exploration|policy", "plan")
+d.card(A + 28, 96, "Exploration policy|(code)", "plan")
 d.card(A + 280, 96, "Coding|agent", "coding")
 d.arrow(f"M{A+192} 126H{A+274}"); d.note(A + 233, 116, "guides")
 d.sub(A + 12, 192, GW - 24, 140, "Recorded")
@@ -40,15 +40,15 @@ d.arrow(f"M{A+GW-12} 256H{A+GW+19}V126H{B+22}"); d.note(A + GW + 19, 286, "store
 # 3 dream
 d.group(C, 16, GW, 330, "Dream a better policy", 3)
 d.sub(C + 12, 56, GW - 24, 180, "Inner loop · zero executions")
-d.card(C + 28, 92, "Policy|agent", "plan")
-d.card(C + 280, 92, "New policy|πᵐ", "coding")
+d.card(C + 28, 92, "Policy-dev|agent", "plan")
+d.card(C + 280, 92, "Revised policy|πᵐ⁺¹", "coding")
 d.card(C + 280, 166, "Replay over|the whole pool", "critic")
-d.card(C + 28, 166, "Score +|exec traces", "data")
-d.arrow(f"M{C+192} 122H{C+274}"); d.note(C + 233, 112, "propose")
+d.card(C + 28, 166, "History H|scores + traces", "data")
+d.arrow(f"M{C+192} 122H{C+274}"); d.note(C + 233, 112, "revise")
 d.arrow(f"M{C+362} 152V160")
-d.arrow(f"M{C+280} 196H{C+198}")
-d.arrow(f"M{C+110} 166V158")
-d.arrow(f"M{C+236} 236V256"); d.note(C + 250, 252, "pick the winner", "start")
+d.arrow(f"M{C+280} 196H{C+198}"); d.note(C + 239, 186, "store")
+d.arrow(f"M{C+110} 166V158"); d.note(C + 122, 162, "next revision", "start")
+d.arrow(f"M{C+236} 236V256"); d.note(C + 250, 252, "after M revisions, pick the best", "start")
 d.card(C + 76, 262, "Best policy, never worse|(the current one is a candidate too)", "plan", w=320, h=56)
 
 d.arrow(f"M{B+GW-12} 262H{B+GW+19}V206H{C+6}"); d.note(B + GW + 19, 286, "replay")

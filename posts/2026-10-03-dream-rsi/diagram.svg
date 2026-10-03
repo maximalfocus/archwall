@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1540 430" width="1540" height="430" role="img" aria-labelledby="t d">
 <title id="t">Dream-RSI loop</title>
-<desc id="d">1 Online explore: the exploration policy guides a coding agent, which grows a discovery tree. 2 Each tree becomes an exact replay simulator, added to a growing pool. 3 A policy agent proposes new policies and scores them by replaying them over the whole pool, at zero executions. The best policy, never worse than the current one, is deployed for the next round.</desc>
+<desc id="d">1 Online explore: the exploration policy guides a coding agent, which grows a discovery tree. 2 Each tree becomes an exact replay simulator, added to a growing pool. 3 A policy-development agent revises the policy M times in a row; each version is scored by replay over the whole pool at zero executions, and the scores and traces go into its history for the next revision. The best policy, never worse than the current one, is deployed for the next round.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -32,8 +32,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="260.0" y="80" class="st" text-anchor="middle" >Discovery run</text>
 <rect x="52" y="96" width="164" height="60" rx="8" class="agent"/>
 <rect x="52" y="106" width="5" height="40" rx="2" fill="#2f9e6e"/>
-<text x="137.0" y="122.0" class="ag" text-anchor="middle" >Exploration</text>
-<text x="137.0" y="142.0" class="ag" text-anchor="middle" >policy</text>
+<text x="137.0" y="122.0" class="ag" text-anchor="middle" >Exploration policy</text>
+<text x="137.0" y="142.0" class="ag" text-anchor="middle" >(code)</text>
 <rect x="304" y="96" width="164" height="60" rx="8" class="agent"/>
 <rect x="304" y="106" width="5" height="40" rx="2" fill="#2f6fd6"/>
 <text x="389.0" y="122.0" class="ag" text-anchor="middle" >Coding</text>
@@ -87,27 +87,29 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="1280.0" y="80" class="st" text-anchor="middle" >Inner loop · zero executions</text>
 <rect x="1072" y="92" width="164" height="60" rx="8" class="agent"/>
 <rect x="1072" y="102" width="5" height="40" rx="2" fill="#2f9e6e"/>
-<text x="1157.0" y="118.0" class="ag" text-anchor="middle" >Policy</text>
+<text x="1157.0" y="118.0" class="ag" text-anchor="middle" >Policy-dev</text>
 <text x="1157.0" y="138.0" class="ag" text-anchor="middle" >agent</text>
 <rect x="1324" y="92" width="164" height="60" rx="8" class="agent"/>
 <rect x="1324" y="102" width="5" height="40" rx="2" fill="#2f6fd6"/>
-<text x="1409.0" y="118.0" class="ag" text-anchor="middle" >New policy</text>
-<text x="1409.0" y="138.0" class="ag" text-anchor="middle" >πᵐ</text>
+<text x="1409.0" y="118.0" class="ag" text-anchor="middle" >Revised policy</text>
+<text x="1409.0" y="138.0" class="ag" text-anchor="middle" >πᵐ⁺¹</text>
 <rect x="1324" y="166" width="164" height="60" rx="8" class="agent"/>
 <rect x="1324" y="176" width="5" height="40" rx="2" fill="#e8973a"/>
 <text x="1409.0" y="192.0" class="ag" text-anchor="middle" >Replay over</text>
 <text x="1409.0" y="212.0" class="ag" text-anchor="middle" >the whole pool</text>
 <rect x="1072" y="166" width="164" height="60" rx="8" class="agent"/>
 <rect x="1072" y="176" width="5" height="40" rx="2" fill="#5b6675"/>
-<text x="1157.0" y="192.0" class="ag" text-anchor="middle" >Score +</text>
-<text x="1157.0" y="212.0" class="ag" text-anchor="middle" >exec traces</text>
+<text x="1157.0" y="192.0" class="ag" text-anchor="middle" >History H</text>
+<text x="1157.0" y="212.0" class="ag" text-anchor="middle" >scores + traces</text>
 <path d="M1236 122H1318" class="flow"/>
-<text x="1277" y="112" class="lb" text-anchor="middle" >propose</text>
+<text x="1277" y="112" class="lb" text-anchor="middle" >revise</text>
 <path d="M1406 152V160" class="flow"/>
 <path d="M1324 196H1242" class="flow"/>
+<text x="1283" y="186" class="lb" text-anchor="middle" >store</text>
 <path d="M1154 166V158" class="flow"/>
+<text x="1166" y="162" class="lb" text-anchor="start" >next revision</text>
 <path d="M1280 236V256" class="flow"/>
-<text x="1294" y="252" class="lb" text-anchor="start" >pick the winner</text>
+<text x="1294" y="252" class="lb" text-anchor="start" >after M revisions, pick the best</text>
 <rect x="1120" y="262" width="320" height="56" rx="8" class="agent"/>
 <rect x="1120" y="272" width="5" height="36" rx="2" fill="#2f9e6e"/>
 <text x="1283.0" y="286.0" class="ag" text-anchor="middle" >Best policy, never worse</text>
