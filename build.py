@@ -137,7 +137,7 @@ def build_index(posts):
 def build_post(p):
     root = "../../"
     dest = OUT / "p" / p["slug"]
-    shutil.copytree(p["dir"], dest, ignore=shutil.ignore_patterns("*.md", "*.toml"))
+    shutil.copytree(p["dir"], dest, ignore=shutil.ignore_patterns("*.md", "*.toml", "*.py", "__pycache__"))
     fig = (f'<figure class="hero"><a href="{p["figure"]}" title="Open full size">'
            f'<img src="{p["figure"]}" alt="{esc(p["alt_en"])}" data-alt-zh="{esc(p["alt_zh"])}" '
            f'data-alt-en="{esc(p["alt_en"])}"></a></figure>')

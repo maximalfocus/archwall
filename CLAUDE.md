@@ -15,5 +15,8 @@ Architecture-diagram site; see README.md for layout and build.
 - Voice, everywhere from the home page to the post: short, plain, down-to-earth. Say it the way you'd explain it to a colleague.
   No AI filler: no "it's worth noting", no stacked adjectives, no em-dash asides, no summary that repeats the body.
   Short sentences, everyday words; keep only jargon the diagram itself uses.
-- The figure is an SVG, hand-made or redrawn (no raster screenshots), and appears both on the home page and in the post.
+- The figure is an SVG, redrawn (no raster screenshots), and appears both on the home page and in the post.
+- One look for every diagram, whatever the source figure looks like: draw it with `tools/archdiagram.py`
+  (grey groups, lighter sub-groups, white cards with a coloured role bar, slate arrows, no icons).
+  Keep the source as `posts/<slug>/diagram.py` next to the generated `diagram.svg`; width 1540.
 - Numbers and claims must match the source; cite it in `source`.
