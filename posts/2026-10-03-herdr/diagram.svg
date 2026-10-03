@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">herdr architecture</title>
-<desc id="d">1 Clients (local TUI, remote over SSH, direct attach) only draw and send keys; detaching leaves work running. 2 One server per session owns every pane: a real PTY running the agent, parsed into terminal state by libghostty-vt. A screen detector and the agents' own reports decide working, blocked, done or idle. 3 The same socket API lets agents and scripts spawn panes, prompt each other and wait on state. 4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, the saved layout, and opt-in pane history.</desc>
+<desc id="d">1 Clients (local TUI, remote over SSH, direct attach) only draw and send keys; detaching leaves work running. 2 One server per session owns every pane: a real PTY running the agent, parsed into terminal state by libghostty-vt. A screen detector and the agents' own reports decide working, blocked, done or idle. 3 A socket API lets agents and scripts spawn panes, prompt each other and wait on state. 4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, the saved layout, and opt-in pane history.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -94,7 +94,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="834.25" y="474" class="numt" text-anchor="middle" >3</text>
 <text x="850.25" y="476" class="gt" text-anchor="start" >Control API</text>
 <rect x="636" y="490" width="528" height="150" rx="9" class="sub"/>
-<text x="900.0" y="514" class="st" text-anchor="middle" >Same socket the UI uses</text>
+<text x="900.0" y="514" class="st" text-anchor="middle" >Socket API for agents and scripts</text>
 <rect x="654" y="538" width="230" height="64" rx="8" class="agent"/>
 <rect x="654" y="548" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="772.0" y="566.0" class="ag" text-anchor="middle" >Agents in panes</text>

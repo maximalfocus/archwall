@@ -10,7 +10,7 @@ d = Diagram("herdr architecture",
             "1 Clients (local TUI, remote over SSH, direct attach) only draw and send keys; detaching leaves work running. "
             "2 One server per session owns every pane: a real PTY running the agent, parsed into terminal state by "
             "libghostty-vt. A screen detector and the agents' own reports decide working, blocked, done or idle. "
-            "3 The same socket API lets agents and scripts spawn panes, prompt each other and wait on state. "
+            "3 A socket API lets agents and scripts spawn panes, prompt each other and wait on state. "
             "4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, the saved "
             "layout, and opt-in pane history.")
 A, B, GW, CW = 24, 624, 552, 180
@@ -49,7 +49,7 @@ d.note(B + 120, 392, "rolled up per workspace")
 # 3 control API (bottom right)
 CY = 446
 d.group(B, CY, GW, 370, "Control API", 3)
-d.sub(B + 12, CY + 44, GW - 24, 150, "Same socket the UI uses")
+d.sub(B + 12, CY + 44, GW - 24, 150, "Socket API for agents and scripts")
 d.card(B + 30, CY + 92, "Agents in panes|spawn · prompt · wait", "plan", w=230, h=64)
 d.card(B + 312, CY + 92, "Scripts|and plugins", "write", w=200, h=64)
 d.sub(B + 12, CY + 206, GW - 24, 152, "Every pane gets")
