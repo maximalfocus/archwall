@@ -1,14 +1,17 @@
-ScientistTwo runs the full research cycle on its own: it generates and evolves ideas, validates them experimentally, isolates what actually works, writes the manuscript, then peer-reviews it, looping until the work clears a publication bar.
+ScientistTwo is an AI that does research by itself. Give it a direction and it comes up with ideas, runs experiments, writes the paper and reviews it. If the review fails, it goes back and fixes it.
 
-Six agent groups form one loop:
+Top row: does the idea work?
 
-1. **Idea Generator**: proposes ideas from the limitations of existing work and checks novelty; good and bad experimental results flow back to evolve new ideas.
-2. **Evaluator**: screens ideas on representative benchmark subsets before full-scale runs; at each stage a coding agent and a critic agent iterate.
-3. **Analyzer**: designs its own ablations, isolates each component's contribution, prunes what does not help, and sends the sharpened idea back for full-set runs.
-4. **Writer**: an initial drafter, then a draft enhancer.
-5. **Peer Review**: a review agent critiques; a rebuttal agent answers with new, targeted experiments, not just edited text.
-6. **Meta-Review**: supervises the cycle and sends the work back to analysis until acceptance criteria are met.
+1. **Idea**: find where current methods fall short and check the idea is new. Experiment results come back and the idea gets revised.
+2. **Experiment**: try it on a small slice of data first, then the full set. One agent writes code, another looks for problems, back and forth.
+3. **Take it apart**: run ablations to see which parts matter. Cut the rest.
 
-The design idea: **two compute-saving filters** (subset before full set; ablation before writing) and **one strict exit** (no pass, no paper).
+Bottom row: does the paper pass?
 
-Result: it beats human state of the art on 86 of 107 research problems, with a 25.2% average relative gain.
+4. **Write**: a first draft, then a cleanup.
+5. **Review**: one agent finds problems, another answers them with new experiments, not new wording.
+6. **Gatekeep**: not good enough? Back to step 3.
+
+Why it works: small before big, take it apart before writing it up. That saves compute. No pass, no paper.
+
+Result: it beat the best human result on 86 of 107 problems.

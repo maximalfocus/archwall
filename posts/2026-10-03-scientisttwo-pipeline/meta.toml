@@ -1,8 +1,8 @@
-title_zh = "ScientistTwo：从想法到论文的闭环"
-title_en = "ScientistTwo: a closed loop from idea to accepted paper"
+title_zh = "ScientistTwo：从想法到论文，自己跑一圈"
+title_en = "ScientistTwo: idea to paper, all on its own"
 date = "2026-10-03"
 tags = ["agents", "AI scientist", "multi-agent", "research"]
 figure = "diagram.svg"
-alt_zh = "ScientistTwo 流水线：上排是想法生成、评估、分析，下排是写作、同行评审、元评审，带回到想法生成和分析的反馈环"
-alt_en = "ScientistTwo pipeline: Idea Generator, Evaluator and Analyzer in the top row feed a Writer, Peer-Review and Meta-Review agent in the bottom row, with feedback loops back"
+alt_zh = "ScientistTwo 流程图：上排想点子、做实验、拆开看，下排写、审、把关，审不过就回去改"
+alt_en = "ScientistTwo flow: idea, experiment, ablation on top; write, review, gatekeep below; a failed review loops back"
 source = "https://scientist-two.github.io/#overview"
