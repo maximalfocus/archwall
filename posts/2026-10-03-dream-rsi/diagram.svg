@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Dream-RSI loop</title>
+<desc id="d">1 Online explore: the exploration policy (code) guides a coding agent, which grows a discovery tree. 2 Each tree becomes an exact replay simulator, added to a growing pool. 3 A policy-development agent revises the policy M times in a row; each version is scored by replay over the whole pool at zero executions, and the scores and traces go into its history for the next revision. The best version, never worse than the current one, is deployed for the next round.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:21px;font-weight:700}
+.st{font-size:16px;font-weight:700}
+.ag{font-size:15px}
+.q{font-size:14px;fill:#3d4a5c}
+.lb{font-size:13px;fill:#5b6675}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:13px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="380" rx="12" class="grp"/>
+<circle cx="218.5" cy="39" r="11" class="num"/>
+<text x="218.5" y="44" class="numt" text-anchor="middle" >1</text>
+<text x="234.5" y="46" class="gt" text-anchor="start" >Online explore</text>
+<rect x="36" y="60" width="528" height="130" rx="9" class="sub"/>
+<text x="300.0" y="84" class="st" text-anchor="middle" >Discovery run</text>
+<rect x="54" y="104" width="180" height="60" rx="8" class="agent"/>
+<rect x="54" y="114" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="147.0" y="130.0" class="ag" text-anchor="middle" >Exploration policy</text>
+<text x="147.0" y="150.0" class="ag" text-anchor="middle" >(code)</text>
+<rect x="366" y="104" width="180" height="60" rx="8" class="agent"/>
+<rect x="366" y="114" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="459.0" y="130.0" class="ag" text-anchor="middle" >Coding</text>
+<text x="459.0" y="150.0" class="ag" text-anchor="middle" >agent</text>
+<path d="M234 134H360" class="flow"/>
+<text x="297" y="124" class="lb" text-anchor="middle" >guides</text>
+<rect x="36" y="206" width="528" height="176" rx="9" class="sub"/>
+<text x="300.0" y="230" class="st" text-anchor="middle" >Recorded</text>
+<rect x="366" y="250" width="180" height="60" rx="8" class="agent"/>
+<rect x="366" y="260" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="459.0" y="276.0" class="ag" text-anchor="middle" >Discovery</text>
+<text x="459.0" y="296.0" class="ag" text-anchor="middle" >tree</text>
+<text x="456" y="340" class="lb" text-anchor="middle" >every attempt +</text>
+<text x="456" y="358" class="lb" text-anchor="middle" >its real result</text>
+<path d="M456 164V244" class="flow"/>
+<rect x="624" y="16" width="552" height="380" rx="12" class="grp"/>
+<circle cx="776.5" cy="39" r="11" class="num"/>
+<text x="776.5" y="44" class="numt" text-anchor="middle" >2</text>
+<text x="792.5" y="46" class="gt" text-anchor="start" >Build replay simulator</text>
+<rect x="636" y="60" width="528" height="130" rx="9" class="sub"/>
+<text x="900.0" y="84" class="st" text-anchor="middle" >Each tree becomes a world</text>
+<rect x="654" y="104" width="180" height="60" rx="8" class="agent"/>
+<rect x="654" y="114" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="747.0" y="130.0" class="ag" text-anchor="middle" >Discovery</text>
+<text x="747.0" y="150.0" class="ag" text-anchor="middle" >tree</text>
+<rect x="966" y="104" width="180" height="60" rx="8" class="agent"/>
+<rect x="966" y="114" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="1059.0" y="130.0" class="ag" text-anchor="middle" >Replay</text>
+<text x="1059.0" y="150.0" class="ag" text-anchor="middle" >simulator</text>
+<path d="M834 134H960" class="flow"/>
+<text x="897" y="124" class="lb" text-anchor="middle" >exact</text>
+<rect x="636" y="206" width="528" height="176" rx="9" class="sub"/>
+<text x="900.0" y="230" class="st" text-anchor="middle" >Simulator pool</text>
+<rect x="654" y="250" width="152" height="60" rx="8" class="agent"/>
+<rect x="654" y="260" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="733.0" y="286.0" class="ag" text-anchor="middle" >Tree 1</text>
+<rect x="824" y="250" width="152" height="60" rx="8" class="agent"/>
+<rect x="824" y="260" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="903.0" y="286.0" class="ag" text-anchor="middle" >Tree 2</text>
+<rect x="994" y="250" width="152" height="60" rx="8" class="agent"/>
+<rect x="994" y="260" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="1073.0" y="286.0" class="ag" text-anchor="middle" >… Tree t</text>
+<text x="900.0" y="349" class="lb" text-anchor="middle" >one more world every round</text>
+<path d="M1056 164V244" class="flow"/>
+<path d="M546 280H600V134H648" class="flow"/>
+<text x="600" y="300" class="lb" text-anchor="middle" >store</text>
+<rect x="24" y="436" width="1152" height="380" rx="12" class="grp"/>
+<circle cx="481.75" cy="459" r="11" class="num"/>
+<text x="481.75" y="464" class="numt" text-anchor="middle" >3</text>
+<text x="497.75" y="466" class="gt" text-anchor="start" >Dream a better policy</text>
+<rect x="36" y="480" width="740" height="324" rx="9" class="sub"/>
+<text x="406.0" y="504" class="st" text-anchor="middle" >Inner loop · zero executions</text>
+<rect x="72" y="536" width="200" height="64" rx="8" class="agent"/>
+<rect x="72" y="546" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="175.0" y="564.0" class="ag" text-anchor="middle" >Policy-dev</text>
+<text x="175.0" y="584.0" class="ag" text-anchor="middle" >agent</text>
+<rect x="524" y="536" width="200" height="64" rx="8" class="agent"/>
+<rect x="524" y="546" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="627.0" y="564.0" class="ag" text-anchor="middle" >Revised policy</text>
+<text x="627.0" y="584.0" class="ag" text-anchor="middle" >πᵐ⁺¹</text>
+<rect x="524" y="676" width="200" height="64" rx="8" class="agent"/>
+<rect x="524" y="686" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="627.0" y="704.0" class="ag" text-anchor="middle" >Replay over</text>
+<text x="627.0" y="724.0" class="ag" text-anchor="middle" >the whole pool</text>
+<rect x="72" y="676" width="200" height="64" rx="8" class="agent"/>
+<rect x="72" y="686" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="175.0" y="704.0" class="ag" text-anchor="middle" >History H</text>
+<text x="175.0" y="724.0" class="ag" text-anchor="middle" >scores + traces</text>
+<path d="M272 568H518" class="flow"/>
+<text x="395" y="558" class="lb" text-anchor="middle" >revise</text>
+<path d="M624 600V670" class="flow"/>
+<path d="M524 708H278" class="flow"/>
+<text x="401" y="698" class="lb" text-anchor="middle" >store</text>
+<path d="M172 676V606" class="flow"/>
+<text x="184" y="646" class="lb" text-anchor="start" >next revision</text>
+<path d="M776 632H862" class="flow"/>
+<text x="1008" y="560" class="lb" text-anchor="middle" >after M revisions,</text>
+<text x="1008" y="578" class="lb" text-anchor="middle" >pick the best</text>
+<rect x="868" y="592" width="280" height="80" rx="8" class="agent"/>
+<rect x="868" y="602" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="1011.0" y="628.0" class="ag" text-anchor="middle" >Best policy</text>
+<text x="1011.0" y="648.0" class="ag" text-anchor="middle" >never worse</text>
+<text x="984" y="698" class="lb" text-anchor="middle" >the current policy is</text>
+<text x="984" y="716" class="lb" text-anchor="middle" >a candidate too</text>
+<path d="M900.0 396V520H782" class="flow"/>
+<text x="912.0" y="418" class="lb" text-anchor="start" >replay against</text>
+<path d="M1124 672V858H12V134H48" class="flow back"/>
+<text x="600" y="884" class="lb" text-anchor="middle" >deploy the best policy → the next round explores further</text>
+</svg>
