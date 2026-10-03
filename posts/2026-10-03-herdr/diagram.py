@@ -9,7 +9,8 @@ from archdiagram import Diagram  # noqa: E402
 d = Diagram("herdr architecture",
             "1 Clients (local TUI, remote over SSH, direct attach) only draw and send keys; detaching leaves work running. "
             "2 One server per session owns every pane: a real PTY running the agent, parsed into terminal state by "
-            "libghostty-vt. A screen detector and the agents' own reports decide working, blocked, done or idle. "
+            "libghostty-vt. A screen detector and the agents' own reports decide working, blocked or idle; "
+            "a finished pane you have not looked at shows done. "
             "3 A socket API lets agents and scripts spawn panes, prompt each other and wait on state. "
             "4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, "
             "opt-in pane history, and the saved layout.")
