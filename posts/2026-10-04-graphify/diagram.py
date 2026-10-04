@@ -38,8 +38,8 @@ for i, lbl in enumerate(["Pass 1: code|tree-sitter, local, no LLM",
                          "Pass 2: video, audio|transcripts → Pass 3 (video extra)",
                          "Pass 3: docs, papers, images|LLM subagents, costs tokens"]):
     d.card(R + 30, T1 + 64 + i * 96, lbl, "coding", w=PW, h=PH)
-d.note(R + W / 2, T1 + 356, "SHA256 cache skips unchanged files")
-d.note(R + W / 2, T1 + 382, "edges: EXTRACTED, INFERRED, AMBIGUOUS")
+d.note(R + W / 2, T1 + 374, "SHA256 cache skips unchanged files")
+d.note(R + W / 2, T1 + 400, "edges: EXTRACTED, INFERRED, AMBIGUOUS")
 
 # 3 build and cluster
 d.group(R, T2, W, H2, "Build and cluster", 3)

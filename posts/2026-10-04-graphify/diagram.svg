@@ -59,8 +59,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="282" width="5" height="60" rx="2" fill="#2f6fd6"/>
 <text x="903.0" y="307.0" class="ag" text-anchor="middle" >Pass 3: docs, papers, images</text>
 <text x="903.0" y="331.0" class="ag" text-anchor="middle" >LLM subagents, costs tokens</text>
-<text x="900.0" y="372" class="lb" text-anchor="middle" >SHA256 cache skips unchanged files</text>
-<text x="900.0" y="398" class="lb" text-anchor="middle" >edges: EXTRACTED, INFERRED, AMBIGUOUS</text>
+<text x="900.0" y="390" class="lb" text-anchor="middle" >SHA256 cache skips unchanged files</text>
+<text x="900.0" y="416" class="lb" text-anchor="middle" >edges: EXTRACTED, INFERRED, AMBIGUOUS</text>
 <rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
 <circle cx="775.25" cy="487" r="14" class="num"/>
 <text x="775.25" y="493" class="numt" text-anchor="middle" >3</text>
