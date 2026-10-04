@@ -1,0 +1,15 @@
+title_zh = "graphify：把整个项目变成一张可查询的知识图"
+title_en = "graphify: turn a whole project into a graph you can query"
+date = "2026-10-04"
+tags = ["knowledge-graph", "coding-agent", "tree-sitter", "llm"]
+figure = "diagram.svg"
+alt_zh = "graphify 架构：1 扫描文件夹，按类型分成代码、文档和论文、图片、音视频，SHA256 缓存跳过没变的文件；2 分三遍抽取：代码用 tree-sitter 本地解析不用 LLM，音视频用 faster-whisper 本地转写，文档和图片交给 LLM 子代理；边标 EXTRACTED、INFERRED、AMBIGUOUS；3 build() 合成一张 NetworkX 图，Leiden 算法分社区，再找核心节点和意外连接；4 输出到 graphify-out：graph.json、graph.html、GRAPH_REPORT.md 和其他导出格式"
+alt_en = "graphify architecture: 1 scan the folder and sort files into code, docs and papers, images, video and audio, with a SHA256 cache skipping unchanged files; 2 extract in three passes: code with tree-sitter locally and no LLM, video and audio with faster-whisper locally, docs and images through LLM subagents; edges are tagged EXTRACTED, INFERRED or AMBIGUOUS; 3 build() makes one NetworkX graph, Leiden finds communities, then god nodes and surprising connections are found; 4 output in graphify-out: graph.json, graph.html, GRAPH_REPORT.md and other exports"
+source = "https://github.com/Graphify-Labs/graphify"
+
+[[figures]]
+file = "use.svg"
+alt_zh = "graphify 的用法：1 助手里装一段 CLAUDE.md 说明和一个 PreToolUse 钩子，在 grep 和读文件前提醒先查图，没有钩子的平台用 AGENTS.md 一类的文件；2 通过命令行（query、path、explain）或 MCP 服务端（stdio 或 HTTP）查 graph.json，拿回一小块子图而不是原文件；3 保持最新：git commit 和切分支自动重建代码部分，不花 API 钱，git pull 后手动跑 graphify update，文档变了跑 /graphify --update"
+alt_en = "graphify in use: 1 the assistant gets a CLAUDE.md section and a PreToolUse hook that points it to the graph before grep and file reads; platforms without hooks get an AGENTS.md-style file; 2 the CLI (query, path, explain) or the MCP server (stdio or HTTP) reads graph.json and returns a small subgraph instead of raw files; 3 keep it current: git commit and branch switches rebuild the code part with no API cost, after git pull you run graphify update, and when docs change you run /graphify --update"
+caption_zh = "助手先查图，git 钩子让图跟着代码走"
+caption_en = "The assistant asks the graph first; git hooks keep it current"
