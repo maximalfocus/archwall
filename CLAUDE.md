@@ -1,6 +1,7 @@
 # archwall
 
 Architecture-diagram site; see README.md for layout and build.
+Writing or landing a post: use the `archwall-post` skill (`.claude/skills/archwall-post/`); it has the steps, this file has the rules.
 
 ## Post workflow (always)
 
