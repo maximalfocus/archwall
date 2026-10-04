@@ -1,0 +1,15 @@
+title_zh = "ABAP Development Tools：一套客户端代码，接 Eclipse 也接 VS Code"
+title_en = "ABAP Development Tools: one client codebase for Eclipse and VS Code"
+date = "2026-10-04"
+tags = ["ide", "sap", "abap", "language-server", "client-server"]
+figure = "diagram.svg"
+alt_zh = "ADT 架构：1 IDE 界面层，Eclipse 直接运行 ADT 插件，VS Code 通过 LSP 连 ADT Language Server，它包着去掉界面的 Eclipse 插件；2 共用的无界面客户端层：REST API 封装、调试器、测试运行、ATC、跟踪、兼容旧版本，约 290 万行；3 经 RFC 或 HTTP 连 ABAP 服务器：ADT REST API，7.3 EHP1 SP04 起所有版本同一套 API，以及表单类和源码类对象类型"
+alt_en = "ADT architecture: 1 the IDE UIs, Eclipse runs the ADT plug-ins and VS Code talks LSP to the ADT Language Server, which wraps the Eclipse plug-ins without their UI; 2 the shared client layer with no UI: REST API wrappers, debugger, test runner, ATC, tracing, support for old releases, about 2.9 million lines; 3 over RFC or HTTP to the ABAP server: the ADT REST APIs, one API for every release from 7.3 EHP1 SP04, and form-based and source-based object types"
+source = "https://community.sap.com/t5/technology-blog-posts-by-sap/behind-the-design-how-we-transformed-the-abap-development-tools/ba-p/14258121"
+
+[[figures]]
+file = "editors.svg"
+alt_zh = "编辑器的变化：2020 年以前每种对象类型一个编辑器，客户端用 Java 写界面，服务器用 ABAP 写持久化，仅 BTP ABAP 环境就要 88 个；2020 年起新类型由服务器驱动，界面用 ABAP 在服务器上描述，客户端只要表单类和源码类两个渲染器"
+alt_en = "Editors: before 2020 every object type had its own editor, the UI in Java on the client and persistence in ABAP on the server, 88 editors on BTP ABAP alone; since 2020 new types are server-driven, the UI is described in ABAP on the server and the client needs just two renderers, form-based and source-based"
+caption_zh = "新对象类型由服务器描述界面，客户端只要两个渲染器"
+caption_en = "The server describes new object types; the client needs two renderers"
