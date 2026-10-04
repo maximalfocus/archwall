@@ -1,19 +1,19 @@
 ---
-name: archwall-post
+name: archwall
 description: >-
   Write an archwall post from a source (repo, paper, doc URL): research it, draw the diagram(s) with
   tools/archdiagram.py, write the zh/en body, open the PR. Also lands reviewed PRs in order. Use when
   the user gives a project or link and asks for its architecture diagram (e.g. "pi agent 架构图 <url>"),
-  or says land / merge / 合并 for archwall PRs.
+  or says land / merge / 合并 for archwall PRs, or changes the site's tooling or diagram style.
 argument-hint: "<source URL or name> | land <PR#> [PR#...]"
 ---
 
-# archwall-post
+# archwall
 
 Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures) live in the repo's
 `CLAUDE.md` and the docstring of `tools/archdiagram.py`. Read both first; this file is only the steps.
 
-## New post: `/archwall-post <source>`
+## New post: `/archwall <source>`
 
 1. **Workspace.** `git fetch`, then cut `post/<slug>` from `origin/main`. If the main checkout is on
    another branch or has changes that aren't yours, don't touch them: `git worktree add ../archwall-<slug>
@@ -40,7 +40,7 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
 Big batches (several diagrams to redraw) can fan out to parallel agents, one per diagram file; they
 must not commit, and you look at their PNGs before committing.
 
-## Land: `/archwall-post land <PR#> [PR#...]`
+## Land: `/archwall land <PR#> [PR#...]`
 
 Only on the owner's explicit go-ahead, in the order given. With gh switched to maximalfocus:
 
