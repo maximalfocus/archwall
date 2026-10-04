@@ -4,6 +4,7 @@
 One diagram, one architecture: a wall of vector diagrams, each linking to a short bilingual note.
 
 - 静态站点，`python3 build.py` 生成到 `_site/`（只用 Python 标准库，3.12+）；`python3 build.py --serve` 本地预览。
+- 自查：`python3 tools/render.py posts/<slug>` 把文章里每张图和手机宽度的整页渲染成 PNG，放在 `_render/<slug>/`（需要 Chrome）。
 - 分支预览：`python3 tools/preview.py install` 装一次（git 钩子 + 常驻服务）。之后每次提交、切分支、合并、变基都会在后台重建当前分支，地址是 `http://<主机>:8765/<分支名，/ 换成 ->/`，首页列出所有分支。
 - 推送到 `main` 后由 GitHub Actions 部署到 GitHub Pages（Settings → Pages → Source 选 GitHub Actions）。
 - 首页每页 50 篇，带搜索（标题、标签、正文，中英都搜）；右下角悬浮按钮切换中 / EN。
