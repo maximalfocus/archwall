@@ -63,7 +63,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="114" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="757.0" y="132.0" class="ag" text-anchor="middle" >stdio</text>
 <text x="757.0" y="152.0" class="ag" text-anchor="middle" >stdin / stdout</text>
-<text x="884" y="124" class="lb" text-anchor="start" >the host starts the server</text>
+<text x="884" y="124" class="lb" text-anchor="start" >the client starts the server</text>
 <text x="884" y="144" class="lb" text-anchor="start" >usually serves one client</text>
 <text x="884" y="164" class="lb" text-anchor="start" >credentials from the environment</text>
 <rect x="636" y="226" width="528" height="150" rx="9" class="sub"/>
