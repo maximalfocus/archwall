@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">ADT editors before and after 2020</title>
+<desc id="d">Before 2020 every object type had its own editor: the UI in Java on the client, the persistence in ABAP on the server; the SAP BTP ABAP environment alone needs 88 editors as of 2025. Today all new object types are server-driven: number range objects were the first, in 2020. The server describes the UI in ABAP and the client has two renderers, one for form-based and one for source-based objects. A new IDE needs two editors, not 88.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="564" height="868" rx="12" class="grp"/>
+<text x="306.0" y="52" class="gt" text-anchor="middle" >Before 2020: one editor each</text>
+<path d="M40 400H572" stroke="#5b6675" stroke-width="2" stroke-dasharray="9 7"/>
+<text x="48" y="386" class="lb" text-anchor="start" >Client</text>
+<text x="48" y="430" class="lb" text-anchor="start" >Server</text>
+<rect x="52" y="180" width="150" height="80" rx="8" class="agent"/>
+<rect x="52" y="190" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="130.0" y="215.0" class="ag" text-anchor="middle" >Editor 1</text>
+<text x="130.0" y="239.0" class="ag" text-anchor="middle" >Java UI</text>
+<rect x="52" y="540" width="150" height="80" rx="8" class="agent"/>
+<rect x="52" y="550" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="130.0" y="575.0" class="ag" text-anchor="middle" >Object</text>
+<text x="130.0" y="599.0" class="ag" text-anchor="middle" >type 1</text>
+<path d="M129 260V536" class="flow"/>
+<rect x="232" y="180" width="150" height="80" rx="8" class="agent"/>
+<rect x="232" y="190" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="310.0" y="215.0" class="ag" text-anchor="middle" >Editor 2</text>
+<text x="310.0" y="239.0" class="ag" text-anchor="middle" >Java UI</text>
+<rect x="232" y="540" width="150" height="80" rx="8" class="agent"/>
+<rect x="232" y="550" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="310.0" y="575.0" class="ag" text-anchor="middle" >Object</text>
+<text x="310.0" y="599.0" class="ag" text-anchor="middle" >type 2</text>
+<path d="M309 260V536" class="flow"/>
+<rect x="412" y="180" width="150" height="80" rx="8" class="agent"/>
+<rect x="412" y="190" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="490.0" y="215.0" class="ag" text-anchor="middle" >Editor n</text>
+<text x="490.0" y="239.0" class="ag" text-anchor="middle" >Java UI</text>
+<rect x="412" y="540" width="150" height="80" rx="8" class="agent"/>
+<rect x="412" y="550" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="490.0" y="575.0" class="ag" text-anchor="middle" >Object</text>
+<text x="490.0" y="599.0" class="ag" text-anchor="middle" >type n</text>
+<path d="M489 260V536" class="flow"/>
+<text x="306" y="740" class="lb" text-anchor="middle" >88 editors on BTP ABAP (2025)</text>
+<text x="306" y="768" class="lb" text-anchor="middle" >doesn't scale</text>
+<rect x="612" y="16" width="564" height="868" rx="12" class="grp"/>
+<text x="894.0" y="52" class="gt" text-anchor="middle" >Today: server-driven</text>
+<path d="M628 400H1160" stroke="#5b6675" stroke-width="2" stroke-dasharray="9 7"/>
+<text x="636" y="386" class="lb" text-anchor="start" >Client</text>
+<text x="636" y="430" class="lb" text-anchor="start" >Server</text>
+<rect x="652" y="180" width="220" height="80" rx="8" class="agent"/>
+<rect x="652" y="190" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="765.0" y="215.0" class="ag" text-anchor="middle" >Form-based</text>
+<text x="765.0" y="239.0" class="ag" text-anchor="middle" >renderer</text>
+<rect x="672" y="560" width="220" height="80" rx="8" class="agent"/>
+<rect x="662" y="550" width="220" height="80" rx="8" class="agent"/>
+<rect x="652" y="540" width="220" height="80" rx="8" class="agent"/>
+<rect x="652" y="550" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="765.0" y="575.0" class="ag" text-anchor="middle" >All form-based</text>
+<text x="765.0" y="599.0" class="ag" text-anchor="middle" >object types</text>
+<path d="M765 260V536" class="flow"/>
+<rect x="908" y="180" width="220" height="80" rx="8" class="agent"/>
+<rect x="908" y="190" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="1021.0" y="215.0" class="ag" text-anchor="middle" >Source-based</text>
+<text x="1021.0" y="239.0" class="ag" text-anchor="middle" >renderer</text>
+<rect x="928" y="560" width="220" height="80" rx="8" class="agent"/>
+<rect x="918" y="550" width="220" height="80" rx="8" class="agent"/>
+<rect x="908" y="540" width="220" height="80" rx="8" class="agent"/>
+<rect x="908" y="550" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="1021.0" y="575.0" class="ag" text-anchor="middle" >All source-based</text>
+<text x="1021.0" y="599.0" class="ag" text-anchor="middle" >object types</text>
+<path d="M1021 260V536" class="flow"/>
+<text x="894" y="740" class="lb" text-anchor="middle" >first one: number range objects</text>
+<text x="894" y="768" class="lb" text-anchor="middle" >a new IDE needs 2 editors, not 88</text>
+</svg>
