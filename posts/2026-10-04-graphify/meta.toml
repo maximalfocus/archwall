@@ -9,7 +9,7 @@ source = "https://github.com/Graphify-Labs/graphify"
 
 [[figures]]
 file = "use.svg"
-alt_zh = "graphify 的用法：1 助手里装一段 CLAUDE.md 说明和一个 PreToolUse 钩子，在 grep 和读文件前提醒先查图，没有钩子的平台用 AGENTS.md 一类的文件；2 通过命令行（query、path、explain）或 MCP 服务端（stdio 或 HTTP）查 graph.json，拿回一小块子图而不是原文件；3 保持最新：git commit 和切分支自动重建代码部分，不花 API 钱，git pull 后手动跑 graphify update，文档变了跑 /graphify --update"
-alt_en = "graphify in use: 1 the assistant gets a CLAUDE.md section and a PreToolUse hook that points it to the graph before grep and file reads; platforms without hooks get an AGENTS.md-style file; 2 the CLI (query, path, explain) or the MCP server (stdio or HTTP) reads graph.json and returns a small subgraph instead of raw files; 3 keep it current: git commit and branch switches rebuild the code part with no API cost, after git pull you run graphify update, and when docs change you run /graphify --update"
+alt_zh = "graphify 的用法：1 助手里装一段 CLAUDE.md 说明和一个 PreToolUse 钩子，在 grep 和读文件前提醒先查图，没有钩子的平台用 AGENTS.md 一类的文件；2 通过命令行（query、path、explain）或 MCP 服务端（需 mcp 包，stdio 或 HTTP）查 graph.json，拿回一小块子图而不是原文件；3 保持最新：git commit 和切分支自动重建代码部分，不花 API 钱，git pull 后手动跑 graphify update，文档变了跑 /graphify --update"
+alt_en = "graphify in use: 1 the assistant gets a CLAUDE.md section and a PreToolUse hook that points it to the graph before grep and file reads; platforms without hooks get an AGENTS.md-style file; 2 the CLI (query, path, explain) or the MCP server (mcp extra; stdio or HTTP) reads graph.json and returns a small subgraph instead of raw files; 3 keep it current: git commit and branch switches rebuild the code part with no API cost, after git pull you run graphify update, and when docs change you run /graphify --update"
 caption_zh = "助手先查图，git 钩子让图跟着代码走"
 caption_en = "The assistant asks the graph first; git hooks keep it current"

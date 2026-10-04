@@ -15,7 +15,7 @@ d = Diagram("graphify in use",
             "1 The assistant: graphify claude install writes a CLAUDE.md section that says to query the "
             "graph first, and a PreToolUse hook that fires before search commands and file reads and points "
             "the assistant to the graph. Platforms without hooks get an instruction file such as AGENTS.md. "
-            "2 Ask the graph: the CLI has query, path and explain; an MCP server offers query_graph, "
+            "2 Ask the graph: the CLI has query, path and explain; an MCP server (mcp extra) offers query_graph, "
             "get_node, get_neighbors and shortest_path, over stdio for one developer or HTTP for a team. "
             "Both read graph.json and return a small subgraph instead of raw files. "
             "3 Keep it current: after graphify hook install, git commit and branch switches rebuild the code "
@@ -37,7 +37,7 @@ d.note(L + W / 2, T1 + 418, "an AGENTS.md-style file instead")
 # 2 ask the graph
 d.group(R, T1, W, H1, "Ask the graph", 2)
 d.card(R + 30, T1 + 72, "CLI|query, path, explain", "coding", w=238, h=80)
-d.card(R + 284, T1 + 72, "MCP server|stdio or HTTP", "coding", w=238, h=80)
+d.card(R + 284, T1 + 72, "MCP server (extra)|stdio or HTTP", "coding", w=238, h=80)
 d.card(R + 156, T1 + 230, "graph.json", "data", w=240, h=64)
 d.arrow(f"M{R + 149} {T1 + 152}V{T1 + 200}H{R + 230}V{T1 + 230}")
 d.arrow(f"M{R + 403} {T1 + 152}V{T1 + 200}H{R + 322}V{T1 + 230}")

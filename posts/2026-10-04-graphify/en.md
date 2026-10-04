@@ -7,7 +7,7 @@ graphify turns a folder of code, docs, images and video into one knowledge graph
 
 ![](use.svg)
 
-`graphify claude install` adds a CLAUDE.md section and a PreToolUse hook. Before a search or a file read, the hook points the assistant to `graphify query`. Platforms without hooks get an instruction file such as `AGENTS.md`. The graph answers through the CLI (`query`, `path`, `explain`) or an MCP server, over stdio for one person or HTTP for a team. Either way the assistant gets a small subgraph, not raw files.
+`graphify claude install` adds a CLAUDE.md section and a PreToolUse hook. Before a search or a file read, the hook points the assistant to `graphify query`. Platforms without hooks get an instruction file such as `AGENTS.md`. The graph answers through the CLI (`query`, `path`, `explain`) or an MCP server (mcp extra), over stdio for one person or HTTP for a team. Either way the assistant gets a small subgraph, not raw files.
 
 `graphify hook install` keeps it current. Commits and branch switches rebuild the code part in the background, with no API cost. After `git pull`, run `graphify update .`. When docs change, run `/graphify --update`.
 

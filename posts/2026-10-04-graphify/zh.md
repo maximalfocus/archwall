@@ -7,7 +7,7 @@ graphify 把文件夹里的代码、文档、图片和视频变成一张知识�
 
 ![](use.svg)
 
-`graphify claude install` 加一段 CLAUDE.md 说明和一个 PreToolUse 钩子。搜索或读文件前，钩子提醒先用 `graphify query`。没有钩子的平台改用 `AGENTS.md` 等说明文件。查图走命令行（`query`、`path`、`explain`）或 MCP 服务端，一个人用 stdio，团队用 HTTP。拿回的是一小块子图，不是原文件。
+`graphify claude install` 加一段 CLAUDE.md 说明和一个 PreToolUse 钩子。搜索或读文件前，钩子提醒先用 `graphify query`。没有钩子的平台改用 `AGENTS.md` 等说明文件。查图走命令行（`query`、`path`、`explain`）或 MCP 服务端（mcp 包），一个人用 stdio，团队用 HTTP。拿回的是一小块子图，不是原文件。
 
 `graphify hook install` 保持图最新。提交和切分支时后台重建代码部分，不花 API 钱。`git pull` 后跑 `graphify update .`。文档变了跑 `/graphify --update`。
 
