@@ -7,11 +7,12 @@
 </defs>
 <style>
 text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
-.gt{font-size:21px;font-weight:700}
-.st{font-size:16px;font-weight:700}
-.ag{font-size:15px}
-.q{font-size:14px;fill:#3d4a5c}
-.lb{font-size:13px;fill:#5b6675}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
 .grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
 .sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
 .agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
@@ -21,123 +22,113 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 .back{stroke-dasharray:7 5}
 .cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
 .num{fill:#1f2a37}
-.numt{font-size:13px;font-weight:700;fill:#ffffff}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
-<rect x="24" y="16" width="360" height="504" rx="12" class="grp"/>
-<circle cx="112.0" cy="39" r="11" class="num"/>
-<text x="112.0" y="44" class="numt" text-anchor="middle" >1</text>
-<text x="128.0" y="46" class="gt" text-anchor="start" >Host: the AI app</text>
-<rect x="36" y="60" width="336" height="156" rx="9" class="sub"/>
-<text x="204.0" y="84" class="st" text-anchor="middle" >Claude Code, VS Code …</text>
-<rect x="54" y="100" width="300" height="48" rx="8" class="agent"/>
-<rect x="54" y="110" width="5" height="28" rx="2" fill="#2f9e6e"/>
-<text x="207.0" y="130.0" class="ag" text-anchor="middle" >LLM + conversation</text>
-<text x="204.0" y="176" class="lb" text-anchor="middle" >merges every server's tools for the LLM</text>
-<text x="204.0" y="196" class="lb" text-anchor="middle" >and routes each call to its client</text>
-<rect x="36" y="232" width="336" height="272" rx="9" class="sub"/>
-<text x="204.0" y="256" class="st" text-anchor="middle" >One MCP client per server</text>
-<rect x="200" y="285" width="160" height="60" rx="8" class="agent"/>
-<rect x="200" y="295" width="5" height="40" rx="2" fill="#2f6fd6"/>
-<text x="283.0" y="321.0" class="ag" text-anchor="middle" >Client 1</text>
-<rect x="200" y="425" width="160" height="60" rx="8" class="agent"/>
-<rect x="200" y="435" width="5" height="40" rx="2" fill="#2f6fd6"/>
-<text x="283.0" y="461.0" class="ag" text-anchor="middle" >Client 2</text>
-<rect x="392" y="16" width="416" height="504" rx="12" class="grp"/>
-<circle cx="455.5" cy="39" r="11" class="num"/>
-<text x="455.5" y="44" class="numt" text-anchor="middle" >2</text>
-<text x="471.5" y="46" class="gt" text-anchor="start" >One connection, two layers</text>
-<rect x="404" y="60" width="392" height="156" rx="9" class="sub"/>
-<text x="600.0" y="84" class="st" text-anchor="middle" >One client, one server</text>
-<text x="600.0" y="106" class="lb" text-anchor="middle" >outside: the transport layer, the pipe</text>
-<text x="600.0" y="130" class="lb" text-anchor="middle" >inside: the data layer, the messages</text>
-<text x="600.0" y="160" class="lb" text-anchor="middle" >change the pipe, the messages stay the same:</text>
-<text x="600.0" y="180" class="lb" text-anchor="middle" >JSON-RPC 2.0, client to server and back</text>
-<rect x="404" y="232" width="392" height="132" rx="9" class="sub"/>
-<text x="600.0" y="256" class="st" text-anchor="middle" >Transport: stdio, local</text>
-<rect x="420" y="268" width="360" height="88" rx="8" class="agent"/>
-<text x="603.0" y="318.0" class="ag" text-anchor="middle" >Data layer: JSON-RPC</text>
-<text x="432" y="288" class="lb" text-anchor="start" >requests, notifications</text>
-<text x="768" y="351" class="lb" text-anchor="end" >results, notifications</text>
-<rect x="404" y="372" width="392" height="132" rx="9" class="sub"/>
-<text x="600.0" y="396" class="st" text-anchor="middle" >Transport: Streamable HTTP</text>
-<rect x="420" y="408" width="360" height="88" rx="8" class="agent"/>
-<text x="603.0" y="458.0" class="ag" text-anchor="middle" >Data layer: JSON-RPC</text>
-<text x="432" y="428" class="lb" text-anchor="start" >requests, notifications</text>
-<text x="768" y="491" class="lb" text-anchor="end" >results, notifications</text>
-<rect x="816" y="16" width="360" height="504" rx="12" class="grp"/>
-<circle cx="877.75" cy="39" r="11" class="num"/>
-<text x="877.75" y="44" class="numt" text-anchor="middle" >3</text>
-<text x="893.75" y="46" class="gt" text-anchor="start" >Servers: give context</text>
-<rect x="828" y="60" width="336" height="156" rx="9" class="sub"/>
-<text x="996.0" y="84" class="st" text-anchor="middle" >Three primitives, found with */list</text>
-<text x="846" y="110" class="lb" text-anchor="start" >Tools: the model calls them</text>
-<text x="846" y="132" class="lb" text-anchor="start" >Resources: the app reads them</text>
-<text x="846" y="154" class="lb" text-anchor="start" >Prompts: the user picks them</text>
-<text x="996.0" y="192" class="lb" text-anchor="middle" >tools/call · resources/read · prompts/get</text>
-<rect x="828" y="232" width="336" height="132" rx="9" class="sub"/>
-<text x="996.0" y="256" class="st" text-anchor="middle" >Server A: filesystem</text>
-<rect x="846" y="282" width="96" height="60" rx="8" class="agent"/>
-<rect x="846" y="292" width="5" height="40" rx="2" fill="#2f6fd6"/>
-<text x="897.0" y="318.0" class="ag" text-anchor="middle" >Tools</text>
-<rect x="950" y="282" width="96" height="60" rx="8" class="agent"/>
-<rect x="950" y="292" width="5" height="40" rx="2" fill="#5b6675"/>
-<text x="1001.0" y="318.0" class="ag" text-anchor="middle" >Resources</text>
-<rect x="1054" y="282" width="96" height="60" rx="8" class="agent"/>
-<rect x="1054" y="292" width="5" height="40" rx="2" fill="#8a5cc7"/>
-<text x="1105.0" y="318.0" class="ag" text-anchor="middle" >Prompts</text>
-<rect x="828" y="372" width="336" height="132" rx="9" class="sub"/>
-<text x="996.0" y="396" class="st" text-anchor="middle" >Server B: Sentry, remote</text>
-<rect x="846" y="422" width="96" height="60" rx="8" class="agent"/>
-<rect x="846" y="432" width="5" height="40" rx="2" fill="#2f6fd6"/>
-<text x="897.0" y="458.0" class="ag" text-anchor="middle" >Tools</text>
-<rect x="950" y="422" width="96" height="60" rx="8" class="agent"/>
-<rect x="950" y="432" width="5" height="40" rx="2" fill="#5b6675"/>
-<text x="1001.0" y="458.0" class="ag" text-anchor="middle" >Resources</text>
-<rect x="1054" y="422" width="96" height="60" rx="8" class="agent"/>
-<rect x="1054" y="432" width="5" height="40" rx="2" fill="#8a5cc7"/>
-<text x="1105.0" y="458.0" class="ag" text-anchor="middle" >Prompts</text>
-<rect x="24" y="540" width="552" height="300" rx="12" class="grp"/>
-<text x="300.0" y="570" class="gt" text-anchor="middle" >Inside: the data layer</text>
-<rect x="48" y="596" width="230" height="48" rx="8" class="agent"/>
-<rect x="48" y="606" width="5" height="28" rx="2" fill="#2f9e6e"/>
-<text x="166.0" y="626.0" class="ag" text-anchor="middle" >_meta on every request</text>
-<text x="298" y="625" class="lb" text-anchor="start" >version + client caps, no session</text>
-<rect x="48" y="656" width="230" height="48" rx="8" class="agent"/>
-<rect x="48" y="666" width="5" height="28" rx="2" fill="#2f9e6e"/>
-<text x="166.0" y="686.0" class="ag" text-anchor="middle" >server/discover</text>
-<text x="298" y="685" class="lb" text-anchor="start" >versions, capabilities, identity</text>
-<rect x="48" y="716" width="230" height="48" rx="8" class="agent"/>
-<rect x="48" y="726" width="5" height="28" rx="2" fill="#2f9e6e"/>
-<text x="166.0" y="746.0" class="ag" text-anchor="middle" >elicitation/create</text>
-<text x="298" y="745" class="lb" text-anchor="start" >client asks the user, then retries</text>
-<rect x="48" y="776" width="230" height="48" rx="8" class="agent"/>
-<rect x="48" y="786" width="5" height="28" rx="2" fill="#2f9e6e"/>
-<text x="166.0" y="806.0" class="ag" text-anchor="middle" >subscriptions/listen</text>
-<text x="298" y="805" class="lb" text-anchor="start" >stream of list_changed notices</text>
-<rect x="624" y="540" width="552" height="300" rx="12" class="grp"/>
-<text x="900.0" y="570" class="gt" text-anchor="middle" >Outside: the transport layer</text>
-<rect x="636" y="584" width="528" height="118" rx="9" class="sub"/>
-<text x="900.0" y="608" class="st" text-anchor="middle" >Local</text>
-<rect x="654" y="620" width="190" height="60" rx="8" class="agent"/>
-<rect x="654" y="630" width="5" height="40" rx="2" fill="#5b6675"/>
-<text x="752.0" y="646.0" class="ag" text-anchor="middle" >stdio</text>
-<text x="752.0" y="666.0" class="ag" text-anchor="middle" >stdin / stdout</text>
-<text x="864" y="640" class="lb" text-anchor="start" >the client starts the server</text>
-<text x="864" y="660" class="lb" text-anchor="start" >usually serves one client</text>
-<text x="864" y="680" class="lb" text-anchor="start" >credentials from the environment</text>
-<rect x="636" y="712" width="528" height="118" rx="9" class="sub"/>
-<text x="900.0" y="736" class="st" text-anchor="middle" >Remote</text>
-<rect x="654" y="748" width="190" height="60" rx="8" class="agent"/>
-<rect x="654" y="758" width="5" height="40" rx="2" fill="#5b6675"/>
-<text x="752.0" y="774.0" class="ag" text-anchor="middle" >Streamable HTTP</text>
-<text x="752.0" y="794.0" class="ag" text-anchor="middle" >POST, JSON or SSE</text>
-<text x="864" y="768" class="lb" text-anchor="start" >serves many clients</text>
-<text x="864" y="788" class="lb" text-anchor="start" >bearer token, API key, headers</text>
-<text x="864" y="808" class="lb" text-anchor="start" >OAuth recommended</text>
-<path d="M360 294H828" class="flow"/>
-<path d="M828 336H360" class="flow"/>
-<path d="M360 434H828" class="flow"/>
-<path d="M828 476H360" class="flow"/>
-<text x="600" y="876" class="lb" text-anchor="middle" >MCP 2026-07-28 · MCP runs between each client and its server; the host coordinates the clients</text>
+<rect x="24" y="16" width="360" height="536" rx="12" class="grp"/>
+<circle cx="86.0" cy="43" r="14" class="num"/>
+<text x="86.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="106.0" y="52" class="gt" text-anchor="start" >Host: the AI app</text>
+<rect x="36" y="60" width="336" height="208" rx="9" class="sub"/>
+<text x="204.0" y="88" class="st" text-anchor="middle" >Claude Code, VS Code …</text>
+<rect x="64" y="104" width="280" height="52" rx="8" class="agent"/>
+<rect x="64" y="114" width="5" height="32" rx="2" fill="#2f9e6e"/>
+<text x="207.0" y="137.0" class="ag" text-anchor="middle" >LLM + conversation</text>
+<text x="204.0" y="204" class="lb" text-anchor="middle" >merges every server's tools</text>
+<text x="204.0" y="228" class="lb" text-anchor="middle" >routes each call to its client</text>
+<rect x="36" y="276" width="336" height="264" rx="9" class="sub"/>
+<text x="204.0" y="304" class="st" text-anchor="middle" >One client per server</text>
+<rect x="200" y="326" width="160" height="78" rx="8" class="agent"/>
+<rect x="200" y="336" width="5" height="58" rx="2" fill="#2f6fd6"/>
+<text x="283.0" y="372.0" class="ag" text-anchor="middle" >Client 1</text>
+<rect x="200" y="458" width="160" height="78" rx="8" class="agent"/>
+<rect x="200" y="468" width="5" height="58" rx="2" fill="#2f6fd6"/>
+<text x="283.0" y="504.0" class="ag" text-anchor="middle" >Client 2</text>
+<rect x="392" y="16" width="416" height="536" rx="12" class="grp"/>
+<circle cx="414.5" cy="43" r="14" class="num"/>
+<text x="414.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="434.5" y="52" class="gt" text-anchor="start" >One connection, two layers</text>
+<rect x="404" y="60" width="392" height="216" rx="9" class="sub"/>
+<text x="600.0" y="88" class="st" text-anchor="middle" >One client, one server</text>
+<text x="600.0" y="112" class="lb" text-anchor="middle" >outside: the transport layer, the pipe</text>
+<text x="600.0" y="136" class="lb" text-anchor="middle" >inside: the data layer, the messages</text>
+<rect x="440" y="160" width="320" height="72" rx="8" class="agent"/>
+<rect x="440" y="170" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="191.0" class="ag" text-anchor="middle" >JSON-RPC 2.0</text>
+<text x="603.0" y="215.0" class="ag" text-anchor="middle" >the same on any pipe</text>
+<rect x="404" y="288" width="392" height="120" rx="9" class="sub"/>
+<text x="600.0" y="316" class="st" text-anchor="middle" >Transport: stdio, local</text>
+<rect x="432" y="348" width="336" height="40" rx="8" class="agent"/>
+<rect x="432" y="358" width="5" height="20" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="375.0" class="ag" text-anchor="middle" >Data layer: JSON-RPC</text>
+<rect x="404" y="420" width="392" height="120" rx="9" class="sub"/>
+<text x="600.0" y="448" class="st" text-anchor="middle" >Transport: Streamable HTTP</text>
+<rect x="432" y="480" width="336" height="40" rx="8" class="agent"/>
+<rect x="432" y="490" width="5" height="20" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="507.0" class="ag" text-anchor="middle" >Data layer: JSON-RPC</text>
+<rect x="816" y="16" width="360" height="536" rx="12" class="grp"/>
+<circle cx="844.25" cy="43" r="14" class="num"/>
+<text x="844.25" y="49" class="numt" text-anchor="middle" >3</text>
+<text x="864.25" y="52" class="gt" text-anchor="start" >Servers: give context</text>
+<rect x="828" y="60" width="336" height="216" rx="9" class="sub"/>
+<text x="996.0" y="88" class="st" text-anchor="middle" >Each server offers</text>
+<rect x="844" y="98" width="304" height="46" rx="8" class="agent"/>
+<rect x="844" y="108" width="5" height="26" rx="2" fill="#2f6fd6"/>
+<text x="999.0" y="128.0" class="ag" text-anchor="middle" >Tools: the model calls</text>
+<rect x="844" y="154" width="304" height="46" rx="8" class="agent"/>
+<rect x="844" y="164" width="5" height="26" rx="2" fill="#5b6675"/>
+<text x="999.0" y="184.0" class="ag" text-anchor="middle" >Resources: the app reads</text>
+<rect x="844" y="210" width="304" height="46" rx="8" class="agent"/>
+<rect x="844" y="220" width="5" height="26" rx="2" fill="#8a5cc7"/>
+<text x="999.0" y="240.0" class="ag" text-anchor="middle" >Prompts: the user picks</text>
+<rect x="828" y="288" width="336" height="120" rx="9" class="sub"/>
+<text x="996.0" y="316" class="st" text-anchor="middle" >Server A, local</text>
+<rect x="916" y="326" width="236" height="78" rx="8" class="agent"/>
+<rect x="916" y="336" width="5" height="58" rx="2" fill="#5b6675"/>
+<text x="1037.0" y="372.0" class="ag" text-anchor="middle" >Filesystem</text>
+<rect x="828" y="420" width="336" height="120" rx="9" class="sub"/>
+<text x="996.0" y="448" class="st" text-anchor="middle" >Server B, remote</text>
+<rect x="916" y="458" width="236" height="78" rx="8" class="agent"/>
+<rect x="916" y="468" width="5" height="58" rx="2" fill="#5b6675"/>
+<text x="1037.0" y="504.0" class="ag" text-anchor="middle" >Sentry</text>
+<rect x="24" y="572" width="552" height="284" rx="12" class="grp"/>
+<text x="300.0" y="608" class="gt" text-anchor="middle" >Inside: the data layer</text>
+<rect x="44" y="632" width="250" height="84" rx="8" class="agent"/>
+<rect x="44" y="642" width="5" height="64" rx="2" fill="#2f9e6e"/>
+<text x="172.0" y="669.0" class="ag" text-anchor="middle" >_meta on each request</text>
+<text x="172.0" y="693.0" class="ag" text-anchor="middle" >version + caps, no session</text>
+<rect x="306" y="632" width="250" height="84" rx="8" class="agent"/>
+<rect x="306" y="642" width="5" height="64" rx="2" fill="#2f9e6e"/>
+<text x="434.0" y="669.0" class="ag" text-anchor="middle" >server/discover</text>
+<text x="434.0" y="693.0" class="ag" text-anchor="middle" >what the server supports</text>
+<rect x="44" y="736" width="250" height="84" rx="8" class="agent"/>
+<rect x="44" y="746" width="5" height="64" rx="2" fill="#2f9e6e"/>
+<text x="172.0" y="773.0" class="ag" text-anchor="middle" >elicitation/create</text>
+<text x="172.0" y="797.0" class="ag" text-anchor="middle" >ask the user, then retry</text>
+<rect x="306" y="736" width="250" height="84" rx="8" class="agent"/>
+<rect x="306" y="746" width="5" height="64" rx="2" fill="#2f9e6e"/>
+<text x="434.0" y="773.0" class="ag" text-anchor="middle" >subscriptions/listen</text>
+<text x="434.0" y="797.0" class="ag" text-anchor="middle" >list_changed notices</text>
+<rect x="624" y="572" width="552" height="284" rx="12" class="grp"/>
+<text x="900.0" y="608" class="gt" text-anchor="middle" >Outside: the transport layer</text>
+<rect x="644" y="632" width="250" height="84" rx="8" class="agent"/>
+<rect x="644" y="642" width="5" height="64" rx="2" fill="#5b6675"/>
+<text x="772.0" y="669.0" class="ag" text-anchor="middle" >stdio</text>
+<text x="772.0" y="693.0" class="ag" text-anchor="middle" >client starts the server</text>
+<rect x="906" y="632" width="250" height="84" rx="8" class="agent"/>
+<rect x="906" y="642" width="5" height="64" rx="2" fill="#5b6675"/>
+<text x="1034.0" y="669.0" class="ag" text-anchor="middle" >Streamable HTTP</text>
+<text x="1034.0" y="693.0" class="ag" text-anchor="middle" >POST, JSON or SSE</text>
+<text x="769" y="748" class="lb" text-anchor="middle" >local, usually one client</text>
+<text x="1031" y="748" class="lb" text-anchor="middle" >remote, many clients</text>
+<text x="900" y="808" class="lb" text-anchor="middle" >remote auth: tokens or headers, OAuth recommended</text>
+<path d="M360 337H916" class="flow"/>
+<text x="512" y="342" class="al" text-anchor="middle" >requests</text>
+<path d="M916 397H360" class="flow"/>
+<text x="688" y="402" class="al" text-anchor="middle" >results</text>
+<path d="M360 469H916" class="flow"/>
+<text x="512" y="474" class="al" text-anchor="middle" >requests</text>
+<path d="M916 529H360" class="flow"/>
+<text x="688" y="534" class="al" text-anchor="middle" >results</text>
+<text x="600" y="892" class="lb" text-anchor="middle" >MCP 2026-07-28 · MCP runs between each client and its server; the host coordinates the clients</text>
 </svg>
