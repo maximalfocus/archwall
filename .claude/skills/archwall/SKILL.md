@@ -22,7 +22,7 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
    "how it works" docs and the package manifests before code. Note the commit hash: claims and the
    diagram docstring cite it. Every number and claim must be in the source. Read the manifest's
    optional parts too (`optional-dependencies`, extras, feature flags), and check the docs against
-   the code.
+   each other and the code.
 3. **Diagram.** `posts/<YYYY-MM-DD-slug>/diagram.py` → `diagram.svg`, the home-page card. If one picture
    can't hold it (e.g. overview + a data model + an integration), add `<name>.py` → `<name>.svg` and list
    them under `[[figures]]` in `meta.toml`; place each with `![](<name>.svg)` in both bodies.

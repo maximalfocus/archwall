@@ -29,5 +29,5 @@ Writing or landing a post: use the `archwall` skill (`.claude/skills/archwall/`)
   for what flows. Details go in the post text. The tool's docstring has the type sizes; don't go below them.
 - Numbers and claims must match the source; cite it in `source`.
 - A feature that needs an extra, a flag or a config setting is labelled as such, in the text and the picture.
-- Where the docs and the code disagree about what the code does, the code wins; if you can't settle it
-  from the code, leave the claim out.
+- Where docs disagree with each other or with the code about what the code does, settle it from the
+  code when the code can answer; otherwise leave the claim out.
