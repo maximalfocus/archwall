@@ -12,7 +12,7 @@ d = Diagram("MCP architecture",
             "each client keeps one dedicated connection. "
             "2 Transport: stdio for a local server on the same machine, usually one client; "
             "Streamable HTTP (POST, optional SSE, OAuth recommended) for a remote server that serves many clients. "
-            "Both carry the same JSON-RPC 2.0 messages both ways: requests out, results and notifications back. "
+            "Both carry the same JSON-RPC 2.0 messages both ways: requests and notifications out, results and notifications back. "
             "3 The server exposes tools, resources and prompts, found with */list and used with resources/read, prompts/get or tools/call. "
             "4 Every request carries its protocol version and client capabilities in _meta, so the server keeps no "
             "session; server/discover returns versions and capabilities; a server can ask the user for input "
@@ -33,8 +33,8 @@ d.note(A + GW / 2, 370, "to the client that owns the tool")
 
 # host -> transport
 # host <-> transport: requests out, results and notices back
-d.arrow(f"M{A+GW} 226H{B}"); d.note(A + GW + 24, 216, "call")
-d.arrow(f"M{B} 262H{A+GW}"); d.note(A + GW + 24, 282, "result")
+d.arrow(f"M{A+GW} 226H{B}"); d.note(A + GW + 24, 216, "out")
+d.arrow(f"M{B} 262H{A+GW}"); d.note(A + GW + 24, 282, "back")
 
 # 2 transport (top right)
 d.group(B, 16, GW, 400, "Transport layer", 2)
@@ -52,7 +52,7 @@ d.note(B + GW / 2, 400, "same JSON-RPC 2.0 messages on both")
 
 # transport -> server
 # transport <-> server
-d.arrow(f"M{B+GW/2-40} 416V446"); d.note(B + GW / 2 - 52, 436, "requests", "end")
+d.arrow(f"M{B+GW/2-40} 416V446"); d.note(B + GW / 2 - 52, 436, "requests, notifications", "end")
 d.arrow(f"M{B+GW/2+40} 446V416"); d.note(B + GW / 2 + 52, 436, "results, notifications", "start")
 
 # 3 server (bottom right)
