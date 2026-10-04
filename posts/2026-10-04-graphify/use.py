@@ -58,6 +58,7 @@ d.note(600, T2 + 270, "graphify hook install sets up the git hooks once per clon
 
 # hand-offs between stages, drawn last so they sit on top
 d.arrow(f"M{L + W - 12} {T1 + 112}H{R + 30}", label="query", at=(L + W + 24, T1 + 100))
+d.arrow(f"M{R + 126} {T1 + 366}H{L + W - 12}", label="subgraph", at=(657, T1 + 354))
 d.arrow(f"M{R + W - 60} {T2}V{T1 + 262}H{R + 396}", back=True, label="rebuilds", at=(R + W - 60, T1 + 400))
 
 d.save(Path(__file__).with_name("use.svg"))

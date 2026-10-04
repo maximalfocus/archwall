@@ -12,8 +12,7 @@ from archdiagram import Diagram  # noqa: E402
 
 d = Diagram("graphify architecture",
             "1 Scan the folder: detect() sorts files into code, docs and papers, images, and video or audio. "
-            "A SHA256 cache skips files that have not changed. "
-            "2 Extract in three passes. Pass 1 parses code with tree-sitter, locally, with no LLM. "
+            "2 Extract in three passes; a SHA256 cache skips files that have not changed. Pass 1 parses code with tree-sitter, locally, with no LLM. "
             "Pass 2 transcribes video and audio with faster-whisper, locally (video extra). Pass 3 sends docs, papers, "
             "images and transcripts to parallel LLM subagents, which costs tokens. Passes 1 and 3 return nodes "
             "and edges, and each edge is tagged EXTRACTED, INFERRED or AMBIGUOUS. "
@@ -31,17 +30,16 @@ d.group(L, T1, W, H1, "Scan the folder", 1)
 d.sub(L + 12, T1 + 58, W - 24, 246, "detect(): sort by type")
 for i, lbl in enumerate(["Code", "Docs, papers", "Images", "Video, audio"]):
     d.card(L + 30 + (i % 2) * 254, T1 + 112 + (i // 2) * 96, lbl, "data", w=238, h=74)
-d.note(L + W / 2, T1 + 346, "SHA256 cache:")
-d.note(L + W / 2, T1 + 372, "unchanged files are skipped")
 
 # 2 extract
 d.group(R, T1, W, H1, "Extract: three passes", 2)
 PW, PH = W - 60, 80
 for i, lbl in enumerate(["Pass 1: code|tree-sitter, local, no LLM",
-                         "Pass 2: video, audio|faster-whisper (video extra)",
+                         "Pass 2: video, audio|transcripts → Pass 3 (video extra)",
                          "Pass 3: docs, papers, images|LLM subagents, costs tokens"]):
     d.card(R + 30, T1 + 64 + i * 96, lbl, "coding", w=PW, h=PH)
-d.note(R + W / 2, T1 + 380, "edges: EXTRACTED, INFERRED, AMBIGUOUS")
+d.note(R + W / 2, T1 + 356, "SHA256 cache skips unchanged files")
+d.note(R + W / 2, T1 + 382, "edges: EXTRACTED, INFERRED, AMBIGUOUS")
 
 # 3 build and cluster
 d.group(R, T2, W, H2, "Build and cluster", 3)

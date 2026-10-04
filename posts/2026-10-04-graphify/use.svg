@@ -84,6 +84,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="600" y="794" class="lb" text-anchor="middle" >graphify hook install sets up the git hooks once per clone</text>
 <path d="M564 128H654" class="flow"/>
 <text x="600" y="116" class="al" text-anchor="middle" >query</text>
+<path d="M750 382H564" class="flow"/>
+<text x="657" y="370" class="al" text-anchor="middle" >subgraph</text>
 <path d="M1116 524V278H1020" class="flow back"/>
 <text x="1116" y="416" class="al" text-anchor="middle" >rebuilds</text>
 </svg>
