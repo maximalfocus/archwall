@@ -6,7 +6,8 @@
 
 Each post is a folder posts/<YYYY-MM-DD-slug>/ with:
     meta.toml   title_zh, title_en, date, tags, figure, alt_zh, alt_en, [source]
-    zh.md       Chinese body (small Markdown subset)
+                optional [[figures]] (file, alt_zh, alt_en, [caption_zh, caption_en]): more diagrams
+    zh.md       Chinese body (small Markdown subset); a line "![](file.svg)" places an extra figure
     en.md       English body
     <figure>    the vector diagram shown on the home page and in the article
 All URLs are relative, so the site works under any GitHub Pages path.
@@ -37,12 +38,28 @@ def inline(s):
     return re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', s)
 
 
-def markdown(text):
-    """Paragraphs, ## headings, - / 1. lists, **bold**, *italic*, `code`, [links](url)."""
+FIG_LINE = r"!\[[^\]]*\]\(([^)\s]+)\)"
+
+
+def figure(f, lang=None):
+    """An extra diagram from meta [[figures]]; lang picks the caption (None: both, switched by the toggle)."""
+    cap = ""
+    if f.get("caption_zh") or f.get("caption_en"):
+        zh, en = esc(f.get("caption_zh", "")), esc(f.get("caption_en", ""))
+        cap = f"<figcaption>{zh if lang == 'zh' else en if lang == 'en' else bi(zh, en)}</figcaption>"
+    return (f'<figure class="hero"><a href="{esc(f["file"])}" title="Open full size">'
+            f'<img src="{esc(f["file"])}" alt="{esc(f["alt_en"])}" data-alt-zh="{esc(f["alt_zh"])}" '
+            f'data-alt-en="{esc(f["alt_en"])}" loading="lazy"></a>{cap}</figure>')
+
+
+def markdown(text, figs=None, lang=None):
+    """Paragraphs, ## headings, - / 1. lists, **bold**, *italic*, `code`, [links](url), ![](figure.svg)."""
     out = []
     for block in re.split(r"\n\s*\n", text.strip()):
         lines = block.splitlines()
-        if m := re.match(r"(#{2,4})\s+(.*)", lines[0]):
+        if (m := re.fullmatch(FIG_LINE, block.strip())) and figs and m[1] in figs:
+            out.append(figure(figs[m[1]], lang))
+        elif m := re.match(r"(#{2,4})\s+(.*)", lines[0]):
             out.append(f"<h{len(m[1])}>{inline(m[2])}</h{len(m[1])}>")
         elif all(re.match(r"\s*[-*]\s", ln) for ln in lines):
             out.append("<ul>" + "".join(f"<li>{inline(re.sub(r'^\s*[-*]\s', '', ln))}</li>" for ln in lines) + "</ul>")
@@ -94,8 +111,9 @@ def load_posts():
         hanzi = len(re.findall(r"[一-鿿]", zh))
         if words > MAX_WORDS_EN or hanzi > MAX_HANZI_ZH:
             print(f"warning: {d.name} is long (en {words} words, zh {hanzi} hanzi; limit {MAX_WORDS_EN}/{MAX_HANZI_ZH})")
-        if not (d / meta["figure"]).exists():
-            sys.exit(f"error: {d.name}: figure {meta['figure']} missing")
+        for f in [meta["figure"]] + [x["file"] for x in meta.get("figures", [])]:
+            if not (d / f).exists():
+                sys.exit(f"error: {d.name}: figure {f} missing")
         posts.append({**meta, "slug": d.name, "dir": d, "zh": zh, "en": en})
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
     return posts
@@ -141,19 +159,23 @@ def build_post(p):
     fig = (f'<figure class="hero"><a href="{p["figure"]}" title="Open full size">'
            f'<img src="{p["figure"]}" alt="{esc(p["alt_en"])}" data-alt-zh="{esc(p["alt_zh"])}" '
            f'data-alt-en="{esc(p["alt_en"])}"></a></figure>')
+    figs = {f["file"]: f for f in p.get("figures", [])}
+    placed = lambda md: set(re.findall(rf"(?m)^{FIG_LINE}\s*$", md))
+    rest = "".join(figure(f) for name, f in figs.items() if name not in placed(p["zh"]) & placed(p["en"]))
     tags = "".join(f'<a class="chip" href="{root}?q={esc(t)}">{esc(t)}</a>' for t in p.get("tags", []))
     src = (f'<p class="src">{bi("来源", "Source")}: <a href="{esc(p["source"])}">{esc(p["source"].split("/")[2])}</a></p>'
            if p.get("source") else "")
     body = (f'<article><h1>{bi(esc(p["title_zh"]), esc(p["title_en"]))}</h1>'
             f'<p class="meta"><time>{p["date"]}</time>{tags}</p>{fig}'
-            f'<div class="i18n-zh" lang="zh-CN">{markdown(p["zh"])}</div>'
-            f'<div class="i18n-en" lang="en">{markdown(p["en"])}</div>{src}'
+            f'<div class="i18n-zh" lang="zh-CN">{markdown(p["zh"], figs, "zh")}</div>'
+            f'<div class="i18n-en" lang="en">{markdown(p["en"], figs, "en")}</div>{rest}{src}'
             f'<p class="back"><a href="{root}">{bi("← 全部架构", "← All architectures")}</a></p></article>')
     desc = re.sub(r"[*`#\[\]]", "", p["en"]).split("\n")[0][:160]
     (dest / "index.html").write_text(page(p["title_zh"], p["title_en"], body, root, desc))
 
 
 def plain(md):
+    md = re.sub(rf"(?m)^{FIG_LINE}\s*$", "", md)
     return re.sub(r"\s+", " ", re.sub(r"[*`#]|\]\([^)]*\)|\[", "", md)).strip()
 
 
