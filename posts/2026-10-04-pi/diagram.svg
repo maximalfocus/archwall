@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Pi coding agent architecture</title>
+<desc id="d">1 Interfaces: interactive terminal UI, print or JSON mode, RPC over JSONL on stdin and stdout, and the TypeScript SDK all drive the same agent and session. 2 Build the request: the system prompt with context files, the active session branch as history, tool definitions (read, bash, edit, write by default) and skill descriptions. Extensions are TypeScript modules in the pi process that add tools, commands, providers and UI and can transform context. 3 Agent loop in pi-agent-core: send the request, stream back text and tool calls, run the tools (in parallel by default), record the results, and start another turn until no tool calls are left. 4 pi-ai: one API over many providers, such as Anthropic, OpenAI, Google and any OpenAI-compatible server.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:21px;font-weight:700}
+.st{font-size:16px;font-weight:700}
+.ag{font-size:15px}
+.q{font-size:14px;fill:#3d4a5c}
+.lb{font-size:13px;fill:#5b6675}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:13px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="239.5" cy="39" r="11" class="num"/>
+<text x="239.5" y="44" class="numt" text-anchor="middle" >1</text>
+<text x="255.5" y="46" class="gt" text-anchor="start" >Interfaces</text>
+<rect x="36" y="62" width="528" height="266" rx="9" class="sub"/>
+<text x="300.0" y="86" class="st" text-anchor="middle" >pi-coding-agent, one per need</text>
+<rect x="60" y="108" width="228" height="76" rx="8" class="agent"/>
+<rect x="60" y="118" width="5" height="56" rx="2" fill="#5b6675"/>
+<text x="177.0" y="142.0" class="ag" text-anchor="middle" >Interactive</text>
+<text x="177.0" y="162.0" class="ag" text-anchor="middle" >terminal UI, pi-tui</text>
+<rect x="312" y="108" width="228" height="76" rx="8" class="agent"/>
+<rect x="312" y="118" width="5" height="56" rx="2" fill="#5b6675"/>
+<text x="429.0" y="142.0" class="ag" text-anchor="middle" >Print / JSON</text>
+<text x="429.0" y="162.0" class="ag" text-anchor="middle" >one prompt, or events</text>
+<rect x="60" y="212" width="228" height="76" rx="8" class="agent"/>
+<rect x="60" y="222" width="5" height="56" rx="2" fill="#5b6675"/>
+<text x="177.0" y="246.0" class="ag" text-anchor="middle" >RPC</text>
+<text x="177.0" y="266.0" class="ag" text-anchor="middle" >JSONL on stdin / stdout</text>
+<rect x="312" y="212" width="228" height="76" rx="8" class="agent"/>
+<rect x="312" y="222" width="5" height="56" rx="2" fill="#5b6675"/>
+<text x="429.0" y="246.0" class="ag" text-anchor="middle" >SDK</text>
+<text x="429.0" y="266.0" class="ag" text-anchor="middle" >TypeScript, in process</text>
+<text x="300.0" y="360" class="lb" text-anchor="middle" >all four drive the same agent and session</text>
+<text x="300.0" y="384" class="lb" text-anchor="middle" >prompt templates expand what you type</text>
+<text x="300.0" y="408" class="lb" text-anchor="middle" >agent events stream back to the screen</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="802.75" cy="39" r="11" class="num"/>
+<text x="802.75" y="44" class="numt" text-anchor="middle" >2</text>
+<text x="818.75" y="46" class="gt" text-anchor="start" >Build the request</text>
+<rect x="648" y="72" width="244" height="66" rx="8" class="agent"/>
+<rect x="648" y="82" width="5" height="46" rx="2" fill="#5b6675"/>
+<text x="773.0" y="101.0" class="ag" text-anchor="middle" >System prompt</text>
+<text x="773.0" y="121.0" class="ag" text-anchor="middle" >base + context files</text>
+<rect x="908" y="72" width="244" height="66" rx="8" class="agent"/>
+<rect x="908" y="82" width="5" height="46" rx="2" fill="#5b6675"/>
+<text x="1033.0" y="101.0" class="ag" text-anchor="middle" >History</text>
+<text x="1033.0" y="121.0" class="ag" text-anchor="middle" >the active session branch</text>
+<rect x="648" y="154" width="244" height="66" rx="8" class="agent"/>
+<rect x="648" y="164" width="5" height="46" rx="2" fill="#2f6fd6"/>
+<text x="773.0" y="183.0" class="ag" text-anchor="middle" >Tools</text>
+<text x="773.0" y="203.0" class="ag" text-anchor="middle" >read · bash · edit · write</text>
+<rect x="908" y="154" width="244" height="66" rx="8" class="agent"/>
+<rect x="908" y="164" width="5" height="46" rx="2" fill="#5b6675"/>
+<text x="1033.0" y="183.0" class="ag" text-anchor="middle" >Skills</text>
+<text x="1033.0" y="203.0" class="ag" text-anchor="middle" >descriptions only</text>
+<rect x="636" y="246" width="528" height="168" rx="9" class="sub"/>
+<text x="900.0" y="270" class="st" text-anchor="middle" >Extensions and resources</text>
+<text x="900.0" y="300" class="lb" text-anchor="middle" >extensions: TypeScript in the pi process</text>
+<text x="900.0" y="324" class="lb" text-anchor="middle" >they add tools, commands, providers, UI</text>
+<text x="900.0" y="348" class="lb" text-anchor="middle" >skills: full text loaded only when needed</text>
+<text x="900.0" y="372" class="lb" text-anchor="middle" >all shared as pi packages via npm or git</text>
+<rect x="624" y="460" width="552" height="396" rx="12" class="grp"/>
+<circle cx="760.75" cy="483" r="11" class="num"/>
+<text x="760.75" y="488" class="numt" text-anchor="middle" >3</text>
+<text x="776.75" y="490" class="gt" text-anchor="start" >Agent loop: pi-agent-core</text>
+<rect x="660" y="520" width="220" height="64" rx="8" class="agent"/>
+<rect x="660" y="530" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="773.0" y="548.0" class="ag" text-anchor="middle" >Call the model</text>
+<text x="773.0" y="568.0" class="ag" text-anchor="middle" >stream text + tool calls</text>
+<rect x="924" y="520" width="220" height="64" rx="8" class="agent"/>
+<rect x="924" y="530" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="1037.0" y="548.0" class="ag" text-anchor="middle" >Any tool calls?</text>
+<text x="1037.0" y="568.0" class="ag" text-anchor="middle" >none: the run ends</text>
+<rect x="924" y="636" width="220" height="64" rx="8" class="agent"/>
+<rect x="924" y="646" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="1037.0" y="664.0" class="ag" text-anchor="middle" >Run the tools</text>
+<text x="1037.0" y="684.0" class="ag" text-anchor="middle" >in parallel by default</text>
+<rect x="660" y="636" width="220" height="64" rx="8" class="agent"/>
+<rect x="660" y="646" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="773.0" y="664.0" class="ag" text-anchor="middle" >Record the results</text>
+<text x="773.0" y="684.0" class="ag" text-anchor="middle" >then another turn</text>
+<path d="M880 552H924" class="flow"/>
+<path d="M1034 584V636" class="flow"/>
+<path d="M924 668H880" class="flow"/>
+<path d="M770 636V584" class="flow"/>
+<path d="M890.0 614 A10 10 0 0 1 907.0 607.0" class="cyc"/>
+<path d="M910.0 614 A10 10 0 0 1 893.0 621.0" class="cyc"/>
+<text x="900.0" y="750" class="lb" text-anchor="middle" >steering message: goes in after this turn</text>
+<text x="900.0" y="774" class="lb" text-anchor="middle" >follow-up message: goes in after the run</text>
+<text x="900.0" y="798" class="lb" text-anchor="middle" >abort: stop, queued messages go back to the editor</text>
+<rect x="24" y="460" width="552" height="396" rx="12" class="grp"/>
+<circle cx="134.5" cy="483" r="11" class="num"/>
+<text x="134.5" y="488" class="numt" text-anchor="middle" >4</text>
+<text x="150.5" y="490" class="gt" text-anchor="start" >pi-ai: one API, many providers</text>
+<rect x="190" y="520" width="220" height="64" rx="8" class="agent"/>
+<rect x="190" y="530" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="548.0" class="ag" text-anchor="middle" >Models</text>
+<text x="303.0" y="568.0" class="ag" text-anchor="middle" >routes each call</text>
+<rect x="36" y="608" width="528" height="160" rx="9" class="sub"/>
+<text x="300.0" y="632" class="st" text-anchor="middle" >Providers: catalog, auth, stream</text>
+<rect x="54" y="646" width="154" height="52" rx="8" class="agent"/>
+<text x="134.0" y="678.0" class="ag" text-anchor="middle" >Anthropic</text>
+<rect x="224" y="646" width="154" height="52" rx="8" class="agent"/>
+<text x="304.0" y="678.0" class="ag" text-anchor="middle" >OpenAI</text>
+<rect x="394" y="646" width="154" height="52" rx="8" class="agent"/>
+<text x="474.0" y="678.0" class="ag" text-anchor="middle" >Google</text>
+<rect x="54" y="708" width="154" height="52" rx="8" class="agent"/>
+<text x="134.0" y="740.0" class="ag" text-anchor="middle" >Bedrock</text>
+<rect x="224" y="708" width="154" height="52" rx="8" class="agent"/>
+<text x="304.0" y="740.0" class="ag" text-anchor="middle" >OpenRouter</text>
+<rect x="394" y="708" width="154" height="52" rx="8" class="agent"/>
+<text x="474.0" y="730.0" class="ag" text-anchor="middle" >OpenAI-compatible</text>
+<text x="474.0" y="750.0" class="ag" text-anchor="middle" >Ollama, vLLM …</text>
+<text x="300.0" y="794" class="lb" text-anchor="middle" >API key or OAuth subscription, via /login</text>
+<text x="300.0" y="818" class="lb" text-anchor="middle" >switch model mid-session, keep the context</text>
+<path d="M576 216H624" class="flow"/>
+<path d="M770 428V520" class="flow"/>
+<path d="M660 544H410" class="flow"/>
+<path d="M410 568H660" class="flow back"/>
+<text x="600" y="884" class="lb" text-anchor="middle" >pi · github.com/earendil-works/pi · packages: pi-coding-agent → pi-agent-core → pi-ai, pi-tui</text>
+</svg>
