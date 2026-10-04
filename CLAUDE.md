@@ -24,4 +24,6 @@ Architecture-diagram site; see README.md for layout and build.
   Keep the source as `posts/<slug>/diagram.py` next to the generated `diagram.svg`.
 - Every diagram is 1200 x 900 (4:3), the same frame as the home-page cards. Wrap stages into two columns
   (snake order) rather than one long flat row, so it stays readable on a phone.
+- Few words in the picture: card labels of two short lines, at most two note lines per group, labelled arrows
+  for what flows. Details go in the post text. The tool's docstring has the type sizes; don't go below them.
 - Numbers and claims must match the source; cite it in `source`.
