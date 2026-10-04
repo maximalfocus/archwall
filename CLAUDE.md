@@ -28,3 +28,6 @@ Writing or landing a post: use the `archwall` skill (`.claude/skills/archwall/`)
 - Few words in the picture: card labels of two short lines, at most two note lines per group, labelled arrows
   for what flows. Details go in the post text. The tool's docstring has the type sizes; don't go below them.
 - Numbers and claims must match the source; cite it in `source`.
+- A feature that needs an extra, a flag or a config setting is labelled as such, in the text and the picture.
+- Where the docs and the code disagree about what the code does, the code wins; if you can't settle it
+  from the code, leave the claim out.
