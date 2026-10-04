@@ -16,6 +16,7 @@ One diagram, one architecture: a wall of vector diagrams, each linking to a shor
 | `meta.toml` | `title_zh`、`title_en`、`date`、`tags`、`figure`、`alt_zh`、`alt_en`、可选 `source` |
 | `zh.md` / `en.md` | 正文，各不超过 300 字 / 词（超了构建会警告） |
 | `diagram.py` → `diagram.svg` | 用 `tools/archdiagram.py` 画的矢量图，全站一个样式；首页和文章用同一张 |
+| 更多图（可选） | 一张图说不全时，在 `meta.toml` 里加 `[[figures]]`（`file`、`alt_zh`、`alt_en`，可选 `caption_zh`、`caption_en`），正文单起一行 `![](loop.svg)` 放到那段旁边；没放进正文的排在正文后面。首页只用第一张 |
 
 ## 发文流程 / Workflow
 
