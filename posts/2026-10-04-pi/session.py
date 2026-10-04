@@ -9,7 +9,7 @@ from archdiagram import Diagram  # noqa: E402
 
 d = Diagram("Pi session tree",
             "1 A session is one JSONL file. Each entry has an id and its parent's id, so entries form a tree. "
-            "The active branch runs from the root to the current entry; going back with /tree starts another "
+            "The active branch runs from the root to the current entry. Going back with /tree starts another "
             "branch in the same file and keeps the old one. A compaction entry holds a summary of older "
             "messages. 2 The model gets the system prompt with context files, tool and skill descriptions, "
             "the compaction summary instead of the older messages, and the recent messages on the active "
@@ -18,12 +18,12 @@ d = Diagram("Pi session tree",
             "session file from an earlier user message; /clone copies the active branch into a new one.")
 
 # 1 the tree
-d.group(24, 16, 1152, 436, "A session: one JSONL file, a tree", 1)
-CW, GAP, X0 = 160, 26, 48
+d.group(24, 16, 1152, 440, "A session: one JSONL file, a tree", 1)
+CW, GAP, X0 = 170, 16, 50
 col = lambda i: X0 + i * (CW + GAP)
-Y1, Y2, CH = 76, 200, 60
+Y1, Y2, CH = 80, 212, 72
 main = [("user", "plan"), ("assistant", "plan"), ("tool result", "plan"),
-        ("compaction|summary", "write"), ("user", "plan"), ("assistant|current entry", "plan")]
+        ("compaction|summary", "write"), ("user", "plan"), ("assistant|current", "plan")]
 for i, (lbl, k) in enumerate(main):
     d.card(col(i), Y1, lbl, k, w=CW, h=CH)
     if i:
@@ -32,36 +32,31 @@ for i, lbl in [(2, "user|earlier try"), (3, "assistant")]:
     d.card(col(i), Y2, lbl, "data", w=CW, h=CH)
 d.arrow(f"M{col(1) + CW / 2} {Y1 + CH}V{Y2 + CH / 2}H{col(2)}")
 d.arrow(f"M{col(2) + CW} {Y2 + CH / 2}H{col(3)}")
-d.note(col(4), Y2 + 26, "left with /tree: kept in the file,", "start")
-d.note(col(4), Y2 + 46, "can leave a summary on the new branch", "start")
-d.legend(440, 310, ["plan", "data", "write"], ["active branch", "other branch", "summary entry"])
-d.note(600, 352, "each line is one entry: its id and its parent's id")
-d.note(600, 376, "active branch: from the root to the current entry")
-d.note(600, 400, "nothing is deleted, old branches and compacted entries stay")
-d.arrow(f"M{300} {452}V{488}")
+d.note(col(4), Y2 + CH / 2 + 6, "left via /tree, still in the file", "start")
+d.legend(330, 340, ["plan", "data", "write"], ["active branch", "other branch", "summary entry"])
+d.note(600, 400, "each line is one entry with its parent's id")
+d.note(600, 426, "active branch: root to the current entry")
 
 # 2 what the model gets
-L, R, W, T, H = 24, 624, 552, 488, 360
+L, R, W, T, H = 24, 624, 552, 492, 368
 d.group(L, T, W, H, "What the model gets", 2)
-for i, (lbl, k) in enumerate([("System prompt|base + context files", "data"),
-                              ("Tools + skill descriptions", "coding"),
-                              ("Compaction summary|instead of older messages", "write"),
-                              ("Recent messages on the branch|user · assistant · tool result", "plan")]):
-    d.card(L + 76, T + 52 + i * 64, lbl, k, w=400, h=54)
-d.note(L + W / 2, T + 330, "other branches are never sent")
+for i, (lbl, k) in enumerate([("System prompt + context files", "data"),
+                              ("Tool + skill descriptions", "coding"),
+                              ("Compaction summary", "write"),
+                              ("Recent messages on the branch", "plan")]):
+    d.card(L + 46, T + 62 + i * 64, lbl, k, w=460, h=52)
+d.note(L + W / 2, T + 346, "other branches are never sent")
+d.arrow(f"M{L + W / 2} {456}V{T}", label="active branch", at=(L + W / 2 + 76, 480))
 
-# 3 when context fills up, and new files
+# 3 compaction and new files
 d.group(R, T, W, H, "Compaction and new files", 3)
-d.sub(R + 12, T + 46, W - 24, 150, "Compaction")
-d.note(R + W / 2, T + 98, "automatic when context > window − 16384 tokens")
-d.note(R + W / 2, T + 122, "or /compact, with your own instructions")
-d.note(R + W / 2, T + 146, "summary of older history, recent messages kept")
-d.note(R + W / 2, T + 170, "the original entries stay in the tree")
-d.sub(R + 12, T + 206, W - 24, 140, "New session file")
-d.card(R + 36, T + 250, "/fork|from an earlier user message", "write", w=236, h=60)
-d.card(R + 292, T + 250, "/clone|copy the active branch", "write", w=236, h=60)
-d.note(R + W / 2, T + 334, "sessions live in ~/.pi/agent/sessions/, by folder")
+d.sub(R + 12, T + 58, W - 24, 126, "Compaction")
+d.note(R + W / 2, T + 120, "near the limit (window − 16384), or /compact")
+d.note(R + W / 2, T + 148, "summary in, old entries stay")
+d.sub(R + 12, T + 198, W - 24, 156, "New session file")
+d.card(R + 30, T + 252, "/fork|from a user message", w=236, h=76)
+d.card(R + 286, T + 252, "/clone|the active branch", w=236, h=76)
 
-d.note(600, 884, "pi · github.com/earendil-works/pi · docs: sessions.md, compaction.md")
+d.note(600, 888, "pi · docs: how-pi-works.md, sessions.md, compaction.md")
 
 d.save(Path(__file__).with_name("session.svg"))

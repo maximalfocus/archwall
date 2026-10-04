@@ -1,17 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Pi session tree</title>
-<desc id="d">1 A session is one JSONL file. Each entry has an id and its parent's id, so entries form a tree. The active branch runs from the root to the current entry; going back with /tree starts another branch in the same file and keeps the old one. A compaction entry holds a summary of older messages. 2 The model gets the system prompt with context files, tool and skill descriptions, the compaction summary instead of the older messages, and the recent messages on the active branch. Other branches are never sent. 3 Compaction runs when the context passes the model's window minus 16384 reserve tokens, or on /compact; the original entries stay. /fork starts a new session file from an earlier user message; /clone copies the active branch into a new one.</desc>
+<desc id="d">1 A session is one JSONL file. Each entry has an id and its parent's id, so entries form a tree. The active branch runs from the root to the current entry. Going back with /tree starts another branch in the same file and keeps the old one. A compaction entry holds a summary of older messages. 2 The model gets the system prompt with context files, tool and skill descriptions, the compaction summary instead of the older messages, and the recent messages on the active branch. Other branches are never sent. 3 Compaction runs when the context passes the model's window minus 16384 reserve tokens, or on /compact; the original entries stay. /fork starts a new session file from an earlier user message; /clone copies the active branch into a new one.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 </defs>
 <style>
 text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
-.gt{font-size:21px;font-weight:700}
-.st{font-size:16px;font-weight:700}
-.ag{font-size:15px}
-.q{font-size:14px;fill:#3d4a5c}
-.lb{font-size:13px;fill:#5b6675}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
 .grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
 .sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
 .agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
@@ -21,99 +22,90 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 .back{stroke-dasharray:7 5}
 .cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
 .num{fill:#1f2a37}
-.numt{font-size:13px;font-weight:700;fill:#ffffff}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
-<rect x="24" y="16" width="1152" height="436" rx="12" class="grp"/>
-<circle cx="418.75" cy="39" r="11" class="num"/>
-<text x="418.75" y="44" class="numt" text-anchor="middle" >1</text>
-<text x="434.75" y="46" class="gt" text-anchor="start" >A session: one JSONL file, a tree</text>
-<rect x="48" y="76" width="160" height="60" rx="8" class="agent"/>
-<rect x="48" y="86" width="5" height="40" rx="2" fill="#2f9e6e"/>
-<text x="131.0" y="112.0" class="ag" text-anchor="middle" >user</text>
-<rect x="234" y="76" width="160" height="60" rx="8" class="agent"/>
-<rect x="234" y="86" width="5" height="40" rx="2" fill="#2f9e6e"/>
-<text x="317.0" y="112.0" class="ag" text-anchor="middle" >assistant</text>
-<path d="M208 106.0H234" class="flow"/>
-<rect x="420" y="76" width="160" height="60" rx="8" class="agent"/>
-<rect x="420" y="86" width="5" height="40" rx="2" fill="#2f9e6e"/>
-<text x="503.0" y="112.0" class="ag" text-anchor="middle" >tool result</text>
-<path d="M394 106.0H420" class="flow"/>
-<rect x="606" y="76" width="160" height="60" rx="8" class="agent"/>
-<rect x="606" y="86" width="5" height="40" rx="2" fill="#8a5cc7"/>
-<text x="689.0" y="102.0" class="ag" text-anchor="middle" >compaction</text>
-<text x="689.0" y="122.0" class="ag" text-anchor="middle" >summary</text>
-<path d="M580 106.0H606" class="flow"/>
-<rect x="792" y="76" width="160" height="60" rx="8" class="agent"/>
-<rect x="792" y="86" width="5" height="40" rx="2" fill="#2f9e6e"/>
-<text x="875.0" y="112.0" class="ag" text-anchor="middle" >user</text>
-<path d="M766 106.0H792" class="flow"/>
-<rect x="978" y="76" width="160" height="60" rx="8" class="agent"/>
-<rect x="978" y="86" width="5" height="40" rx="2" fill="#2f9e6e"/>
-<text x="1061.0" y="102.0" class="ag" text-anchor="middle" >assistant</text>
-<text x="1061.0" y="122.0" class="ag" text-anchor="middle" >current entry</text>
-<path d="M952 106.0H978" class="flow"/>
-<rect x="420" y="200" width="160" height="60" rx="8" class="agent"/>
-<rect x="420" y="210" width="5" height="40" rx="2" fill="#5b6675"/>
-<text x="503.0" y="226.0" class="ag" text-anchor="middle" >user</text>
-<text x="503.0" y="246.0" class="ag" text-anchor="middle" >earlier try</text>
-<rect x="606" y="200" width="160" height="60" rx="8" class="agent"/>
-<rect x="606" y="210" width="5" height="40" rx="2" fill="#5b6675"/>
-<text x="689.0" y="236.0" class="ag" text-anchor="middle" >assistant</text>
-<path d="M314.0 136V230.0H420" class="flow"/>
-<path d="M580 230.0H606" class="flow"/>
-<text x="792" y="226" class="lb" text-anchor="start" >left with /tree: kept in the file,</text>
-<text x="792" y="246" class="lb" text-anchor="start" >can leave a summary on the new branch</text>
-<rect x="440" y="299" width="5" height="16" rx="2" fill="#2f9e6e"/>
-<text x="452" y="312" class="lb" text-anchor="start" >active branch</text>
-<rect x="560" y="299" width="5" height="16" rx="2" fill="#5b6675"/>
-<text x="572" y="312" class="lb" text-anchor="start" >other branch</text>
-<rect x="680" y="299" width="5" height="16" rx="2" fill="#8a5cc7"/>
-<text x="692" y="312" class="lb" text-anchor="start" >summary entry</text>
-<text x="600" y="352" class="lb" text-anchor="middle" >each line is one entry: its id and its parent's id</text>
-<text x="600" y="376" class="lb" text-anchor="middle" >active branch: from the root to the current entry</text>
-<text x="600" y="400" class="lb" text-anchor="middle" >nothing is deleted, old branches and compacted entries stay</text>
-<path d="M300 452V488" class="flow"/>
-<rect x="24" y="488" width="552" height="360" rx="12" class="grp"/>
-<circle cx="192.25" cy="511" r="11" class="num"/>
-<text x="192.25" y="516" class="numt" text-anchor="middle" >2</text>
-<text x="208.25" y="518" class="gt" text-anchor="start" >What the model gets</text>
-<rect x="100" y="540" width="400" height="54" rx="8" class="agent"/>
-<rect x="100" y="550" width="5" height="34" rx="2" fill="#5b6675"/>
-<text x="303.0" y="563.0" class="ag" text-anchor="middle" >System prompt</text>
-<text x="303.0" y="583.0" class="ag" text-anchor="middle" >base + context files</text>
-<rect x="100" y="604" width="400" height="54" rx="8" class="agent"/>
-<rect x="100" y="614" width="5" height="34" rx="2" fill="#2f6fd6"/>
-<text x="303.0" y="637.0" class="ag" text-anchor="middle" >Tools + skill descriptions</text>
-<rect x="100" y="668" width="400" height="54" rx="8" class="agent"/>
-<rect x="100" y="678" width="5" height="34" rx="2" fill="#8a5cc7"/>
-<text x="303.0" y="691.0" class="ag" text-anchor="middle" >Compaction summary</text>
-<text x="303.0" y="711.0" class="ag" text-anchor="middle" >instead of older messages</text>
-<rect x="100" y="732" width="400" height="54" rx="8" class="agent"/>
-<rect x="100" y="742" width="5" height="34" rx="2" fill="#2f9e6e"/>
-<text x="303.0" y="755.0" class="ag" text-anchor="middle" >Recent messages on the branch</text>
-<text x="303.0" y="775.0" class="ag" text-anchor="middle" >user · assistant · tool result</text>
-<text x="300.0" y="818" class="lb" text-anchor="middle" >other branches are never sent</text>
-<rect x="624" y="488" width="552" height="360" rx="12" class="grp"/>
-<circle cx="766.0" cy="511" r="11" class="num"/>
-<text x="766.0" y="516" class="numt" text-anchor="middle" >3</text>
-<text x="782.0" y="518" class="gt" text-anchor="start" >Compaction and new files</text>
-<rect x="636" y="534" width="528" height="150" rx="9" class="sub"/>
-<text x="900.0" y="558" class="st" text-anchor="middle" >Compaction</text>
-<text x="900.0" y="586" class="lb" text-anchor="middle" >automatic when context &gt; window − 16384 tokens</text>
-<text x="900.0" y="610" class="lb" text-anchor="middle" >or /compact, with your own instructions</text>
-<text x="900.0" y="634" class="lb" text-anchor="middle" >summary of older history, recent messages kept</text>
-<text x="900.0" y="658" class="lb" text-anchor="middle" >the original entries stay in the tree</text>
-<rect x="636" y="694" width="528" height="140" rx="9" class="sub"/>
+<rect x="24" y="16" width="1152" height="440" rx="12" class="grp"/>
+<circle cx="367.25" cy="43" r="14" class="num"/>
+<text x="367.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="387.25" y="52" class="gt" text-anchor="start" >A session: one JSONL file, a tree</text>
+<rect x="50" y="80" width="170" height="72" rx="8" class="agent"/>
+<rect x="50" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="138.0" y="123.0" class="ag" text-anchor="middle" >user</text>
+<rect x="236" y="80" width="170" height="72" rx="8" class="agent"/>
+<rect x="236" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="324.0" y="123.0" class="ag" text-anchor="middle" >assistant</text>
+<path d="M220 116.0H236" class="flow"/>
+<rect x="422" y="80" width="170" height="72" rx="8" class="agent"/>
+<rect x="422" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="510.0" y="123.0" class="ag" text-anchor="middle" >tool result</text>
+<path d="M406 116.0H422" class="flow"/>
+<rect x="608" y="80" width="170" height="72" rx="8" class="agent"/>
+<rect x="608" y="90" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="696.0" y="111.0" class="ag" text-anchor="middle" >compaction</text>
+<text x="696.0" y="135.0" class="ag" text-anchor="middle" >summary</text>
+<path d="M592 116.0H608" class="flow"/>
+<rect x="794" y="80" width="170" height="72" rx="8" class="agent"/>
+<rect x="794" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="882.0" y="123.0" class="ag" text-anchor="middle" >user</text>
+<path d="M778 116.0H794" class="flow"/>
+<rect x="980" y="80" width="170" height="72" rx="8" class="agent"/>
+<rect x="980" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="1068.0" y="111.0" class="ag" text-anchor="middle" >assistant</text>
+<text x="1068.0" y="135.0" class="ag" text-anchor="middle" >current</text>
+<path d="M964 116.0H980" class="flow"/>
+<rect x="422" y="212" width="170" height="72" rx="8" class="agent"/>
+<rect x="422" y="222" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="510.0" y="243.0" class="ag" text-anchor="middle" >user</text>
+<text x="510.0" y="267.0" class="ag" text-anchor="middle" >earlier try</text>
+<rect x="608" y="212" width="170" height="72" rx="8" class="agent"/>
+<rect x="608" y="222" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="696.0" y="255.0" class="ag" text-anchor="middle" >assistant</text>
+<path d="M321.0 152V248.0H422" class="flow"/>
+<path d="M592 248.0H608" class="flow"/>
+<text x="794" y="254.0" class="lb" text-anchor="start" >left via /tree, still in the file</text>
+<rect x="330" y="326" width="6" height="20" rx="2" fill="#2f9e6e"/>
+<text x="344" y="342" class="lb" text-anchor="start" >active branch</text>
+<rect x="489" y="326" width="6" height="20" rx="2" fill="#5b6675"/>
+<text x="503" y="342" class="lb" text-anchor="start" >other branch</text>
+<rect x="639" y="326" width="6" height="20" rx="2" fill="#8a5cc7"/>
+<text x="653" y="342" class="lb" text-anchor="start" >summary entry</text>
+<text x="600" y="400" class="lb" text-anchor="middle" >each line is one entry with its parent's id</text>
+<text x="600" y="426" class="lb" text-anchor="middle" >active branch: root to the current entry</text>
+<rect x="24" y="492" width="552" height="368" rx="12" class="grp"/>
+<circle cx="161.75" cy="519" r="14" class="num"/>
+<text x="161.75" y="525" class="numt" text-anchor="middle" >2</text>
+<text x="181.75" y="528" class="gt" text-anchor="start" >What the model gets</text>
+<rect x="70" y="554" width="460" height="52" rx="8" class="agent"/>
+<rect x="70" y="564" width="5" height="32" rx="2" fill="#5b6675"/>
+<text x="303.0" y="587.0" class="ag" text-anchor="middle" >System prompt + context files</text>
+<rect x="70" y="618" width="460" height="52" rx="8" class="agent"/>
+<rect x="70" y="628" width="5" height="32" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="651.0" class="ag" text-anchor="middle" >Tool + skill descriptions</text>
+<rect x="70" y="682" width="460" height="52" rx="8" class="agent"/>
+<rect x="70" y="692" width="5" height="32" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="715.0" class="ag" text-anchor="middle" >Compaction summary</text>
+<rect x="70" y="746" width="460" height="52" rx="8" class="agent"/>
+<rect x="70" y="756" width="5" height="32" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="779.0" class="ag" text-anchor="middle" >Recent messages on the branch</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >other branches are never sent</text>
+<path d="M300.0 456V492" class="flow"/>
+<text x="376.0" y="480" class="al" text-anchor="middle" >active branch</text>
+<rect x="624" y="492" width="552" height="368" rx="12" class="grp"/>
+<circle cx="728.0" cy="519" r="14" class="num"/>
+<text x="728.0" y="525" class="numt" text-anchor="middle" >3</text>
+<text x="748.0" y="528" class="gt" text-anchor="start" >Compaction and new files</text>
+<rect x="636" y="550" width="528" height="126" rx="9" class="sub"/>
+<text x="900.0" y="578" class="st" text-anchor="middle" >Compaction</text>
+<text x="900.0" y="612" class="lb" text-anchor="middle" >near the limit (window − 16384), or /compact</text>
+<text x="900.0" y="640" class="lb" text-anchor="middle" >summary in, old entries stay</text>
+<rect x="636" y="690" width="528" height="156" rx="9" class="sub"/>
 <text x="900.0" y="718" class="st" text-anchor="middle" >New session file</text>
-<rect x="660" y="738" width="236" height="60" rx="8" class="agent"/>
-<rect x="660" y="748" width="5" height="40" rx="2" fill="#8a5cc7"/>
-<text x="781.0" y="764.0" class="ag" text-anchor="middle" >/fork</text>
-<text x="781.0" y="784.0" class="ag" text-anchor="middle" >from an earlier user message</text>
-<rect x="916" y="738" width="236" height="60" rx="8" class="agent"/>
-<rect x="916" y="748" width="5" height="40" rx="2" fill="#8a5cc7"/>
-<text x="1037.0" y="764.0" class="ag" text-anchor="middle" >/clone</text>
-<text x="1037.0" y="784.0" class="ag" text-anchor="middle" >copy the active branch</text>
-<text x="900.0" y="822" class="lb" text-anchor="middle" >sessions live in ~/.pi/agent/sessions/, by folder</text>
-<text x="600" y="884" class="lb" text-anchor="middle" >pi · github.com/earendil-works/pi · docs: sessions.md, compaction.md</text>
+<rect x="654" y="744" width="236" height="76" rx="8" class="agent"/>
+<text x="775.0" y="777.0" class="ag" text-anchor="middle" >/fork</text>
+<text x="775.0" y="801.0" class="ag" text-anchor="middle" >from a user message</text>
+<rect x="910" y="744" width="236" height="76" rx="8" class="agent"/>
+<text x="1031.0" y="777.0" class="ag" text-anchor="middle" >/clone</text>
+<text x="1031.0" y="801.0" class="ag" text-anchor="middle" >the active branch</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >pi · docs: how-pi-works.md, sessions.md, compaction.md</text>
 </svg>

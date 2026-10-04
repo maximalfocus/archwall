@@ -13,3 +13,10 @@ alt_zh = "pi 会话：一个 JSONL 文件里的一棵树，每条记录带父记
 alt_en = "Pi session: a tree in one JSONL file, each entry pointing to its parent; the active branch runs from the root to the current entry and old branches stay; the model gets the system prompt, tool and skill descriptions, the compaction summary and recent messages on the active branch; compaction runs when context fills up, /fork and /clone start new files"
 caption_zh = "会话是一棵树，模型只看当前分支"
 caption_en = "A session is a tree; the model only sees the active branch"
+
+[[figures]]
+file = "mcp.svg"
+alt_zh = "pi 的 MCP 支持：1 配置写在 ~/.pi/agent/mcp.json 和信任后的 .pi/mcp.json；2 pi-mcp 是自己的客户端，走 stdio 或 Streamable HTTP，每个工具叫 mcp__server__tool；3 每个服务端或工具设暴露方式：codemode（默认）、deferred、direct、hidden；4 模型通过沙箱脚本、tool_search 或直接调用来用工具，都走同一条工具管线和权限检查"
+alt_en = "Pi MCP support: 1 config in ~/.pi/agent/mcp.json and, once trusted, .pi/mcp.json; 2 pi-mcp is pi's own client over stdio or Streamable HTTP, naming each tool mcp__server__tool; 3 exposure per server or tool: codemode (default), deferred, direct, hidden; 4 the model reaches tools through a sandboxed script, tool_search or a direct call, all through the same tool pipeline and permission gates"
+caption_zh = "MCP 工具默认不直接给模型，由脚本去调"
+caption_en = "By default MCP tools reach the model through a script"

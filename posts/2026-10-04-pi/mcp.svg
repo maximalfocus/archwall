@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Pi MCP support</title>
+<desc id="d">1 Config: user servers in ~/.pi/agent/mcp.json, project servers in .pi/mcp.json, read only after the project is trusted; the same mcpServers format as Claude Code and Cursor; add them with pi mcp add or manage them with /mcp. 2 pi-mcp is pi's own MCP client, without the official SDK. It talks stdio to local servers and Streamable HTTP to remote ones, with OAuth sign-in, and supports protocol versions up to 2025-11-25. Each tool is named mcp__server__tool. 3 Exposure, per server or per tool: codemode (the default), deferred, direct or hidden. 4 The model reaches a codemode tool from a JavaScript script in a QuickJS sandbox, and only the script's output comes back; a deferred tool after tool_search declares it; a direct tool like a built-in one. Every call goes through pi's tool pipeline, so extension permission gates apply.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="249.5" cy="43" r="14" class="num"/>
+<text x="249.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="269.5" y="52" class="gt" text-anchor="start" >Config</text>
+<rect x="60" y="86" width="480" height="72" rx="8" class="agent"/>
+<rect x="60" y="96" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="117.0" class="ag" text-anchor="middle" >~/.pi/agent/mcp.json</text>
+<text x="303.0" y="141.0" class="ag" text-anchor="middle" >user servers</text>
+<rect x="60" y="176" width="480" height="72" rx="8" class="agent"/>
+<rect x="60" y="186" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="207.0" class="ag" text-anchor="middle" >.pi/mcp.json</text>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >project, after trust</text>
+<rect x="60" y="266" width="480" height="64" rx="8" class="agent"/>
+<rect x="60" y="276" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="305.0" class="ag" text-anchor="middle" >pi mcp add  ·  /mcp</text>
+<text x="300.0" y="376" class="lb" text-anchor="middle" >same mcpServers format as Claude Code</text>
+<text x="300.0" y="402" class="lb" text-anchor="middle" >a project entry wins over a user entry</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="741.5" cy="43" r="14" class="num"/>
+<text x="741.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="761.5" y="52" class="gt" text-anchor="start" >pi-mcp: its own client</text>
+<rect x="660" y="86" width="228" height="72" rx="8" class="agent"/>
+<rect x="660" y="96" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="777.0" y="117.0" class="ag" text-anchor="middle" >stdio</text>
+<text x="777.0" y="141.0" class="ag" text-anchor="middle" >local server</text>
+<rect x="912" y="86" width="228" height="72" rx="8" class="agent"/>
+<rect x="912" y="96" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="1029.0" y="117.0" class="ag" text-anchor="middle" >Streamable HTTP</text>
+<text x="1029.0" y="141.0" class="ag" text-anchor="middle" >remote, OAuth</text>
+<rect x="636" y="188" width="528" height="150" rx="9" class="sub"/>
+<text x="900.0" y="216" class="st" text-anchor="middle" >Each tool becomes</text>
+<rect x="700" y="238" width="400" height="64" rx="8" class="agent"/>
+<rect x="700" y="248" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="277.0" class="ag" text-anchor="middle" >mcp__server__tool</text>
+<text x="900.0" y="376" class="lb" text-anchor="middle" >no official MCP SDK inside</text>
+<text x="900.0" y="402" class="lb" text-anchor="middle" >protocol versions up to 2025-11-25</text>
+<rect x="624" y="460" width="552" height="396" rx="12" class="grp"/>
+<circle cx="701.0" cy="487" r="14" class="num"/>
+<text x="701.0" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="721.0" y="496" class="gt" text-anchor="start" >Exposure: per server or tool</text>
+<rect x="660" y="530" width="228" height="76" rx="8" class="agent"/>
+<rect x="660" y="540" width="5" height="56" rx="2" fill="#2f9e6e"/>
+<text x="777.0" y="563.0" class="ag" text-anchor="middle" >codemode</text>
+<text x="777.0" y="587.0" class="ag" text-anchor="middle" >the default</text>
+<rect x="912" y="530" width="228" height="76" rx="8" class="agent"/>
+<rect x="912" y="540" width="5" height="56" rx="2" fill="#2f9e6e"/>
+<text x="1029.0" y="563.0" class="ag" text-anchor="middle" >deferred</text>
+<text x="1029.0" y="587.0" class="ag" text-anchor="middle" >found by search</text>
+<rect x="660" y="630" width="228" height="76" rx="8" class="agent"/>
+<rect x="660" y="640" width="5" height="56" rx="2" fill="#2f9e6e"/>
+<text x="777.0" y="663.0" class="ag" text-anchor="middle" >direct</text>
+<text x="777.0" y="687.0" class="ag" text-anchor="middle" >like a built-in</text>
+<rect x="912" y="630" width="228" height="76" rx="8" class="agent"/>
+<rect x="912" y="640" width="5" height="56" rx="2" fill="#5b6675"/>
+<text x="1029.0" y="663.0" class="ag" text-anchor="middle" >hidden</text>
+<text x="1029.0" y="687.0" class="ag" text-anchor="middle" >never reached</text>
+<text x="900.0" y="760" class="lb" text-anchor="middle" >toolExposure sets single tools,</text>
+<text x="900.0" y="786" class="lb" text-anchor="middle" >for example delete_* hidden</text>
+<rect x="24" y="460" width="552" height="396" rx="12" class="grp"/>
+<circle cx="128.0" cy="487" r="14" class="num"/>
+<text x="128.0" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="148.0" y="496" class="gt" text-anchor="start" >How the model calls them</text>
+<rect x="60" y="524" width="228" height="72" rx="8" class="agent"/>
+<rect x="60" y="534" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="177.0" y="555.0" class="ag" text-anchor="middle" >codemode script</text>
+<text x="177.0" y="579.0" class="ag" text-anchor="middle" >QuickJS sandbox</text>
+<rect x="60" y="614" width="228" height="72" rx="8" class="agent"/>
+<rect x="60" y="624" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="177.0" y="645.0" class="ag" text-anchor="middle" >tool_search</text>
+<text x="177.0" y="669.0" class="ag" text-anchor="middle" >declares a match</text>
+<rect x="60" y="704" width="228" height="64" rx="8" class="agent"/>
+<rect x="60" y="714" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="177.0" y="743.0" class="ag" text-anchor="middle" >direct call</text>
+<rect x="360" y="600" width="180" height="96" rx="8" class="agent"/>
+<rect x="360" y="610" width="5" height="76" rx="2" fill="#d64545"/>
+<text x="453.0" y="643.0" class="ag" text-anchor="middle" >Tool pipeline</text>
+<text x="453.0" y="667.0" class="ag" text-anchor="middle" >permission gates</text>
+<path d="M288 560C328 560 320 648 360 648" class="flow"/>
+<path d="M288 650C328 650 320 648 360 648" class="flow"/>
+<path d="M288 736C328 736 320 648 360 648" class="flow"/>
+<text x="300.0" y="804" class="lb" text-anchor="middle" >a script returns only its output</text>
+<text x="300.0" y="830" class="lb" text-anchor="middle" >so big results stay out of context</text>
+<path d="M576 176H624" class="flow"/>
+<text x="600" y="166" class="al" text-anchor="middle" >connect</text>
+<path d="M900.0 428V460" class="flow"/>
+<text x="936.0" y="450" class="al" text-anchor="middle" >tools</text>
+<path d="M624 660H576" class="flow"/>
+<text x="600" y="650" class="al" text-anchor="middle" >reach</text>
+<text x="600" y="884" class="lb" text-anchor="middle" >pi · github.com/earendil-works/pi · docs: mcp.md, codemode.md</text>
+</svg>
