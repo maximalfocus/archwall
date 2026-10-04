@@ -14,11 +14,11 @@ d = Diagram("graphify architecture",
             "1 Scan the folder: detect() sorts files into code, docs and papers, images, and video or audio. "
             "A SHA256 cache skips files that have not changed. "
             "2 Extract in three passes. Pass 1 parses code with tree-sitter, locally, with no LLM. "
-            "Pass 2 transcribes video and audio with faster-whisper, locally. Pass 3 sends docs, papers, "
-            "images and transcripts to parallel LLM subagents, which costs tokens. Every pass returns nodes "
+            "Pass 2 transcribes video and audio with faster-whisper, locally (video extra). Pass 3 sends docs, papers, "
+            "images and transcripts to parallel LLM subagents, which costs tokens. Passes 1 and 3 return nodes "
             "and edges, and each edge is tagged EXTRACTED, INFERRED or AMBIGUOUS. "
             "3 Build and cluster: build() makes one NetworkX graph, cluster() finds communities with the "
-            "Leiden algorithm, and the analyze helpers find god nodes and surprising connections. "
+            "Leiden algorithm (leiden extra; otherwise Louvain), and the analyze helpers find god nodes and surprising connections. "
             "4 Output in graphify-out: graph.json, graph.html and GRAPH_REPORT.md, plus optional exports "
             "such as an Obsidian vault, a wiki, SVG, GraphML and Cypher.")
 
@@ -38,7 +38,7 @@ d.note(L + W / 2, T1 + 372, "unchanged files are skipped")
 d.group(R, T1, W, H1, "Extract: three passes", 2)
 PW, PH = W - 60, 80
 for i, lbl in enumerate(["Pass 1: code|tree-sitter, local, no LLM",
-                         "Pass 2: video, audio|faster-whisper, local",
+                         "Pass 2: video, audio|faster-whisper (video extra)",
                          "Pass 3: docs, papers, images|LLM subagents, costs tokens"]):
     d.card(R + 30, T1 + 64 + i * 96, lbl, "coding", w=PW, h=PH)
 d.note(R + W / 2, T1 + 380, "edges: EXTRACTED, INFERRED, AMBIGUOUS")
@@ -50,7 +50,7 @@ A = (R + 30, T2 + 76)    # build
 B = (R + 284, T2 + 76)   # leiden
 C = (R + 284, T2 + 224)  # analyze
 d.card(*A, "build()|one NetworkX graph", "write", w=CW, h=CH)
-d.card(*B, "cluster()|Leiden communities", "plan", w=CW, h=CH)
+d.card(*B, "cluster()|Leiden or Louvain", "plan", w=CW, h=CH)
 d.card(*C, "Analyze|god nodes, surprises", "critic", w=CW, h=CH)
 d.arrow(f"M{A[0] + CW} {A[1] + CH / 2}H{B[0]}")
 d.arrow(f"M{B[0] + CW / 2} {B[1] + CH}V{C[1]}")

@@ -1,8 +1,8 @@
 graphify turns a folder of code, docs, images and video into one knowledge graph. Your assistant then queries the graph instead of grepping files. It runs as a skill (`/graphify .`) backed by a Python library.
 
 1. **Scan**: `detect()` sorts files by type. A SHA256 cache skips files that haven't changed.
-2. **Extract**, in three passes. Code goes through tree-sitter, locally, with no LLM. Video and audio are transcribed locally with faster-whisper. Docs, images and transcripts go to parallel LLM subagents; only this pass costs tokens. Each edge is tagged `EXTRACTED` (stated in the source), `INFERRED` (with a score) or `AMBIGUOUS` (flagged for review).
-3. **Build and cluster**: the pieces become one NetworkX graph. The Leiden algorithm splits it into communities by edge density. No embeddings, no vector store. Then it finds god nodes and surprising links across modules.
+2. **Extract**, in three passes. Code goes through tree-sitter, locally, with no LLM. Video and audio (video extra) are transcribed locally with faster-whisper. Docs, images and transcripts go to parallel LLM subagents; only this pass costs tokens. Each edge is tagged `EXTRACTED` (stated in the source), `INFERRED` (with a score) or `AMBIGUOUS` (flagged for review).
+3. **Build and cluster**: the pieces become one NetworkX graph. Leiden splits it into communities by edge density (leiden extra; otherwise Louvain). No embeddings, no vector store. Then it finds god nodes and surprising links across modules.
 4. **Output** in `graphify-out/`: `graph.json`, a clickable `graph.html`, and `GRAPH_REPORT.md` with the highlights. Obsidian, wiki, SVG, GraphML and Cypher exports are optional.
 
 ![](use.svg)
