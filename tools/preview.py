@@ -8,7 +8,7 @@
 A build copies the checkout's files (tracked and new, not ignored) to a temp dir, runs build.py
 there and moves _site to $ARCHWALL_PREVIEW/<branch>/, so the checkout's own _site is untouched.
 Branch post/pi is served at http://<host>:8765/post-pi/ and a post at .../post-pi/p/<slug>/.
-The root page lists every branch with its last commit. Previews of deleted branches are removed.
+The root page lists every branch with the diagrams of the posts it changes. Previews of deleted branches are removed.
 
 install copies this script to $ARCHWALL_PREVIEW/.tool/ and points the hooks there, so the hooks
 work in every worktree and on every branch, including ones cut before this script existed.
@@ -23,6 +23,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import tomllib
 from pathlib import Path
 
 PREVIEW = Path(os.environ.get("ARCHWALL_PREVIEW", Path.home() / "personal" / "archwall-preview"))
@@ -68,23 +69,47 @@ def prune(top):
             shutil.rmtree(d, ignore_errors=True)
 
 
+def changed_posts(top, branch):
+    """Posts this branch adds or changes compared with main, newest first, with their diagram files."""
+    try:
+        names = git("diff", "--name-only", "main..." + branch, "--", "posts", cwd=top).splitlines()
+    except subprocess.CalledProcessError:
+        return []
+    out = []
+    for post in sorted({n.split("/")[1] for n in names if n.count("/") >= 2}, reverse=True):
+        try:
+            meta = tomllib.loads(git("show", f"{branch}:posts/{post}/meta.toml", cwd=top))
+        except subprocess.CalledProcessError:
+            continue  # post deleted on this branch
+        out.append((post, meta.get("title_zh", post), [meta["figure"]] + [f["file"] for f in meta.get("figures", [])]))
+    return out
+
+
 def index(top):
+    branches = git("for-each-ref", "--format=%(refname:short)", "refs/heads", cwd=top).splitlines()
     rows = []
     for d in sorted((d for d in PREVIEW.iterdir() if d.is_dir() and not d.name.startswith(".")),
                     key=lambda d: d.stat().st_mtime, reverse=True):
-        branch = next((b for b in git("for-each-ref", "--format=%(refname:short)", "refs/heads", cwd=top).splitlines()
-                       if slug(b) == d.name), d.name)
+        branch = next((b for b in branches if slug(b) == d.name), d.name)
         last = git("log", "-1", "--format=%h %s", branch, cwd=top)
-        posts = "".join(f' <a href="{d.name}/p/{p.name}/">{html.escape(p.name)}</a>'
-                        for p in sorted((d / "p").glob("*/"), reverse=True)) if (d / "p").exists() else ""
         when = time.strftime("%m-%d %H:%M", time.localtime(d.stat().st_mtime))
-        rows.append(f'<li><a href="{d.name}/"><b>{html.escape(branch)}</b></a> <small>built {when} · '
-                    f'{html.escape(last)}</small><br><small>{posts}</small></li>')
+        posts = changed_posts(top, branch)
+        figs = "".join(
+            f'<div class="post"><a href="{d.name}/p/{post}/"><b>{html.escape(title)}</b></a><div class="figs">'
+            + "".join(f'<a href="{d.name}/p/{post}/"><img src="{d.name}/p/{post}/{html.escape(f)}" loading="lazy"></a>'
+                      for f in files)
+            + "</div></div>" for post, title, files in posts) or '<p class="none">no post changes vs main</p>'
+        rows.append(f'<section><h2><a href="{d.name}/">{html.escape(branch)}</a></h2>'
+                    f'<p class="meta">built {when} · {html.escape(last)} · <a href="{d.name}/">whole site →</a></p>'
+                    f'{figs}</section>')
     (PREVIEW / "index.html").write_text(
         '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-        '<title>archwall previews</title><style>body{font:16px/1.6 -apple-system,sans-serif;margin:24px 16px;'
-        'max-width:760px}li{margin:0 0 14px}small{color:#667085}small a{margin-right:8px}</style>'
-        f'<h1>archwall previews</h1><ul>{"".join(rows)}</ul>')
+        '<title>archwall previews</title><style>'
+        'body{font:16px/1.6 -apple-system,"PingFang SC",sans-serif;margin:24px 16px;max-width:1200px;background:#fbfbfa;color:#1f2a37}'
+        'a{color:#2f6fd6;text-decoration:none}h2{margin:28px 0 0;font-size:20px}.meta,.none{color:#667085;font-size:14px;margin:2px 0 10px}'
+        '.post{margin:0 0 16px}.figs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:6px}'
+        '.figs img{width:100%;aspect-ratio:4/3;background:#fff;border:1px solid #e4e7ec;border-radius:10px}'
+        f'</style><h1>archwall previews</h1>{"".join(rows)}')
 
 
 def install():
