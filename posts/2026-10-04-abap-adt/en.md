@@ -9,4 +9,4 @@ ADT is how you write ABAP outside SAP GUI. Until now that meant Eclipse; from 20
 
 The second problem was editors. Each object type used to need its own: UI in Java on the client, persistence in ABAP on the server. The SAP BTP ABAP environment alone has 88. Since 2020 new object types are server-driven: the server describes the UI in ABAP, and the client draws it with one of two renderers, form-based or source-based. A new IDE now needs two editors, not 88.
 
-The first VS Code release targets RAP UI services, about 12 object types.
+The first VS Code release targets RAP UI services, at least 12 object types.
