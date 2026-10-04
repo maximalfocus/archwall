@@ -13,7 +13,7 @@ d = Diagram("MCP architecture",
             "2 Transport: stdio for a local server on the same machine, usually one client; "
             "Streamable HTTP (POST, optional SSE, OAuth recommended) for a remote server that serves many clients. "
             "Both carry the same JSON-RPC 2.0 messages. "
-            "3 The server exposes tools, resources and prompts, found with */list and used with */get or tools/call. "
+            "3 The server exposes tools, resources and prompts, found with */list and used with resources/read, prompts/get or tools/call. "
             "4 Every request carries its protocol version and client capabilities in _meta, so the server keeps no "
             "session; server/discover returns versions and capabilities; a server can ask the user for input "
             "through elicitation; subscriptions/listen opens a stream of change notifications.")
