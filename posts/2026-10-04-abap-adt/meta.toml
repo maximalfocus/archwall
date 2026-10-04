@@ -9,7 +9,7 @@ source = "https://community.sap.com/t5/technology-blog-posts-by-sap/behind-the-d
 
 [[figures]]
 file = "editors.svg"
-alt_zh = "编辑器的变化：2020 年以前每种对象类型一个编辑器，客户端用 Java 写界面，服务器用 ABAP 写持久化，仅 BTP ABAP 环境就要 88 个；2020 年起新类型由服务器驱动，界面用 ABAP 在服务器上描述，客户端只要表单类和源码类两个渲染器"
-alt_en = "Editors: before 2020 every object type had its own editor, the UI in Java on the client and persistence in ABAP on the server, 88 editors on BTP ABAP alone; since 2020 new types are server-driven, the UI is described in ABAP on the server and the client needs just two renderers, form-based and source-based"
+alt_zh = "编辑器的变化：2020 年以前每种对象类型一个编辑器，客户端用 Java 写界面，服务器用 ABAP 写持久化，仅 BTP ABAP 环境就要 88 个；现在新类型都是服务器驱动，2020 年从号码范围对象开始，界面用 ABAP 在服务器上描述，客户端只要表单类和源码类两个渲染器"
+alt_en = "Editors: before 2020 every object type had its own editor, the UI in Java on the client and persistence in ABAP on the server, 88 editors on BTP ABAP alone; today all new object types are server-driven, the first was number range objects in 2020, the UI is described in ABAP on the server and the client needs just two renderers, form-based and source-based"
 caption_zh = "新对象类型由服务器描述界面，客户端只要两个渲染器"
 caption_en = "The server describes new object types; the client needs two renderers"

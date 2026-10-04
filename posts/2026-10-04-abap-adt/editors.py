@@ -11,9 +11,9 @@ from archdiagram import Diagram  # noqa: E402
 d = Diagram("ADT editors before and after 2020",
             "Before 2020 every object type had its own editor: the UI in Java on the client, the persistence "
             "in ABAP on the server; the SAP BTP ABAP environment alone needs 88 editors as of 2025. "
-            "Since 2020 new object types are server-driven: the server describes the UI in ABAP and the client "
-            "has two renderers, one for form-based and one for source-based objects. "
-            "Number range objects were the first, in 2020. A new IDE needs two editors, not 88.")
+            "Today all new object types are server-driven: number range objects were the first, in 2020. "
+            "The server describes the UI in ABAP and the client has two renderers, one for form-based and "
+            "one for source-based objects. A new IDE needs two editors, not 88.")
 
 LINE = 400
 
@@ -38,12 +38,11 @@ for i, n in enumerate(["1", "2", "n"]):
     d.card(x, 180, f"Editor {n}|Java UI", "coding", w=150, h=80)
     d.card(x, 540, f"Object|type {n}", "write", w=150, h=80)
     d.arrow(f"M{x + 77} 260V536")
-d.note(306, 112, "every new type: Java and ABAP")
 d.note(306, 740, "88 editors on BTP ABAP (2025)")
 d.note(306, 768, "doesn't scale")
 
 # after
-d.group(612, 16, 564, 868, "Since 2020: server-driven")
+d.group(612, 16, 564, 868, "Today: server-driven")
 split(612, 564)
 for i, (r, o) in enumerate([("Form-based|renderer", "All form-based|object types"),
                             ("Source-based|renderer", "All source-based|object types")]):
@@ -51,7 +50,6 @@ for i, (r, o) in enumerate([("Form-based|renderer", "All form-based|object types
     d.card(x, 180, r, "coding", w=220, h=80)
     stack(x, 540, o, 220, 80)
     d.arrow(f"M{x + 113} 260V536")
-d.note(894, 112, "UI described in ABAP, drawn by the client")
 d.note(894, 740, "first one: number range objects")
 d.note(894, 768, "a new IDE needs 2 editors, not 88")
 

@@ -20,7 +20,7 @@ d = Diagram("ABAP Development Tools architecture",
             "3 It talks to the ABAP server over RFC or HTTP. The server offers the ADT REST APIs, one API for "
             "every release from SAP NetWeaver 7.3 EHP1 SP04, and the object types: form-based and source-based. "
             "4 Scripts such as sapcli or abap-adt-api skip the client layer and call the REST APIs over HTTP "
-            "themselves, so whatever the client layer would do, they write themselves.")
+            "themselves.")
 
 LW = 880  # width of the IDE and client-layer groups; scripts take the column on the right
 

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">ADT editors before and after 2020</title>
-<desc id="d">Before 2020 every object type had its own editor: the UI in Java on the client, the persistence in ABAP on the server; the SAP BTP ABAP environment alone needs 88 editors as of 2025. Since 2020 new object types are server-driven: the server describes the UI in ABAP and the client has two renderers, one for form-based and one for source-based objects. Number range objects were the first, in 2020. A new IDE needs two editors, not 88.</desc>
+<desc id="d">Before 2020 every object type had its own editor: the UI in Java on the client, the persistence in ABAP on the server; the SAP BTP ABAP environment alone needs 88 editors as of 2025. Today all new object types are server-driven: number range objects were the first, in 2020. The server describes the UI in ABAP and the client has two renderers, one for form-based and one for source-based objects. A new IDE needs two editors, not 88.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -57,11 +57,10 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="490.0" y="575.0" class="ag" text-anchor="middle" >Object</text>
 <text x="490.0" y="599.0" class="ag" text-anchor="middle" >type n</text>
 <path d="M489 260V536" class="flow"/>
-<text x="306" y="112" class="lb" text-anchor="middle" >every new type: Java and ABAP</text>
 <text x="306" y="740" class="lb" text-anchor="middle" >88 editors on BTP ABAP (2025)</text>
 <text x="306" y="768" class="lb" text-anchor="middle" >doesn't scale</text>
 <rect x="612" y="16" width="564" height="868" rx="12" class="grp"/>
-<text x="894.0" y="52" class="gt" text-anchor="middle" >Since 2020: server-driven</text>
+<text x="894.0" y="52" class="gt" text-anchor="middle" >Today: server-driven</text>
 <path d="M628 400H1160" stroke="#5b6675" stroke-width="2" stroke-dasharray="9 7"/>
 <text x="636" y="386" class="lb" text-anchor="start" >Client</text>
 <text x="636" y="430" class="lb" text-anchor="start" >Server</text>
@@ -87,7 +86,6 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="1021.0" y="575.0" class="ag" text-anchor="middle" >All source-based</text>
 <text x="1021.0" y="599.0" class="ag" text-anchor="middle" >object types</text>
 <path d="M1021 260V536" class="flow"/>
-<text x="894" y="112" class="lb" text-anchor="middle" >UI described in ABAP, drawn by the client</text>
 <text x="894" y="740" class="lb" text-anchor="middle" >first one: number range objects</text>
 <text x="894" y="768" class="lb" text-anchor="middle" >a new IDE needs 2 editors, not 88</text>
 </svg>
