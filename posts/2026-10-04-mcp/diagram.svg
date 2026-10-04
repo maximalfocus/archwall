@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">MCP architecture</title>
-<desc id="d">1 The host, an AI app like Claude Code or VS Code, makes one MCP client per server; each client keeps one dedicated connection. 2 Transport: stdio for a local server on the same machine, usually one client; Streamable HTTP (POST, optional SSE, OAuth recommended) for a remote server that serves many clients. Both carry the same JSON-RPC 2.0 messages. 3 The server exposes tools, resources and prompts, found with */list and used with resources/read, prompts/get or tools/call. 4 Every request carries its protocol version and client capabilities in _meta, so the server keeps no session; server/discover returns versions and capabilities; a server can ask the user for input through elicitation; subscriptions/listen opens a stream of change notifications.</desc>
+<desc id="d">1 The host, an AI app like Claude Code or VS Code, makes one MCP client per server; each client keeps one dedicated connection. 2 Transport: stdio for a local server on the same machine, usually one client; Streamable HTTP (POST, optional SSE, OAuth recommended) for a remote server that serves many clients. Both carry the same JSON-RPC 2.0 messages both ways: requests out, results and notifications back. 3 The server exposes tools, resources and prompts, found with */list and used with resources/read, prompts/get or tools/call. 4 Every request carries its protocol version and client capabilities in _meta, so the server keeps no session; server/discover returns versions and capabilities; a server can ask the user for input through elicitation; subscriptions/listen opens a stream of change notifications.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -51,8 +51,10 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="300.0" y="330" class="lb" text-anchor="middle" >the host merges every server's tools</text>
 <text x="300.0" y="350" class="lb" text-anchor="middle" >into one list for the LLM, and routes each call</text>
 <text x="300.0" y="370" class="lb" text-anchor="middle" >to the client that owns the tool</text>
-<path d="M576 244H624" class="flow"/>
-<text x="600" y="234" class="lb" text-anchor="middle" >calls</text>
+<path d="M576 226H624" class="flow"/>
+<text x="600" y="216" class="lb" text-anchor="middle" >call</text>
+<path d="M624 262H576" class="flow"/>
+<text x="600" y="282" class="lb" text-anchor="middle" >result</text>
 <rect x="624" y="16" width="552" height="400" rx="12" class="grp"/>
 <circle cx="813.25" cy="39" r="11" class="num"/>
 <text x="813.25" y="44" class="numt" text-anchor="middle" >2</text>
@@ -76,7 +78,10 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="884" y="310" class="lb" text-anchor="start" >bearer token, API key, headers</text>
 <text x="884" y="330" class="lb" text-anchor="start" >OAuth recommended</text>
 <text x="900.0" y="400" class="lb" text-anchor="middle" >same JSON-RPC 2.0 messages on both</text>
-<path d="M900.0 416V446" class="flow"/>
+<path d="M860.0 416V446" class="flow"/>
+<text x="848.0" y="436" class="lb" text-anchor="end" >requests</text>
+<path d="M940.0 446V416" class="flow"/>
+<text x="952.0" y="436" class="lb" text-anchor="start" >results, notifications</text>
 <rect x="624" y="446" width="552" height="370" rx="12" class="grp"/>
 <circle cx="781.75" cy="469" r="11" class="num"/>
 <text x="781.75" y="474" class="numt" text-anchor="middle" >3</text>
@@ -106,8 +111,6 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="916" y="706" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="1034.0" y="724.0" class="ag" text-anchor="middle" >Sentry</text>
 <text x="1034.0" y="744.0" class="ag" text-anchor="middle" >remote, HTTP</text>
-<path d="M624 626H576" class="flow"/>
-<text x="600" y="616" class="lb" text-anchor="middle" >result</text>
 <rect x="24" y="446" width="552" height="370" rx="12" class="grp"/>
 <circle cx="97.75" cy="469" r="11" class="num"/>
 <text x="97.75" y="474" class="numt" text-anchor="middle" >4</text>
