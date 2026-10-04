@@ -111,6 +111,8 @@ def load_posts():
         hanzi = len(re.findall(r"[一-鿿]", zh))
         if words > MAX_WORDS_EN or hanzi > MAX_HANZI_ZH:
             print(f"warning: {d.name} is long (en {words} words, zh {hanzi} hanzi; limit {MAX_WORDS_EN}/{MAX_HANZI_ZH})")
+        else:
+            print(f"{d.name}: en {words} words, zh {hanzi} hanzi")
         for f in [meta["figure"]] + [x["file"] for x in meta.get("figures", [])]:
             if not (d / f).exists():
                 sys.exit(f"error: {d.name}: figure {f} missing")

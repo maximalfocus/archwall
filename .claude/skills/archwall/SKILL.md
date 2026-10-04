@@ -21,15 +21,21 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
 2. **Research.** Clone repos shallowly into the scratchpad. Read the project's own architecture or
    "how it works" docs and the package manifests before code. Note the commit hash: claims and the
    diagram docstring cite it. Every number and claim must be in the source.
+   - Read the manifest's optional parts too (`optional-dependencies`, extras, feature flags). A feature
+     that needs an extra, a flag or a config setting is labelled as such, in the text and the picture.
+   - Docs simplify. Where the docs and the code disagree, the code wins; if you can't settle it, leave
+     the claim out (graphify: the docs said 25 languages in one place and about 40 in another).
 3. **Diagram.** `posts/<YYYY-MM-DD-slug>/diagram.py` → `diagram.svg`, the home-page card. If one picture
    can't hold it (e.g. overview + a data model + an integration), add `<name>.py` → `<name>.svg` and list
    them under `[[figures]]` in `meta.toml`; place each with `![](<name>.svg)` in both bodies.
 4. **Look at it.** `python3 build.py && python3 tools/render.py posts/<slug>`, then Read every PNG in
    `_render/<slug>/`. Fix overflow, overlap, arrows through text, notes that should be arrow labels,
-   colours that break the role meanings. Repeat until clean; a diagram nobody looked at is not done.
+   colours that break the role meanings. Then check what the picture claims, against the code: what
+   each arrow carries, which stage each part sits in, and that every stage really produces what the
+   next one takes. Repeat until clean; a diagram nobody looked at is not done.
 5. **Text.** `meta.toml` (titles, date, tags, figure, alt_zh/alt_en, source; captions for extra
-   figures), `en.md`, `zh.md`: same content, plain voice. `build.py` warns past 300 words / 300 hanzi;
-   no warning allowed. The diagrams carry few words, so the details go here.
+   figures), `en.md`, `zh.md`: same content, plain voice. `build.py` prints each post's counts and warns past
+   300 words / 300 hanzi; no warning allowed. Quote its counts in the PR, not your own. The diagrams carry few words, so the details go here.
 6. **Commit, push, PR.** The repo is maximalfocus/archwall and gh's active account is usually another
    one: `gh auth switch -u maximalfocus`, create the PR (what the diagrams show, source + commit,
    word counts), switch back. The git hooks rebuild the preview on commit; give the owner the link
