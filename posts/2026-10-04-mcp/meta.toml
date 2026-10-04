@@ -1,0 +1,8 @@
+title_zh = "MCP：AI 应用怎么接上外部工具和数据"
+title_en = "MCP: how AI apps plug into tools and data"
+date = "2026-10-04"
+tags = ["protocol", "agents", "tools", "client-server"]
+figure = "diagram.svg"
+alt_zh = "MCP 架构：宿主应用给每个服务端开一个客户端；本地走 stdio，远程走 Streamable HTTP；服务端提供工具、资源、提示词；每个请求自带版本和能力，服务端不记会话"
+alt_en = "MCP architecture: the host app makes one client per server; local servers use stdio, remote ones Streamable HTTP; servers offer tools, resources and prompts; every request carries its version and capabilities, so servers keep no session"
+source = "https://modelcontextprotocol.io/docs/learn/architecture"

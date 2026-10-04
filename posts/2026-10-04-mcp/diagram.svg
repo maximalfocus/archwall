@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">MCP architecture</title>
+<desc id="d">1 The host, an AI app like Claude Code or VS Code, makes one MCP client per server; each client keeps one dedicated connection. 2 Transport: stdio for a local server on the same machine, usually one client; Streamable HTTP (POST, optional SSE, OAuth recommended) for a remote server that serves many clients. Both carry the same JSON-RPC 2.0 messages. 3 The server exposes tools, resources and prompts, found with */list and used with */get or tools/call. 4 Every request carries its protocol version and client capabilities in _meta, so the server keeps no session; server/discover returns versions and capabilities; a server can ask the user for input through elicitation; subscriptions/listen opens a stream of change notifications.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:21px;font-weight:700}
+.st{font-size:16px;font-weight:700}
+.ag{font-size:15px}
+.q{font-size:14px;fill:#3d4a5c}
+.lb{font-size:13px;fill:#5b6675}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:13px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="400" rx="12" class="grp"/>
+<circle cx="208.0" cy="39" r="11" class="num"/>
+<text x="208.0" y="44" class="numt" text-anchor="middle" >1</text>
+<text x="224.0" y="46" class="gt" text-anchor="start" >Host: the AI app</text>
+<rect x="36" y="60" width="528" height="100" rx="9" class="sub"/>
+<text x="300.0" y="84" class="st" text-anchor="middle" >Claude Code, Claude Desktop, VS Code …</text>
+<rect x="154" y="100" width="268" height="48" rx="8" class="agent"/>
+<rect x="154" y="110" width="5" height="28" rx="2" fill="#2f9e6e"/>
+<text x="291.0" y="130.0" class="ag" text-anchor="middle" >LLM + conversation</text>
+<rect x="36" y="176" width="528" height="228" rx="9" class="sub"/>
+<text x="300.0" y="200" class="st" text-anchor="middle" >One MCP client per server</text>
+<rect x="54" y="220" width="112" height="48" rx="8" class="agent"/>
+<rect x="54" y="230" width="5" height="28" rx="2" fill="#2f6fd6"/>
+<text x="113.0" y="250.0" class="ag" text-anchor="middle" >Client 1</text>
+<rect x="182" y="220" width="112" height="48" rx="8" class="agent"/>
+<rect x="182" y="230" width="5" height="28" rx="2" fill="#2f6fd6"/>
+<text x="241.0" y="250.0" class="ag" text-anchor="middle" >Client 2</text>
+<rect x="310" y="220" width="112" height="48" rx="8" class="agent"/>
+<rect x="310" y="230" width="5" height="28" rx="2" fill="#2f6fd6"/>
+<text x="369.0" y="250.0" class="ag" text-anchor="middle" >Client 3</text>
+<rect x="438" y="220" width="112" height="48" rx="8" class="agent"/>
+<rect x="438" y="230" width="5" height="28" rx="2" fill="#2f6fd6"/>
+<text x="497.0" y="250.0" class="ag" text-anchor="middle" >Client 4</text>
+<text x="300.0" y="300" class="lb" text-anchor="middle" >each client keeps one dedicated connection</text>
+<text x="300.0" y="330" class="lb" text-anchor="middle" >the host merges every server's tools</text>
+<text x="300.0" y="350" class="lb" text-anchor="middle" >into one list for the LLM, and routes each call</text>
+<text x="300.0" y="370" class="lb" text-anchor="middle" >to the client that owns the tool</text>
+<path d="M576 244H624" class="flow"/>
+<text x="600" y="234" class="lb" text-anchor="middle" >calls</text>
+<rect x="624" y="16" width="552" height="400" rx="12" class="grp"/>
+<circle cx="813.25" cy="39" r="11" class="num"/>
+<text x="813.25" y="44" class="numt" text-anchor="middle" >2</text>
+<text x="829.25" y="46" class="gt" text-anchor="start" >Transport layer</text>
+<rect x="636" y="60" width="528" height="150" rx="9" class="sub"/>
+<text x="900.0" y="84" class="st" text-anchor="middle" >Local: same machine</text>
+<rect x="654" y="104" width="200" height="64" rx="8" class="agent"/>
+<rect x="654" y="114" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="757.0" y="132.0" class="ag" text-anchor="middle" >stdio</text>
+<text x="757.0" y="152.0" class="ag" text-anchor="middle" >stdin / stdout</text>
+<text x="884" y="124" class="lb" text-anchor="start" >the host starts the server</text>
+<text x="884" y="144" class="lb" text-anchor="start" >usually serves one client</text>
+<text x="884" y="164" class="lb" text-anchor="start" >credentials from the environment</text>
+<rect x="636" y="226" width="528" height="150" rx="9" class="sub"/>
+<text x="900.0" y="250" class="st" text-anchor="middle" >Remote: over the network</text>
+<rect x="654" y="270" width="200" height="64" rx="8" class="agent"/>
+<rect x="654" y="280" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="757.0" y="298.0" class="ag" text-anchor="middle" >Streamable HTTP</text>
+<text x="757.0" y="318.0" class="ag" text-anchor="middle" >POST + optional SSE</text>
+<text x="884" y="290" class="lb" text-anchor="start" >serves many clients</text>
+<text x="884" y="310" class="lb" text-anchor="start" >bearer token, API key, headers</text>
+<text x="884" y="330" class="lb" text-anchor="start" >OAuth recommended</text>
+<text x="900.0" y="400" class="lb" text-anchor="middle" >same JSON-RPC 2.0 messages on both</text>
+<path d="M900.0 416V446" class="flow"/>
+<rect x="624" y="446" width="552" height="370" rx="12" class="grp"/>
+<circle cx="781.75" cy="469" r="11" class="num"/>
+<text x="781.75" y="474" class="numt" text-anchor="middle" >3</text>
+<text x="797.75" y="476" class="gt" text-anchor="start" >Server: gives context</text>
+<rect x="636" y="490" width="528" height="150" rx="9" class="sub"/>
+<text x="900.0" y="514" class="st" text-anchor="middle" >Three primitives</text>
+<rect x="654" y="534" width="152" height="64" rx="8" class="agent"/>
+<rect x="654" y="544" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="733.0" y="562.0" class="ag" text-anchor="middle" >Tools</text>
+<text x="733.0" y="582.0" class="ag" text-anchor="middle" >tools/call</text>
+<rect x="824" y="534" width="152" height="64" rx="8" class="agent"/>
+<rect x="824" y="544" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="562.0" class="ag" text-anchor="middle" >Resources</text>
+<text x="903.0" y="582.0" class="ag" text-anchor="middle" >resources/read</text>
+<rect x="994" y="534" width="152" height="64" rx="8" class="agent"/>
+<rect x="994" y="544" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="1073.0" y="562.0" class="ag" text-anchor="middle" >Prompts</text>
+<text x="1073.0" y="582.0" class="ag" text-anchor="middle" >prompts/get</text>
+<text x="900.0" y="624" class="lb" text-anchor="middle" >find them first with tools/list, resources/list …</text>
+<rect x="636" y="652" width="528" height="152" rx="9" class="sub"/>
+<text x="900.0" y="676" class="st" text-anchor="middle" >Examples</text>
+<rect x="654" y="696" width="230" height="64" rx="8" class="agent"/>
+<rect x="654" y="706" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="772.0" y="724.0" class="ag" text-anchor="middle" >Filesystem</text>
+<text x="772.0" y="744.0" class="ag" text-anchor="middle" >local, stdio</text>
+<rect x="916" y="696" width="230" height="64" rx="8" class="agent"/>
+<rect x="916" y="706" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="1034.0" y="724.0" class="ag" text-anchor="middle" >Sentry</text>
+<text x="1034.0" y="744.0" class="ag" text-anchor="middle" >remote, HTTP</text>
+<path d="M624 626H576" class="flow"/>
+<text x="600" y="616" class="lb" text-anchor="middle" >result</text>
+<rect x="24" y="446" width="552" height="370" rx="12" class="grp"/>
+<circle cx="97.75" cy="469" r="11" class="num"/>
+<text x="97.75" y="474" class="numt" text-anchor="middle" >4</text>
+<text x="113.75" y="476" class="gt" text-anchor="start" >Data layer: each request stands alone</text>
+<rect x="48" y="498" width="240" height="56" rx="8" class="agent"/>
+<rect x="48" y="508" width="5" height="36" rx="2" fill="#2f9e6e"/>
+<text x="171.0" y="532.0" class="ag" text-anchor="middle" >_meta on every request</text>
+<text x="308" y="531" class="lb" text-anchor="start" >protocol version + client caps</text>
+<rect x="48" y="574" width="240" height="56" rx="8" class="agent"/>
+<rect x="48" y="584" width="5" height="36" rx="2" fill="#2f9e6e"/>
+<text x="171.0" y="608.0" class="ag" text-anchor="middle" >server/discover</text>
+<text x="308" y="607" class="lb" text-anchor="start" >versions, capabilities, identity</text>
+<rect x="48" y="650" width="240" height="56" rx="8" class="agent"/>
+<rect x="48" y="660" width="5" height="36" rx="2" fill="#d64545"/>
+<text x="171.0" y="684.0" class="ag" text-anchor="middle" >elicitation/create</text>
+<text x="308" y="683" class="lb" text-anchor="start" >server asks the user, via the host</text>
+<rect x="48" y="726" width="240" height="56" rx="8" class="agent"/>
+<rect x="48" y="736" width="5" height="36" rx="2" fill="#5b6675"/>
+<text x="171.0" y="760.0" class="ag" text-anchor="middle" >subscriptions/listen</text>
+<text x="308" y="759" class="lb" text-anchor="start" >stream of list_changed notices</text>
+<text x="600" y="868" class="lb" text-anchor="middle" >MCP 2026-07-28 · no session: a stdio process is not a conversation; state that spans requests needs an explicit ID</text>
+</svg>
