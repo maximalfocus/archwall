@@ -23,9 +23,10 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
    diagram docstring cite it. Every number and claim must be in the source. Read the manifest's
    optional parts too (`optional-dependencies`, extras, feature flags), and check the docs against
    each other and the code.
-3. **Diagram.** `posts/<YYYY-MM-DD-slug>/diagram.py` → `diagram.svg`, the home-page card. If one picture
-   can't hold it (e.g. overview + a data model + an integration), add `<name>.py` → `<name>.svg` and list
-   them under `[[figures]]` in `meta.toml`; place each with `![](<name>.svg)` in both bodies.
+3. **Diagrams.** `posts/<YYYY-MM-DD-slug>/diagram.py` → `diagram.svg`, the home-page card: an overview of
+   the whole system. Then one `<name>.py` → `<name>.svg` for every phase, part or concern the overview only names,
+   with no cap on the count, until a non-technical manager could explain the architecture from the pictures alone.
+   List them under `[[figures]]` in `meta.toml`; place each with `![](<name>.svg)` in both bodies.
 4. **Look at it.** `python3 build.py && python3 tools/render.py posts/<slug>`, then Read every PNG in
    `_render/<slug>/`. Fix overflow, overlap, arrows through text, notes that should be arrow labels,
    colours that break the role meanings. Then check what the picture claims, against the code: what
