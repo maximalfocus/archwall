@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Dream-RSI learned behaviour</title>
+<desc id="d">On the ConvDiv kernel task. 1 Scores climb: as the round-best score rises, the learned policy spends less, cutting tries per round from 110 to 50. 2 Progress stalls: when the score flattens it spends more again, and those wider rounds line up with the next jumps in score. 3 History as tips: turning past runs into direction tips in the prompt did worse than no tips, for both the fixed policy and Dream-RSI, at the same budget; the tips narrow the search. 4 History as a world: replaying the history, as Dream-RSI does, beats using it as tips.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="209.0" cy="43" r="14" class="num"/>
+<text x="209.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="229.0" y="52" class="gt" text-anchor="start" >Scores climb</text>
+<rect x="54" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="107.0" class="ag" text-anchor="middle" >Round-best score</text>
+<text x="303.0" y="131.0" class="ag" text-anchor="middle" >rises</text>
+<rect x="54" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="180" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="197.0" class="ag" text-anchor="middle" >Policy spends less</text>
+<text x="303.0" y="221.0" class="ag" text-anchor="middle" >110 → 50 tries a round</text>
+<path d="M300.0 144V168" class="flow"/>
+<text x="300.0" y="316" class="lb" text-anchor="middle" >ConvDiv kernel task</text>
+<rect x="624" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="788.75" cy="43" r="14" class="num"/>
+<text x="788.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="808.75" y="52" class="gt" text-anchor="start" >Progress stalls</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >Score</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >flattens</text>
+<rect x="654" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="180" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="197.0" class="ag" text-anchor="middle" >Policy spends more</text>
+<text x="903.0" y="221.0" class="ag" text-anchor="middle" >wider rounds</text>
+<path d="M900.0 144V168" class="flow"/>
+<text x="900.0" y="316" class="lb" text-anchor="middle" >the next score jumps follow</text>
+<text x="900.0" y="342" class="lb" text-anchor="middle" >these wider rounds</text>
+<rect x="624" y="468" width="552" height="404" rx="12" class="grp"/>
+<circle cx="788.75" cy="495" r="14" class="num"/>
+<text x="788.75" y="501" class="numt" text-anchor="middle" >3</text>
+<text x="808.75" y="504" class="gt" text-anchor="start" >History as tips</text>
+<rect x="654" y="532" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="542" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="559.0" class="ag" text-anchor="middle" >Past runs → tips</text>
+<text x="903.0" y="583.0" class="ag" text-anchor="middle" >written into the prompt</text>
+<rect x="654" y="622" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="632" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="649.0" class="ag" text-anchor="middle" >Did worse than no tips</text>
+<text x="903.0" y="673.0" class="ag" text-anchor="middle" >fixed policy and Dream-RSI</text>
+<path d="M900.0 596V620" class="flow"/>
+<text x="900.0" y="768" class="lb" text-anchor="middle" >tips narrow the search</text>
+<rect x="24" y="468" width="552" height="404" rx="12" class="grp"/>
+<circle cx="168.5" cy="495" r="14" class="num"/>
+<text x="168.5" y="501" class="numt" text-anchor="middle" >4</text>
+<text x="188.5" y="504" class="gt" text-anchor="start" >History as a world</text>
+<rect x="54" y="532" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="542" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >Replay the history</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >what Dream-RSI does</text>
+<rect x="54" y="622" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="632" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="649.0" class="ag" text-anchor="middle" >Beats the tips</text>
+<text x="303.0" y="673.0" class="ag" text-anchor="middle" >same budget</text>
+<path d="M300.0 596V620" class="flow"/>
+<path d="M576 200H622" class="flow"/>
+<text x="600" y="188" class="al" text-anchor="middle" >then</text>
+<path d="M624 628H578" class="flow"/>
+<text x="600" y="616" class="al" text-anchor="middle" >vs</text>
+</svg>

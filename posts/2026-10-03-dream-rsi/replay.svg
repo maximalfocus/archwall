@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Dream-RSI step 2: replay</title>
+<desc id="d">1 Start: a recorded tree from the pool, which never changes; the policy starts fresh and sees only the root. 2 Pick: the policy picks a batch, the root or leaves, up to W, using only what it has seen; hidden scores stay hidden. 3 Reveal: a picked leaf reveals its recorded next step, a picked root reveals the next unopened branch. Nothing runs; results come off disk. Then the policy picks again. 4 Stop and score: replay stops on an empty pick, after K2 rounds, or when the whole tree is seen. The replay score rewards the best result found, charges for every node revealed, and rewards bigger batches.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="256.25" cy="43" r="14" class="num"/>
+<text x="256.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="276.25" y="52" class="gt" text-anchor="start" >Start</text>
+<rect x="54" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="107.0" class="ag" text-anchor="middle" >Recorded tree</text>
+<text x="303.0" y="131.0" class="ag" text-anchor="middle" >from the pool, never changes</text>
+<rect x="54" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="180" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="197.0" class="ag" text-anchor="middle" >Policy sees</text>
+<text x="303.0" y="221.0" class="ag" text-anchor="middle" >only the root</text>
+<path d="M300.0 144V168" class="flow"/>
+<text x="300.0" y="316" class="lb" text-anchor="middle" >starts fresh on every tree</text>
+<rect x="624" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="863.0" cy="43" r="14" class="num"/>
+<text x="863.0" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="883.0" y="52" class="gt" text-anchor="start" >Pick</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >Policy picks a batch</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >the root or leaves, up to W</text>
+<text x="900.0" y="216" class="lb" text-anchor="middle" >uses only what it has seen;</text>
+<text x="900.0" y="242" class="lb" text-anchor="middle" >hidden scores stay hidden</text>
+<rect x="624" y="468" width="552" height="404" rx="12" class="grp"/>
+<circle cx="849.5" cy="495" r="14" class="num"/>
+<text x="849.5" y="501" class="numt" text-anchor="middle" >3</text>
+<text x="869.5" y="504" class="gt" text-anchor="start" >Reveal</text>
+<rect x="654" y="532" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="542" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="559.0" class="ag" text-anchor="middle" >Picked a leaf</text>
+<text x="903.0" y="583.0" class="ag" text-anchor="middle" >its recorded next step</text>
+<rect x="654" y="622" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="632" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="649.0" class="ag" text-anchor="middle" >Picked the root</text>
+<text x="903.0" y="673.0" class="ag" text-anchor="middle" >the next unopened branch</text>
+<text x="900.0" y="768" class="lb" text-anchor="middle" >nothing runs:</text>
+<text x="900.0" y="794" class="lb" text-anchor="middle" >results come off disk</text>
+<rect x="24" y="468" width="552" height="404" rx="12" class="grp"/>
+<circle cx="195.5" cy="495" r="14" class="num"/>
+<text x="195.5" y="501" class="numt" text-anchor="middle" >4</text>
+<text x="215.5" y="504" class="gt" text-anchor="start" >Stop and score</text>
+<rect x="54" y="532" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="542" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >Stop</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >empty pick, K₂ rounds, all seen</text>
+<rect x="54" y="622" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="632" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="303.0" y="649.0" class="ag" text-anchor="middle" >Replay score</text>
+<text x="303.0" y="673.0" class="ag" text-anchor="middle" >best result, tries, batching</text>
+<path d="M300.0 596V620" class="flow"/>
+<text x="300.0" y="768" class="lb" text-anchor="middle" >charged for every node it reveals,</text>
+<text x="300.0" y="794" class="lb" text-anchor="middle" >rewarded for running them in batches</text>
+<path d="M576 160H622" class="flow"/>
+<text x="600" y="148" class="al" text-anchor="middle" >root</text>
+<path d="M810.0 420V466" class="flow"/>
+<text x="760.0" y="450" class="al" text-anchor="middle" >batch</text>
+<path d="M990.0 468V422" class="flow back"/>
+<text x="1060.0" y="450" class="al" text-anchor="middle" >next round</text>
+<path d="M624 668H578" class="flow"/>
+<text x="600" y="656" class="al" text-anchor="middle" >stop</text>
+</svg>

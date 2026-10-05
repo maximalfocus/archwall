@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Dream-RSI step 1: one online run</title>
+<desc id="d">1 Pick: the exploration policy, code that stays fixed for the whole run, picks a batch of up to W nodes, one per worker. 2 Try: for each pick a coding agent (Gemini CLI in the tests) resumes the parent's saved workspace, first reads every past try, wins and failures, then writes a new attempt: a program and a proposal. 3 Score: a fixed evaluator scores it and writes diagnostics; the result becomes a new child node in the tree. 4 Again or stop: the next round picks again from the new leaves; the run stops when the policy picks nothing or after K1 rounds, and the finished tree joins the pool.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="263.0" cy="43" r="14" class="num"/>
+<text x="263.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="283.0" y="52" class="gt" text-anchor="start" >Pick</text>
+<rect x="54" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="107.0" class="ag" text-anchor="middle" >Exploration policy</text>
+<text x="303.0" y="131.0" class="ag" text-anchor="middle" >code, fixed for the run</text>
+<rect x="54" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="180" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="197.0" class="ag" text-anchor="middle" >Batch of picks</text>
+<text x="303.0" y="221.0" class="ag" text-anchor="middle" >the root or leaves, up to W</text>
+<path d="M300.0 144V168" class="flow"/>
+<text x="300.0" y="316" class="lb" text-anchor="middle" >root = open a new branch</text>
+<text x="300.0" y="342" class="lb" text-anchor="middle" >leaf = next step on its branch</text>
+<rect x="624" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="869.75" cy="43" r="14" class="num"/>
+<text x="869.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="889.75" y="52" class="gt" text-anchor="start" >Try</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >Coding agent</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >resumes the parent's workspace</text>
+<rect x="654" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="180" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="197.0" class="ag" text-anchor="middle" >Reads every past try</text>
+<text x="903.0" y="221.0" class="ag" text-anchor="middle" >wins and failures</text>
+<path d="M900.0 144V168" class="flow"/>
+<rect x="654" y="260" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="270" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="287.0" class="ag" text-anchor="middle" >Writes a new attempt</text>
+<text x="903.0" y="311.0" class="ag" text-anchor="middle" >program + proposal</text>
+<path d="M900.0 234V258" class="flow"/>
+<text x="900.0" y="368" class="lb" text-anchor="middle" >in the tests: Gemini CLI, one per worker</text>
+<rect x="624" y="468" width="552" height="404" rx="12" class="grp"/>
+<circle cx="856.25" cy="495" r="14" class="num"/>
+<text x="856.25" y="501" class="numt" text-anchor="middle" >3</text>
+<text x="876.25" y="504" class="gt" text-anchor="start" >Score</text>
+<rect x="654" y="532" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="542" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="559.0" class="ag" text-anchor="middle" >Fixed evaluator</text>
+<text x="903.0" y="583.0" class="ag" text-anchor="middle" >score + diagnostics</text>
+<rect x="654" y="622" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="632" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="649.0" class="ag" text-anchor="middle" >New child node</text>
+<text x="903.0" y="673.0" class="ag" text-anchor="middle" >added to the tree</text>
+<path d="M900.0 596V620" class="flow"/>
+<text x="900.0" y="768" class="lb" text-anchor="middle" >same evaluator every round</text>
+<rect x="24" y="468" width="552" height="404" rx="12" class="grp"/>
+<circle cx="202.25" cy="495" r="14" class="num"/>
+<text x="202.25" y="501" class="numt" text-anchor="middle" >4</text>
+<text x="222.25" y="504" class="gt" text-anchor="start" >Again or stop</text>
+<rect x="54" y="532" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="542" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >Next round</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >new leaves to pick from</text>
+<rect x="54" y="652" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="662" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="679.0" class="ag" text-anchor="middle" >Stop</text>
+<text x="303.0" y="703.0" class="ag" text-anchor="middle" >empty pick or K₁ rounds</text>
+<path d="M300.0 716V758" class="flow"/>
+<rect x="100" y="760" width="400" height="46" rx="23.0" class="front"/>
+<text x="300.0" y="789.0" class="q" text-anchor="middle" >finished tree joins the pool</text>
+<path d="M576 200H622" class="flow"/>
+<text x="600" y="188" class="al" text-anchor="middle" >picks</text>
+<path d="M900.0 420V466" class="flow"/>
+<text x="950.0" y="450" class="al" text-anchor="middle" >attempt</text>
+<path d="M624 628H578" class="flow"/>
+<text x="600" y="616" class="al" text-anchor="middle" >tree</text>
+<path d="M300.0 532V422" class="flow back"/>
+<text x="370.0" y="450" class="al" text-anchor="middle" >next round</text>
+</svg>

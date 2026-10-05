@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Dream-RSI results</title>
+<desc id="d">1 The test: both arms start from the same hand-written parallel-refine policy, so round 1 is identical; Recursive Fixed Exploration never changes it, Dream-RSI rewrites it between rounds. Same agent, evaluator and budget; cost is the total number of agent calls. 2 Lasso path solver, Gemini-3.1 Pro, 5 rounds: 317 calls against 550, average runtime 2931 ms against 3587 ms on 6 held-out datasets, and 162 times fewer calls than SimpleTES (51,200); faster than sklearn and glmnet on all 6. 3 Math, 3 problems, under 1,000 generations: sum-difference 1.145427, the best listed; circle packing 2.635983, tied best; autocorrelation competitive but not best. 4 GPU kernels, 4 KernelBench tasks: VGG16 and LayerNorm reach the same result with 2.43 and 1.79 times fewer generations; ConvDiv and ConvMax score 2.09 and 1.44 times higher on the same budget.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="236.0" cy="43" r="14" class="num"/>
+<text x="236.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="256.0" y="52" class="gt" text-anchor="start" >The test</text>
+<rect x="54" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="107.0" class="ag" text-anchor="middle" >Same start policy</text>
+<text x="303.0" y="131.0" class="ag" text-anchor="middle" >parallel refine, round 1 identical</text>
+<rect x="54" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="180" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="197.0" class="ag" text-anchor="middle" >Fixed exploration</text>
+<text x="303.0" y="221.0" class="ag" text-anchor="middle" >never changes the policy</text>
+<rect x="54" y="260" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="270" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="287.0" class="ag" text-anchor="middle" >Dream-RSI</text>
+<text x="303.0" y="311.0" class="ag" text-anchor="middle" >rewrites it between rounds</text>
+<text x="300.0" y="368" class="lb" text-anchor="middle" >same agent, evaluator, budget</text>
+<text x="300.0" y="394" class="lb" text-anchor="middle" >cost = total agent calls</text>
+<rect x="624" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="775.25" cy="43" r="14" class="num"/>
+<text x="775.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="795.25" y="52" class="gt" text-anchor="start" >Lasso path solver</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >317 vs 550 calls</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >Gemini-3.1 Pro, 5 rounds</text>
+<rect x="654" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="180" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="197.0" class="ag" text-anchor="middle" >2931 vs 3587 ms</text>
+<text x="903.0" y="221.0" class="ag" text-anchor="middle" >average on 6 held-out datasets</text>
+<rect x="654" y="260" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="270" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="287.0" class="ag" text-anchor="middle" >162× fewer calls</text>
+<text x="903.0" y="311.0" class="ag" text-anchor="middle" >than SimpleTES (51,200)</text>
+<text x="900.0" y="368" class="lb" text-anchor="middle" >faster than sklearn and glmnet on all 6</text>
+<rect x="624" y="468" width="552" height="404" rx="12" class="grp"/>
+<circle cx="782.0" cy="495" r="14" class="num"/>
+<text x="782.0" y="501" class="numt" text-anchor="middle" >3</text>
+<text x="802.0" y="504" class="gt" text-anchor="start" >Math, 3 problems</text>
+<rect x="654" y="532" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="542" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="559.0" class="ag" text-anchor="middle" >Sum–difference</text>
+<text x="903.0" y="583.0" class="ag" text-anchor="middle" >1.145427, best listed</text>
+<rect x="654" y="622" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="632" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="649.0" class="ag" text-anchor="middle" >Circle packing</text>
+<text x="903.0" y="673.0" class="ag" text-anchor="middle" >2.635983, tied best</text>
+<rect x="654" y="712" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="722" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="739.0" class="ag" text-anchor="middle" >Autocorrelation</text>
+<text x="903.0" y="763.0" class="ag" text-anchor="middle" >competitive, not best</text>
+<text x="900.0" y="820" class="lb" text-anchor="middle" >under 1,000 generations</text>
+<text x="900.0" y="846" class="lb" text-anchor="middle" >(SimpleTES: 51,200)</text>
+<rect x="24" y="468" width="552" height="404" rx="12" class="grp"/>
+<circle cx="155.0" cy="495" r="14" class="num"/>
+<text x="155.0" y="501" class="numt" text-anchor="middle" >4</text>
+<text x="175.0" y="504" class="gt" text-anchor="start" >GPU kernels, 4 tasks</text>
+<rect x="54" y="532" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="542" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >VGG16 2.43×, LayerNorm 1.79×</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >fewer generations, same result</text>
+<rect x="54" y="622" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="632" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="303.0" y="649.0" class="ag" text-anchor="middle" >ConvDiv 2.09×, ConvMax 1.44×</text>
+<text x="303.0" y="673.0" class="ag" text-anchor="middle" >higher score, same budget</text>
+<text x="300.0" y="768" class="lb" text-anchor="middle" >KernelBench, Gemini-3.1 Pro</text>
+</svg>
