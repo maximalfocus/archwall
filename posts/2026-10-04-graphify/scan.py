@@ -51,9 +51,10 @@ d = Diagram("graphify step 1: read the folder",
             "are skipped by name and listed, never read. "
             "3 Convert: Word and Excel files become Markdown with the office extra; Google Docs shortcuts are "
             "opt-in and need the gws command-line tool. The Markdown lands in graphify-out/converted. "
-            "4 Sort and check: every file becomes code, document, paper (a PDF needs the pdf extra), image or "
-            "video; unknown files are listed and left out. Under 50,000 words graphify says you may not need a "
-            "graph; over 500,000 words or 500 files it warns the LLM pass will be costly.")
+            "4 Sort and check: every file becomes code, document, paper, image or video; unknown files are "
+            "listed and left out. PDF text extraction (word counts, headless runs) needs the pdf extra; "
+            "under 50,000 words graphify says you may not need a graph; over 500,000 words or 500 files it "
+            "warns the LLM pass will be costly.")
 
 d.group(L, T1, W, H1, "What goes in", 1)
 col(L, T1, [("Your folder|or several, or a GitHub URL", "data"),
@@ -73,7 +74,7 @@ col(R, T2, [("Word, Excel → Markdown|office extra", "coding"),
 d.note(R + W / 2, T2 + 300, "saved in graphify-out/converted/")
 
 d.group(L, T2, W, H2, "Sort and check", 4)
-grid(L, T2, [("Code", "data"), ("Document", "data"), ("Paper (pdf extra)|PDF or reads like one", "data"),
+grid(L, T2, [("Code", "data"), ("Document", "data"), ("Paper|PDF or reads like one", "data"),
              ("Image", "data"), ("Video, audio", "data"), ("Unknown|listed, left out", "data")],
      h=64, gap=12, y0=60)
 d.note(L + W / 2, T2 + 318, "under 50,000 words: may not need a graph")
