@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">idd-plan modes</title>
+<desc id="d">/idd-plan picks its mode from what exists: no PRD yet, or an exact pair. 1 New product, greenfield: ask about the product one decision at a time, draft PRD.md and PROGRESS.md with small slices in dependency order, and push a private, protected repository, or only show the drafts if you ask for a draft. It picks the technology itself unless that changes the product. 2 Existing code, reconstruct: read the whole repository with its tests, docs and history, describe what it does at one named commit, and record one verified baseline; past commits never become slices. The --scope flag limits it to some paths in a repository too big to read at once. Both then push the PRD repository and go on in default mode. 3 Default, what next: read the PRD, the tracker and GitHub without changing them, pick one next issue at the earliest unmet dependency, and write an issue contract with outcome, acceptance and non-goals. 4 Reconcile, the tracker: run by the --reconcile flag or automatically after /idd-land; edit PROGRESS.md only, never PRD.md; run the gates, then commit to the batch pull request, which is merged at a milestone. Stale requirement text is reported, and fixed by your own docs(prd) pull request. No mode writes a plan file or a backlog, and there is at most one next issue.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >/idd-plan picks its mode from what exists: no PRD yet, or an exact pair</text>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="134.75" cy="111" r="14" class="num"/>
+<text x="134.75" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="154.75" y="120" class="gt" text-anchor="start" >New product: greenfield</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Ask about the product</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >one decision at a time</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Draft PRD.md, PROGRESS.md</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >small slices, in dependency order</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Push a private repo, protected</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >or just drafts, if you ask</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Picks the tech itself, unless</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >it changes the product</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="714.5" cy="111" r="14" class="num"/>
+<text x="714.5" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="734.5" y="120" class="gt" text-anchor="start" >Existing code: reconstruct</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Read the whole repo</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >code, tests, docs, history</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Describe what it does</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >at one named commit</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >One verified baseline</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >past commits never become slices</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Flag --scope &lt;paths&gt;: for a repo</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >too big to read at once</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="761.75" cy="527" r="14" class="num"/>
+<text x="761.75" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="781.75" y="536" class="gt" text-anchor="start" >Default: what next?</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Read PRD, tracker, GitHub</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >read-only</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >One next issue</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >earliest unmet dependency</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Issue contract</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >outcome, acceptance, non-goals</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="141.5" cy="527" r="14" class="num"/>
+<text x="141.5" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="161.5" y="536" class="gt" text-anchor="start" >Reconcile: the tracker</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Flag --reconcile, or</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >automatically after /idd-land</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Edit PROGRESS.md only</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >never PRD.md</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Gates, then the batch PR</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >merged at a milestone</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Stale requirement text is reported,</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >fixed by your own docs(prd) PR</text>
+<path d="M300.0 464V482H900.0V498" class="flow"/>
+<text x="600" y="488" class="al" text-anchor="middle" >PRD pushed</text>
+<path d="M900.0 464V482" stroke="#5b6675" stroke-width="2" fill="none"/>
+<path d="M624 650H578" class="flow"/>
+<text x="600" y="638" class="al" text-anchor="middle" >landed</text>
+<path d="M576 750H622" class="flow back"/>
+<text x="600" y="738" class="al" text-anchor="middle" >next</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >No mode writes a plan file or a backlog; at most one next issue</text>
+</svg>

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">idd-auto loop</title>
+<desc id="d">You run /idd-auto with a project, once. 1 Bind the target: the exact PRD and code pair, and if only the code repository is missing it is created, private; read the PRD, the tracker and GitHub fresh at every turn; done means every requirement has landed or been validated, with clean trees and no branch or batch left open. 2 One issue at a time, in a loop: resume active work before starting new; /idd-plan then /idd-issue for the one next issue; /idd-implement, which waits for checks and reviews; /idd-land to merge, close and reconcile; then the next issue. 3 When no issue is left, the whole product: merge the tracker batch, run /idd-acceptance as a required final gate, and turn a product bug into one repair issue under the same slice, back into the loop. A new feature stops for your OK, and the PRD changes first. 4 It stops and never bends: a red check, a conflict or an open product choice becomes one precise blocker; if you can clear it, it asks one question and resumes; it never publishes, promotes or accepts residuals. There is no trace file: each turn reads GitHub and the PRD again. Finishing ends its authority, so a later request needs its own go-ahead.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >You: /idd-auto &lt;project&gt;, once</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="188.75" cy="111" r="14" class="num"/>
+<text x="188.75" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="208.75" y="120" class="gt" text-anchor="start" >Bind the target</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Exact PRD and code pair</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >code repo missing? made, private</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Read PRD, tracker, GitHub</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >fresh at every turn</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Done means</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >every requirement landed or validated</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Done also needs clean trees,</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >no branch or batch left open</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="761.75" cy="111" r="14" class="num"/>
+<text x="761.75" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="781.75" y="120" class="gt" text-anchor="start" >One issue at a time</text>
+<rect x="654" y="148" width="468" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="891.0" y="175.0" class="ag" text-anchor="middle" >Resume active work</text>
+<text x="891.0" y="199.0" class="ag" text-anchor="middle" >before starting new</text>
+<rect x="654" y="228" width="468" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="891.0" y="255.0" class="ag" text-anchor="middle" >/idd-plan, then /idd-issue</text>
+<text x="891.0" y="279.0" class="ag" text-anchor="middle" >the one next issue</text>
+<rect x="654" y="308" width="468" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="891.0" y="335.0" class="ag" text-anchor="middle" >/idd-implement</text>
+<text x="891.0" y="359.0" class="ag" text-anchor="middle" >waits for checks and reviews</text>
+<rect x="654" y="388" width="468" height="64" rx="8" class="agent"/>
+<rect x="654" y="398" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="891.0" y="415.0" class="ag" text-anchor="middle" >/idd-land</text>
+<text x="891.0" y="439.0" class="ag" text-anchor="middle" >merge, close, reconcile</text>
+<path d="M1122 420.0H1164V180.0H1124" class="flow back"/>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="741.5" cy="527" r="14" class="num"/>
+<text x="741.5" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="761.5" y="536" class="gt" text-anchor="start" >Then the whole product</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="603.0" class="ag" text-anchor="middle" >Merge the tracker batch</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >/idd-acceptance</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >a required final gate</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Product bug?</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >one repair issue, same slice</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >New feature? Stop for your OK,</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >then the PRD changes first</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="168.5" cy="527" r="14" class="num"/>
+<text x="168.5" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="188.5" y="536" class="gt" text-anchor="start" >Stops, never bends</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Red check, conflict, open choice</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >one precise blocker</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >You can clear it?</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >one question, then resume</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Never</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >publish, promote, accept residuals</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >No trace file: each turn reads</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >GitHub and the PRD again</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >start</text>
+<path d="M1044 464V498" class="flow"/>
+<text x="1100" y="488" class="al" text-anchor="middle" >none left</text>
+<path d="M784 500V466" class="flow back"/>
+<text x="706" y="488" class="al" text-anchor="middle" >repair issue</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Finishing ends its authority: a later request needs its own go-ahead</text>
+</svg>
