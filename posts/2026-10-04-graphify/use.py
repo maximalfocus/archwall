@@ -1,7 +1,7 @@
 """graphify step 4: your assistant asks the graph first.  Drawn from the graphify repo
 (https://github.com/Graphify-Labs/graphify, README.md "Make your assistant always use the graph",
 "Strict mode", "Using the graph directly"; graphify/install.py _claude_pretooluse_hooks (matchers
-Bash|Grep and Read|Glob, hook-guard); graphify/cli.py hook-guard (nudges only when a fresh graph exists;
+Bash|Grep and Read|Glob, hook-guard); graphify/cli.py hook-guard (nudges only when a graph exists;
 --strict blocks the first raw read per session) and query (default budget 2000); graphify/serve.py
 (_bfs, _dfs, _subgraph_to_text, 10 MCP tools); pyproject.toml extra mcp; commit 35adf43).
 Run: python3 use.py
@@ -49,7 +49,7 @@ d = Diagram("graphify step 4: your assistant asks the graph first",
             "assistants get AGENTS.md or a rules file instead. Opt-in strict mode on Claude Code blocks the first "
             "raw file read of a session. "
             "2 The hook: before a Grep or Bash search, and before a Read or Glob, it nudges the assistant to run "
-            "graphify query, only when a fresh graph exists. "
+            "graphify query, only when a graph exists. "
             "3 Ask: the CLI has query for a question, path from A to B, and explain for one concept; an MCP "
             "server (mcp extra) offers the same as tools. "
             "4 The answer: it finds the nodes that match the question, walks out from them breadth-first or "
@@ -64,7 +64,7 @@ d.note(L + W / 2, T1 + 348, "the first raw file read of a session")
 d.group(R, T1, W, H1, "The hook", 2)
 col(R, T1, [("Before Grep or Bash|nudge: graphify query", "review"),
             ("Before Read or Glob|the same nudge", "review")], h=80, gap=32, arrows=False)
-d.note(R + W / 2, T1 + 320, "only when a fresh graph exists")
+d.note(R + W / 2, T1 + 320, "only when a graph exists")
 
 d.group(R, T2, W, H2, "Ask", 3)
 grid(R, T2, [("query|a question", "coding"), ("path|from A to B", "coding"),

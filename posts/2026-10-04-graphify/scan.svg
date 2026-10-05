@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">graphify step 1: read the folder</title>
-<desc id="d">1 What goes in: your folder (or several, or a GitHub URL), and anything you fetch with graphify add: a paper, a web page, a tweet or a video; video URLs need the video extra. 2 Skip: .gitignore is respected, .graphifyignore adds your own rules, build output such as node_modules, dist and virtual envs is pruned, and secret files such as .env, keys and credentials are skipped by name and listed, never read. 3 Convert: Word and Excel files become Markdown with the office extra; Google Docs shortcuts are opt-in and need the gws command-line tool. The Markdown lands in graphify-out/converted. 4 Sort and check: every file becomes code, document, paper, image or video; unknown files are listed and left out. PDF text extraction (word counts, headless runs) needs the pdf extra; under 50,000 words graphify says you may not need a graph; over 500,000 words or 500 files it warns the LLM pass will be costly.</desc>
+<desc id="d">1 What goes in: your folder (or several, or a GitHub URL), and anything you fetch with graphify add: a paper, a web page, a tweet or a video; video URLs need the video extra. 2 Skip: .gitignore is respected, .graphifyignore adds your own rules, build output such as node_modules, dist and virtual envs is pruned, and secret files such as .env, keys and credentials are skipped by name and listed, never read. 3 Convert: Word and Excel files become Markdown with the office extra; Google Docs shortcuts are opt-in and need the gws command-line tool. The Markdown lands in graphify-out/converted. 4 Sort and check: every file becomes code, document, paper, image or video; unknown files are listed and left out. PDF text extraction (word counts, headless runs) needs the pdf extra; under 50,000 words graphify says you may not need a graph; from 500,000 words or 500 files it warns the LLM pass will be costly.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -99,7 +99,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="430.0" y="699.0" class="ag" text-anchor="middle" >Unknown</text>
 <text x="430.0" y="723.0" class="ag" text-anchor="middle" >listed, left out</text>
 <text x="300.0" y="778" class="lb" text-anchor="middle" >under 50,000 words: may not need a graph</text>
-<text x="300.0" y="806" class="lb" text-anchor="middle" >over 500,000 words or 500 files: costly</text>
+<text x="300.0" y="806" class="lb" text-anchor="middle" >from 500,000 words or 500 files: costly</text>
 <path d="M576 222H622" class="flow"/>
 <text x="600" y="210" class="al" text-anchor="middle" >paths</text>
 <path d="M900.0 428V458" class="flow"/>

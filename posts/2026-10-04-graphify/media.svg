@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">graphify step 2b: docs, papers, images and video</title>
-<desc id="d">1 Video and audio, with the video extra: a one-line topic hint is written from the key concepts found so far, then faster-whisper transcribes on your machine. Transcripts are treated as docs. 2 Batch the rest: files already in the SHA256 cache are skipped; the rest go into chunks of 20 to 25 files, same folder together, each image on its own. 3 Read with an LLM, the only pass that costs tokens: inside the assistant, parallel subagents on the assistant's own model, or Gemini if a Gemini key is set. Headless graphify extract uses an API backend such as Claude, OpenAI, Gemini or a local Ollama; their client libraries are extras. 4 Check and save: each chunk returns JSON with nodes, edges and group links; a schema check warns about and skips a bad chunk; a reply cut off mid-way is split and retried; results go into the cache.</desc>
+<desc id="d">1 Video and audio, with the video extra: a one-line topic hint is written from the key concepts found so far, then faster-whisper transcribes on your machine. Transcripts are treated as docs. 2 Batch the rest: files already in the SHA256 cache are skipped; the rest go into chunks of 20 to 25 files, same folder together, each image on its own. 3 Read with an LLM, the only pass that costs tokens: inside the assistant, parallel subagents on the assistant's own model, or Gemini if a Gemini key is set. Headless graphify extract uses an API backend such as Claude, OpenAI, Gemini or a local Ollama; their client libraries are extras. 4 Check and save: each chunk returns JSON with nodes, edges and group links; a schema check warns about a bad chunk, and a chunk whose JSON will not parse is skipped; a reply cut off mid-way is split and retried; results go into the cache.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -77,7 +77,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="636" width="492" height="80" rx="8" class="agent"/>
 <rect x="54" y="646" width="5" height="60" rx="2" fill="#d64545"/>
 <text x="303.0" y="671.0" class="ag" text-anchor="middle" >Schema check</text>
-<text x="303.0" y="695.0" class="ag" text-anchor="middle" >bad chunk: warned, skipped</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >warns; bad JSON: skipped</text>
 <path d="M300.0 604V634" class="flow"/>
 <text x="300.0" y="760" class="lb" text-anchor="middle" >a cut-off reply is split and retried</text>
 <text x="300.0" y="788" class="lb" text-anchor="middle" >results go into the cache</text>

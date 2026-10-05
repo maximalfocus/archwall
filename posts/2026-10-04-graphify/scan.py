@@ -53,7 +53,7 @@ d = Diagram("graphify step 1: read the folder",
             "opt-in and need the gws command-line tool. The Markdown lands in graphify-out/converted. "
             "4 Sort and check: every file becomes code, document, paper, image or video; unknown files are "
             "listed and left out. PDF text extraction (word counts, headless runs) needs the pdf extra; "
-            "under 50,000 words graphify says you may not need a graph; over 500,000 words or 500 files it "
+            "under 50,000 words graphify says you may not need a graph; from 500,000 words or 500 files it "
             "warns the LLM pass will be costly.")
 
 d.group(L, T1, W, H1, "What goes in", 1)
@@ -78,7 +78,7 @@ grid(L, T2, [("Code", "data"), ("Document", "data"), ("Paper|PDF or reads like o
              ("Image", "data"), ("Video, audio", "data"), ("Unknown|listed, left out", "data")],
      h=64, gap=12, y0=60)
 d.note(L + W / 2, T2 + 318, "under 50,000 words: may not need a graph")
-d.note(L + W / 2, T2 + 346, "over 500,000 words or 500 files: costly")
+d.note(L + W / 2, T2 + 346, "from 500,000 words or 500 files: costly")
 
 handoffs("paths", "kept files", "Markdown")
 d.save(Path(__file__).with_name("scan.svg"))

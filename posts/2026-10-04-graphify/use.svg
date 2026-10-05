@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">graphify step 4: your assistant asks the graph first</title>
-<desc id="d">1 Install once: graphify claude install writes a CLAUDE.md section and a PreToolUse hook. Other assistants get AGENTS.md or a rules file instead. Opt-in strict mode on Claude Code blocks the first raw file read of a session. 2 The hook: before a Grep or Bash search, and before a Read or Glob, it nudges the assistant to run graphify query, only when a fresh graph exists. 3 Ask: the CLI has query for a question, path from A to B, and explain for one concept; an MCP server (mcp extra) offers the same as tools. 4 The answer: it finds the nodes that match the question, walks out from them breadth-first or depth-first, and returns a small subgraph as text, about 2,000 tokens by default, not whole files.</desc>
+<desc id="d">1 Install once: graphify claude install writes a CLAUDE.md section and a PreToolUse hook. Other assistants get AGENTS.md or a rules file instead. Opt-in strict mode on Claude Code blocks the first raw file read of a session. 2 The hook: before a Grep or Bash search, and before a Read or Glob, it nudges the assistant to run graphify query, only when a graph exists. 3 Ask: the CLI has query for a question, path from A to B, and explain for one concept; an MCP server (mcp extra) offers the same as tools. 4 The answer: it finds the nodes that match the question, walks out from them breadth-first or depth-first, and returns a small subgraph as text, about 2,000 tokens by default, not whole files.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -51,7 +51,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="202" width="5" height="60" rx="2" fill="#d64545"/>
 <text x="903.0" y="227.0" class="ag" text-anchor="middle" >Before Read or Glob</text>
 <text x="903.0" y="251.0" class="ag" text-anchor="middle" >the same nudge</text>
-<text x="900.0" y="336" class="lb" text-anchor="middle" >only when a fresh graph exists</text>
+<text x="900.0" y="336" class="lb" text-anchor="middle" >only when a graph exists</text>
 <rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
 <circle cx="869.75" cy="487" r="14" class="num"/>
 <text x="869.75" y="493" class="numt" text-anchor="middle" >3</text>

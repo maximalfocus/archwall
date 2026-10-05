@@ -47,8 +47,8 @@ d = Diagram("graphify step 2b: docs, papers, images and video",
             "the assistant's own model, or Gemini if a Gemini key is set. Headless graphify extract uses an API "
             "backend such as Claude, OpenAI, Gemini or a local Ollama; their client libraries are extras. "
             "4 Check and save: each chunk returns JSON with nodes, edges and group links; a schema check warns "
-            "about and skips a bad chunk; a reply cut off mid-way is split and retried; results go into the "
-            "cache.")
+            "about a bad chunk, and a chunk whose JSON will not parse is skipped; a reply cut off mid-way is "
+            "split and retried; results go into the cache.")
 
 d.group(L, T1, W, H1, "Video, audio (video extra)", 1)
 col(L, T1, [("Topic hint|from key concepts so far", "plan"),
@@ -68,7 +68,7 @@ d.note(R + W / 2, T2 + 328, "API client libraries are extras")
 
 d.group(L, T2, W, H2, "Check and save", 4)
 col(L, T2, [("JSON per chunk|nodes, edges, group links", "write"),
-            ("Schema check|bad chunk: warned, skipped", "review")], h=80, gap=32)
+            ("Schema check|warns; bad JSON: skipped", "review")], h=80, gap=32)
 d.note(L + W / 2, T2 + 300, "a cut-off reply is split and retried")
 d.note(L + W / 2, T2 + 328, "results go into the cache")
 
