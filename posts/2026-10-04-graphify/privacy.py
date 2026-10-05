@@ -50,8 +50,8 @@ d = Diagram("graphify: what leaves your machine",
             "2 Goes to an LLM: docs, papers, images and transcripts, to the assistant's own model, or in "
             "headless runs to the API whose key you set, or to a local Ollama. "
             "3 Safety checks: fetched URLs must be http or https and may not point at private or cloud metadata "
-            "addresses; downloads are capped at 50 MB with a timeout; graph paths must sit inside graphify-out; "
-            "node labels are cleaned and capped at 256 characters. "
+            "addresses; fetches are capped at 10 MB for text and 50 MB for files, with a timeout; graph paths "
+            "must sit inside graphify-out; node labels are cleaned and capped at 256 characters. "
             "4 Off unless you ask: the query log is opt-in through an environment variable; the HTTP server "
             "listens on localhost unless you pass --host, and should get --api-key when you do.")
 
@@ -66,7 +66,7 @@ col(R, T1, [("Docs, papers, images|the assistant's own model", "coding"),
 d.note(R + W / 2, T1 + 320, "Ollama keeps it all on your machine")
 
 d.group(R, T2, W, H2, "Safety checks", 3)
-grid(R, T2, [("URLs http(s)|no private IPs", "review"), ("Downloads|50 MB cap, timeout", "review"),
+grid(R, T2, [("URLs http(s)|no private IPs", "review"), ("Downloads|10MB text, 50MB files", "review"),
              ("Graph paths|inside graphify-out/", "review"), ("Labels|cleaned, 256 chars", "review")])
 
 d.group(L, T2, W, H2, "Off unless you ask", 4)

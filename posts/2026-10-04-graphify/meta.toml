@@ -58,8 +58,8 @@ caption_en = "Commits and branch switches update it; after a pull you run one co
 
 [[figures]]
 file = "privacy.svg"
-alt_zh = "哪些会离开本机：1 留在本机：代码（tree-sitter），音视频（faster-whisper），没有遥测；2 交给 LLM：文档、论文、图片交给助手自己的模型，无界面运行用你的 API 密钥或本机 Ollama，用 Ollama 就全在本机；3 安全检查：网址只允许 http(s)，不许内网地址；下载最多 50 MB 并有超时；图文件路径必须在 graphify-out 里；节点名字清理过，最长 256 字符；4 默认关闭：查询日志要用环境变量打开；HTTP 服务端默认只听本机，开放时加 --api-key"
-alt_en = "What leaves your machine: 1 stays on your machine: code (tree-sitter), video and audio (faster-whisper), no telemetry; 2 goes to an LLM: docs, papers and images to the assistant's own model, headless runs to your API key or a local Ollama, which keeps it all on your machine; 3 safety checks: URLs http(s) only and no private IPs, downloads capped at 50 MB with a timeout, graph paths inside graphify-out, labels cleaned and capped at 256 characters; 4 off unless you ask: the query log is opt-in through an environment variable, the HTTP server listens on localhost unless --host, and opening it up needs --api-key too"
+alt_zh = "哪些会离开本机：1 留在本机：代码（tree-sitter），音视频（faster-whisper），没有遥测；2 交给 LLM：文档、论文、图片交给助手自己的模型，无界面运行用你的 API 密钥或本机 Ollama，用 Ollama 就全在本机；3 安全检查：网址只允许 http(s)，不许内网地址；文本下载最多 10 MB，文件下载最多 50 MB，并有超时；图文件路径必须在 graphify-out 里；节点名字清理过，最长 256 字符；4 默认关闭：查询日志要用环境变量打开；HTTP 服务端默认只听本机，开放时加 --api-key"
+alt_en = "What leaves your machine: 1 stays on your machine: code (tree-sitter), video and audio (faster-whisper), no telemetry; 2 goes to an LLM: docs, papers and images to the assistant's own model, headless runs to your API key or a local Ollama, which keeps it all on your machine; 3 safety checks: URLs http(s) only and no private IPs, downloads capped at 10 MB for text and 50 MB for files, with a timeout, graph paths inside graphify-out, labels cleaned and capped at 256 characters; 4 off unless you ask: the query log is opt-in through an environment variable, the HTTP server listens on localhost unless --host, and opening it up needs --api-key too"
 caption_zh = "代码不出本机，文档交给你选的模型"
 caption_en = "Code stays home; docs go to the model you pick"
 

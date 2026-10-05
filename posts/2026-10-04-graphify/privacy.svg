@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">graphify: what leaves your machine</title>
-<desc id="d">1 Stays on your machine: code, parsed with tree-sitter, and video and audio, transcribed with faster-whisper. No telemetry. 2 Goes to an LLM: docs, papers, images and transcripts, to the assistant's own model, or in headless runs to the API whose key you set, or to a local Ollama. 3 Safety checks: fetched URLs must be http or https and may not point at private or cloud metadata addresses; downloads are capped at 50 MB with a timeout; graph paths must sit inside graphify-out; node labels are cleaned and capped at 256 characters. 4 Off unless you ask: the query log is opt-in through an environment variable; the HTTP server listens on localhost unless you pass --host, and should get --api-key when you do.</desc>
+<desc id="d">1 Stays on your machine: code, parsed with tree-sitter, and video and audio, transcribed with faster-whisper. No telemetry. 2 Goes to an LLM: docs, papers, images and transcripts, to the assistant's own model, or in headless runs to the API whose key you set, or to a local Ollama. 3 Safety checks: fetched URLs must be http or https and may not point at private or cloud metadata addresses; fetches are capped at 10 MB for text and 50 MB for files, with a timeout; graph paths must sit inside graphify-out; node labels are cleaned and capped at 256 characters. 4 Off unless you ask: the query log is opt-in through an environment variable; the HTTP server listens on localhost unless you pass --host, and should get --api-key when you do.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -62,7 +62,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="908" y="524" width="238" height="80" rx="8" class="agent"/>
 <rect x="908" y="534" width="5" height="60" rx="2" fill="#d64545"/>
 <text x="1030.0" y="559.0" class="ag" text-anchor="middle" >Downloads</text>
-<text x="1030.0" y="583.0" class="ag" text-anchor="middle" >50 MB cap, timeout</text>
+<text x="1030.0" y="583.0" class="ag" text-anchor="middle" >10MB text, 50MB files</text>
 <rect x="654" y="620" width="238" height="80" rx="8" class="agent"/>
 <rect x="654" y="630" width="5" height="60" rx="2" fill="#d64545"/>
 <text x="776.0" y="655.0" class="ag" text-anchor="middle" >Graph paths</text>
