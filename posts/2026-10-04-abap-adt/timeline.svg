@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">ADT timeline</title>
+<desc id="d">1 The rework. 2018: SAP explores a TypeScript language server and drops it, because it means two client codebases. 2018: the SAP BTP ABAP Environment launches with ADT for Eclipse only; adding many object types fast shows that editors written in two languages do not scale. 2020: number range objects are the first server-driven object type; all new types since are built that way. 2 Toward VS Code. 2023 and 2025: user surveys name VS Code the most requested IDE. 2025: SAP announces work on ADT for VS Code. 2026: ADT for VS Code is due, after six years of rework.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="868" rx="12" class="grp"/>
+<circle cx="222.5" cy="43" r="14" class="num"/>
+<text x="222.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="242.5" y="52" class="gt" text-anchor="start" >The rework</text>
+<rect x="54" y="150" width="492" height="96" rx="8" class="agent"/>
+<text x="303.0" y="193.0" class="ag" text-anchor="middle" >TypeScript language server</text>
+<text x="303.0" y="217.0" class="ag" text-anchor="middle" >tried, then dropped</text>
+<rect x="54" y="106" width="120" height="32" rx="16.0" class="front"/>
+<text x="114.0" y="128.0" class="q" text-anchor="middle" >2018</text>
+<rect x="54" y="350" width="492" height="96" rx="8" class="agent"/>
+<text x="303.0" y="393.0" class="ag" text-anchor="middle" >BTP ABAP: Eclipse only</text>
+<text x="303.0" y="417.0" class="ag" text-anchor="middle" >editors don't scale</text>
+<rect x="54" y="306" width="120" height="32" rx="16.0" class="front"/>
+<text x="114.0" y="328.0" class="q" text-anchor="middle" >2018</text>
+<path d="M300.0 246V334" class="flow"/>
+<rect x="54" y="550" width="492" height="96" rx="8" class="agent"/>
+<text x="303.0" y="593.0" class="ag" text-anchor="middle" >Number range objects</text>
+<text x="303.0" y="617.0" class="ag" text-anchor="middle" >first server-driven type</text>
+<rect x="54" y="506" width="120" height="32" rx="16.0" class="front"/>
+<text x="114.0" y="528.0" class="q" text-anchor="middle" >2020</text>
+<path d="M300.0 446V534" class="flow"/>
+<text x="300.0" y="818" class="lb" text-anchor="middle" >all new object types are</text>
+<text x="300.0" y="846" class="lb" text-anchor="middle" >server-driven since then</text>
+<rect x="624" y="16" width="552" height="868" rx="12" class="grp"/>
+<circle cx="795.5" cy="43" r="14" class="num"/>
+<text x="795.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="815.5" y="52" class="gt" text-anchor="start" >Toward VS Code</text>
+<rect x="654" y="150" width="492" height="96" rx="8" class="agent"/>
+<text x="903.0" y="193.0" class="ag" text-anchor="middle" >User surveys</text>
+<text x="903.0" y="217.0" class="ag" text-anchor="middle" >VS Code most wanted</text>
+<rect x="654" y="106" width="120" height="32" rx="16.0" class="front"/>
+<text x="714.0" y="128.0" class="q" text-anchor="middle" >2023, 2025</text>
+<rect x="654" y="350" width="492" height="96" rx="8" class="agent"/>
+<text x="903.0" y="393.0" class="ag" text-anchor="middle" >SAP announces work</text>
+<text x="903.0" y="417.0" class="ag" text-anchor="middle" >on ADT for VS Code</text>
+<rect x="654" y="306" width="120" height="32" rx="16.0" class="front"/>
+<text x="714.0" y="328.0" class="q" text-anchor="middle" >2025</text>
+<path d="M900.0 246V334" class="flow"/>
+<rect x="654" y="550" width="492" height="96" rx="8" class="agent"/>
+<text x="903.0" y="593.0" class="ag" text-anchor="middle" >ADT for VS Code</text>
+<text x="903.0" y="617.0" class="ag" text-anchor="middle" >planned release</text>
+<rect x="654" y="506" width="120" height="32" rx="16.0" class="front"/>
+<text x="714.0" y="528.0" class="q" text-anchor="middle" >2026</text>
+<path d="M900.0 446V534" class="flow"/>
+<text x="900.0" y="818" class="lb" text-anchor="middle" >six years of rework</text>
+<text x="900.0" y="846" class="lb" text-anchor="middle" >made it possible</text>
+<path d="M576 398H622" class="flow"/>
+<text x="600" y="386" class="al" text-anchor="middle" >then</text>
+</svg>
