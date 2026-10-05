@@ -52,7 +52,7 @@ d = Diagram("Grafana: notifications",
             "3 Contact points, 23 kinds: chat such as Slack, Teams, Discord and Telegram; on-call such as PagerDuty, "
             "Opsgenie and Grafana OnCall; email, webhook, Kafka, MQTT, SNS and more. "
             "4 Extras: templates shape the message; screenshots are off by default and need the image renderer; "
-            "several Grafana servers share silences and send each notification once.")
+            "several Grafana servers with alerting HA set up share silences and send each notification once.")
 
 d.group(L, T1, W, H1, "Route", 1)
 col(L, T1, [("Notification policies|a tree that matches labels", "plan"),
@@ -72,7 +72,7 @@ col(R, T2, [("Chat|Slack · Teams · Discord · Telegram", "write"),
 d.group(L, T2, W, H2, "Extras", 4)
 col(L, T2, [("Templates|shape the message text", "write"),
             ("Screenshots (off by default)|need the image renderer", "coding"),
-            ("Several servers|share silences, send once", "review")], gap=20, arrows=False)
+            ("Several servers, HA set up|share silences, send once", "review")], gap=20, arrows=False)
 
 handoffs("alerts", "notifications", None)
 

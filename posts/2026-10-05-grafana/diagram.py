@@ -21,7 +21,7 @@ d = Diagram("Grafana overview",
             "answers, and alerting checks rules on a timer. "
             "3 Your data stays where it is: data source plugins talk to metrics, logs and traces stores such as "
             "Prometheus, Loki and Tempo, and to databases and clouds such as MySQL, Postgres and CloudWatch. "
-            "Grafana keeps no copy; it asks each time. "
+            "Your data lives in your own systems and panels ask them again on every load. "
             "4 What Grafana keeps and sends: its own database (a SQLite file by default, or MySQL or Postgres), "
             "alert notifications to 23 kinds of contact point such as Slack, email and PagerDuty, and an optional "
             "image renderer that runs as a separate service.")
@@ -55,8 +55,8 @@ d.group(R, T2, W, H2, "Your data stays where it is", 3)
 column(R, T2, [("Data source plugins|one per kind of system", "coding"),
                ("Metrics, logs, traces|Prometheus · Loki · Tempo", "data"),
                ("Databases and clouds|MySQL · Postgres · CloudWatch", "data")])
-d.note(R + W / 2, T2 + H2 - 52, "Grafana keeps no copy of this data;")
-d.note(R + W / 2, T2 + H2 - 26, "it asks again each time a panel loads")
+d.note(R + W / 2, T2 + H2 - 52, "The data lives in your own systems;")
+d.note(R + W / 2, T2 + H2 - 26, "each panel load asks again")
 
 d.group(L, T2, W, H2, "What Grafana keeps and sends", 4)
 column(L, T2, [("Grafana's own database|SQLite file, or MySQL / Postgres", "write"),

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Grafana overview</title>
-<desc id="d">People use the web app in a browser; scripts and tools use the HTTP APIs; config files and Git repositories can load dashboards and settings. 1 Ways in: the web app, the HTTP APIs, files and Git. 2 The Grafana server is one program: sign-in and permissions check every request, dashboards and folders are saved as JSON documents, the query engine asks data sources and can do maths on the answers, and alerting checks rules on a timer. 3 Your data stays where it is: data source plugins talk to metrics, logs and traces stores such as Prometheus, Loki and Tempo, and to databases and clouds such as MySQL, Postgres and CloudWatch. Grafana keeps no copy; it asks each time. 4 What Grafana keeps and sends: its own database (a SQLite file by default, or MySQL or Postgres), alert notifications to 23 kinds of contact point such as Slack, email and PagerDuty, and an optional image renderer that runs as a separate service.</desc>
+<desc id="d">People use the web app in a browser; scripts and tools use the HTTP APIs; config files and Git repositories can load dashboards and settings. 1 Ways in: the web app, the HTTP APIs, files and Git. 2 The Grafana server is one program: sign-in and permissions check every request, dashboards and folders are saved as JSON documents, the query engine asks data sources and can do maths on the answers, and alerting checks rules on a timer. 3 Your data stays where it is: data source plugins talk to metrics, logs and traces stores such as Prometheus, Loki and Tempo, and to databases and clouds such as MySQL, Postgres and CloudWatch. Your data lives in your own systems and panels ask them again on every load. 4 What Grafana keeps and sends: its own database (a SQLite file by default, or MySQL or Postgres), alert notifications to 23 kinds of contact point such as Slack, email and PagerDuty, and an optional image renderer that runs as a separate service.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -77,8 +77,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="903.0" y="751.0" class="ag" text-anchor="middle" >Databases and clouds</text>
 <text x="903.0" y="775.0" class="ag" text-anchor="middle" >MySQL · Postgres · CloudWatch</text>
-<text x="900.0" y="812" class="lb" text-anchor="middle" >Grafana keeps no copy of this data;</text>
-<text x="900.0" y="838" class="lb" text-anchor="middle" >it asks again each time a panel loads</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >The data lives in your own systems;</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >each panel load asks again</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="101.0" cy="527" r="14" class="num"/>
 <text x="101.0" y="533" class="numt" text-anchor="middle" >4</text>

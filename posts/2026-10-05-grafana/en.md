@@ -1,4 +1,4 @@
-Grafana draws charts and sends alerts on data it does not store. Each time a panel loads, it asks the system that holds the data.
+Grafana draws charts and sends alerts on data that lives in your own systems. Each time a panel loads, it asks the system that holds the data.
 
 **One program.** The server serves the web app and the APIs, checks every request, keeps dashboards and rules, and runs the queries.
 

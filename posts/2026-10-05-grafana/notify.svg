@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Grafana: notifications</title>
-<desc id="d">1 Route: notification policies are a tree that matches alert labels; alerts are grouped, by folder and alert name by default, and timing settings say how long to wait and how often to repeat. A rule can also name a contact point directly. 2 Hold back: silences mute matching alerts for a while; mute timings mute them at set times such as nights or weekends. 3 Contact points, 23 kinds: chat such as Slack, Teams, Discord and Telegram; on-call such as PagerDuty, Opsgenie and Grafana OnCall; email, webhook, Kafka, MQTT, SNS and more. 4 Extras: templates shape the message; screenshots are off by default and need the image renderer; several Grafana servers share silences and send each notification once.</desc>
+<desc id="d">1 Route: notification policies are a tree that matches alert labels; alerts are grouped, by folder and alert name by default, and timing settings say how long to wait and how often to repeat. A rule can also name a contact point directly. 2 Hold back: silences mute matching alerts for a while; mute timings mute them at set times such as nights or weekends. 3 Contact points, 23 kinds: chat such as Slack, Teams, Discord and Telegram; on-call such as PagerDuty, Opsgenie and Grafana OnCall; email, webhook, Kafka, MQTT, SNS and more. 4 Extras: templates shape the message; screenshots are off by default and need the image renderer; several Grafana servers with alerting HA set up share silences and send each notification once.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -85,7 +85,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="667.0" class="ag" text-anchor="middle" >need the image renderer</text>
 <rect x="54" y="704" width="492" height="72" rx="8" class="agent"/>
 <rect x="54" y="714" width="5" height="52" rx="2" fill="#d64545"/>
-<text x="303.0" y="735.0" class="ag" text-anchor="middle" >Several servers</text>
+<text x="303.0" y="735.0" class="ag" text-anchor="middle" >Several servers, HA set up</text>
 <text x="303.0" y="759.0" class="ag" text-anchor="middle" >share silences, send once</text>
 <path d="M576 222H622" class="flow"/>
 <text x="600" y="210" class="al" text-anchor="middle" >alerts</text>
