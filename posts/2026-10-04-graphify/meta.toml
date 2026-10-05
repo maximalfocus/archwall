@@ -3,13 +3,69 @@ title_en = "graphify: turn a whole project into a graph you can query"
 date = "2026-10-04"
 tags = ["knowledge-graph", "coding-agent", "tree-sitter", "llm"]
 figure = "diagram.svg"
-alt_zh = "graphify 架构：1 扫描文件夹，按类型分成代码、文档和论文、图片、音视频；2 分三遍抽取，SHA256 缓存跳过没变的文件：代码用 tree-sitter 本地解析不用 LLM，音视频需 video 包，用 faster-whisper 本地转写，转写稿和文档、论文、图片一起交给 LLM 子代理；边标 EXTRACTED、INFERRED、AMBIGUOUS；3 build() 合成一张 NetworkX 图，Leiden（需 leiden 包，否则 Louvain）分社区，再找核心节点和意外连接；4 输出到 graphify-out：graph.json、graph.html、GRAPH_REPORT.md 和其他导出格式"
-alt_en = "graphify architecture: 1 scan the folder and sort files into code, docs and papers, images, video and audio; 2 extract in three passes, with a SHA256 cache skipping unchanged files: code with tree-sitter locally and no LLM, video and audio with the video extra and faster-whisper locally, their transcripts then joining docs, papers and images through LLM subagents; edges are tagged EXTRACTED, INFERRED or AMBIGUOUS; 3 build() makes one NetworkX graph, Leiden (with the leiden extra, else Louvain) finds communities, then god nodes and surprising connections are found; 4 output in graphify-out: graph.json, graph.html, GRAPH_REPORT.md and other exports"
+alt_zh = "graphify 总览：输入是一个文件夹，有代码、文档、论文、图片、视频；1 读文件夹：跳过忽略的文件、构建产物和密钥，按类型分，太小或太贵时提醒；2 抽事实：代码在本机用 tree-sitter 解析，不用 LLM，免费；音视频在本机用 faster-whisper 转写（video 包）；文档、论文、图片交给 LLM，花 token；SHA256 缓存跳过没变的文件；3 建图：合成一张图并去重，用 Leiden 或 Louvain 分社区，找核心节点、意外连接和问题；4 用起来：graphify-out 里的 graph.json、graph.html 和报告，助手通过钩子、命令行、MCP 服务端查图，git 钩子免费重建代码部分；周边工具有 PR 面板和跨仓库图；代码不会发出去"
+alt_en = "graphify overview: input is a folder of code, docs, papers, images and video; 1 read the folder: skip ignored files, build output and secrets, sort by type, warn if tiny or costly; 2 pull out the facts: code on your machine with tree-sitter, no LLM, free; video and audio on your machine with faster-whisper (video extra); docs, papers and images read by an LLM, which costs tokens; a SHA256 cache skips unchanged files; 3 build the map: one graph with duplicates dropped, communities with Leiden or Louvain, god nodes, surprises and questions; 4 use the map: graph.json, graph.html and the report in graphify-out, the assistant asks the graph through a hook, the CLI or an MCP server, git hooks rebuild the code part for free; side tools: PR dashboard, cross-repo graph; code is never sent anywhere"
 source = "https://github.com/Graphify-Labs/graphify"
 
 [[figures]]
+file = "scan.svg"
+alt_zh = "第 1 步读文件夹：1 输入：你的文件夹（可多个，或 GitHub 链接），graphify add 抓来的论文、网页、推文、视频，抓的网页存成 Markdown，视频链接要 video 包；2 跳过：遵守 .gitignore，.graphifyignore 加你的规则，跳过 node_modules、dist 等构建产物，按文件名跳过 .env、密钥等密钥文件，只列出不读；3 转换：Word、Excel 转 Markdown（office 包），Google 文档快捷方式需手动打开并装 gws 工具，存到 graphify-out/converted；4 分类和检查：代码、文档、论文、图片、音视频，认不出的列出不用；少于 5 万词可能用不着图，超过 50 万词或 500 个文件会很贵"
+alt_en = "Step 1, read the folder: 1 what goes in: your folder (or several, or a GitHub URL) and anything fetched with graphify add: a paper, web page, tweet or video; fetched pages are saved as Markdown, video URLs need the video extra; 2 skip: .gitignore is respected, .graphifyignore adds your rules, build output such as node_modules and dist is skipped, secret files such as .env and keys are skipped by name, listed and never read; 3 convert: Word and Excel to Markdown (office extra), Google Docs shortcuts opt-in with the gws tool, saved in graphify-out/converted; 4 sort and check: code, document, paper, image, video and audio, unknown files listed and left out; under 50,000 words you may not need a graph, over 500,000 words or 500 files it gets costly"
+caption_zh = "第 1 步：先挑出该读的文件，密钥不碰"
+caption_en = "Step 1: pick the files worth reading, and leave secrets alone"
+
+[[figures]]
+file = "code.svg"
+alt_zh = "第 2 步之代码：1 解析：tree-sitter 每种语言一个语法，用满所有 CPU 核，不用 LLM，不出本机，SQL、Terraform、OCaml 等各需一个额外包；2 找到什么：类和函数、导入、调用、解释原因的注释（# NOTE:、# WHY:）、SQL 表和连接、包清单；3 跨文件连接：第二遍解析文件间的调用，能精确对上的标 EXTRACTED 1.0，凭名字猜的标 INFERRED 0.85；4 缓存和交接：每个文件一个 SHA256，没变下次跳过，节点和边与 LLM 那一遍合并；只有代码的文件夹不需要 API 密钥"
+alt_en = "Step 2, code: 1 parse: tree-sitter, one grammar per language, on all CPU cores, no LLM, nothing leaves the machine, SQL, Terraform, OCaml and some others need an extra each; 2 what it finds: classes and functions, imports, calls, comments that explain why (# NOTE:, # WHY:), SQL tables and joins, package manifests; 3 link across files: a second pass resolves calls between files, an exact match is EXTRACTED 1.0, a best guess by name is INFERRED 0.85; 4 cache and hand over: a SHA256 per file so unchanged files are skipped next time, nodes and edges merged with the LLM pass; a code-only folder needs no API key"
+caption_zh = "代码这一遍全在本机，免费"
+caption_en = "The code pass runs on your machine, for free"
+
+[[figures]]
+file = "media.svg"
+alt_zh = "第 2 步之文档和音视频：1 音视频（video 包）：先按目前找到的关键概念写一句主题提示，再由 faster-whisper 在本机转写，转写稿当作文档；2 分批：先查缓存跳过做过的文件，其余每批 20 到 25 个文件，同目录放一起，每张图片单独一批；3 交给 LLM：在助手里用它自己的模型开并行子代理；无界面运行 graphify extract 用 Claude、OpenAI、Gemini、Ollama 等，客户端库是额外包；只有这一遍花 token；4 检查和保存：每批回一份 JSON，有节点、边和成组关系，格式检查不过的批次报警并跳过，回复被截断就拆开重试，结果存进缓存"
+alt_en = "Step 2, docs and media: 1 video and audio (video extra): a one-line topic hint from the key concepts found so far, then faster-whisper transcribes on your machine, transcripts are treated as docs; 2 batch the rest: check the cache and skip files already done, then chunks of 20 to 25 files, same folder together, each image alone; 3 read with an LLM: parallel subagents on the assistant's own model, or headless graphify extract with Claude, OpenAI, Gemini, Ollama and others, whose client libraries are extras; the only pass that costs tokens; 4 check and save: JSON per chunk with nodes, edges and group links, a schema check warns about and skips a bad chunk, a cut-off reply is split and retried, results go into the cache"
+caption_zh = "只有这一遍花 token，分批并行，做过的不再做"
+caption_en = "The only pass that costs tokens: batched, parallel, never repeated"
+
+[[figures]]
+file = "model.svg"
+alt_zh = "图里存什么：1 节点：id 和名字，文件类型（代码、文档、论文、图片、说明原因），来源文件和行号；2 边：起点和终点两个节点，关系如 calls、imports、uses，一个把握标签加分数；3 把握：EXTRACTED 原文写明，1.0；INFERRED 合理推断，0.55 到 0.95；AMBIGUOUS 拿不准，在报告里标出来；4 存成：graph.json，NetworkX node-link 格式；超边把 3 个以上节点连成一组；分社区后每个节点记下所属社区"
+alt_en = "What the graph holds: 1 a node: id and label, a file type (code, document, paper, image, rationale), source file and line; 2 an edge: source and target node, a relation such as calls, imports or uses, a confidence tag plus a score; 3 how sure: EXTRACTED is stated in the source, 1.0; INFERRED is a reasonable guess, 0.55 to 0.95; AMBIGUOUS is unsure and flagged in the report; 4 stored as graph.json in NetworkX node-link format; hyperedges link 3 or more nodes; after clustering each node gets its community"
+caption_zh = "每条边都说明它有多大把握"
+caption_en = "Every edge says how sure it is"
+
+[[figures]]
+file = "cluster.svg"
+alt_zh = "第 3 步建图：1 一张图：合并代码那一遍和 LLM 那一遍，去掉同一个东西的两个名字，--dedup-llm 让 LLM 判断难分的；2 社区：Leiden（leiden 包，否则 Louvain），松散的组再拆，每组按连接最多的节点命名或交给 LLM 命名，不用嵌入和向量库；3 重点：连接最多的前 10 个核心节点，前 5 个跨文件意外连接，最多 7 个建议问题，导入循环；4 graphify-out：graph.json、graph.html、GRAPH_REPORT.md，加参数才导出 Obsidian、wiki、SVG 等；节点变少的重建不会覆盖旧图，除非加 --force"
+alt_en = "Step 3, build the map: 1 one graph: merge the code pass and the LLM pass, drop the same thing under two names, --dedup-llm lets an LLM settle close calls; 2 communities: Leiden (leiden extra, else Louvain), loose groups split again, each named after its busiest node or by an LLM, no embeddings, no vector store; 3 what matters: top 10 god nodes, top 5 cross-file surprises, up to 7 suggested questions, import cycles; 4 graphify-out: graph.json, graph.html, GRAPH_REPORT.md, exports such as Obsidian, wiki and SVG only on a flag; a rebuild won't overwrite a bigger graph unless you pass --force"
+caption_zh = "合成一张图，分好社区，挑出值得看的"
+caption_en = "One graph, split into communities, with the parts worth a look"
+
+[[figures]]
 file = "use.svg"
-alt_zh = "graphify 的用法：1 助手里装一段 CLAUDE.md 说明和一个 PreToolUse 钩子，在 grep 和读文件前提醒先查图，没有钩子的平台用 AGENTS.md 一类的文件；2 通过命令行（query、path、explain）或 MCP 服务端（需 mcp 包，stdio 或 HTTP）查 graph.json，拿回一小块子图而不是原文件；3 保持最新：git commit 和切分支自动重建代码部分，不花 API 钱，git pull 后手动跑 graphify update，文档变了跑 /graphify --update"
-alt_en = "graphify in use: 1 the assistant gets a CLAUDE.md section and a PreToolUse hook that points it to the graph before grep and file reads; platforms without hooks get an AGENTS.md-style file; 2 the CLI (query, path, explain) or the MCP server (mcp extra; stdio or HTTP) reads graph.json and returns a small subgraph instead of raw files; 3 keep it current: git commit and branch switches rebuild the code part with no API cost, after git pull you run graphify update, and when docs change you run /graphify --update"
-caption_zh = "助手先查图，git 钩子让图跟着代码走"
-caption_en = "The assistant asks the graph first; git hooks keep it current"
+alt_zh = "第 4 步助手先查图：1 装一次：graphify claude install 写一段 CLAUDE.md 说明和一个钩子，其他助手用 AGENTS.md 或规则文件；可选的 --strict（Claude Code）拦下每个会话第一次直接读文件；2 钩子：Grep、Bash 搜索前和 Read、Glob 读文件前提醒用 graphify query，只在有新鲜的图时提醒；3 提问：query 问问题，path 找 A 到 B，explain 讲一个概念，MCP 服务端（mcp 包），一个人用 stdio，团队用 HTTP；4 回答：找到匹配的节点，再按广度或深度往外走，回一小块子图，默认约 2000 token，不是整个文件"
+alt_en = "Step 4, the assistant asks the graph first: 1 install once: graphify claude install writes a CLAUDE.md section and a hook, other assistants get AGENTS.md or a rules file; opt-in --strict on Claude Code blocks the first raw file read of a session; 2 the hook: before Grep or Bash and before Read or Glob it nudges toward graphify query, only when a fresh graph exists; 3 ask: query a question, path from A to B, explain one concept, or the MCP server (mcp extra), stdio for one person, HTTP for a team; 4 the answer: find matching nodes, walk out breadth- or depth-first, return a small subgraph of about 2,000 tokens by default, not whole files"
+caption_zh = "助手先问图，拿回一小块，而不是整个文件"
+caption_en = "The assistant asks the graph and gets a small piece back, not whole files"
+
+[[figures]]
+file = "current.svg"
+alt_zh = "保持最新、团队共享：1 装一次：graphify hook install，每个克隆一次，装提交和切换钩子以及合并驱动；2 自动：git commit、git switch 或 checkout 时在后台重建代码部分，只用 AST，不花 API 钱；3 你来跑：git pull 后跑 graphify update .，文档变了跑 /graphify --update（用 LLM）；watch 包：graphify watch 立刻重建代码，文档变化打标记；4 团队共享：提交 graph.json 和 GRAPH_REPORT.md，或开一个 HTTP MCP 服务端，一个地址加 API 密钥；合并驱动让 graph.json 不出冲突标记"
+alt_en = "Keep it current, share it: 1 set up once: graphify hook install, once per clone, adds commit and checkout hooks and a merge driver; 2 by itself: git commit and git switch or checkout rebuild the code part in the background, AST only, no API cost; 3 you run it: after git pull, graphify update .; when docs change, /graphify --update (LLM); watch extra: graphify watch rebuilds code at once and flags doc changes; 4 share with the team: commit graph.json and GRAPH_REPORT.md, or run one HTTP MCP server with one URL and an API key; the merge driver keeps conflict markers out of graph.json"
+caption_zh = "提交和切分支自动更新，拉代码后跑一条命令"
+caption_en = "Commits and branch switches update it; after a pull you run one command"
+
+[[figures]]
+file = "privacy.svg"
+alt_zh = "哪些会离开本机：1 留在本机：代码（tree-sitter），音视频（faster-whisper），没有遥测；2 交给 LLM：文档、论文、图片交给助手自己的模型，无界面运行用你的 API 密钥或本机 Ollama，用 Ollama 就全在本机；3 安全检查：网址只允许 http(s)，不许内网地址；下载最多 50 MB 并有超时；图文件路径必须在 graphify-out 里；节点名字清理过，最长 256 字符；4 默认关闭：查询日志要用环境变量打开；HTTP 服务端默认只听本机，开放时加 --api-key"
+alt_en = "What leaves your machine: 1 stays on your machine: code (tree-sitter), video and audio (faster-whisper), no telemetry; 2 goes to an LLM: docs, papers and images to the assistant's own model, headless runs to your API key or a local Ollama, which keeps it all on your machine; 3 safety checks: URLs http(s) only and no private IPs, downloads capped at 50 MB with a timeout, graph paths inside graphify-out, labels cleaned and capped at 256 characters; 4 off unless you ask: the query log is opt-in through an environment variable, the HTTP server listens on localhost unless --host, and opening it up needs --api-key too"
+caption_zh = "代码不出本机，文档交给你选的模型"
+caption_en = "Code stays home; docs go to the model you pick"
+
+[[figures]]
+file = "more.svg"
+alt_zh = "周边工具：1 多个仓库：graphify global add 把各项目的图合进一张跨项目图，存在 ~/.graphify，merge-graphs 合并两个 graph.json；2 PR：graphify prs 通过 gh 看 CI、评审、工作树，--conflicts 找改到同一社区的 PR，--triage 让 LLM 给评审队列排序；3 工作记忆：save-result 记下回答有用、走不通还是被纠正，reflect 写出 LESSONS.md，不用 LLM，加 --graph 后 query 和 explain 会带上经验；4 其他视图：callflow-html 画 Mermaid 调用流程页，推送到 Neo4j、FalkorDB（neo4j 或 falkordb 包）"
+alt_en = "Side tools: 1 many repos: graphify global add puts project graphs into one cross-project graph in ~/.graphify, merge-graphs joins two graph.json files; 2 pull requests: graphify prs shows CI, reviews and worktrees through gh, --conflicts finds PRs in the same communities, --triage has an LLM rank the review queue; 3 work memory: save-result records whether an answer was useful, a dead end or corrected, reflect writes LESSONS.md with no LLM, and with --graph, query and explain show the lesson; 4 other views: callflow-html draws a Mermaid call-flow page, push to Neo4j or FalkorDB (neo4j or falkordb extra)"
+caption_zh = "跨仓库、看 PR、记经验"
+caption_en = "Across repos, around pull requests, and lessons kept"

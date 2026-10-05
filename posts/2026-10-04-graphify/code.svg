@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">graphify step 2a: the code pass</title>
+<desc id="d">1 Parse: tree-sitter reads each code file on your machine, with no LLM and no cost, many files at once on all CPU cores. A few languages need an extra, for example SQL, Terraform or OCaml. 2 What it finds: classes and functions, imports, calls, comments that explain the code such as # NOTE: and # WHY:, SQL tables and joins, and package manifests. 3 Link across files: a second pass resolves calls between files. A call it can pin down exactly is EXTRACTED with score 1.0; a best guess by name is INFERRED with score 0.85. 4 Cache and hand over: each file is fingerprinted with SHA256 so an unchanged file is skipped next time; the nodes and edges join the LLM pass output. A code-only folder needs no API key.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="256.25" cy="43" r="14" class="num"/>
+<text x="256.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="276.25" y="52" class="gt" text-anchor="start" >Parse</text>
+<rect x="54" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >tree-sitter</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >one grammar per language</text>
+<rect x="54" y="192" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="202" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="227.0" class="ag" text-anchor="middle" >All CPU cores</text>
+<text x="303.0" y="251.0" class="ag" text-anchor="middle" >many files at once</text>
+<path d="M300.0 160V190" class="flow"/>
+<text x="300.0" y="336" class="lb" text-anchor="middle" >no LLM, nothing leaves the machine</text>
+<text x="300.0" y="364" class="lb" text-anchor="middle" >SQL, Terraform, OCaml…: an extra each</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="802.25" cy="43" r="14" class="num"/>
+<text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="52" class="gt" text-anchor="start" >What it finds</text>
+<rect x="654" y="80" width="238" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="776.0" y="123.0" class="ag" text-anchor="middle" >Classes, functions</text>
+<rect x="908" y="80" width="238" height="72" rx="8" class="agent"/>
+<rect x="908" y="90" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="123.0" class="ag" text-anchor="middle" >Imports</text>
+<rect x="654" y="166" width="238" height="72" rx="8" class="agent"/>
+<rect x="654" y="176" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="776.0" y="209.0" class="ag" text-anchor="middle" >Calls</text>
+<rect x="908" y="166" width="238" height="72" rx="8" class="agent"/>
+<rect x="908" y="176" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="197.0" class="ag" text-anchor="middle" >Why-comments</text>
+<text x="1030.0" y="221.0" class="ag" text-anchor="middle" ># NOTE:, # WHY:</text>
+<rect x="654" y="252" width="238" height="72" rx="8" class="agent"/>
+<rect x="654" y="262" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="776.0" y="295.0" class="ag" text-anchor="middle" >SQL tables, joins</text>
+<rect x="908" y="252" width="238" height="72" rx="8" class="agent"/>
+<rect x="908" y="262" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="283.0" class="ag" text-anchor="middle" >Manifests</text>
+<text x="1030.0" y="307.0" class="ag" text-anchor="middle" >pyproject, go.mod</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="775.25" cy="487" r="14" class="num"/>
+<text x="775.25" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="795.25" y="496" class="gt" text-anchor="start" >Link across files</text>
+<rect x="654" y="524" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="555.0" class="ag" text-anchor="middle" >Second pass</text>
+<text x="903.0" y="579.0" class="ag" text-anchor="middle" >resolve calls between files</text>
+<rect x="654" y="656" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="666" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="776.0" y="691.0" class="ag" text-anchor="middle" >Exact match</text>
+<text x="776.0" y="715.0" class="ag" text-anchor="middle" >EXTRACTED, 1.0</text>
+<rect x="908" y="656" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="666" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="1030.0" y="691.0" class="ag" text-anchor="middle" >Best guess</text>
+<text x="1030.0" y="715.0" class="ag" text-anchor="middle" >INFERRED, 0.85</text>
+<path d="M773 596V654" class="flow"/>
+<path d="M1027 596V654" class="flow"/>
+<text x="900.0" y="790" class="lb" text-anchor="middle" >every edge carries its tag and score</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="161.75" cy="487" r="14" class="num"/>
+<text x="161.75" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="181.75" y="496" class="gt" text-anchor="start" >Cache and hand over</text>
+<rect x="54" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >SHA256 per file</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >unchanged: skipped next time</text>
+<rect x="54" y="636" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="646" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Nodes + edges</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >merged with the LLM pass</text>
+<path d="M300.0 604V634" class="flow"/>
+<text x="300.0" y="790" class="lb" text-anchor="middle" >a code-only folder needs no API key</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >syntax trees</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="946.2" y="449" class="al" text-anchor="middle" >symbols</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >edges</text>
+</svg>

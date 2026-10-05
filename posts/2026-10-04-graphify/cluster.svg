@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">graphify step 3: build the map</title>
+<desc id="d">1 One graph: build() merges the code pass and the LLM pass into one NetworkX graph, then drops duplicates, the same thing found under two names; --dedup-llm lets an LLM settle close calls. 2 Communities: Leiden groups nodes that link a lot (leiden extra; otherwise Louvain from NetworkX). Weak, loose groups are split again. Each one is named after its busiest node, or by an LLM. No embeddings, no vector store. 3 What matters: the 10 most linked nodes (god nodes), the 5 most surprising cross-file links, up to 7 suggested questions, and import cycles. 4 graphify-out: graph.json, graph.html (a community view above 5,000 nodes), GRAPH_REPORT.md, and exports only on a flag: Obsidian, wiki, SVG (svg extra), GraphML, Neo4j. A rebuild will not overwrite a bigger graph without --force.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="229.25" cy="43" r="14" class="num"/>
+<text x="229.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="249.25" y="52" class="gt" text-anchor="start" >One graph</text>
+<rect x="54" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >Merge</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >code pass + LLM pass</text>
+<rect x="54" y="200" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="210" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="303.0" y="235.0" class="ag" text-anchor="middle" >Drop duplicates</text>
+<text x="303.0" y="259.0" class="ag" text-anchor="middle" >same thing, two names</text>
+<path d="M300.0 160V198" class="flow"/>
+<text x="300.0" y="346" class="lb" text-anchor="middle" >--dedup-llm: an LLM settles close calls</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="815.75" cy="43" r="14" class="num"/>
+<text x="815.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="835.75" y="52" class="gt" text-anchor="start" >Communities</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >Leiden (leiden extra)</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >else Louvain</text>
+<rect x="654" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >Split loose groups</text>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >low cohesion: split again</text>
+<path d="M900.0 152V174" class="flow"/>
+<rect x="654" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="282" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >Name each one</text>
+<text x="903.0" y="327.0" class="ag" text-anchor="middle" >busiest node, or an LLM</text>
+<path d="M900.0 248V270" class="flow"/>
+<text x="900.0" y="404" class="lb" text-anchor="middle" >no embeddings, no vector store</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="809.0" cy="487" r="14" class="num"/>
+<text x="809.0" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="829.0" y="496" class="gt" text-anchor="start" >What matters</text>
+<rect x="654" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="776.0" y="559.0" class="ag" text-anchor="middle" >God nodes</text>
+<text x="776.0" y="583.0" class="ag" text-anchor="middle" >top 10 most linked</text>
+<rect x="908" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="534" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="1030.0" y="559.0" class="ag" text-anchor="middle" >Surprises</text>
+<text x="1030.0" y="583.0" class="ag" text-anchor="middle" >top 5 cross-file</text>
+<rect x="654" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="630" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="776.0" y="655.0" class="ag" text-anchor="middle" >Questions</text>
+<text x="776.0" y="679.0" class="ag" text-anchor="middle" >up to 7 to ask</text>
+<rect x="908" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="630" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="1030.0" y="667.0" class="ag" text-anchor="middle" >Import cycles</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="202.25" cy="487" r="14" class="num"/>
+<text x="202.25" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="222.25" y="496" class="gt" text-anchor="start" >graphify-out/</text>
+<rect x="54" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="176.0" y="559.0" class="ag" text-anchor="middle" >graph.json</text>
+<text x="176.0" y="583.0" class="ag" text-anchor="middle" >the full graph</text>
+<rect x="308" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="534" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="430.0" y="559.0" class="ag" text-anchor="middle" >graph.html</text>
+<text x="430.0" y="583.0" class="ag" text-anchor="middle" >click, filter, search</text>
+<rect x="54" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="630" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="176.0" y="655.0" class="ag" text-anchor="middle" >GRAPH_REPORT.md</text>
+<text x="176.0" y="679.0" class="ag" text-anchor="middle" >the highlights</text>
+<rect x="308" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="630" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="430.0" y="655.0" class="ag" text-anchor="middle" >Exports on a flag</text>
+<text x="430.0" y="679.0" class="ag" text-anchor="middle" >Obsidian, wiki, SVG…</text>
+<text x="300.0" y="760" class="lb" text-anchor="middle" >a rebuild won't overwrite a bigger graph</text>
+<text x="300.0" y="788" class="lb" text-anchor="middle" >unless you pass --force</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >graph</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="964.6" y="449" class="al" text-anchor="middle" >communities</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >report</text>
+</svg>

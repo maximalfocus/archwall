@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
-<title id="t">graphify in use</title>
-<desc id="d">1 The assistant: graphify claude install writes a CLAUDE.md section that says to query the graph first, and a PreToolUse hook that fires before search commands and file reads and points the assistant to the graph. Platforms without hooks get an instruction file such as AGENTS.md. 2 Ask the graph: the CLI has query, path and explain; an MCP server (mcp extra) offers query_graph, get_node, get_neighbors and shortest_path, over stdio for one developer or HTTP for a team. Both read graph.json and return a small subgraph instead of raw files. 3 Keep it current: after graphify hook install, git commit and branch switches rebuild the code part in the background with AST only and no API cost. After git pull or merge, run graphify update. When docs or papers change, run /graphify --update, which uses the LLM pass.</desc>
+<title id="t">graphify step 4: your assistant asks the graph first</title>
+<desc id="d">1 Install once: graphify claude install writes a CLAUDE.md section and a PreToolUse hook. Other assistants get AGENTS.md or a rules file instead. Opt-in strict mode on Claude Code blocks the first raw file read of a session. 2 The hook: before a Grep or Bash search, and before a Read or Glob, it nudges the assistant to run graphify query, only when a fresh graph exists. 3 Ask: the CLI has query for a question, path from A to B, and explain for one concept; an MCP server (mcp extra) offers the same as tools. 4 The answer: it finds the nodes that match the question, walks out from them breadth-first or depth-first, and returns a small subgraph as text, about 2,000 tokens by default, not whole files.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -25,67 +25,72 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 .numt{font-size:16px;font-weight:700;fill:#ffffff}
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
-<rect x="24" y="16" width="552" height="476" rx="12" class="grp"/>
-<circle cx="195.5" cy="43" r="14" class="num"/>
-<text x="195.5" y="49" class="numt" text-anchor="middle" >1</text>
-<text x="215.5" y="52" class="gt" text-anchor="start" >Your assistant</text>
-<rect x="150" y="84" width="300" height="52" rx="26.0" class="human"/>
-<text x="300.0" y="116.0" class="q" text-anchor="middle" >question about the code</text>
-<rect x="54" y="172" width="492" height="80" rx="8" class="agent"/>
-<rect x="54" y="182" width="5" height="60" rx="2" fill="#2f9e6e"/>
-<text x="303.0" y="207.0" class="ag" text-anchor="middle" >CLAUDE.md</text>
-<text x="303.0" y="231.0" class="ag" text-anchor="middle" >query the graph first</text>
-<rect x="54" y="276" width="492" height="80" rx="8" class="agent"/>
-<rect x="54" y="286" width="5" height="60" rx="2" fill="#d64545"/>
-<text x="303.0" y="311.0" class="ag" text-anchor="middle" >PreToolUse hook</text>
-<text x="303.0" y="335.0" class="ag" text-anchor="middle" >before grep and Read</text>
-<text x="300.0" y="408" class="lb" text-anchor="middle" >no hooks on your platform:</text>
-<text x="300.0" y="434" class="lb" text-anchor="middle" >an AGENTS.md-style file instead</text>
-<rect x="624" y="16" width="552" height="476" rx="12" class="grp"/>
-<circle cx="802.25" cy="43" r="14" class="num"/>
-<text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>
-<text x="822.25" y="52" class="gt" text-anchor="start" >Ask the graph</text>
-<rect x="654" y="88" width="238" height="80" rx="8" class="agent"/>
-<rect x="654" y="98" width="5" height="60" rx="2" fill="#2f6fd6"/>
-<text x="776.0" y="123.0" class="ag" text-anchor="middle" >CLI</text>
-<text x="776.0" y="147.0" class="ag" text-anchor="middle" >query, path, explain</text>
-<rect x="908" y="88" width="238" height="80" rx="8" class="agent"/>
-<rect x="908" y="98" width="5" height="60" rx="2" fill="#2f6fd6"/>
-<text x="1030.0" y="123.0" class="ag" text-anchor="middle" >MCP server (extra)</text>
-<text x="1030.0" y="147.0" class="ag" text-anchor="middle" >stdio or HTTP</text>
-<rect x="780" y="246" width="240" height="64" rx="8" class="agent"/>
-<rect x="780" y="256" width="5" height="44" rx="2" fill="#5b6675"/>
-<text x="903.0" y="285.0" class="ag" text-anchor="middle" >graph.json</text>
-<path d="M773 168V216H854V246" class="flow"/>
-<path d="M1027 168V216H946V246" class="flow"/>
-<rect x="750" y="356" width="300" height="52" rx="26.0" class="front"/>
-<text x="900.0" y="388.0" class="q" text-anchor="middle" >a small subgraph</text>
-<path d="M900.0 310V356" class="flow"/>
-<text x="900.0" y="448" class="lb" text-anchor="middle" >not the raw files</text>
-<rect x="24" y="524" width="1152" height="336" rx="12" class="grp"/>
-<circle cx="488.75" cy="551" r="14" class="num"/>
-<text x="488.75" y="557" class="numt" text-anchor="middle" >3</text>
-<text x="508.75" y="560" class="gt" text-anchor="start" >Keep it current</text>
-<rect x="54" y="608" width="340" height="80" rx="8" class="agent"/>
-<rect x="54" y="618" width="5" height="60" rx="2" fill="#8a5cc7"/>
-<text x="227.0" y="643.0" class="ag" text-anchor="middle" >git commit, switch</text>
-<text x="227.0" y="667.0" class="ag" text-anchor="middle" >rebuilds by itself</text>
-<text x="224.0" y="724" class="lb" text-anchor="middle" >AST only, no API cost</text>
-<rect x="430" y="608" width="340" height="80" rx="8" class="agent"/>
-<rect x="430" y="618" width="5" height="60" rx="2" fill="#8a5cc7"/>
-<text x="603.0" y="643.0" class="ag" text-anchor="middle" >git pull, merge</text>
-<text x="603.0" y="667.0" class="ag" text-anchor="middle" >graphify update .</text>
-<text x="600.0" y="724" class="lb" text-anchor="middle" >you run it</text>
-<rect x="806" y="608" width="340" height="80" rx="8" class="agent"/>
-<rect x="806" y="618" width="5" height="60" rx="2" fill="#8a5cc7"/>
-<text x="979.0" y="643.0" class="ag" text-anchor="middle" >docs changed</text>
-<text x="979.0" y="667.0" class="ag" text-anchor="middle" >/graphify --update</text>
-<text x="976.0" y="724" class="lb" text-anchor="middle" >LLM pass, costs tokens</text>
-<text x="600" y="794" class="lb" text-anchor="middle" >graphify hook install sets up the git hooks once per clone</text>
-<path d="M564 128H654" class="flow"/>
-<text x="600" y="116" class="al" text-anchor="middle" >query</text>
-<path d="M750 382H564" class="flow"/>
-<text x="657" y="370" class="al" text-anchor="middle" >subgraph</text>
-<path d="M1116 524V278H1020" class="flow back"/>
-<text x="1116" y="416" class="al" text-anchor="middle" >rebuilds</text>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="209.0" cy="43" r="14" class="num"/>
+<text x="209.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="229.0" y="52" class="gt" text-anchor="start" >Install once</text>
+<rect x="54" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >graphify claude install</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >CLAUDE.md section + hook</text>
+<rect x="54" y="192" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="202" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="227.0" class="ag" text-anchor="middle" >Other assistants</text>
+<text x="303.0" y="251.0" class="ag" text-anchor="middle" >AGENTS.md or a rules file</text>
+<text x="300.0" y="336" class="lb" text-anchor="middle" >opt-in --strict (Claude Code): blocks</text>
+<text x="300.0" y="364" class="lb" text-anchor="middle" >the first raw file read of a session</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="836.0" cy="43" r="14" class="num"/>
+<text x="836.0" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="856.0" y="52" class="gt" text-anchor="start" >The hook</text>
+<rect x="654" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="903.0" y="115.0" class="ag" text-anchor="middle" >Before Grep or Bash</text>
+<text x="903.0" y="139.0" class="ag" text-anchor="middle" >nudge: graphify query</text>
+<rect x="654" y="192" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="202" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="903.0" y="227.0" class="ag" text-anchor="middle" >Before Read or Glob</text>
+<text x="903.0" y="251.0" class="ag" text-anchor="middle" >the same nudge</text>
+<text x="900.0" y="336" class="lb" text-anchor="middle" >only when a fresh graph exists</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="869.75" cy="487" r="14" class="num"/>
+<text x="869.75" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="889.75" y="496" class="gt" text-anchor="start" >Ask</text>
+<rect x="654" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="776.0" y="559.0" class="ag" text-anchor="middle" >query</text>
+<text x="776.0" y="583.0" class="ag" text-anchor="middle" >a question</text>
+<rect x="908" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="534" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="1030.0" y="559.0" class="ag" text-anchor="middle" >path</text>
+<text x="1030.0" y="583.0" class="ag" text-anchor="middle" >from A to B</text>
+<rect x="654" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="630" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="776.0" y="655.0" class="ag" text-anchor="middle" >explain</text>
+<text x="776.0" y="679.0" class="ag" text-anchor="middle" >one concept</text>
+<rect x="908" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="630" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="1030.0" y="655.0" class="ag" text-anchor="middle" >MCP server</text>
+<text x="1030.0" y="679.0" class="ag" text-anchor="middle" >mcp extra</text>
+<text x="900.0" y="760" class="lb" text-anchor="middle" >MCP: one person on stdio,</text>
+<text x="900.0" y="788" class="lb" text-anchor="middle" >a team on HTTP</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="222.5" cy="487" r="14" class="num"/>
+<text x="222.5" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="242.5" y="496" class="gt" text-anchor="start" >The answer</text>
+<rect x="54" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >Find matching nodes</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >then walk out, BFS or DFS</text>
+<rect x="150" y="656" width="300" height="52" rx="26.0" class="front"/>
+<text x="300.0" y="688.0" class="q" text-anchor="middle" >a small subgraph</text>
+<path d="M300.0 604V654" class="flow"/>
+<text x="300.0" y="760" class="lb" text-anchor="middle" >about 2,000 tokens by default,</text>
+<text x="300.0" y="788" class="lb" text-anchor="middle" >not whole files</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >hook</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="978.4" y="449" class="al" text-anchor="middle" >graphify query</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >graph.json</text>
 </svg>

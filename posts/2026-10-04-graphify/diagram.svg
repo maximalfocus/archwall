@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
-<title id="t">graphify architecture</title>
-<desc id="d">1 Scan the folder: detect() sorts files into code, docs and papers, images, and video or audio. 2 Extract in three passes; a SHA256 cache skips files that have not changed. Pass 1 parses code with tree-sitter, locally, with no LLM. Pass 2 transcribes video and audio with faster-whisper, locally (video extra). Pass 3 sends docs, papers, images and transcripts to parallel LLM subagents, which costs tokens. Passes 1 and 3 return nodes and edges, and each edge is tagged EXTRACTED, INFERRED or AMBIGUOUS. 3 Build and cluster: build() makes one NetworkX graph, cluster() finds communities with the Leiden algorithm (leiden extra; otherwise Louvain), and the analyze helpers find god nodes and surprising connections. 4 Output in graphify-out: graph.json, graph.html and GRAPH_REPORT.md, plus optional exports such as an Obsidian vault, a wiki, SVG, GraphML and Cypher.</desc>
+<title id="t">graphify overview</title>
+<desc id="d">Input: a folder of code, docs, papers, images and video. 1 Read the folder: detect() skips ignored files, build output and secret files, sorts the rest by type and warns when the folder is tiny or costly. 2 Pull out the facts in three passes: code is parsed on your machine with tree-sitter, no LLM; video and audio are transcribed locally with faster-whisper (video extra); docs, papers, images and transcripts go to an LLM, which costs tokens. A SHA256 cache skips unchanged files. 3 Build the map: one graph with duplicates dropped, communities found with Leiden or Louvain, then god nodes, surprising links and suggested questions. 4 Use the map: files in graphify-out, the assistant asks the graph through the CLI or an MCP server, and git hooks rebuild the code part for free. Side tools: PR dashboard, cross-repo graph.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -25,87 +25,84 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 .numt{font-size:16px;font-weight:700;fill:#ffffff}
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
-<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
-<circle cx="188.75" cy="43" r="14" class="num"/>
-<text x="188.75" y="49" class="numt" text-anchor="middle" >1</text>
-<text x="208.75" y="52" class="gt" text-anchor="start" >Scan the folder</text>
-<rect x="36" y="74" width="528" height="246" rx="9" class="sub"/>
-<text x="300.0" y="102" class="st" text-anchor="middle" >detect(): sort by type</text>
-<rect x="54" y="128" width="238" height="74" rx="8" class="agent"/>
-<rect x="54" y="138" width="5" height="54" rx="2" fill="#5b6675"/>
-<text x="176.0" y="172.0" class="ag" text-anchor="middle" >Code</text>
-<rect x="308" y="128" width="238" height="74" rx="8" class="agent"/>
-<rect x="308" y="138" width="5" height="54" rx="2" fill="#5b6675"/>
-<text x="430.0" y="172.0" class="ag" text-anchor="middle" >Docs, papers</text>
-<rect x="54" y="224" width="238" height="74" rx="8" class="agent"/>
-<rect x="54" y="234" width="5" height="54" rx="2" fill="#5b6675"/>
-<text x="176.0" y="268.0" class="ag" text-anchor="middle" >Images</text>
-<rect x="308" y="224" width="238" height="74" rx="8" class="agent"/>
-<rect x="308" y="234" width="5" height="54" rx="2" fill="#5b6675"/>
-<text x="430.0" y="268.0" class="ag" text-anchor="middle" >Video, audio</text>
-<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
-<circle cx="748.25" cy="43" r="14" class="num"/>
-<text x="748.25" y="49" class="numt" text-anchor="middle" >2</text>
-<text x="768.25" y="52" class="gt" text-anchor="start" >Extract: three passes</text>
-<rect x="654" y="80" width="492" height="80" rx="8" class="agent"/>
-<rect x="654" y="90" width="5" height="60" rx="2" fill="#2f6fd6"/>
-<text x="903.0" y="115.0" class="ag" text-anchor="middle" >Pass 1: code</text>
-<text x="903.0" y="139.0" class="ag" text-anchor="middle" >tree-sitter, local, no LLM</text>
-<rect x="654" y="176" width="492" height="80" rx="8" class="agent"/>
-<rect x="654" y="186" width="5" height="60" rx="2" fill="#2f6fd6"/>
-<text x="903.0" y="211.0" class="ag" text-anchor="middle" >Pass 2: video, audio</text>
-<text x="903.0" y="235.0" class="ag" text-anchor="middle" >transcripts → Pass 3 (video extra)</text>
-<rect x="654" y="272" width="492" height="80" rx="8" class="agent"/>
-<rect x="654" y="282" width="5" height="60" rx="2" fill="#2f6fd6"/>
-<text x="903.0" y="307.0" class="ag" text-anchor="middle" >Pass 3: docs, papers, images</text>
-<text x="903.0" y="331.0" class="ag" text-anchor="middle" >LLM subagents, costs tokens</text>
-<text x="900.0" y="390" class="lb" text-anchor="middle" >SHA256 cache skips unchanged files</text>
-<text x="900.0" y="416" class="lb" text-anchor="middle" >edges: EXTRACTED, INFERRED, AMBIGUOUS</text>
-<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
-<circle cx="775.25" cy="487" r="14" class="num"/>
-<text x="775.25" y="493" class="numt" text-anchor="middle" >3</text>
-<text x="795.25" y="496" class="gt" text-anchor="start" >Build and cluster</text>
-<rect x="654" y="536" width="238" height="80" rx="8" class="agent"/>
-<rect x="654" y="546" width="5" height="60" rx="2" fill="#8a5cc7"/>
-<text x="776.0" y="571.0" class="ag" text-anchor="middle" >build()</text>
-<text x="776.0" y="595.0" class="ag" text-anchor="middle" >one NetworkX graph</text>
-<rect x="908" y="536" width="238" height="80" rx="8" class="agent"/>
-<rect x="908" y="546" width="5" height="60" rx="2" fill="#2f9e6e"/>
-<text x="1030.0" y="571.0" class="ag" text-anchor="middle" >cluster()</text>
-<text x="1030.0" y="595.0" class="ag" text-anchor="middle" >Leiden or Louvain</text>
-<rect x="908" y="684" width="238" height="80" rx="8" class="agent"/>
-<rect x="908" y="694" width="5" height="60" rx="2" fill="#e8973a"/>
-<text x="1030.0" y="719.0" class="ag" text-anchor="middle" >Analyze</text>
-<text x="1030.0" y="743.0" class="ag" text-anchor="middle" >god nodes, surprises</text>
-<path d="M892 576.0H908" class="flow"/>
-<path d="M1027.0 616V684" class="flow"/>
-<text x="900.0" y="810" class="lb" text-anchor="middle" >no embeddings, no vector store</text>
-<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
-<circle cx="148.25" cy="487" r="14" class="num"/>
-<text x="148.25" y="493" class="numt" text-anchor="middle" >4</text>
-<text x="168.25" y="496" class="gt" text-anchor="start" >Output: graphify-out/</text>
-<rect x="54" y="532" width="238" height="80" rx="8" class="agent"/>
-<rect x="54" y="542" width="5" height="60" rx="2" fill="#5b6675"/>
-<text x="176.0" y="567.0" class="ag" text-anchor="middle" >graph.json</text>
-<text x="176.0" y="591.0" class="ag" text-anchor="middle" >full graph</text>
-<rect x="308" y="532" width="238" height="80" rx="8" class="agent"/>
-<rect x="308" y="542" width="5" height="60" rx="2" fill="#8a5cc7"/>
-<text x="430.0" y="567.0" class="ag" text-anchor="middle" >graph.html</text>
-<text x="430.0" y="591.0" class="ag" text-anchor="middle" >click and search</text>
-<rect x="54" y="632" width="238" height="80" rx="8" class="agent"/>
-<rect x="54" y="642" width="5" height="60" rx="2" fill="#8a5cc7"/>
-<text x="176.0" y="667.0" class="ag" text-anchor="middle" >GRAPH_REPORT.md</text>
-<text x="176.0" y="691.0" class="ag" text-anchor="middle" >the highlights</text>
-<rect x="308" y="632" width="238" height="80" rx="8" class="agent"/>
-<rect x="308" y="642" width="5" height="60" rx="2" fill="#8a5cc7"/>
-<text x="430.0" y="667.0" class="ag" text-anchor="middle" >Exports</text>
-<text x="430.0" y="691.0" class="ag" text-anchor="middle" >Obsidian, wiki, …</text>
-<text x="300.0" y="778" class="lb" text-anchor="middle" >also SVG, GraphML, Cypher</text>
-<path d="M564 216H654" class="flow"/>
-<text x="600" y="204" class="al" text-anchor="middle" >files</text>
-<path d="M688 368V536" class="flow"/>
-<text x="764" y="450" class="al" text-anchor="middle" >nodes + edges</text>
-<path d="M908 724.0H564" class="flow"/>
-<text x="600" y="712.0" class="al" text-anchor="middle" >graph</text>
-<text x="600" y="888" class="lb" text-anchor="middle" >detect → extract → build → cluster → analyze → report → export</text>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >Your folder: code, docs, papers, images, video</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="360" rx="12" class="grp"/>
+<circle cx="188.75" cy="111" r="14" class="num"/>
+<text x="188.75" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="208.75" y="120" class="gt" text-anchor="start" >Read the folder</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Skip what doesn't belong</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >ignore rules, build output, secrets</text>
+<rect x="54" y="238" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="248" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="265.0" class="ag" text-anchor="middle" >Sort by type</text>
+<text x="303.0" y="289.0" class="ag" text-anchor="middle" >code, docs, papers, images, video</text>
+<path d="M300.0 212V236" class="flow"/>
+<rect x="54" y="328" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="338" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="303.0" y="355.0" class="ag" text-anchor="middle" >Check the size</text>
+<text x="303.0" y="379.0" class="ag" text-anchor="middle" >warn if tiny or costly</text>
+<path d="M300.0 302V326" class="flow"/>
+<rect x="624" y="84" width="552" height="360" rx="12" class="grp"/>
+<circle cx="768.5" cy="111" r="14" class="num"/>
+<text x="768.5" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="788.5" y="120" class="gt" text-anchor="start" >Pull out the facts</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Code, on your machine</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >tree-sitter, no LLM, free</text>
+<rect x="654" y="238" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="248" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="265.0" class="ag" text-anchor="middle" >Video, audio, on your machine</text>
+<text x="903.0" y="289.0" class="ag" text-anchor="middle" >faster-whisper (video extra)</text>
+<rect x="654" y="328" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="338" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="355.0" class="ag" text-anchor="middle" >Docs, papers, images</text>
+<text x="903.0" y="379.0" class="ag" text-anchor="middle" >an LLM reads them, costs tokens</text>
+<text x="900.0" y="420" class="lb" text-anchor="middle" >SHA256 cache skips unchanged files</text>
+<rect x="624" y="480" width="552" height="372" rx="12" class="grp"/>
+<circle cx="802.25" cy="507" r="14" class="num"/>
+<text x="802.25" y="513" class="numt" text-anchor="middle" >3</text>
+<text x="822.25" y="516" class="gt" text-anchor="start" >Build the map</text>
+<rect x="654" y="544" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="554" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="571.0" class="ag" text-anchor="middle" >One graph</text>
+<text x="903.0" y="595.0" class="ag" text-anchor="middle" >merge, drop duplicates</text>
+<rect x="654" y="634" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="644" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="661.0" class="ag" text-anchor="middle" >Find communities</text>
+<text x="903.0" y="685.0" class="ag" text-anchor="middle" >Leiden or Louvain</text>
+<path d="M900.0 608V632" class="flow"/>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Find what matters</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >god nodes, surprises, questions</text>
+<path d="M900.0 698V722" class="flow"/>
+<rect x="24" y="480" width="552" height="372" rx="12" class="grp"/>
+<circle cx="215.75" cy="507" r="14" class="num"/>
+<text x="215.75" y="513" class="numt" text-anchor="middle" >4</text>
+<text x="235.75" y="516" class="gt" text-anchor="start" >Use the map</text>
+<rect x="54" y="544" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="554" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="571.0" class="ag" text-anchor="middle" >graphify-out/</text>
+<text x="303.0" y="595.0" class="ag" text-anchor="middle" >graph.json, graph.html, report</text>
+<rect x="54" y="634" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="644" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="661.0" class="ag" text-anchor="middle" >Assistant asks the graph</text>
+<text x="303.0" y="685.0" class="ag" text-anchor="middle" >hook, CLI, MCP server</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Keep it current</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >git hooks rebuild code, free</text>
+<text x="300.0" y="830" class="lb" text-anchor="middle" >side tools: PR dashboard, cross-repo graph</text>
+<path d="M576 294H622" class="flow"/>
+<text x="600" y="282" class="al" text-anchor="middle" >files by type</text>
+<path d="M900.0 444V478" class="flow"/>
+<text x="986.0" y="468" class="al" text-anchor="middle" >nodes + edges</text>
+<path d="M624 680H578" class="flow"/>
+<text x="600" y="668" class="al" text-anchor="middle" >graph</text>
+<text x="600" y="884" class="lb" text-anchor="middle" >Code is never sent anywhere; docs, images and transcripts go to an LLM</text>
 </svg>

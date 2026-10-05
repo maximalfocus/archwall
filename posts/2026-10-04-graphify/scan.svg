@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">graphify step 1: read the folder</title>
+<desc id="d">1 What goes in: your folder (or several, or a GitHub URL), and anything you fetch with graphify add: a paper, a web page, a tweet or a video; video URLs need the video extra. 2 Skip: .gitignore is respected, .graphifyignore adds your own rules, build output such as node_modules, dist and virtual envs is pruned, and secret files such as .env, keys and credentials are skipped by name and listed, never read. 3 Convert: Word and Excel files become Markdown with the office extra; Google Docs shortcuts are opt-in and need the gws command-line tool. The Markdown lands in graphify-out/converted. 4 Sort and check: every file becomes code, document, paper, image or video; unknown files are listed and left out. Under 50,000 words graphify says you may not need a graph; over 500,000 words or 500 files it warns the LLM pass will be costly.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="209.0" cy="43" r="14" class="num"/>
+<text x="209.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="229.0" y="52" class="gt" text-anchor="start" >What goes in</text>
+<rect x="54" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >Your folder</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >or several, or a GitHub URL</text>
+<rect x="54" y="192" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="202" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="303.0" y="227.0" class="ag" text-anchor="middle" >graphify add &lt;url&gt;</text>
+<text x="303.0" y="251.0" class="ag" text-anchor="middle" >paper, web page, tweet, video</text>
+<text x="300.0" y="336" class="lb" text-anchor="middle" >fetched pages are saved as Markdown</text>
+<text x="300.0" y="364" class="lb" text-anchor="middle" >video URLs need the video extra</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="863.0" cy="43" r="14" class="num"/>
+<text x="863.0" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="883.0" y="52" class="gt" text-anchor="start" >Skip</text>
+<rect x="654" y="80" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="776.0" y="115.0" class="ag" text-anchor="middle" >.gitignore</text>
+<text x="776.0" y="139.0" class="ag" text-anchor="middle" >respected</text>
+<rect x="908" y="80" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="90" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="1030.0" y="115.0" class="ag" text-anchor="middle" >.graphifyignore</text>
+<text x="1030.0" y="139.0" class="ag" text-anchor="middle" >your own rules</text>
+<rect x="654" y="176" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="776.0" y="211.0" class="ag" text-anchor="middle" >Build output</text>
+<text x="776.0" y="235.0" class="ag" text-anchor="middle" >node_modules, dist</text>
+<rect x="908" y="176" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="186" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="1030.0" y="211.0" class="ag" text-anchor="middle" >Secret files</text>
+<text x="1030.0" y="235.0" class="ag" text-anchor="middle" >.env, keys</text>
+<text x="900.0" y="316" class="lb" text-anchor="middle" >secrets are skipped by name,</text>
+<text x="900.0" y="344" class="lb" text-anchor="middle" >listed in the summary, never read</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="842.75" cy="487" r="14" class="num"/>
+<text x="842.75" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="862.75" y="496" class="gt" text-anchor="start" >Convert</text>
+<rect x="654" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="559.0" class="ag" text-anchor="middle" >Word, Excel → Markdown</text>
+<text x="903.0" y="583.0" class="ag" text-anchor="middle" >office extra</text>
+<rect x="654" y="636" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="646" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Google Docs shortcuts</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >opt-in, needs the gws tool</text>
+<text x="900.0" y="760" class="lb" text-anchor="middle" >saved in graphify-out/converted/</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="195.5" cy="487" r="14" class="num"/>
+<text x="195.5" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="215.5" y="496" class="gt" text-anchor="start" >Sort and check</text>
+<rect x="54" y="520" width="238" height="64" rx="8" class="agent"/>
+<rect x="54" y="530" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="176.0" y="559.0" class="ag" text-anchor="middle" >Code</text>
+<rect x="308" y="520" width="238" height="64" rx="8" class="agent"/>
+<rect x="308" y="530" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="430.0" y="559.0" class="ag" text-anchor="middle" >Document</text>
+<rect x="54" y="596" width="238" height="64" rx="8" class="agent"/>
+<rect x="54" y="606" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="176.0" y="623.0" class="ag" text-anchor="middle" >Paper</text>
+<text x="176.0" y="647.0" class="ag" text-anchor="middle" >PDF, or reads like one</text>
+<rect x="308" y="596" width="238" height="64" rx="8" class="agent"/>
+<rect x="308" y="606" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="430.0" y="635.0" class="ag" text-anchor="middle" >Image</text>
+<rect x="54" y="672" width="238" height="64" rx="8" class="agent"/>
+<rect x="54" y="682" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="176.0" y="711.0" class="ag" text-anchor="middle" >Video, audio</text>
+<rect x="308" y="672" width="238" height="64" rx="8" class="agent"/>
+<rect x="308" y="682" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="430.0" y="699.0" class="ag" text-anchor="middle" >Unknown</text>
+<text x="430.0" y="723.0" class="ag" text-anchor="middle" >listed, left out</text>
+<text x="300.0" y="778" class="lb" text-anchor="middle" >under 50,000 words: may not need a graph</text>
+<text x="300.0" y="806" class="lb" text-anchor="middle" >over 500,000 words or 500 files: costly</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >paths</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="960.0" y="449" class="al" text-anchor="middle" >kept files</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >Markdown</text>
+</svg>

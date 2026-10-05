@@ -1,14 +1,39 @@
-graphify turns a folder of code, docs, images and video into one knowledge graph. Your assistant then queries the graph instead of grepping files. It runs as a skill (`/graphify .`) backed by a Python library.
+graphify turns a folder of code, docs, papers, images and video into one knowledge graph. Your AI assistant then asks the graph instead of grepping files. It is a skill (`/graphify .`) on top of a Python library.
 
-1. **Scan**: `detect()` sorts files by type.
-2. **Extract**, in three passes. A SHA256 cache skips files that haven't changed. Code goes through tree-sitter, locally, with no LLM. Video and audio (video extra) are transcribed locally with faster-whisper. Docs, images and transcripts go to parallel LLM subagents; only this pass costs tokens. Each edge is tagged `EXTRACTED` (stated in the source), `INFERRED` (with a score) or `AMBIGUOUS` (flagged for review).
-3. **Build and cluster**: the pieces become one NetworkX graph. Leiden splits it into communities by edge density (leiden extra; otherwise Louvain). No embeddings, no vector store. Then it finds god nodes and surprising links across modules.
-4. **Output** in `graphify-out/`: `graph.json`, a clickable `graph.html`, and `GRAPH_REPORT.md` with the highlights. Obsidian, wiki, SVG, GraphML and Cypher exports are optional.
+**1. Read the folder.** `detect()` skips ignored files, build output and secrets, then sorts the rest by type.
+
+![](scan.svg)
+
+**2. Pull out the facts.** Code is parsed on your machine with tree-sitter: no LLM, no cost. A second pass links calls across files.
+
+![](code.svg)
+
+Video and audio are transcribed locally (video extra). Docs, papers, images and transcripts go to an LLM in parallel batches. Only this pass costs tokens. A SHA256 cache skips unchanged files.
+
+![](media.svg)
+
+Every edge says how sure it is: `EXTRACTED` (in the source), `INFERRED` (a scored guess) or `AMBIGUOUS` (for a person to check).
+
+![](model.svg)
+
+**3. Build the map.** Everything merges into one NetworkX graph, minus duplicates. Leiden (leiden extra, else Louvain) groups it into communities by its links. No embeddings, no vector store. The report lists god nodes, surprising links and questions to ask.
+
+![](cluster.svg)
+
+**4. Use it.** `graphify claude install` adds a CLAUDE.md section and a hook. Before the assistant searches or reads files, the hook points it to `graphify query`. The CLI or an MCP server (mcp extra) answers with a small subgraph, not whole files.
 
 ![](use.svg)
 
-`graphify claude install` adds a CLAUDE.md section and a PreToolUse hook. Before a search or a file read, the hook points the assistant to `graphify query`. Platforms without hooks get an instruction file such as `AGENTS.md`. The graph answers through the CLI (`query`, `path`, `explain`) or an MCP server (mcp extra), over stdio for one person or HTTP for a team. Either way the assistant gets a small subgraph, not raw files.
+`graphify hook install` rebuilds the code part on every commit and branch switch, for free. After `git pull`, run `graphify update .`.
 
-`graphify hook install` keeps it current. Commits and branch switches rebuild the code part in the background, with no API cost. After `git pull`, run `graphify update .`. When docs change, run `/graphify --update`.
+![](current.svg)
 
-On a mixed corpus of 52 files, a query used 71.5x fewer tokens than reading the files. On 6 files there was no saving.
+Code is never sent anywhere. Docs, images and transcripts go to your assistant's model or an API you choose.
+
+![](privacy.svg)
+
+Side tools cover several repos, pull requests and work memory.
+
+![](more.svg)
+
+On 52 mixed files, a query used 71.5x fewer tokens than reading the files. On 6 files there was no saving.
