@@ -51,8 +51,8 @@ caption_en = "A session is a tree; the model only sees the active branch"
 
 [[figures]]
 file = "extensions.svg"
-alt_zh = "扩展和插件：1 四类：扩展（TypeScript 代码）、技能（按需读的说明）、提示词模板（可复用的斜杠命令）、主题（终端配色），可打包成 pi 包；2 来源：~/.pi/agent、信任后的 .pi 目录、npm 或 git 上的 pi 包、只管一次的 -e 参数；3 扩展能加：工具、命令、模型厂商、MCP 服务端、终端界面、事件钩子，跑在 pi 进程里、权限和 pi 一样；4 内置扩展用同一套接口：mcp、codemode、tool_search、llama.cpp，前三个可被装的扩展替换"
-alt_en = "Extensions and add-ons: 1 four kinds: extensions (TypeScript code), skills (instructions read on demand), prompt templates (reusable slash commands), themes (terminal colours), bundled as pi packages; 2 where from: ~/.pi/agent, the .pi folder once trusted, pi packages from npm or git, or the -e flag for one run; 3 an extension can add tools, commands, model providers, MCP servers, terminal UI and event hooks, running inside pi with pi's rights; 4 built-in extensions use the same API: mcp, codemode, tool_search and llama.cpp, and an installed extension can replace the first three"
+alt_zh = "扩展和插件：1 四类：扩展（TypeScript 代码）、技能（按需读的说明）、提示词模板（可复用的斜杠命令）、主题（终端配色），可打包成 pi 包；2 来源：~/.pi/agent、信任后的 .pi 目录、npm 或 git 上的 pi 包、只管一次的 -e 参数；3 扩展能加：工具、命令、模型厂商、MCP 服务端、终端界面、事件钩子，跑在 pi 进程里、权限和 pi 一样；4 内置扩展用同一套接口：mcp、codemode、tool-search、llama.cpp，前三个可被装的扩展替换"
+alt_en = "Extensions and add-ons: 1 four kinds: extensions (TypeScript code), skills (instructions read on demand), prompt templates (reusable slash commands), themes (terminal colours), bundled as pi packages; 2 where from: ~/.pi/agent, the .pi folder once trusted, pi packages from npm or git, or the -e flag for one run; 3 an extension can add tools, commands, model providers, MCP servers, terminal UI and event hooks, running inside pi with pi's rights; 4 built-in extensions use the same API: mcp, codemode, tool-search and llama.cpp, and an installed extension can replace the first three"
 caption_zh = "pi 自己的 MCP 和 codemode 也是扩展，和你写的用同一套接口"
 caption_en = "Pi's own MCP and codemode are extensions too, on the same API as yours"
 

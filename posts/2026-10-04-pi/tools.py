@@ -21,8 +21,8 @@ d = Diagram("Pi tools",
             "3 codemode, a built-in extension, off by default and turned on when an MCP server needs it: the "
             "model writes a JavaScript script that runs in a QuickJS sandbox with no files, network or "
             "timers, calls other tools, and only the script's output goes back to the model. "
-            "4 tool_search, a built-in extension, off by default: it searches tools that are not declared "
-            "and declares the matches for the next model call; they stay declared on that branch.")
+            "4 tool_search, from the built-in tool-search extension, off by default: it searches tools that "
+            "are not declared and declares the matches for the next model call; they stay declared on that branch.")
 
 L, R, W = 24, 624, 552
 T1, H1 = 16, 412

@@ -19,8 +19,8 @@ d = Diagram("Pi extensions and add-ons",
             "is trusted, pi packages from npm or git, or the -e flag for one run. "
             "3 What an extension can add: tools, commands, model providers, MCP servers, terminal UI and "
             "event hooks. It runs inside the pi process with the same rights. "
-            "4 Built-in extensions use the same API: mcp, codemode, tool_search and llama.cpp for local "
-            "models. An installed extension can replace mcp, codemode or tool_search.")
+            "4 Built-in extensions use the same API: mcp, codemode, tool-search and llama.cpp for local "
+            "models. An installed extension can replace mcp, codemode or tool-search.")
 
 L, R, W = 24, 624, 552
 T1, H1 = 16, 412
@@ -49,10 +49,10 @@ d.note(R + W / 2, T2 + 326, "load only code you trust")
 
 # 4 built-in extensions
 d.group(L, T2, W, H2, "Built-in extensions", 4)
-for i, lbl in enumerate(["mcp|MCP servers", "codemode|scripts", "tool_search|find tools", "llama.cpp|local models"]):
+for i, lbl in enumerate(["mcp|MCP servers", "codemode|scripts", "tool-search|find tools", "llama.cpp|local models"]):
     d.card(L + 30 + (i % 2) * 254, T2 + 72 + (i // 2) * 100, lbl, "coding", w=238, h=80)
 d.note(L + W / 2, T2 + 300, "an installed extension can replace")
-d.note(L + W / 2, T2 + 326, "mcp, codemode or tool_search")
+d.note(L + W / 2, T2 + 326, "mcp, codemode or tool-search")
 
 # hand-offs, drawn last so they sit on top
 d.arrow(f"M{L + W} {T1 + 200}H{R}", label="found in", at=(600, T1 + 188))

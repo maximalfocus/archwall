@@ -16,7 +16,7 @@ The model answers with text and tool calls. Pi checks each call, runs them in pa
 
 ![](tools.svg)
 
-Four tools are on by default: `read`, `bash`, `edit`, `write`. `codemode` and `tool_search` are built-in extensions, off by default; an MCP server turns them on when it needs them.
+Four tools are on by default: `read`, `bash`, `edit`, `write`. `codemode` and `tool-search` are built-in extensions whose tools are off by default; an MCP server turns them on when it needs them.
 
 ![](mcp.svg)
 

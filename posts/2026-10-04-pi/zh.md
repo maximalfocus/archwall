@@ -16,7 +16,7 @@ pi 是终端里的小型开源编程智能体。缺什么功能，自己加。
 
 ![](tools.svg)
 
-默认开四个工具：`read`、`bash`、`edit`、`write`。`codemode` 和 `tool_search` 是内置扩展，默认关，MCP 需要时自动开。
+默认开四个工具：`read`、`bash`、`edit`、`write`。`codemode` 和 `tool-search` 是内置扩展，工具默认关，MCP 需要时自动开。
 
 ![](mcp.svg)
 
