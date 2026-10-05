@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">ScientistTwo integrity checks</title>
+<desc id="d">Four properties, each with the agent that guards it and the audit result for the full system. 1 Rerunnable: the Coding Agent is told to write self-contained scripts that can be rerun; every reported score reproduced, 49 of 49. 2 Rules kept: a validation filter uses the Coding Agent right after experiments to drop solutions that break the task rules or game the metric; 0 of 49 violated. 3 Real references: a search-backed model finds made-up citations and the Writer fixes the bibliography from live search; 0 of 1,814 references made up. 4 Method matches code: the Coding Agent audits the code against the paper and the Writer fixes the method section; 49 of 49 match.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="540" height="412" rx="12" class="grp"/>
+<circle cx="216.5" cy="43" r="14" class="num"/>
+<text x="216.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="236.5" y="52" class="gt" text-anchor="start" >Rerunnable</text>
+<rect x="54" y="88" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="98" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="297.0" y="119.0" class="ag" text-anchor="middle" >Coding agent</text>
+<text x="297.0" y="143.0" class="ag" text-anchor="middle" >writes rerunnable scripts</text>
+<text x="294.0" y="358" class="lb" text-anchor="middle" >audit: every score reproduced,</text>
+<text x="294.0" y="386" class="lb" text-anchor="middle" >49 of 49 papers</text>
+<rect x="636" y="16" width="540" height="412" rx="12" class="grp"/>
+<circle cx="828.5" cy="43" r="14" class="num"/>
+<text x="828.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="848.5" y="52" class="gt" text-anchor="start" >Rules kept</text>
+<rect x="666" y="88" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="98" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="909.0" y="119.0" class="ag" text-anchor="middle" >Validation filter</text>
+<text x="909.0" y="143.0" class="ag" text-anchor="middle" >drops rule-breaking code</text>
+<text x="906.0" y="358" class="lb" text-anchor="middle" >runs right after experiments;</text>
+<text x="906.0" y="386" class="lb" text-anchor="middle" >audit: 0 of 49 broke rules</text>
+<rect x="636" y="460" width="540" height="400" rx="12" class="grp"/>
+<circle cx="794.75" cy="487" r="14" class="num"/>
+<text x="794.75" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="814.75" y="496" class="gt" text-anchor="start" >Real references</text>
+<rect x="666" y="532" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="542" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="909.0" y="563.0" class="ag" text-anchor="middle" >Search-backed model</text>
+<text x="909.0" y="587.0" class="ag" text-anchor="middle" >finds made-up citations</text>
+<rect x="666" y="644" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="654" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="909.0" y="675.0" class="ag" text-anchor="middle" >Writer</text>
+<text x="909.0" y="699.0" class="ag" text-anchor="middle" >fixes the bibliography</text>
+<path d="M906.0 604V642" class="flow"/>
+<text x="906.0" y="790" class="lb" text-anchor="middle" >audit: 0 of 1,814</text>
+<text x="906.0" y="818" class="lb" text-anchor="middle" >references made up</text>
+<rect x="24" y="460" width="540" height="400" rx="12" class="grp"/>
+<circle cx="155.75" cy="487" r="14" class="num"/>
+<text x="155.75" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="175.75" y="496" class="gt" text-anchor="start" >Method matches code</text>
+<rect x="54" y="532" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="542" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="297.0" y="563.0" class="ag" text-anchor="middle" >Coding agent</text>
+<text x="297.0" y="587.0" class="ag" text-anchor="middle" >checks code against paper</text>
+<rect x="54" y="644" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="297.0" y="675.0" class="ag" text-anchor="middle" >Writer</text>
+<text x="297.0" y="699.0" class="ag" text-anchor="middle" >fixes the method section</text>
+<path d="M294.0 604V642" class="flow"/>
+<text x="294.0" y="804" class="lb" text-anchor="middle" >audit: 49 of 49 match</text>
+</svg>

@@ -1,81 +1,92 @@
-"""ScientistTwo pipeline, redrawn from the overview figure at https://scientist-two.github.io/.  Run: python3 diagram.py"""
+"""ScientistTwo overview: six agent groups in one closed loop.  Redrawn from the System overview
+figure on https://scientist-two.github.io/#overview and section 3 of the paper
+(arXiv:2609.19644v1, 17 Sep 2026, read 2026-10-05).
+Run: python3 diagram.py
+
+Snake order, three rows: 1 ideas (top left) -> 2 experiments (top right) -> 3 ablation (middle right)
+-> 4 writer (middle left) -> 5 peer review (bottom left) -> 6 meta-review (bottom right).
+Experiment results feed back to the ideas; review sends the draft back to the writer;
+the meta-review can send the idea back to step 3."""
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from archdiagram import Diagram  # noqa: E402
 
+L, R, W = 24, 636, 540
+T1, H1 = 16, 412
+T2, H2 = 460, 400
+FW, HW = 480, 232   # full-width card, half-width card
+
+
+def full(x, y, label, kind=None, h=72):
+    d.card(x + 30, y, label, kind, w=FW, h=h)
+
+
+def pair(x, y, a, b, h=72):
+    """Two half-width cards side by side; a and b are (label, kind)."""
+    d.card(x + 30, y, a[0], a[1], w=HW, h=h)
+    d.card(x + 278, y, b[0], b[1], w=HW, h=h)
+
+
+def down(x, y0, y1):
+    d.arrow(f"M{x} {y0}V{y1 - 2}")
+
+
+def notes(x, top, h, *lines):
+    """At most two note lines near the bottom of a group."""
+    for i, s in enumerate(lines):
+        d.note(x + W / 2, top + h - 70 + i * 28 + (14 if len(lines) == 1 else 0), s)
+
+
+def across(y, label, back=False, rtl=False):
+    """Arrow across the column gap at height y; rtl runs right group -> left group."""
+    a, b = (R, L + W + 2) if rtl else (L + W, R - 2)
+    d.arrow(f"M{a} {y}H{b}", back=back, label=label, at=((L + W + R) / 2, y - 12))
+
+
+def drop(x, label, back=False, up=False):
+    """Arrow across the row gap at x, label to its right; up runs bottom row -> top row."""
+    a, b = (T2, T1 + H1 + 2) if up else (T1 + H1, T2 - 2)
+    d.arrow(f"M{x} {a}V{b}", back=back, label=label, at=(x + 16 + len(label) * 4.6, T1 + H1 + 26))
+
 d = Diagram("ScientistTwo closed-loop research pipeline",
-            "Idea Generator, Evaluator and Analyzer test whether an idea works; Writer, Peer-Review and Meta-Review "
-            "test whether the paper passes. Results feed back to evolve and refine ideas, and the meta-review sends "
-            "the work back to the Analyzer until it clears the bar.")
-L, R, GW, CW = 24, 624, 552, 180
-T, A = 80, 416   # top row y, Analyzer / Writer row y
+            "Input: a research problem with the current best paper and its code. 1 Ideas: find what the best "
+            "method gets wrong and write new ideas, checked for novelty. 2 Experiments: a coding agent and a "
+            "critic test each idea on a slice of the benchmark, then on all of it; results go back to evolve "
+            "better ideas. 3 Ablation: take the best idea apart to see which parts help, and refine it. "
+            "4 Writer: draft the paper and improve it. 5 Peer review: an AI reviewer scores it and a rebuttal "
+            "agent answers with new experiments; the writer revises the draft. 6 Meta-review: accept, giving the final paper and code, or "
+            "send the idea back to step 3 for one more fix.")
 
-d.pill(L, 16, GW, 44, "Human: “I want to build an efficient tabular foundation model”")
-d.legend(R + 8, 44, ["coding", "critic", "plan", "write", "review"],
-         ["coding", "critic", "planning", "writing", "review"])
-d.arrow(f"M{L+GW/2} 60V{T}")
+GH = 236
+Y1, Y2, Y3 = 80, 364, 648
+d.pill(L, 16, W * 2 + (R - L - W), 44, "Input: a research problem + the current best paper and its code")
+d.arrow(f"M{L + W / 2} 60V{Y1 - 2}")
 
-# Idea Generator (top left)
-d.group(L, T, GW, 300, "Idea Generator")
-d.sub(L + 12, T + 48, GW - 24, 118, "Seed Idea Generator")
-d.card(L + 30, T + 86, "Limitation|Extractor", w=CW)
-d.card(L + 342, T + 86, "Novelty|Checker", "critic", w=CW)
-d.arrow(f"M{L+210} {T+118}H{L+336}")
-d.sub(L + 12, T + 176, GW - 24, 112, "Idea Evolver")
-d.ok(L + 58, T + 222); d.text(L + 76, T + 229, "Good idea", "ag", "start")
-d.bad(L + 58, T + 256); d.text(L + 76, T + 263, "Bad idea", "ag", "start")
-d.arrow(f"M{L+200} {T+240}H{L+330}"); d.bulb(L + 352, T + 236); d.text(L + 370, T + 247, "New idea", "ag", "start")
 
-# Evaluator (top right)
-d.group(R, T, GW, 300, "Evaluator")
-d.sub(R + 12, T + 48, GW - 24, 118, "Subset Experiment Agent")
-d.card(R + 30, T + 86, "Coding|Agent", "coding", w=CW); d.card(R + 342, T + 86, "Critic|Agent", "critic", w=CW)
-d.cycle(R + 276, T + 118, 10)
-d.arrow(f"M{R+276} {T+166}V{T+174}")
-d.sub(R + 12, T + 176, GW - 24, 112, "Full-Set Experiment Agent")
-d.card(R + 30, T + 210, "Coding|Agent", "coding", w=CW); d.card(R + 342, T + 210, "Critic|Agent", "critic", w=CW)
-d.cycle(R + 276, T + 242, 10)
+def stage(x, y, n, title, a, b, note=None):
+    d.group(x, y, W, GH, title, n)
+    pair(x, y + 64, a, b)
+    if note:
+        d.note(x + W / 2, y + GH - 30, note)
 
-# idea generator <-> evaluator
-d.arrow(f"M{L+GW-12} {T+100}H{R+6}"); d.bulb(L + GW + 24, T + 86)
-d.arrow(f"M{L+GW-12} {T+206}H{L+GW+12}V{T+136}H{R+6}"); d.bulb(L + GW + 1, T + 172)
-d.arrow(f"M{R+12} {T+266}H{L+GW-6}"); d.ok(L + GW + 14, T + 284); d.bad(L + GW + 34, T + 284)
 
-# Analyzer (middle right)
-d.group(R, A, GW, 310, "Analyzer")
-d.sub(R + 12, A + 48, GW - 24, 118, "Ablation Study Agent")
-d.card(R + 30, A + 86, "Planning|Agent", "plan", w=CW); d.card(R + 342, A + 86, "Coding|Agent", "coding", w=CW)
-d.arrow(f"M{R+210} {A+118}H{R+336}")
-d.arrow(f"M{R+276} {A+166}V{A+174}")
-d.sub(R + 12, A + 176, GW - 24, 122, "Idea Refiner")
-d.card(R + 30, A + 216, "Critic|Agent", "critic", w=CW)
-d.arrow(f"M{R+210} {A+248}H{R+330}"); d.bulb(R + 352, A + 244); d.text(R + 370, A + 255, "New idea", "ag", "start")
+stage(L, Y1, 1, "Ideas", ("Limitation|finder", "plan"), ("Novelty|checker", "critic"), "seed ideas, most novel first")
+stage(R, Y1, 2, "Experiments", ("Coding|agent", "coding"), ("Critic|agent", "critic"), "small slice first, then all data")
+stage(R, Y2, 3, "Ablation", ("Ablation|study", "coding"), ("Ablation|critic", "critic"), "keep only the parts that help")
+stage(L, Y2, 4, "Writer", ("Initial|drafter", "write"), ("Draft|enhancer", "write"), "a full paper")
+stage(L, Y3, 5, "Peer review", ("Reviewer|scores 1-10", "review"), ("Rebuttal|new experiments", "coding"), "below 8: rebut, at most 2 rounds")
+stage(R, Y3, 6, "Meta-review", ("Meta-|reviewer", "review"), ("Final paper|+ code", "plan"), "accept, or refine the idea once")
+d.ok(R + 490, Y3 + 78)
 
-# evaluator <-> analyzer
-d.arrow(f"M{R+180} {T+300}V{A-6}"); d.ok(R + 160, T + 318)
-d.arrow(f"M{R+380} {A}V{T+306}"); d.bulb(R + 402, T + 318)
-
-# Writer and Peer-Review (middle left), Meta-Review (bottom left)
-d.group(L, A, GW, 136, "Writer Agent")
-d.card(L + 30, A + 56, "Initial|Drafter", "write", w=CW); d.card(L + 342, A + 56, "Draft|Enhancer", "write", w=CW)
-d.arrow(f"M{L+210} {A+88}H{L+336}")
-d.arrow(f"M{R} {A+88}H{L+GW+6}")
-P = A + 160
-d.cycle(L + GW / 2, A + 148, 10)
-d.group(L, P, GW, 136, "Peer-Review Agent")
-d.card(L + 30, P + 56, "Review|Agent", "review", w=160); d.card(L + 362, P + 56, "Rebuttal|Agent", "review", w=160)
-d.arrow(f"M{L+190} {P+88}H{L+356}", label="new experiments", at=(L + 273, P + 78))
-M = P + 160
-d.arrow(f"M{L+120} {P+136}V{M-6}")
-d.group(L, M, GW, 136, "Meta-Review Agent")
-d.card(L + 30, M + 56, "Critic|Agent", "critic", w=CW); d.card(L + 342, M + 56, "Idea|Refiner", w=CW)
-d.arrow(f"M{L+210} {M+88}H{L+336}")
-
-# outputs and the loop back
-d.pill(R + 60, M + 66, GW - 120, 44, "Expanded frontier: paper + code", "front")
-d.arrow(f"M{L+GW} {M+88}H{R+54}")
-d.arrow(f"M{L+GW} {M+24}H{R+420}V{A+316}", back=True, label="not good enough", at=(R + 200, M + 30))
-
+mid = (L + W + R) / 2
+across(Y1 + 84, "ideas")
+across(Y1 + 160, "results", back=True, rtl=True)
+d.arrow(f"M{R + W / 2} {Y1 + GH}V{Y2 - 2}", label="best idea", at=(R + W / 2 + 60, Y1 + GH + 30))
+across(Y2 + 100, "idea", rtl=True)
+d.arrow(f"M{L + W / 2} {Y2 + GH}V{Y3 - 2}", label="draft", at=(L + W / 2 + 40, Y2 + GH + 30))
+d.arrow(f"M{L + 440} {Y3}V{Y2 + GH + 2}", back=True, label="revise", at=(L + 400, Y2 + GH + 30))
+across(Y3 + 100, "paper")
+d.arrow(f"M{R + 60} {Y3}V{Y2 + GH + 2}", back=True, label="refine", at=(R + 110, Y2 + GH + 30))
 d.save(Path(__file__).with_name("diagram.svg"))

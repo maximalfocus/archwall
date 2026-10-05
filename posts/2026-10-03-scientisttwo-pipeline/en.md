@@ -1,17 +1,41 @@
-ScientistTwo is an AI that does research by itself. Give it a direction and it comes up with ideas, runs experiments, writes the paper and reviews it. If the review fails, it goes back and fixes it.
+ScientistTwo is a research agent from Google Cloud AI Research. You give it a research problem, plus the current best paper and its code. It comes up with ideas, runs experiments, writes the paper and reviews it, with no human in the loop.
 
-Top row: does the idea work?
+Every stage works the same way. One agent makes something, and a critic accepts it, rejects it or asks for a fix. Each loop has a round limit.
 
-1. **Idea**: find where current methods fall short and check the idea is new. Experiment results come back and the idea gets revised.
-2. **Experiment**: try it on a small slice of data first, then the full set. One agent writes code, another looks for problems, back and forth.
-3. **Take it apart**: run ablations to see which parts matter. Cut the rest.
+![](pattern.svg)
 
-Bottom row: does the paper pass?
+**1. Ideas.** It lists what the best method gets wrong, writes ideas that fix it, and ranks them by novelty.
 
-4. **Write**: a first draft, then a cleanup.
-5. **Review**: one agent finds problems, another answers them with new experiments, not new wording.
-6. **Gatekeep**: not good enough? Back to step 3.
+![](ideas.svg)
 
-Why it works: small before big, take it apart before writing it up. That saves compute. No pass, no paper.
+**2. Experiments.** Each idea runs on a small slice of the benchmark first. Only ideas that beat the baseline get the full benchmark.
 
-Result: it beat the best human result on 86 of 107 problems.
+![](experiment.svg)
+
+Results from every idea feed an evolver that writes better ones. A selector picks the best.
+
+![](evolve.svg)
+
+**3. Ablation.** It removes parts one at a time to see which ones matter, and may revise the method once.
+
+![](ablation.svg)
+
+**4. Writing and review.** An AI reviewer scores the draft. Below 8 out of 10, a rebuttal agent runs new experiments and the draft is updated.
+
+![](writing.svg)
+
+**5. Meta-review.** A last reviewer accepts the paper or sends the idea back for one more fix. If the fix doesn't beat the old results, it is dropped and the previous paper ships.
+
+![](metareview.svg)
+
+Four checks keep it honest: code that reruns, a filter for rule-breaking code, real citations, and a method section that matches the code.
+
+![](integrity.svg)
+
+Most agents run on Gemini 3.6 Flash. Four, including the experiment coder, use Claude Code with Opus 4.8. One problem takes 2 to 3 days and $3,765 on average.
+
+![](run.svg)
+
+On 107 problems taken from NeurIPS, ICLR and ICML papers, it beat the human best on 86, by 25.2% on average.
+
+![](tested.svg)
