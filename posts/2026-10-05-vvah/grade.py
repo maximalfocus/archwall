@@ -47,8 +47,8 @@ d = Diagram("VVAH phase 4b: grade the fix",
             "joins only for fixes that span 2 or more repos. "
             "3 Four weighted checks: root cause 43 percent, every instance 25, no new bugs 19, best practice 14. "
             "4 Verdict: fixed at a score of 0.80 or more, partially fixed at 0.50 or more, not fixed below 0.50, "
-            "or inconclusive when the reviewers split. If root cause or no new bugs does not pass, the best result is "
-            "partially fixed. The case becomes validated, failed or open.")
+            "or inconclusive when the reviewers split. If root cause or no new bugs fails or is only partial, the best "
+            "result is partially fixed. The case becomes validated, failed or open.")
 
 d.group(L, T1, W, H1, "Find what to grade", 1)
 col(L, T1, [("Fix records|security-remediation/", "data"),
@@ -73,8 +73,8 @@ d.group(L, T2, W, H2, "Verdict", 4)
 grid(L, T2, [("Fixed|score ≥ 0.80", "plan"), ("Partially fixed|score ≥ 0.50", "data"),
              ("Not fixed|score < 0.50", "data"), ("Inconclusive|reviewers split", "data")])
 d.ok(L + 248, T2 + 78)
-d.note(L + W / 2, T2 + 300, "root cause or new bugs fail →")
-d.note(L + W / 2, T2 + 328, "at best partially fixed")
+d.note(L + W / 2, T2 + 300, "root cause or new bugs")
+d.note(L + W / 2, T2 + 328, "fail or partial → at best partial")
 
 handoffs("one case", "votes per check", "score")
 d.note(600, 888, "The case becomes validated, failed or open; failed and open can be graded again")
