@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">VVAH overview</title>
-<desc id="d">Input: your code repository plus optional context files. 1 Find where to look: S0 builds a static code map and S1 surveys the repo, S2 builds a threat model, S3 splits the work into chunks for the reviewers, including 11 specialist lenses. 2 Hunt and double-check: S4 AI reviewers look for weaknesses in each chunk, optionally voting; S5 filters obvious mistakes with rules and no AI; S6 a fresh verifier tries to prove each finding wrong, with an optional live check. 3 Report: S7 merges duplicates, S8 links findings into attack chains and re-ranks them, S9 writes a Markdown report and SARIF. 4 Fix and grade, off in the default profile: S10 proposes a minimal code fix, S11 two AI reviewers grade it, and people review every finding and fix.</desc>
+<desc id="d">Input: your code repository plus optional context files. 1 Find where to look: S0 builds a static code map and S1 surveys the repo, S2 builds a threat model, S3 splits the work into chunks for the reviewers, including 11 specialist lenses. 2 Hunt and double-check: S4 AI reviewers look for weaknesses in each chunk, optionally voting; S5 filters obvious mistakes with rules and one AI dedup call; S6 a fresh verifier tries to prove each finding wrong, with an optional live check. 3 Report: S7 merges duplicates, S8 links findings into attack chains and re-ranks them, S9 writes a Markdown report and SARIF. 4 Fix and grade, off in the default profile: S10 proposes a minimal code fix, S11 two AI reviewers grade it, and people review every finding and fix.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -57,7 +57,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="238" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="248" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="903.0" y="265.0" class="ag" text-anchor="middle" >Filter the obvious</text>
-<text x="903.0" y="289.0" class="ag" text-anchor="middle" >S5: rules, no AI</text>
+<text x="903.0" y="289.0" class="ag" text-anchor="middle" >S5: rules + one AI dedup</text>
 <path d="M900.0 212V236" class="flow"/>
 <rect x="654" y="328" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="338" width="5" height="44" rx="2" fill="#e8973a"/>

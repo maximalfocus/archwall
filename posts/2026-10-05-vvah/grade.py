@@ -41,18 +41,18 @@ def handoffs(a, b, c, ya=T1 + 206, yc=T2 + 200):
 
 d = Diagram("VVAH phase 4b: grade the fix",
             "1 Find what to grade: fix records under security-remediation/; a discover step with no AI picks the "
-            "cases still open. It is off in the default scan; the validate command runs it any time. "
+            "cases still to grade. It is off in the default scan; the validate command runs it any time. "
             "2 Review panel, read-only: an orchestrator runs the session, a security architect asks whether the "
             "root cause is fixed, and a penetration tester tries to get around the fix. A cross-repo reviewer "
             "joins only for fixes that span 2 or more repos. "
             "3 Four weighted checks: root cause 43 percent, every instance 25, no new bugs 19, best practice 14. "
             "4 Verdict: fixed at a score of 0.80 or more, partially fixed at 0.50 or more, not fixed below 0.50, "
-            "or inconclusive when the reviewers split. If root cause or no new bugs fails, the best result is "
+            "or inconclusive when the reviewers split. If root cause or no new bugs does not pass, the best result is "
             "partially fixed. The case becomes validated, failed or open.")
 
 d.group(L, T1, W, H1, "Find what to grade", 1)
 col(L, T1, [("Fix records|security-remediation/", "data"),
-            ("Discover|picks open cases, no AI", "review")], h=80)
+            ("Discover|picks cases to grade, no AI", "review")], h=80)
 d.note(L + W / 2, T1 + 300, "off in the default scan;")
 d.note(L + W / 2, T1 + 328, "the validate command runs it any time")
 

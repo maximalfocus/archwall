@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">VVAH phase 1: find where to look</title>
-<desc id="d">1 What goes in: your repo, plus optional files: known CVEs, design controls and a CMDB export. Missing files just mean less context; the CMDB is used when scoring the report. 2 Map the code: an AI pass drops non-production files, S0 builds a static code map of where input reaches risky calls (in the default profile an AI helps label it), and S1 an AI explorer surveys the repo with read-only tools. 3 Threat model, S2: assets worth protecting, trust boundaries where outsiders get in, and ranked threats; known CVEs raise a threat's likelihood. 4 Split the work, S3: risk chunks, taint chunks, specialist chunks for 11 lenses, catch-all chunks for files no lens claimed, and threat chunks. A lens runs only when the code has that surface.</desc>
+<desc id="d">1 What goes in: your repo, plus optional files: known CVEs, design controls and a CMDB export. Missing files just mean less context; the CMDB is used when scoring the report. 2 Map the code: an AI pass drops non-production files, S0 builds a static code map of where input reaches risky calls (in the default profile an AI helps label it), and S1 an AI explorer surveys the repo with read-only tools. 3 Threat model, S2: assets worth protecting, trust boundaries where outsiders get in, and ranked threats; known CVEs raise a threat's likelihood. 4 Split the work, S3: risk chunks, taint chunks, specialist chunks for 11 lenses, catch-all chunks for files no lens claimed, and threat chunks. Ten of the eleven lenses need their surface; logic-bug always runs.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -107,8 +107,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="706" width="5" height="52" rx="2" fill="#2f9e6e"/>
 <text x="176.0" y="727.0" class="ag" text-anchor="middle" >Threat chunks</text>
 <text x="176.0" y="751.0" class="ag" text-anchor="middle" >from the model</text>
-<text x="300.0" y="802" class="lb" text-anchor="middle" >a lens runs only if the code</text>
-<text x="300.0" y="828" class="lb" text-anchor="middle" >has that surface</text>
+<text x="300.0" y="802" class="lb" text-anchor="middle" >ten lenses need their surface</text>
+<text x="300.0" y="828" class="lb" text-anchor="middle" >in the code; logic-bug always runs</text>
 <path d="M576 222H622" class="flow"/>
 <text x="600" y="210" class="al" text-anchor="middle" >repo</text>
 <path d="M900.0 428V458" class="flow"/>

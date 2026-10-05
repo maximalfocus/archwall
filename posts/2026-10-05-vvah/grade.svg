@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">VVAH phase 4b: grade the fix</title>
-<desc id="d">1 Find what to grade: fix records under security-remediation/; a discover step with no AI picks the cases still open. It is off in the default scan; the validate command runs it any time. 2 Review panel, read-only: an orchestrator runs the session, a security architect asks whether the root cause is fixed, and a penetration tester tries to get around the fix. A cross-repo reviewer joins only for fixes that span 2 or more repos. 3 Four weighted checks: root cause 43 percent, every instance 25, no new bugs 19, best practice 14. 4 Verdict: fixed at a score of 0.80 or more, partially fixed at 0.50 or more, not fixed below 0.50, or inconclusive when the reviewers split. If root cause or no new bugs fails, the best result is partially fixed. The case becomes validated, failed or open.</desc>
+<desc id="d">1 Find what to grade: fix records under security-remediation/; a discover step with no AI picks the cases still to grade. It is off in the default scan; the validate command runs it any time. 2 Review panel, read-only: an orchestrator runs the session, a security architect asks whether the root cause is fixed, and a penetration tester tries to get around the fix. A cross-repo reviewer joins only for fixes that span 2 or more repos. 3 Four weighted checks: root cause 43 percent, every instance 25, no new bugs 19, best practice 14. 4 Verdict: fixed at a score of 0.80 or more, partially fixed at 0.50 or more, not fixed below 0.50, or inconclusive when the reviewers split. If root cause or no new bugs does not pass, the best result is partially fixed. The case becomes validated, failed or open.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -36,7 +36,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="184" width="492" height="80" rx="8" class="agent"/>
 <rect x="54" y="194" width="5" height="60" rx="2" fill="#d64545"/>
 <text x="303.0" y="219.0" class="ag" text-anchor="middle" >Discover</text>
-<text x="303.0" y="243.0" class="ag" text-anchor="middle" >picks open cases, no AI</text>
+<text x="303.0" y="243.0" class="ag" text-anchor="middle" >picks cases to grade, no AI</text>
 <path d="M300.0 160V182" class="flow"/>
 <text x="300.0" y="316" class="lb" text-anchor="middle" >off in the default scan;</text>
 <text x="300.0" y="344" class="lb" text-anchor="middle" >the validate command runs it any time</text>

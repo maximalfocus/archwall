@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">VVAH day to day</title>
-<desc id="d">1 Commands: setup and doctor check readiness, estimate previews cost with no spend, scan runs the pipeline, remediate and validate fix and grade, ev-replay re-tests a fix, status and gc show progress and clean up. 2 Many repos: a repos.csv with one row per repo; batch mode clones each one, can group repos by application for one report per app, and writes batch_summary.md. 3 Never lose paid work: checkpoints per chunk and per finding in SQLite, outside the repo; an unfinished run continues by default and --fresh starts over; guards refuse when the commit or config changed. 4 Audit and data: run_manifest.json records models, tokens and cost; prompts send code to the AI provider, so use approved endpoints; report folders get a local git-ignore rule so they are not committed by accident.</desc>
+<desc id="d">1 Commands: setup and doctor check readiness, estimate previews cost with no spend, scan runs the pipeline, remediate and validate fix and grade, ev-replay re-tests a fix, status and gc show progress and clean up. 2 Many repos: a repos.csv with one row per repo; batch mode clones each one, can group repos by application for one report per app, and writes batch_summary.md. 3 Never lose paid work: checkpoints per chunk and per finding in SQLite, outside the repo; an unfinished run continues by default and --fresh starts over; guards refuse when the commit or config changed. 4 Audit and data: run_manifest_*.json records models, tokens and cost; prompts send code to the AI provider, so use approved endpoints; report folders get a local git-ignore rule so they are not committed by accident.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -94,7 +94,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="215.5" y="496" class="gt" text-anchor="start" >Audit and data</text>
 <rect x="54" y="524" width="492" height="72" rx="8" class="agent"/>
 <rect x="54" y="534" width="5" height="52" rx="2" fill="#8a5cc7"/>
-<text x="303.0" y="555.0" class="ag" text-anchor="middle" >run_manifest.json</text>
+<text x="303.0" y="555.0" class="ag" text-anchor="middle" >run_manifest_*.json</text>
 <text x="303.0" y="579.0" class="ag" text-anchor="middle" >models, tokens, cost</text>
 <rect x="54" y="620" width="492" height="72" rx="8" class="agent"/>
 <rect x="54" y="630" width="5" height="52" rx="2" fill="#d64545"/>

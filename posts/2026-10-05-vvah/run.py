@@ -48,7 +48,7 @@ d = Diagram("VVAH day to day",
             "3 Never lose paid work: checkpoints per chunk and per finding in SQLite, outside the repo; an "
             "unfinished run continues by default and --fresh starts over; guards refuse when the commit or config "
             "changed. "
-            "4 Audit and data: run_manifest.json records models, tokens and cost; prompts send code to the AI "
+            "4 Audit and data: run_manifest_*.json records models, tokens and cost; prompts send code to the AI "
             "provider, so use approved endpoints; report folders get a local git-ignore rule so they are not "
             "committed by accident.")
 
@@ -70,7 +70,7 @@ col(R, T2, [("Checkpoints|per chunk, per finding", "data"),
 d.note(R + W / 2, T2 + 370, "stored in SQLite, outside the repo")
 
 d.group(L, T2, W, H2, "Audit and data", 4)
-col(L, T2, [("run_manifest.json|models, tokens, cost", "write"),
+col(L, T2, [("run_manifest_*.json|models, tokens, cost", "write"),
             ("Code goes to the AI provider|use approved endpoints", "review"),
             ("Reports kept out of git|local ignore rule", "review")], arrows=False)
 

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">VVAH phase 4a: propose a fix</title>
-<desc id="d">1 Start: verified findings from the scan report. Turn it on with --remediate or run the remediate command; it is off in the default profile, and --top N limits it to the N worst findings. 2 Plan and edit: a planner agent reads the code and plans a minimal fix; a fixer sub-agent edits files inside the repo. Report-only mode proposes the fix without editing. 3 Safety rails: a policy gate blocks edits to CI, hooks and git metadata and reverts any that slip through; a kill switch (an environment variable or a file) turns every fix into advice only; no shell tool is given, on purpose. A missing policy file means no edits at all. 4 Fix record per finding: finding_case.json with the finding, the fix and its status, diff.patch with secrets masked, and a stopgap such as a request rule, config change or feature flag to try. S11 grades it next.</desc>
+<desc id="d">1 Start: verified findings from the scan report. Turn it on with --remediate or run the remediate command; it is off in the default profile, and --top N limits it to the N worst findings. 2 Plan and edit: a planner agent reads the code and plans a minimal fix; a fixer sub-agent edits files inside the repo. Report-only mode proposes the fix without editing. 3 Safety rails: a policy gate blocks edits to CI, hooks and git metadata and reverts any that slip through; a kill switch (an environment variable or a file) turns every fix into advice only; no shell tool is given, on purpose. A policy file that will not load means no edits at all. 4 Fix record per finding: finding_case.json with the finding, the fix and its status, diff.patch with secrets masked, and a stopgap such as a request rule, config change or feature flag to try. S11 grades it next.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -70,7 +70,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="726" width="5" height="52" rx="2" fill="#d64545"/>
 <text x="903.0" y="747.0" class="ag" text-anchor="middle" >No shell</text>
 <text x="903.0" y="771.0" class="ag" text-anchor="middle" >left out on purpose</text>
-<text x="900.0" y="830" class="lb" text-anchor="middle" >no policy file → no edits at all</text>
+<text x="900.0" y="830" class="lb" text-anchor="middle" >a policy that will not load → no edits</text>
 <rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
 <circle cx="222.5" cy="487" r="14" class="num"/>
 <text x="222.5" y="493" class="numt" text-anchor="middle" >4</text>

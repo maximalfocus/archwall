@@ -15,7 +15,7 @@ d = Diagram("VVAH overview",
             "1 Find where to look: S0 builds a static code map and S1 surveys the repo, S2 builds a threat model, "
             "S3 splits the work into chunks for the reviewers, including 11 specialist lenses. "
             "2 Hunt and double-check: S4 AI reviewers look for weaknesses in each chunk, optionally voting; "
-            "S5 filters obvious mistakes with rules and no AI; S6 a fresh verifier tries to prove each finding wrong, "
+            "S5 filters obvious mistakes with rules and one AI dedup call; S6 a fresh verifier tries to prove each finding wrong, "
             "with an optional live check. "
             "3 Report: S7 merges duplicates, S8 links findings into attack chains and re-ranks them, "
             "S9 writes a Markdown report and SARIF. "
@@ -49,7 +49,7 @@ column(L, T1, [("Map the code|S0 code map · S1 repo survey", "coding"),
 
 d.group(R, T1, W, H1, "Hunt and double-check", 2)
 column(R, T1, [("Hunt in each chunk|S4: AI reviewers, optional vote", "coding"),
-               ("Filter the obvious|S5: rules, no AI", "review"),
+               ("Filter the obvious|S5: rules + one AI dedup", "review"),
                ("Try to prove it wrong|S6: verifier, optional live check", "critic")])
 
 d.group(R, T2, W, H2, "Report", 3)

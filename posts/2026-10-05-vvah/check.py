@@ -44,8 +44,8 @@ d = Diagram("VVAH phase 2: hunt and double-check",
             "1 Hunt, S4: an AI reviewer goes through each chunk, guided by a language lens (42 languages) and, for "
             "specialist chunks, one of 11 specialist lenses. Optional voting runs each chunk 3 times and keeps what "
             "2 runs agree on; only the full profile turns it on. "
-            "2 Filter, S5, with rules and no AI: drop findings in test or mock paths, in files that do not exist, "
-            "with low confidence, or with no source or sink; one optional AI call merges look-alikes. "
+            "2 Filter, S5: rules drop findings in test or mock paths, in files that do not exist, with low "
+            "confidence, or with no source or sink; one AI dedup call (on by default) merges look-alikes. "
             "3 Prove it wrong, S6: a fresh verifier per finding re-reads the code and hunts for defences. A true "
             "positive gets a CVSS score and moves on; a false positive is kept in the audit trail. "
             "4 Live check, beta and opt-in: exploit verification tests web-API findings against a running copy of "
@@ -60,10 +60,10 @@ d.arrow(f"M{L + 403} {T1 + 176}V{T1 + 138}")
 d.note(L + W / 2, T1 + 310, "optional vote: 3 runs, 2 must agree")
 d.note(L + W / 2, T1 + 338, "on in the full profile only")
 
-d.group(R, T1, W, H1, "Filter: S5, no AI", 2)
+d.group(R, T1, W, H1, "Filter: S5", 2)
 grid(R, T1, [("Test or mock|path", "review"), ("File not there|made-up path", "review"),
              ("Low confidence|below the bar", "review"), ("No evidence|no source, sink", "review")])
-d.note(R + W / 2, T1 + 300, "one optional AI call")
+d.note(R + W / 2, T1 + 300, "one AI dedup call, on by default")
 d.note(R + W / 2, T1 + 328, "merges look-alikes")
 
 d.group(R, T2, W, H2, "Prove it wrong: S6", 3)

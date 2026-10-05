@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">VVAH phase 2: hunt and double-check</title>
-<desc id="d">1 Hunt, S4: an AI reviewer goes through each chunk, guided by a language lens (42 languages) and, for specialist chunks, one of 11 specialist lenses. Optional voting runs each chunk 3 times and keeps what 2 runs agree on; only the full profile turns it on. 2 Filter, S5, with rules and no AI: drop findings in test or mock paths, in files that do not exist, with low confidence, or with no source or sink; one optional AI call merges look-alikes. 3 Prove it wrong, S6: a fresh verifier per finding re-reads the code and hunts for defences. A true positive gets a CVSS score and moves on; a false positive is kept in the audit trail. 4 Live check, beta and opt-in: exploit verification tests web-API findings against a running copy of the app. It only adds evidence and never drops a finding.</desc>
+<desc id="d">1 Hunt, S4: an AI reviewer goes through each chunk, guided by a language lens (42 languages) and, for specialist chunks, one of 11 specialist lenses. Optional voting runs each chunk 3 times and keeps what 2 runs agree on; only the full profile turns it on. 2 Filter, S5: rules drop findings in test or mock paths, in files that do not exist, with low confidence, or with no source or sink; one AI dedup call (on by default) merges look-alikes. 3 Prove it wrong, S6: a fresh verifier per finding re-reads the code and hunts for defences. A true positive gets a CVSS score and moves on; a false positive is kept in the audit trail. 4 Live check, beta and opt-in: exploit verification tests web-API findings against a running copy of the app. It only adds evidence and never drops a finding.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -46,9 +46,9 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="300.0" y="326" class="lb" text-anchor="middle" >optional vote: 3 runs, 2 must agree</text>
 <text x="300.0" y="354" class="lb" text-anchor="middle" >on in the full profile only</text>
 <rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
-<circle cx="775.25" cy="43" r="14" class="num"/>
-<text x="775.25" y="49" class="numt" text-anchor="middle" >2</text>
-<text x="795.25" y="52" class="gt" text-anchor="start" >Filter: S5, no AI</text>
+<circle cx="822.5" cy="43" r="14" class="num"/>
+<text x="822.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="842.5" y="52" class="gt" text-anchor="start" >Filter: S5</text>
 <rect x="654" y="80" width="238" height="80" rx="8" class="agent"/>
 <rect x="654" y="90" width="5" height="60" rx="2" fill="#d64545"/>
 <text x="776.0" y="115.0" class="ag" text-anchor="middle" >Test or mock</text>
@@ -65,7 +65,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="908" y="186" width="5" height="60" rx="2" fill="#d64545"/>
 <text x="1030.0" y="211.0" class="ag" text-anchor="middle" >No evidence</text>
 <text x="1030.0" y="235.0" class="ag" text-anchor="middle" >no source, sink</text>
-<text x="900.0" y="316" class="lb" text-anchor="middle" >one optional AI call</text>
+<text x="900.0" y="316" class="lb" text-anchor="middle" >one AI dedup call, on by default</text>
 <text x="900.0" y="344" class="lb" text-anchor="middle" >merges look-alikes</text>
 <rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
 <circle cx="768.5" cy="487" r="14" class="num"/>

@@ -46,7 +46,7 @@ d = Diagram("VVAH phase 4a: propose a fix",
             "files inside the repo. Report-only mode proposes the fix without editing. "
             "3 Safety rails: a policy gate blocks edits to CI, hooks and git metadata and reverts any that slip "
             "through; a kill switch (an environment variable or a file) turns every fix into advice only; no shell "
-            "tool is given, on purpose. A missing policy file means no edits at all. "
+            "tool is given, on purpose. A policy file that will not load means no edits at all. "
             "4 Fix record per finding: finding_case.json with the finding, the fix and its status, diff.patch with "
             "secrets masked, and a stopgap such as a request rule, config change or feature flag to try. S11 grades it next.")
 
@@ -65,7 +65,7 @@ d.group(R, T2, W, H2, "Safety rails", 3)
 col(R, T2, [("Policy gate|no edits to CI, hooks, .git", "review"),
             ("Kill switch|env var or file → advice only", "review"),
             ("No shell|left out on purpose", "review")], arrows=False)
-d.note(R + W / 2, T2 + 370, "no policy file → no edits at all")
+d.note(R + W / 2, T2 + 370, "a policy that will not load → no edits")
 
 d.group(L, T2, W, H2, "Fix record", 4)
 col(L, T2, [("finding_case.json|finding, fix, status", "write"),

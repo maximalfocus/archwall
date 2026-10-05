@@ -49,7 +49,7 @@ d = Diagram("VVAH phase 1: find where to look",
             "3 Threat model, S2: assets worth protecting, trust boundaries where outsiders get in, and ranked "
             "threats; known CVEs raise a threat's likelihood. "
             "4 Split the work, S3: risk chunks, taint chunks, specialist chunks for 11 lenses, catch-all chunks "
-            "for files no lens claimed, and threat chunks. A lens runs only when the code has that surface.")
+            "for files no lens claimed, and threat chunks. Ten of the eleven lenses need their surface; logic-bug always runs.")
 
 d.group(L, T1, W, H1, "What goes in", 1)
 grid(L, T1, [("Your repo|code to scan", "data"), ("Known CVEs|optional", "data"),
@@ -73,8 +73,8 @@ d.group(L, T2, W, H2, "Split the work: S3", 4)
 grid(L, T2, [("Risk chunks|high-risk areas", "plan"), ("Taint chunks|input → risky call", "plan"),
              ("Specialist chunks|11 lenses", "plan"), ("Catch-all chunks|files no lens took", "plan"),
              ("Threat chunks|from the model", "plan")], h=72, gap=14)
-d.note(L + W / 2, T2 + 342, "a lens runs only if the code")
-d.note(L + W / 2, T2 + 368, "has that surface")
+d.note(L + W / 2, T2 + 342, "ten lenses need their surface")
+d.note(L + W / 2, T2 + 368, "in the code; logic-bug always runs")
 
 handoffs("repo", "context package", "threats")
 d.note(600, 888, "Each step hands the next a typed file: ContextPackage → ThreatModel → TaskManifest")
