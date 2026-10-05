@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">herdr integrations and plugins</title>
-<desc id="d">1 Install an integration: herdr integration install claude writes a small hook into the agent's own config; 18 agents have one, and letta is experimental and CLI only. 2 What it reports: the session ID so herdr can resume the conversation, and for 6 agents the state too. 3 Agents that support herdr make the same calls themselves: report state with an optional --seq, report the resume command, and release the pane on exit. No herdr change is needed. 4 Plugins: a herdr-plugin.toml declares actions, event hooks, panes and startup hooks; the whole herdr CLI is the plugin API. Plugins run as you and are not sandboxed; install shows a preview first.</desc>
+<desc id="d">1 Install an integration: herdr integration install claude writes into the agent's own config; 18 agents have one, and letta is experimental and CLI only. 2 What it reports: the session ID so herdr can resume the conversation, and for 6 agents the state too. 3 Agents that support herdr make the same calls themselves: report state with an optional --seq, report the resume command, and release the pane on exit. No herdr change is needed. 4 Plugins: a herdr-plugin.toml declares actions, event hooks, panes and startup hooks; the whole herdr CLI is the plugin API. Plugins run as you and are not sandboxed; install shows a preview first.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -35,8 +35,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="139.0" class="ag" text-anchor="middle" >opt-in, per agent</text>
 <rect x="54" y="184" width="492" height="80" rx="8" class="agent"/>
 <rect x="54" y="194" width="5" height="60" rx="2" fill="#8a5cc7"/>
-<text x="303.0" y="219.0" class="ag" text-anchor="middle" >Writes a hook</text>
-<text x="303.0" y="243.0" class="ag" text-anchor="middle" >into the agent's own config</text>
+<text x="303.0" y="219.0" class="ag" text-anchor="middle" >Writes into</text>
+<text x="303.0" y="243.0" class="ag" text-anchor="middle" >the agent's own config</text>
 <path d="M300.0 160V182" class="flow"/>
 <text x="300.0" y="316" class="lb" text-anchor="middle" >18 agents have one</text>
 <text x="300.0" y="344" class="lb" text-anchor="middle" >letta: experimental, CLI only</text>
@@ -87,7 +87,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="771.0" class="ag" text-anchor="middle" >install shows a preview first</text>
 <text x="300.0" y="830" class="lb" text-anchor="middle" >the whole herdr CLI is the plugin API</text>
 <path d="M576 222H622" class="flow"/>
-<text x="600" y="210" class="al" text-anchor="middle" >hook runs</text>
+<text x="600" y="210" class="al" text-anchor="middle" >reports</text>
 <path d="M900.0 428V458" class="flow"/>
 <text x="960.0" y="449" class="al" text-anchor="middle" >same calls</text>
 <path d="M624 660H578" class="flow"/>

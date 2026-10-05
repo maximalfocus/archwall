@@ -1,4 +1,4 @@
-Claude Code、Codex 跑在终端里，合上电脑或断了 SSH 就没了。开五个，还得挨个找谁在等你。
+Claude Code、Codex 跑在终端里，合上电脑或断了 SSH 就没了。开五个，还得找谁在等你。
 
 herdr 是一个 Rust 程序，像 tmux：**服务端管终端，客户端只管画。**
 
@@ -6,7 +6,7 @@ herdr 是一个 Rust 程序，像 tmux：**服务端管终端，客户端只管�
 
 ![](model.svg)
 
-**怎么连。** 本地窗口、SSH、`herdr --remote`、多台机器同一窗口，或只接一个面板。`ctrl+b q` 断开，活照干。
+**怎么连。** 本地窗口、SSH、`herdr --remote`、多台机器同一窗口，或接一个面板。`ctrl+b q` 断开，活照干。
 
 ![](clients.svg)
 
@@ -22,7 +22,7 @@ herdr 是一个 Rust 程序，像 tmux：**服务端管终端，客户端只管�
 
 ![](api.svg)
 
-`herdr integration install` 要手动装，加个钩子报会话 ID。插件以你的身份运行，没有沙箱。
+`herdr integration install` 要手动装，写进智能体配置，报会话 ID。插件以你的身份运行，没有沙箱。
 
 ![](extend.svg)
 

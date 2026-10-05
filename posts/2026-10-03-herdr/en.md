@@ -22,7 +22,7 @@ herdr is one Rust binary, split like tmux: **a server owns the terminals, client
 
 ![](api.svg)
 
-`herdr integration install` is opt-in. It adds a hook that reports the session ID. Plugins run as you, with no sandbox.
+`herdr integration install` is opt-in. It writes into the agent's config and reports the session ID. Plugins run as you, with no sandbox.
 
 ![](extend.svg)
 

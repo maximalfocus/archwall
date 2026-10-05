@@ -40,8 +40,8 @@ def handoffs(a, b, c, ya=T1 + 206, yc=T2 + 200):
         d.arrow(f"M{R} {yc}H{L + W + 2}", label=c, at=(600, yc - 12))
 
 d = Diagram("herdr integrations and plugins",
-            "1 Install an integration: herdr integration install claude writes a small hook into the agent's own "
-            "config; 18 agents have one, and letta is experimental and CLI only. "
+            "1 Install an integration: herdr integration install claude writes into the agent's own config; "
+            "18 agents have one, and letta is experimental and CLI only. "
             "2 What it reports: the session ID so herdr can resume the conversation, and for 6 agents the state too. "
             "3 Agents that support herdr make the same calls themselves: report state with an optional --seq, report "
             "the resume command, and release the pane on exit. No herdr change is needed. "
@@ -50,7 +50,7 @@ d = Diagram("herdr integrations and plugins",
 
 d.group(L, T1, W, H1, "Install an integration", 1)
 col(L, T1, [("herdr integration install claude|opt-in, per agent", "review"),
-            ("Writes a hook|into the agent's own config", "write")], h=80)
+            ("Writes into|the agent's own config", "write")], h=80)
 d.note(L + W / 2, T1 + 300, "18 agents have one")
 d.note(L + W / 2, T1 + 328, "letta: experimental, CLI only")
 
@@ -70,5 +70,5 @@ col(L, T2, [("herdr-plugin.toml|actions, event hooks, panes", "plan"),
             ("Runs as you, not sandboxed|install shows a preview first", "review")], arrows=False)
 d.note(L + W / 2, T2 + 370, "the whole herdr CLI is the plugin API")
 
-handoffs("hook runs", "same calls", "same CLI")
+handoffs("reports", "same calls", "same CLI")
 d.save(Path(__file__).with_name("extend.svg"))
