@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">peerreview charter</title>
+<desc id="d">1 Where intent comes from, in this order: your instruction now, an upstream source the project names, the PRD, plan or spec, then tests and docs. The code itself is evidence, never intent. 2 The charter is a private temporary PROBLEM.md: problem, scope and non-goals; acceptance checks, each one testable; the verification gate, commands run every round; residuals, the known gaps. It is never added to the repo and is deleted at the end. A PROBLEM.md you wrote yourself is an input, never edited or deleted. 3 Check the sources: if they conflict or none states the intended behaviour, stop and ask; if they agree, go on without a confirmation stop. 4 Review plan: the repo type picks the review lenses, the run is full or only the changes since the last converged tag, and a round forecast is shown but is not a cap. The --dry-run flag stops here.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: your instruction and the repo's own docs</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="134.75" cy="111" r="14" class="num"/>
+<text x="134.75" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="154.75" y="120" class="gt" text-anchor="start" >Where intent comes from</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="187.0" class="ag" text-anchor="middle" >1  Your instruction now</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="267.0" class="ag" text-anchor="middle" >2  Upstream source it names</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="347.0" class="ag" text-anchor="middle" >3  PRD · plan · spec</text>
+<rect x="54" y="388" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="398" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="427.0" class="ag" text-anchor="middle" >4  Tests and docs</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="728.0" cy="111" r="14" class="num"/>
+<text x="728.0" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="748.0" y="120" class="gt" text-anchor="start" >The charter (PROBLEM.md)</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="187.0" class="ag" text-anchor="middle" >Problem · scope · non-goals</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Acceptance checks</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >each one testable</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Verification gate</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >commands run every round</text>
+<rect x="654" y="388" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="398" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="415.0" class="ag" text-anchor="middle" >Residuals</text>
+<text x="903.0" y="439.0" class="ag" text-anchor="middle" >known gaps, out of scope</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="775.25" cy="527" r="14" class="num"/>
+<text x="775.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="795.25" y="536" class="gt" text-anchor="start" >Check the sources</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Conflict, or nothing written?</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >stop and ask you</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Sources agree</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >go on, no confirmation stop</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >The code is evidence, never intent:</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >checks from code would be circular</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="215.75" cy="527" r="14" class="num"/>
+<text x="215.75" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="235.75" y="536" class="gt" text-anchor="start" >Review plan</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Repo type → lenses</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >e.g. cdd-prd, evidence-docs, code</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Full, or changes only</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >since the last converged tag</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Round forecast</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >shown to you, not a cap</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Flag --dry-run: show the plan</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >and stop here</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >derive</text>
+<path d="M900.0 464V498" class="flow"/>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >go</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Temp folder, never in the repo; deleted at the end. Your own PROBLEM.md stays an input, untouched</text>
+</svg>

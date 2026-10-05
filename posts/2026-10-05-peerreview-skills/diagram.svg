@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">peerreview overview</title>
+<desc id="d">You run /peerreview on a repo; the --chat and --dry-run flags are optional. 1 Set up: a private, temporary charter is written from your own docs, the peer is picked from another vendor (Claude Code and the Codex CLI review each other), and work moves to a review branch with a baseline commit. 2 Rounds until done: the host reviews and runs the gate, the peer co-edits files but never commits, behind a git guard and a 30-minute deadline, the host re-checks the real diff and reruns the gate, then commits the round. If a round makes no progress, the loop stops and reports. 3 Stop only when every check passes, the peer says CONVERGED in a read-only verdict, and at least one peer round ran; there is no upper cap. NOT CONVERGED sends it back for another round. 4 Hand over: one squashed commit in a pull request, a converged tag where the next review starts, and an honest report. Lessons from a run go to /peerreview-evolve.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >You: /peerreview [repo]  (flags: --chat, --dry-run)</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="249.5" cy="111" r="14" class="num"/>
+<text x="249.5" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="269.5" y="120" class="gt" text-anchor="start" >Set up</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Charter</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >private, temporary, from your docs</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Pick the peer</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >another vendor: Claude Code ↔ Codex</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Review branch</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >baseline commit first</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Docs conflict or say nothing:</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >stop and ask</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="768.5" cy="111" r="14" class="num"/>
+<text x="768.5" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="788.5" y="120" class="gt" text-anchor="start" >Rounds, until done</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >HOST reviews</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >runs the gate, writes findings</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >PEER co-edits</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >guarded, never commits</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >HOST re-checks</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >reads the real diff, reruns gate</text>
+<rect x="654" y="388" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="398" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="415.0" class="ag" text-anchor="middle" >Commit the round</text>
+<text x="903.0" y="439.0" class="ag" text-anchor="middle" >the HOST owns git</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="795.5" cy="527" r="14" class="num"/>
+<text x="795.5" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="815.5" y="536" class="gt" text-anchor="start" >Stop only when</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Every check passes</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >gate green, no findings left</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >PEER says CONVERGED</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >read-only, neutral prompt</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >At least 1 peer round</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >no upper cap</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >No progress in a round:</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >stop and report</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="229.25" cy="527" r="14" class="num"/>
+<text x="229.25" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="249.25" y="536" class="gt" text-anchor="start" >Hand over</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >One squashed commit</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >pull request on evolve/&lt;slug&gt;</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Converged tag</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >the next review starts here</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Honest report</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >each check, peer tier, leftovers</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Never "perfect": converged against</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >the charter, leftovers listed</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >ready</text>
+<path d="M1004 464V498" class="flow"/>
+<text x="1074" y="488" class="al" text-anchor="middle" >each round</text>
+<path d="M844 500V466" class="flow back"/>
+<text x="774" y="488" class="al" text-anchor="middle" >NOT CONVERGED</text>
+<path d="M624 680H578" class="flow"/>
+<text x="600" y="668" class="al" text-anchor="middle" >done</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Lessons from a run go to /peerreview-evolve, which keeps or drops them</text>
+</svg>

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">peerreview landing</title>
+<desc id="d">1 During the review: work happens on the branch peerreview/&lt;slug&gt;, in its own worktree when installed skills point into this repo, and round commits are evidence, not product history. 2 Landing: the rounds are squashed into one commit on evolve/&lt;slug&gt;, which is pushed and opened as a pull request; the base branch is never written. 3 After: the maintainer merges with land-evolution.sh only on an explicit go-ahead, a converged tag peerreview/converged/... marks the reviewed commit, and the reviewed repo is pushed, failing loudly if it can't be. 4 Exceptions: repos under ~/projects get no git writes at all; the --chat flag uses a temporary repo, answers in chat and deletes it; when an open pull request is named, the review runs on its branch.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: the repo you asked to review</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="175.25" cy="111" r="14" class="num"/>
+<text x="175.25" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="195.25" y="120" class="gt" text-anchor="start" >During the review</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Review branch</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >peerreview/&lt;slug&gt;</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Own worktree</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >if installed skills point here</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Round commits</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >evidence, not history</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Baseline commit first, so each</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >round's diff is its own</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="863.0" cy="111" r="14" class="num"/>
+<text x="863.0" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="883.0" y="120" class="gt" text-anchor="start" >Land</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Squash to one commit</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >on evolve/&lt;slug&gt;</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Subject checked first</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >type: lowercase description</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Push and open a PR</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >base branch never written</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="856.25" cy="527" r="14" class="num"/>
+<text x="856.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="876.25" y="536" class="gt" text-anchor="start" >After</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Converged tag</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >peerreview/converged/…</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Push the reviewed repo</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >fail loud if it can't</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Maintainer merges later</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >land-evolution.sh, on go-ahead</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="222.5" cy="527" r="14" class="num"/>
+<text x="222.5" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="242.5" y="536" class="gt" text-anchor="start" >Exceptions</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Repo under ~/projects</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >no git writes at all</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Flag --chat</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >temp repo, answer in chat, deleted</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Open PR named</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >review runs on its branch</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >land</text>
+<path d="M900.0 464V498" class="flow"/>
+<text x="930.0" y="488" class="al" text-anchor="middle" >PR</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >The tag gives the next review a starting point: full, or the changes since</text>
+</svg>
