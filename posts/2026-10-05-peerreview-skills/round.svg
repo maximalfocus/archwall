@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">peerreview one round</title>
+<desc id="d">1 The host reviews: it sweeps the charter, correctness and security first, re-sweeps every kind of defect already found, and runs the full gate. 2 It writes a prompt file with the whole charter and its ranked findings, and the peer is told to form its own findings too. 3 The peer co-edits through its driver script: minimal edits, no commit, and it reports the gate result. Each round has a 30 minute deadline by default. 4 The host re-checks after the driver exits: the real git diff and status, the gate again, and every claimed fix is fact-checked. Then it commits the round. A round that makes things worse is reverted with tighter findings; a round with no progress stops the loop.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: the charter and the last committed state</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="209.0" cy="111" r="14" class="num"/>
+<text x="209.0" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="229.0" y="120" class="gt" text-anchor="start" >HOST reviews</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Sweep the charter</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >correctness and security first</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Re-sweep old defect kinds</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >every sibling, not one line</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="347.0" class="ag" text-anchor="middle" >Run the full gate</text>
+<rect x="54" y="388" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="398" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="415.0" class="ag" text-anchor="middle" >Prompt file</text>
+<text x="303.0" y="439.0" class="ag" text-anchor="middle" >whole charter + ranked findings</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="802.25" cy="111" r="14" class="num"/>
+<text x="802.25" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="120" class="gt" text-anchor="start" >PEER co-edits</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Driver script</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >claude-, codex-, pi- or dsh-round</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Own findings too</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >not a confirm-my-work pass</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Minimal edits</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >no commit, no push</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >30 min deadline per round,</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >set by an env var</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="795.5" cy="527" r="14" class="num"/>
+<text x="795.5" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="815.5" y="536" class="gt" text-anchor="start" >HOST re-checks</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Wait for the driver to exit</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >a mid-flight tree can't be trusted</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Real git diff and status</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >not the PEER's report</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Rerun gate, fact-check fixes</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >a "fix" can be a regression</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="182.0" cy="527" r="14" class="num"/>
+<text x="182.0" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="202.0" y="536" class="gt" text-anchor="start" >Commit the round</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >peerreview: round N</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >HOST and PEER as co-authors</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Worse than before?</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >revert, tighter findings</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >No progress in a round:</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >stop the loop and report</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >prompt</text>
+<path d="M900.0 464V498" class="flow"/>
+<text x="970.0" y="488" class="al" text-anchor="middle" >edited files</text>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >checked</text>
+<path d="M300.0 500V466" class="flow back"/>
+<text x="370.0" y="488" class="al" text-anchor="middle" >next round</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >The HOST owns git and the decision to stop; the PEER only edits</text>
+</svg>
