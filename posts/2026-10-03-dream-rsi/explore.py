@@ -14,10 +14,10 @@ d = Diagram("Dream-RSI step 1: one online run",
             "1 Pick: the exploration policy, code that stays fixed for the whole run, picks a batch of up to W "
             "nodes, one per worker. 2 Try: for each pick a coding agent (Gemini CLI in the tests) resumes the "
             "parent's saved workspace, first reads every past try, wins and failures, then writes a new attempt: "
-            "a program and a proposal. 3 Score: a fixed evaluator scores it and writes diagnostics; the result "
-            "becomes a new child node in the tree. 4 Again or stop: the next round picks again from the new "
-            "leaves; the run stops when the policy picks nothing or after K1 rounds, and the finished tree "
-            "joins the pool.")
+            "a program and a proposal, and never kills unrelated processes. 3 Score: a fixed evaluator scores "
+            "it and writes diagnostics; the result becomes a new child node in the tree. 4 Again or stop: the "
+            "next round picks again from the root and leaves; the run stops when the policy picks nothing or "
+            "after K1 rounds, and the finished tree joins the pool.")
 
 L, R, W = 24, 624, 552
 T1, H1 = 16, 404
@@ -44,6 +44,7 @@ column(R, T1, [("Coding agent|resumes the parent's workspace", "coding"),
                ("Reads every past try|wins and failures", "data"),
                ("Writes a new attempt|program + proposal", "write")])
 d.note(R + W / 2, T1 + 352, "in the tests: Gemini CLI, one per worker")
+d.note(R + W / 2, T1 + 378, "never kills unrelated processes")
 
 d.group(R, T2, W, H2, "Score", 3)
 column(R, T2, [("Fixed evaluator|score + diagnostics", "critic"),
@@ -51,7 +52,7 @@ column(R, T2, [("Fixed evaluator|score + diagnostics", "critic"),
 d.note(R + W / 2, T2 + 300, "same evaluator every round")
 
 d.group(L, T2, W, H2, "Again or stop", 4)
-d.card(L + 30, T2 + 64, "Next round|new leaves to pick from", "plan", w=CW, h=CH)
+d.card(L + 30, T2 + 64, "Next round|pick the root or leaves", "plan", w=CW, h=CH)
 d.card(L + 30, T2 + 184, "Stop|empty pick or K₁ rounds", "review", w=CW, h=CH)
 d.arrow(f"M{L + W / 2} {T2 + 248}V{T2 + 290}")
 d.pill(L + 76, T2 + 292, 400, 46, "finished tree joins the pool", "front")

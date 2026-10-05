@@ -16,8 +16,8 @@ caption_en = "The discovery tree: each node is one real try and its score"
 
 [[figures]]
 file = "explore.svg"
-alt_zh = "第 1 步，一次在线运行：1 选：探索策略是代码，整轮不变，选一批节点，根或叶子，最多 W 个，选根开新分支，选叶子往下走；2 试：编码智能体接着父节点的工作区，先读完所有旧尝试的成败，再写新尝试，程序加说明，实验里用 Gemini CLI，一个工人一个；3 打分：固定评估器给分数和诊断，结果成为树上的新子节点；4 再来或停：下一轮从新叶子里选，选空或满 K₁ 轮就停，跑完的树进池子"
-alt_en = "Step 1, one online run: 1 pick: the exploration policy, code that stays fixed for the run, picks a batch of the root or leaves, up to W, where the root opens a new branch and a leaf takes the next step; 2 try: a coding agent resumes the parent's workspace, reads every past try, wins and failures, then writes a new attempt, a program and a proposal, Gemini CLI in the tests, one per worker; 3 score: a fixed evaluator gives a score and diagnostics, and the result becomes a new child node; 4 again or stop: the next round picks from the new leaves, the run stops on an empty pick or after K1 rounds, and the finished tree joins the pool"
+alt_zh = "第 1 步，一次在线运行：1 选：探索策略是代码，整轮不变，选一批节点，根或叶子，最多 W 个，选根开新分支，选叶子往下走；2 试：编码智能体接着父节点的工作区，先读完所有旧尝试的成败，再写新尝试，程序加说明，实验里用 Gemini CLI，一个工人一个，不乱杀无关进程；3 打分：固定评估器给分数和诊断，结果成为树上的新子节点；4 再来或停：下一轮从根和叶子里选，选空或满 K₁ 轮就停，跑完的树进池子"
+alt_en = "Step 1, one online run: 1 pick: the exploration policy, code that stays fixed for the run, picks a batch of the root or leaves, up to W, where the root opens a new branch and a leaf takes the next step; 2 try: a coding agent resumes the parent's workspace, reads every past try, wins and failures, then writes a new attempt, a program and a proposal, Gemini CLI in the tests, one per worker, and never kills unrelated processes; 3 score: a fixed evaluator gives a score and diagnostics, and the result becomes a new child node; 4 again or stop: the next round picks from the root and leaves, the run stops on an empty pick or after K1 rounds, and the finished tree joins the pool"
 caption_zh = "在线探索：策略选点，智能体动手，评估器打分，树一轮轮长大"
 caption_en = "Explore online: the policy picks, the agent works, the evaluator scores, the tree grows"
 

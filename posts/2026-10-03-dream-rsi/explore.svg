@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Dream-RSI step 1: one online run</title>
-<desc id="d">1 Pick: the exploration policy, code that stays fixed for the whole run, picks a batch of up to W nodes, one per worker. 2 Try: for each pick a coding agent (Gemini CLI in the tests) resumes the parent's saved workspace, first reads every past try, wins and failures, then writes a new attempt: a program and a proposal. 3 Score: a fixed evaluator scores it and writes diagnostics; the result becomes a new child node in the tree. 4 Again or stop: the next round picks again from the new leaves; the run stops when the policy picks nothing or after K1 rounds, and the finished tree joins the pool.</desc>
+<desc id="d">1 Pick: the exploration policy, code that stays fixed for the whole run, picks a batch of up to W nodes, one per worker. 2 Try: for each pick a coding agent (Gemini CLI in the tests) resumes the parent's saved workspace, first reads every past try, wins and failures, then writes a new attempt: a program and a proposal, and never kills unrelated processes. 3 Score: a fixed evaluator scores it and writes diagnostics; the result becomes a new child node in the tree. 4 Again or stop: the next round picks again from the root and leaves; the run stops when the policy picks nothing or after K1 rounds, and the finished tree joins the pool.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -59,6 +59,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="311.0" class="ag" text-anchor="middle" >program + proposal</text>
 <path d="M900.0 234V258" class="flow"/>
 <text x="900.0" y="368" class="lb" text-anchor="middle" >in the tests: Gemini CLI, one per worker</text>
+<text x="900.0" y="394" class="lb" text-anchor="middle" >never kills unrelated processes</text>
 <rect x="624" y="468" width="552" height="404" rx="12" class="grp"/>
 <circle cx="856.25" cy="495" r="14" class="num"/>
 <text x="856.25" y="501" class="numt" text-anchor="middle" >3</text>
@@ -80,7 +81,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="532" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="542" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="303.0" y="559.0" class="ag" text-anchor="middle" >Next round</text>
-<text x="303.0" y="583.0" class="ag" text-anchor="middle" >new leaves to pick from</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >pick the root or leaves</text>
 <rect x="54" y="652" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="662" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="303.0" y="679.0" class="ag" text-anchor="middle" >Stop</text>
