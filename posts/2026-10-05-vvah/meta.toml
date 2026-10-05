@@ -1,0 +1,64 @@
+title_zh = "VVAH：用 AI 找漏洞、复核、修复、打分"
+title_en = "VVAH: AI that finds security bugs, checks them, fixes and grades"
+date = "2026-10-05"
+tags = ["security", "sast", "coding-agent", "llm"]
+figure = "diagram.svg"
+alt_zh = "VVAH 总览：输入是代码仓库加可选的上下文文件；1 先找该看哪里：S0 代码图、S1 摸清仓库，S2 威胁模型，S3 切块交给 11 种专项视角；2 细查再复核：S4 AI 逐块审查（可选投票），S5 规则筛选不用 AI，S6 验证者试图证明发现是错的（可选现场验证）；3 出报告：S7 合并重复，S8 串成攻击链并重排，S9 写出 Markdown 和 SARIF；4 修复和打分（默认关闭）：S10 提出最小修复，S11 两个 AI 评审打分，最后由人审核每条发现和修复"
+alt_en = "VVAH overview: input is your code repo plus optional context files; 1 find where to look: S0 code map and S1 repo survey, S2 threat model, S3 chunks for 11 specialist lenses; 2 hunt and double-check: S4 AI reviewers per chunk with optional voting, S5 rule filter with no AI, S6 a verifier tries to prove each finding wrong, with an optional live check; 3 report: S7 merges duplicates, S8 links attack chains and re-ranks, S9 writes Markdown and SARIF; 4 fix and grade, off by default: S10 proposes a minimal fix, S11 two AI reviewers grade it, and people review every finding and fix"
+source = "https://github.com/maximalfocus/visa-vulnerability-agentic-harness"
+
+[[figures]]
+file = "find.svg"
+alt_zh = "第一阶段：1 输入：代码仓库，可选的已知 CVE、设计控制、CMDB 导出；2 摸清代码：AI 跳过非生产文件，S0 静态代码图标出输入到危险调用的路径，S1 AI 只读探索仓库；3 S2 威胁模型：资产、信任边界、排好序的威胁；4 S3 切块：风险块、污点块、专项块（11 种视角）、兜底块、威胁块，交给下一步"
+alt_en = "Phase 1: 1 inputs: your repo plus optional known CVEs, design controls and a CMDB export; 2 map the code: an AI pass skips non-production files, S0 static map of where input reaches risky calls, S1 read-only AI survey; 3 S2 threat model: assets, trust boundaries, ranked threats; 4 S3 split the work: risk, taint, specialist (11 lenses), catch-all and threat chunks"
+caption_zh = "第一阶段：先搞清楚这个系统值钱在哪、外人从哪进来，再分派审查"
+caption_en = "Phase 1: learn what is valuable and where outsiders get in, then hand out the review work"
+
+[[figures]]
+file = "check.svg"
+alt_zh = "第二阶段：1 S4 AI 逐块审查，配语言视角（42 种语言）和专项视角（11 种），可选投票 3 次 2 次一致才算，只有 full 配置打开；2 S5 不用 AI 的规则筛选：测试或模拟路径、不存在的文件、置信度低、没有来源或汇点；3 S6 每条发现换一个新验证者：真问题打 CVSS 分往下走，误报留档；4 可选的现场验证（测试版），只补证据不删发现"
+alt_en = "Phase 2: 1 S4 an AI reviewer per chunk, guided by a language lens (42 languages) and a specialist lens (11 kinds), optional vote of 3 runs with 2 agreeing, on in the full profile only; 2 S5 rule filter with no AI: test or mock paths, files that do not exist, low confidence, no source or sink; 3 S6 a fresh verifier per finding: true positives get a CVSS score and go on, false positives are kept for audit; 4 optional live check (beta) that only adds evidence"
+caption_zh = "第二阶段：多找，再狠狠地筛，留下站得住的"
+caption_en = "Phase 2: cast a wide net, then filter hard so what is left holds up"
+
+[[figures]]
+file = "live.svg"
+alt_zh = "现场验证（测试版，只限 Web API，默认关闭）：1 打开：设置 API 集合和本机目标，只能发往 localhost，代码里写死不能改，先探测目标是否可达，不花 AI 的钱，安全模式跳过破坏性测试；2 计划：判断能否用 Web 请求验证、对应到接口、按漏洞类型选测试；3 测试和评判：发送并找明确迹象，攻击代理在预算内再试几次，独立评判者只看真实流量；4 结果：已确认（带复现）、未确认、需人工看、只能静态；ev-replay 在修复后重跑已确认的测试；静态验证者仍然拍板"
+alt_en = "Live check (beta, web APIs only, off by default): 1 turn it on: an API collection and a target on this machine, localhost only with no override, a reachability probe before any AI spend, safe mode skips destructive tests; 2 plan: can a web request test it, map it to an endpoint, pick a test by kind of weakness; 3 test and judge: send and look for a clear sign, an attacker agent tries a few more times within a budget, an independent judge sees only real traffic; 4 outcome: confirmed with a repro, not confirmed, needs review, static only; ev-replay re-runs a confirmed test after the fix; the static verifier still owns the verdict"
+caption_zh = "现场验证：在本机拿运行中的应用实测，证据由独立评判者认定"
+caption_en = "Live check: test against the running app on this machine; an independent judge rules on the evidence"
+
+[[figures]]
+file = "report.svg"
+alt_zh = "第三阶段：1 S7 合并重复：规则合并同文件同类型相近行，AI 合并同一根因；2 S8 攻击链：把小漏洞串起来，按真实可利用性重排，检查和已知未修补 CVE 的组合；3 打分和保护：CVSS 3.1 和 CWE，可选 CMDB 业务上下文，ATT&CK 只作参考，不加发现不改分数，遮住卡号、SSN、密钥；4 输出到 security-scan/：report.md、report.sarif、findings.json，可选上传到汇总中心，除了 AI 服务商这是结果离开本机的唯一途径"
+alt_en = "Phase 3: 1 S7 merge duplicates: a rule pass for same file, type and nearby line, an AI pass for the same root cause; 2 S8 chain: link small bugs, re-rank by real exploitability, check combinations with known unpatched CVEs; 3 score and protect: CVSS 3.1 and CWE, optional CMDB business context, ATT&CK as context that adds no finding and changes no score, mask card numbers, SSNs and keys; 4 outputs in security-scan/: report.md, report.sarif, findings.json and an optional upload, the only way results leave besides the AI provider"
+caption_zh = "第三阶段：去重、串链、排序，出一份人和工具都能读的报告"
+caption_en = "Phase 3: dedupe, chain, rank, and write one report for people and tools"
+
+[[figures]]
+file = "fix.svg"
+alt_zh = "修复 S10（默认关闭）：1 开始：扫描报告里已验证的发现，用 --remediate 或 remediate 命令打开，--top N 只修最严重的 N 条；2 计划和修改：规划代理只读并规划最小修复，修复子代理只在仓库内改文件，report-only 模式只提建议不改；3 安全护栏：策略闸门不许改 CI、钩子、.git，紧急开关让所有修复变成建议，故意不给 shell，没有策略文件就完全不改；4 修复记录：finding_case.json、遮掉密钥的 diff.patch、可先试的临时措施，接着交给 S11 打分"
+alt_en = "Fix, S10 (off by default): 1 start: verified findings from the scan report, turned on with --remediate or the remediate command, --top N for only the N worst; 2 plan and edit: a planner agent reads and plans a minimal fix, a fixer sub-agent edits files inside the repo, report-only mode proposes without edits; 3 safety rails: a policy gate blocks edits to CI, hooks and .git, a kill switch turns every fix into advice, no shell on purpose, no policy file means no edits; 4 fix record: finding_case.json, diff.patch with secrets masked, and a stopgap to try; S11 grades it next"
+caption_zh = "修复：AI 只提最小改动，护栏决定它能碰什么"
+caption_en = "Fix: the AI proposes a minimal change; guard rails decide what it may touch"
+
+[[figures]]
+file = "grade.svg"
+alt_zh = "打分 S11：1 找待评的修复记录，发现步骤不用 AI；默认扫描不跑，validate 命令随时可跑；2 只读评审组：协调者，安全架构师看根因是否修好，渗透测试员试着绕过，跨仓库评审只在修复跨 2 个以上仓库时加入；3 四项加权检查：根因 43%、所有实例 25%、没有新漏洞 19%、最佳实践 14%；4 结论：≥0.80 已修复，≥0.50 部分修复，<0.50 未修复，评审意见分歧为无法判断；根因或新漏洞不过关最多算部分修复；案例变成 validated、failed 或 open"
+alt_en = "Grade, S11: 1 find fix records to grade, discovery uses no AI; off in the default scan, the validate command runs it any time; 2 read-only review panel: an orchestrator, a security architect checks the root cause, a penetration tester tries to get around the fix, a cross-repo reviewer joins only for fixes across 2 or more repos; 3 four weighted checks: root cause 43%, every instance 25%, no new bugs 19%, best practice 14%; 4 verdict: fixed at 0.80 or more, partially fixed at 0.50 or more, not fixed below 0.50, inconclusive when reviewers split; a failed root cause or new-bug check caps it at partially fixed; the case becomes validated, failed or open"
+caption_zh = "打分：两个 AI 评审按四项加权检查，根因最重要"
+caption_en = "Grade: two AI reviewers, four weighted checks, root cause counts most"
+
+[[figures]]
+file = "models.svg"
+alt_zh = "模型：1 每个 AI 步骤都是一项配置：检测 S0–S9、修复 S10、打分 S11、现场验证 4 个角色，换模型不用改代码；2 四种通道：cli、sdk、openai、deepagents，默认配置全部走 deepagents；3 服务商：Anthropic Claude、OpenAI 或兼容网关、开源权重模型，默认只要一个 Anthropic 密钥；4 每个 AI 能碰什么：单次调用的步骤没有工具，探索和验证只读，修复只在仓库内改，所有自带配置都不给 shell"
+alt_en = "Models: 1 every AI step is a setting: detection S0 to S9, fix S10, grading panel S11 and 4 live-check roles, swapped in config with no code change; 2 four routes: cli, sdk, openai, deepagents, the default profile uses deepagents everywhere; 3 providers: Anthropic Claude, OpenAI or a compatible gateway, open-weight models, the default needs one Anthropic key; 4 what each AI may touch: one-shot steps get no tools, explorers and verifiers are read-only, the fixer edits inside the repo, no shipped profile grants a shell"
+caption_zh = "模型：每一步各选各的，权限按步骤收紧"
+caption_en = "Models: each step picks its own, and each gets only the access it needs"
+
+[[figures]]
+file = "run.svg"
+alt_zh = "日常使用：1 命令：setup 和 doctor 先检查，estimate 预估成本不花钱，scan 跑流程，remediate 和 validate 修复和打分，ev-replay 修复后重测，status 和 gc 看进度和清理；2 多仓库：repos.csv 每行一个仓库，克隆后可按应用分组，一个应用一份报告，汇总在 batch_summary.md；3 不丢已付费的工作：按块、按发现存检查点，默认续跑，--fresh 重来，提交或配置变了会拒绝续跑，存在仓库外的 SQLite；4 审计和数据：run_manifest.json 记录模型、token、成本，代码会发给 AI 服务商，要用批准的端点，报告目录加本地忽略规则，不会误提交"
+alt_en = "Day to day: 1 commands: setup and doctor check first, estimate previews cost with no spend, scan runs the pipeline, remediate and validate fix and grade, ev-replay re-tests a fix, status and gc show progress and clean up; 2 many repos: repos.csv with one row per repo, clone and group for one report per app, batch_summary.md; 3 never lose paid work: checkpoints per chunk and per finding, resume by default and --fresh to start over, guards on commit and config, stored in SQLite outside the repo; 4 audit and data: run_manifest.json with models, tokens and cost, code goes to the AI provider so use approved endpoints, report folders get a local ignore rule"
+caption_zh = "日常使用：先估成本，断了能续，每次运行都留账"
+caption_en = "Day to day: estimate first, resume after a crash, and every run leaves a record"

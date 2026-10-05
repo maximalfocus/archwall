@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">VVAH models</title>
+<desc id="d">1 Every AI step is a setting: detection S0 to S9, the fix step S10, the grading panel S11 and the four live-check roles each name their own model in the config, with no code change. 2 Four routes, chosen per step with via: cli runs the claude program, sdk the Anthropic SDK, openai any OpenAI-style API, and deepagents a LangGraph harness, which the default profile uses everywhere. 3 Providers: Anthropic Claude, OpenAI or any compatible gateway, and open-weight models on compatible endpoints. The default profile needs one Anthropic key. 4 What each AI may touch: one-shot steps get no tools, explorers and verifiers get read-only tools, the fixer may edit inside the repo, and no shipped profile grants a shell.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="114.5" cy="43" r="14" class="num"/>
+<text x="114.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="134.5" y="52" class="gt" text-anchor="start" >Every AI step is a setting</text>
+<rect x="54" y="80" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="176.0" y="115.0" class="ag" text-anchor="middle" >Detection</text>
+<text x="176.0" y="139.0" class="ag" text-anchor="middle" >S0–S9</text>
+<rect x="308" y="80" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="90" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="430.0" y="115.0" class="ag" text-anchor="middle" >Fix</text>
+<text x="430.0" y="139.0" class="ag" text-anchor="middle" >S10</text>
+<rect x="54" y="176" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="176.0" y="211.0" class="ag" text-anchor="middle" >Grading panel</text>
+<text x="176.0" y="235.0" class="ag" text-anchor="middle" >S11</text>
+<rect x="308" y="176" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="186" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="430.0" y="211.0" class="ag" text-anchor="middle" >Live check</text>
+<text x="430.0" y="235.0" class="ag" text-anchor="middle" >4 roles</text>
+<text x="300.0" y="316" class="lb" text-anchor="middle" >swap a model in config,</text>
+<text x="300.0" y="344" class="lb" text-anchor="middle" >no code change</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="768.5" cy="43" r="14" class="num"/>
+<text x="768.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="788.5" y="52" class="gt" text-anchor="start" >Four routes (via:)</text>
+<rect x="654" y="80" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="776.0" y="115.0" class="ag" text-anchor="middle" >cli</text>
+<text x="776.0" y="139.0" class="ag" text-anchor="middle" >claude program</text>
+<rect x="908" y="80" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="90" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="115.0" class="ag" text-anchor="middle" >sdk</text>
+<text x="1030.0" y="139.0" class="ag" text-anchor="middle" >Anthropic SDK</text>
+<rect x="654" y="176" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="776.0" y="211.0" class="ag" text-anchor="middle" >openai</text>
+<text x="776.0" y="235.0" class="ag" text-anchor="middle" >OpenAI-style API</text>
+<rect x="908" y="176" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="186" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="211.0" class="ag" text-anchor="middle" >deepagents</text>
+<text x="1030.0" y="235.0" class="ag" text-anchor="middle" >LangGraph harness</text>
+<text x="900.0" y="316" class="lb" text-anchor="middle" >default profile: deepagents</text>
+<text x="900.0" y="344" class="lb" text-anchor="middle" >on every step</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="829.25" cy="487" r="14" class="num"/>
+<text x="829.25" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="849.25" y="496" class="gt" text-anchor="start" >Providers</text>
+<rect x="654" y="524" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="555.0" class="ag" text-anchor="middle" >Anthropic Claude</text>
+<text x="903.0" y="579.0" class="ag" text-anchor="middle" >native</text>
+<rect x="654" y="620" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="630" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="651.0" class="ag" text-anchor="middle" >OpenAI</text>
+<text x="903.0" y="675.0" class="ag" text-anchor="middle" >or any compatible gateway</text>
+<rect x="654" y="716" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="726" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="747.0" class="ag" text-anchor="middle" >Open-weight models</text>
+<text x="903.0" y="771.0" class="ag" text-anchor="middle" >on compatible endpoints</text>
+<text x="900.0" y="830" class="lb" text-anchor="middle" >default profile: one Anthropic key</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="141.5" cy="487" r="14" class="num"/>
+<text x="141.5" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="161.5" y="496" class="gt" text-anchor="start" >What each AI may touch</text>
+<rect x="54" y="524" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="303.0" y="561.0" class="ag" text-anchor="middle" >One-shot steps · no tools</text>
+<rect x="54" y="598" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="608" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="303.0" y="635.0" class="ag" text-anchor="middle" >Explorers, verifiers · read-only</text>
+<rect x="54" y="672" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="682" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="303.0" y="709.0" class="ag" text-anchor="middle" >Fixer · edits inside the repo</text>
+<rect x="54" y="746" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="756" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="303.0" y="783.0" class="ag" text-anchor="middle" >Shell · in no shipped profile</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >config</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="955.4" y="449" class="al" text-anchor="middle" >API calls</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Prompts carry your code to the chosen provider: use approved endpoints only</text>
+</svg>
