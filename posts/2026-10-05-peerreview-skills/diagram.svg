@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">peerreview overview</title>
-<desc id="d">You run /peerreview on a repo; the --chat and --dry-run flags are optional. 1 Set up: a private, temporary charter is written from your own docs, the peer is picked from another vendor (Claude Code and the Codex CLI review each other), and work moves to a review branch with a baseline commit. 2 Rounds until done: the host reviews and runs the gate, the peer co-edits files but never commits, the host re-checks the real diff and reruns the gate, then commits the round. If a round makes no progress, the loop stops and reports. 3 Stop only when every check passes, the peer says CONVERGED in a read-only verdict, and at least one peer round ran; there is no upper cap. NOT CONVERGED sends it back for another round. 4 Hand over: one squashed commit in a pull request, a converged tag where the next review starts, and an honest report. Lessons from a run go to /peerreview-evolve.</desc>
+<desc id="d">You run /peerreview on a repo; the --chat and --dry-run flags are optional. 1 Set up: a private, temporary charter is written from your own docs, the peer is picked from another vendor (Claude Code and the Codex CLI review each other), and work moves to a review branch with a baseline commit. 2 Rounds until done: the host reviews and runs the gate, the peer co-edits files but never commits, behind a git guard and a 30-minute deadline, the host re-checks the real diff and reruns the gate, then commits the round. If a round makes no progress, the loop stops and reports. 3 Stop only when every check passes, the peer says CONVERGED in a read-only verdict, and at least one peer round ran; there is no upper cap. NOT CONVERGED sends it back for another round. 4 Hand over: one squashed commit in a pull request, a converged tag where the next review starts, and an honest report. Lessons from a run go to /peerreview-evolve.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -57,7 +57,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="238" width="5" height="44" rx="2" fill="#2f6fd6"/>
 <text x="903.0" y="255.0" class="ag" text-anchor="middle" >PEER co-edits</text>
-<text x="903.0" y="279.0" class="ag" text-anchor="middle" >fixes files, never commits</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >guarded, never commits</text>
 <rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="318" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >HOST re-checks</text>

@@ -17,7 +17,8 @@ d = Diagram("peerreview overview",
             "another vendor (Claude Code and the Codex CLI review each other), and work moves to a review "
             "branch with a baseline commit. "
             "2 Rounds until done: the host reviews and runs the gate, the peer co-edits files but never "
-            "commits, the host re-checks the real diff and reruns the gate, then commits the round. "
+            "commits, behind a git guard and a 30-minute deadline, the host re-checks the real diff and reruns "
+            "the gate, then commits the round. "
             "If a round makes no progress, the loop stops and reports. "
             "3 Stop only when every check passes, the peer says CONVERGED in a read-only verdict, and at "
             "least one peer round ran; there is no upper cap. NOT CONVERGED sends it back for another round. "
@@ -47,7 +48,7 @@ d.note(L + W / 2, T1 + H1 - 26, "stop and ask")
 
 d.group(R, T1, W, H1, "Rounds, until done", 2)
 column(R, T1, [("HOST reviews|runs the gate, writes findings", "review"),
-               ("PEER co-edits|fixes files, never commits", "coding"),
+               ("PEER co-edits|guarded, never commits", "coding"),
                ("HOST re-checks|reads the real diff, reruns gate", "review"),
                ("Commit the round|the HOST owns git", "write")])
 

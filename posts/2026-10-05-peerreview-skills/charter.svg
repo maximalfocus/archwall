@@ -100,5 +100,5 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <path d="M900.0 464V498" class="flow"/>
 <path d="M624 676H578" class="flow"/>
 <text x="600" y="664" class="al" text-anchor="middle" >go</text>
-<text x="600" y="888" class="lb" text-anchor="middle" >Temp folder, never in the repo; deleted at the end. A PROBLEM.md you wrote stays an input, never deleted</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Temp folder, never in the repo; deleted at the end. Your own PROBLEM.md stays an input, untouched</text>
 </svg>

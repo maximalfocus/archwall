@@ -65,6 +65,6 @@ d.arrow(f"M{L + W} {T1 + 200}H{R - 2}", label="derive", at=(600, T1 + 188))
 d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}")
 d.arrow(f"M{R} {T2 + 176}H{L + W + 2}", label="go", at=(600, T2 + 164))
 
-d.note(600, 888, "Temp folder, never in the repo; deleted at the end. A PROBLEM.md you wrote stays an input, never deleted")
+d.note(600, 888, "Temp folder, never in the repo; deleted at the end. Your own PROBLEM.md stays an input, untouched")
 
 d.save(Path(__file__).with_name("charter.svg"))

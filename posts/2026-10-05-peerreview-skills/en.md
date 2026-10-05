@@ -4,7 +4,7 @@ peerreview is a skill that has two AI models from different vendors check a repo
 
 ![](charter.svg)
 
-**The peer.** Claude Code and the Codex CLI review each other. DeepSeek is a fallback, used only when the other of those two is unreachable, and the report says so.
+**The peer.** Claude Code and the Codex CLI review each other. DeepSeek is a fallback, used only when the other one can't be reached, and the report says so.
 
 ![](peer.svg)
 
