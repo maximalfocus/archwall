@@ -4,7 +4,7 @@ peerreview is a skill that has two AI models from different vendors check a repo
 
 ![](charter.svg)
 
-**The peer.** Claude Code and the Codex CLI review each other. DeepSeek is a fallback, used only when neither is reachable, and the report says so.
+**The peer.** Claude Code and the Codex CLI review each other. DeepSeek is a fallback, used only when the other of those two is unreachable, and the report says so.
 
 ![](peer.svg)
 
@@ -12,7 +12,7 @@ peerreview is a skill that has two AI models from different vendors check a repo
 
 ![](round.svg)
 
-**Guard rails.** Each PEER runs behind a git guard and a 30-minute deadline. In the verdict round it can read but not edit.
+**Guard rails.** Each PEER runs behind a git guard and a 30-minute deadline. In the verdict round edits are blocked; dsh can't block them, so its round fails if the tree moved.
 
 ![](rails.svg)
 
@@ -20,7 +20,7 @@ peerreview is a skill that has two AI models from different vendors check a repo
 
 ![](verdict.svg)
 
-**Landing.** Rounds are squashed into one commit and opened as a pull request. A tag marks the reviewed commit, so the next run checks only what changed. Repos under `~/projects` get no git writes; the `--chat` flag reviews an idea in a temp repo.
+**Landing.** Rounds are squashed into one commit and opened as a pull request. A tag marks the reviewed commit, so the next run can start from it. Repos under `~/projects` get no git writes; the `--chat` flag reviews an idea in a temp repo.
 
 ![](deliver.svg)
 

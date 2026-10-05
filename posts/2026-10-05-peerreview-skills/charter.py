@@ -13,7 +13,8 @@ d = Diagram("peerreview charter",
             "names, the PRD, plan or spec, then tests and docs. The code itself is evidence, never intent. "
             "2 The charter is a private temporary PROBLEM.md: problem, scope and non-goals; acceptance checks, "
             "each one testable; the verification gate, commands run every round; residuals, the known gaps. "
-            "It is never added to the repo and is deleted at the end. "
+            "It is never added to the repo and is deleted at the end. A PROBLEM.md you wrote yourself is an "
+            "input, never edited or deleted. "
             "3 Check the sources: if they conflict or none states the intended behaviour, stop and ask; "
             "if they agree, go on without a confirmation stop. "
             "4 Review plan: the repo type picks the review lenses, the run is full or only the changes since "
@@ -64,6 +65,6 @@ d.arrow(f"M{L + W} {T1 + 200}H{R - 2}", label="derive", at=(600, T1 + 188))
 d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}")
 d.arrow(f"M{R} {T2 + 176}H{L + W + 2}", label="go", at=(600, T2 + 164))
 
-d.note(600, 888, "Private temp folder, never in the repo; deleted when the run ends, whatever the outcome")
+d.note(600, 888, "Temp folder, never in the repo; deleted at the end. A PROBLEM.md you wrote stays an input, never deleted")
 
 d.save(Path(__file__).with_name("charter.svg"))

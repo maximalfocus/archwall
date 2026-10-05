@@ -57,7 +57,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="238" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="903.0" y="255.0" class="ag" text-anchor="middle" >Subject checked first</text>
-<text x="903.0" y="279.0" class="ag" text-anchor="middle" >type: lowercase imperative</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >type: lowercase description</text>
 <rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Push and open a PR</text>
@@ -98,5 +98,5 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="600" y="272" class="al" text-anchor="middle" >land</text>
 <path d="M900.0 464V498" class="flow"/>
 <text x="930.0" y="488" class="al" text-anchor="middle" >PR</text>
-<text x="600" y="888" class="lb" text-anchor="middle" >The tag lets the next review check only what changed since</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >The tag gives the next review a starting point: full, or the changes since</text>
 </svg>

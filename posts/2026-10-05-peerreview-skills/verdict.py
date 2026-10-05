@@ -10,7 +10,8 @@ from archdiagram import Diagram  # noqa: E402
 
 d = Diagram("peerreview stop rule",
             "1 All must hold: every acceptance check is met with evidence, the full gate exits clean, the host has "
-            "no findings left and has swept every lens it opened, and the tree is clean with everything committed. "
+            "no findings left and has swept every lens it opened, and the tree is clean, or left uncommitted "
+            "under ~/projects. "
             "2 Then the verdict prompt: a read-only round with no edits, only neutral facts such as the raw gate "
             "output, and it says in its first paragraph that reading is allowed. "
             "3 The peer answers CONVERGED, no substantive defects remain, which ends the loop; or NOT CONVERGED "
@@ -40,7 +41,7 @@ d.group(L, T1, W, H1, "All must hold", 1)
 column(L, T1, [("Every acceptance check met|with evidence", "critic"),
                ("Full gate exits clean", "critic"),
                ("No findings left|every lens swept, not sampled", "critic"),
-               ("Tree clean|everything committed", "critic")])
+               ("Tree clean, or|edits left for manual commit", "critic")])
 
 d.group(R, T1, W, H1, "Verdict prompt", 2)
 column(R, T1, [("Read-only round|no edits allowed", "review"),

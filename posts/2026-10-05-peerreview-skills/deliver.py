@@ -45,7 +45,7 @@ notes(L, T1, H1, "Baseline commit first, so each", "round's diff is its own")
 
 d.group(R, T1, W, H1, "Land", 2)
 column(R, T1, [("Squash to one commit|on evolve/<slug>", "write"),
-               ("Subject checked first|type: lowercase imperative", "review"),
+               ("Subject checked first|type: lowercase description", "review"),
                ("Push and open a PR|base branch never written", "write")])
 
 d.group(R, T2, W, H2, "After", 3)
@@ -61,6 +61,6 @@ column(L, T2, [("Repo under ~/projects|no git writes at all", "review"),
 d.arrow(f"M{L + W} {T1 + 200}H{R - 2}", label="land", at=(600, T1 + 188))
 d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="PR", at=(R + W / 2 + 30, T1 + H1 + 24))
 
-d.note(600, 888, "The tag lets the next review check only what changed since")
+d.note(600, 888, "The tag gives the next review a starting point: full, or the changes since")
 
 d.save(Path(__file__).with_name("deliver.svg"))

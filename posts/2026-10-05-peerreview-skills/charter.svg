@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">peerreview charter</title>
-<desc id="d">1 Where intent comes from, in this order: your instruction now, an upstream source the project names, the PRD, plan or spec, then tests and docs. The code itself is evidence, never intent. 2 The charter is a private temporary PROBLEM.md: problem, scope and non-goals; acceptance checks, each one testable; the verification gate, commands run every round; residuals, the known gaps. It is never added to the repo and is deleted at the end. 3 Check the sources: if they conflict or none states the intended behaviour, stop and ask; if they agree, go on without a confirmation stop. 4 Review plan: the repo type picks the review lenses, the run is full or only the changes since the last converged tag, and a round forecast is shown but is not a cap. The --dry-run flag stops here.</desc>
+<desc id="d">1 Where intent comes from, in this order: your instruction now, an upstream source the project names, the PRD, plan or spec, then tests and docs. The code itself is evidence, never intent. 2 The charter is a private temporary PROBLEM.md: problem, scope and non-goals; acceptance checks, each one testable; the verification gate, commands run every round; residuals, the known gaps. It is never added to the repo and is deleted at the end. A PROBLEM.md you wrote yourself is an input, never edited or deleted. 3 Check the sources: if they conflict or none states the intended behaviour, stop and ask; if they agree, go on without a confirmation stop. 4 Review plan: the repo type picks the review lenses, the run is full or only the changes since the last converged tag, and a round forecast is shown but is not a cap. The --dry-run flag stops here.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -100,5 +100,5 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <path d="M900.0 464V498" class="flow"/>
 <path d="M624 676H578" class="flow"/>
 <text x="600" y="664" class="al" text-anchor="middle" >go</text>
-<text x="600" y="888" class="lb" text-anchor="middle" >Private temp folder, never in the repo; deleted when the run ends, whatever the outcome</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Temp folder, never in the repo; deleted at the end. A PROBLEM.md you wrote stays an input, never deleted</text>
 </svg>

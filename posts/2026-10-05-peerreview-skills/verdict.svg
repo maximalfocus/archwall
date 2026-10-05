@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">peerreview stop rule</title>
-<desc id="d">1 All must hold: every acceptance check is met with evidence, the full gate exits clean, the host has no findings left and has swept every lens it opened, and the tree is clean with everything committed. 2 Then the verdict prompt: a read-only round with no edits, only neutral facts such as the raw gate output, and it says in its first paragraph that reading is allowed. 3 The peer answers CONVERGED, no substantive defects remain, which ends the loop; or NOT CONVERGED with the defects named, which starts round N+1. 4 Other endings: a round with no progress stops and reports; no reachable peer stops with no stand-in; and the result is never called perfect. At least one peer round always runs, with no upper cap.</desc>
+<desc id="d">1 All must hold: every acceptance check is met with evidence, the full gate exits clean, the host has no findings left and has swept every lens it opened, and the tree is clean, or left uncommitted under ~/projects. 2 Then the verdict prompt: a read-only round with no edits, only neutral facts such as the raw gate output, and it says in its first paragraph that reading is allowed. 3 The peer answers CONVERGED, no substantive defects remain, which ends the loop; or NOT CONVERGED with the defects named, which starts round N+1. 4 Other endings: a round with no progress stops and reports; no reachable peer stops with no stand-in; and the result is never called perfect. At least one peer round always runs, with no upper cap.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -45,8 +45,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="359.0" class="ag" text-anchor="middle" >every lens swept, not sampled</text>
 <rect x="54" y="388" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="398" width="5" height="44" rx="2" fill="#e8973a"/>
-<text x="303.0" y="415.0" class="ag" text-anchor="middle" >Tree clean</text>
-<text x="303.0" y="439.0" class="ag" text-anchor="middle" >everything committed</text>
+<text x="303.0" y="415.0" class="ag" text-anchor="middle" >Tree clean, or</text>
+<text x="303.0" y="439.0" class="ag" text-anchor="middle" >edits left for manual commit</text>
 <rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
 <circle cx="795.5" cy="111" r="14" class="num"/>
 <text x="795.5" y="117" class="numt" text-anchor="middle" >2</text>

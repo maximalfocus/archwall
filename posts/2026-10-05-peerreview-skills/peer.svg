@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">peerreview peer choice</title>
-<desc id="d">1 Who is the host: Claude Code, the Codex CLI, Pi on DeepSeek, or the DeepSeek Harness dsh, read from environment markers and the model in use. 2 Tier 1 is the other subscription CLI: Claude Code on a Claude subscription, or the Codex CLI on a ChatGPT subscription. A Claude Code host gets Codex, a Codex host gets Claude Code. 3 Tier 2, only if no tier-1 peer is reachable: dsh with deepseek-v4-pro for CDD repos, Pi with deepseek-flash for every other repo. The report names it as the weaker tier. A DeepSeek host has tier 1 only. 4 Every candidate is checked first: the CLI is installed and signed in, without printing keys; a tiny prompt probes quota, and an out-of-quota peer is skipped; if nobody is left, the review stops. The peer is never from the host's own vendor.</desc>
+<desc id="d">1 Who is the host: Claude Code, the Codex CLI, Pi on DeepSeek, or the DeepSeek Harness dsh, read from environment markers and the model in use. 2 Tier 1 is the other subscription CLI: Claude Code on a Claude subscription, or the Codex CLI on a ChatGPT subscription. A Claude Code host gets Codex, a Codex host gets Claude Code. 3 Tier 2, only if no tier-1 peer is reachable: dsh with deepseek-v4-pro for CDD repos, Pi with deepseek-flash for every other repo. The report names it as the weaker tier. A DeepSeek host has tier 1 only. 4 Every candidate is checked first: the CLI is installed and signed in, without printing keys; for the subscription peers a tiny prompt probes quota, and an out-of-quota peer is skipped; if nobody is left, the review stops. The peer is never from the host's own vendor.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -81,7 +81,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="615.0" class="ag" text-anchor="middle" >no keys printed</text>
 <rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
-<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Quota probe</text>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Quota probe (subscription)</text>
 <text x="303.0" y="695.0" class="ag" text-anchor="middle" >one tiny prompt; used up → next</text>
 <rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>

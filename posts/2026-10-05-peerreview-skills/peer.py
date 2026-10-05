@@ -16,8 +16,9 @@ d = Diagram("peerreview peer choice",
             "3 Tier 2, only if no tier-1 peer is reachable: dsh with deepseek-v4-pro for CDD repos, Pi with "
             "deepseek-flash for every other repo. The report names it as the weaker tier. A DeepSeek host has "
             "tier 1 only. "
-            "4 Every candidate is checked first: the CLI is installed and signed in, without printing keys; a "
-            "tiny prompt probes quota, and an out-of-quota peer is skipped; if nobody is left, the review stops. "
+            "4 Every candidate is checked first: the CLI is installed and signed in, without printing keys; for the "
+            "subscription peers a tiny prompt probes quota, and an out-of-quota peer is skipped; if nobody is left, "
+            "the review stops. "
             "The peer is never from the host's own vendor.")
 
 L, R, W = 24, 624, 552
@@ -56,7 +57,7 @@ notes(R, T2, H2, "Named as the weaker tier in the report;", "a DeepSeek HOST has
 
 d.group(L, T2, W, H2, "Each candidate is checked", 4)
 column(L, T2, [("CLI installed, signed in|no keys printed", "review"),
-               ("Quota probe|one tiny prompt; used up → next", "review"),
+               ("Quota probe (subscription)|one tiny prompt; used up → next", "review"),
                ("Nobody left → stop|no same-vendor stand-in", "review")])
 
 d.arrow(f"M{L + W} {T1 + 200}H{R - 2}", label="ladder", at=(600, T1 + 188))
