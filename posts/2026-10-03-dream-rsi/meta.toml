@@ -3,6 +3,55 @@ title_en = "Dream-RSI: dream on old runs to explore better"
 date = "2026-10-03"
 tags = ["agents", "self-improvement", "exploration", "simulator"]
 figure = "diagram.svg"
-alt_zh = "Dream-RSI 循环：在线探索长出发现树，树变成回放模拟器进池子，在池子里回放打分挑出最好的策略，再上线"
-alt_en = "Dream-RSI loop: explore online to grow a discovery tree, turn trees into a replay simulator pool, score new policies by replay, deploy the best"
+alt_zh = "Dream-RSI 总览：1 在线探索：探索策略（代码）决定往哪走、几路并行、何时停，编码智能体每选一次做一次尝试，固定评估器打分；2 存下发现树：每次尝试和真实分数，进模拟器池，每轮多一棵，回放不用重跑；3 做梦：策略开发智能体改写策略代码，每版在所有树上回放，零执行，分数和记录指导下一版，共 M 版，当前版也在内；4 部署最好的：回放分最高的胜出，不会比当前版差，新策略跑下一轮"
+alt_en = "Dream-RSI overview: 1 explore online: the exploration policy, which is code, decides where, how many and when to stop, a coding agent makes one try per pick, a fixed evaluator scores every try; 2 store the tree: every try and its real score go into a simulator pool that grows by one tree a round, and replay reruns nothing; 3 dream: a policy-development agent rewrites the policy code, each version is replayed on every tree at zero executions, and scores and traces guide the next rewrite, M versions with the current one included; 4 deploy the best: the best replay score wins, never worse on replay than the current policy, and the new policy runs the next round"
 source = "https://dream-rsi.com/"
+
+[[figures]]
+file = "tree.svg"
+alt_zh = "发现树：1 一个节点是一次尝试：尝试后的工作区、智能体写的程序和说明、评估器给的分数和诊断，每次尝试从父节点的工作区开始；2 树怎么长：根是起始工作区，下面挂几条分支，每条是一串尝试，只有根和叶子能被选；3 选一下会怎样：选根开一条新分支，选叶子在这条分支上再走一步（改进或修复），每轮最多 W 个，一个工人一个，记下的节点不再改变；4 池子：每轮多一棵树，下一轮会读池子作参考，但长一棵全新的树"
+alt_en = "Discovery tree: 1 one node is one try: the saved workspace after the try, the program and proposal the agent wrote, the evaluator's score and diagnostics, and each try starts from its parent's workspace; 2 how a tree grows: the root is the starting workspace, branches hang off it, each a chain of tries, and only the root and leaves can be picked; 3 what a pick does: the root opens a new branch, a leaf adds the next step, a refine or a repair, up to W picks a round, one per worker, and recorded nodes never change; 4 the pool: one more tree each round, which the next run reads for context while it grows a brand-new tree"
+caption_zh = "发现树：每个节点是一次真实的尝试和它的分数"
+caption_en = "The discovery tree: each node is one real try and its score"
+
+[[figures]]
+file = "explore.svg"
+alt_zh = "第 1 步，一次在线运行：1 选：探索策略是代码，整轮不变，选一批节点，根或叶子，最多 W 个，选根开新分支，选叶子往下走；2 试：编码智能体接着父节点的工作区，先读完所有旧尝试的成败，再写新尝试，程序加说明，实验里用 Gemini CLI，一个工人一个，不乱杀无关进程；3 打分：固定评估器给分数和诊断，结果成为树上的新子节点；4 再来或停：下一轮从根和叶子里选，选空或满 K₁ 轮就停，跑完的树进池子"
+alt_en = "Step 1, one online run: 1 pick: the exploration policy, code that stays fixed for the run, picks a batch of the root or leaves, up to W, where the root opens a new branch and a leaf takes the next step; 2 try: a coding agent resumes the parent's workspace, reads every past try, wins and failures, then writes a new attempt, a program and a proposal, Gemini CLI in the tests, one per worker, and never kills unrelated processes; 3 score: a fixed evaluator gives a score and diagnostics, and the result becomes a new child node; 4 again or stop: the next round picks from the root and leaves, the run stops on an empty pick or after K1 rounds, and the finished tree joins the pool"
+caption_zh = "在线探索：策略选点，智能体动手，评估器打分，树一轮轮长大"
+caption_en = "Explore online: the policy picks, the agent works, the evaluator scores, the tree grows"
+
+[[figures]]
+file = "replay.svg"
+alt_zh = "第 2 步，回放：1 开始：池子里一棵记录好的树，不会变，策略重新开始，一开始只看到根，每棵树都从头来；2 选：策略选一批，根或叶子，最多 W 个，只用已看到的信息，没揭开的分数看不到；3 揭开：选叶子就揭开它记录下的下一步，选根就揭开下一条没打开的分支，什么都不运行，结果从磁盘读，然后再选；4 停下打分：选空、满 K₂ 轮或整棵树都看完就停，回放分看最好结果、尝试次数和批次，每揭开一个节点都算成本，批量并行有奖励"
+alt_en = "Step 2, replay: 1 start: a recorded tree from the pool that never changes, and the policy starts fresh on every tree seeing only the root; 2 pick: the policy picks a batch of the root or leaves, up to W, using only what it has seen, and hidden scores stay hidden; 3 reveal: a picked leaf reveals its recorded next step, a picked root reveals the next unopened branch, nothing runs and results come off disk, then the policy picks again; 4 stop and score: replay stops on an empty pick, after K2 rounds or when the whole tree is seen, and the replay score counts the best result, the tries and the batching, charging for every node revealed and rewarding batches"
+caption_zh = "回放：新策略在旧树上重走一遍，一次都不用真跑"
+caption_en = "Replay: a new policy walks an old tree without running anything"
+
+[[figures]]
+file = "dream.svg"
+alt_zh = "第 3 步，做梦：1 开始：当前策略是第 0 版，t 棵树的池子在做梦期间不变；2 打分：每一版在每棵树上回放，零执行，取平均分；3 改写：策略开发智能体读回放记录和分数，以及前几版的反馈，写出下一版策略代码，再回去打分；4 选：M 版之后取平均分最高的，部署到下一轮在线运行，第 0 版也参赛，所以在这些树的回放分上不会变差"
+alt_en = "Step 3, dream: 1 start: the current policy is version 0, and the pool of t trees stays fixed while dreaming; 2 score: each version is replayed on every tree at zero executions and gets an average score; 3 rewrite: a policy-development agent reads the traces and scores plus feedback from earlier versions and writes the next version of the policy code, which goes back to be scored; 4 pick: after M versions the best average score is deployed for the next online run, and since version 0 competes too, the pick is never worse on replay of these trees"
+caption_zh = "做梦：改 M 版，每版回放打分，挑最好的上线"
+caption_en = "Dream: M versions, each scored by replay, the best one ships"
+
+[[figures]]
+file = "policy.svg"
+alt_zh = "策略和规则：1 策略决定什么：下一步去哪个节点、一次几个（最多 W）、何时停、下一轮的网格多宽多深，它是代码，每轮之间由智能体改写；2 一个旋钮 beta：高 beta 更宽更有耐心，低 beta 尝试更少、更早停，运行中固定，默认值在轮与轮之间重新选；3 做梦时的规则，写在策略开发智能体的提示里：只看已揭开的部分，不抄分数或节点编号，回放记录只在轮与轮之间读，智能体只改策略文件；4 不变的部分：编码智能体和模型不做任何训练，评估器和工具每轮一样，只有策略代码在变"
+alt_en = "Policy and rules: 1 what the policy decides: which node next, how many at once (up to W), when to stop, and how wide and deep the next run's grid is; it is code, rewritten by an agent between rounds; 2 one knob, beta: high beta is wider and more patient, low beta makes fewer tries and stops early, fixed during a run with the default re-chosen between rounds; 3 rules while dreaming, set in the policy-development agent's prompt: it sees only what it revealed, copies no scores or node ids, reads traces only between rounds, and the agent edits only the policy file; 4 what never changes: the coding agent and model get no training, and the evaluator and tools stay the same; only the policy code changes"
+caption_zh = "策略管四件事，做梦时只能看已揭开的部分"
+caption_en = "The policy decides four things, and while dreaming it sees only what it has revealed"
+
+[[figures]]
+file = "results.svg"
+alt_zh = "结果：1 测试方法：同样的起始策略（并行改进），第 1 轮完全一样，固定探索组从不改策略，Dream-RSI 每轮之间改写，智能体、评估器、预算相同，成本按智能体调用总次数算；2 Lasso 求解器：Gemini-3.1 Pro 跑 5 轮，317 次调用对 550 次，6 个留出数据集平均 2931 毫秒对 3587 毫秒，比 SimpleTES（51,200 次）少 162 倍，6 个数据集上都比 sklearn 和 glmnet 快；3 数学 3 题：和差问题 1.145427，表中最好，圆填充 2.635983，并列最好，自相关有竞争力但不是最好，不到 1,000 次生成，SimpleTES 用了 51,200 次；4 GPU 内核 4 个任务：VGG16 少 2.43 倍、LayerNorm 少 1.79 倍生成次数达到同样效果，ConvDiv 高 2.09 倍、ConvMax 高 1.44 倍，预算相同，KernelBench，Gemini-3.1 Pro"
+alt_en = "Results: 1 the test: the same start policy, parallel refine, so round 1 is identical; fixed exploration never changes the policy, Dream-RSI rewrites it between rounds; same agent, evaluator and budget; cost is total agent calls; 2 Lasso path solver: Gemini-3.1 Pro over 5 rounds, 317 calls against 550, average runtime 2931 ms against 3587 ms on 6 held-out datasets, 162 times fewer calls than SimpleTES (51,200), faster than sklearn and glmnet on all 6; 3 math, 3 problems: sum-difference 1.145427, the best listed, circle packing 2.635983, tied best, autocorrelation competitive but not best, under 1,000 generations against 51,200 for SimpleTES; 4 GPU kernels, 4 KernelBench tasks with Gemini-3.1 Pro: VGG16 2.43 times and LayerNorm 1.79 times fewer generations for the same result, ConvDiv 2.09 times and ConvMax 1.44 times higher on the same budget"
+caption_zh = "结果：三个领域八个任务，对照组是策略固定的同一套流程"
+caption_en = "Results: eight tasks in three areas, against the same loop with a fixed policy"
+
+[[figures]]
+file = "behavior.svg"
+alt_zh = "学到的行为，ConvDiv 内核任务：1 分数上涨时：每轮最好分数上升，策略少花，每轮尝试从 110 次降到 50 次；2 进展停滞时：分数变平，策略多花，开更宽的轮次，之后的分数跳升跟在这些宽轮次后面；3 把历史当提示：把旧运行写成方向提示放进 prompt，固定策略和 Dream-RSI 都比不加提示差，提示把搜索收窄了；4 把历史当世界：像 Dream-RSI 那样回放历史，同样预算下胜过提示"
+alt_en = "Learned behaviour on the ConvDiv kernel task: 1 scores climb: the round-best score rises and the policy spends less, from 110 to 50 tries a round; 2 progress stalls: the score flattens and the policy spends more with wider rounds, and the next score jumps follow those wider rounds; 3 history as tips: past runs turned into tips in the prompt did worse than no tips, for both the fixed policy and Dream-RSI, because tips narrow the search; 4 history as a world: replaying the history, as Dream-RSI does, beats the tips on the same budget"
+caption_zh = "学到的策略会看情况省或花；回放历史胜过把历史写成提示"
+caption_en = "The learned policy saves or spends as needed; replaying history beats turning it into tips"
