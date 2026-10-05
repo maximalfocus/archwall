@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Pi request context</title>
-<desc id="d">1 Load at startup: project trust decides whether the project's .pi folder loads (settings, extensions, skills, prompt templates, MCP servers, SYSTEM.md). Context files such as AGENTS.md and CLAUDE.md load with or without trust. 2 System prompt: pi's base prompt, or SYSTEM.md in its place, then APPEND_SYSTEM.md, the context files, and a list of skills with name and description only; the full skill is read when needed. 3 Conversation: the active branch of the session, a compaction summary in place of older messages, and your new message after prompt templates expand. 4 The request: system prompt, tool declarations, messages and model settings. Extensions can change the messages first. It goes to the model through pi-ai.</desc>
+<desc id="d">1 Load at startup: project trust decides whether the project's .pi folder loads (settings, extensions, skills, prompt templates, MCP servers, SYSTEM.md). Context files such as AGENTS.md and CLAUDE.md load with or without trust. 2 System prompt: pi's base prompt, or SYSTEM.md in its place, then APPEND_SYSTEM.md, the context files, and a list of skills with name, description and path; the full skill is read when needed. 3 Conversation: the active branch of the session, a compaction summary in place of older messages, and your new message after prompt templates expand. 4 The request: system prompt, tool declarations, messages and model settings. Extensions can change the messages first. It goes to the model through pi-ai.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -60,7 +60,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="326" width="492" height="68" rx="8" class="agent"/>
 <rect x="654" y="336" width="5" height="48" rx="2" fill="#5b6675"/>
 <text x="903.0" y="355.0" class="ag" text-anchor="middle" >+ skill list</text>
-<text x="903.0" y="379.0" class="ag" text-anchor="middle" >name + description</text>
+<text x="903.0" y="379.0" class="ag" text-anchor="middle" >name, description, path</text>
 <rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
 <circle cx="809.0" cy="487" r="14" class="num"/>
 <text x="809.0" y="493" class="numt" text-anchor="middle" >3</text>

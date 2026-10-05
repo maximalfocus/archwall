@@ -37,7 +37,7 @@ d.arrow(f"M{col(1) + CW / 2} {Y1 + CH}V{Y2 + CH / 2}H{col(2)}")
 d.arrow(f"M{col(2) + CW} {Y2 + CH / 2}H{col(3)}")
 d.note(col(4), Y2 + CH / 2 + 6, "left via /tree, still in the file", "start")
 d.legend(330, 340, ["plan", "data", "write"], ["active branch", "other branch", "summary entry"])
-d.note(600, 400, "each line is one entry with its parent's id")
+d.note(600, 400, "each entry has its parent's id")
 d.note(600, 426, "active branch: root to the current entry")
 
 # 2 what the model gets

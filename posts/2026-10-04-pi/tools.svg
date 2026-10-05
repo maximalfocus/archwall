@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Pi tools</title>
-<desc id="d">1 Built-in tools: read, bash, edit and write are on by default; grep, find, ls and powershell (Windows) are built in but off until you turn them on. Extensions add more. 2 Exposure decides how a tool reaches the model: direct tools are declared to the model, codemode tools are only called from scripts, deferred tools wait for a search, hidden tools are unreachable. 3 codemode, a built-in extension, off by default and turned on when an MCP server needs it: the model writes a JavaScript script that runs in a QuickJS sandbox with no files, network or timers, calls other tools, and only the script's output goes back to the model. 4 tool_search, a built-in extension, off by default: it searches tools that are not declared and declares the matches for the next model call; they stay declared on that branch.</desc>
+<desc id="d">1 Built-in tools: read, bash, edit and write are on by default; grep, find, ls and powershell (Windows) are built in but off until you turn them on. Extensions add more. 2 Exposure decides how a tool reaches the model: direct tools are declared to the model, model-only tools are declared but scripts cannot call them, codemode tools are only called from scripts, deferred tools wait for a search, hidden tools are unreachable. 3 codemode, a built-in extension, off by default and turned on when an MCP server needs it: the model writes a JavaScript script that runs in a QuickJS sandbox with no files, network or timers, calls other tools, and only the script's output goes back to the model. 4 tool_search, a built-in extension, off by default: it searches tools that are not declared and declares the matches for the next model call; they stay declared on that branch.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -49,24 +49,28 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <circle cx="701.0" cy="43" r="14" class="num"/>
 <text x="701.0" y="49" class="numt" text-anchor="middle" >2</text>
 <text x="721.0" y="52" class="gt" text-anchor="start" >How a tool reaches the model</text>
-<rect x="654" y="96" width="238" height="80" rx="8" class="agent"/>
-<rect x="654" y="106" width="5" height="60" rx="2" fill="#2f9e6e"/>
-<text x="776.0" y="131.0" class="ag" text-anchor="middle" >direct</text>
-<text x="776.0" y="155.0" class="ag" text-anchor="middle" >declared to it</text>
-<rect x="908" y="96" width="238" height="80" rx="8" class="agent"/>
-<rect x="908" y="106" width="5" height="60" rx="2" fill="#2f9e6e"/>
-<text x="1030.0" y="131.0" class="ag" text-anchor="middle" >codemode</text>
-<text x="1030.0" y="155.0" class="ag" text-anchor="middle" >from scripts only</text>
-<rect x="654" y="200" width="238" height="80" rx="8" class="agent"/>
-<rect x="654" y="210" width="5" height="60" rx="2" fill="#2f9e6e"/>
-<text x="776.0" y="235.0" class="ag" text-anchor="middle" >deferred</text>
-<text x="776.0" y="259.0" class="ag" text-anchor="middle" >after a search</text>
-<rect x="908" y="200" width="238" height="80" rx="8" class="agent"/>
-<rect x="908" y="210" width="5" height="60" rx="2" fill="#5b6675"/>
-<text x="1030.0" y="235.0" class="ag" text-anchor="middle" >hidden</text>
-<text x="1030.0" y="259.0" class="ag" text-anchor="middle" >unreachable</text>
-<text x="900.0" y="350" class="lb" text-anchor="middle" >built-ins are direct;</text>
-<text x="900.0" y="376" class="lb" text-anchor="middle" >MCP tools default to codemode</text>
+<rect x="654" y="80" width="238" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="776.0" y="111.0" class="ag" text-anchor="middle" >direct</text>
+<text x="776.0" y="135.0" class="ag" text-anchor="middle" >declared to it</text>
+<rect x="908" y="80" width="238" height="72" rx="8" class="agent"/>
+<rect x="908" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="1030.0" y="111.0" class="ag" text-anchor="middle" >codemode</text>
+<text x="1030.0" y="135.0" class="ag" text-anchor="middle" >from scripts only</text>
+<rect x="654" y="168" width="238" height="72" rx="8" class="agent"/>
+<rect x="654" y="178" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="776.0" y="199.0" class="ag" text-anchor="middle" >deferred</text>
+<text x="776.0" y="223.0" class="ag" text-anchor="middle" >after a search</text>
+<rect x="908" y="168" width="238" height="72" rx="8" class="agent"/>
+<rect x="908" y="178" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="199.0" class="ag" text-anchor="middle" >hidden</text>
+<text x="1030.0" y="223.0" class="ag" text-anchor="middle" >unreachable</text>
+<rect x="654" y="256" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="266" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="283.0" class="ag" text-anchor="middle" >model-only</text>
+<text x="903.0" y="307.0" class="ag" text-anchor="middle" >the model calls it, scripts cannot</text>
+<text x="900.0" y="356" class="lb" text-anchor="middle" >built-ins are direct;</text>
+<text x="900.0" y="382" class="lb" text-anchor="middle" >MCP tools default to codemode</text>
 <rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
 <circle cx="721.25" cy="487" r="14" class="num"/>
 <text x="721.25" y="493" class="numt" text-anchor="middle" >3</text>

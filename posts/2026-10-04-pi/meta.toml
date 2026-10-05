@@ -3,8 +3,8 @@ title_en = "pi: a minimal coding agent you make your own"
 date = "2026-10-04"
 tags = ["agents", "coding-agent", "cli", "llm"]
 figure = "diagram.svg"
-alt_zh = "pi 总览：1 四种入口（终端界面、打印/JSON、RPC、SDK）共用同一个智能体和会话；2 会话（pi-coding-agent）：上下文是提示词加当前分支，默认开 4 个工具，扩展加工具和命令，会话存成 JSONL 树；3 循环（pi-agent-core）：调模型，有工具调用就执行、记下结果、再来一轮，没有就结束；4 pi-ai 一套接口，按模型路由到 42 家内置厂商之一并流式返回"
-alt_en = "Pi overview: 1 four ways in (terminal UI, print/JSON, RPC, SDK) share one agent and session; 2 the agent session (pi-coding-agent): context from the prompt and active branch, 4 tools on by default, extensions add tools and commands, the session saved as a JSONL tree; 3 the loop (pi-agent-core): call the model, run any tool calls, record the results and go again, or end; 4 pi-ai routes each call to one of 42 built-in providers and streams the answer back"
+alt_zh = "pi 总览：1 四种入口（终端界面、打印/JSON、RPC、SDK）共用同一个智能体和会话；2 会话（pi-coding-agent）：上下文是提示词加当前分支，默认开 4 个工具，扩展加工具和命令，会话存成 JSONL 树；3 循环（pi-agent-core）：调模型，有工具调用就执行、记下结果、再来一轮，没有工具调用也没有排队消息就结束；4 pi-ai 一套接口，按模型路由到 42 家内置厂商之一并流式返回"
+alt_en = "Pi overview: 1 four ways in (terminal UI, print/JSON, RPC, SDK) share one agent and session; 2 the agent session (pi-coding-agent): context from the prompt and active branch, 4 tools on by default, extensions add tools and commands, the session saved as a JSONL tree; 3 the loop (pi-agent-core): call the model, run any tool calls, record the results and go again, or end when nothing is queued; 4 pi-ai routes each call to one of 42 built-in providers and streams the answer back"
 source = "https://github.com/earendil-works/pi"
 
 [[figures]]
@@ -16,8 +16,8 @@ caption_en = "Packages: one app, one engine, two tool helpers, plus experimental
 
 [[figures]]
 file = "context.svg"
-alt_zh = "一次请求里有什么：1 启动时由你决定是否信任项目，信任后才加载 .pi 目录，AGENTS.md 和 CLAUDE.md 无论如何都加载；2 系统提示词：基础提示词或 SYSTEM.md，加 APPEND_SYSTEM.md、上下文文件、技能列表（只有名字和描述）；3 对话：会话树的当前分支、代替旧消息的压缩摘要、模板展开后的新消息；4 请求：系统提示词、工具声明、消息、模型设置，扩展可先改消息，再由 pi-ai 发给模型"
-alt_en = "What goes into a request: 1 at startup you decide whether to trust the project; only then does its .pi folder load, while AGENTS.md and CLAUDE.md load either way; 2 system prompt: the base prompt or SYSTEM.md, plus APPEND_SYSTEM.md, context files and a skill list with names and descriptions only; 3 conversation: the active branch of the session tree, a compaction summary in place of old messages, and the new message with templates expanded; 4 the request: system prompt, tool declarations, messages and model settings, which extensions can change before pi-ai sends it"
+alt_zh = "一次请求里有什么：1 启动时由你决定是否信任项目，信任后才加载 .pi 目录，AGENTS.md 和 CLAUDE.md 无论如何都加载；2 系统提示词：基础提示词或 SYSTEM.md，加 APPEND_SYSTEM.md、上下文文件、技能列表（名字、描述、路径）；3 对话：会话树的当前分支、代替旧消息的压缩摘要、模板展开后的新消息；4 请求：系统提示词、工具声明、消息、模型设置，扩展可先改消息，再由 pi-ai 发给模型"
+alt_en = "What goes into a request: 1 at startup you decide whether to trust the project; only then does its .pi folder load, while AGENTS.md and CLAUDE.md load either way; 2 system prompt: the base prompt or SYSTEM.md, plus APPEND_SYSTEM.md, context files and a skill list with names, descriptions and paths; 3 conversation: the active branch of the session tree, a compaction summary in place of old messages, and the new message with templates expanded; 4 the request: system prompt, tool declarations, messages and model settings, which extensions can change before pi-ai sends it"
 caption_zh = "一次请求：提示词、工具、对话，技能用到才读全文"
 caption_en = "A request: prompt, tools and conversation; full skills load only when needed"
 
@@ -30,8 +30,8 @@ caption_en = "A turn is one model call plus the tool calls it asks for"
 
 [[figures]]
 file = "tools.svg"
-alt_zh = "工具：1 默认开 read、bash、edit、write，内置但默认关的有 grep、find、ls、powershell（Windows）；2 工具怎么到模型：direct 直接声明，codemode 只能从脚本调，deferred 搜到才声明，hidden 不可达，MCP 工具默认 codemode；3 codemode（默认关）：模型写 JavaScript，在 QuickJS 沙箱里跑，没有文件和网络，脚本调工具，只回输出；4 tool_search（默认关）：搜没声明的工具，把匹配的声明给下一次调用；两者在 MCP 需要时自动打开"
-alt_en = "Tools: 1 read, bash, edit and write on by default, with grep, find, ls and powershell (Windows) built in but off; 2 how a tool reaches the model: direct is declared, codemode only from scripts, deferred after a search, hidden unreachable, and MCP tools default to codemode; 3 codemode (off by default): the model writes JavaScript that runs in a QuickJS sandbox with no files or network, calls tools, and only its output returns; 4 tool_search (off by default): search undeclared tools and declare the matches for the next call; both turn on when an MCP server needs them"
+alt_zh = "工具：1 默认开 read、bash、edit、write，内置但默认关的有 grep、find、ls、powershell（Windows）；2 工具怎么到模型：direct 直接声明，model-only 模型能调、脚本不能，codemode 只能从脚本调，deferred 搜到才声明，hidden 不可达，MCP 工具默认 codemode；3 codemode（默认关）：模型写 JavaScript，在 QuickJS 沙箱里跑，没有文件和网络，脚本调工具，只回输出；4 tool_search（默认关）：搜没声明的工具，把匹配的声明给下一次调用；两者在 MCP 需要时自动打开"
+alt_en = "Tools: 1 read, bash, edit and write on by default, with grep, find, ls and powershell (Windows) built in but off; 2 how a tool reaches the model: direct is declared, model-only the model calls but scripts cannot, codemode only from scripts, deferred after a search, hidden unreachable, and MCP tools default to codemode; 3 codemode (off by default): the model writes JavaScript that runs in a QuickJS sandbox with no files or network, calls tools, and only its output returns; 4 tool_search (off by default): search undeclared tools and declare the matches for the next call; both turn on when an MCP server needs them"
 caption_zh = "四个默认工具，另有两个内置扩展去够模型看不到的工具"
 caption_en = "Four default tools, plus two built-in extensions that reach tools the model can't see"
 

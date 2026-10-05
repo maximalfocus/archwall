@@ -15,7 +15,7 @@ d = Diagram("Pi request context",
             "extensions, skills, prompt templates, MCP servers, SYSTEM.md). Context files such as AGENTS.md "
             "and CLAUDE.md load with or without trust. "
             "2 System prompt: pi's base prompt, or SYSTEM.md in its place, then APPEND_SYSTEM.md, the context "
-            "files, and a list of skills with name and description only; the full skill is read when needed. "
+            "files, and a list of skills with name, description and path; the full skill is read when needed. "
             "3 Conversation: the active branch of the session, a compaction summary in place of older "
             "messages, and your new message after prompt templates expand. "
             "4 The request: system prompt, tool declarations, messages and model settings. Extensions can "
@@ -36,7 +36,7 @@ d.arrow(f"M{L + W / 2} {T1 + 148}V{T1 + 184}", label="yes", at=(L + W / 2 + 28, 
 # 2 system prompt
 d.group(R, T1, W, H1, "System prompt", 2)
 for i, (lbl, k) in enumerate([("Base prompt|or SYSTEM.md instead", "data"), ("+ APPEND_SYSTEM.md", "data"),
-                              ("+ context files", "data"), ("+ skill list|name + description", "data")]):
+                              ("+ context files", "data"), ("+ skill list|name, description, path", "data")]):
     d.card(R + 30, T1 + 64 + i * 82, lbl, k, w=CW, h=68)
 
 # 3 conversation

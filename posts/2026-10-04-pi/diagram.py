@@ -17,7 +17,8 @@ d = Diagram("Pi coding agent overview",
             "2 The agent session in pi-coding-agent: it builds the context from the system prompt and the "
             "active session branch, holds the tools (read, bash, edit and write are on by default), loads "
             "extensions, and saves everything to a session file. "
-            "3 The agent loop in pi-agent-core: call the model, check for tool calls (none ends the run), run "
+            "3 The agent loop in pi-agent-core: call the model, check for tool calls (none, with nothing "
+            "queued, ends the run), run "
             "the tools, record the results and go again. "
             "4 pi-ai: one API that routes each call to one of 42 built-in providers, such as Anthropic, "
             "OpenAI, Google, Bedrock or OpenRouter, or to any OpenAI-compatible server, and streams the "
@@ -51,7 +52,7 @@ B = (R + 296, T2 + 72)   # tool calls?
 C = (R + 296, T2 + 216)  # run tools
 D = (R + 30, T2 + 216)   # record
 d.card(*A, "Call the model", "plan", w=CW, h=CH)
-d.card(*B, "Tool calls?|none: run ends", w=CW, h=CH)
+d.card(*B, "Tool calls?|none, no queue: end", w=CW, h=CH)
 d.card(*C, "Run the tools", "coding", w=CW, h=CH)
 d.card(*D, "Record results|go again", "write", w=CW, h=CH)
 d.arrow(f"M{A[0] + CW} {A[1] + CH / 2}H{B[0]}")

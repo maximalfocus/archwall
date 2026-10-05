@@ -70,7 +70,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="503" y="342" class="lb" text-anchor="start" >other branch</text>
 <rect x="639" y="326" width="6" height="20" rx="2" fill="#8a5cc7"/>
 <text x="653" y="342" class="lb" text-anchor="start" >summary entry</text>
-<text x="600" y="400" class="lb" text-anchor="middle" >each line is one entry with its parent's id</text>
+<text x="600" y="400" class="lb" text-anchor="middle" >each entry has its parent's id</text>
 <text x="600" y="426" class="lb" text-anchor="middle" >active branch: root to the current entry</text>
 <rect x="24" y="492" width="552" height="368" rx="12" class="grp"/>
 <circle cx="161.75" cy="519" r="14" class="num"/>

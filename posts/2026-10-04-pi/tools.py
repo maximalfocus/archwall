@@ -16,8 +16,8 @@ d = Diagram("Pi tools",
             "1 Built-in tools: read, bash, edit and write are on by default; grep, find, ls and powershell "
             "(Windows) are built in but off until you turn them on. Extensions add more. "
             "2 Exposure decides how a tool reaches the model: direct tools are declared to the model, "
-            "codemode tools are only called from scripts, deferred tools wait for a search, hidden tools "
-            "are unreachable. "
+            "model-only tools are declared but scripts cannot call them, codemode tools are only called "
+            "from scripts, deferred tools wait for a search, hidden tools are unreachable. "
             "3 codemode, a built-in extension, off by default and turned on when an MCP server needs it: the "
             "model writes a JavaScript script that runs in a QuickJS sandbox with no files, network or "
             "timers, calls other tools, and only the script's output goes back to the model. "
@@ -40,9 +40,10 @@ d.note(L + W / 2, T1 + 360, "powershell (Windows)")
 d.group(R, T1, W, H1, "How a tool reaches the model", 2)
 for i, (lbl, k) in enumerate([("direct|declared to it", "plan"), ("codemode|from scripts only", "plan"),
                               ("deferred|after a search", "plan"), ("hidden|unreachable", "data")]):
-    d.card(R + 30 + (i % 2) * 254, T1 + 80 + (i // 2) * 104, lbl, k, w=238, h=80)
-d.note(R + W / 2, T1 + 334, "built-ins are direct;")
-d.note(R + W / 2, T1 + 360, "MCP tools default to codemode")
+    d.card(R + 30 + (i % 2) * 254, T1 + 64 + (i // 2) * 88, lbl, k, w=238, h=72)
+d.card(R + 30, T1 + 240, "model-only|the model calls it, scripts cannot", "plan", w=492, h=64)
+d.note(R + W / 2, T1 + 340, "built-ins are direct;")
+d.note(R + W / 2, T1 + 366, "MCP tools default to codemode")
 
 # 3 codemode
 d.group(R, T2, W, H2, "codemode (off by default)", 3)

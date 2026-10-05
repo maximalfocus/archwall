@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Pi coding agent overview</title>
-<desc id="d">1 Ways in: the terminal UI, print or JSON mode for scripts, RPC over JSONL on stdin and stdout, and the TypeScript SDK. All four use the same agent and session. 2 The agent session in pi-coding-agent: it builds the context from the system prompt and the active session branch, holds the tools (read, bash, edit and write are on by default), loads extensions, and saves everything to a session file. 3 The agent loop in pi-agent-core: call the model, check for tool calls (none ends the run), run the tools, record the results and go again. 4 pi-ai: one API that routes each call to one of 42 built-in providers, such as Anthropic, OpenAI, Google, Bedrock or OpenRouter, or to any OpenAI-compatible server, and streams the answer back.</desc>
+<desc id="d">1 Ways in: the terminal UI, print or JSON mode for scripts, RPC over JSONL on stdin and stdout, and the TypeScript SDK. All four use the same agent and session. 2 The agent session in pi-coding-agent: it builds the context from the system prompt and the active session branch, holds the tools (read, bash, edit and write are on by default), loads extensions, and saves everything to a session file. 3 The agent loop in pi-agent-core: call the model, check for tool calls (none, with nothing queued, ends the run), run the tools, record the results and go again. 4 pi-ai: one API that routes each call to one of 42 built-in providers, such as Anthropic, OpenAI, Google, Bedrock or OpenRouter, or to any OpenAI-compatible server, and streams the answer back.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -73,7 +73,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="770.0" y="577.0" class="ag" text-anchor="middle" >Call the model</text>
 <rect x="920" y="532" width="226" height="76" rx="8" class="agent"/>
 <text x="1036.0" y="565.0" class="ag" text-anchor="middle" >Tool calls?</text>
-<text x="1036.0" y="589.0" class="ag" text-anchor="middle" >none: run ends</text>
+<text x="1036.0" y="589.0" class="ag" text-anchor="middle" >none, no queue: end</text>
 <rect x="920" y="676" width="226" height="76" rx="8" class="agent"/>
 <rect x="920" y="686" width="5" height="56" rx="2" fill="#2f6fd6"/>
 <text x="1036.0" y="721.0" class="ag" text-anchor="middle" >Run the tools</text>
