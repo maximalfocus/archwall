@@ -1,6 +1,6 @@
 """Pi and MCP: config, its own client, exposure, and how the model reaches MCP tools.  Drawn from the
 pi repo (https://github.com/earendil-works/pi, packages/coding-agent/docs/mcp.md, codemode.md, cli.md,
-packages/mcp/README.md and src/protocol, commit 2003871).  Run: python3 mcp.py
+packages/mcp/README.md and src/protocol/types.ts, commit b2b5c42).  Run: python3 mcp.py
 
 Snake order: 1 config (top left) -> 2 pi-mcp client (top right) -> 3 exposure (bottom right)
 -> 4 how the model reaches the tools (bottom left)."""
@@ -19,7 +19,7 @@ d = Diagram("Pi MCP support",
             "3 Exposure, per server or per tool: codemode (the default), deferred, direct or hidden. "
             "4 The model reaches a codemode tool from a JavaScript script in a QuickJS sandbox, and only the "
             "script's output comes back; a deferred tool after tool_search declares it; a direct tool like a "
-            "built-in one. Every call goes through pi's tool pipeline, so extension permission gates apply.")
+            "built-in one. Every call goes through pi's tool pipeline, so the tool-call hooks of an installed extension, such as a permission gate, apply; pi ships no gate itself.")
 
 L, R, W = 24, 624, 552
 T1, H1 = 16, 412
@@ -57,7 +57,7 @@ d.card(CX, T2 + 64, "codemode script|QuickJS sandbox", "coding", w=CWD, h=72)
 d.card(CX, T2 + 154, "tool_search|declares a match", "coding", w=CWD, h=72)
 d.card(CX, T2 + 244, "direct call", "coding", w=CWD, h=64)
 PX = L + 336
-d.card(PX, T2 + 140, "Tool pipeline|permission gates", "review", w=180, h=96)
+d.card(PX, T2 + 140, "Tool pipeline|extension hooks", "review", w=180, h=96)
 for y in (T2 + 100, T2 + 190, T2 + 276):
     d.arrow(f"M{CX + CWD} {y}C{CX + CWD + 40} {y} {PX - 40} {T2 + 188} {PX} {T2 + 188}")
 d.note(L + W / 2, T2 + 344, "a script returns only its output")

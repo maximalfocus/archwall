@@ -1,6 +1,9 @@
 """Pi sessions: a tree in one JSONL file, and what the model gets from it.  Drawn from the pi repo
-(https://github.com/earendil-works/pi, packages/coding-agent/docs/how-pi-works.md, sessions.md and
-compaction.md, commit 2003871).  Run: python3 session.py"""
+(https://github.com/earendil-works/pi, packages/coding-agent/docs/how-pi-works.md, sessions.md,
+session-format.md, compaction.md and settings.md "Compaction", commit b2b5c42).  Run: python3 session.py
+
+Layout: 1 the tree spans the top row; then 2 what the model gets (bottom left) and 3 compaction
+and new files (bottom right)."""
 import sys
 from pathlib import Path
 

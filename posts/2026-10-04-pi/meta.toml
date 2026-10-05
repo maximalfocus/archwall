@@ -3,9 +3,44 @@ title_en = "pi: a minimal coding agent you make your own"
 date = "2026-10-04"
 tags = ["agents", "coding-agent", "cli", "llm"]
 figure = "diagram.svg"
-alt_zh = "pi 架构：1 四种入口（终端界面、打印/JSON、RPC、SDK）共用同一个智能体和会话；2 拼请求：系统提示词加上下文文件、会话当前分支、工具、技能描述，扩展在同一进程里加工具和命令；3 pi-agent-core 循环：调模型、有工具调用就并行执行、记下结果、再来一轮；4 pi-ai 一套接口接多家模型厂商"
-alt_en = "Pi architecture: 1 four interfaces (terminal UI, print/JSON, RPC, SDK) share one agent and session; 2 build the request from the system prompt and context files, the active session branch, tools and skill descriptions, with extensions in the same process; 3 the pi-agent-core loop calls the model, runs any tool calls in parallel, records the results and goes again; 4 pi-ai puts one API over many providers"
+alt_zh = "pi 总览：1 四种入口（终端界面、打印/JSON、RPC、SDK）共用同一个智能体和会话；2 会话（pi-coding-agent）：上下文是提示词加当前分支，默认开 4 个工具，扩展加工具和命令，会话存成 JSONL 树；3 循环（pi-agent-core）：调模型，有工具调用就执行、记下结果、再来一轮，没有就结束；4 pi-ai 一套接口，按模型路由到 42 家内置厂商之一并流式返回"
+alt_en = "Pi overview: 1 four ways in (terminal UI, print/JSON, RPC, SDK) share one agent and session; 2 the agent session (pi-coding-agent): context from the prompt and active branch, 4 tools on by default, extensions add tools and commands, the session saved as a JSONL tree; 3 the loop (pi-agent-core): call the model, run any tool calls, record the results and go again, or end; 4 pi-ai routes each call to one of 42 built-in providers and streams the answer back"
 source = "https://github.com/earendil-works/pi"
+
+[[figures]]
+file = "packages.svg"
+alt_zh = "pi 的包：应用层 pi-coding-agent（pi 命令）和 pi-tui（终端界面）；它用到引擎 pi-agent-core（智能体循环）→ pi-ai（一套接口接多家模型）→ pi-telemetry（追踪接口）；也用到工具助手 pi-codemode（沙箱脚本）和 pi-mcp（MCP 客户端），由内置扩展调用；实验性的远程会话包 chord、pi-durable、pi-protocol、pi-server、pi-client 只在 PI_EXPERIMENTAL=1 的开发模式下用，不在发布版里"
+alt_en = "Pi packages: the app is pi-coding-agent (the pi command) and pi-tui (terminal UI); it uses the engine, pi-agent-core (the agent loop) on pi-ai (one API, many models) on pi-telemetry (tracing contracts), and the tool helpers pi-codemode (sandboxed scripts) and pi-mcp (MCP client) through built-in extensions; the experimental remote-session packages chord, pi-durable, pi-protocol, pi-server and pi-client run only in dev mode with PI_EXPERIMENTAL=1 and are not in the published CLI"
+caption_zh = "包结构：一个应用、一套引擎、两个工具助手，外加实验中的远程会话"
+caption_en = "Packages: one app, one engine, two tool helpers, plus experimental remote sessions"
+
+[[figures]]
+file = "context.svg"
+alt_zh = "一次请求里有什么：1 启动时由你决定是否信任项目，信任后才加载 .pi 目录，AGENTS.md 和 CLAUDE.md 无论如何都加载；2 系统提示词：基础提示词或 SYSTEM.md，加 APPEND_SYSTEM.md、上下文文件、技能列表（只有名字和描述）；3 对话：会话树的当前分支、代替旧消息的压缩摘要、模板展开后的新消息；4 请求：系统提示词、工具声明、消息、模型设置，扩展可先改消息，再由 pi-ai 发给模型"
+alt_en = "What goes into a request: 1 at startup you decide whether to trust the project; only then does its .pi folder load, while AGENTS.md and CLAUDE.md load either way; 2 system prompt: the base prompt or SYSTEM.md, plus APPEND_SYSTEM.md, context files and a skill list with names and descriptions only; 3 conversation: the active branch of the session tree, a compaction summary in place of old messages, and the new message with templates expanded; 4 the request: system prompt, tool declarations, messages and model settings, which extensions can change before pi-ai sends it"
+caption_zh = "一次请求：提示词、工具、对话，技能用到才读全文"
+caption_en = "A request: prompt, tools and conversation; full skills load only when needed"
+
+[[figures]]
+file = "loop.svg"
+alt_zh = "智能体循环：1 输入：你的提示词开始一次运行，插话在本轮后进入，追加消息在全部做完后进入；2 调模型：每轮重新拼请求，模型流式返回文字和工具调用，没有工具调用也没有排队消息就结束；3 执行工具：逐个检查（扩展钩子可拦下），默认并行执行，按原顺序记下结果；4 下一轮：上下文快满先压缩，再开始新一轮"
+alt_en = "Agent loop: 1 input: your prompt starts a run, a steering message goes in after the current turn, a follow-up when all is done; 2 call the model: the request is rebuilt every turn and the model streams text and tool calls, and with no tool calls and nothing queued the run ends; 3 run the tools: each call checked one by one where extension hooks can block it, run in parallel by default, results recorded in the original order; 4 next turn: compact first if the context is near full, then go again"
+caption_zh = "一轮 = 一次模型调用加它要的工具调用"
+caption_en = "A turn is one model call plus the tool calls it asks for"
+
+[[figures]]
+file = "tools.svg"
+alt_zh = "工具：1 默认开 read、bash、edit、write，内置但默认关的有 grep、find、ls、powershell（Windows）；2 工具怎么到模型：direct 直接声明，codemode 只能从脚本调，deferred 搜到才声明，hidden 不可达，MCP 工具默认 codemode；3 codemode（默认关）：模型写 JavaScript，在 QuickJS 沙箱里跑，没有文件和网络，脚本调工具，只回输出；4 tool_search（默认关）：搜没声明的工具，把匹配的声明给下一次调用；两者在 MCP 需要时自动打开"
+alt_en = "Tools: 1 read, bash, edit and write on by default, with grep, find, ls and powershell (Windows) built in but off; 2 how a tool reaches the model: direct is declared, codemode only from scripts, deferred after a search, hidden unreachable, and MCP tools default to codemode; 3 codemode (off by default): the model writes JavaScript that runs in a QuickJS sandbox with no files or network, calls tools, and only its output returns; 4 tool_search (off by default): search undeclared tools and declare the matches for the next call; both turn on when an MCP server needs them"
+caption_zh = "四个默认工具，另有两个内置扩展去够模型看不到的工具"
+caption_en = "Four default tools, plus two built-in extensions that reach tools the model can't see"
+
+[[figures]]
+file = "mcp.svg"
+alt_zh = "pi 的 MCP 支持：1 配置写在 ~/.pi/agent/mcp.json 和信任后的 .pi/mcp.json；2 pi-mcp 是自己的客户端，走 stdio 或 Streamable HTTP，每个工具叫 mcp__server__tool；3 每个服务端或工具设暴露方式：codemode（默认）、deferred、direct、hidden；4 模型通过沙箱脚本、tool_search 或直接调用来用工具，都走同一条工具管线，装了的扩展钩子都会生效"
+alt_en = "Pi MCP support: 1 config in ~/.pi/agent/mcp.json and, once trusted, .pi/mcp.json; 2 pi-mcp is pi's own client over stdio or Streamable HTTP, naming each tool mcp__server__tool; 3 exposure per server or tool: codemode (default), deferred, direct, hidden; 4 the model reaches tools through a sandboxed script, tool_search or a direct call, all through the same tool pipeline where installed extension hooks apply"
+caption_zh = "MCP 工具默认不直接给模型，由脚本去调"
+caption_en = "By default MCP tools reach the model through a script"
 
 [[figures]]
 file = "session.svg"
@@ -15,8 +50,22 @@ caption_zh = "会话是一棵树，模型只看当前分支"
 caption_en = "A session is a tree; the model only sees the active branch"
 
 [[figures]]
-file = "mcp.svg"
-alt_zh = "pi 的 MCP 支持：1 配置写在 ~/.pi/agent/mcp.json 和信任后的 .pi/mcp.json；2 pi-mcp 是自己的客户端，走 stdio 或 Streamable HTTP，每个工具叫 mcp__server__tool；3 每个服务端或工具设暴露方式：codemode（默认）、deferred、direct、hidden；4 模型通过沙箱脚本、tool_search 或直接调用来用工具，都走同一条工具管线和权限检查"
-alt_en = "Pi MCP support: 1 config in ~/.pi/agent/mcp.json and, once trusted, .pi/mcp.json; 2 pi-mcp is pi's own client over stdio or Streamable HTTP, naming each tool mcp__server__tool; 3 exposure per server or tool: codemode (default), deferred, direct, hidden; 4 the model reaches tools through a sandboxed script, tool_search or a direct call, all through the same tool pipeline and permission gates"
-caption_zh = "MCP 工具默认不直接给模型，由脚本去调"
-caption_en = "By default MCP tools reach the model through a script"
+file = "extensions.svg"
+alt_zh = "扩展和插件：1 四类：扩展（TypeScript 代码）、技能（按需读的说明）、提示词模板（可复用的斜杠命令）、主题（终端配色），可打包成 pi 包；2 来源：~/.pi/agent、信任后的 .pi 目录、npm 或 git 上的 pi 包、只管一次的 -e 参数；3 扩展能加：工具、命令、模型厂商、MCP 服务端、终端界面、事件钩子，跑在 pi 进程里、权限和 pi 一样；4 内置扩展用同一套接口：mcp、codemode、tool_search、llama.cpp，前三个可被装的扩展替换"
+alt_en = "Extensions and add-ons: 1 four kinds: extensions (TypeScript code), skills (instructions read on demand), prompt templates (reusable slash commands), themes (terminal colours), bundled as pi packages; 2 where from: ~/.pi/agent, the .pi folder once trusted, pi packages from npm or git, or the -e flag for one run; 3 an extension can add tools, commands, model providers, MCP servers, terminal UI and event hooks, running inside pi with pi's rights; 4 built-in extensions use the same API: mcp, codemode, tool_search and llama.cpp, and an installed extension can replace the first three"
+caption_zh = "pi 自己的 MCP 和 codemode 也是扩展，和你写的用同一套接口"
+caption_en = "Pi's own MCP and codemode are extensions too, on the same API as yours"
+
+[[figures]]
+file = "providers.svg"
+alt_zh = "模型厂商：1 用 /model 或 --model 选模型，扩展提供的虚拟模型可以每次请求换一个真模型；2 pi-ai 的 Models 把请求交给拥有该模型的厂商，内置 42 家，可在会话中途换模型、历史保留；3 每家厂商自管模型列表、登录（API key、/login、云凭据）和线路协议，如 openai-completions；4 自己加：models.json 接 Ollama、vLLM、LM Studio，llama.cpp 接本地 GGUF 模型，或写厂商扩展；凭据顺序：--api-key、auth.json、models.json、环境变量"
+alt_en = "Model providers: 1 pick a model with /model or --model, and a virtual model from an extension can pick a real one per request; 2 pi-ai's Models hands each request to the provider that owns the model, 42 built in, and you can switch models mid-session with history kept; 3 each provider owns its model list, its sign-in (API key, /login, cloud credentials) and its wire API, such as openai-completions; 4 add your own: models.json for Ollama, vLLM or LM Studio, llama.cpp for local GGUF models, or a provider extension; credentials in order: --api-key, auth.json, models.json, env vars"
+caption_zh = "一套接口，42 家内置厂商，也能接自己的模型"
+caption_en = "One API, 42 built-in providers, and room for your own models"
+
+[[figures]]
+file = "safety.svg"
+alt_zh = "安全：1 默认没有权限系统，每次调用前不询问，工具和扩展用你账号的权限，文件和工具输出可能引导模型（提示注入）；2 项目信任：你决定是否加载 .pi 目录的设置、扩展、MCP，它不是沙箱，只管启动时加载什么；3 可选的权限扩展：拦每次工具调用（包括 MCP），根据工具的提示对危险操作先询问，pi 没有内置；4 隔离最稳：Docker、Docker Sandboxes、OpenShell 隔离整个 pi，Gondolin 只隔离内置工具"
+alt_en = "Safety: 1 by default there is no permission system and no ask before each call, tools and extensions run with your account's rights, and files or tool output can steer the model (prompt injection); 2 project trust decides whether a .pi folder's settings, extensions and MCP servers load, but it is not a sandbox; 3 opt in: a permission extension hooks every tool call, MCP included, and asks before risky ones using the tools' hints, none built in; 4 isolation is strongest: plain Docker, Docker Sandboxes or OpenShell around all of pi, or Gondolin for the built-in tools only"
+caption_zh = "pi 不替你设防，要隔离得自己放进容器"
+caption_en = "Pi does not fence itself in; isolation is up to you"

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Pi model providers</title>
+<desc id="d">1 Pick a model with /model or --model. A virtual model, added by an extension, picks a real model for each request. The model can change mid-session. 2 pi-ai's Models collection holds the providers, 42 built in, and routes each request to the provider that owns the model. 3 Each provider owns its model list, its sign-in (an API key, OAuth through /login saved in auth.json, or cloud credentials for Bedrock and Vertex), and the wire API it speaks, such as anthropic-messages, openai-responses or openai-completions. 4 Add your own: models.json for endpoints that speak a supported API, such as Ollama, vLLM or LM Studio; the llama.cpp router for local models; or a provider extension for anything else.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="209.0" cy="43" r="14" class="num"/>
+<text x="209.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="229.0" y="52" class="gt" text-anchor="start" >Pick a model</text>
+<rect x="54" y="88" width="492" height="64" rx="8" class="human"/>
+<text x="303.0" y="127.0" class="ag" text-anchor="middle" >/model or --model</text>
+<rect x="54" y="184" width="492" height="76" rx="8" class="agent"/>
+<rect x="54" y="194" width="5" height="56" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="217.0" class="ag" text-anchor="middle" >Virtual model</text>
+<text x="303.0" y="241.0" class="ag" text-anchor="middle" >picks one per request</text>
+<text x="300.0" y="326" class="lb" text-anchor="middle" >virtual models come from extensions</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="802.25" cy="43" r="14" class="num"/>
+<text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="52" class="gt" text-anchor="start" >pi-ai: Models</text>
+<rect x="654" y="96" width="492" height="84" rx="8" class="agent"/>
+<rect x="654" y="106" width="5" height="64" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="133.0" class="ag" text-anchor="middle" >Models</text>
+<text x="903.0" y="157.0" class="ag" text-anchor="middle" >routes to the owner</text>
+<rect x="636" y="212" width="528" height="140" rx="9" class="sub"/>
+<text x="900.0" y="240" class="st" text-anchor="middle" >42 built-in providers</text>
+<text x="900.0" y="282" class="lb" text-anchor="middle" >Anthropic, OpenAI, Google,</text>
+<text x="900.0" y="308" class="lb" text-anchor="middle" >Bedrock, OpenRouter, Mistral …</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="768.5" cy="487" r="14" class="num"/>
+<text x="768.5" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="788.5" y="496" class="gt" text-anchor="start" >Each provider owns</text>
+<rect x="654" y="524" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="555.0" class="ag" text-anchor="middle" >Model list</text>
+<text x="903.0" y="579.0" class="ag" text-anchor="middle" >catalog, can refresh</text>
+<rect x="654" y="620" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="630" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="651.0" class="ag" text-anchor="middle" >Sign-in</text>
+<text x="903.0" y="675.0" class="ag" text-anchor="middle" >API key, /login, cloud</text>
+<rect x="654" y="716" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="726" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="747.0" class="ag" text-anchor="middle" >Wire API</text>
+<text x="903.0" y="771.0" class="ag" text-anchor="middle" >e.g. openai-completions</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="209.0" cy="487" r="14" class="num"/>
+<text x="209.0" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="229.0" y="496" class="gt" text-anchor="start" >Add your own</text>
+<rect x="54" y="524" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="555.0" class="ag" text-anchor="middle" >models.json</text>
+<text x="303.0" y="579.0" class="ag" text-anchor="middle" >Ollama, vLLM, LM Studio</text>
+<rect x="54" y="620" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="630" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="651.0" class="ag" text-anchor="middle" >llama.cpp router</text>
+<text x="303.0" y="675.0" class="ag" text-anchor="middle" >local GGUF models</text>
+<rect x="54" y="716" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="726" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="747.0" class="ag" text-anchor="middle" >Provider extension</text>
+<text x="303.0" y="771.0" class="ag" text-anchor="middle" >custom sign-in or protocol</text>
+<path d="M576 138H624" class="flow"/>
+<text x="600" y="126" class="al" text-anchor="middle" >model</text>
+<path d="M900.0 428V460" class="flow"/>
+<text x="944.0" y="450" class="al" text-anchor="middle" >request</text>
+<path d="M536 460V444H664V428" class="flow"/>
+<text x="600" y="450" class="al" text-anchor="middle" >registers</text>
+<text x="900.0" y="390" class="lb" text-anchor="middle" >switch models mid-session, history kept</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >credentials: --api-key, then auth.json, models.json, env vars</text>
+</svg>
