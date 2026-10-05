@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">VVAH phase 3: report</title>
+<desc id="d">1 Merge duplicates, S7: a rule pass joins findings in the same file, of the same type, on nearby lines; one AI call joins findings with the same root cause that one fix would close. 2 Chain, S8: an AI sees all findings together, finds attack chains where small bugs combine, re-ranks by real exploitability, and checks combinations with known unpatched CVEs. 3 Score and protect: CVSS 3.1 and CWE on every finding, optional business context from a CMDB export, MITRE ATT&amp;CK candidate techniques as context that adds no finding, and secrets such as card numbers, SSNs and keys masked when the files are written. 4 Outputs in security-scan/: report.md for people, report.sarif for tools, findings.json as typed data, and an optional upload to an ingest hub, the only path besides the AI provider that sends results off the machine.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="155.0" cy="43" r="14" class="num"/>
+<text x="155.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="175.0" y="52" class="gt" text-anchor="start" >Merge duplicates: S7</text>
+<rect x="54" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >Rule pass</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >same file, type, nearby line</text>
+<rect x="54" y="184" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="194" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="303.0" y="219.0" class="ag" text-anchor="middle" >AI pass</text>
+<text x="303.0" y="243.0" class="ag" text-anchor="middle" >same root cause, one fix</text>
+<path d="M300.0 160V182" class="flow"/>
+<text x="300.0" y="316" class="lb" text-anchor="middle" >fewer, cleaner findings</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="829.25" cy="43" r="14" class="num"/>
+<text x="829.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="849.25" y="52" class="gt" text-anchor="start" >Chain: S8</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >Find attack chains</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >small bugs that combine</text>
+<rect x="654" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >Re-rank</text>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >by real exploitability</text>
+<rect x="654" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="282" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >Known CVEs</text>
+<text x="903.0" y="327.0" class="ag" text-anchor="middle" >check unpatched combos</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="775.25" cy="487" r="14" class="num"/>
+<text x="775.25" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="795.25" y="496" class="gt" text-anchor="start" >Score and protect</text>
+<rect x="654" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="776.0" y="559.0" class="ag" text-anchor="middle" >CVSS 3.1 + CWE</text>
+<text x="776.0" y="583.0" class="ag" text-anchor="middle" >severity, type</text>
+<rect x="908" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="534" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="559.0" class="ag" text-anchor="middle" >Business context</text>
+<text x="1030.0" y="583.0" class="ag" text-anchor="middle" >CMDB, optional</text>
+<rect x="654" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="630" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="776.0" y="655.0" class="ag" text-anchor="middle" >ATT&amp;CK</text>
+<text x="776.0" y="679.0" class="ag" text-anchor="middle" >context only</text>
+<rect x="908" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="630" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="1030.0" y="655.0" class="ag" text-anchor="middle" >Mask secrets</text>
+<text x="1030.0" y="679.0" class="ag" text-anchor="middle" >cards, SSNs, keys</text>
+<text x="900.0" y="760" class="lb" text-anchor="middle" >ATT&amp;CK adds no finding</text>
+<text x="900.0" y="788" class="lb" text-anchor="middle" >and changes no score</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="134.75" cy="487" r="14" class="num"/>
+<text x="134.75" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="154.75" y="496" class="gt" text-anchor="start" >Outputs: security-scan/</text>
+<rect x="54" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="176.0" y="559.0" class="ag" text-anchor="middle" >report.md</text>
+<text x="176.0" y="583.0" class="ag" text-anchor="middle" >for people</text>
+<rect x="308" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="534" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="430.0" y="559.0" class="ag" text-anchor="middle" >report.sarif</text>
+<text x="430.0" y="583.0" class="ag" text-anchor="middle" >for tools</text>
+<rect x="54" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="630" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="176.0" y="655.0" class="ag" text-anchor="middle" >findings.json</text>
+<text x="176.0" y="679.0" class="ag" text-anchor="middle" >typed data</text>
+<rect x="308" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="630" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="430.0" y="655.0" class="ag" text-anchor="middle" >Upload</text>
+<text x="430.0" y="679.0" class="ag" text-anchor="middle" >optional hub</text>
+<text x="300.0" y="760" class="lb" text-anchor="middle" >besides the AI provider, the upload</text>
+<text x="300.0" y="788" class="lb" text-anchor="middle" >is the only way results leave</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >unique</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="969.2" y="449" class="al" text-anchor="middle" >final report</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >S9</text>
+</svg>

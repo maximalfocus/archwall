@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">VVAH phase 4b: grade the fix</title>
+<desc id="d">1 Find what to grade: fix records under security-remediation/; a discover step with no AI picks the cases still to grade. It is off in the default scan; the validate command runs it any time. 2 Review panel, read-only: an orchestrator runs the session, a security architect asks whether the root cause is fixed, and a penetration tester tries to get around the fix. A cross-repo reviewer joins only for fixes that span 2 or more repos. 3 Four weighted checks: root cause 43 percent, every instance 25, no new bugs 19, best practice 14. 4 Verdict: fixed at a score of 0.80 or more, partially fixed at 0.50 or more, not fixed below 0.50, or inconclusive when the reviewers split. If root cause or no new bugs fails or is only partial, the best result is partially fixed. The case becomes validated, failed or open.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="168.5" cy="43" r="14" class="num"/>
+<text x="168.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="188.5" y="52" class="gt" text-anchor="start" >Find what to grade</text>
+<rect x="54" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >Fix records</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >security-remediation/</text>
+<rect x="54" y="184" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="194" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="303.0" y="219.0" class="ag" text-anchor="middle" >Discover</text>
+<text x="303.0" y="243.0" class="ag" text-anchor="middle" >picks cases to grade, no AI</text>
+<path d="M300.0 160V182" class="flow"/>
+<text x="300.0" y="316" class="lb" text-anchor="middle" >off in the default scan;</text>
+<text x="300.0" y="344" class="lb" text-anchor="middle" >the validate command runs it any time</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="734.75" cy="43" r="14" class="num"/>
+<text x="734.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="754.75" y="52" class="gt" text-anchor="start" >Review panel, read-only</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >Orchestrator</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >runs the session</text>
+<rect x="654" y="192" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="202" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="776.0" y="227.0" class="ag" text-anchor="middle" >Security architect</text>
+<text x="776.0" y="251.0" class="ag" text-anchor="middle" >root cause fixed?</text>
+<rect x="908" y="192" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="202" width="5" height="60" rx="2" fill="#e8973a"/>
+<text x="1030.0" y="227.0" class="ag" text-anchor="middle" >Pen tester</text>
+<text x="1030.0" y="251.0" class="ag" text-anchor="middle" >can I still get in?</text>
+<path d="M773 152V190" class="flow"/>
+<path d="M1027 152V190" class="flow"/>
+<text x="900.0" y="326" class="lb" text-anchor="middle" >a cross-repo reviewer joins</text>
+<text x="900.0" y="354" class="lb" text-anchor="middle" >only for fixes across 2+ repos</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="755.0" cy="487" r="14" class="num"/>
+<text x="755.0" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="775.0" y="496" class="gt" text-anchor="start" >Four weighted checks</text>
+<rect x="654" y="524" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="903.0" y="561.0" class="ag" text-anchor="middle" >Root cause · 43%</text>
+<rect x="654" y="598" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="608" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="903.0" y="635.0" class="ag" text-anchor="middle" >Every instance · 25%</text>
+<rect x="654" y="672" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="682" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="903.0" y="709.0" class="ag" text-anchor="middle" >No new bugs · 19%</text>
+<rect x="654" y="746" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="756" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="903.0" y="783.0" class="ag" text-anchor="middle" >Best practice · 14%</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="242.75" cy="487" r="14" class="num"/>
+<text x="242.75" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="262.75" y="496" class="gt" text-anchor="start" >Verdict</text>
+<rect x="54" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="176.0" y="559.0" class="ag" text-anchor="middle" >Fixed</text>
+<text x="176.0" y="583.0" class="ag" text-anchor="middle" >score ≥ 0.80</text>
+<rect x="308" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="534" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="430.0" y="559.0" class="ag" text-anchor="middle" >Partially fixed</text>
+<text x="430.0" y="583.0" class="ag" text-anchor="middle" >score ≥ 0.50</text>
+<rect x="54" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="630" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="176.0" y="655.0" class="ag" text-anchor="middle" >Not fixed</text>
+<text x="176.0" y="679.0" class="ag" text-anchor="middle" >score &lt; 0.50</text>
+<rect x="308" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="630" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="430.0" y="655.0" class="ag" text-anchor="middle" >Inconclusive</text>
+<text x="430.0" y="679.0" class="ag" text-anchor="middle" >reviewers split</text>
+<g transform="translate(272 538)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<text x="300.0" y="760" class="lb" text-anchor="middle" >root cause or new bugs</text>
+<text x="300.0" y="788" class="lb" text-anchor="middle" >fail or partial → at best partial</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >one case</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="983.0" y="449" class="al" text-anchor="middle" >votes per check</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >score</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >The case becomes validated, failed or open; failed and open can be graded again</text>
+</svg>
