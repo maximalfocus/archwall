@@ -32,7 +32,7 @@ ScientistTwo 是 Google Cloud AI Research 的研究代理。给它一个研究�
 
 ![](integrity.svg)
 
-多数代理用 Gemini 3.6 Flash，四个用 Claude Code 加 Opus 4.8。一个问题平均 2 到 3 天、3765 美元。
+多数代理用 Gemini 3.6 Flash，四个（含实验编码）用 Claude Code 加 Opus 4.8。一个问题平均 2 到 3 天、3765 美元。
 
 ![](run.svg)
 
