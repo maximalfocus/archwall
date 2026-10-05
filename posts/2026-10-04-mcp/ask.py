@@ -32,10 +32,11 @@ d = Diagram("When the server needs the user",
             "user (elicitation). Only tools/call, resources/read and prompts/get can get this answer. "
             "2 The server replies 'input required' with an elicitation/create request inside, plus optional "
             "requestState, its own notes that the client sends back unchanged. The server sends no request of its "
-            "own and stores nothing in between. "
-            "3 The client asks the user. Form mode collects things like names and choices; URL mode sends the user "
-            "to a web page, and must be used for passwords, keys and payment details. The user accepts, declines "
-            "or cancels. "
+            "own and needs no stored state. "
+            "3 The client asks the user. Form mode collects things like names and choices; URL mode, which the "
+            "client opts into, sends the user to a web page, and must be used for passwords, keys and payment "
+            "details. The user accepts, "
+            "declines or cancels. "
             "4 The client tries again as request 2 with the same parameters plus the answers, and gets the final "
             "result. Sampling and roots use the same path but are deprecated in 2026-07-28.")
 
@@ -49,11 +50,11 @@ d.group(R, T1, W, H1, "Server: input required", 2)
 col(R, T1, [("Input required|elicitation/create inside", "plan"),
             ("requestState|the server's own notes", "data")], arrows=False)
 d.note(R + W / 2, T1 + 352, "an answer, not a request from the server;")
-d.note(R + W / 2, T1 + 380, "the server stores nothing in between")
+d.note(R + W / 2, T1 + 380, "the server needs no stored state")
 
 d.group(R, T2, W, H2, "Client asks the user", 3)
 d.card(R + 30, T2 + 64, "Form mode|names, choices", "review", w=238, h=80)
-d.card(R + 284, T2 + 64, "URL mode|passwords, keys", "review", w=238, h=80)
+d.card(R + 284, T2 + 64, "URL mode (opt-in)|passwords, keys", "review", w=238, h=80)
 d.card(R + 30, T2 + 200, "User: accept, decline|or cancel", None, w=492, h=72, cls="human")
 d.arrow(f"M{R + 149} {T2 + 144}V{T2 + 198}")
 d.arrow(f"M{R + 403} {T2 + 144}V{T2 + 198}")

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">When the server needs the user</title>
-<desc id="d">1 The client sends a call, for example tools/call as request 1. Its capabilities say it can ask the user (elicitation). Only tools/call, resources/read and prompts/get can get this answer. 2 The server replies 'input required' with an elicitation/create request inside, plus optional requestState, its own notes that the client sends back unchanged. The server sends no request of its own and stores nothing in between. 3 The client asks the user. Form mode collects things like names and choices; URL mode sends the user to a web page, and must be used for passwords, keys and payment details. The user accepts, declines or cancels. 4 The client tries again as request 2 with the same parameters plus the answers, and gets the final result. Sampling and roots use the same path but are deprecated in 2026-07-28.</desc>
+<desc id="d">1 The client sends a call, for example tools/call as request 1. Its capabilities say it can ask the user (elicitation). Only tools/call, resources/read and prompts/get can get this answer. 2 The server replies 'input required' with an elicitation/create request inside, plus optional requestState, its own notes that the client sends back unchanged. The server sends no request of its own and needs no stored state. 3 The client asks the user. Form mode collects things like names and choices; URL mode, which the client opts into, sends the user to a web page, and must be used for passwords, keys and payment details. The user accepts, declines or cancels. 4 The client tries again as request 2 with the same parameters plus the answers, and gets the final result. Sampling and roots use the same path but are deprecated in 2026-07-28.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -52,7 +52,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="231.0" class="ag" text-anchor="middle" >requestState</text>
 <text x="903.0" y="255.0" class="ag" text-anchor="middle" >the server's own notes</text>
 <text x="900.0" y="368" class="lb" text-anchor="middle" >an answer, not a request from the server;</text>
-<text x="900.0" y="396" class="lb" text-anchor="middle" >the server stores nothing in between</text>
+<text x="900.0" y="396" class="lb" text-anchor="middle" >the server needs no stored state</text>
 <rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
 <circle cx="755.0" cy="487" r="14" class="num"/>
 <text x="755.0" y="493" class="numt" text-anchor="middle" >3</text>
@@ -63,7 +63,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="776.0" y="583.0" class="ag" text-anchor="middle" >names, choices</text>
 <rect x="908" y="524" width="238" height="80" rx="8" class="agent"/>
 <rect x="908" y="534" width="5" height="60" rx="2" fill="#d64545"/>
-<text x="1030.0" y="559.0" class="ag" text-anchor="middle" >URL mode</text>
+<text x="1030.0" y="559.0" class="ag" text-anchor="middle" >URL mode (opt-in)</text>
 <text x="1030.0" y="583.0" class="ag" text-anchor="middle" >passwords, keys</text>
 <rect x="654" y="660" width="492" height="72" rx="8" class="human"/>
 <text x="903.0" y="691.0" class="ag" text-anchor="middle" >User: accept, decline</text>

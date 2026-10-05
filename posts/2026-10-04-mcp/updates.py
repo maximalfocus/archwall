@@ -39,8 +39,8 @@ d = Diagram("How clients hear about changes",
             "sent unless asked for. "
             "2 The server confirms with an acknowledgment listing what it will send; types it does not support "
             "are left out, and list changes only come from servers that declared them. "
-            "3 Notices such as tools/list_changed or resources/updated arrive on the stream, each tagged with the "
-            "stream's id. Delivery is best effort, so clients poll as well. "
+            "3 Notices such as notifications/tools/list_changed or notifications/resources/updated arrive on "
+            "the stream, each tagged with the stream's id. Delivery is best effort, so clients poll as well. "
             "4 The client refreshes, for example with tools/list, and the host gives the model the new list. If "
             "the stream is lost, the client sends listen again. Progress notices travel on the reply of their own "
             "request, not on this stream.")
@@ -59,8 +59,8 @@ d.note(R + W / 2, T1 + 324, "types it can't do are left out;")
 d.note(R + W / 2, T1 + 352, "list changes only if it declared them")
 
 d.group(R, T2, W, H2, "Notices arrive", 3)
-col(R, T2, [("tools/list_changed|the tool list changed", "data"),
-            ("resources/updated|one resource changed", "data")], h=72, gap=24, arrows=False)
+col(R, T2, [("notifications/tools/list_changed|the tool list changed", "data"),
+            ("notifications/resources/updated|one resource changed", "data")], h=72, gap=24, arrows=False)
 d.note(R + W / 2, T2 + 326, "each tagged with the stream's id;")
 d.note(R + W / 2, T2 + 354, "best effort, so clients poll as well")
 

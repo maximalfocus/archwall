@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">How clients hear about changes</title>
-<desc id="d">1 The client opens a long-lived stream with subscriptions/listen and names what it wants: tool list changes, prompt list changes, resource list changes, or updates to particular resources. Nothing is sent unless asked for. 2 The server confirms with an acknowledgment listing what it will send; types it does not support are left out, and list changes only come from servers that declared them. 3 Notices such as tools/list_changed or resources/updated arrive on the stream, each tagged with the stream's id. Delivery is best effort, so clients poll as well. 4 The client refreshes, for example with tools/list, and the host gives the model the new list. If the stream is lost, the client sends listen again. Progress notices travel on the reply of their own request, not on this stream.</desc>
+<desc id="d">1 The client opens a long-lived stream with subscriptions/listen and names what it wants: tool list changes, prompt list changes, resource list changes, or updates to particular resources. Nothing is sent unless asked for. 2 The server confirms with an acknowledgment listing what it will send; types it does not support are left out, and list changes only come from servers that declared them. 3 Notices such as notifications/tools/list_changed or notifications/resources/updated arrive on the stream, each tagged with the stream's id. Delivery is best effort, so clients poll as well. 4 The client refreshes, for example with tools/list, and the host gives the model the new list. If the stream is lost, the client sends listen again. Progress notices travel on the reply of their own request, not on this stream.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -70,11 +70,11 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="815.5" y="496" class="gt" text-anchor="start" >Notices arrive</text>
 <rect x="654" y="524" width="492" height="72" rx="8" class="agent"/>
 <rect x="654" y="534" width="5" height="52" rx="2" fill="#5b6675"/>
-<text x="903.0" y="555.0" class="ag" text-anchor="middle" >tools/list_changed</text>
+<text x="903.0" y="555.0" class="ag" text-anchor="middle" >notifications/tools/list_changed</text>
 <text x="903.0" y="579.0" class="ag" text-anchor="middle" >the tool list changed</text>
 <rect x="654" y="620" width="492" height="72" rx="8" class="agent"/>
 <rect x="654" y="630" width="5" height="52" rx="2" fill="#5b6675"/>
-<text x="903.0" y="651.0" class="ag" text-anchor="middle" >resources/updated</text>
+<text x="903.0" y="651.0" class="ag" text-anchor="middle" >notifications/resources/updated</text>
 <text x="903.0" y="675.0" class="ag" text-anchor="middle" >one resource changed</text>
 <text x="900.0" y="786" class="lb" text-anchor="middle" >each tagged with the stream's id;</text>
 <text x="900.0" y="814" class="lb" text-anchor="middle" >best effort, so clients poll as well</text>
