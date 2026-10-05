@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">ScientistTwo: how it was tested</title>
+<desc id="d">1 Test set: 107 research problems, each the problem and code of an accepted paper: 38 from NeurIPS 2025, 5 from ICLR 2026 and 64 ICML 2026 spotlights. 2 Beat the best: it beat the human best result on 86 of the 107, 80.4 percent, with an average gain of 25.2 percent. 3 AI reviewers: ScholarPeer, which is also used inside the loop, rated its papers 7.5 out of 10 and accepted 91.9 percent; the Stanford Agentic Reviewer, unseen during development, rated them 5.7 and accepted 72.1 percent. 4 Compared with: above the average accepted ICLR 2026 and NeurIPS 2025 paper under both reviewers, below ICML 2026 spotlights, and every other AI research agent got 0 percent acceptance from the Stanford reviewer.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="540" height="412" rx="12" class="grp"/>
+<circle cx="230.0" cy="43" r="14" class="num"/>
+<text x="230.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="250.0" y="52" class="gt" text-anchor="start" >Test set</text>
+<rect x="54" y="88" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="98" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="297.0" y="119.0" class="ag" text-anchor="middle" >NeurIPS 2025</text>
+<text x="297.0" y="143.0" class="ag" text-anchor="middle" >38 accepted papers</text>
+<rect x="54" y="176" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="297.0" y="207.0" class="ag" text-anchor="middle" >ICLR 2026</text>
+<text x="297.0" y="231.0" class="ag" text-anchor="middle" >5 accepted papers</text>
+<rect x="54" y="264" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="274" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="297.0" y="295.0" class="ag" text-anchor="middle" >ICML 2026</text>
+<text x="297.0" y="319.0" class="ag" text-anchor="middle" >64 spotlight papers</text>
+<text x="294.0" y="372" class="lb" text-anchor="middle" >107 problems, each with its code</text>
+<rect x="636" y="16" width="540" height="412" rx="12" class="grp"/>
+<circle cx="808.25" cy="43" r="14" class="num"/>
+<text x="808.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="828.25" y="52" class="gt" text-anchor="start" >Beat the best</text>
+<rect x="666" y="88" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="98" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="909.0" y="119.0" class="ag" text-anchor="middle" >86 of 107</text>
+<text x="909.0" y="143.0" class="ag" text-anchor="middle" >beat the human best</text>
+<rect x="666" y="200" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="210" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="909.0" y="231.0" class="ag" text-anchor="middle" >+25.2%</text>
+<text x="909.0" y="255.0" class="ag" text-anchor="middle" >average gain</text>
+<text x="906.0" y="372" class="lb" text-anchor="middle" >80.4% success rate</text>
+<rect x="636" y="460" width="540" height="400" rx="12" class="grp"/>
+<circle cx="815.0" cy="487" r="14" class="num"/>
+<text x="815.0" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="835.0" y="496" class="gt" text-anchor="start" >AI reviewers</text>
+<rect x="666" y="532" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="542" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="909.0" y="563.0" class="ag" text-anchor="middle" >ScholarPeer</text>
+<text x="909.0" y="587.0" class="ag" text-anchor="middle" >7.5 / 10, 91.9% accepted</text>
+<rect x="666" y="644" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="654" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="909.0" y="675.0" class="ag" text-anchor="middle" >Stanford Agentic Reviewer</text>
+<text x="909.0" y="699.0" class="ag" text-anchor="middle" >5.7 / 10, 72.1% accepted</text>
+<text x="906.0" y="790" class="lb" text-anchor="middle" >ScholarPeer is also used inside;</text>
+<text x="906.0" y="818" class="lb" text-anchor="middle" >Stanford was unseen in development</text>
+<rect x="24" y="460" width="540" height="400" rx="12" class="grp"/>
+<circle cx="196.25" cy="487" r="14" class="num"/>
+<text x="196.25" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="216.25" y="496" class="gt" text-anchor="start" >Compared with</text>
+<rect x="54" y="532" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="542" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="297.0" y="563.0" class="ag" text-anchor="middle" >Beats the average accepted</text>
+<text x="297.0" y="587.0" class="ag" text-anchor="middle" >ICLR 2026, NeurIPS 2025 paper</text>
+<rect x="54" y="620" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="630" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="297.0" y="651.0" class="ag" text-anchor="middle" >Below the average</text>
+<text x="297.0" y="675.0" class="ag" text-anchor="middle" >ICML 2026 spotlight</text>
+<rect x="54" y="708" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="718" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="297.0" y="739.0" class="ag" text-anchor="middle" >Every other AI agent</text>
+<text x="297.0" y="763.0" class="ag" text-anchor="middle" >0% accepted by Stanford</text>
+<path d="M564 124H634" class="flow"/>
+<text x="600.0" y="112" class="al" text-anchor="middle" >results</text>
+<path d="M906.0 428V458" class="flow"/>
+<text x="963.4" y="454" class="al" text-anchor="middle" >86 papers</text>
+<path d="M636 568H566" class="flow"/>
+<text x="600.0" y="556" class="al" text-anchor="middle" >scores</text>
+</svg>

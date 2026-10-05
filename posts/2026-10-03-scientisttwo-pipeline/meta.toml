@@ -3,6 +3,76 @@ title_en = "ScientistTwo: idea to paper, all on its own"
 date = "2026-10-03"
 tags = ["agents", "AI scientist", "multi-agent", "research"]
 figure = "diagram.svg"
-alt_zh = "ScientistTwo 流程图：上排想点子、做实验、拆开看，下排写、审、把关，审不过就回去改"
-alt_en = "ScientistTwo flow: idea, experiment, ablation on top; write, review, gatekeep below; a failed review loops back"
+alt_zh = "ScientistTwo 总览：输入是一个研究问题，加上当前最好那篇论文和它的代码；1 想点子：找短板，查新颖度；2 做实验：编码代理和评审代理先在一小部分数据上试，再跑全量，结果回流去改点子；3 消融：拆开看哪些部分有用；4 写作：初稿再改进；5 同行评审：AI 审稿人打 1–10 分，低于 8 分就靠新实验反驳，最多 2 轮，打回写作修改；6 元评审：接收就输出论文和代码，否则把点子打回第 3 步再改一次"
+alt_en = "ScientistTwo overview: input is a research problem plus the current best paper and its code; 1 ideas: find limitations, check novelty; 2 experiments: a coding agent and a critic test on a small slice, then all data, and results feed back to the ideas; 3 ablation: keep only the parts that help; 4 writer: draft and improve; 5 peer review: an AI reviewer scores 1 to 10, below 8 a rebuttal runs new experiments, at most 2 rounds, and the draft goes back to the writer; 6 meta-review: accept gives the final paper and code, or the idea goes back to step 3 once"
 source = "https://scientist-two.github.io/#overview"
+
+[[figures]]
+file = "pattern.svg"
+alt_zh = "每一步都一样：1 制作：专门的代理做出一个候选，比如点子或短板、代码和结果、论文草稿；2 评判：评审代理每步问一个问题，比如新不新、好不好，回答接收、修改或淘汰；3 结论：接收进下一步，淘汰就丢掉；4 修改：修改代理按意见改，新版本回到评审，每个循环都有轮数上限"
+alt_en = "One pattern at every stage: 1 make: a specialist agent makes a candidate, such as ideas or limitations, code and results, or a draft; 2 judge: a critic asks one question per stage, such as is it new or is it better, and answers accept, refine or reject; 3 verdict: accept goes to the next stage, reject is dropped; 4 refine: a refine agent fixes it from the notes and sends a new version back; every loop has a round limit"
+caption_zh = "每一步都是同一个套路：做出来，评审判，要么过，要么改，要么丢"
+caption_en = "Every stage works the same way: make it, judge it, then accept, fix or drop it"
+
+[[figures]]
+file = "ideas.svg"
+alt_zh = "第 1 步想点子：1 输入研究问题、最好那篇论文和代码，短板提取器列出它的短板；2 短板核查员看清单够不够用，不够就再找，最多 16 轮；3 初始点子生成器写一个点子，新颖度检查员拿 Google 搜到的 2 篇论文比较打分；4 点子生成器再加更新、不同的点子，种子点子按新颖度排序，最新颖的先试"
+alt_en = "Stage 1, ideas: 1 the input is the research problem, the best paper and its code, and a limitation extractor lists what it gets wrong; 2 a limitation verifier checks the list is enough, and more are found if not, at most 16 rounds; 3 an initial idea generator writes one idea and a novelty checker scores it against 2 papers found on Google Search; 4 an idea generator adds newer, different ideas, and the seed ideas are ranked by novelty, most original first"
+caption_zh = "想点子：先找现有方法的短板，再出点子，按新颖度排队"
+caption_en = "Ideas: find what the best method gets wrong, then rank fixes by novelty"
+
+[[figures]]
+file = "experiment.svg"
+alt_zh = "第 2 步测一个点子：1 基线编码代理在一小部分数据上重跑最好那篇论文，得到基线结果；2 子集编码代理实现点子，子集评审比基线好不好；3 结论：好就扩大，差就丢掉，有潜力就调参最多 2 轮，还不行算差；4 全量编码代理跑所有数据集，全量评审和工程师最后把关，输出代码、结果、好坏和经验"
+alt_en = "Stage 2, test one idea: 1 a baseline coder reruns the best paper on a small slice of the benchmark; 2 a subset coder builds the idea and a subset critic compares it with the baseline; 3 verdict: good scales up, bad is dropped, promising gets tuned for at most 2 rounds and otherwise counts as bad; 4 a full-set coder runs every dataset and a full-set critic and engineer do the final check; out come code, results, good or bad, and lessons"
+caption_zh = "做实验：先小后大，小规模上不行的点子不花大算力"
+caption_en = "Experiments: small first, so weak ideas never get the big compute"
+
+[[figures]]
+file = "evolve.svg"
+alt_zh = "第 2 步外圈：1 执行记录：试过的每个点子，哪些成了哪些败了；2 点子进化器读记录写出更好的点子，再从种子里取下一个没试过的，每轮测 2 个；3 实现器先小后大跑，结果写回记录，最多 4 轮，有 4 个好点子就提前停；4 选择器挑出最好的点子和它的结果、代码，一个好点子都没有，整个运行停止"
+alt_en = "Stage 2, outer loop: 1 execution traces of every idea tried, what worked and what failed; 2 an idea evolver reads them and writes better ideas, plus the next untried seed idea, 2 ideas per round; 3 the implementer runs them small first, and results go back into the traces, up to 4 rounds, stopping early at 4 good ideas; 4 a selector picks the best idea with its results and code; if no idea is good, the whole run stops"
+caption_zh = "进化：从成败记录里长出新点子，最后挑一个最好的"
+caption_en = "Evolve: grow new ideas from what worked and what failed, then pick the best"
+
+[[figures]]
+file = "ablation.svg"
+alt_zh = "第 3 步消融：1 消融规划员拿最好的点子、结果和代码，每个部分出一个方案；2 消融编码代理逐个跑；3 消融评审看拆分是否干净，干净就去写论文；4 不干净就由全量工程师改方法，结果比较员只在新版更好时替换，然后重新消融，论文设置里最多改一次"
+alt_en = "Stage 3, ablation: 1 an ablation planner takes the best idea, results and code and writes one plan per part; 2 an ablation coder runs every plan; 3 an ablation critic checks whether the breakdown is clean, and clean goes on to writing; 4 otherwise a full-set engineer revises the method, a result comparison keeps it only if it is better, and the ablation runs again, at most once in the paper's setting"
+caption_zh = "消融：拆开看每部分的贡献，没用的砍掉"
+caption_en = "Ablation: take it apart, see what each part adds, cut what doesn't help"
+
+[[figures]]
+file = "writing.svg"
+alt_zh = "第 4–5 步写和审：1 初稿代理基于 PaperOrchestra，把点子、结果、消融写成 ICLR 2025 格式的完整论文；2 同行审稿人 ScholarPeer 打 1–10 分，8 分以上进元评审；3 低于 8 分，反驳规划员挑新实验，反驳编码代理去跑；4 草稿增强器把新结果、表格、图更新进论文，再交回审稿人，最多 2 轮"
+alt_en = "Stages 4–5, write and review: 1 an initial drafter built on PaperOrchestra writes a full paper in ICLR 2025 format from the idea, results and ablations; 2 a peer reviewer, ScholarPeer, scores 1 to 10, and 8 or more goes to meta-review; 3 below 8, a rebuttal planner picks new experiments and a rebuttal coder runs them; 4 a draft enhancer updates the text, tables and figures and sends it back, at most 2 review rounds"
+caption_zh = "写和审：回应审稿意见靠补实验，不靠改措辞"
+caption_en = "Write and review: answer the reviewer with new experiments, not new wording"
+
+[[figures]]
+file = "metareview.svg"
+alt_zh = "第 6 步元评审：1 元评审员看论文和审稿意见，够格就接收，输出最终论文和代码；2 不够格，全量工程师按意见改点子本身；3 结果比较员看新结果是否更好，不更好就丢掉改动，交出之前那篇；4 更好就重做消融、写作和评审，新论文回到元评审，论文设置里最多一次"
+alt_en = "Stage 6, meta-review: 1 a meta-reviewer reads the paper and review; accept gives the final paper and code; 2 on refine, a full-set engineer changes the idea itself; 3 a result comparison checks the new results, and if not better the change is dropped and the previous paper ships; 4 if better, ablation, draft and review run again and the new paper returns, at most once in the paper's setting"
+caption_zh = "元评审：最后一道关，改了不更好就交上一版"
+caption_en = "Meta-review: the last gate; a fix that isn't better is dropped"
+
+[[figures]]
+file = "integrity.svg"
+alt_zh = "诚信检查：1 可复跑：编码代理写能重跑的脚本，审计中 49 篇全部复现；2 守规则：实验后马上用验证过滤器丢掉违规代码，49 篇 0 篇违规；3 引用真实：带搜索的模型找编造的引用，写作代理修参考文献，1814 条 0 条编造；4 方法对得上代码：编码代理对照代码查论文，写作代理修方法部分，49 篇全部一致"
+alt_en = "Integrity: 1 rerunnable: the coding agent writes scripts that can be rerun, every score reproduced in 49 of 49 papers; 2 rules kept: a validation filter right after experiments drops rule-breaking code, 0 of 49 broke rules; 3 real references: a search-backed model finds made-up citations and the writer fixes them, 0 of 1,814 made up; 4 method matches code: the coding agent checks code against the paper and the writer fixes the method section, 49 of 49 match"
+caption_zh = "诚信：四项检查，确保论文说的和代码做的一致"
+caption_en = "Integrity: four checks that the paper says what the code does"
+
+[[figures]]
+file = "run.svg"
+alt_zh = "模型、时间、成本：1 大多数代理用 Gemini 3.6 Flash，实验编码、消融、反驳、草稿增强这四个用 Claude Code 加 Opus 4.8；2 在 5 个 ICLR 2026 任务上换成 Antigravity 加 Gemini 3.8 Flash，照样做出新的最好方法；3 每个问题 2 到 3 天，大部分花在改点子和评审循环；4 平均 3765 美元，含 token 和虚拟机，在 33 个 NeurIPS 2025 问题上测得"
+alt_en = "Models, time and cost: 1 Gemini 3.6 Flash runs most agents; the experiment coder, ablation, rebuttal and draft enhancer use Claude Code with Opus 4.8; 2 swapped for Antigravity on Gemini 3.8 Flash on 5 ICLR 2026 tasks, it still found new best methods; 3 2 to 3 days per problem, mostly idea refinement and the review loops; 4 $3,765 on average, tokens plus virtual machines, measured on 33 NeurIPS 2025 problems"
+caption_zh = "运行：一个问题两三天，平均约 3765 美元"
+caption_en = "Running it: two to three days and about $3,765 per problem"
+
+[[figures]]
+file = "tested.svg"
+alt_zh = "怎么测的：1 107 个问题，每个都是一篇已接收论文的问题和代码：NeurIPS 2025 38 篇、ICLR 2026 5 篇、ICML 2026 spotlight 64 篇；2 86 个超过人类最好成绩，成功率 80.4%，平均提升 25.2%；3 ScholarPeer 打 7.5 分、接收 91.9%，Stanford Agentic Reviewer 打 5.7 分、接收 72.1%，ScholarPeer 在流程里也用到，Stanford 开发时没见过；4 高于 ICLR 2026 和 NeurIPS 2025 已接收论文的平均分，低于 ICML 2026 spotlight，其他 AI 研究代理在 Stanford 那里接收率都是 0%"
+alt_en = "How it was tested: 1 107 problems, each the problem and code of an accepted paper: 38 NeurIPS 2025, 5 ICLR 2026, 64 ICML 2026 spotlights; 2 86 of 107 beat the human best, 80.4%, with a 25.2% average gain; 3 ScholarPeer rated 7.5 of 10 with 91.9% accepted, the Stanford Agentic Reviewer 5.7 with 72.1%; ScholarPeer is also used inside, Stanford was unseen in development; 4 above the average accepted ICLR 2026 and NeurIPS 2025 paper, below ICML 2026 spotlights, and every other AI research agent got 0% from Stanford"
+caption_zh = "测试：107 个题目，86 个超过人类最好成绩"
+caption_en = "Tested: 107 problems, 86 beat the human best"

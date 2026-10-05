@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">ScientistTwo stage 2: evolve ideas, pick the best</title>
+<desc id="d">1 Traces: every idea tried so far, with what worked and what failed. 2 Evolve: an Idea Evolver reads the traces and writes new ideas; to avoid getting stuck it also takes the next untried seed idea by novelty; each round tests one of each. 3 Test: the implementer from the previous diagram runs each idea, and the results go back into the traces; up to 4 rounds, stopping early at 4 good ideas. 4 Pick the best: a Selector compares the good ideas on the full benchmark and picks one, with its results and code. If no idea is good after the last round, the whole run stops.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="540" height="412" rx="12" class="grp"/>
+<circle cx="243.5" cy="43" r="14" class="num"/>
+<text x="243.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="263.5" y="52" class="gt" text-anchor="start" >Traces</text>
+<rect x="54" y="88" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="98" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="297.0" y="119.0" class="ag" text-anchor="middle" >Execution traces</text>
+<text x="297.0" y="143.0" class="ag" text-anchor="middle" >every idea tried so far</text>
+<rect x="54" y="216" width="232" height="72" rx="8" class="agent"/>
+<rect x="54" y="226" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="173.0" y="247.0" class="ag" text-anchor="middle" >Good ideas</text>
+<text x="173.0" y="271.0" class="ag" text-anchor="middle" >what worked</text>
+<rect x="302" y="216" width="232" height="72" rx="8" class="agent"/>
+<rect x="302" y="226" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="421.0" y="247.0" class="ag" text-anchor="middle" >Bad ideas</text>
+<text x="421.0" y="271.0" class="ag" text-anchor="middle" >what failed</text>
+<g transform="translate(266 230)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<g transform="translate(514 230)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
+<rect x="636" y="16" width="540" height="412" rx="12" class="grp"/>
+<circle cx="855.5" cy="43" r="14" class="num"/>
+<text x="855.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="875.5" y="52" class="gt" text-anchor="start" >Evolve</text>
+<rect x="666" y="88" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="98" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="909.0" y="119.0" class="ag" text-anchor="middle" >Idea evolver</text>
+<text x="909.0" y="143.0" class="ag" text-anchor="middle" >writes better ideas</text>
+<rect x="666" y="216" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="226" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="909.0" y="247.0" class="ag" text-anchor="middle" >Next seed idea</text>
+<text x="909.0" y="271.0" class="ag" text-anchor="middle" >untried, by novelty</text>
+<text x="906.0" y="358" class="lb" text-anchor="middle" >each round tests 2 ideas:</text>
+<text x="906.0" y="386" class="lb" text-anchor="middle" >1 evolved + 1 seed</text>
+<rect x="636" y="460" width="540" height="400" rx="12" class="grp"/>
+<circle cx="869.0" cy="487" r="14" class="num"/>
+<text x="869.0" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="889.0" y="496" class="gt" text-anchor="start" >Test</text>
+<rect x="666" y="532" width="480" height="72" rx="8" class="agent"/>
+<rect x="666" y="542" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="909.0" y="563.0" class="ag" text-anchor="middle" >Implementer</text>
+<text x="909.0" y="587.0" class="ag" text-anchor="middle" >slice first, then full</text>
+<text x="906.0" y="790" class="lb" text-anchor="middle" >up to 4 rounds, stops early</text>
+<text x="906.0" y="818" class="lb" text-anchor="middle" >once 4 ideas are good</text>
+<rect x="24" y="460" width="540" height="400" rx="12" class="grp"/>
+<circle cx="196.25" cy="487" r="14" class="num"/>
+<text x="196.25" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="216.25" y="496" class="gt" text-anchor="start" >Pick the best</text>
+<rect x="54" y="532" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="542" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="297.0" y="563.0" class="ag" text-anchor="middle" >Selector</text>
+<text x="297.0" y="587.0" class="ag" text-anchor="middle" >picks the best good idea</text>
+<rect x="54" y="644" width="480" height="72" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="297.0" y="675.0" class="ag" text-anchor="middle" >No good idea?</text>
+<text x="297.0" y="699.0" class="ag" text-anchor="middle" >the whole run stops</text>
+<g transform="translate(514 658)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
+<text x="294.0" y="790" class="lb" text-anchor="middle" >out: best idea,</text>
+<text x="294.0" y="818" class="lb" text-anchor="middle" >its results and code</text>
+<path d="M564 124H634" class="flow"/>
+<text x="600.0" y="112" class="al" text-anchor="middle" >traces</text>
+<path d="M906.0 428V458" class="flow"/>
+<text x="954.2" y="454" class="al" text-anchor="middle" >2 ideas</text>
+<path d="M636 568H566" class="flow"/>
+<text x="600.0" y="556" class="al" text-anchor="middle" >good</text>
+<path d="M726 460V444H474V430" class="flow back"/>
+<text x="600.0" y="438" class="al" text-anchor="middle" >results</text>
+</svg>

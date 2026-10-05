@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">ScientistTwo closed-loop research pipeline</title>
-<desc id="d">Idea Generator, Evaluator and Analyzer test whether an idea works; Writer, Peer-Review and Meta-Review test whether the paper passes. Results feed back to evolve and refine ideas, and the meta-review sends the work back to the Analyzer until it clears the bar.</desc>
+<desc id="d">Input: a research problem with the current best paper and its code. 1 Ideas: find what the best method gets wrong and write new ideas, checked for novelty. 2 Experiments: a coding agent and a critic test each idea on a slice of the benchmark, then on all of it; results go back to evolve better ideas. 3 Ablation: take the best idea apart to see which parts help, and refine it. 4 Writer: draft the paper and improve it. 5 Peer review: an AI reviewer scores it and a rebuttal agent answers with new experiments; the writer revises the draft. 6 Meta-review: accept, giving the final paper and code, or send the idea back to step 3 for one more fix.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -25,141 +25,102 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 .numt{font-size:16px;font-weight:700;fill:#ffffff}
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
-<rect x="24" y="16" width="552" height="44" rx="22.0" class="human"/>
-<text x="300.0" y="44.0" class="q" text-anchor="middle" >Human: “I want to build an efficient tabular foundation model”</text>
-<rect x="632" y="30" width="6" height="20" rx="2" fill="#2f6fd6"/>
-<text x="646" y="46" class="lb" text-anchor="start" >coding</text>
-<rect x="728" y="30" width="6" height="20" rx="2" fill="#e8973a"/>
-<text x="742" y="46" class="lb" text-anchor="start" >critic</text>
-<rect x="824" y="30" width="6" height="20" rx="2" fill="#2f9e6e"/>
-<text x="838" y="46" class="lb" text-anchor="start" >planning</text>
-<rect x="938" y="30" width="6" height="20" rx="2" fill="#8a5cc7"/>
-<text x="952" y="46" class="lb" text-anchor="start" >writing</text>
-<rect x="1043" y="30" width="6" height="20" rx="2" fill="#d64545"/>
-<text x="1057" y="46" class="lb" text-anchor="start" >review</text>
-<path d="M300.0 60V80" class="flow"/>
-<rect x="24" y="80" width="552" height="300" rx="12" class="grp"/>
-<text x="300.0" y="116" class="gt" text-anchor="middle" >Idea Generator</text>
-<rect x="36" y="128" width="528" height="118" rx="9" class="sub"/>
-<text x="300.0" y="156" class="st" text-anchor="middle" >Seed Idea Generator</text>
-<rect x="54" y="166" width="180" height="64" rx="8" class="agent"/>
-<text x="147.0" y="193.0" class="ag" text-anchor="middle" >Limitation</text>
-<text x="147.0" y="217.0" class="ag" text-anchor="middle" >Extractor</text>
-<rect x="366" y="166" width="180" height="64" rx="8" class="agent"/>
-<rect x="366" y="176" width="5" height="44" rx="2" fill="#e8973a"/>
-<text x="459.0" y="193.0" class="ag" text-anchor="middle" >Novelty</text>
-<text x="459.0" y="217.0" class="ag" text-anchor="middle" >Checker</text>
-<path d="M234 198H360" class="flow"/>
-<rect x="36" y="256" width="528" height="112" rx="9" class="sub"/>
-<text x="300.0" y="284" class="st" text-anchor="middle" >Idea Evolver</text>
-<g transform="translate(82 302)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
-<text x="100" y="309" class="ag" text-anchor="start" >Good idea</text>
-<g transform="translate(82 336)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
-<text x="100" y="343" class="ag" text-anchor="start" >Bad idea</text>
-<path d="M224 320H354" class="flow"/>
-<g transform="translate(376 316)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
-<text x="394" y="327" class="ag" text-anchor="start" >New idea</text>
-<rect x="624" y="80" width="552" height="300" rx="12" class="grp"/>
-<text x="900.0" y="116" class="gt" text-anchor="middle" >Evaluator</text>
-<rect x="636" y="128" width="528" height="118" rx="9" class="sub"/>
-<text x="900.0" y="156" class="st" text-anchor="middle" >Subset Experiment Agent</text>
-<rect x="654" y="166" width="180" height="64" rx="8" class="agent"/>
-<rect x="654" y="176" width="5" height="44" rx="2" fill="#2f6fd6"/>
-<text x="747.0" y="193.0" class="ag" text-anchor="middle" >Coding</text>
-<text x="747.0" y="217.0" class="ag" text-anchor="middle" >Agent</text>
-<rect x="966" y="166" width="180" height="64" rx="8" class="agent"/>
-<rect x="966" y="176" width="5" height="44" rx="2" fill="#e8973a"/>
-<text x="1059.0" y="193.0" class="ag" text-anchor="middle" >Critic</text>
-<text x="1059.0" y="217.0" class="ag" text-anchor="middle" >Agent</text>
-<path d="M890 198 A10 10 0 0 1 907.0 191.0" class="cyc"/>
-<path d="M910 198 A10 10 0 0 1 893.0 205.0" class="cyc"/>
-<path d="M900 246V254" class="flow"/>
-<rect x="636" y="256" width="528" height="112" rx="9" class="sub"/>
-<text x="900.0" y="284" class="st" text-anchor="middle" >Full-Set Experiment Agent</text>
-<rect x="654" y="290" width="180" height="64" rx="8" class="agent"/>
-<rect x="654" y="300" width="5" height="44" rx="2" fill="#2f6fd6"/>
-<text x="747.0" y="317.0" class="ag" text-anchor="middle" >Coding</text>
-<text x="747.0" y="341.0" class="ag" text-anchor="middle" >Agent</text>
-<rect x="966" y="290" width="180" height="64" rx="8" class="agent"/>
-<rect x="966" y="300" width="5" height="44" rx="2" fill="#e8973a"/>
-<text x="1059.0" y="317.0" class="ag" text-anchor="middle" >Critic</text>
-<text x="1059.0" y="341.0" class="ag" text-anchor="middle" >Agent</text>
-<path d="M890 322 A10 10 0 0 1 907.0 315.0" class="cyc"/>
-<path d="M910 322 A10 10 0 0 1 893.0 329.0" class="cyc"/>
-<path d="M564 180H630" class="flow"/>
-<g transform="translate(600 166)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
-<path d="M564 286H588V216H630" class="flow"/>
-<g transform="translate(577 252)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
-<path d="M636 346H570" class="flow"/>
-<g transform="translate(590 364)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
-<g transform="translate(610 364)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
-<rect x="624" y="416" width="552" height="310" rx="12" class="grp"/>
-<text x="900.0" y="452" class="gt" text-anchor="middle" >Analyzer</text>
-<rect x="636" y="464" width="528" height="118" rx="9" class="sub"/>
-<text x="900.0" y="492" class="st" text-anchor="middle" >Ablation Study Agent</text>
-<rect x="654" y="502" width="180" height="64" rx="8" class="agent"/>
-<rect x="654" y="512" width="5" height="44" rx="2" fill="#2f9e6e"/>
-<text x="747.0" y="529.0" class="ag" text-anchor="middle" >Planning</text>
-<text x="747.0" y="553.0" class="ag" text-anchor="middle" >Agent</text>
-<rect x="966" y="502" width="180" height="64" rx="8" class="agent"/>
-<rect x="966" y="512" width="5" height="44" rx="2" fill="#2f6fd6"/>
-<text x="1059.0" y="529.0" class="ag" text-anchor="middle" >Coding</text>
-<text x="1059.0" y="553.0" class="ag" text-anchor="middle" >Agent</text>
-<path d="M834 534H960" class="flow"/>
-<path d="M900 582V590" class="flow"/>
-<rect x="636" y="592" width="528" height="122" rx="9" class="sub"/>
-<text x="900.0" y="620" class="st" text-anchor="middle" >Idea Refiner</text>
-<rect x="654" y="632" width="180" height="64" rx="8" class="agent"/>
-<rect x="654" y="642" width="5" height="44" rx="2" fill="#e8973a"/>
-<text x="747.0" y="659.0" class="ag" text-anchor="middle" >Critic</text>
-<text x="747.0" y="683.0" class="ag" text-anchor="middle" >Agent</text>
-<path d="M834 664H954" class="flow"/>
-<g transform="translate(976 660)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
-<text x="994" y="671" class="ag" text-anchor="start" >New idea</text>
-<path d="M804 380V410" class="flow"/>
-<g transform="translate(784 398)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
-<path d="M1004 416V386" class="flow"/>
-<g transform="translate(1026 398)"><circle r="8" fill="#ffd54a" stroke="#b8860b" stroke-width="1.5"/><rect x="-4" y="7" width="8" height="5" rx="1" fill="#8c96a3"/></g>
-<rect x="24" y="416" width="552" height="136" rx="12" class="grp"/>
-<text x="300.0" y="452" class="gt" text-anchor="middle" >Writer Agent</text>
-<rect x="54" y="472" width="180" height="64" rx="8" class="agent"/>
-<rect x="54" y="482" width="5" height="44" rx="2" fill="#8a5cc7"/>
-<text x="147.0" y="499.0" class="ag" text-anchor="middle" >Initial</text>
-<text x="147.0" y="523.0" class="ag" text-anchor="middle" >Drafter</text>
-<rect x="366" y="472" width="180" height="64" rx="8" class="agent"/>
-<rect x="366" y="482" width="5" height="44" rx="2" fill="#8a5cc7"/>
-<text x="459.0" y="499.0" class="ag" text-anchor="middle" >Draft</text>
-<text x="459.0" y="523.0" class="ag" text-anchor="middle" >Enhancer</text>
-<path d="M234 504H360" class="flow"/>
-<path d="M624 504H582" class="flow"/>
-<path d="M290.0 564 A10 10 0 0 1 307.0 557.0" class="cyc"/>
-<path d="M310.0 564 A10 10 0 0 1 293.0 571.0" class="cyc"/>
-<rect x="24" y="576" width="552" height="136" rx="12" class="grp"/>
-<text x="300.0" y="612" class="gt" text-anchor="middle" >Peer-Review Agent</text>
-<rect x="54" y="632" width="160" height="64" rx="8" class="agent"/>
-<rect x="54" y="642" width="5" height="44" rx="2" fill="#d64545"/>
-<text x="137.0" y="659.0" class="ag" text-anchor="middle" >Review</text>
-<text x="137.0" y="683.0" class="ag" text-anchor="middle" >Agent</text>
-<rect x="386" y="632" width="160" height="64" rx="8" class="agent"/>
-<rect x="386" y="642" width="5" height="44" rx="2" fill="#d64545"/>
-<text x="469.0" y="659.0" class="ag" text-anchor="middle" >Rebuttal</text>
-<text x="469.0" y="683.0" class="ag" text-anchor="middle" >Agent</text>
-<path d="M214 664H380" class="flow"/>
-<text x="297" y="654" class="al" text-anchor="middle" >new experiments</text>
-<path d="M144 712V730" class="flow"/>
-<rect x="24" y="736" width="552" height="136" rx="12" class="grp"/>
-<text x="300.0" y="772" class="gt" text-anchor="middle" >Meta-Review Agent</text>
-<rect x="54" y="792" width="180" height="64" rx="8" class="agent"/>
-<rect x="54" y="802" width="5" height="44" rx="2" fill="#e8973a"/>
-<text x="147.0" y="819.0" class="ag" text-anchor="middle" >Critic</text>
-<text x="147.0" y="843.0" class="ag" text-anchor="middle" >Agent</text>
-<rect x="366" y="792" width="180" height="64" rx="8" class="agent"/>
-<text x="459.0" y="819.0" class="ag" text-anchor="middle" >Idea</text>
-<text x="459.0" y="843.0" class="ag" text-anchor="middle" >Refiner</text>
-<path d="M234 824H360" class="flow"/>
-<rect x="684" y="802" width="432" height="44" rx="22.0" class="front"/>
-<text x="900.0" y="830.0" class="q" text-anchor="middle" >Expanded frontier: paper + code</text>
-<path d="M576 824H678" class="flow"/>
-<path d="M576 760H1044V732" class="flow back"/>
-<text x="824" y="766" class="al" text-anchor="middle" >not good enough</text>
+<rect x="24" y="16" width="1152" height="44" rx="22.0" class="human"/>
+<text x="600.0" y="44.0" class="q" text-anchor="middle" >Input: a research problem + the current best paper and its code</text>
+<path d="M294.0 60V78" class="flow"/>
+<rect x="24" y="80" width="540" height="236" rx="12" class="grp"/>
+<circle cx="250.25" cy="107" r="14" class="num"/>
+<text x="250.25" y="113" class="numt" text-anchor="middle" >1</text>
+<text x="270.25" y="116" class="gt" text-anchor="start" >Ideas</text>
+<rect x="54" y="144" width="232" height="72" rx="8" class="agent"/>
+<rect x="54" y="154" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="173.0" y="175.0" class="ag" text-anchor="middle" >Limitation</text>
+<text x="173.0" y="199.0" class="ag" text-anchor="middle" >finder</text>
+<rect x="302" y="144" width="232" height="72" rx="8" class="agent"/>
+<rect x="302" y="154" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="421.0" y="175.0" class="ag" text-anchor="middle" >Novelty</text>
+<text x="421.0" y="199.0" class="ag" text-anchor="middle" >checker</text>
+<text x="294.0" y="286" class="lb" text-anchor="middle" >seed ideas, most novel first</text>
+<rect x="636" y="80" width="540" height="236" rx="12" class="grp"/>
+<circle cx="821.75" cy="107" r="14" class="num"/>
+<text x="821.75" y="113" class="numt" text-anchor="middle" >2</text>
+<text x="841.75" y="116" class="gt" text-anchor="start" >Experiments</text>
+<rect x="666" y="144" width="232" height="72" rx="8" class="agent"/>
+<rect x="666" y="154" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="785.0" y="175.0" class="ag" text-anchor="middle" >Coding</text>
+<text x="785.0" y="199.0" class="ag" text-anchor="middle" >agent</text>
+<rect x="914" y="144" width="232" height="72" rx="8" class="agent"/>
+<rect x="914" y="154" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="1033.0" y="175.0" class="ag" text-anchor="middle" >Critic</text>
+<text x="1033.0" y="199.0" class="ag" text-anchor="middle" >agent</text>
+<text x="906.0" y="286" class="lb" text-anchor="middle" >small slice first, then all data</text>
+<rect x="636" y="364" width="540" height="236" rx="12" class="grp"/>
+<circle cx="842.0" cy="391" r="14" class="num"/>
+<text x="842.0" y="397" class="numt" text-anchor="middle" >3</text>
+<text x="862.0" y="400" class="gt" text-anchor="start" >Ablation</text>
+<rect x="666" y="428" width="232" height="72" rx="8" class="agent"/>
+<rect x="666" y="438" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="785.0" y="459.0" class="ag" text-anchor="middle" >Ablation</text>
+<text x="785.0" y="483.0" class="ag" text-anchor="middle" >study</text>
+<rect x="914" y="428" width="232" height="72" rx="8" class="agent"/>
+<rect x="914" y="438" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="1033.0" y="459.0" class="ag" text-anchor="middle" >Ablation</text>
+<text x="1033.0" y="483.0" class="ag" text-anchor="middle" >critic</text>
+<text x="906.0" y="570" class="lb" text-anchor="middle" >keep only the parts that help</text>
+<rect x="24" y="364" width="540" height="236" rx="12" class="grp"/>
+<circle cx="243.5" cy="391" r="14" class="num"/>
+<text x="243.5" y="397" class="numt" text-anchor="middle" >4</text>
+<text x="263.5" y="400" class="gt" text-anchor="start" >Writer</text>
+<rect x="54" y="428" width="232" height="72" rx="8" class="agent"/>
+<rect x="54" y="438" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="173.0" y="459.0" class="ag" text-anchor="middle" >Initial</text>
+<text x="173.0" y="483.0" class="ag" text-anchor="middle" >drafter</text>
+<rect x="302" y="428" width="232" height="72" rx="8" class="agent"/>
+<rect x="302" y="438" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="421.0" y="459.0" class="ag" text-anchor="middle" >Draft</text>
+<text x="421.0" y="483.0" class="ag" text-anchor="middle" >enhancer</text>
+<text x="294.0" y="570" class="lb" text-anchor="middle" >a full paper</text>
+<rect x="24" y="648" width="540" height="236" rx="12" class="grp"/>
+<circle cx="209.75" cy="675" r="14" class="num"/>
+<text x="209.75" y="681" class="numt" text-anchor="middle" >5</text>
+<text x="229.75" y="684" class="gt" text-anchor="start" >Peer review</text>
+<rect x="54" y="712" width="232" height="72" rx="8" class="agent"/>
+<rect x="54" y="722" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="173.0" y="743.0" class="ag" text-anchor="middle" >Reviewer</text>
+<text x="173.0" y="767.0" class="ag" text-anchor="middle" >scores 1-10</text>
+<rect x="302" y="712" width="232" height="72" rx="8" class="agent"/>
+<rect x="302" y="722" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="421.0" y="743.0" class="ag" text-anchor="middle" >Rebuttal</text>
+<text x="421.0" y="767.0" class="ag" text-anchor="middle" >new experiments</text>
+<text x="294.0" y="854" class="lb" text-anchor="middle" >below 8: rebut, at most 2 rounds</text>
+<rect x="636" y="648" width="540" height="236" rx="12" class="grp"/>
+<circle cx="821.75" cy="675" r="14" class="num"/>
+<text x="821.75" y="681" class="numt" text-anchor="middle" >6</text>
+<text x="841.75" y="684" class="gt" text-anchor="start" >Meta-review</text>
+<rect x="666" y="712" width="232" height="72" rx="8" class="agent"/>
+<rect x="666" y="722" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="785.0" y="743.0" class="ag" text-anchor="middle" >Meta-</text>
+<text x="785.0" y="767.0" class="ag" text-anchor="middle" >reviewer</text>
+<rect x="914" y="712" width="232" height="72" rx="8" class="agent"/>
+<rect x="914" y="722" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="1033.0" y="743.0" class="ag" text-anchor="middle" >Final paper</text>
+<text x="1033.0" y="767.0" class="ag" text-anchor="middle" >+ code</text>
+<text x="906.0" y="854" class="lb" text-anchor="middle" >accept, or refine the idea once</text>
+<g transform="translate(1126 726)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<path d="M564 164H634" class="flow"/>
+<text x="600.0" y="152" class="al" text-anchor="middle" >ideas</text>
+<path d="M636 240H566" class="flow back"/>
+<text x="600.0" y="228" class="al" text-anchor="middle" >results</text>
+<path d="M906.0 316V362" class="flow"/>
+<text x="966.0" y="346" class="al" text-anchor="middle" >best idea</text>
+<path d="M636 464H566" class="flow"/>
+<text x="600.0" y="452" class="al" text-anchor="middle" >idea</text>
+<path d="M294.0 600V646" class="flow"/>
+<text x="334.0" y="630" class="al" text-anchor="middle" >draft</text>
+<path d="M464 648V602" class="flow back"/>
+<text x="424" y="630" class="al" text-anchor="middle" >revise</text>
+<path d="M564 748H634" class="flow"/>
+<text x="600.0" y="736" class="al" text-anchor="middle" >paper</text>
+<path d="M696 648V602" class="flow back"/>
+<text x="746" y="630" class="al" text-anchor="middle" >refine</text>
 </svg>
