@@ -9,8 +9,8 @@ source = "https://github.com/Graphify-Labs/graphify"
 
 [[figures]]
 file = "scan.svg"
-alt_zh = "第 1 步读文件夹：1 输入：你的文件夹（可多个，或 GitHub 链接），graphify add 抓来的论文、网页、推文、视频，抓的网页存成 Markdown，视频链接要 video 包；2 跳过：遵守 .gitignore，.graphifyignore 加你的规则，跳过 node_modules、dist 等构建产物，按文件名跳过 .env、密钥等密钥文件，只列出不读；3 转换：Word、Excel 转 Markdown（office 包），Google 文档快捷方式需手动打开并装 gws 工具，存到 graphify-out/converted；4 分类和检查：代码、文档、论文、图片、音视频，认不出的列出不用；少于 5 万词可能用不着图，超过 50 万词或 500 个文件会很贵"
-alt_en = "Step 1, read the folder: 1 what goes in: your folder (or several, or a GitHub URL) and anything fetched with graphify add: a paper, web page, tweet or video; fetched pages are saved as Markdown, video URLs need the video extra; 2 skip: .gitignore is respected, .graphifyignore adds your rules, build output such as node_modules and dist is skipped, secret files such as .env and keys are skipped by name, listed and never read; 3 convert: Word and Excel to Markdown (office extra), Google Docs shortcuts opt-in with the gws tool, saved in graphify-out/converted; 4 sort and check: code, document, paper, image, video and audio, unknown files listed and left out; under 50,000 words you may not need a graph, over 500,000 words or 500 files it gets costly"
+alt_zh = "第 1 步读文件夹：1 输入：你的文件夹（可多个，或 GitHub 链接），graphify add 抓来的论文、网页、推文、视频，抓的网页存成 Markdown，视频链接要 video 包；2 跳过：遵守 .gitignore，.graphifyignore 加你的规则，跳过 node_modules、dist 等构建产物，按文件名跳过 .env、密钥等密钥文件，只列出不读；3 转换：Word、Excel 转 Markdown（office 包），Google 文档快捷方式需手动打开并装 gws 工具，存到 graphify-out/converted；4 分类和检查：代码、文档、论文（pdf 包）、图片、音视频，认不出的列出不用；少于 5 万词可能用不着图，超过 50 万词或 500 个文件会很贵"
+alt_en = "Step 1, read the folder: 1 what goes in: your folder (or several, or a GitHub URL) and anything fetched with graphify add: a paper, web page, tweet or video; fetched pages are saved as Markdown, video URLs need the video extra; 2 skip: .gitignore is respected, .graphifyignore adds your rules, build output such as node_modules and dist is skipped, secret files such as .env and keys are skipped by name, listed and never read; 3 convert: Word and Excel to Markdown (office extra), Google Docs shortcuts opt-in with the gws tool, saved in graphify-out/converted; 4 sort and check: code, document, paper (pdf extra), image, video and audio, unknown files listed and left out; under 50,000 words you may not need a graph, over 500,000 words or 500 files it gets costly"
 caption_zh = "第 1 步：先挑出该读的文件，密钥不碰"
 caption_en = "Step 1: pick the files worth reading, and leave secrets alone"
 
@@ -30,8 +30,8 @@ caption_en = "The only pass that costs tokens: batched, parallel, never repeated
 
 [[figures]]
 file = "model.svg"
-alt_zh = "图里存什么：1 节点：id 和名字，文件类型（代码、文档、论文、图片、说明原因），来源文件和行号；2 边：起点和终点两个节点，关系如 calls、imports、uses，一个把握标签加分数；3 把握：EXTRACTED 原文写明，1.0；INFERRED 合理推断，0.55 到 0.95；AMBIGUOUS 拿不准，在报告里标出来；4 存成：graph.json，NetworkX node-link 格式；超边把 3 个以上节点连成一组；分社区后每个节点记下所属社区"
-alt_en = "What the graph holds: 1 a node: id and label, a file type (code, document, paper, image, rationale), source file and line; 2 an edge: source and target node, a relation such as calls, imports or uses, a confidence tag plus a score; 3 how sure: EXTRACTED is stated in the source, 1.0; INFERRED is a reasonable guess, 0.55 to 0.95; AMBIGUOUS is unsure and flagged in the report; 4 stored as graph.json in NetworkX node-link format; hyperedges link 3 or more nodes; after clustering each node gets its community"
+alt_zh = "图里存什么：1 节点：id 和名字，文件类型（代码、文档、论文、图片、说明原因、概念），来源文件和行号；2 边：起点和终点两个节点，关系如 calls、imports、uses，一个把握标签加分数；3 把握：EXTRACTED 原文写明，1.0；INFERRED 合理推断，0.55 到 0.95；AMBIGUOUS 拿不准，在报告里标出来；4 存成：graph.json，NetworkX node-link 格式；超边把 3 个以上节点连成一组；分社区后每个节点记下所属社区"
+alt_en = "What the graph holds: 1 a node: id and label, a file type (code, document, paper, image, rationale, concept), source file and line; 2 an edge: source and target node, a relation such as calls, imports or uses, a confidence tag plus a score; 3 how sure: EXTRACTED is stated in the source, 1.0; INFERRED is a reasonable guess, 0.55 to 0.95; AMBIGUOUS is unsure and flagged in the report; 4 stored as graph.json in NetworkX node-link format; hyperedges link 3 or more nodes; after clustering each node gets its community"
 caption_zh = "每条边都说明它有多大把握"
 caption_en = "Every edge says how sure it is"
 

@@ -37,7 +37,8 @@ def handoffs(a, b, c, ya=T1 + 206, yc=T2 + 200):
 
 
 d = Diagram("graphify data model",
-            "1 A node: an id and a readable label; a file type of code, document, paper, image or rationale; "
+            "1 A node: an id and a readable label; a file type of code, document, paper, image, rationale or "
+            "concept; "
             "and the source file and line it came from. "
             "2 An edge: a source and a target node, a relation such as calls, imports or uses, and a confidence "
             "tag. "
@@ -49,7 +50,7 @@ d = Diagram("graphify data model",
 
 d.group(L, T1, W, H1, "A node", 1)
 col(L, T1, [("id + label|a stable name", "data"),
-            ("file_type|code, document, paper, image, rationale", "data"),
+            ("file_type|code, doc, paper, image, rationale, concept", "data"),
             ("source_file + line|where it came from", "data")], arrows=False)
 
 d.group(R, T1, W, H1, "An edge", 2)

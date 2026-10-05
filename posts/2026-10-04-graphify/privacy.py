@@ -66,7 +66,7 @@ col(R, T1, [("Docs, papers, images|the assistant's own model", "coding"),
 d.note(R + W / 2, T1 + 320, "Ollama keeps it all on your machine")
 
 d.group(R, T2, W, H2, "Safety checks", 3)
-grid(R, T2, [("URLs|http(s), no private IPs", "review"), ("Downloads|50 MB cap, timeout", "review"),
+grid(R, T2, [("URLs http(s)|no private IPs", "review"), ("Downloads|50 MB cap, timeout", "review"),
              ("Graph paths|inside graphify-out/", "review"), ("Labels|cleaned, 256 chars", "review")])
 
 d.group(L, T2, W, H2, "Off unless you ask", 4)

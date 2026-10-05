@@ -57,8 +57,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="822.25" y="496" class="gt" text-anchor="start" >Safety checks</text>
 <rect x="654" y="524" width="238" height="80" rx="8" class="agent"/>
 <rect x="654" y="534" width="5" height="60" rx="2" fill="#d64545"/>
-<text x="776.0" y="559.0" class="ag" text-anchor="middle" >URLs</text>
-<text x="776.0" y="583.0" class="ag" text-anchor="middle" >http(s), no private IPs</text>
+<text x="776.0" y="559.0" class="ag" text-anchor="middle" >URLs http(s)</text>
+<text x="776.0" y="583.0" class="ag" text-anchor="middle" >no private IPs</text>
 <rect x="908" y="524" width="238" height="80" rx="8" class="agent"/>
 <rect x="908" y="534" width="5" height="60" rx="2" fill="#d64545"/>
 <text x="1030.0" y="559.0" class="ag" text-anchor="middle" >Downloads</text>

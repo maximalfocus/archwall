@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">graphify data model</title>
-<desc id="d">1 A node: an id and a readable label; a file type of code, document, paper, image or rationale; and the source file and line it came from. 2 An edge: a source and a target node, a relation such as calls, imports or uses, and a confidence tag. 3 How sure: EXTRACTED means it is stated in the source, score 1.0; INFERRED is a reasonable guess with a score from 0.55 to 0.95; AMBIGUOUS is uncertain and listed in the report for a person to check. 4 Stored as: graph.json in NetworkX node-link format; hyperedges link groups of three or more nodes; after clustering each node also carries its community.</desc>
+<desc id="d">1 A node: an id and a readable label; a file type of code, document, paper, image, rationale or concept; and the source file and line it came from. 2 An edge: a source and a target node, a relation such as calls, imports or uses, and a confidence tag. 3 How sure: EXTRACTED means it is stated in the source, score 1.0; INFERRED is a reasonable guess with a score from 0.55 to 0.95; AMBIGUOUS is uncertain and listed in the report for a person to check. 4 Stored as: graph.json in NetworkX node-link format; hyperedges link groups of three or more nodes; after clustering each node also carries its community.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -36,7 +36,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="176" width="492" height="72" rx="8" class="agent"/>
 <rect x="54" y="186" width="5" height="52" rx="2" fill="#5b6675"/>
 <text x="303.0" y="207.0" class="ag" text-anchor="middle" >file_type</text>
-<text x="303.0" y="231.0" class="ag" text-anchor="middle" >code, document, paper, image, rationale</text>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >code, doc, paper, image, rationale, concept</text>
 <rect x="54" y="272" width="492" height="72" rx="8" class="agent"/>
 <rect x="54" y="282" width="5" height="52" rx="2" fill="#5b6675"/>
 <text x="303.0" y="303.0" class="ag" text-anchor="middle" >source_file + line</text>
