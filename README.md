@@ -1,7 +1,7 @@
 # archwall
 
-一图一架构。首页是架构图墙，每张图链接到一篇不超过 300 字的中英双语短文。
-One diagram, one architecture: a wall of vector diagrams, each linking to a short bilingual note.
+把架构画全。首页是架构图墙，每篇一张总览图打头，再按阶段、部分各画一张，配一篇不超过 300 字的中英双语短文。
+Every architecture, drawn in full: a wall of overview diagrams, each opening a short bilingual note with one diagram per phase or part.
 
 - 静态站点，`python3 build.py` 生成到 `_site/`（只用 Python 标准库，3.12+）；`python3 build.py --serve` 本地预览。
 - 自查：`python3 tools/render.py posts/<slug>` 把文章里每张图和手机宽度的整页渲染成 PNG，放在 `_render/<slug>/`（需要 Chrome）。
@@ -18,7 +18,7 @@ One diagram, one architecture: a wall of vector diagrams, each linking to a shor
 | `meta.toml` | `title_zh`、`title_en`、`date`、`tags`、`figure`、`alt_zh`、`alt_en`、可选 `source` |
 | `zh.md` / `en.md` | 正文，各不超过 300 字 / 词（超了构建会警告） |
 | `diagram.py` → `diagram.svg` | 用 `tools/archdiagram.py` 画的矢量图，全站一个样式；首页和文章用同一张 |
-| 更多图（可选） | 一张图说不全时，在 `meta.toml` 里加 `[[figures]]`（`file`、`alt_zh`、`alt_en`，可选 `caption_zh`、`caption_en`），正文单起一行 `![](loop.svg)` 放到那段旁边；没放进正文的排在正文后面。首页只用第一张 |
+| 更多图 | 总览之外，每个阶段、部分或关注点各画一张，数量不限，让不懂技术的经理也能看懂整体架构；在 `meta.toml` 里加 `[[figures]]`（`file`、`alt_zh`、`alt_en`，可选 `caption_zh`、`caption_en`），正文单起一行 `![](loop.svg)` 放到那段旁边；没放进正文的排在正文后面。首页只用第一张 |
 
 ## 发文流程 / Workflow
 
