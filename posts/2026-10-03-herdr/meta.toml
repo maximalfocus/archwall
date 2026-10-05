@@ -3,6 +3,55 @@ title_en = "herdr: a home where coding agents keep running"
 date = "2026-10-03"
 tags = ["agents", "terminal", "runtime", "client-server"]
 figure = "diagram.svg"
-alt_zh = "herdr 架构：客户端只画屏幕、发按键；每个会话一个服务端，管着所有面板和智能体状态；另有 socket API 给智能体和脚本用；服务端停了，尽量恢复"
-alt_en = "herdr architecture: clients only draw and send keys; one server per session owns every pane and agent state; a socket API serves agents and scripts; if the server stops, herdr restores what it can"
+alt_zh = "herdr 总览：1 客户端：本地窗口、SSH 连一台或多台机器、直接接一个终端，只画屏幕、发按键，ctrl+b q 断开后智能体照跑；2 每个会话一个服务端：每个面板是真终端，屏幕状态由 libghostty-vt 维护，屏幕检查（22 个清单）和智能体自报状态决定工作中、卡住、完成或空闲；3 控制接口：面板里的智能体、脚本和插件通过 herdr 命令或本地 socket 开面板、发话、等待；4 服务端停了尽量找回：热交接（实验）、智能体恢复（需集成）、面板历史（要手动开）、session.json 里的布局"
+alt_en = "herdr overview: 1 clients: a local window, SSH to one or more hosts, or a direct attach to one terminal; they draw and send keys, and ctrl+b q detaches while agents keep running; 2 one server per session: each pane is a real terminal kept as screen state by libghostty-vt; a screen check (22 manifests) and the agents' own reports decide working, blocked, done or idle; 3 control API: agents in panes, scripts and plugins use the herdr CLI or a local socket to spawn, prompt and wait; 4 if the server stops herdr brings back what it can: live handoff (experimental), agent resume (needs its integration), pane history (opt-in) and the layout in session.json"
 source = "https://github.com/herdrdev/herdr"
+
+[[figures]]
+file = "model.svg"
+alt_zh = "数据结构：1 会话：一个 herdr 服务端，有自己的面板、socket 和存档，herdr session attach work 开命名会话，所有会话共用一个配置文件；2 工作区：一个仓库或任务一个，状态往上汇总，ID 如 w1；3 标签页：一种布局，按拆分树往右或往下拆，ID 如 w1:t1；4 面板和智能体：面板是真终端，ID 如 w1:p1，智能体是 herdr 认出的进程，可取名如 reviewer，每个面板存目录、标签和智能体会话"
+alt_en = "Data model: 1 session: one herdr server with its own panes, sockets and saved state; herdr session attach work opens a named one; all sessions share one config file; 2 workspace: one per repo or task, status rolls up, IDs like w1; 3 tab: a layout kept as a split tree, panes split right or down, IDs like w1:t1; 4 pane and agent: a pane is a real terminal with an ID like w1:p1, an agent is a process herdr recognises and may be named, e.g. reviewer; each pane saves its folder, label and agent session"
+caption_zh = "结构：会话 → 工作区 → 标签页 → 面板，智能体住在面板里"
+caption_en = "Structure: session, workspace, tab, pane; the agent lives in a pane"
+
+[[figures]]
+file = "clients.svg"
+alt_zh = "四种连法：1 本机：运行 herdr，没有服务端就自动起一个，ctrl+b q 断开、herdr 重连；也可以 SSH 上去再运行 herdr，全在那台机器上；2 远程接入：herdr --remote host，远端服务端管面板，送屏幕过来，本地画界面，用你的主题和按键，装 herdr 前会先问；3 多台机器：herdr machine add，本地和存下的主机在同一窗口，只有选中的主机送屏幕，其余只送状态，断线重试间隔最长 2 分钟，不存密码和密钥；4 一个终端：herdr agent attach 只接一个面板，observe/control 给桥接用，仅限 Linux 和 macOS；客户端和服务端版本不必一致"
+alt_en = "Four ways in: 1 on this machine: herdr starts the server if needed, ctrl+b q detaches and herdr reattaches; or SSH to a host and run herdr there, like tmux; 2 remote attach: herdr --remote host, the remote server owns the panes and sends screens, your local herdr draws the UI with your theme and keys, and it asks before installing herdr there; 3 several machines: herdr machine add puts Local and saved hosts in one window, only the chosen host streams screens and the others send status, lost links retry up to 2 minutes apart, no passwords or keys stored; 4 one terminal: herdr agent attach puts one pane in your terminal, observe and control serve bridges, Linux and macOS only; client and server versions need not match"
+caption_zh = "连法：本机、远程、多台机器、单个终端，服务端都是同一个"
+caption_en = "Ways in: local, remote, several machines or one terminal, all talking to a server"
+
+[[figures]]
+file = "loop.svg"
+alt_zh = "服务端主循环：1 等事件：面板输出、客户端的按键和点击、接口请求、定时器；2 处理：更新共享状态（面板、智能体、布局），重新判断智能体状态；3 定时任务：最后一次改动 5 秒后存 session.json，清掉过期的临时标签，停止时再存一次，Linux 上有 logind 时会让关机稍等再存；4 画并发送：只渲染有人在看的，隐藏面板照样更新，把屏幕和会话状态推给客户端，然后回到等待"
+alt_en = "Server loop: 1 wait for something: pane output, keys and clicks from clients, API requests, timers; 2 apply it: update shared state (panes, agents, layout) and re-check agent status; 3 scheduled jobs: save session.json 5 seconds after the last change, drop expired short-lived labels, one last save on stop, and on Linux with logind delay shutdown briefly to save; 4 draw and send: render only what someone sees while hidden panes still update, stream screens and session state to clients, then wait again"
+caption_zh = "主循环：等事件、改状态、按时存档、只画有人看的"
+caption_en = "The loop: wait, update, save on time, draw only what is watched"
+
+[[figures]]
+file = "status.svg"
+alt_zh = "怎么判断谁卡住了：1 哪个智能体：看每个面板的前台进程，认识 24 种，比如 claude、codex、pi，包装命令挡住了可设 HERDR_AGENT；2 读屏幕：实时的屏幕底部和标题，不看你翻到的地方，按清单规则判断（22 个，与或条件），规则可从 herdr.dev 更新，本地覆盖文件优先；3 智能体自报：6 个集成也报状态，支持 herdr 的智能体自己报，报着的时候屏幕检查让路，可选 --seq 丢掉迟到的报告；4 结果：工作中、卡住（要你决定）、完成（做完还没看）、空闲（看过了）、未知，认识的智能体没匹配规则算空闲，提示音默认开，弹窗要手动开"
+alt_en = "Who needs you: 1 which agent: the foreground process in each pane, 24 agents known such as claude, codex and pi, and HERDR_AGENT names one hidden by a wrapper; 2 read the screen: the live bottom and title, not where you scrolled, checked against manifest rules (22 agents, AND / OR checks), rules update from herdr.dev and a local override file wins; 3 the agent's own reports: 6 integrations also report state, agents that support herdr report by themselves, the screen check waits while they report, and an optional --seq drops late reports; 4 result: working, blocked (needs a decision), done (finished, not seen), idle (seen, ready) or unknown; a known agent with no matching rule shows idle; sound is on by default and popups are opt-in"
+caption_zh = "状态：先认进程，再读屏幕底部，智能体自报时以它为准"
+caption_en = "Status: find the process, read the bottom of the screen, and trust the agent's own report when it sends one"
+
+[[figures]]
+file = "api.svg"
+alt_zh = "控制接口：1 谁在调用：面板里的智能体（装了 herdr 技能的话）、脚本、插件，每个面板都有 HERDR_PANE_ID；2 怎么到达：herdr 命令包了所有调用，底下是本地 socket，每行一个 JSON 请求，Unix 上只有本人可读写，Windows 用命名管道，herdr api schema 打印协议；3 能做什么：布局（工作区、标签页、拆分）、面板（运行、读取、等待）、智能体（启动、发话、等待到空闲、完成或卡住）、订阅事件；4 返回什么：JSON 回复，ID 要从回复里取，事件流推送状态变化，跟不上会收到 events_lost，需要重读"
+alt_en = "Control API: 1 who calls: an agent in a pane using the herdr skill if installed, scripts, plugins; every pane gets HERDR_PANE_ID; 2 how it gets there: the herdr CLI wraps every call, underneath is a local socket with one JSON request per line, owner-only on Unix and a named pipe on Windows, and herdr api schema prints the contract; 3 what it can do: layout (workspace, tab, split), panes (run, read, wait), agents (start, prompt, wait until idle, done or blocked), event subscriptions; 4 what comes back: a JSON reply with IDs to capture, an event stream of status changes, and events_lost when a reader falls behind, which means re-read"
+caption_zh = "接口：命令行和 socket 是同一套调用，智能体能指挥智能体"
+caption_en = "API: the CLI and the socket are the same calls, so agents can drive agents"
+
+[[figures]]
+file = "extend.svg"
+alt_zh = "扩展：1 装集成：herdr integration install claude，按智能体手动装，把钩子写进智能体自己的配置，18 种有集成，设置页能找出 PATH 上的；2 报什么：会话 ID 用来恢复，其中 6 个集成也报状态；3 支持 herdr 的智能体自己调同样的命令：report-agent 报状态（可选 --seq）、报恢复命令、退出时 release-agent，不用改 herdr；4 插件：herdr-plugin.toml 声明操作、事件钩子、面板，启动钩子在会话恢复后运行，以你的身份运行、没有沙箱，安装前先给预览，整个 herdr 命令行就是插件接口"
+alt_en = "Extending herdr: 1 install an integration: herdr integration install claude, opt-in per agent, writes a hook into the agent's own config; 18 agents have one and the settings tab finds them on PATH; 2 what it reports: the session ID so herdr can resume, and state for 6 integrations; 3 agents that support herdr make the same calls themselves: report-agent with state and an optional --seq, the resume command, release-agent when the user quits, with no change to herdr; 4 plugins: herdr-plugin.toml declares actions, event hooks and panes, startup hooks run after the session is restored, plugins run as you with no sandbox and install shows a preview first; the whole herdr CLI is the plugin API"
+caption_zh = "扩展：集成和插件都是手动装的，插件没有沙箱"
+caption_en = "Extending: integrations and plugins are opt-in, and plugins are not sandboxed"
+
+[[figures]]
+file = "restore.svg"
+alt_zh = "什么能留下：1 断开：服务端和所有进程照跑，herdr 重连，什么都不丢，这是最稳的；2 边跑边存：改动 5 秒后存 session.json，另留最多 48 份旧布局，每 15 分钟最多一份，读不了的文件先另存一份；3 服务端重启后：布局回来（工作区、标签页、面板、目录），智能体恢复默认开、但要智能体报过会话，面板历史要手动开、可能含密钥，其余面板在原目录开新 shell；4 升级：herdr update 不打断兼容的服务端，herdr update --handoff 把活着的面板交给新服务端，实验功能，尽力而为"
+alt_en = "What survives: 1 detach: the server and every process keep running, herdr reattaches and nothing is lost, the strongest path; 2 saved as it runs: session.json 5 seconds after a change, plus up to 48 older layouts at most one per 15 minutes, and an unreadable file is copied aside first; 3 after a server restart: the layout comes back (workspaces, tabs, panes, folders), agent resume is on by default but the agent must have reported its session, pane history is opt-in and may hold secrets, other panes get a fresh shell in the same folder; 4 updates: plain herdr update keeps compatible servers running, herdr update --handoff moves live panes to the new server, experimental and best effort"
+caption_zh = "恢复：断开什么都不丢；服务端停了，只能找回布局和会话"
+caption_en = "Restore: detaching loses nothing; after a stop, herdr rebuilds the layout and resumes reported sessions"

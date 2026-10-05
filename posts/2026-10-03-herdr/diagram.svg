@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
-<title id="t">herdr architecture</title>
-<desc id="d">1 Clients (local TUI, remote over SSH, direct attach) only draw and send keys; detaching leaves work running. 2 One server per session owns every pane: a real PTY running the agent, parsed into terminal state by libghostty-vt. A screen detector and the agents' own reports decide working, blocked or idle; a finished pane you have not looked at shows done. 3 A socket API lets agents and scripts spawn panes, prompt each other and wait on state. 4 If the server stops, herdr restores what it can: live handoff, the agent's resume command, opt-in pane history, and the saved layout.</desc>
+<title id="t">herdr overview</title>
+<desc id="d">1 Clients: a local window, a client over SSH to one or more machines, or a direct attach to one terminal. Clients draw the screen and send keys; ctrl+b q detaches and the agents keep running. 2 Server, one per session: each pane is a real terminal running an agent, read into screen state by libghostty-vt. A screen check against 22 agent manifests and the agents' own reports decide working, blocked, done or idle. 3 Control API: agents in panes, scripts and plugins call the server through the herdr CLI or a local socket to spawn panes, prompt agents and wait on them. 4 If the server stops, the processes are gone; herdr brings back what it can: live handoff during updates (experimental, --handoff), the agent's own resume (needs its integration), pane history (opt-in) and the saved layout in session.json.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -32,14 +32,17 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="36" y="66" width="520" height="150" rx="9" class="sub"/>
 <text x="296.0" y="94" class="st" text-anchor="middle" >Draw the screen, send keys</text>
 <rect x="48" y="108" width="160" height="72" rx="8" class="agent"/>
+<rect x="48" y="118" width="5" height="52" rx="2" fill="#8a5cc7"/>
 <text x="131.0" y="139.0" class="ag" text-anchor="middle" >Local</text>
-<text x="131.0" y="163.0" class="ag" text-anchor="middle" >TUI</text>
+<text x="131.0" y="163.0" class="ag" text-anchor="middle" >window</text>
 <rect x="220" y="108" width="160" height="72" rx="8" class="agent"/>
-<text x="303.0" y="139.0" class="ag" text-anchor="middle" >Remote</text>
-<text x="303.0" y="163.0" class="ag" text-anchor="middle" >over SSH</text>
+<rect x="220" y="118" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >Over SSH</text>
+<text x="303.0" y="163.0" class="ag" text-anchor="middle" >1 or more hosts</text>
 <rect x="392" y="108" width="160" height="72" rx="8" class="agent"/>
-<text x="475.0" y="139.0" class="ag" text-anchor="middle" >Direct attach</text>
-<text x="475.0" y="163.0" class="ag" text-anchor="middle" >one terminal</text>
+<rect x="392" y="118" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="475.0" y="139.0" class="ag" text-anchor="middle" >One terminal</text>
+<text x="475.0" y="163.0" class="ag" text-anchor="middle" >direct attach</text>
 <rect x="36" y="230" width="520" height="190" rx="9" class="sub"/>
 <text x="296.0" y="258" class="st" text-anchor="middle" >Detach</text>
 <rect x="54" y="276" width="180" height="72" rx="8" class="agent"/>
@@ -54,7 +57,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <path d="M568 128H632" class="flow"/>
 <text x="600" y="118" class="al" text-anchor="middle" >keys</text>
 <path d="M632 170H568" class="flow"/>
-<text x="600" y="194" class="al" text-anchor="middle" >screen</text>
+<text x="600" y="194" class="al" text-anchor="middle" >screens</text>
 <rect x="632" y="16" width="544" height="420" rx="12" class="grp"/>
 <circle cx="738.75" cy="43" r="14" class="num"/>
 <text x="738.75" y="49" class="numt" text-anchor="middle" >2</text>
@@ -63,54 +66,56 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="904.0" y="94" class="st" text-anchor="middle" >Each pane</text>
 <rect x="656" y="108" width="210" height="72" rx="8" class="agent"/>
 <rect x="656" y="118" width="5" height="52" rx="2" fill="#2f6fd6"/>
-<text x="764.0" y="139.0" class="ag" text-anchor="middle" >PTY + process</text>
+<text x="764.0" y="139.0" class="ag" text-anchor="middle" >Real terminal</text>
 <text x="764.0" y="163.0" class="ag" text-anchor="middle" >claude, codex …</text>
 <rect x="950" y="108" width="210" height="72" rx="8" class="agent"/>
 <rect x="950" y="118" width="5" height="52" rx="2" fill="#5b6675"/>
-<text x="1058.0" y="139.0" class="ag" text-anchor="middle" >Terminal state</text>
+<text x="1058.0" y="139.0" class="ag" text-anchor="middle" >Screen state</text>
 <text x="1058.0" y="163.0" class="ag" text-anchor="middle" >libghostty-vt</text>
 <path d="M866 144H944" class="flow"/>
 <text x="908" y="134" class="al" text-anchor="middle" >output</text>
 <rect x="644" y="212" width="520" height="208" rx="9" class="sub"/>
-<text x="904.0" y="240" class="st" text-anchor="middle" >Who is stuck?</text>
+<text x="904.0" y="240" class="st" text-anchor="middle" >Who needs you?</text>
 <rect x="930" y="254" width="230" height="64" rx="8" class="agent"/>
 <rect x="930" y="264" width="5" height="44" rx="2" fill="#e8973a"/>
-<text x="1048.0" y="281.0" class="ag" text-anchor="middle" >Screen detector</text>
+<text x="1048.0" y="281.0" class="ag" text-anchor="middle" >Screen check</text>
 <text x="1048.0" y="305.0" class="ag" text-anchor="middle" >22 agent manifests</text>
 <rect x="930" y="334" width="230" height="64" rx="8" class="agent"/>
-<rect x="930" y="344" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<rect x="930" y="344" width="5" height="44" rx="2" fill="#e8973a"/>
 <text x="1048.0" y="361.0" class="ag" text-anchor="middle" >Agent's own report</text>
-<text x="1048.0" y="385.0" class="ag" text-anchor="middle" >newest seq wins</text>
+<text x="1048.0" y="385.0" class="ag" text-anchor="middle" >via integrations</text>
 <rect x="656" y="280" width="206" height="76" rx="8" class="agent"/>
-<rect x="656" y="290" width="5" height="56" rx="2" fill="#d64545"/>
+<rect x="656" y="290" width="5" height="56" rx="2" fill="#5b6675"/>
 <text x="762.0" y="313.0" class="ag" text-anchor="middle" >working · blocked</text>
 <text x="762.0" y="337.0" class="ag" text-anchor="middle" >done · idle</text>
 <path d="M1055 180V248" class="flow"/>
 <path d="M930 290H868" class="flow"/>
 <path d="M930 366H896V336H868" class="flow"/>
-<text x="759" y="392" class="lb" text-anchor="middle" >per pane and per workspace</text>
+<text x="759" y="392" class="lb" text-anchor="middle" >rolls up to tab, workspace</text>
 <rect x="632" y="468" width="544" height="384" rx="12" class="grp"/>
 <circle cx="819.75" cy="495" r="14" class="num"/>
 <text x="819.75" y="501" class="numt" text-anchor="middle" >3</text>
 <text x="839.75" y="504" class="gt" text-anchor="start" >Control API</text>
 <rect x="644" y="514" width="520" height="150" rx="9" class="sub"/>
-<text x="904.0" y="542" class="st" text-anchor="middle" >Socket API for agents and scripts</text>
+<text x="904.0" y="542" class="st" text-anchor="middle" >Who calls it</text>
 <rect x="656" y="560" width="250" height="72" rx="8" class="agent"/>
 <rect x="656" y="570" width="5" height="52" rx="2" fill="#2f9e6e"/>
 <text x="784.0" y="591.0" class="ag" text-anchor="middle" >Agents in panes</text>
 <text x="784.0" y="615.0" class="ag" text-anchor="middle" >spawn · prompt · wait</text>
 <rect x="940" y="560" width="220" height="72" rx="8" class="agent"/>
-<rect x="940" y="570" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<rect x="940" y="570" width="5" height="52" rx="2" fill="#2f9e6e"/>
 <text x="1053.0" y="591.0" class="ag" text-anchor="middle" >Scripts</text>
 <text x="1053.0" y="615.0" class="ag" text-anchor="middle" >and plugins</text>
 <rect x="644" y="678" width="520" height="162" rx="9" class="sub"/>
-<text x="904.0" y="706" class="st" text-anchor="middle" >Every pane gets</text>
-<rect x="656" y="724" width="260" height="72" rx="8" class="agent"/>
-<rect x="656" y="734" width="5" height="52" rx="2" fill="#5b6675"/>
-<text x="789.0" y="755.0" class="ag" text-anchor="middle" >HERDR_PANE_ID</text>
-<text x="789.0" y="779.0" class="ag" text-anchor="middle" >HERDR_SOCKET_PATH</text>
-<text x="934" y="754" class="lb" text-anchor="start" >agent wait: returns when</text>
-<text x="934" y="778" class="lb" text-anchor="start" >another agent is blocked</text>
+<text x="904.0" y="706" class="st" text-anchor="middle" >How</text>
+<rect x="656" y="724" width="230" height="72" rx="8" class="agent"/>
+<rect x="656" y="734" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="774.0" y="755.0" class="ag" text-anchor="middle" >herdr CLI</text>
+<text x="774.0" y="779.0" class="ag" text-anchor="middle" >wraps every call</text>
+<rect x="930" y="724" width="230" height="72" rx="8" class="agent"/>
+<rect x="930" y="734" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="1048.0" y="755.0" class="ag" text-anchor="middle" >Local socket</text>
+<text x="1048.0" y="779.0" class="ag" text-anchor="middle" >JSON lines</text>
 <path d="M1102 436V468" class="flow"/>
 <text x="1144" y="458" class="al" text-anchor="middle" >events</text>
 <path d="M1032 468V436" class="flow"/>
@@ -124,23 +129,23 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="558" width="270" height="60" rx="8" class="agent"/>
 <rect x="54" y="568" width="5" height="40" rx="2" fill="#2f6fd6"/>
 <text x="192.0" y="583.0" class="ag" text-anchor="middle" >Live handoff</text>
-<text x="192.0" y="607.0" class="ag" text-anchor="middle" >best effort</text>
-<text x="342" y="594" class="lb" text-anchor="start" >during updates, opt-in</text>
+<text x="192.0" y="607.0" class="ag" text-anchor="middle" >keeps the processes</text>
+<text x="340" y="594" class="lb" text-anchor="start" >updates, experimental</text>
 <rect x="54" y="626" width="270" height="60" rx="8" class="agent"/>
 <rect x="54" y="636" width="5" height="40" rx="2" fill="#2f9e6e"/>
-<text x="192.0" y="651.0" class="ag" text-anchor="middle" >Resume command</text>
+<text x="192.0" y="651.0" class="ag" text-anchor="middle" >Agent resume</text>
 <text x="192.0" y="675.0" class="ag" text-anchor="middle" >claude --resume &lt;id&gt;</text>
-<text x="342" y="662" class="lb" text-anchor="start" >same conversation</text>
+<text x="340" y="662" class="lb" text-anchor="start" >needs its integration</text>
 <rect x="54" y="694" width="270" height="60" rx="8" class="agent"/>
 <rect x="54" y="704" width="5" height="40" rx="2" fill="#5b6675"/>
 <text x="192.0" y="731.0" class="ag" text-anchor="middle" >Pane history</text>
-<text x="342" y="730" class="lb" text-anchor="start" >opt-in, may hold secrets</text>
+<text x="340" y="730" class="lb" text-anchor="start" >opt-in, may hold secrets</text>
 <rect x="54" y="762" width="270" height="60" rx="8" class="agent"/>
-<rect x="54" y="772" width="5" height="40" rx="2" fill="#5b6675"/>
+<rect x="54" y="772" width="5" height="40" rx="2" fill="#8a5cc7"/>
 <text x="192.0" y="787.0" class="ag" text-anchor="middle" >Saved layout</text>
 <text x="192.0" y="811.0" class="ag" text-anchor="middle" >session.json</text>
-<text x="342" y="798" class="lb" text-anchor="start" >fresh shell, same dir</text>
+<text x="340" y="798" class="lb" text-anchor="start" >fresh shell, same dir</text>
 <path d="M692 436V452H296.0V468" class="flow"/>
 <text x="366.0" y="458" class="al" text-anchor="middle" >save</text>
-<text x="600" y="884" class="lb" text-anchor="middle" >one Rust binary · shared facts live in the server and go out through the API; looks stay in the client</text>
+<text x="600" y="884" class="lb" text-anchor="middle" >one Rust binary · the server owns shared facts; each client draws its own look</text>
 </svg>

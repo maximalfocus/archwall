@@ -1,10 +1,31 @@
 You run Claude Code, Codex and the rest in terminals. Close the laptop or drop SSH and they die. Run five at once and you keep hunting for the one that's waiting on you.
 
-herdr is one Rust binary, split like tmux: **the server owns the terminals, clients just draw**.
+herdr is one Rust binary, split like tmux: **a server owns the terminals, clients just draw.**
 
-1. **Clients**: the local TUI, a remote client over SSH, or a direct attach to one terminal. `ctrl+b q` detaches. The work keeps going.
-2. **Server**: one per session. Each pane is a real PTY running your agent, and its output feeds a terminal state built on libghostty-vt. To tell who's stuck, a detector reads the bottom of each screen against per-agent manifests (22 so far) and marks the pane working, blocked or idle. A finished pane you have not looked at shows done. Agents can also report their own state; a sequence number stops a late report from overwriting a newer one.
-3. **Control API**: the server also serves a socket API that agents and scripts use. An agent in one pane can spawn panes, prompt another agent, and `herdr agent wait` until that one is really blocked.
-4. **If the server stops**, the processes are gone. herdr brings back what it can: live handoff during updates (opt-in, best effort), the agent's own resume command like `claude --resume <id>`, pane history if you turned it on, and the saved layout in `session.json`.
+**Structure.** One server per session. A session holds workspaces, a workspace holds tabs, a tab holds panes. A pane is a real terminal. An agent is a process recognised in a pane.
 
-The rule in the code: shared facts live in the server and go out through the API; how things look stays in the client. That's why your laptop can draw panes that live on another machine.
+![](model.svg)
+
+**Ways in.** A local window, SSH, `herdr --remote`, several machines in one window, or just one pane. `ctrl+b q` detaches and the work keeps going.
+
+![](clients.svg)
+
+**The loop.** Wait for output, keys, API calls or timers. Update the state, save `session.json` 5 seconds after a change, and draw only what someone is looking at.
+
+![](loop.svg)
+
+**Who's stuck.** herdr finds the agent's process and reads the bottom of its screen against per-agent rules (22 manifests). It marks the pane working, blocked, done or idle. Six integrations, and agents built for herdr, report their own state.
+
+![](status.svg)
+
+**Agents driving agents.** Through the `herdr` CLI or a local socket, an agent can open panes, prompt another agent and wait until it's done or blocked.
+
+![](api.svg)
+
+`herdr integration install` is opt-in. It adds a hook that reports the session ID. Plugins run as you, with no sandbox.
+
+![](extend.svg)
+
+**If the server stops**, the processes are gone. The layout comes back with fresh shells. Agents that reported a session resume it. Pane history is opt-in. `herdr update --handoff` keeps processes alive, but it is experimental.
+
+![](restore.svg)
