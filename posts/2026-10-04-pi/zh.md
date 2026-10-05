@@ -1,16 +1,39 @@
-pi 是终端里的小编程智能体，只带四个工具，其余靠扩展加。
+pi 是终端里的小型开源编程智能体。缺什么功能，自己加。
 
-1. **入口**：终端界面、打印或 JSON 模式、JSONL RPC、TypeScript SDK，共用一个智能体和会话。
-2. **拼请求**：系统提示词加上下文文件、会话当前分支、工具（默认 `read`、`bash`、`edit`、`write`）、技能简介。扩展是同进程的 TypeScript 模块，能加工具、命令和界面，也能改上下文。
-3. **循环**（`pi-agent-core`）：调模型，拿回文字和工具调用，执行工具（默认并行），记下结果，再来一轮。没有工具调用就结束。
-4. **pi-ai**：一套接口接多家厂商：Anthropic、OpenAI、Google、Bedrock、OpenRouter 或兼容 OpenAI 的服务。
+**总览。** 四种入口：终端界面、打印或 JSON 模式、RPC、SDK，共用一个会话。pi 拼请求，循环调模型和工具，保存对话。pi-ai 内置 42 家模型厂商。
 
-![](session.svg)
+![](packages.svg)
 
-会话是一个 JSONL 文件。每条记录存父记录 id，所以是一棵树。只有当前分支发给模型。`/tree` 跳回另开分支，旧的还在。上下文快满时，压缩写一条摘要替掉旧消息。`/fork`、`/clone` 另开新文件。
+`pi` 命令在 pi-coding-agent 里，基于 pi-agent-core 和 pi-ai。远程会话的包仍是实验版。
+
+![](context.svg)
+
+请求带系统提示词、工具列表和对话。项目的 `.pi` 目录要先信任才加载。技能用到才读全文。
+
+![](loop.svg)
+
+模型回文字和工具调用。pi 逐个检查，默认并行执行，记下结果，再来一轮。中途可以插话。
+
+![](tools.svg)
+
+默认开四个工具：`read`、`bash`、`edit`、`write`。`codemode` 和 `tool-search` 是内置扩展，工具默认关，MCP 需要时自动开。
 
 ![](mcp.svg)
 
-MCP 服务端写在 `mcp.json` 里。pi 用自己的客户端连，走 stdio 或 Streamable HTTP。默认模型看不到 MCP 工具，而是写沙箱脚本去调，只拿回输出。也可以用 `tool_search` 搜，或设成 direct 直接给。调用走内置工具那条管线。
+MCP 服务端写在 `mcp.json`。默认模型看不到 MCP 工具，而是写沙箱脚本去调，只拿回输出。
 
-pi 没有权限系统，工具用你的账号权限跑。要隔离就放进容器。
+![](session.svg)
+
+会话是 JSONL 文件里的一棵树，只有当前分支发给模型。快满时用摘要替掉旧消息。
+
+![](extensions.svg)
+
+扩展是 pi 进程里的 TypeScript，能加工具、命令、厂商和界面。技能、模板和主题不用写代码。
+
+![](providers.svg)
+
+用 `/login` 或 API key 登录。本地模型走 llama.cpp 或 `models.json`。
+
+![](safety.svg)
+
+pi 没有内置权限系统，工具用你账号的权限跑。要隔离就用容器。

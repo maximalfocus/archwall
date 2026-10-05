@@ -1,6 +1,9 @@
 """Pi sessions: a tree in one JSONL file, and what the model gets from it.  Drawn from the pi repo
-(https://github.com/earendil-works/pi, packages/coding-agent/docs/how-pi-works.md, sessions.md and
-compaction.md, commit 2003871).  Run: python3 session.py"""
+(https://github.com/earendil-works/pi, packages/coding-agent/docs/how-pi-works.md, sessions.md,
+session-format.md, compaction.md and settings.md "Compaction", commit b2b5c42).  Run: python3 session.py
+
+Layout: 1 the tree spans the top row; then 2 what the model gets (bottom left) and 3 compaction
+and new files (bottom right)."""
 import sys
 from pathlib import Path
 
@@ -34,7 +37,7 @@ d.arrow(f"M{col(1) + CW / 2} {Y1 + CH}V{Y2 + CH / 2}H{col(2)}")
 d.arrow(f"M{col(2) + CW} {Y2 + CH / 2}H{col(3)}")
 d.note(col(4), Y2 + CH / 2 + 6, "left via /tree, still in the file", "start")
 d.legend(330, 340, ["plan", "data", "write"], ["active branch", "other branch", "summary entry"])
-d.note(600, 400, "each line is one entry with its parent's id")
+d.note(600, 400, "each entry has its parent's id")
 d.note(600, 426, "active branch: root to the current entry")
 
 # 2 what the model gets

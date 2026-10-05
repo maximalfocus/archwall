@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
-<title id="t">Pi coding agent architecture</title>
-<desc id="d">1 Interfaces: the terminal UI, print or JSON mode, RPC over JSONL on stdin and stdout, and the TypeScript SDK all share one agent and session. They send the prompt on. 2 Build the request: the system prompt with context files, the active session branch as history, tool definitions (read, bash, edit, write by default) and skill descriptions. Extensions are TypeScript modules in the pi process that add tools, commands, providers and UI. 3 Agent loop in pi-agent-core: call the model, check for tool calls (none ends the run), run the tools, record the results, and go again. A steering message goes in after the current turn, a follow-up after the run. 4 pi-ai: the loop calls one Models API, which routes each call to a provider such as Anthropic, OpenAI, Google, Bedrock, OpenRouter or any OpenAI-compatible server, and streams the answer back.</desc>
+<title id="t">Pi coding agent overview</title>
+<desc id="d">1 Ways in: the terminal UI, print or JSON mode for scripts, RPC over JSONL on stdin and stdout, and the TypeScript SDK. All four use the same agent and session. 2 The agent session in pi-coding-agent: it builds the context from the system prompt and the active session branch, holds the tools (read, bash, edit and write are on by default), loads extensions, and saves everything to a session file. 3 The agent loop in pi-agent-core: call the model, check for tool calls (none, with nothing queued, ends the run), run the tools, record the results and go again. 4 pi-ai: one API that routes each call to one of 42 built-in providers, such as Anthropic, OpenAI, Google, Bedrock or OpenRouter, or to any OpenAI-compatible server, and streams the answer back.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -26,62 +26,57 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
 <rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
-<circle cx="222.5" cy="43" r="14" class="num"/>
-<text x="222.5" y="49" class="numt" text-anchor="middle" >1</text>
-<text x="242.5" y="52" class="gt" text-anchor="start" >Interfaces</text>
-<rect x="36" y="74" width="528" height="280" rx="9" class="sub"/>
-<text x="300.0" y="102" class="st" text-anchor="middle" >pi-coding-agent</text>
-<rect x="54" y="128" width="238" height="82" rx="8" class="agent"/>
-<text x="176.0" y="164.0" class="ag" text-anchor="middle" >Terminal UI</text>
-<text x="176.0" y="188.0" class="ag" text-anchor="middle" >pi-tui</text>
-<rect x="308" y="128" width="238" height="82" rx="8" class="agent"/>
-<text x="430.0" y="164.0" class="ag" text-anchor="middle" >Print / JSON</text>
-<text x="430.0" y="188.0" class="ag" text-anchor="middle" >for scripts</text>
-<rect x="54" y="234" width="238" height="82" rx="8" class="agent"/>
-<text x="176.0" y="270.0" class="ag" text-anchor="middle" >RPC</text>
-<text x="176.0" y="294.0" class="ag" text-anchor="middle" >JSONL on stdio</text>
-<rect x="308" y="234" width="238" height="82" rx="8" class="agent"/>
-<text x="430.0" y="270.0" class="ag" text-anchor="middle" >SDK</text>
-<text x="430.0" y="294.0" class="ag" text-anchor="middle" >TypeScript</text>
-<text x="300.0" y="394" class="lb" text-anchor="middle" >all four share one agent and session</text>
+<circle cx="242.75" cy="43" r="14" class="num"/>
+<text x="242.75" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="262.75" y="52" class="gt" text-anchor="start" >Ways in</text>
+<rect x="54" y="96" width="238" height="84" rx="8" class="agent"/>
+<text x="176.0" y="133.0" class="ag" text-anchor="middle" >Terminal UI</text>
+<text x="176.0" y="157.0" class="ag" text-anchor="middle" >for people</text>
+<rect x="308" y="96" width="238" height="84" rx="8" class="agent"/>
+<text x="430.0" y="133.0" class="ag" text-anchor="middle" >Print / JSON</text>
+<text x="430.0" y="157.0" class="ag" text-anchor="middle" >for scripts</text>
+<rect x="54" y="208" width="238" height="84" rx="8" class="agent"/>
+<text x="176.0" y="245.0" class="ag" text-anchor="middle" >RPC</text>
+<text x="176.0" y="269.0" class="ag" text-anchor="middle" >JSONL on stdin/out</text>
+<rect x="308" y="208" width="238" height="84" rx="8" class="agent"/>
+<text x="430.0" y="245.0" class="ag" text-anchor="middle" >SDK</text>
+<text x="430.0" y="269.0" class="ag" text-anchor="middle" >TypeScript, in process</text>
+<text x="300.0" y="368" class="lb" text-anchor="middle" >all four use the same agent</text>
+<text x="300.0" y="394" class="lb" text-anchor="middle" >and the same session</text>
 <rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
-<circle cx="775.25" cy="43" r="14" class="num"/>
-<text x="775.25" y="49" class="numt" text-anchor="middle" >2</text>
-<text x="795.25" y="52" class="gt" text-anchor="start" >Build the request</text>
-<rect x="642" y="80" width="252" height="80" rx="8" class="agent"/>
-<rect x="642" y="90" width="5" height="60" rx="2" fill="#5b6675"/>
-<text x="771.0" y="115.0" class="ag" text-anchor="middle" >System prompt</text>
-<text x="771.0" y="139.0" class="ag" text-anchor="middle" >+ context files</text>
-<rect x="906" y="80" width="252" height="80" rx="8" class="agent"/>
-<rect x="906" y="90" width="5" height="60" rx="2" fill="#5b6675"/>
-<text x="1035.0" y="115.0" class="ag" text-anchor="middle" >History</text>
-<text x="1035.0" y="139.0" class="ag" text-anchor="middle" >active branch</text>
-<rect x="642" y="176" width="252" height="80" rx="8" class="agent"/>
-<rect x="642" y="186" width="5" height="60" rx="2" fill="#2f6fd6"/>
-<text x="771.0" y="211.0" class="ag" text-anchor="middle" >Tools</text>
-<text x="771.0" y="235.0" class="ag" text-anchor="middle" >read, bash, edit, write</text>
-<rect x="906" y="176" width="252" height="80" rx="8" class="agent"/>
-<rect x="906" y="186" width="5" height="60" rx="2" fill="#5b6675"/>
-<text x="1035.0" y="211.0" class="ag" text-anchor="middle" >Skills</text>
-<text x="1035.0" y="235.0" class="ag" text-anchor="middle" >descriptions only</text>
-<rect x="636" y="280" width="528" height="132" rx="9" class="sub"/>
-<text x="900.0" y="308" class="st" text-anchor="middle" >Extensions</text>
-<text x="900.0" y="354" class="lb" text-anchor="middle" >TypeScript in the pi process</text>
-<text x="900.0" y="380" class="lb" text-anchor="middle" >add tools, commands, providers, UI</text>
+<circle cx="802.25" cy="43" r="14" class="num"/>
+<text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="52" class="gt" text-anchor="start" >Agent session</text>
+<rect x="642" y="96" width="252" height="84" rx="8" class="agent"/>
+<rect x="642" y="106" width="5" height="64" rx="2" fill="#5b6675"/>
+<text x="771.0" y="133.0" class="ag" text-anchor="middle" >Context</text>
+<text x="771.0" y="157.0" class="ag" text-anchor="middle" >prompt + active branch</text>
+<rect x="906" y="96" width="252" height="84" rx="8" class="agent"/>
+<rect x="906" y="106" width="5" height="64" rx="2" fill="#2f6fd6"/>
+<text x="1035.0" y="133.0" class="ag" text-anchor="middle" >Tools</text>
+<text x="1035.0" y="157.0" class="ag" text-anchor="middle" >4 on by default</text>
+<rect x="642" y="208" width="252" height="84" rx="8" class="agent"/>
+<text x="771.0" y="245.0" class="ag" text-anchor="middle" >Extensions</text>
+<text x="771.0" y="269.0" class="ag" text-anchor="middle" >add tools, commands</text>
+<rect x="906" y="208" width="252" height="84" rx="8" class="agent"/>
+<rect x="906" y="218" width="5" height="64" rx="2" fill="#8a5cc7"/>
+<text x="1035.0" y="245.0" class="ag" text-anchor="middle" >Session file</text>
+<text x="1035.0" y="269.0" class="ag" text-anchor="middle" >JSONL, a tree</text>
+<text x="900.0" y="368" class="lb" text-anchor="middle" >package: pi-coding-agent</text>
+<text x="900.0" y="394" class="lb" text-anchor="middle" >saved automatically, unless --no-session</text>
 <rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
-<circle cx="721.25" cy="487" r="14" class="num"/>
-<text x="721.25" y="493" class="numt" text-anchor="middle" >3</text>
-<text x="741.25" y="496" class="gt" text-anchor="start" >Agent loop: pi-agent-core</text>
+<circle cx="822.5" cy="487" r="14" class="num"/>
+<text x="822.5" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="842.5" y="496" class="gt" text-anchor="start" >Agent loop</text>
 <rect x="654" y="532" width="226" height="76" rx="8" class="agent"/>
 <rect x="654" y="542" width="5" height="56" rx="2" fill="#2f9e6e"/>
 <text x="770.0" y="577.0" class="ag" text-anchor="middle" >Call the model</text>
 <rect x="920" y="532" width="226" height="76" rx="8" class="agent"/>
 <text x="1036.0" y="565.0" class="ag" text-anchor="middle" >Tool calls?</text>
-<text x="1036.0" y="589.0" class="ag" text-anchor="middle" >none: run ends</text>
+<text x="1036.0" y="589.0" class="ag" text-anchor="middle" >none, no queue: end</text>
 <rect x="920" y="676" width="226" height="76" rx="8" class="agent"/>
 <rect x="920" y="686" width="5" height="56" rx="2" fill="#2f6fd6"/>
-<text x="1036.0" y="709.0" class="ag" text-anchor="middle" >Run the tools</text>
-<text x="1036.0" y="733.0" class="ag" text-anchor="middle" >in parallel</text>
+<text x="1036.0" y="721.0" class="ag" text-anchor="middle" >Run the tools</text>
 <rect x="654" y="676" width="226" height="76" rx="8" class="agent"/>
 <rect x="654" y="686" width="5" height="56" rx="2" fill="#8a5cc7"/>
 <text x="770.0" y="709.0" class="ag" text-anchor="middle" >Record results</text>
@@ -93,8 +88,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <path d="M767.0 676V608" class="flow"/>
 <path d="M888.0 642 A12 12 0 0 1 908.4 633.6" class="cyc"/>
 <path d="M912.0 642 A12 12 0 0 1 891.6 650.4" class="cyc"/>
-<text x="900.0" y="800" class="lb" text-anchor="middle" >steering: after this turn</text>
-<text x="900.0" y="826" class="lb" text-anchor="middle" >follow-up: after the whole run</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >package: pi-agent-core</text>
 <rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
 <circle cx="195.5" cy="487" r="14" class="num"/>
 <text x="195.5" y="493" class="numt" text-anchor="middle" >4</text>
@@ -102,22 +96,21 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="532" width="238" height="76" rx="8" class="agent"/>
 <text x="176.0" y="565.0" class="ag" text-anchor="middle" >Models</text>
 <text x="176.0" y="589.0" class="ag" text-anchor="middle" >routes each call</text>
-<rect x="36" y="632" width="528" height="196" rx="9" class="sub"/>
-<text x="300.0" y="660" class="st" text-anchor="middle" >Providers</text>
-<rect x="50" y="674" width="160" height="62" rx="8" class="agent"/>
-<text x="133.0" y="712.0" class="ag" text-anchor="middle" >Anthropic</text>
-<rect x="220" y="674" width="160" height="62" rx="8" class="agent"/>
-<text x="303.0" y="712.0" class="ag" text-anchor="middle" >OpenAI</text>
-<rect x="390" y="674" width="160" height="62" rx="8" class="agent"/>
-<text x="473.0" y="712.0" class="ag" text-anchor="middle" >Google</text>
-<rect x="50" y="746" width="160" height="62" rx="8" class="agent"/>
-<text x="133.0" y="784.0" class="ag" text-anchor="middle" >Bedrock</text>
-<rect x="220" y="746" width="160" height="62" rx="8" class="agent"/>
-<text x="303.0" y="784.0" class="ag" text-anchor="middle" >OpenRouter</text>
-<rect x="390" y="746" width="160" height="62" rx="8" class="agent"/>
-<text x="473.0" y="772.0" class="ag" text-anchor="middle" >OpenAI-</text>
-<text x="473.0" y="796.0" class="ag" text-anchor="middle" >compatible</text>
-<path d="M564 216H642" class="flow"/>
+<rect x="36" y="632" width="528" height="208" rx="9" class="sub"/>
+<text x="300.0" y="660" class="st" text-anchor="middle" >42 built-in providers, e.g.</text>
+<rect x="50" y="674" width="160" height="64" rx="8" class="agent"/>
+<text x="133.0" y="713.0" class="ag" text-anchor="middle" >Anthropic</text>
+<rect x="220" y="674" width="160" height="64" rx="8" class="agent"/>
+<text x="303.0" y="713.0" class="ag" text-anchor="middle" >OpenAI</text>
+<rect x="390" y="674" width="160" height="64" rx="8" class="agent"/>
+<text x="473.0" y="713.0" class="ag" text-anchor="middle" >Google</text>
+<rect x="50" y="750" width="160" height="64" rx="8" class="agent"/>
+<text x="133.0" y="789.0" class="ag" text-anchor="middle" >Bedrock</text>
+<rect x="220" y="750" width="160" height="64" rx="8" class="agent"/>
+<text x="303.0" y="789.0" class="ag" text-anchor="middle" >OpenRouter</text>
+<rect x="390" y="750" width="160" height="64" rx="8" class="agent"/>
+<text x="473.0" y="789.0" class="ag" text-anchor="middle" >Mistral</text>
+<path d="M576 216H624" class="flow"/>
 <text x="600" y="204" class="al" text-anchor="middle" >prompt</text>
 <path d="M767.0 428V532" class="flow"/>
 <text x="815.0" y="450" class="al" text-anchor="middle" >request</text>
@@ -125,5 +118,5 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="473.0" y="548" class="al" text-anchor="middle" >call</text>
 <path d="M292 586H654" class="flow back"/>
 <text x="473.0" y="612" class="al" text-anchor="middle" >stream</text>
-<text x="600" y="888" class="lb" text-anchor="middle" >pi · packages: pi-coding-agent → pi-agent-core → pi-ai, pi-tui</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >pi · github.com/earendil-works/pi · MIT</text>
 </svg>

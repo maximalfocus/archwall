@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Pi MCP support</title>
-<desc id="d">1 Config: user servers in ~/.pi/agent/mcp.json, project servers in .pi/mcp.json, read only after the project is trusted; the same mcpServers format as Claude Code and Cursor; add them with pi mcp add or manage them with /mcp. 2 pi-mcp is pi's own MCP client, without the official SDK. It talks stdio to local servers and Streamable HTTP to remote ones, with OAuth sign-in, and supports protocol versions up to 2025-11-25. Each tool is named mcp__server__tool. 3 Exposure, per server or per tool: codemode (the default), deferred, direct or hidden. 4 The model reaches a codemode tool from a JavaScript script in a QuickJS sandbox, and only the script's output comes back; a deferred tool after tool_search declares it; a direct tool like a built-in one. Every call goes through pi's tool pipeline, so extension permission gates apply.</desc>
+<desc id="d">1 Config: user servers in ~/.pi/agent/mcp.json, project servers in .pi/mcp.json, read only after the project is trusted; the same mcpServers format as Claude Code and Cursor; add them with pi mcp add or manage them with /mcp. 2 pi-mcp is pi's own MCP client, without the official SDK. It talks stdio to local servers and Streamable HTTP to remote ones, with OAuth sign-in, and supports protocol versions up to 2025-11-25. Each tool is named mcp__server__tool. 3 Exposure, per server or per tool: codemode (the default), deferred, direct or hidden. 4 The model reaches a codemode tool from a JavaScript script in a QuickJS sandbox, and only the script's output comes back; a deferred tool after tool_search declares it; a direct tool like a built-in one. Every call goes through pi's tool pipeline, so the tool-call hooks of an installed extension, such as a permission gate, apply; pi ships no gate itself.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -101,7 +101,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="360" y="600" width="180" height="96" rx="8" class="agent"/>
 <rect x="360" y="610" width="5" height="76" rx="2" fill="#d64545"/>
 <text x="453.0" y="643.0" class="ag" text-anchor="middle" >Tool pipeline</text>
-<text x="453.0" y="667.0" class="ag" text-anchor="middle" >permission gates</text>
+<text x="453.0" y="667.0" class="ag" text-anchor="middle" >extension hooks</text>
 <path d="M288 560C328 560 320 648 360 648" class="flow"/>
 <path d="M288 650C328 650 320 648 360 648" class="flow"/>
 <path d="M288 736C328 736 320 648 360 648" class="flow"/>
