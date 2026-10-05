@@ -85,6 +85,6 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="600.0" y="334" class="al" text-anchor="middle" >refine</text>
 <path d="M906.0 428V458" class="flow"/>
 <text x="991.0" y="454" class="al" text-anchor="middle" >accept / reject</text>
-<path d="M474 460V444H726V430" class="flow back"/>
-<text x="660.0" y="438" class="al" text-anchor="middle" >new version</text>
+<path d="M566 620H620V444H760V430" class="flow back"/>
+<text x="690.0" y="430" class="al" text-anchor="middle" >new version</text>
 </svg>
