@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">graphify data model</title>
+<desc id="d">1 A node: an id and a readable label; a file type of code, document, paper, image, rationale or concept; and the source file and line it came from. 2 An edge: a source and a target node, a relation such as calls, imports or uses, and a confidence tag. 3 How sure: EXTRACTED means it is stated in the source, score 1.0; INFERRED is a reasonable guess with a score from 0.55 to 0.95; AMBIGUOUS is uncertain and listed in the report for a person to check. 4 Stored as: graph.json in NetworkX node-link format; hyperedges link groups of three or more nodes; after clustering each node also carries its community.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="249.5" cy="43" r="14" class="num"/>
+<text x="249.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="269.5" y="52" class="gt" text-anchor="start" >A node</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >id + label</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >a stable name</text>
+<rect x="54" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="207.0" class="ag" text-anchor="middle" >file_type</text>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >code, doc, paper, image, rationale, concept</text>
+<rect x="54" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="282" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="303.0" class="ag" text-anchor="middle" >source_file + line</text>
+<text x="303.0" y="327.0" class="ag" text-anchor="middle" >where it came from</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="842.75" cy="43" r="14" class="num"/>
+<text x="842.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="862.75" y="52" class="gt" text-anchor="start" >An edge</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >source → target</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >two node ids</text>
+<rect x="654" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >relation</text>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >calls, imports, uses…</text>
+<rect x="654" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="282" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >confidence</text>
+<text x="903.0" y="327.0" class="ag" text-anchor="middle" >a tag, plus a score</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="836.0" cy="487" r="14" class="num"/>
+<text x="836.0" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="856.0" y="496" class="gt" text-anchor="start" >How sure</text>
+<rect x="654" y="524" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="555.0" class="ag" text-anchor="middle" >EXTRACTED</text>
+<text x="903.0" y="579.0" class="ag" text-anchor="middle" >stated in the source, 1.0</text>
+<rect x="654" y="620" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="630" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="903.0" y="651.0" class="ag" text-anchor="middle" >INFERRED</text>
+<text x="903.0" y="675.0" class="ag" text-anchor="middle" >a reasonable guess, 0.55–0.95</text>
+<rect x="654" y="716" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="726" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="747.0" class="ag" text-anchor="middle" >AMBIGUOUS</text>
+<text x="903.0" y="771.0" class="ag" text-anchor="middle" >unsure, flagged in the report</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="229.25" cy="487" r="14" class="num"/>
+<text x="229.25" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="249.25" y="496" class="gt" text-anchor="start" >Stored as</text>
+<rect x="54" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >graph.json</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >NetworkX node-link format</text>
+<rect x="54" y="636" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="646" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Hyperedges</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >one link for 3 or more nodes</text>
+<text x="300.0" y="790" class="lb" text-anchor="middle" >after clustering, each node gets its community</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >node ids</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="941.6" y="449" class="al" text-anchor="middle" >tagged</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >graph</text>
+</svg>

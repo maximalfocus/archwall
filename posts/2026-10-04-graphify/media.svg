@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">graphify step 2b: docs, papers, images and video</title>
+<desc id="d">1 Video and audio, with the video extra: a one-line topic hint is written from the key concepts found so far, then faster-whisper transcribes on your machine. Transcripts are treated as docs. 2 Batch the rest: files already in the SHA256 cache are skipped; the rest go into chunks of 20 to 25 files, same folder together, each image on its own. 3 Read with an LLM, the only pass that costs tokens: inside the assistant, parallel subagents on the assistant's own model, or Gemini if a Gemini key is set. Headless graphify extract uses an API backend such as Claude, OpenAI, Gemini or a local Ollama; their client libraries are extras. 4 Check and save: each chunk returns JSON with nodes, edges and group links; a schema check warns about a bad chunk, and a chunk whose JSON will not parse is skipped; a reply cut off mid-way is split and retried; results go into the cache.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="114.5" cy="43" r="14" class="num"/>
+<text x="114.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="134.5" y="52" class="gt" text-anchor="start" >Video, audio (video extra)</text>
+<rect x="54" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >Topic hint</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >from key concepts so far</text>
+<rect x="54" y="200" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="210" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="235.0" class="ag" text-anchor="middle" >faster-whisper</text>
+<text x="303.0" y="259.0" class="ag" text-anchor="middle" >transcribes on your machine</text>
+<path d="M300.0 160V198" class="flow"/>
+<text x="300.0" y="346" class="lb" text-anchor="middle" >transcripts are treated as docs</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="795.5" cy="43" r="14" class="num"/>
+<text x="795.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="815.5" y="52" class="gt" text-anchor="start" >Batch the rest</text>
+<rect x="654" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="903.0" y="115.0" class="ag" text-anchor="middle" >Check the cache</text>
+<text x="903.0" y="139.0" class="ag" text-anchor="middle" >skip files already done</text>
+<rect x="654" y="200" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="210" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="235.0" class="ag" text-anchor="middle" >Chunks of 20–25 files</text>
+<text x="903.0" y="259.0" class="ag" text-anchor="middle" >same folder together, images alone</text>
+<path d="M900.0 160V198" class="flow"/>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="782.0" cy="487" r="14" class="num"/>
+<text x="782.0" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="802.0" y="496" class="gt" text-anchor="start" >Read with an LLM</text>
+<rect x="654" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="559.0" class="ag" text-anchor="middle" >Parallel subagents</text>
+<text x="903.0" y="583.0" class="ag" text-anchor="middle" >the assistant's own model</text>
+<rect x="654" y="636" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="646" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Headless: graphify extract</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >Claude, OpenAI, Gemini, Ollama…</text>
+<text x="900.0" y="760" class="lb" text-anchor="middle" >the only pass that costs tokens</text>
+<text x="900.0" y="788" class="lb" text-anchor="middle" >API client libraries are extras</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="195.5" cy="487" r="14" class="num"/>
+<text x="195.5" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="215.5" y="496" class="gt" text-anchor="start" >Check and save</text>
+<rect x="54" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >JSON per chunk</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >nodes, edges, group links</text>
+<rect x="54" y="636" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="646" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Schema check</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >warns; bad JSON: skipped</text>
+<path d="M300.0 604V634" class="flow"/>
+<text x="300.0" y="760" class="lb" text-anchor="middle" >a cut-off reply is split and retried</text>
+<text x="300.0" y="788" class="lb" text-anchor="middle" >results go into the cache</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >transcripts</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="941.6" y="449" class="al" text-anchor="middle" >chunks</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >JSON</text>
+</svg>

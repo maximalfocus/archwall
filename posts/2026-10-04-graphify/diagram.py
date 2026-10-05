@@ -1,72 +1,70 @@
-"""graphify: how a folder becomes a knowledge graph.  Drawn from the graphify repo
-(https://github.com/Graphify-Labs/graphify, ARCHITECTURE.md, docs/how-it-works.md and README.md,
-commit 48d7c0e).  Run: python3 diagram.py
+"""graphify overview: from a folder to a graph your assistant asks first.  Drawn from the graphify repo
+(https://github.com/Graphify-Labs/graphify, ARCHITECTURE.md, docs/how-it-works.md, README.md,
+graphify/skill.md, commit 35adf43).  Run: python3 diagram.py
 
-Snake order: 1 scan the folder (top left) -> 2 extract in three passes (top right) -> 3 build,
-cluster, analyze (bottom right) -> 4 files in graphify-out/ (bottom left)."""
+Snake order: 1 read the folder (top left) -> 2 pull out the facts (top right) -> 3 build the map
+(bottom right) -> 4 use the map (bottom left)."""
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from archdiagram import Diagram  # noqa: E402
 
-d = Diagram("graphify architecture",
-            "1 Scan the folder: detect() sorts files into code, docs and papers, images, and video or audio. "
-            "2 Extract in three passes; a SHA256 cache skips files that have not changed. Pass 1 parses code with tree-sitter, locally, with no LLM. "
-            "Pass 2 transcribes video and audio with faster-whisper, locally (video extra). Pass 3 sends docs, papers, "
-            "images and transcripts to parallel LLM subagents, which costs tokens. Passes 1 and 3 return nodes "
-            "and edges, and each edge is tagged EXTRACTED, INFERRED or AMBIGUOUS. "
-            "3 Build and cluster: build() makes one NetworkX graph, cluster() finds communities with the "
-            "Leiden algorithm (leiden extra; otherwise Louvain), and the analyze helpers find god nodes and surprising connections. "
-            "4 Output in graphify-out: graph.json, graph.html and GRAPH_REPORT.md, plus optional exports "
-            "such as an Obsidian vault, a wiki, SVG, GraphML and Cypher.")
+d = Diagram("graphify overview",
+            "Input: a folder of code, docs, papers, images and video. "
+            "1 Read the folder: detect() skips ignored files, build output and secret files, sorts the rest by "
+            "type and warns when the folder is tiny or costly. "
+            "2 Pull out the facts in three passes: code is parsed on your machine with tree-sitter, no LLM; "
+            "video and audio are transcribed locally with faster-whisper (video extra); docs, papers, images and "
+            "transcripts go to an LLM, which costs tokens. A SHA256 cache skips unchanged files. "
+            "3 Build the map: one graph with duplicates dropped, communities found with Leiden or Louvain, then "
+            "god nodes, surprising links and suggested questions. "
+            "4 Use the map: files in graphify-out, the assistant asks the graph through the CLI or an MCP server, "
+            "and git hooks rebuild the code part for free. Side tools: PR dashboard, cross-repo graph.")
 
 L, R, W = 24, 624, 552
-T1, H1 = 16, 412
-T2, H2 = 460, 400
+T1, H1 = 84, 360
+T2, H2 = 480, 372
+CW, CH, GAP = 492, 64, 26
 
-# 1 scan the folder
-d.group(L, T1, W, H1, "Scan the folder", 1)
-d.sub(L + 12, T1 + 58, W - 24, 246, "detect(): sort by type")
-for i, lbl in enumerate(["Code", "Docs, papers", "Images", "Video, audio"]):
-    d.card(L + 30 + (i % 2) * 254, T1 + 112 + (i // 2) * 96, lbl, "data", w=238, h=74)
 
-# 2 extract
-d.group(R, T1, W, H1, "Extract: three passes", 2)
-PW, PH = W - 60, 80
-for i, lbl in enumerate(["Pass 1: code|tree-sitter, local, no LLM",
-                         "Pass 2: video, audio|transcripts → Pass 3 (video extra)",
-                         "Pass 3: docs, papers, images|LLM subagents, costs tokens"]):
-    d.card(R + 30, T1 + 64 + i * 96, lbl, "coding", w=PW, h=PH)
-d.note(R + W / 2, T1 + 374, "SHA256 cache skips unchanged files")
-d.note(R + W / 2, T1 + 400, "edges: EXTRACTED, INFERRED, AMBIGUOUS")
+def column(x, top, cards, arrows=True):
+    for i, (lbl, kind) in enumerate(cards):
+        y = top + 64 + i * (CH + GAP)
+        d.card(x + 30, y, lbl, kind, w=CW, h=CH)
+        if arrows and i:
+            d.arrow(f"M{x + W / 2} {y - GAP}V{y - 2}")
 
-# 3 build and cluster
-d.group(R, T2, W, H2, "Build and cluster", 3)
-CW, CH = 238, 80
-A = (R + 30, T2 + 76)    # build
-B = (R + 284, T2 + 76)   # leiden
-C = (R + 284, T2 + 224)  # analyze
-d.card(*A, "build()|one NetworkX graph", "write", w=CW, h=CH)
-d.card(*B, "cluster()|Leiden or Louvain", "plan", w=CW, h=CH)
-d.card(*C, "Analyze|god nodes, surprises", "critic", w=CW, h=CH)
-d.arrow(f"M{A[0] + CW} {A[1] + CH / 2}H{B[0]}")
-d.arrow(f"M{B[0] + CW / 2} {B[1] + CH}V{C[1]}")
-d.note(R + W / 2, T2 + 350, "no embeddings, no vector store")
 
-# 4 outputs
-d.group(L, T2, W, H2, "Output: graphify-out/", 4)
-for i, (lbl, k) in enumerate([("graph.json|full graph", "data"), ("graph.html|click and search", "write"),
-                              ("GRAPH_REPORT.md|the highlights", "write")]):
-    d.card(L + 30 + (i % 2) * 254, T2 + 72 + (i // 2) * 100, lbl, k, w=238, h=80)
-d.card(L + 284, T2 + 172, "Exports|Obsidian, wiki, …", "write", w=238, h=80)
-d.note(L + W / 2, T2 + 318, "also SVG, GraphML, Cypher")
+d.pill(L, 16, W, 48, "Your folder: code, docs, papers, images, video")
+d.arrow(f"M{L + W / 2} 64V{T1 - 2}")
 
-# hand-offs between stages, drawn last so they sit on top
-d.arrow(f"M{L + W - 12} {T1 + 200}H{R + 30}", label="files", at=(L + W + 24, T1 + 188))
-d.arrow(f"M{R + 64} {T1 + 352}V{A[1]}", label="nodes + edges", at=(R + 140, T1 + H1 + 22))
-d.arrow(f"M{C[0]} {C[1] + CH / 2}H{L + W - 12}", label="graph", at=(L + W + 24, C[1] + CH / 2 - 12))
+d.group(L, T1, W, H1, "Read the folder", 1)
+column(L, T1, [("Skip what doesn't belong|ignore rules, build output, secrets", "review"),
+               ("Sort by type|code, docs, papers, images, video", "coding"),
+               ("Check the size|warn if tiny or costly", "critic")])
 
-d.note(600, 888, "detect → extract → build → cluster → analyze → report → export")
+d.group(R, T1, W, H1, "Pull out the facts", 2)
+column(R, T1, [("Code, on your machine|tree-sitter, no LLM, free", "coding"),
+               ("Video, audio, on your machine|faster-whisper (video extra)", "coding"),
+               ("Docs, papers, images|an LLM reads them, costs tokens", "coding")], arrows=False)
+d.note(R + W / 2, T1 + H1 - 24, "SHA256 cache skips unchanged files")
+
+d.group(R, T2, W, H2, "Build the map", 3)
+column(R, T2, [("One graph|merge, drop duplicates", "write"),
+               ("Find communities|Leiden or Louvain", "plan"),
+               ("Find what matters|god nodes, surprises, questions", "critic")])
+
+d.group(L, T2, W, H2, "Use the map", 4)
+column(L, T2, [("graphify-out/|graph.json, graph.html, report", "write"),
+               ("Assistant asks the graph|hook, CLI, MCP server", "coding"),
+               ("Keep it current|git hooks rebuild code, free", "coding")], arrows=False)
+d.note(L + W / 2, T2 + H2 - 22, "side tools: PR dashboard, cross-repo graph")
+
+d.arrow(f"M{L + W} {T1 + 210}H{R - 2}", label="files by type", at=(600, T1 + 198))
+d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="nodes + edges", at=(R + W / 2 + 86, T1 + H1 + 24))
+d.arrow(f"M{R} {T2 + 200}H{L + W + 2}", label="graph", at=(600, T2 + 188))
+
+d.note(600, 884, "Code is never sent anywhere; docs, images and transcripts go to an LLM")
 
 d.save(Path(__file__).with_name("diagram.svg"))

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">graphify side tools</title>
+<desc id="d">1 Many repos: graphify global add registers a project graph in one cross-project graph under ~/.graphify; merge-graphs joins two graph.json files. 2 Pull requests: graphify prs shows open PRs with CI, reviews and worktrees through the gh tool; --conflicts lists PRs that touch the same communities; --triage has an LLM rank the review queue, using the first backend that is set up. 3 Work memory: save-result records whether an answer was useful, a dead end or corrected; reflect turns those records into LESSONS.md, with no LLM. 4 Other views: callflow-html draws a Mermaid call-flow page; --neo4j-push and --falkordb-push load the graph into a graph database (neo4j or falkordb extra).</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="222.5" cy="43" r="14" class="num"/>
+<text x="222.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="242.5" y="52" class="gt" text-anchor="start" >Many repos</text>
+<rect x="54" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >graphify global add</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >one graph across projects</text>
+<rect x="54" y="192" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="202" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="227.0" class="ag" text-anchor="middle" >merge-graphs</text>
+<text x="303.0" y="251.0" class="ag" text-anchor="middle" >join two graph.json files</text>
+<text x="300.0" y="336" class="lb" text-anchor="middle" >kept in ~/.graphify/</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="802.25" cy="43" r="14" class="num"/>
+<text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="52" class="gt" text-anchor="start" >Pull requests</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >graphify prs</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >CI, reviews, worktrees (gh)</text>
+<rect x="654" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >--conflicts</text>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >PRs in the same communities</text>
+<rect x="654" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="282" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >--triage</text>
+<text x="903.0" y="327.0" class="ag" text-anchor="middle" >an LLM ranks the review queue</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="815.75" cy="487" r="14" class="num"/>
+<text x="815.75" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="835.75" y="496" class="gt" text-anchor="start" >Work memory</text>
+<rect x="654" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="903.0" y="559.0" class="ag" text-anchor="middle" >save-result</text>
+<text x="903.0" y="583.0" class="ag" text-anchor="middle" >useful, dead end, corrected</text>
+<rect x="654" y="636" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="646" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >reflect</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >writes LESSONS.md, no LLM</text>
+<path d="M900.0 604V634" class="flow"/>
+<text x="900.0" y="760" class="lb" text-anchor="middle" >with --graph, query and explain show it</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="215.75" cy="487" r="14" class="num"/>
+<text x="215.75" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="235.75" y="496" class="gt" text-anchor="start" >Other views</text>
+<rect x="54" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >callflow-html</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >a Mermaid call-flow page</text>
+<rect x="54" y="636" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="646" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Neo4j, FalkorDB push</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >neo4j or falkordb extra</text>
+</svg>
