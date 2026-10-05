@@ -1,5 +1,5 @@
-"""ABAP Development Tools (ADT) overview, drawn from SAP's posts by the ADT product owner
-(Thomas Alexander Ritter, 2025-11-04, read 2026-10-05):
+"""ABAP Development Tools (ADT) overview, drawn from SAP's posts by Thomas Alexander Ritter
+(2025-11-04, read 2026-10-05):
 "Behind the Design" https://community.sap.com/t5/technology-blog-posts-by-sap/behind-the-design-how-we-transformed-the-abap-development-tools/ba-p/14258121
 and the post it links, "ABAP Development Tools for VS Code: Everything You Need to Know"
 https://community.sap.com/t5/technology-blog-posts-by-sap/abap-development-tools-for-vs-code-everything-you-need-to-know/ba-p/14258129

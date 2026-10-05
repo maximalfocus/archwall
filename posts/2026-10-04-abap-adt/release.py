@@ -49,7 +49,7 @@ d.arrow(f"M{L + W} 116H{R - 2}", label="starts with", at=(600, 104))
 d.group(R, T2, W, H2, "Still in Eclipse", 3)
 d.card(R + 30, T2 + 130, "Many other tasks|switch to ADT for Eclipse", w=492, h=72, cls="human")
 
-d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="everything else", at=(R + W / 2 + 84, T1 + H1 + 22))
+d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="other work", at=(R + W / 2 + 84, T1 + H1 + 22))
 
 # 4 catch up
 d.group(L, T2, W, H2, "Catching up", 4)
