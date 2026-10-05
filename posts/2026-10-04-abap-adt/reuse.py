@@ -22,8 +22,9 @@ d = Diagram("Reusing the client as a language server",
             "server, so it is Eclipse running inside VS Code. "
             "3 SAP did the same: VS Code talks LSP to the ADT Language Server, which reuses the Eclipse plug-ins "
             "without their UI and talks RFC or HTTP to the ABAP server, release 7.3 EHP1 SP04 or later. "
-            "4 One codebase for Eclipse and VS Code, the same server releases, and 60% of the 2.9 million "
-            "lines potentially reused. Still to do: move each tool to LSP and build its UI in VS Code.")
+            "4 One codebase for Eclipse and VS Code, planned support for the same server releases, and 60% of "
+            "the 2.9 million lines potentially reused. Still to do: move each tool to LSP and build its UI in "
+            "VS Code.")
 
 L, R, W = 24, 624, 552
 T1, H1 = 16, 404
@@ -61,7 +62,7 @@ d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="same trick", at=(R + W / 2 + 
 # 4 what it buys
 d.group(L, T2, W, H2, "What it buys", 4)
 d.card(L + 30, T2 + 60, "One codebase|for Eclipse and VS Code", None, w=492, h=64)
-d.card(L + 30, T2 + 146, "Same server releases|as Eclipse", None, w=492, h=64)
+d.card(L + 30, T2 + 146, "Plan: same server releases|as Eclipse", None, w=492, h=64)
 d.card(L + 30, T2 + 232, "60% potential reuse|of 2.9 million lines", None, w=492, h=64)
 d.note(L + W / 2, T2 + 364, "Still to do: move each tool to LSP")
 d.note(L + W / 2, T2 + 392, "and build its UI in VS Code")

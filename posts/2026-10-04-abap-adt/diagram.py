@@ -52,7 +52,7 @@ d.group(R, T2, W, H2, "ABAP server", 3)
 d.card(R + 30, T2 + 70, "ADT REST APIs|one API since 7.3 EHP1 SP04", "plan", w=492, h=72)
 d.card(R + 30, T2 + 172, "ABAP objects|stored here", "data", w=492, h=64)
 d.card(R + 30, T2 + 266, "Editor UI models|written in ABAP", "write", w=492, h=64)
-d.note(R + W / 2, T2 + 392, "VS Code reaches the releases Eclipse does")
+d.note(R + W / 2, T2 + 392, "Plan: VS Code reaches the releases Eclipse does")
 
 d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="RFC or HTTP", at=(R + W / 2 + 70, T1 + H1 + 22))
 

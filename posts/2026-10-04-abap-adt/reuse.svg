@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Reusing the client as a language server</title>
-<desc id="d">1 In 2018 SAP explored a language server in TypeScript, like the community ABAP extensions for VS Code. It worked, but meant rebuilding the whole client layer and keeping two implementations, so SAP dropped it. 2 The VS Code Java extension showed another way: it wraps the Eclipse Java tools (JDT) in a language server, so it is Eclipse running inside VS Code. 3 SAP did the same: VS Code talks LSP to the ADT Language Server, which reuses the Eclipse plug-ins without their UI and talks RFC or HTTP to the ABAP server, release 7.3 EHP1 SP04 or later. 4 One codebase for Eclipse and VS Code, the same server releases, and 60% of the 2.9 million lines potentially reused. Still to do: move each tool to LSP and build its UI in VS Code.</desc>
+<desc id="d">1 In 2018 SAP explored a language server in TypeScript, like the community ABAP extensions for VS Code. It worked, but meant rebuilding the whole client layer and keeping two implementations, so SAP dropped it. 2 The VS Code Java extension showed another way: it wraps the Eclipse Java tools (JDT) in a language server, so it is Eclipse running inside VS Code. 3 SAP did the same: VS Code talks LSP to the ADT Language Server, which reuses the Eclipse plug-ins without their UI and talks RFC or HTTP to the ABAP server, release 7.3 EHP1 SP04 or later. 4 One codebase for Eclipse and VS Code, planned support for the same server releases, and 60% of the 2.9 million lines potentially reused. Still to do: move each tool to LSP and build its UI in VS Code.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -89,7 +89,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="539.0" class="ag" text-anchor="middle" >One codebase</text>
 <text x="303.0" y="563.0" class="ag" text-anchor="middle" >for Eclipse and VS Code</text>
 <rect x="54" y="598" width="492" height="64" rx="8" class="agent"/>
-<text x="303.0" y="625.0" class="ag" text-anchor="middle" >Same server releases</text>
+<text x="303.0" y="625.0" class="ag" text-anchor="middle" >Plan: same server releases</text>
 <text x="303.0" y="649.0" class="ag" text-anchor="middle" >as Eclipse</text>
 <rect x="54" y="684" width="492" height="64" rx="8" class="agent"/>
 <text x="303.0" y="711.0" class="ag" text-anchor="middle" >60% potential reuse</text>

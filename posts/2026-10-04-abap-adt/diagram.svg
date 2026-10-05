@@ -86,7 +86,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="728" width="5" height="44" rx="2" fill="#8a5cc7"/>
 <text x="903.0" y="745.0" class="ag" text-anchor="middle" >Editor UI models</text>
 <text x="903.0" y="769.0" class="ag" text-anchor="middle" >written in ABAP</text>
-<text x="900.0" y="844" class="lb" text-anchor="middle" >VS Code reaches the releases Eclipse does</text>
+<text x="900.0" y="844" class="lb" text-anchor="middle" >Plan: VS Code reaches the releases Eclipse does</text>
 <path d="M900.0 420V450" class="flow"/>
 <text x="970.0" y="442" class="al" text-anchor="middle" >RFC or HTTP</text>
 <rect x="24" y="452" width="552" height="432" rx="12" class="grp"/>
