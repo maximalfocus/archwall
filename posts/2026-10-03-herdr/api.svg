@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">herdr control API</title>
+<desc id="d">1 Who calls: an agent in a pane, using the herdr skill if installed; scripts; plugins. Every pane gets HERDR_PANE_ID and HERDR_SOCKET_PATH. 2 How it gets there: the herdr CLI wraps every call; underneath is a local socket with one JSON request per line (a Unix socket, owner-only, or a Windows named pipe). herdr api schema prints the contract. 3 What it can do: layout (workspace, tab, split), panes (run, read, wait for output), agents (start, prompt, wait until idle, done or blocked), and event subscriptions. 4 What comes back: a JSON reply with IDs to capture, and an event stream of status changes. A reader that falls behind gets events_lost and re-reads a snapshot.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="229.25" cy="43" r="14" class="num"/>
+<text x="229.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="249.25" y="52" class="gt" text-anchor="start" >Who calls</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >Agent in a pane</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >uses the herdr skill, if installed</text>
+<rect x="54" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="207.0" class="ag" text-anchor="middle" >Scripts</text>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >shell, CI</text>
+<rect x="54" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="282" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="303.0" class="ag" text-anchor="middle" >Plugins</text>
+<text x="303.0" y="327.0" class="ag" text-anchor="middle" >actions and hooks</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="775.25" cy="43" r="14" class="num"/>
+<text x="775.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="795.25" y="52" class="gt" text-anchor="start" >How it gets there</text>
+<rect x="654" y="80" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="115.0" class="ag" text-anchor="middle" >herdr CLI</text>
+<text x="903.0" y="139.0" class="ag" text-anchor="middle" >wraps every call</text>
+<rect x="654" y="184" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="194" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="903.0" y="219.0" class="ag" text-anchor="middle" >Local socket</text>
+<text x="903.0" y="243.0" class="ag" text-anchor="middle" >one JSON request per line</text>
+<path d="M900.0 160V182" class="flow"/>
+<text x="900.0" y="316" class="lb" text-anchor="middle" >owner-only on Unix · pipe on Windows</text>
+<text x="900.0" y="344" class="lb" text-anchor="middle" >herdr api schema prints the contract</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="795.5" cy="487" r="14" class="num"/>
+<text x="795.5" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="815.5" y="496" class="gt" text-anchor="start" >What it can do</text>
+<rect x="654" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="776.0" y="559.0" class="ag" text-anchor="middle" >Layout</text>
+<text x="776.0" y="583.0" class="ag" text-anchor="middle" >workspace · tab · split</text>
+<rect x="908" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="534" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="1030.0" y="559.0" class="ag" text-anchor="middle" >Panes</text>
+<text x="1030.0" y="583.0" class="ag" text-anchor="middle" >run · read · wait</text>
+<rect x="654" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="630" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="776.0" y="655.0" class="ag" text-anchor="middle" >Agents</text>
+<text x="776.0" y="679.0" class="ag" text-anchor="middle" >start · prompt · wait</text>
+<rect x="908" y="620" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="630" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="655.0" class="ag" text-anchor="middle" >Events</text>
+<text x="1030.0" y="679.0" class="ag" text-anchor="middle" >subscribe</text>
+<text x="900.0" y="750" class="lb" text-anchor="middle" >agent wait: until idle, done or blocked</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="188.75" cy="487" r="14" class="num"/>
+<text x="188.75" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="208.75" y="496" class="gt" text-anchor="start" >What comes back</text>
+<rect x="54" y="524" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="303.0" y="559.0" class="ag" text-anchor="middle" >JSON reply</text>
+<text x="303.0" y="583.0" class="ag" text-anchor="middle" >IDs to capture, not guess</text>
+<rect x="54" y="628" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="638" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="303.0" y="663.0" class="ag" text-anchor="middle" >Event stream</text>
+<text x="303.0" y="687.0" class="ag" text-anchor="middle" >status changes, new panes</text>
+<text x="300.0" y="760" class="lb" text-anchor="middle" >falls behind? events_lost: re-read</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >commands</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="950.8" y="449" class="al" text-anchor="middle" >requests</text>
+<path d="M624 660H578" class="flow"/>
+<text x="600" y="648" class="al" text-anchor="middle" >replies</text>
+<path d="M84 460V430" class="flow"/>
+<text x="144" y="449" class="al" text-anchor="middle" >answers</text>
+<text x="300.0" y="396" class="lb" text-anchor="middle" >every pane gets HERDR_PANE_ID</text>
+</svg>
