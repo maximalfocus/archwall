@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">What MCP servers offer</title>
+<desc id="d">1 Tools: the model decides. Functions that act, such as file operations, API calls or database queries. The client finds them with tools/list and runs one with tools/call. The host asks the user before a tool runs, and a person should be able to say no. 2 Resources: the app decides. Data for context, such as file contents, database records or API replies, each with a URI. Found with resources/list, read with resources/read. 3 Prompts: the user decides. Reusable templates such as few-shot examples, often shown as slash commands or menus. Found with prompts/list, fetched with prompts/get. 4 Example from the docs: one database server offers a tool to run a query, a resource with the schema, and a prompt with few-shot examples. Optional extensions such as Tasks add more; both sides must opt in.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="128.0" cy="43" r="14" class="num"/>
+<text x="128.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="148.0" y="52" class="gt" text-anchor="start" >Tools: the model decides</text>
+<rect x="54" y="88" width="492" height="80" rx="8" class="agent"/>
+<rect x="54" y="98" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="123.0" class="ag" text-anchor="middle" >Functions that act</text>
+<text x="303.0" y="147.0" class="ag" text-anchor="middle" >files, APIs, database queries</text>
+<rect x="54" y="192" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="202" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >tools/list → tools/call</text>
+<text x="300.0" y="350" class="lb" text-anchor="middle" >the host asks the user before a tool runs;</text>
+<text x="300.0" y="378" class="lb" text-anchor="middle" >a person should be able to say no</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="714.5" cy="43" r="14" class="num"/>
+<text x="714.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="734.5" y="52" class="gt" text-anchor="start" >Resources: the app decides</text>
+<rect x="654" y="88" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="98" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="903.0" y="123.0" class="ag" text-anchor="middle" >Data for context</text>
+<text x="903.0" y="147.0" class="ag" text-anchor="middle" >file contents, records, API replies</text>
+<rect x="654" y="192" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="202" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >resources/list → resources/read</text>
+<text x="900.0" y="350" class="lb" text-anchor="middle" >each one has a URI;</text>
+<text x="900.0" y="378" class="lb" text-anchor="middle" >the app chooses what to attach</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="721.25" cy="487" r="14" class="num"/>
+<text x="721.25" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="741.25" y="496" class="gt" text-anchor="start" >Prompts: the user decides</text>
+<rect x="654" y="532" width="492" height="80" rx="8" class="agent"/>
+<rect x="654" y="542" width="5" height="60" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="567.0" class="ag" text-anchor="middle" >Reusable templates</text>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >e.g. few-shot examples</text>
+<rect x="654" y="636" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="646" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="675.0" class="ag" text-anchor="middle" >prompts/list → prompts/get</text>
+<text x="900.0" y="794" class="lb" text-anchor="middle" >often shown as slash commands</text>
+<text x="900.0" y="822" class="lb" text-anchor="middle" >or menu items</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="87.5" cy="487" r="14" class="num"/>
+<text x="87.5" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="107.5" y="496" class="gt" text-anchor="start" >One database server, all three</text>
+<rect x="54" y="524" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="551.0" class="ag" text-anchor="middle" >Tool</text>
+<text x="303.0" y="575.0" class="ag" text-anchor="middle" >run a query</text>
+<rect x="54" y="610" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="620" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="637.0" class="ag" text-anchor="middle" >Resource</text>
+<text x="303.0" y="661.0" class="ag" text-anchor="middle" >the database schema</text>
+<rect x="54" y="696" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="706" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="723.0" class="ag" text-anchor="middle" >Prompt</text>
+<text x="303.0" y="747.0" class="ag" text-anchor="middle" >few-shot examples</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Optional extensions, such as Tasks for long jobs, add more; both sides must opt in</text>
+</svg>

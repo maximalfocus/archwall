@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">How clients hear about changes</title>
+<desc id="d">1 The client opens a long-lived stream with subscriptions/listen and names what it wants: tool list changes, prompt list changes, resource list changes, or updates to particular resources. Nothing is sent unless asked for. 2 The server confirms with an acknowledgment listing what it will send; types it does not support are left out, and list changes only come from servers that declared them. 3 Notices such as tools/list_changed or resources/updated arrive on the stream, each tagged with the stream's id. Delivery is best effort, so clients poll as well. 4 The client refreshes, for example with tools/list, and the host gives the model the new list. If the stream is lost, the client sends listen again. Progress notices travel on the reply of their own request, not on this stream.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="148.25" cy="43" r="14" class="num"/>
+<text x="148.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="168.25" y="52" class="gt" text-anchor="start" >Client opens a stream</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >subscriptions/listen</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >names what it wants</text>
+<rect x="54" y="176" width="238" height="64" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="176.0" y="203.0" class="ag" text-anchor="middle" >Tool list</text>
+<text x="176.0" y="227.0" class="ag" text-anchor="middle" >changed</text>
+<rect x="308" y="176" width="238" height="64" rx="8" class="agent"/>
+<rect x="308" y="186" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="430.0" y="203.0" class="ag" text-anchor="middle" >Prompt list</text>
+<text x="430.0" y="227.0" class="ag" text-anchor="middle" >changed</text>
+<rect x="54" y="256" width="238" height="64" rx="8" class="agent"/>
+<rect x="54" y="266" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="176.0" y="283.0" class="ag" text-anchor="middle" >Resource list</text>
+<text x="176.0" y="307.0" class="ag" text-anchor="middle" >changed</text>
+<rect x="308" y="256" width="238" height="64" rx="8" class="agent"/>
+<rect x="308" y="266" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="430.0" y="283.0" class="ag" text-anchor="middle" >One resource</text>
+<text x="430.0" y="307.0" class="ag" text-anchor="middle" >updated</text>
+<text x="300.0" y="368" class="lb" text-anchor="middle" >opt-in: nothing comes unless asked</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="788.75" cy="43" r="14" class="num"/>
+<text x="788.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="808.75" y="52" class="gt" text-anchor="start" >Server confirms</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >acknowledged</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >what it will send</text>
+<rect x="654" y="200" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="210" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="903.0" y="237.0" class="ag" text-anchor="middle" >Stream stays open</text>
+<path d="M900.0 152V198" class="flow"/>
+<text x="900.0" y="340" class="lb" text-anchor="middle" >types it can't do are left out;</text>
+<text x="900.0" y="368" class="lb" text-anchor="middle" >list changes only if it declared them</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="795.5" cy="487" r="14" class="num"/>
+<text x="795.5" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="815.5" y="496" class="gt" text-anchor="start" >Notices arrive</text>
+<rect x="654" y="524" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="555.0" class="ag" text-anchor="middle" >tools/list_changed</text>
+<text x="903.0" y="579.0" class="ag" text-anchor="middle" >the tool list changed</text>
+<rect x="654" y="620" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="630" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="651.0" class="ag" text-anchor="middle" >resources/updated</text>
+<text x="903.0" y="675.0" class="ag" text-anchor="middle" >one resource changed</text>
+<text x="900.0" y="786" class="lb" text-anchor="middle" >each tagged with the stream's id;</text>
+<text x="900.0" y="814" class="lb" text-anchor="middle" >best effort, so clients poll as well</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="182.0" cy="487" r="14" class="num"/>
+<text x="182.0" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="202.0" y="496" class="gt" text-anchor="start" >Client refreshes</text>
+<rect x="54" y="524" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="555.0" class="ag" text-anchor="middle" >tools/list again</text>
+<text x="303.0" y="579.0" class="ag" text-anchor="middle" >fetch the new list</text>
+<rect x="54" y="644" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="675.0" class="ag" text-anchor="middle" >New tools</text>
+<text x="303.0" y="699.0" class="ag" text-anchor="middle" >reach the model</text>
+<path d="M300.0 596V642" class="flow"/>
+<text x="300.0" y="814" class="lb" text-anchor="middle" >stream lost? the client sends listen again</text>
+<path d="M576 116H622" class="flow"/>
+<text x="600" y="104" class="al" text-anchor="middle" >filter</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="950.0" y="449" class="al" text-anchor="middle" >notices</text>
+<path d="M624 642H578" class="flow"/>
+<text x="600" y="630" class="al" text-anchor="middle" >notice</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Progress notices travel on the reply of their own request, not on this stream</text>
+</svg>

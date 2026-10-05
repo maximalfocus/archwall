@@ -1,7 +1,35 @@
-An AI app wants to read your files, query a database, open a Sentry issue. MCP is the one plug for all of them, so each tool doesn't need its own integration.
+An AI app wants to read your files, query a database or check Sentry. MCP is one plug for all of them, so each tool doesn't need its own integration. This is protocol version `2026-07-28`.
 
-1. **Host**: the AI app, like Claude Code or VS Code. It holds the model and makes one MCP client per server. It merges every server's tools into one list for the model and routes each call to the right client. MCP itself runs between each client and its server.
-2. **Connection**: one per client, with two layers. Outside, the **transport layer** is the pipe. A local server runs over stdio: the client starts it, and it usually serves one client. A remote server uses Streamable HTTP (POST, replies as JSON or SSE) and serves many; OAuth is recommended for tokens. Inside, the **data layer** is the messages: JSON-RPC 2.0, the same on any pipe. Requests and notifications go out, results and notifications come back. In version `2026-07-28` every request stands alone: it carries the protocol version and client capabilities in `_meta`, so the server keeps no session. `server/discover` returns what the server supports. If a server needs the user's input (`elicitation/create`), the client asks the user and retries. `subscriptions/listen` streams `list_changed` notices.
-3. **Server**: offers three things: tools the model calls, resources the app reads, prompts the user picks. The client lists them with `*/list` first, then calls `tools/call`, `resources/read` or `prompts/get`.
+**Who takes part.** The host is the AI app, like Claude Code or VS Code. It makes one client per server, keeps the conversation and asks the user before a tool runs. Servers see only what they need.
 
-MCP only moves context; how to use it is up to the app.
+![](participants.svg)
+
+**Two layers.** Inside, the data layer is the messages: JSON-RPC 2.0. The client sends requests, the server answers. Outside, the transport layer is the pipe.
+
+![](layers.svg)
+
+**One request.** Every request carries the protocol version and the client's capabilities, so the server keeps no session. `server/discover` says what a server supports. Then `tools/list` and `tools/call`.
+
+![](request.svg)
+
+**What servers offer.** Tools the model calls, resources the app reads, prompts the user picks.
+
+![](primitives.svg)
+
+**Asking the user.** A server sends no requests. It answers "input required", the client asks the user, then sends the call again with the answers. Passwords go through a web page, never a form.
+
+![](ask.svg)
+
+**Hearing about changes.** The client opens `subscriptions/listen` and picks what to hear, such as "the tool list changed". It's opt-in and best effort.
+
+![](updates.svg)
+
+**Transports.** Local servers use stdio: the client starts them as child processes. Remote ones use Streamable HTTP: each message is a POST, the reply is JSON or an SSE stream.
+
+![](transports.svg)
+
+**Signing in** is optional and only for HTTP. The server points to its auth server, the user approves in the browser, then every request carries the token.
+
+![](auth.svg)
+
+MCP only moves context. How to use it is up to the app.

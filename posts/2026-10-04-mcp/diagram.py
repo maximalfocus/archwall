@@ -1,89 +1,68 @@
-"""MCP architecture, drawn from the official docs for protocol version 2026-07-28:
-https://modelcontextprotocol.io/docs/learn/architecture and
-https://modelcontextprotocol.io/specification/2026-07-28/basic/index.  Run: python3 diagram.py
+"""MCP overview: how an AI app reaches tools and data, in four steps.  Drawn from the official
+docs for protocol version 2026-07-28 (the current version, read 2026-10-05):
+https://modelcontextprotocol.io/docs/learn/architecture (Participants, Layers, Primitives, Example)
+https://modelcontextprotocol.io/specification/2026-07-28/architecture
+Run: python3 diagram.py
 
-Who talks (host, clients, servers) is drawn across the top; each client-server link is one
-connection with two layers: the transport outside, the data layer inside. The bottom row
-zooms into those two layers."""
+Snake order: 1 host makes one client per server (top left) -> 2 each connection has two layers
+(top right) -> 3 servers give context (bottom right) -> 4 the host uses the results (bottom left)."""
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from archdiagram import Diagram  # noqa: E402
 
-d = Diagram("MCP architecture",
-            "1 The host, an AI app like Claude Code or VS Code, holds the model and makes one MCP client per server; "
-            "it merges every server's tools for the model and routes each call to the right client. "
-            "2 Each client has one connection to its server, with two layers: the transport layer outside "
-            "(stdio for a local server, Streamable HTTP for a remote one) and the data layer inside "
-            "(the same JSON-RPC 2.0 messages on either transport). Messages go both ways: requests and "
-            "notifications out, results and notifications back. "
-            "3 Each server offers tools the model calls, resources the app reads and prompts the user picks. "
-            "Data layer: every request carries its protocol version and client capabilities in _meta, so the "
-            "server keeps no session; server/discover returns what the server supports; when a server needs user "
-            "input the client asks the user and retries; subscriptions/listen streams list_changed notices. "
-            "Transport layer: with stdio the client starts the server as a subprocess; Streamable HTTP posts "
-            "to one endpoint and replies as JSON or an SSE stream, with OAuth recommended.")
+L, R, W = 24, 624, 552
+T1, H1 = 16, 412
+T2, H2 = 460, 400
 
-HX, HW = 24, 360      # host column
-CX, CW = 392, 416     # connection column
-SX, SW = 816, 360     # server column
-TOP_H = 536
-PIPES = [(288, "Transport: stdio, local", "Server A, local", "Filesystem"),
-         (420, "Transport: Streamable HTTP", "Server B, remote", "Sentry")]
-PH = 120              # pipe height: request arrow, data-layer card, result arrow
 
-# 1 host
-d.group(HX, 16, HW, TOP_H, "Host: the AI app", 1)
-d.sub(HX + 12, 60, HW - 24, 208, "Claude Code, VS Code …")
-d.card(HX + 40, 104, "LLM + conversation", "plan", w=HW - 80, h=52)
-d.note(HX + HW / 2, 204, "merges every server's tools")
-d.note(HX + HW / 2, 228, "routes each call to its client")
-d.sub(HX + 12, 276, HW - 24, 264, "One client per server")
-for i, (y0, *_) in enumerate(PIPES):
-    d.card(HX + 176, y0 + 38, f"Client {i + 1}", "coding", w=160, h=78)
+def col(x, top, cards, h=64, gap=22, y0=64):
+    """One column of wide cards, top to bottom."""
+    for i, (lbl, kind) in enumerate(cards):
+        d.card(x + 30, top + y0 + i * (h + gap), lbl, kind, w=492, h=h)
 
-# 2 connection: one per client, two layers
-d.group(CX, 16, CW, TOP_H, "One connection, two layers", 2)
-d.sub(CX + 12, 60, CW - 24, 216, "One client, one server")
-d.note(CX + CW / 2, 112, "outside: the transport layer, the pipe")
-d.note(CX + CW / 2, 136, "inside: the data layer, the messages")
-d.card(CX + 48, 160, "JSON-RPC 2.0|the same on any pipe", "plan", w=CW - 96, h=72)
-for y0, transport, _, _ in PIPES:
-    d.sub(CX + 12, y0, CW - 24, PH, transport)
-    d.card(CX + 40, y0 + 60, "Data layer: JSON-RPC", "plan", w=CW - 80, h=40)
 
-# 3 servers
-d.group(SX, 16, SW, TOP_H, "Servers: give context", 3)
-d.sub(SX + 12, 60, SW - 24, 216, "Each server offers")
-for i, (t, k) in enumerate([("Tools: the model calls", "coding"), ("Resources: the app reads", "data"),
-                            ("Prompts: the user picks", "write")]):
-    d.card(SX + 28, 98 + i * 56, t, k, w=SW - 56, h=46)
-for y0, _, title, name in PIPES:
-    d.sub(SX + 12, y0, SW - 24, PH, title)
-    d.card(SX + 100, y0 + 38, name, "data", w=SW - 124, h=78)
+d = Diagram("MCP overview",
+            "1 The host is the AI app, such as Claude Code or VS Code. It keeps the model and the conversation "
+            "and makes one MCP client per server. "
+            "2 Each client has one connection to its server, with two layers: the transport layer outside is the "
+            "pipe (stdio for a local server, Streamable HTTP for a remote one), and the data layer inside is the "
+            "messages, JSON-RPC 2.0, the same on either pipe. "
+            "3 Servers give context: tools the model calls, resources the app reads, prompts the user picks. "
+            "A server can be local, like a filesystem server, or remote, like Sentry. "
+            "4 The host merges every server's tools into one list for the model, routes each call to the right "
+            "client and adds the result to the conversation. MCP moves context; the app decides how to use it.")
 
-# zoom: data layer (inside)
-BY, BH = 572, 284
-d.group(HX, BY, 552, BH, "Inside: the data layer")
-for i, t in enumerate(["_meta on each request|version + caps, no session", "server/discover|what the server supports",
-                       "elicitation/create|ask the user, then retry", "subscriptions/listen|list_changed notices"]):
-    d.card(HX + 20 + (i % 2) * 262, BY + 60 + (i // 2) * 104, t, "plan", w=250, h=84)
+d.group(L, T1, W, H1, "Host: the AI app", 1)
+d.card(L + 30, T1 + 64, "Model + conversation|Claude Code, VS Code …", "plan", w=492, h=72)
+d.sub(L + 16, T1 + 164, W - 32, 220, "One MCP client per server")
+for i in range(3):
+    d.card(L + 40 + i * 164, T1 + 216, f"Client {i + 1}", "coding", w=144, h=60)
+d.note(L + W / 2, T1 + 318, "each client talks to one server")
+d.note(L + W / 2, T1 + 346, "and keeps its own connection")
 
-# zoom: transport layer (outside)
-TX = 624
-d.group(TX, BY, 552, BH, "Outside: the transport layer")
-d.card(TX + 20, BY + 60, "stdio|client starts the server", "data", w=250, h=84)
-d.card(TX + 282, BY + 60, "Streamable HTTP|POST, JSON or SSE", "data", w=250, h=84)
-d.note(TX + 145, BY + 176, "local, usually one client")
-d.note(TX + 407, BY + 176, "remote, many clients")
-d.note(TX + 276, BY + 236, "remote auth: tokens or headers, OAuth recommended")
+d.group(R, T1, W, H1, "One connection, two layers", 2)
+d.sub(R + 16, T1 + 64, W - 32, 176, "Outside: transport, the pipe")
+d.card(R + 46, T1 + 112, "Inside: data layer, the messages|JSON-RPC 2.0", "data", w=460, h=96)
+d.card(R + 30, T1 + 264, "stdio|local server", "data", w=238, h=72)
+d.card(R + 284, T1 + 264, "Streamable HTTP|remote server", "data", w=238, h=72)
+d.note(R + W / 2, T1 + 380, "same messages on either pipe")
 
-# client <-> server arrows last, so they sit on top of the groups they cross
-for y0, *_ in PIPES:
-    d.arrow(f"M{HX + 336} {y0 + 49}H{SX + 100}", label="requests", at=(CX + 120, y0 + 54))
-    d.arrow(f"M{SX + 100} {y0 + 109}H{HX + 336}", label="results", at=(CX + CW - 120, y0 + 114))
+d.group(R, T2, W, H2, "Servers: give context", 3)
+col(R, T2, [("Tools|the model calls them", "coding"), ("Resources|the app reads them", "data"),
+            ("Prompts|the user picks them", "write")])
+d.note(R + W / 2, T2 + 354, "local (a filesystem) or remote (Sentry)")
 
-d.note(600, 892, "MCP 2026-07-28 · MCP runs between each client and its server; the host coordinates the clients")
+d.group(L, T2, W, H2, "Host: uses the results", 4)
+col(L, T2, [("Merge every tool|one list for the model", "plan"), ("Route each call|to the right client", "plan"),
+            ("Add the result|to the conversation", "data")])
+d.note(L + W / 2, T2 + 354, "MCP moves context; the app decides the rest")
+
+d.arrow(f"M{L + W} {T1 + 246}H{R - 2}", label="requests", at=(600, T1 + 234))
+d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="same messages", at=(R + W / 2 + 80, T1 + H1 + 21))
+d.arrow(f"M{R} {T2 + 182}H{L + W + 2}", label="results", at=(600, T2 + 170))
+
+d.note(600, 888, "MCP protocol version 2026-07-28, the current one")
 
 d.save(Path(__file__).with_name("diagram.svg"))

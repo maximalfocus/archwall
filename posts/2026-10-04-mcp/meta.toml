@@ -3,6 +3,62 @@ title_en = "MCP: how AI apps plug into tools and data"
 date = "2026-10-04"
 tags = ["protocol", "agents", "tools", "client-server"]
 figure = "diagram.svg"
-alt_zh = "MCP 架构：宿主为每个服务端开一个客户端；每条客户端到服务端的连接分两层，外层是传输层（本地 stdio，远程 Streamable HTTP），内层是数据层（JSON-RPC 消息，双向）；服务端提供工具、资源、提示词"
-alt_en = "MCP architecture: the host makes one client per server; each client-server connection has two layers, the transport outside (stdio locally, Streamable HTTP remotely) and the data layer inside (JSON-RPC messages both ways); servers offer tools, resources and prompts"
+alt_zh = "MCP 总览：1 宿主就是 AI 应用（如 Claude Code、VS Code），管着模型和对话，每个服务端配一个 MCP 客户端；2 每条连接分两层，外层传输层是管子（本地 stdio，远程 Streamable HTTP），内层数据层是消息（JSON-RPC 2.0），换管子消息不变；3 服务端提供上下文：模型调用的工具、应用读取的资源、用户选用的提示词，可在本地（文件系统）或远程（Sentry）；4 宿主把所有工具合成一张表给模型，把每次调用转给对应客户端，再把结果放进对话"
+alt_en = "MCP overview: 1 the host is the AI app (such as Claude Code or VS Code); it keeps the model and the conversation and makes one MCP client per server; 2 each connection has two layers, the transport outside is the pipe (stdio locally, Streamable HTTP remotely) and the data layer inside is the messages (JSON-RPC 2.0), the same on either pipe; 3 servers give context: tools the model calls, resources the app reads, prompts the user picks, local (a filesystem) or remote (Sentry); 4 the host merges every tool into one list for the model, routes each call to the right client and adds the result to the conversation"
 source = "https://modelcontextprotocol.io/docs/learn/architecture"
+
+[[figures]]
+file = "participants.svg"
+alt_zh = "参与者：1 宿主：每个服务端开一个客户端、保存对话历史、工具运行前问用户、合并所有客户端的上下文，用户同意后数据才给服务端；2 每个客户端一条专用连接：客户端 1 连本地文件系统，客户端 2 连本地数据库，客户端 3 和 4 都连远程 Sentry；3 服务端在本地（stdio，一般一个客户端）或远程（Streamable HTTP，一般多个客户端）；4 服务端之间有墙：只拿需要的上下文，看不到别的服务端，跨服务端的事由宿主管，完整对话留在宿主"
+alt_en = "Participants: 1 the host makes one client per server, keeps the conversation history, asks the user before a tool runs and merges context from all clients, and the user agrees before their data goes to any server; 2 each client keeps a dedicated connection: client 1 to a local filesystem, client 2 to a local database, clients 3 and 4 both to remote Sentry; 3 a server is local (stdio, usually one client) or remote (Streamable HTTP, usually many); 4 walls between servers: each gets only the context it needs, none sees into another, the host controls anything across servers and keeps the full conversation"
+caption_zh = "谁参与：宿主管全局，每个服务端一个客户端，服务端彼此隔开"
+caption_en = "Who takes part: the host runs things, one client per server, servers kept apart"
+
+[[figures]]
+file = "layers.svg"
+alt_zh = "两层：1 数据层定义说什么：发现（版本和能力）、服务端功能（工具、资源、提示词）、客户端功能（问用户）、辅助功能（变更通知、进度）；2 写成 JSON-RPC 2.0 消息：客户端发请求和通知，服务端对每个请求回结果或错误，也发通知，服务端从不发请求，通知不用回复；3 传输层定义怎么送：建立连接、切分消息、授权，走 stdio 或 Streamable HTTP；4 数据层在内、传输层在外，换管子消息不变"
+alt_en = "Two layers: 1 the data layer defines what is said: discovery (versions and capabilities), server features (tools, resources, prompts), client features (asking the user), utilities (change notices, progress); 2 written as JSON-RPC 2.0 messages: the client sends requests and notifications, the server sends a result or error for each request and notifications, servers never send requests, notifications get no reply; 3 the transport layer defines how they travel: connection setup, message framing, authorization, over stdio or Streamable HTTP; 4 the data layer sits inside the transport layer: swap the pipe and the messages stay the same"
+caption_zh = "两层：数据层是说什么，传输层是怎么送"
+caption_en = "Two layers: the data layer is what is said, the transport layer is how it travels"
+
+[[figures]]
+file = "request.svg"
+alt_zh = "一个请求：1 每个请求都带协议版本（如 2026-07-28）、客户端能力，最好也带客户端名字，所以服务端不记会话；2 发现（可选）：server/discover 返回支持的版本、能力和服务端名字，每个服务端都必须支持，版本不对时错误里列出它支持的版本；3 tools/list 返回每个工具的名字、标题、说明和输入格式，回复带缓存提示，文档例子里是 5 分钟；4 tools/call 带工具名和参数，返回文本、图片等内容，宿主交给模型"
+alt_en = "One request: 1 every request carries the protocol version (e.g. 2026-07-28) and the client's capabilities, and should carry the client's name, so the server keeps no session; 2 discover, optional: server/discover returns supported versions, capabilities and the server's name, every server must answer it, and a wrong version gets an error listing the good ones; 3 tools/list returns each tool's name, title, description and input schema, with a cache hint of 5 minutes in the docs' example; 4 tools/call with the tool name and arguments returns text, images or other content, which the host hands to the model"
+caption_zh = "一个请求：每次都自带版本和能力，先发现，再列出，再调用"
+caption_en = "One request: each one carries its version and capabilities; discover, list, then call"
+
+[[figures]]
+file = "primitives.svg"
+alt_zh = "服务端提供什么：1 工具，模型决定：做事的函数，如文件操作、API 调用、数据库查询，用 tools/list 和 tools/call，工具运行前宿主问用户，人要能拒绝；2 资源，应用决定：给上下文的数据，如文件内容、记录、API 返回，每个有 URI，用 resources/list 和 resources/read；3 提示词，用户决定：可复用的模板，如少样本示例，常显示为斜杠命令或菜单，用 prompts/list 和 prompts/get；4 文档里的例子：一个数据库服务端同时提供查询工具、表结构资源、示例提示词；可选扩展（如 Tasks）需双方都开启"
+alt_en = "What servers offer: 1 tools, the model decides: functions that act, such as file operations, API calls, database queries, via tools/list and tools/call; the host asks the user before a tool runs and a person should be able to say no; 2 resources, the app decides: data for context, such as file contents, records, API replies, each with a URI, via resources/list and resources/read; 3 prompts, the user decides: reusable templates such as few-shot examples, often shown as slash commands or menus, via prompts/list and prompts/get; 4 the docs' example: one database server offers a query tool, a schema resource and a few-shot prompt; optional extensions such as Tasks need both sides to opt in"
+caption_zh = "服务端提供三样：工具归模型，资源归应用，提示词归用户"
+caption_en = "Three things servers offer: tools for the model, resources for the app, prompts for the user"
+
+[[figures]]
+file = "ask.svg"
+alt_zh = "服务端需要用户时：1 客户端在能力里声明能问用户（elicitation），发出 tools/call（请求 1），只有 tools/call、resources/read、prompts/get 能被反问；2 服务端回复“需要输入”，里面带 elicitation/create，还可带 requestState（服务端自己的备注），服务端不发请求，中间什么也不存；3 客户端问用户：表单模式填名字、选项，URL 模式用于密码和密钥，把用户带到网页，用户接受、拒绝或取消；4 客户端重发（请求 2），参数不变加上答案，requestState 原样带回，拿到最终结果，服务端也可以再问；采样和根目录走同一条路，但在 2026-07-28 已弃用"
+alt_en = "When the server needs the user: 1 the client declares elicitation in its capabilities and sends tools/call as request 1; only tools/call, resources/read and prompts/get can be asked back; 2 the server answers 'input required' with elicitation/create inside and optional requestState, its own notes; it sends no request and stores nothing in between; 3 the client asks the user: form mode for names and choices, URL mode for passwords and keys, which sends the user to a web page; the user accepts, declines or cancels; 4 the client tries again as request 2 with the same parameters plus the answers and requestState unchanged, and gets the final result, or is asked again; sampling and roots use the same path but are deprecated in 2026-07-28"
+caption_zh = "问用户：服务端不发请求，只回“需要输入”，客户端问完重发"
+caption_en = "Asking the user: the server sends no request, it answers 'input required' and the client retries"
+
+[[figures]]
+file = "updates.svg"
+alt_zh = "获知变化：1 客户端用 subscriptions/listen 打开长连接，选想听的：工具列表变了、提示词列表变了、资源列表变了、某个资源更新了，不订阅就不发；2 服务端确认会发哪些，不支持的去掉，列表变化只来自声明过的服务端，连接保持打开；3 通知到达，如 tools/list_changed、resources/updated，每条带上这条流的编号，尽力送达，客户端也要轮询；4 客户端刷新，再调 tools/list，新工具给模型，流断了就重新 listen；进度通知走各自请求的回复，不走这条流"
+alt_en = "Hearing about changes: 1 the client opens a long-lived stream with subscriptions/listen and picks what to hear: tool list changed, prompt list changed, resource list changed, one resource updated; nothing comes unless asked; 2 the server confirms what it will send, leaves out what it can't do, sends list changes only if it declared them, and keeps the stream open; 3 notices such as tools/list_changed and resources/updated arrive, each tagged with the stream's id; best effort, so clients poll as well; 4 the client refreshes with tools/list and the new tools reach the model; if the stream is lost the client sends listen again; progress notices travel on the reply of their own request"
+caption_zh = "获知变化：主动订阅，服务端确认，有变就推，客户端再刷新"
+caption_en = "Hearing about changes: subscribe, the server confirms, notices arrive, the client refreshes"
+
+[[figures]]
+file = "transports.svg"
+alt_zh = "传输：1 stdio，本地服务端：客户端把服务端当子进程启动，通过 stdin 和 stdout 每行一条 JSON 消息，停止时关闭 stdin、等待、再强制结束，日志写 stderr，密钥从环境变量取，一般一个客户端；2 Streamable HTTP，远程服务端：一个端点如 /mcp，每条消息一个 HTTP POST，回一个 JSON 对象或 SSE 流，一般多个客户端；3 HTTP 安全：检查 Origin 防 DNS 重绑定，本地只绑 127.0.0.1，请求头复制方法、名字、版本，和正文对不上就拒绝，登录可选，用 OAuth；4 各种传输都一样：同样的 JSON-RPC 消息，没有会话，都能取消（stdio 发通知，HTTP 关流），自定义传输也要保持同样格式；旧的 HTTP+SSE 传输已弃用"
+alt_en = "Transports: 1 stdio for a local server: the client starts the server as a child process, they talk over stdin and stdout with one JSON message per line, and to stop the client closes stdin, waits, then forces it; logs go to stderr, keys come from the environment, usually one client; 2 Streamable HTTP for a remote server: one endpoint such as /mcp, each message its own HTTP POST, the reply one JSON object or an SSE stream, usually many clients; 3 HTTP safety: check the Origin header against DNS rebinding, bind to 127.0.0.1 when local, headers copy the method, name and version and must match the body, sign-in optional with OAuth; 4 the same on every transport: the same JSON-RPC messages, no sessions, cancelling on both (a notice on stdio, closing the stream on HTTP), and custom transports keep the same format; the old HTTP+SSE transport is deprecated"
+caption_zh = "传输：本地走 stdio，远程走 Streamable HTTP，消息都一样"
+caption_en = "Transports: stdio for local, Streamable HTTP for remote, the same messages on both"
+
+[[figures]]
+file = "auth.svg"
+alt_zh = "登录远程服务端（可选，只用于 HTTP，stdio 从环境变量取密钥）：1 没有令牌：客户端调用服务端，收到 401 和元数据链接；2 找授权服务器：服务端的资源元数据写明它的授权服务器（可以是独立服务），授权服务器元数据给出地址；3 拿客户端 ID（预先注册或元数据 URL，旧式动态注册 DCR 已弃用），用户在浏览器同意，拿到只对这个服务端有效的令牌；4 用令牌：每个 HTTP 请求带 Authorization: Bearer，服务端检查令牌是发给自己的，从不转交令牌，权限不够回 403，客户端再申请；基于 OAuth 2.1"
+alt_en = "Signing in to a remote server (optional, HTTP only; stdio takes keys from the environment): 1 no token yet: the client calls the server and gets 401 with a link to its metadata; 2 find the auth server: the server's resource metadata names its auth server, which can be a separate service, and the auth server's metadata gives its addresses; 3 get a client ID (pre-registered or a metadata URL; old-style DCR registration is deprecated), the user approves in the browser, and the client gets a token for this server only; 4 use the token: Authorization: Bearer on every HTTP request, the server checks it was issued for it and never passes tokens on, and if more access is needed it answers 403 and the client asks for more; based on OAuth 2.1"
+caption_zh = "登录（可选）：找到授权服务器，用户同意，令牌只给这个服务端用"
+caption_en = "Signing in (optional): find the auth server, the user approves, the token works for this server only"
