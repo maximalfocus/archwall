@@ -60,7 +60,7 @@ d.group(L, T1, W, H1, "In the browser", 1)
 col(L, T1, [("Panel builds its query|with time range and variables", "coding"),
             ("Request queue|5 at a time, 1000 with HTTP/2", "plan"),
             ("Send to the server|POST /api/ds/query", "coding")], gap=20)
-notes(L, T1, H1, "Explore and alert rules use", "the same path")
+notes(L, T1, H1, "Explore in the browser sends", "the same call")
 
 d.group(R, T1, W, H1, "On the server", 2)
 col(R, T1, [("Check the caller|signed in, may query data sources", "review"),

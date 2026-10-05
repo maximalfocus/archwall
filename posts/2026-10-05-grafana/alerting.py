@@ -52,14 +52,13 @@ d = Diagram("Grafana: alert rules",
             "3 State of each alert: Normal, Pending, Alerting, then Recovering on the way back; No data and Error are "
             "handled as each rule says; history goes to annotations by default, or Loki or Prometheus. "
             "4 Hand-off: firing alerts go to the built-in Alertmanager, one per organisation, or to an external "
-            "Alertmanager, or both. Rules kept inside Prometheus, Loki or Mimir are checked there; Grafana only "
-            "shows and edits them.")
+            "Alertmanager, or both. Rules kept inside Prometheus, Loki or Mimir are checked there, not in Grafana.")
 
 d.group(L, T1, W, H1, "An alert rule", 1)
 col(L, T1, [("Queries + condition|e.g. CPU above 90%", "plan"),
             ("How often, how long|e.g. every 1 min, holds 5 min", "plan"),
             ("Labels and notes|who it is for, what to do", "data")], arrows=False)
-notes(L, T1, H1, "rules kept in Prometheus or Loki are", "checked there; Grafana only shows them")
+notes(L, T1, H1, "rules kept in Prometheus or Loki are", "checked there, not in Grafana")
 
 d.group(R, T1, W, H1, "The scheduler", 2)
 col(R, T1, [("Ticks every 10 s|runs the rules that are due", "plan"),

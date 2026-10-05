@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Grafana: alert rules</title>
-<desc id="d">1 An alert rule: queries and a condition (for example CPU above 90 percent), how often to check and how long it must hold, and labels and notes that say who it is for. 2 The scheduler ticks every 10 seconds and runs rules that are due (every minute by default) through the same query engine as panels. Recording rules, on by default, save a result as a new metric. 3 State of each alert: Normal, Pending, Alerting, then Recovering on the way back; No data and Error are handled as each rule says; history goes to annotations by default, or Loki or Prometheus. 4 Hand-off: firing alerts go to the built-in Alertmanager, one per organisation, or to an external Alertmanager, or both. Rules kept inside Prometheus, Loki or Mimir are checked there; Grafana only shows and edits them.</desc>
+<desc id="d">1 An alert rule: queries and a condition (for example CPU above 90 percent), how often to check and how long it must hold, and labels and notes that say who it is for. 2 The scheduler ticks every 10 seconds and runs rules that are due (every minute by default) through the same query engine as panels. Recording rules, on by default, save a result as a new metric. 3 State of each alert: Normal, Pending, Alerting, then Recovering on the way back; No data and Error are handled as each rule says; history goes to annotations by default, or Loki or Prometheus. 4 Hand-off: firing alerts go to the built-in Alertmanager, one per organisation, or to an external Alertmanager, or both. Rules kept inside Prometheus, Loki or Mimir are checked there, not in Grafana.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -42,7 +42,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="303.0" class="ag" text-anchor="middle" >Labels and notes</text>
 <text x="303.0" y="327.0" class="ag" text-anchor="middle" >who it is for, what to do</text>
 <text x="300.0" y="384" class="lb" text-anchor="middle" >rules kept in Prometheus or Loki are</text>
-<text x="300.0" y="410" class="lb" text-anchor="middle" >checked there; Grafana only shows them</text>
+<text x="300.0" y="410" class="lb" text-anchor="middle" >checked there, not in Grafana</text>
 <rect x="624" y="16" width="552" height="416" rx="12" class="grp"/>
 <circle cx="802.25" cy="43" r="14" class="num"/>
 <text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>

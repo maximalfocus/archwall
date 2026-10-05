@@ -43,8 +43,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="295.0" class="ag" text-anchor="middle" >Send to the server</text>
 <text x="303.0" y="319.0" class="ag" text-anchor="middle" >POST /api/ds/query</text>
 <path d="M300.0 244V262" class="flow"/>
-<text x="300.0" y="384" class="lb" text-anchor="middle" >Explore and alert rules use</text>
-<text x="300.0" y="410" class="lb" text-anchor="middle" >the same path</text>
+<text x="300.0" y="384" class="lb" text-anchor="middle" >Explore in the browser sends</text>
+<text x="300.0" y="410" class="lb" text-anchor="middle" >the same call</text>
 <rect x="624" y="16" width="552" height="416" rx="12" class="grp"/>
 <circle cx="802.25" cy="43" r="14" class="num"/>
 <text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>
