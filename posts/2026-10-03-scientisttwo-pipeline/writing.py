@@ -1,4 +1,4 @@
-"""ScientistTwo stage 4: write, review, rebut.  Drawn from section 3.5, Figure 7 and appendix A.2 of
+"""ScientistTwo stages 4–5: write, review, rebut.  Drawn from section 3.5, Figure 7 and appendix A.2 of
 the paper (arXiv:2609.19644v1, 17 Sep 2026, read 2026-10-05); the overview figure on
 https://scientist-two.github.io/ names the enhancer "Draft Enhancer", section 3.5 "Paper Enhancer".
 Run: python3 writing.py
@@ -48,7 +48,7 @@ def drop(x, label, back=False, up=False):
     a, b = (T2, T1 + H1 + 2) if up else (T1 + H1, T2 - 2)
     d.arrow(f"M{x} {a}V{b}", back=back, label=label, at=(x + 16 + len(label) * 4.6, T1 + H1 + 26))
 
-d = Diagram("ScientistTwo stage 4: write, review, rebut",
+d = Diagram("ScientistTwo stages 4–5: write, review, rebut",
             "1 Draft: an Initial Drafter, built on PaperOrchestra, turns the best idea, its results and the "
             "ablations into a full paper in ICLR 2025 format. 2 Review: a Peer Reviewer, ScholarPeer, lists "
             "strengths, weaknesses and questions and gives a score from 1 to 10; 8 or more goes on to the "

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
-<title id="t">ScientistTwo stage 5: meta-review</title>
+<title id="t">ScientistTwo stage 6: meta-review</title>
 <desc id="d">1 Meta-review: a Meta-Reviewer reads the paper and its review and decides accept or refine. Accept ends the run with the final paper and its code. 2 Revise the idea: on refine, a Full-Set Engineer changes the idea itself, guided by the meta-review. 3 Compare: a Result Comparison agent checks the new results against the old; if they are not better, the change is thrown away and the previous paper ships. 4 Redo: if better, the ablation, the draft and the review run again and the new paper returns to the meta-reviewer. In the paper's setting this happens at most once.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>

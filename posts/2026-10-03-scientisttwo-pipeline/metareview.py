@@ -1,4 +1,4 @@
-"""ScientistTwo stage 5: meta-review, the last gate.  Drawn from section 3.6, Figure 7 and appendix
+"""ScientistTwo stage 6: meta-review, the last gate.  Drawn from section 3.6, Figure 7 and appendix
 A.2 of the paper (arXiv:2609.19644v1, 17 Sep 2026, read 2026-10-05).
 Run: python3 metareview.py
 
@@ -47,7 +47,7 @@ def drop(x, label, back=False, up=False):
     a, b = (T2, T1 + H1 + 2) if up else (T1 + H1, T2 - 2)
     d.arrow(f"M{x} {a}V{b}", back=back, label=label, at=(x + 16 + len(label) * 4.6, T1 + H1 + 26))
 
-d = Diagram("ScientistTwo stage 5: meta-review",
+d = Diagram("ScientistTwo stage 6: meta-review",
             "1 Meta-review: a Meta-Reviewer reads the paper and its review and decides accept or refine. "
             "Accept ends the run with the final paper and its code. 2 Revise the idea: on refine, a Full-Set "
             "Engineer changes the idea itself, guided by the meta-review. 3 Compare: a Result Comparison agent "

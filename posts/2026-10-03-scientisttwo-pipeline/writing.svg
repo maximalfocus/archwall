@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
-<title id="t">ScientistTwo stage 4: write, review, rebut</title>
+<title id="t">ScientistTwo stages 4–5: write, review, rebut</title>
 <desc id="d">1 Draft: an Initial Drafter, built on PaperOrchestra, turns the best idea, its results and the ablations into a full paper in ICLR 2025 format. 2 Review: a Peer Reviewer, ScholarPeer, lists strengths, weaknesses and questions and gives a score from 1 to 10; 8 or more goes on to the meta-review. 3 Rebuttal: below 8, a Rebuttal Planner picks new experiments that answer the reviewer, and a Rebuttal Coder runs them. 4 Revise: a Draft Enhancer puts the new results, tables and figures into the paper and sends it back to the reviewer, for at most 2 review rounds.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>

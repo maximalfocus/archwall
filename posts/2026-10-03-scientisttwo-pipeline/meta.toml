@@ -44,15 +44,15 @@ caption_en = "Ablation: take it apart, see what each part adds, cut what doesn't
 
 [[figures]]
 file = "writing.svg"
-alt_zh = "第 4 步写和审：1 初稿代理基于 PaperOrchestra，把点子、结果、消融写成 ICLR 2025 格式的完整论文；2 同行审稿人 ScholarPeer 打 1–10 分，8 分以上进元评审；3 低于 8 分，反驳规划员挑新实验，反驳编码代理去跑；4 草稿增强器把新结果、表格、图更新进论文，再交回审稿人，最多 2 轮"
-alt_en = "Stage 4, write and review: 1 an initial drafter built on PaperOrchestra writes a full paper in ICLR 2025 format from the idea, results and ablations; 2 a peer reviewer, ScholarPeer, scores 1 to 10, and 8 or more goes to meta-review; 3 below 8, a rebuttal planner picks new experiments and a rebuttal coder runs them; 4 a draft enhancer updates the text, tables and figures and sends it back, at most 2 review rounds"
+alt_zh = "第 4–5 步写和审：1 初稿代理基于 PaperOrchestra，把点子、结果、消融写成 ICLR 2025 格式的完整论文；2 同行审稿人 ScholarPeer 打 1–10 分，8 分以上进元评审；3 低于 8 分，反驳规划员挑新实验，反驳编码代理去跑；4 草稿增强器把新结果、表格、图更新进论文，再交回审稿人，最多 2 轮"
+alt_en = "Stages 4–5, write and review: 1 an initial drafter built on PaperOrchestra writes a full paper in ICLR 2025 format from the idea, results and ablations; 2 a peer reviewer, ScholarPeer, scores 1 to 10, and 8 or more goes to meta-review; 3 below 8, a rebuttal planner picks new experiments and a rebuttal coder runs them; 4 a draft enhancer updates the text, tables and figures and sends it back, at most 2 review rounds"
 caption_zh = "写和审：回应审稿意见靠补实验，不靠改措辞"
 caption_en = "Write and review: answer the reviewer with new experiments, not new wording"
 
 [[figures]]
 file = "metareview.svg"
-alt_zh = "第 5 步元评审：1 元评审员看论文和审稿意见，够格就接收，输出最终论文和代码；2 不够格，全量工程师按意见改点子本身；3 结果比较员看新结果是否更好，不更好就丢掉改动，交出之前那篇；4 更好就重做消融、写作和评审，新论文回到元评审，论文设置里最多一次"
-alt_en = "Stage 5, meta-review: 1 a meta-reviewer reads the paper and review; accept gives the final paper and code; 2 on refine, a full-set engineer changes the idea itself; 3 a result comparison checks the new results, and if not better the change is dropped and the previous paper ships; 4 if better, ablation, draft and review run again and the new paper returns, at most once in the paper's setting"
+alt_zh = "第 6 步元评审：1 元评审员看论文和审稿意见，够格就接收，输出最终论文和代码；2 不够格，全量工程师按意见改点子本身；3 结果比较员看新结果是否更好，不更好就丢掉改动，交出之前那篇；4 更好就重做消融、写作和评审，新论文回到元评审，论文设置里最多一次"
+alt_en = "Stage 6, meta-review: 1 a meta-reviewer reads the paper and review; accept gives the final paper and code; 2 on refine, a full-set engineer changes the idea itself; 3 a result comparison checks the new results, and if not better the change is dropped and the previous paper ships; 4 if better, ablation, draft and review run again and the new paper returns, at most once in the paper's setting"
 caption_zh = "元评审：最后一道关，改了不更好就交上一版"
 caption_en = "Meta-review: the last gate; a fix that isn't better is dropped"
 

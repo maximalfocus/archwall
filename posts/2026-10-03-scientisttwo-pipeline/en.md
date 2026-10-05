@@ -20,11 +20,11 @@ Results from every idea feed an evolver that writes better ones. A selector pick
 
 ![](ablation.svg)
 
-**4. Writing and review.** An AI reviewer scores the draft. Below 8 out of 10, a rebuttal agent runs new experiments and the draft is updated.
+**4–5. Writing and review.** An AI reviewer scores the draft. Below 8 out of 10, a rebuttal agent runs new experiments and the draft is updated.
 
 ![](writing.svg)
 
-**5. Meta-review.** A last reviewer accepts the paper or sends the idea back for one more fix. If the fix doesn't beat the old results, it is dropped and the previous paper ships.
+**6. Meta-review.** A last reviewer accepts the paper or sends the idea back for one more fix. If the fix doesn't beat the old results, it is dropped and the previous paper ships.
 
 ![](metareview.svg)
 
