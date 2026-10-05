@@ -1,12 +1,25 @@
-ADT is how you write ABAP outside SAP GUI. Until now that meant Eclipse; from 2026 VS Code too. SAP got there without writing the client twice.
+ADT is SAP's toolset for writing ABAP outside SAP GUI. Until now that meant Eclipse. From 2026 it comes to VS Code too, and SAP didn't write the client twice.
 
-1. **IDEs**: Eclipse runs the ADT plug-ins. VS Code runs an ADT extension that talks LSP to the **ADT Language Server**: the Eclipse plug-ins without their UI, the trick the VS Code Java extension uses with Eclipse JDT. In VS Code editing is file-based; the objects still live on the server.
-2. **Client layer**: the part with no UI. It wraps the ADT REST APIs, holds the debugger, test runner, ATC and tracing, and keeps old server releases working. 2.9 million lines; SAP puts the possible reuse at 60%.
-3. **ABAP server**: reached over RFC by default, or over HTTP through the `adt` ICF service. One API for every release from SAP NetWeaver 7.3 EHP1 SP04, so VS Code reaches the same systems Eclipse does.
-4. **Scripts**: the REST APIs are plain HTTP, so a script can call them with no IDE at all: fetch a CSRF token, then read source, run checks, activate. sapcli (Python) and abap-adt-api (TypeScript) do this. They call the REST APIs directly, with no client layer.
+The IDE shows the UI. Under it, a client layer with no UI wraps the ADT REST APIs and holds the debugger, test runner, ATC and tracing. It reaches the ABAP server over RFC or HTTP, one API for every release from 7.3 EHP1 SP04.
+
+**Why it was hard.** Users kept asking for VS Code. But each new IDE needed its own client layer, 2.9 million lines, and 88 editors in the SAP BTP ABAP environment alone.
+
+![](problem.svg)
+
+**Fix 1: reuse the client.** In 2018 SAP tried a new language server in TypeScript and dropped it: two codebases to maintain. The VS Code Java extension wraps Eclipse's Java tools in a language server. SAP did the same: VS Code talks LSP to the ADT Language Server, the Eclipse plug-ins without their UI. SAP puts the possible reuse at 60%.
+
+![](reuse.svg)
+
+**Fix 2: server-driven editors.** An editor used to need a Java UI on the client and ABAP on the server. Since 2020, starting with number range objects, every new object type is described in ABAP on the server. The client draws it with a form-based or source-based renderer. A new IDE needs two editors, not 88.
 
 ![](editors.svg)
 
-The second problem was editors. Each object type used to need its own: UI in Java on the client, persistence in ABAP on the server. The SAP BTP ABAP environment alone has 88. Today all new object types are server-driven; number range objects came first, in 2020. The server describes the UI in ABAP, and the client draws it with one of two renderers, form-based or source-based. A new IDE now needs two editors, not 88.
+**Files.** In VS Code you edit objects as files, since AI tools work best on files. The objects stay on the server, behind a virtual workspace that not every AI tool supports yet.
 
-The first VS Code release targets RAP UI services, at least 12 object types.
+![](files.svg)
+
+**First release.** It targets RAP UI services in ABAP Cloud: around 12+ object types. Dynpro isn't planned. Other work still needs Eclipse, and VS Code catches up release by release.
+
+![](release.svg)
+
+![](timeline.svg)

@@ -1,7 +1,12 @@
-"""ADT object type editors before and after server-driven development (2020), redrawn from the
-"server_driven_before_after" figure in SAP's post:
+"""Fix 2: server-driven editors.  ADT object type editors before and after 2020, redrawn from the
+"server_driven_before_after" figure and section "Solution 2: Making Object Types Reusable via Server-Driven
+Development and Client-Based Renderers" of SAP's "Behind the Design" (Thomas Alexander Ritter, 2025-11-04,
+read 2026-10-05):
 https://community.sap.com/t5/technology-blog-posts-by-sap/behind-the-design-how-we-transformed-the-abap-development-tools/ba-p/14258121
-Run: python3 editors.py"""
+Run: python3 editors.py
+
+Two columns, read left to right: before 2020 (one editor per object type) -> today (two renderers).
+Each column: client on top, server below the dashed line."""
 import sys
 from pathlib import Path
 

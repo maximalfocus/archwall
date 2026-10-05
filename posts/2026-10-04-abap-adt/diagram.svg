@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
-<title id="t">ABAP Development Tools architecture</title>
-<desc id="d">1 The IDEs: Eclipse runs the ADT plug-ins; VS Code talks over the Language Server Protocol to the ADT Language Server, which wraps the same Eclipse plug-ins without their UI. 2 The client layer has no UI: wrappers for the ADT REST APIs and client-side tools such as the debugger, test runner, ATC and tracing, about 2.9 million lines shared by both IDEs. 3 It talks to the ABAP server over RFC or HTTP. The server offers the ADT REST APIs, one API for every release from SAP NetWeaver 7.3 EHP1 SP04, and the object types: form-based and source-based. 4 Scripts such as sapcli or abap-adt-api skip the client layer and call the REST APIs over HTTP themselves.</desc>
+<title id="t">ABAP Development Tools overview</title>
+<desc id="d">1 The IDEs: Eclipse runs the ADT plug-ins with their UI; VS Code, from 2026, runs an ADT extension where objects are edited as files. 2 The shared client layer has no UI: wrappers for the ADT REST APIs, debugger, test runner, ATC, tracing and support for old releases, 2.9 million lines. Eclipse runs it directly; VS Code reaches it over LSP through the ADT Language Server. 3 It talks to the ABAP server over RFC or HTTP: one API for every release from SAP NetWeaver 7.3 EHP1 SP04. Objects are stored on the server, which also describes each new editor's UI in ABAP. 4 The client draws those UIs with two renderers, form-based and source-based.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -25,82 +25,90 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 .numt{font-size:16px;font-weight:700;fill:#ffffff}
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
-<rect x="24" y="16" width="880" height="288" rx="12" class="grp"/>
-<circle cx="373.0" cy="43" r="14" class="num"/>
-<text x="373.0" y="49" class="numt" text-anchor="middle" >1</text>
-<text x="393.0" y="52" class="gt" text-anchor="start" >IDEs: the UI</text>
-<rect x="40" y="64" width="300" height="224" rx="9" class="sub"/>
-<text x="190.0" y="92" class="st" text-anchor="middle" >Eclipse</text>
-<rect x="70" y="132" width="240" height="72" rx="8" class="human"/>
-<text x="193.0" y="163.0" class="ag" text-anchor="middle" >ADT plug-ins</text>
-<text x="193.0" y="187.0" class="ag" text-anchor="middle" >UI part</text>
-<text x="56" y="262" class="lb" text-anchor="start" >16 years of features</text>
-<rect x="356" y="64" width="532" height="224" rx="9" class="sub"/>
-<text x="622.0" y="92" class="st" text-anchor="middle" >VS Code, from 2026</text>
-<rect x="372" y="132" width="200" height="72" rx="8" class="human"/>
-<text x="475.0" y="163.0" class="ag" text-anchor="middle" >ADT extension</text>
-<text x="475.0" y="187.0" class="ag" text-anchor="middle" >file-based</text>
-<rect x="660" y="132" width="212" height="72" rx="8" class="agent"/>
-<rect x="660" y="142" width="5" height="52" rx="2" fill="#2f6fd6"/>
-<text x="769.0" y="163.0" class="ag" text-anchor="middle" >ADT Language</text>
-<text x="769.0" y="187.0" class="ag" text-anchor="middle" >Server</text>
-<path d="M572 168H656" class="flow"/>
-<text x="614" y="158" class="al" text-anchor="middle" >LSP</text>
-<text x="372" y="262" class="lb" text-anchor="start" >Eclipse plug-ins without their UI</text>
-<rect x="24" y="336" width="880" height="264" rx="12" class="grp"/>
-<circle cx="271.75" cy="363" r="14" class="num"/>
-<text x="271.75" y="369" class="numt" text-anchor="middle" >2</text>
-<text x="291.75" y="372" class="gt" text-anchor="start" >Client layer: no UI, shared</text>
-<rect x="48" y="396" width="200" height="72" rx="8" class="agent"/>
-<rect x="48" y="406" width="5" height="52" rx="2" fill="#2f6fd6"/>
-<text x="151.0" y="427.0" class="ag" text-anchor="middle" >REST API</text>
-<text x="151.0" y="451.0" class="ag" text-anchor="middle" >wrappers</text>
-<rect x="260" y="396" width="200" height="72" rx="8" class="agent"/>
-<rect x="260" y="406" width="5" height="52" rx="2" fill="#2f6fd6"/>
-<text x="363.0" y="427.0" class="ag" text-anchor="middle" >Debugger</text>
-<text x="363.0" y="451.0" class="ag" text-anchor="middle" >test runner</text>
-<rect x="472" y="396" width="200" height="72" rx="8" class="agent"/>
-<rect x="472" y="406" width="5" height="52" rx="2" fill="#2f6fd6"/>
-<text x="575.0" y="427.0" class="ag" text-anchor="middle" >ATC</text>
-<text x="575.0" y="451.0" class="ag" text-anchor="middle" >tracing</text>
-<rect x="684" y="396" width="200" height="72" rx="8" class="agent"/>
-<rect x="684" y="406" width="5" height="52" rx="2" fill="#2f6fd6"/>
-<text x="787.0" y="427.0" class="ag" text-anchor="middle" >Old releases</text>
-<text x="787.0" y="451.0" class="ag" text-anchor="middle" >kept working</text>
-<text x="464" y="522" class="lb" text-anchor="middle" >2.9 million lines, written once for Eclipse</text>
-<text x="464" y="550" class="lb" text-anchor="middle" >VS Code reuses it through the Language Server</text>
-<path d="M190 204V332" class="flow"/>
-<text x="190" y="320" class="al" text-anchor="middle" >runs</text>
-<path d="M766 204V332" class="flow"/>
-<text x="766" y="320" class="al" text-anchor="middle" >wraps</text>
-<rect x="928" y="16" width="248" height="584" rx="12" class="grp"/>
-<circle cx="994.75" cy="43" r="14" class="num"/>
-<text x="994.75" y="49" class="numt" text-anchor="middle" >4</text>
-<text x="1014.75" y="52" class="gt" text-anchor="start" >Scripts</text>
-<rect x="948" y="132" width="208" height="72" rx="8" class="agent"/>
-<rect x="948" y="142" width="5" height="52" rx="2" fill="#2f6fd6"/>
-<text x="1055.0" y="163.0" class="ag" text-anchor="middle" >Your own</text>
-<text x="1055.0" y="187.0" class="ag" text-anchor="middle" >scripts</text>
-<text x="1032" y="300" class="lb" text-anchor="middle" >sapcli, abap-adt-api</text>
-<text x="1032" y="328" class="lb" text-anchor="middle" >no client layer</text>
-<rect x="24" y="632" width="1152" height="252" rx="12" class="grp"/>
-<circle cx="515.75" cy="659" r="14" class="num"/>
-<text x="515.75" y="665" class="numt" text-anchor="middle" >3</text>
-<text x="535.75" y="668" class="gt" text-anchor="start" >ABAP server</text>
-<rect x="340" y="688" width="520" height="72" rx="8" class="agent"/>
-<rect x="340" y="698" width="5" height="52" rx="2" fill="#2f9e6e"/>
-<text x="603.0" y="719.0" class="ag" text-anchor="middle" >ADT REST APIs</text>
-<text x="603.0" y="743.0" class="ag" text-anchor="middle" >one API for 7.3 EHP1 SP04 on</text>
-<rect x="272" y="796" width="300" height="56" rx="8" class="agent"/>
-<rect x="272" y="806" width="5" height="36" rx="2" fill="#8a5cc7"/>
-<text x="425.0" y="831.0" class="ag" text-anchor="middle" >Form-based object types</text>
-<rect x="628" y="796" width="300" height="56" rx="8" class="agent"/>
-<rect x="628" y="806" width="5" height="36" rx="2" fill="#8a5cc7"/>
-<text x="781.0" y="831.0" class="ag" text-anchor="middle" >Source-based object types</text>
-<path d="M422 760V792" class="flow"/>
-<path d="M778 760V792" class="flow"/>
-<path d="M148 468V724H336" class="flow"/>
-<text x="148" y="618" class="al" text-anchor="middle" >RFC or HTTP</text>
-<path d="M1140 204V724H864" class="flow"/>
-<text x="1140" y="618" class="al" text-anchor="middle" >HTTP</text>
+<rect x="24" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="236.0" cy="43" r="14" class="num"/>
+<text x="236.0" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="256.0" y="52" class="gt" text-anchor="start" >The IDEs</text>
+<rect x="40" y="64" width="252" height="184" rx="9" class="sub"/>
+<text x="166.0" y="92" class="st" text-anchor="middle" >Eclipse</text>
+<rect x="56" y="120" width="220" height="72" rx="8" class="human"/>
+<text x="169.0" y="151.0" class="ag" text-anchor="middle" >ADT plug-ins</text>
+<text x="169.0" y="175.0" class="ag" text-anchor="middle" >with their UI</text>
+<rect x="308" y="64" width="252" height="184" rx="9" class="sub"/>
+<text x="434.0" y="92" class="st" text-anchor="middle" >VS Code, from 2026</text>
+<rect x="324" y="120" width="220" height="72" rx="8" class="human"/>
+<text x="437.0" y="151.0" class="ag" text-anchor="middle" >ADT extension</text>
+<text x="437.0" y="175.0" class="ag" text-anchor="middle" >edits files</text>
+<text x="300.0" y="354" class="lb" text-anchor="middle" >Before: SAP GUI and Eclipse only</text>
+<text x="300.0" y="382" class="lb" text-anchor="middle" >VS Code is the first new one</text>
+<rect x="624" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="707.75" cy="43" r="14" class="num"/>
+<text x="707.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="727.75" y="52" class="gt" text-anchor="start" >Client layer: no UI, shared</text>
+<rect x="654" y="76" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="86" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="103.0" class="ag" text-anchor="middle" >ADT Language Server</text>
+<text x="903.0" y="127.0" class="ag" text-anchor="middle" >wraps it for VS Code</text>
+<rect x="654" y="170" width="236" height="64" rx="8" class="agent"/>
+<rect x="654" y="180" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="775.0" y="197.0" class="ag" text-anchor="middle" >REST API</text>
+<text x="775.0" y="221.0" class="ag" text-anchor="middle" >wrappers</text>
+<rect x="910" y="170" width="236" height="64" rx="8" class="agent"/>
+<rect x="910" y="180" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="1031.0" y="197.0" class="ag" text-anchor="middle" >Debugger</text>
+<text x="1031.0" y="221.0" class="ag" text-anchor="middle" >test runner</text>
+<rect x="654" y="258" width="236" height="64" rx="8" class="agent"/>
+<rect x="654" y="268" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="775.0" y="285.0" class="ag" text-anchor="middle" >ATC</text>
+<text x="775.0" y="309.0" class="ag" text-anchor="middle" >tracing</text>
+<rect x="910" y="258" width="236" height="64" rx="8" class="agent"/>
+<rect x="910" y="268" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="1031.0" y="285.0" class="ag" text-anchor="middle" >Old releases</text>
+<text x="1031.0" y="309.0" class="ag" text-anchor="middle" >still work</text>
+<text x="900.0" y="382" class="lb" text-anchor="middle" >2.9 million lines, one codebase</text>
+<path d="M520 156H650" class="flow"/>
+<text x="586" y="146" class="al" text-anchor="middle" >LSP</text>
+<path d="M142 192V290H622" class="flow"/>
+<text x="590" y="280" class="al" text-anchor="middle" >runs</text>
+<rect x="624" y="452" width="552" height="432" rx="12" class="grp"/>
+<circle cx="815.75" cy="479" r="14" class="num"/>
+<text x="815.75" y="485" class="numt" text-anchor="middle" >3</text>
+<text x="835.75" y="488" class="gt" text-anchor="start" >ABAP server</text>
+<rect x="654" y="522" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="532" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="553.0" class="ag" text-anchor="middle" >ADT REST APIs</text>
+<text x="903.0" y="577.0" class="ag" text-anchor="middle" >one API since 7.3 EHP1 SP04</text>
+<rect x="654" y="624" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="634" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="651.0" class="ag" text-anchor="middle" >ABAP objects</text>
+<text x="903.0" y="675.0" class="ag" text-anchor="middle" >stored here</text>
+<rect x="654" y="718" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="728" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="745.0" class="ag" text-anchor="middle" >Editor UI models</text>
+<text x="903.0" y="769.0" class="ag" text-anchor="middle" >written in ABAP</text>
+<text x="900.0" y="844" class="lb" text-anchor="middle" >VS Code reaches the releases Eclipse does</text>
+<path d="M900.0 420V450" class="flow"/>
+<text x="970.0" y="442" class="al" text-anchor="middle" >RFC or HTTP</text>
+<rect x="24" y="452" width="552" height="432" rx="12" class="grp"/>
+<circle cx="141.5" cy="479" r="14" class="num"/>
+<text x="141.5" y="485" class="numt" text-anchor="middle" >4</text>
+<text x="161.5" y="488" class="gt" text-anchor="start" >Editors: two renderers</text>
+<rect x="54" y="548" width="230" height="72" rx="8" class="agent"/>
+<rect x="54" y="558" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="172.0" y="579.0" class="ag" text-anchor="middle" >Form-based</text>
+<text x="172.0" y="603.0" class="ag" text-anchor="middle" >renderer</text>
+<rect x="316" y="548" width="230" height="72" rx="8" class="agent"/>
+<rect x="316" y="558" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="434.0" y="579.0" class="ag" text-anchor="middle" >Source-based</text>
+<text x="434.0" y="603.0" class="ag" text-anchor="middle" >renderer</text>
+<rect x="54" y="688" width="492" height="64" rx="8" class="human"/>
+<text x="303.0" y="715.0" class="ag" text-anchor="middle" >Every new object type</text>
+<text x="303.0" y="739.0" class="ag" text-anchor="middle" >drawn by one of the two</text>
+<path d="M169 620V684" class="flow"/>
+<path d="M431 620V684" class="flow"/>
+<text x="300.0" y="844" class="lb" text-anchor="middle" >A new IDE needs 2 editors, not 88</text>
+<path d="M624 742H578" class="flow"/>
+<text x="600" y="730" class="al" text-anchor="middle" >UI model</text>
+<path d="M300.0 452V422" class="flow"/>
+<text x="390.0" y="442" class="al" text-anchor="middle" >shown in the IDE</text>
 </svg>

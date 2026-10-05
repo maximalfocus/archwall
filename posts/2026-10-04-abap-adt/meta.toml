@@ -3,13 +3,48 @@ title_en = "ABAP Development Tools: one client codebase for Eclipse and VS Code"
 date = "2026-10-04"
 tags = ["ide", "sap", "abap", "language-server", "client-server", "rest"]
 figure = "diagram.svg"
-alt_zh = "ADT 架构：1 IDE 界面层，Eclipse 直接运行 ADT 插件，VS Code 通过 LSP 连 ADT Language Server，它包着去掉界面的 Eclipse 插件；2 共用的无界面客户端层：REST API 封装、调试器、测试运行、ATC、跟踪、兼容旧版本，约 290 万行；3 经 RFC 或 HTTP 连 ABAP 服务器：ADT REST API，7.3 EHP1 SP04 起所有版本同一套 API，以及表单类和源码类对象类型；4 脚本（如 sapcli、abap-adt-api）不经客户端层，直接用 HTTP 调 REST API"
-alt_en = "ADT architecture: 1 the IDE UIs, Eclipse runs the ADT plug-ins and VS Code talks LSP to the ADT Language Server, which wraps the Eclipse plug-ins without their UI; 2 the shared client layer with no UI: REST API wrappers, debugger, test runner, ATC, tracing, support for old releases, about 2.9 million lines; 3 over RFC or HTTP to the ABAP server: the ADT REST APIs, one API for every release from 7.3 EHP1 SP04, and form-based and source-based object types; 4 scripts such as sapcli or abap-adt-api skip the client layer and call the REST APIs over HTTP"
+alt_zh = "ADT 总览：1 IDE：Eclipse 运行带界面的 ADT 插件，VS Code（2026 年起）运行 ADT 扩展，按文件编辑；2 没有界面的共用客户端层：REST API 封装、调试器和测试运行、ATC 和跟踪、兼容旧版本，共 290 万行，Eclipse 直接运行，VS Code 经 LSP 通过 ADT Language Server 使用；3 经 RFC 或 HTTP 连 ABAP 服务器：ADT REST API 自 7.3 EHP1 SP04 起同一套，ABAP 对象存在服务器上，编辑器界面模型用 ABAP 写；4 客户端两个渲染器（表单类、源码类）画出每种新对象类型，接新 IDE 只要 2 个编辑器，不是 88 个"
+alt_en = "ADT overview: 1 the IDEs: Eclipse runs the ADT plug-ins with their UI, VS Code from 2026 runs an ADT extension that edits files; 2 the shared client layer with no UI: REST API wrappers, debugger and test runner, ATC and tracing, support for old releases, 2.9 million lines, run directly by Eclipse and reached by VS Code over LSP through the ADT Language Server; 3 over RFC or HTTP to the ABAP server: one ADT REST API since 7.3 EHP1 SP04, ABAP objects stored there, editor UI models written in ABAP; 4 two renderers on the client, form-based and source-based, draw every new object type, so a new IDE needs 2 editors, not 88"
 source = "https://community.sap.com/t5/technology-blog-posts-by-sap/behind-the-design-how-we-transformed-the-abap-development-tools/ba-p/14258121"
 
 [[figures]]
+file = "problem.svg"
+alt_zh = "难在哪：1 用户要更多 IDE：2023、2025 年调查 VS Code 呼声最高，也有人要 JetBrains、Neovim、Zed，官方 ABAP 工具只有 SAP GUI 和 Eclipse；2 难点一，客户端层：连 ABAP 服务器、封装 REST API，调试器、测试运行、ATC、跟踪，290 万行没有界面，每个新 IDE 都要一套；3 难点二，编辑器：SAP BTP 上的 ABAP 有 88 个（2025），CAP 只要 1 个（CDS），Java 只要类、接口、枚举；4 两个办法：把客户端层复用为语言服务器，编辑器改由服务器驱动、两个渲染器"
+alt_en = "Why it was hard: 1 users want more IDEs: surveys in 2023 and 2025 put VS Code first, others asked for JetBrains, Neovim and Zed, official ABAP tools covered only SAP GUI and Eclipse; 2 problem one, the client layer: talks to the ABAP server and wraps the REST APIs, debugger, test runner, ATC, tracing, 2.9 million lines with no UI, needed by every new IDE; 3 problem two, the editors: 88 for ABAP on SAP BTP in 2025, against 1 for CAP (CDS) and class, interface and enum for Java; 4 the two fixes: reuse the client layer as a language server, and server-driven editors with two renderers"
+caption_zh = "难点：每个新 IDE 都要 290 万行客户端代码和 88 个编辑器"
+caption_en = "The problem: each new IDE needed 2.9 million lines of client code and 88 editors"
+
+[[figures]]
+file = "reuse.svg"
+alt_zh = "办法一：1 2018 年试过用 TypeScript 写语言服务器：要从头重写客户端、维护两套代码，能用但不长久，放弃；2 思路来自 VS Code 的 Java 扩展：它包着 Eclipse JDT，等于 Eclipse 跑在 VS Code 里；3 SAP 照做：VS Code 的 ADT 扩展经 LSP 连 ADT Language Server（去掉界面的 Eclipse 插件），再经 RFC 或 HTTP 连 7.3 EHP1 SP04 起的 ABAP 服务器；4 好处：Eclipse 和 VS Code 一套代码，服务器版本和 Eclipse 一样，290 万行有 60% 可能复用；还要做的：把每个工具迁到 LSP，在 VS Code 里做界面"
+alt_en = "Fix 1: 1 in 2018 SAP tried a TypeScript language server: rebuild the client from scratch and keep two codebases, it worked but not for the long run, dropped; 2 the idea came from the VS Code Java extension, which wraps Eclipse JDT, so Eclipse runs inside VS Code; 3 SAP did the same: the VS Code ADT extension talks LSP to the ADT Language Server, the Eclipse plug-ins without their UI, which talks RFC or HTTP to ABAP servers from 7.3 EHP1 SP04; 4 what it buys: one codebase for Eclipse and VS Code, the same server releases as Eclipse, 60% potential reuse of 2.9 million lines; still to do: move each tool to LSP and build its UI in VS Code"
+caption_zh = "办法一：像 VS Code 的 Java 扩展那样，把 Eclipse 插件包成语言服务器"
+caption_en = "Fix 1: wrap the Eclipse plug-ins in a language server, as the VS Code Java extension does"
+
+[[figures]]
 file = "editors.svg"
-alt_zh = "编辑器的变化：2020 年以前每种对象类型一个编辑器，客户端用 Java 写界面，服务器用 ABAP 写持久化，仅 BTP ABAP 环境就要 88 个；现在新类型都是服务器驱动，2020 年从号码范围对象开始，界面用 ABAP 在服务器上描述，客户端只要表单类和源码类两个渲染器"
-alt_en = "Editors: before 2020 every object type had its own editor, the UI in Java on the client and persistence in ABAP on the server, 88 editors on BTP ABAP alone; today all new object types are server-driven, the first was number range objects in 2020, the UI is described in ABAP on the server and the client needs just two renderers, form-based and source-based"
-caption_zh = "新对象类型由服务器描述界面，客户端只要两个渲染器"
-caption_en = "The server describes new object types; the client needs two renderers"
+alt_zh = "办法二：2020 年以前每种对象类型一个编辑器，客户端用 Java 写界面，服务器存对象，仅 BTP ABAP 环境就要 88 个，扩展不了；现在新类型都由服务器驱动，第一个是号码范围对象，客户端只要表单类和源码类两个渲染器，接新 IDE 只要 2 个编辑器"
+alt_en = "Fix 2: before 2020 every object type had its own editor, a Java UI on the client over the object type on the server, 88 on BTP ABAP alone, which doesn't scale; today all new object types are server-driven, the first was number range objects, and the client needs just two renderers, form-based and source-based, so a new IDE needs 2 editors"
+caption_zh = "办法二：新对象类型由服务器描述界面，客户端只要两个渲染器"
+caption_en = "Fix 2: the server describes new object types; the client needs two renderers"
+
+[[figures]]
+file = "files.svg"
+alt_zh = "VS Code 里的文件：1 每种对象类型都按 ABAP 文件格式当文件编辑，因为 VS Code 为文件而生，AI 工具最擅长处理文件；2 这些文件在一个虚拟文件系统里，SAP 用虚拟工作区技术实现；3 ABAP 对象本身还在服务器上；4 VS Code 的 AI 扩展处理这些文件，Joule for developers 计划加入，不是所有 AI 工具都支持虚拟工作区"
+alt_en = "Files in VS Code: 1 every object type is edited as a file in the ABAP file formats, because VS Code is built for files and AI tools work best on files; 2 the files live in a virtual file system SAP built with the virtual workspace technology; 3 the ABAP objects stay on the server; 4 AI extensions for VS Code work on the files and Joule for developers is planned, though not every AI tool supports the virtual workspace yet"
+caption_zh = "在 VS Code 里按文件编辑，对象还在服务器上"
+caption_en = "Edit files in VS Code; the objects stay on the server"
+
+[[figures]]
+file = "release.svg"
+alt_zh = "VS Code 第一版：1 方向是 ABAP Cloud 的全部开发流程，不打算支持 Dynpro、Web Dynpro；2 第一版面向早期用户，主攻 RAP UI 服务：从零做一个 RAP UI 服务，大约 12 种以上对象类型，开发、测试、调试，含类和接口编辑器；3 其他很多工作还要切回 Eclipse 版 ADT；4 每个客户端版本把更多工具迁到 LSP，计划支持和 Eclipse 一样的服务器版本，最低 7.3 EHP1 SP04，Eclipse 版用了 16 年才到今天的范围"
+alt_en = "First VS Code release: 1 the aim is every ABAP Cloud developer flow, Dynpro and Web Dynpro are not planned; 2 the first release, for early adopters, targets RAP UI services: build one from scratch, around 12+ object types, develop, test, debug, class and interface editors included; 3 many other tasks still switch to ADT for Eclipse; 4 each client release moves more tools to LSP, the plan is the same server releases as Eclipse down to 7.3 EHP1 SP04, and Eclipse took 16 years to reach today's scope"
+caption_zh = "第一版只做 RAP UI 服务，之后一版一版追上 Eclipse"
+caption_en = "The first release covers RAP UI services; later releases catch up with Eclipse"
+
+[[figures]]
+file = "timeline.svg"
+alt_zh = "时间线：1 改造：2018 年试过 TypeScript 语言服务器后放弃；2018 年 BTP ABAP 环境只支持 Eclipse，编辑器跟不上；2020 年号码范围对象成为第一个服务器驱动的类型，此后新类型都这样做；2 走向 VS Code：2023、2025 年调查 VS Code 呼声最高；2025 年 SAP 宣布开发 VS Code 版 ADT；2026 年计划发布，六年改造换来"
+alt_en = "Timeline: 1 the rework: 2018 a TypeScript language server tried and dropped; 2018 BTP ABAP with Eclipse only, editors don't scale; 2020 number range objects, the first server-driven type, and every new type since; 2 toward VS Code: 2023 and 2025 surveys put VS Code first; 2025 SAP announces work on ADT for VS Code; 2026 the planned release, made possible by six years of rework"
+caption_zh = "从 2018 年到 2026 年"
+caption_en = "From 2018 to 2026"

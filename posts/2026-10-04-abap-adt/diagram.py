@@ -1,66 +1,71 @@
-"""ABAP Development Tools (ADT) architecture, drawn from SAP's own posts by the ADT product owner:
-https://community.sap.com/t5/technology-blog-posts-by-sap/behind-the-design-how-we-transformed-the-abap-development-tools/ba-p/14258121
-(2025-11-04) and SAP Help "ABAP Development Tools - HTTP Access" (RFC by default, HTTP via the adt ICF
-service).  Scripts that call the REST APIs directly: jfilak/sapcli (326475f9, "ADT operates over HTTP")
-and marcellourbani/abap-adt-api (b73a0a1e, "access to the ADT REST interface").  Run: python3 diagram.py
+"""ABAP Development Tools (ADT) overview, drawn from SAP's posts by the ADT product owner
+(Thomas Alexander Ritter, 2025-11-04, read 2026-10-05):
+"Behind the Design" https://community.sap.com/t5/technology-blog-posts-by-sap/behind-the-design-how-we-transformed-the-abap-development-tools/ba-p/14258121
+and the post it links, "ABAP Development Tools for VS Code: Everything You Need to Know"
+https://community.sap.com/t5/technology-blog-posts-by-sap/abap-development-tools-for-vs-code-everything-you-need-to-know/ba-p/14258129
+Run: python3 diagram.py
 
-Three layers top to bottom: the IDE UIs, the shared client layer with no UI, the ABAP server.
-On the right, scripts skip both client layers and call the server's REST APIs over HTTP."""
+Snake order: 1 the IDEs (top left) -> 2 the shared client layer with no UI (top right) ->
+3 the ABAP server (bottom right) -> 4 the two editor renderers (bottom left), back up to the IDEs."""
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from archdiagram import Diagram  # noqa: E402
 
-d = Diagram("ABAP Development Tools architecture",
-            "1 The IDEs: Eclipse runs the ADT plug-ins; VS Code talks over the Language Server Protocol "
-            "to the ADT Language Server, which wraps the same Eclipse plug-ins without their UI. "
-            "2 The client layer has no UI: wrappers for the ADT REST APIs and client-side tools such as the "
-            "debugger, test runner, ATC and tracing, about 2.9 million lines shared by both IDEs. "
-            "3 It talks to the ABAP server over RFC or HTTP. The server offers the ADT REST APIs, one API for "
-            "every release from SAP NetWeaver 7.3 EHP1 SP04, and the object types: form-based and source-based. "
-            "4 Scripts such as sapcli or abap-adt-api skip the client layer and call the REST APIs over HTTP "
-            "themselves.")
+d = Diagram("ABAP Development Tools overview",
+            "1 The IDEs: Eclipse runs the ADT plug-ins with their UI; VS Code, from 2026, runs an ADT extension "
+            "where objects are edited as files. "
+            "2 The shared client layer has no UI: wrappers for the ADT REST APIs, debugger, test runner, ATC, "
+            "tracing and support for old releases, 2.9 million lines. Eclipse runs it directly; VS Code reaches it "
+            "over LSP through the ADT Language Server. "
+            "3 It talks to the ABAP server over RFC or HTTP: one API for every release from SAP NetWeaver "
+            "7.3 EHP1 SP04. Objects are stored on the server, which also describes each new editor's UI in ABAP. "
+            "4 The client draws those UIs with two renderers, form-based and source-based.")
 
-LW = 880  # width of the IDE and client-layer groups; scripts take the column on the right
+L, R, W = 24, 624, 552
+T1, H1 = 16, 404
+T2, H2 = 452, 432
 
 # 1 IDEs
-d.group(24, 16, LW, 288, "IDEs: the UI", 1)
-d.sub(40, 64, 300, 224, "Eclipse")
-d.card(70, 132, "ADT plug-ins|UI part", w=240, h=72, cls="human")
-d.note(56, 262, "16 years of features", "start")
-d.sub(356, 64, 532, 224, "VS Code, from 2026")
-d.card(372, 132, "ADT extension|file-based", w=200, h=72, cls="human")
-d.card(660, 132, "ADT Language|Server", "coding", w=212, h=72)
-d.arrow("M572 168H656", label="LSP", at=(614, 158))
-d.note(372, 262, "Eclipse plug-ins without their UI", "start")
+d.group(L, T1, W, H1, "The IDEs", 1)
+d.sub(L + 16, 64, 252, 184, "Eclipse")
+d.card(L + 32, 120, "ADT plug-ins|with their UI", w=220, h=72, cls="human")
+d.sub(L + 284, 64, 252, 184, "VS Code, from 2026")
+d.card(L + 300, 120, "ADT extension|edits files", w=220, h=72, cls="human")
+d.note(L + W / 2, 354, "Before: SAP GUI and Eclipse only")
+d.note(L + W / 2, 382, "VS Code is the first new one")
 
-# 2 client layer, shared
-d.group(24, 336, LW, 264, "Client layer: no UI, shared", 2)
-for i, t in enumerate(["REST API|wrappers", "Debugger|test runner", "ATC|tracing", "Old releases|kept working"]):
-    d.card(48 + i * 212, 396, t, "coding", w=200, h=72)
-d.note(464, 522, "2.9 million lines, written once for Eclipse")
-d.note(464, 550, "VS Code reuses it through the Language Server")
+# 2 shared client layer
+d.group(R, T1, W, H1, "Client layer: no UI, shared", 2)
+d.card(R + 30, 76, "ADT Language Server|wraps it for VS Code", "coding", w=492, h=64)
+for i, t in enumerate(["REST API|wrappers", "Debugger|test runner", "ATC|tracing", "Old releases|still work"]):
+    d.card(R + 30 + (i % 2) * 256, 170 + (i // 2) * 88, t, "coding", w=236, h=64)
+d.note(R + W / 2, 382, "2.9 million lines, one codebase")
 
-# arrows into the client layer, drawn after the group so they sit on top
-d.arrow("M190 204V332", label="runs", at=(190, 320))
-d.arrow("M766 204V332", label="wraps", at=(766, 320))
-
-# 4 scripts: no IDE, no client layer
-SX, SW = 928, 248
-d.group(SX, 16, SW, 584, "Scripts", 4)
-d.card(SX + 20, 132, "Your own|scripts", "coding", w=SW - 40, h=72)
-d.note(SX + 104, 300, "sapcli, abap-adt-api")
-d.note(SX + 104, 328, "no client layer")
+# 1 -> 2
+d.arrow("M520 156H650", label="LSP", at=(586, 146))
+d.arrow("M142 192V290H622", label="runs", at=(590, 280))
 
 # 3 ABAP server
-d.group(24, 632, 1152, 252, "ABAP server", 3)
-d.card(340, 688, "ADT REST APIs|one API for 7.3 EHP1 SP04 on", "plan", w=520, h=72)
-d.card(272, 796, "Form-based object types", "write", w=300, h=56)
-d.card(628, 796, "Source-based object types", "write", w=300, h=56)
-d.arrow("M422 760V792")
-d.arrow("M778 760V792")
-d.arrow("M148 468V724H336", label="RFC or HTTP", at=(148, 618))
-d.arrow("M1140 204V724H864", label="HTTP", at=(1140, 618))
+d.group(R, T2, W, H2, "ABAP server", 3)
+d.card(R + 30, T2 + 70, "ADT REST APIs|one API since 7.3 EHP1 SP04", "plan", w=492, h=72)
+d.card(R + 30, T2 + 172, "ABAP objects|stored here", "data", w=492, h=64)
+d.card(R + 30, T2 + 266, "Editor UI models|written in ABAP", "write", w=492, h=64)
+d.note(R + W / 2, T2 + 392, "VS Code reaches the releases Eclipse does")
+
+d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="RFC or HTTP", at=(R + W / 2 + 70, T1 + H1 + 22))
+
+# 4 renderers
+d.group(L, T2, W, H2, "Editors: two renderers", 4)
+d.card(L + 30, T2 + 96, "Form-based|renderer", "coding", w=230, h=72)
+d.card(L + 292, T2 + 96, "Source-based|renderer", "coding", w=230, h=72)
+d.card(L + 30, T2 + 236, "Every new object type|drawn by one of the two", w=492, h=64, cls="human")
+d.arrow(f"M{L + 145} {T2 + 168}V{T2 + 232}")
+d.arrow(f"M{L + 407} {T2 + 168}V{T2 + 232}")
+d.note(L + W / 2, T2 + 392, "A new IDE needs 2 editors, not 88")
+
+d.arrow(f"M{R} {T2 + 290}H{L + W + 2}", label="UI model", at=(600, T2 + 278))
+d.arrow(f"M{L + W / 2} {T2}V{T1 + H1 + 2}", label="shown in the IDE", at=(L + W / 2 + 90, T1 + H1 + 22))
 
 d.save(Path(__file__).with_name("diagram.svg"))

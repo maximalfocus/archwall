@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Files in VS Code, objects on the server</title>
+<desc id="d">1 In VS Code every object type is edited as a file, in the ABAP file formats, because VS Code is built for source files and AI tools work best on files. 2 SAP implemented that file system with the virtual workspace technology. 3 The ABAP objects themselves stay on the server. 4 Any AI extension for VS Code can work on those files, though not every AI tool supports the virtual workspace yet. SAP plans to bring its Joule for developers features, such as predictive code completion, to VS Code.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="195.5" cy="43" r="14" class="num"/>
+<text x="195.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="215.5" y="52" class="gt" text-anchor="start" >You edit files</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >Every object type</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >as a file</text>
+<rect x="54" y="182" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="192" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="213.0" class="ag" text-anchor="middle" >ABAP file</text>
+<text x="303.0" y="237.0" class="ag" text-anchor="middle" >formats</text>
+<text x="300.0" y="354" class="lb" text-anchor="middle" >VS Code is built for files</text>
+<text x="300.0" y="382" class="lb" text-anchor="middle" >AI tools work best on files</text>
+<rect x="624" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="775.25" cy="43" r="14" class="num"/>
+<text x="775.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="795.25" y="52" class="gt" text-anchor="start" >Virtual workspace</text>
+<rect x="654" y="130" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="140" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="161.0" class="ag" text-anchor="middle" >Virtual</text>
+<text x="903.0" y="185.0" class="ag" text-anchor="middle" >file system</text>
+<text x="900.0" y="354" class="lb" text-anchor="middle" >SAP built it with the</text>
+<text x="900.0" y="382" class="lb" text-anchor="middle" >virtual workspace technology</text>
+<path d="M576 166H652" class="flow"/>
+<text x="600" y="154" class="al" text-anchor="middle" >lives in</text>
+<rect x="624" y="452" width="552" height="432" rx="12" class="grp"/>
+<circle cx="815.75" cy="479" r="14" class="num"/>
+<text x="815.75" y="485" class="numt" text-anchor="middle" >3</text>
+<text x="835.75" y="488" class="gt" text-anchor="start" >ABAP server</text>
+<rect x="654" y="582" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="592" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="613.0" class="ag" text-anchor="middle" >ABAP objects</text>
+<text x="903.0" y="637.0" class="ag" text-anchor="middle" >stay on the server</text>
+<path d="M1106 202V578" class="flow"/>
+<text x="1106" y="442" class="al" text-anchor="middle" >backed by</text>
+<rect x="24" y="452" width="552" height="432" rx="12" class="grp"/>
+<circle cx="236.0" cy="479" r="14" class="num"/>
+<text x="236.0" y="485" class="numt" text-anchor="middle" >4</text>
+<text x="256.0" y="488" class="gt" text-anchor="start" >AI tools</text>
+<rect x="54" y="522" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="532" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="553.0" class="ag" text-anchor="middle" >AI extensions</text>
+<text x="303.0" y="577.0" class="ag" text-anchor="middle" >for VS Code</text>
+<rect x="54" y="624" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="634" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="655.0" class="ag" text-anchor="middle" >Joule for developers</text>
+<text x="303.0" y="679.0" class="ag" text-anchor="middle" >planned</text>
+<text x="300.0" y="816" class="lb" text-anchor="middle" >Not every AI tool supports the</text>
+<text x="300.0" y="844" class="lb" text-anchor="middle" >virtual workspace yet</text>
+<path d="M300.0 452V422" class="flow"/>
+<text x="390.0" y="442" class="al" text-anchor="middle" >work on the files</text>
+</svg>

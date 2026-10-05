@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">First VS Code release</title>
+<desc id="d">1 The focus is the ABAP Cloud development model; the goal is every developer flow in it. Classic models such as Dynpro and Web Dynpro are not planned. 2 The first release, for early adopters, targets RAP UI services: around 12+ object types, enough to build one from scratch, with class and interface editors and the basic develop, test and debug flow. 3 For many other tasks developers still switch to ADT for Eclipse. 4 VS Code catches up one client release at a time: each tool moves to LSP and gets a VS Code UI. The Eclipse plug-in took 16 years to reach its scope. The plan is to support the same server releases as Eclipse, down to SAP NetWeaver 7.3 EHP1 SP04.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="175.25" cy="43" r="14" class="num"/>
+<text x="175.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="195.25" y="52" class="gt" text-anchor="start" >Focus: ABAP Cloud</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >ABAP Cloud</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >every developer flow</text>
+<rect x="54" y="182" width="492" height="72" rx="8" class="agent"/>
+<text x="303.0" y="213.0" class="ag" text-anchor="middle" >Dynpro, Web Dynpro</text>
+<text x="303.0" y="237.0" class="ag" text-anchor="middle" >not planned</text>
+<g transform="translate(94 218)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
+<text x="300.0" y="354" class="lb" text-anchor="middle" >the goal, not the first release</text>
+<rect x="624" y="16" width="552" height="404" rx="12" class="grp"/>
+<circle cx="687.5" cy="43" r="14" class="num"/>
+<text x="687.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="707.5" y="52" class="gt" text-anchor="start" >First release: RAP UI services</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >Build a RAP UI service</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >from scratch</text>
+<rect x="654" y="182" width="236" height="72" rx="8" class="agent"/>
+<text x="775.0" y="213.0" class="ag" text-anchor="middle" >Around 12+</text>
+<text x="775.0" y="237.0" class="ag" text-anchor="middle" >object types</text>
+<rect x="910" y="182" width="236" height="72" rx="8" class="agent"/>
+<rect x="910" y="192" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="1031.0" y="213.0" class="ag" text-anchor="middle" >Develop, test</text>
+<text x="1031.0" y="237.0" class="ag" text-anchor="middle" >debug</text>
+<text x="900.0" y="354" class="lb" text-anchor="middle" >class and interface editors included</text>
+<text x="900.0" y="382" class="lb" text-anchor="middle" >for early adopters</text>
+<path d="M576 116H622" class="flow"/>
+<text x="600" y="104" class="al" text-anchor="middle" >starts with</text>
+<rect x="624" y="452" width="552" height="432" rx="12" class="grp"/>
+<circle cx="782.0" cy="479" r="14" class="num"/>
+<text x="782.0" y="485" class="numt" text-anchor="middle" >3</text>
+<text x="802.0" y="488" class="gt" text-anchor="start" >Still in Eclipse</text>
+<rect x="654" y="582" width="492" height="72" rx="8" class="human"/>
+<text x="903.0" y="613.0" class="ag" text-anchor="middle" >Many other tasks</text>
+<text x="903.0" y="637.0" class="ag" text-anchor="middle" >switch to ADT for Eclipse</text>
+<path d="M900.0 420V450" class="flow"/>
+<text x="984.0" y="442" class="al" text-anchor="middle" >everything else</text>
+<rect x="24" y="452" width="552" height="432" rx="12" class="grp"/>
+<circle cx="215.75" cy="479" r="14" class="num"/>
+<text x="215.75" y="485" class="numt" text-anchor="middle" >4</text>
+<text x="235.75" y="488" class="gt" text-anchor="start" >Catching up</text>
+<rect x="54" y="522" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="532" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="553.0" class="ag" text-anchor="middle" >Each client release</text>
+<text x="303.0" y="577.0" class="ag" text-anchor="middle" >moves more tools to LSP</text>
+<rect x="54" y="624" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="634" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="655.0" class="ag" text-anchor="middle" >Plan: same server releases</text>
+<text x="303.0" y="679.0" class="ag" text-anchor="middle" >down to 7.3 EHP1 SP04</text>
+<text x="300.0" y="816" class="lb" text-anchor="middle" >Eclipse took 16 years</text>
+<text x="300.0" y="844" class="lb" text-anchor="middle" >to reach today's scope</text>
+<path d="M624 618H578" class="flow"/>
+<text x="600" y="606" class="al" text-anchor="middle" >moves over</text>
+</svg>
