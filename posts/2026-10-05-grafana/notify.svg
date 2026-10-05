@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Grafana: notifications</title>
+<desc id="d">1 Route: notification policies are a tree that matches alert labels; alerts are grouped, by folder and alert name by default, and timing settings say how long to wait and how often to repeat. A rule can also name a contact point directly. 2 Hold back: silences mute matching alerts for a while; mute timings mute them at set times such as nights or weekends. 3 Contact points, 23 kinds: chat such as Slack, Teams, Discord and Telegram; on-call such as PagerDuty, Opsgenie and Grafana OnCall; email, webhook, Kafka, MQTT, SNS and more. 4 Extras: templates shape the message; screenshots are off by default and need the image renderer; several Grafana servers share silences and send each notification once.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="256.25" cy="43" r="14" class="num"/>
+<text x="256.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="276.25" y="52" class="gt" text-anchor="start" >Route</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >Notification policies</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >a tree that matches labels</text>
+<rect x="54" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="207.0" class="ag" text-anchor="middle" >Grouping</text>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >folder + alert name by default</text>
+<rect x="54" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="282" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="303.0" class="ag" text-anchor="middle" >Timing</text>
+<text x="303.0" y="327.0" class="ag" text-anchor="middle" >how long to wait, when to repeat</text>
+<text x="300.0" y="384" class="lb" text-anchor="middle" >shortcut: a rule can name</text>
+<text x="300.0" y="410" class="lb" text-anchor="middle" >a contact point directly</text>
+<rect x="624" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="829.25" cy="43" r="14" class="num"/>
+<text x="829.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="849.25" y="52" class="gt" text-anchor="start" >Hold back</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >Silences</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >mute matching alerts for a while</text>
+<rect x="654" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >Mute timings</text>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >e.g. nights or weekends</text>
+<rect x="624" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="728.0" cy="483" r="14" class="num"/>
+<text x="728.0" y="489" class="numt" text-anchor="middle" >3</text>
+<text x="748.0" y="492" class="gt" text-anchor="start" >Contact points: 23 kinds</text>
+<rect x="654" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="530" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="551.0" class="ag" text-anchor="middle" >Chat</text>
+<text x="903.0" y="575.0" class="ag" text-anchor="middle" >Slack · Teams · Discord · Telegram</text>
+<rect x="654" y="612" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="622" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="643.0" class="ag" text-anchor="middle" >On-call</text>
+<text x="903.0" y="667.0" class="ag" text-anchor="middle" >PagerDuty · Opsgenie · OnCall</text>
+<rect x="654" y="704" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="714" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="735.0" class="ag" text-anchor="middle" >Email · webhook</text>
+<text x="903.0" y="759.0" class="ag" text-anchor="middle" >Kafka · MQTT · SNS · more</text>
+<rect x="24" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="249.5" cy="483" r="14" class="num"/>
+<text x="249.5" y="489" class="numt" text-anchor="middle" >4</text>
+<text x="269.5" y="492" class="gt" text-anchor="start" >Extras</text>
+<rect x="54" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="530" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="551.0" class="ag" text-anchor="middle" >Templates</text>
+<text x="303.0" y="575.0" class="ag" text-anchor="middle" >shape the message text</text>
+<rect x="54" y="612" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="622" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="643.0" class="ag" text-anchor="middle" >Screenshots (off by default)</text>
+<text x="303.0" y="667.0" class="ag" text-anchor="middle" >need the image renderer</text>
+<rect x="54" y="704" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="714" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="303.0" y="735.0" class="ag" text-anchor="middle" >Several servers</text>
+<text x="303.0" y="759.0" class="ag" text-anchor="middle" >share silences, send once</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >alerts</text>
+<path d="M900.0 432V454" class="flow"/>
+<text x="973.8" y="453" class="al" text-anchor="middle" >notifications</text>
+</svg>

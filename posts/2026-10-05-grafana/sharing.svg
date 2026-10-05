@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Grafana: sharing outside the team</title>
+<desc id="d">1 A link: points to the live dashboard; the viewer must sign in; it can be shortened; dashboards can also be exported as JSON. 2 A snapshot: a copy of the data with queries and links removed; anyone with its key can view it; there is an option, shown by default, to publish it to snapshots.raintank.io. 3 A public dashboard: anyone with the link can view it without signing in; it runs only the saved queries, as Grafana and not as a user; time picker and annotations are optional; sharing only with named emails is Enterprise. 4 An image: a PNG of a panel or dashboard, made by the image renderer, a separate service that must be set up; scheduled PDF reports are Enterprise.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="249.5" cy="43" r="14" class="num"/>
+<text x="249.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="269.5" y="52" class="gt" text-anchor="start" >A link</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >Link to the live dashboard</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >viewer must sign in</text>
+<rect x="54" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="207.0" class="ag" text-anchor="middle" >Short link</text>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >same view, shorter URL</text>
+<rect x="54" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="282" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="303.0" class="ag" text-anchor="middle" >Export</text>
+<text x="303.0" y="327.0" class="ag" text-anchor="middle" >the dashboard as JSON</text>
+<rect x="624" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="822.5" cy="43" r="14" class="num"/>
+<text x="822.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="842.5" y="52" class="gt" text-anchor="start" >A snapshot</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >Copy of the data</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >queries and links removed</text>
+<rect x="654" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >Anyone with the key</text>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >can view it</text>
+<rect x="654" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="282" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >Publish to raintank.io</text>
+<text x="903.0" y="327.0" class="ag" text-anchor="middle" >option shown by default</text>
+<rect x="624" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="768.5" cy="483" r="14" class="num"/>
+<text x="768.5" y="489" class="numt" text-anchor="middle" >3</text>
+<text x="788.5" y="492" class="gt" text-anchor="start" >A public dashboard</text>
+<rect x="654" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="530" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="551.0" class="ag" text-anchor="middle" >Anyone with the link</text>
+<text x="903.0" y="575.0" class="ag" text-anchor="middle" >no sign-in</text>
+<rect x="654" y="612" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="622" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="643.0" class="ag" text-anchor="middle" >Runs saved queries only</text>
+<text x="903.0" y="667.0" class="ag" text-anchor="middle" >as Grafana, not as a user</text>
+<rect x="654" y="704" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="714" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="735.0" class="ag" text-anchor="middle" >Time picker, annotations</text>
+<text x="903.0" y="759.0" class="ag" text-anchor="middle" >optional</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >share only with named emails: Enterprise</text>
+<rect x="24" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="236.0" cy="483" r="14" class="num"/>
+<text x="236.0" y="489" class="numt" text-anchor="middle" >4</text>
+<text x="256.0" y="492" class="gt" text-anchor="start" >An image</text>
+<rect x="54" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="530" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="551.0" class="ag" text-anchor="middle" >Image renderer</text>
+<text x="303.0" y="575.0" class="ag" text-anchor="middle" >separate service, must be set up</text>
+<rect x="54" y="616" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="626" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="647.0" class="ag" text-anchor="middle" >PNG</text>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >of a panel or a whole dashboard</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >scheduled PDF reports: Enterprise</text>
+<text x="600" y="886" class="lb" text-anchor="middle" >From most closed (1) to most open (3): only 3 needs no sign-in and no key</text>
+</svg>
