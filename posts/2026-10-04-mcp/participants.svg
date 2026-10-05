@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">MCP participants</title>
+<desc id="d">1 The host is the AI app. It makes the clients, one per server, keeps the conversation history, asks the user before any tool runs and merges context from all clients. 2 Each client keeps a dedicated connection to one server. In the docs' example, client 1 talks to a local filesystem server, client 2 to a local database server, and clients 3 and 4 both talk to the remote Sentry server. 3 A server is the program that serves context, wherever it runs: a local one uses stdio and usually serves one client; a remote one uses Streamable HTTP and usually serves many. 4 Servers get only the context they need, cannot see into other servers, and the host controls anything that crosses servers.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="161.75" cy="43" r="14" class="num"/>
+<text x="161.75" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="181.75" y="52" class="gt" text-anchor="start" >Host: runs the show</text>
+<rect x="54" y="80" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="176.0" y="115.0" class="ag" text-anchor="middle" >Makes the clients</text>
+<text x="176.0" y="139.0" class="ag" text-anchor="middle" >one per server</text>
+<rect x="308" y="80" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="90" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="430.0" y="115.0" class="ag" text-anchor="middle" >Keeps the history</text>
+<text x="430.0" y="139.0" class="ag" text-anchor="middle" >of the conversation</text>
+<rect x="54" y="176" width="238" height="80" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="60" rx="2" fill="#d64545"/>
+<text x="176.0" y="211.0" class="ag" text-anchor="middle" >Asks the user</text>
+<text x="176.0" y="235.0" class="ag" text-anchor="middle" >before a tool runs</text>
+<rect x="308" y="176" width="238" height="80" rx="8" class="agent"/>
+<rect x="308" y="186" width="5" height="60" rx="2" fill="#2f9e6e"/>
+<text x="430.0" y="211.0" class="ag" text-anchor="middle" >Merges context</text>
+<text x="430.0" y="235.0" class="ag" text-anchor="middle" >from all clients</text>
+<text x="300.0" y="316" class="lb" text-anchor="middle" >the user agrees before their data</text>
+<text x="300.0" y="344" class="lb" text-anchor="middle" >goes to any server</text>
+<rect x="624" y="16" width="552" height="412" rx="12" class="grp"/>
+<circle cx="734.75" cy="43" r="14" class="num"/>
+<text x="734.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="754.75" y="52" class="gt" text-anchor="start" >Clients: one per server</text>
+<rect x="654" y="88" width="150" height="56" rx="8" class="agent"/>
+<rect x="654" y="98" width="5" height="36" rx="2" fill="#2f6fd6"/>
+<text x="732.0" y="123.0" class="ag" text-anchor="middle" >Client 1</text>
+<rect x="654" y="154" width="150" height="56" rx="8" class="agent"/>
+<rect x="654" y="164" width="5" height="36" rx="2" fill="#2f6fd6"/>
+<text x="732.0" y="189.0" class="ag" text-anchor="middle" >Client 2</text>
+<rect x="654" y="220" width="150" height="56" rx="8" class="agent"/>
+<rect x="654" y="230" width="5" height="36" rx="2" fill="#2f6fd6"/>
+<text x="732.0" y="255.0" class="ag" text-anchor="middle" >Client 3</text>
+<rect x="654" y="286" width="150" height="56" rx="8" class="agent"/>
+<rect x="654" y="296" width="5" height="36" rx="2" fill="#2f6fd6"/>
+<text x="732.0" y="321.0" class="ag" text-anchor="middle" >Client 4</text>
+<rect x="954" y="88" width="192" height="56" rx="8" class="agent"/>
+<rect x="954" y="98" width="5" height="36" rx="2" fill="#2f6fd6"/>
+<text x="1053.0" y="111.0" class="ag" text-anchor="middle" >Server A</text>
+<text x="1053.0" y="135.0" class="ag" text-anchor="middle" >Filesystem</text>
+<rect x="954" y="154" width="192" height="56" rx="8" class="agent"/>
+<rect x="954" y="164" width="5" height="36" rx="2" fill="#2f6fd6"/>
+<text x="1053.0" y="177.0" class="ag" text-anchor="middle" >Server B</text>
+<text x="1053.0" y="201.0" class="ag" text-anchor="middle" >Database</text>
+<rect x="954" y="220" width="192" height="122" rx="8" class="agent"/>
+<rect x="954" y="230" width="5" height="102" rx="2" fill="#2f6fd6"/>
+<text x="1053.0" y="276.0" class="ag" text-anchor="middle" >Server C</text>
+<text x="1053.0" y="300.0" class="ag" text-anchor="middle" >Sentry</text>
+<path d="M804 116H952" class="flow"/>
+<path d="M804 182H952" class="flow"/>
+<path d="M804 248H952" class="flow"/>
+<path d="M804 314H952" class="flow"/>
+<text x="900.0" y="382" class="lb" text-anchor="middle" >each client keeps its own connection</text>
+<rect x="624" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="728.0" cy="487" r="14" class="num"/>
+<text x="728.0" y="493" class="numt" text-anchor="middle" >3</text>
+<text x="748.0" y="496" class="gt" text-anchor="start" >Servers: local or remote</text>
+<rect x="654" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="534" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="776.0" y="559.0" class="ag" text-anchor="middle" >Local server</text>
+<text x="776.0" y="583.0" class="ag" text-anchor="middle" >on this machine</text>
+<rect x="908" y="524" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="534" width="5" height="60" rx="2" fill="#2f6fd6"/>
+<text x="1030.0" y="559.0" class="ag" text-anchor="middle" >Remote server</text>
+<text x="1030.0" y="583.0" class="ag" text-anchor="middle" >on a platform</text>
+<rect x="654" y="656" width="238" height="80" rx="8" class="agent"/>
+<rect x="654" y="666" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="776.0" y="691.0" class="ag" text-anchor="middle" >stdio</text>
+<text x="776.0" y="715.0" class="ag" text-anchor="middle" >usually one client</text>
+<rect x="908" y="656" width="238" height="80" rx="8" class="agent"/>
+<rect x="908" y="666" width="5" height="60" rx="2" fill="#5b6675"/>
+<text x="1030.0" y="691.0" class="ag" text-anchor="middle" >Streamable HTTP</text>
+<text x="1030.0" y="715.0" class="ag" text-anchor="middle" >usually many</text>
+<path d="M773 604V654" class="flow"/>
+<path d="M1027 604V654" class="flow"/>
+<text x="900.0" y="786" class="lb" text-anchor="middle" >a server is the program that serves context,</text>
+<text x="900.0" y="814" class="lb" text-anchor="middle" >wherever it runs</text>
+<rect x="24" y="460" width="552" height="400" rx="12" class="grp"/>
+<circle cx="148.25" cy="487" r="14" class="num"/>
+<text x="148.25" y="493" class="numt" text-anchor="middle" >4</text>
+<text x="168.25" y="496" class="gt" text-anchor="start" >Walls between servers</text>
+<rect x="54" y="524" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="534" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="551.0" class="ag" text-anchor="middle" >Servers get only</text>
+<text x="303.0" y="575.0" class="ag" text-anchor="middle" >the context they need</text>
+<rect x="54" y="610" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="620" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="637.0" class="ag" text-anchor="middle" >No server sees</text>
+<text x="303.0" y="661.0" class="ag" text-anchor="middle" >into another server</text>
+<rect x="54" y="696" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="706" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="723.0" class="ag" text-anchor="middle" >The host controls</text>
+<text x="303.0" y="747.0" class="ag" text-anchor="middle" >anything across servers</text>
+<text x="300.0" y="814" class="lb" text-anchor="middle" >the full conversation stays in the host</text>
+<path d="M576 176H622" class="flow"/>
+<text x="600" y="164" class="al" text-anchor="middle" >creates</text>
+<path d="M900.0 428V458" class="flow"/>
+<text x="960.0" y="449" class="al" text-anchor="middle" >two kinds</text>
+<path d="M624 642H578" class="flow"/>
+<text x="600" y="630" class="al" text-anchor="middle" >kept apart</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Example from the docs: VS Code as the host, with a filesystem, a database and Sentry</text>
+</svg>
