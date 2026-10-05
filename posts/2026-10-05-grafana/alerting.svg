@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Grafana: alert rules</title>
+<desc id="d">1 An alert rule: queries and a condition (for example CPU above 90 percent), how often to check and how long it must hold, and labels and notes that say who it is for. 2 The scheduler ticks every 10 seconds and runs rules that are due (every minute by default) through the same query engine as panels. Recording rules, on by default, save a result as a new metric. 3 State of each alert: Normal, Pending, Alerting, then Recovering on the way back; No data and Error are handled as each rule says; history goes to annotations by default, or Loki or Prometheus. 4 Hand-off: firing alerts go to the built-in Alertmanager, one per organisation, or to an external Alertmanager, or both. Rules kept inside Prometheus, Loki or Mimir are checked there, not in Grafana.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="202.25" cy="43" r="14" class="num"/>
+<text x="202.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="222.25" y="52" class="gt" text-anchor="start" >An alert rule</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >Queries + condition</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >e.g. CPU above 90%</text>
+<rect x="54" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="207.0" class="ag" text-anchor="middle" >How often, how long</text>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >e.g. every 1 min, holds 5 min</text>
+<rect x="54" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="282" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="303.0" class="ag" text-anchor="middle" >Labels and notes</text>
+<text x="303.0" y="327.0" class="ag" text-anchor="middle" >who it is for, what to do</text>
+<text x="300.0" y="384" class="lb" text-anchor="middle" >rules kept in Prometheus or Loki are</text>
+<text x="300.0" y="410" class="lb" text-anchor="middle" >checked there, not in Grafana</text>
+<rect x="624" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="802.25" cy="43" r="14" class="num"/>
+<text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="52" class="gt" text-anchor="start" >The scheduler</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >Ticks every 10 s</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >runs the rules that are due</text>
+<rect x="654" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >Runs the queries</text>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >same engine as panels</text>
+<rect x="654" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="282" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >Recording rules</text>
+<text x="903.0" y="327.0" class="ag" text-anchor="middle" >save a result as a new metric</text>
+<rect x="624" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="761.75" cy="483" r="14" class="num"/>
+<text x="761.75" y="489" class="numt" text-anchor="middle" >3</text>
+<text x="781.75" y="492" class="gt" text-anchor="start" >State of each alert</text>
+<rect x="654" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="530" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="903.0" y="551.0" class="ag" text-anchor="middle" >Normal → Pending → Alerting</text>
+<text x="903.0" y="575.0" class="ag" text-anchor="middle" >Recovering on the way back</text>
+<rect x="654" y="612" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="622" width="5" height="52" rx="2" fill="#e8973a"/>
+<text x="903.0" y="643.0" class="ag" text-anchor="middle" >No data · Error</text>
+<text x="903.0" y="667.0" class="ag" text-anchor="middle" >each rule says how to treat them</text>
+<rect x="654" y="704" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="714" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="735.0" class="ag" text-anchor="middle" >History</text>
+<text x="903.0" y="759.0" class="ag" text-anchor="middle" >annotations, or Loki / Prometheus</text>
+<rect x="24" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="236.0" cy="483" r="14" class="num"/>
+<text x="236.0" y="489" class="numt" text-anchor="middle" >4</text>
+<text x="256.0" y="492" class="gt" text-anchor="start" >Hand-off</text>
+<rect x="54" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="530" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="551.0" class="ag" text-anchor="middle" >Built-in Alertmanager</text>
+<text x="303.0" y="575.0" class="ag" text-anchor="middle" >one per organisation</text>
+<rect x="54" y="616" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="626" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="647.0" class="ag" text-anchor="middle" >External Alertmanager</text>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >instead of it, or as well</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >next: notification policies,</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >silences, contact points</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >rules</text>
+<path d="M900.0 432V454" class="flow"/>
+<text x="946.2" y="453" class="al" text-anchor="middle" >results</text>
+<path d="M624 656H578" class="flow"/>
+<text x="600" y="644" class="al" text-anchor="middle" >firing</text>
+</svg>

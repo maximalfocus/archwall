@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Grafana: who gets in and what they may do</title>
+<desc id="d">1 Sign in: a username and password, checked against Grafana's own users or LDAP; single sign-on with GitHub, GitLab, Google, Azure AD, Okta or any OAuth provider; tokens for scripts. SAML is Enterprise; anonymous access, JWT and an auth proxy are off by default. 2 Who you are: a user in one or more organisations, which are separate spaces inside one server; teams group users; service accounts are for scripts and have no login. 3 What you may do: one role per organisation (None, Viewer, Editor or Admin), rights on each folder and dashboard, and a server admin who manages every organisation. Custom roles and data source rights are Enterprise. 4 Secrets kept safe: data source passwords are encrypted before saving and never sent to the browser; the server adds them to each call. Change the default secret_key, which is the same in every install. External key vaults are Enterprise.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="242.75" cy="43" r="14" class="num"/>
+<text x="242.75" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="262.75" y="52" class="gt" text-anchor="start" >Sign in</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >Username + password</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >Grafana's own users, or LDAP</text>
+<rect x="54" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="186" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="303.0" y="207.0" class="ag" text-anchor="middle" >Single sign-on</text>
+<text x="303.0" y="231.0" class="ag" text-anchor="middle" >GitHub, Google, Okta, Azure AD ...</text>
+<rect x="54" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="282" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="303.0" y="303.0" class="ag" text-anchor="middle" >Tokens for scripts</text>
+<text x="303.0" y="327.0" class="ag" text-anchor="middle" >service account tokens</text>
+<text x="300.0" y="384" class="lb" text-anchor="middle" >SAML: Enterprise · anonymous, JWT,</text>
+<text x="300.0" y="410" class="lb" text-anchor="middle" >auth proxy: off by default</text>
+<rect x="624" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="815.75" cy="43" r="14" class="num"/>
+<text x="815.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="835.75" y="52" class="gt" text-anchor="start" >Who you are</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >User</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >in one or more organisations</text>
+<rect x="654" y="176" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="186" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >Team</text>
+<text x="903.0" y="231.0" class="ag" text-anchor="middle" >a group of users</text>
+<rect x="654" y="272" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="282" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >Service account</text>
+<text x="903.0" y="327.0" class="ag" text-anchor="middle" >for scripts, no login</text>
+<text x="900.0" y="384" class="lb" text-anchor="middle" >organisations are separate</text>
+<text x="900.0" y="410" class="lb" text-anchor="middle" >spaces inside one server</text>
+<rect x="624" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="788.75" cy="483" r="14" class="num"/>
+<text x="788.75" y="489" class="numt" text-anchor="middle" >3</text>
+<text x="808.75" y="492" class="gt" text-anchor="start" >What you may do</text>
+<rect x="654" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="530" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="551.0" class="ag" text-anchor="middle" >Role per organisation</text>
+<text x="903.0" y="575.0" class="ag" text-anchor="middle" >None · Viewer · Editor · Admin</text>
+<rect x="654" y="612" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="622" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="643.0" class="ag" text-anchor="middle" >Folder and dashboard rights</text>
+<text x="903.0" y="667.0" class="ag" text-anchor="middle" >view, edit, admin</text>
+<rect x="654" y="704" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="714" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="735.0" class="ag" text-anchor="middle" >Server admin</text>
+<text x="903.0" y="759.0" class="ag" text-anchor="middle" >manages every organisation</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >custom roles, data source rights: Enterprise</text>
+<rect x="24" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="175.25" cy="483" r="14" class="num"/>
+<text x="175.25" y="489" class="numt" text-anchor="middle" >4</text>
+<text x="195.25" y="492" class="gt" text-anchor="start" >Secrets kept safe</text>
+<rect x="54" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="530" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="551.0" class="ag" text-anchor="middle" >Data source passwords</text>
+<text x="303.0" y="575.0" class="ag" text-anchor="middle" >encrypted before saving</text>
+<rect x="54" y="612" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="622" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="303.0" y="643.0" class="ag" text-anchor="middle" >Never sent to the browser</text>
+<text x="303.0" y="667.0" class="ag" text-anchor="middle" >the server adds them to calls</text>
+<rect x="54" y="704" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="714" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="303.0" y="735.0" class="ag" text-anchor="middle" >Change secret_key</text>
+<text x="303.0" y="759.0" class="ag" text-anchor="middle" >the default is the same everywhere</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >external key vaults: Enterprise</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >identity</text>
+<path d="M900.0 432V454" class="flow"/>
+<text x="983.0" y="453" class="al" text-anchor="middle" >role and rights</text>
+</svg>

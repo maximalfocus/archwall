@@ -1,0 +1,71 @@
+title_zh = "Grafana：数据在你的系统里，图表现查现画"
+title_en = "Grafana: charts and alerts on data that lives in your systems"
+date = "2026-10-05"
+tags = ["observability", "dashboards", "alerting", "plugins", "client-server"]
+figure = "diagram.svg"
+alt_zh = "Grafana 总览：使用者是浏览器里的人、脚本和工具、配置文件和 Git；1 入口：网页应用（仪表盘、Explore、告警页面）、HTTP 接口（经典 /api 和新的 /apis）、启动时加载的文件或同步的 Git；2 Grafana 服务器是一个程序：登录和权限检查每个请求，仪表盘和文件夹存成 JSON 文档，查询引擎去问数据源、还能做计算，告警按定时检查规则；3 数据留在原处：数据源插件，每种系统一个，连到指标、日志、链路追踪（Prometheus、Loki、Tempo）以及数据库和云（MySQL、Postgres、CloudWatch），数据存在你自己的系统里，每次加载面板都重新去问；4 Grafana 自己存的和发出去的：它自己的数据库（默认 SQLite 文件，或 MySQL / Postgres，存用户、仪表盘、规则、加密的数据源密码），告警通知（Slack、邮件、PagerDuty 等 23 种），可选的图片渲染器（单独的服务，出 PNG）；大多数数据源是 Grafana 启动时安装的插件，只有少数内置"
+alt_en = "Grafana overview: people, scripts and tools, files and Git come in; 1 ways in: the web app (dashboards, Explore, alerts), the HTTP APIs (classic /api and new /apis), files loaded at start or synced from Git; 2 the Grafana server is one program: sign-in and permissions check every request, dashboards and folders are saved as JSON documents, the query engine asks data sources and can do maths, alerting checks rules on a timer; 3 your data stays where it is: data source plugins, one per kind of system, reach metrics, logs and traces (Prometheus, Loki, Tempo) and databases and clouds (MySQL, Postgres, CloudWatch); your data lives in your own systems, and each panel load asks again; 4 what Grafana keeps and sends: its own database (a SQLite file by default, or MySQL / Postgres, holding users, dashboards, rules and encrypted data source passwords), alert notifications to 23 kinds of contact point such as Slack, email and PagerDuty, and an optional image renderer that runs as a separate service; most data sources are plugins Grafana installs at start, only a few are built in"
+source = "https://github.com/grafana/grafana"
+
+[[figures]]
+file = "query.svg"
+alt_zh = "一个面板怎么拿到数据：1 浏览器里：面板带上时间范围和变量生成查询，请求队列一次最多 5 个（开 HTTP/2 时 1000 个），发到 POST /api/ds/query，Explore 在浏览器里发同一个请求；2 服务器上：检查调用者已登录、有权查询数据源，按数据源拆开，并行执行，默认最多每个 CPU 核一个；开源版组织成员能查任何数据源，按数据源分权限是企业版；3 去数据源取：内置插件在 Grafana 里面跑，安装的插件是单独的程序、用 gRPC 通信，你的系统（Prometheus、MySQL、CloudWatch 等）返回结果；只在浏览器里跑的插件走代理，由代理加上存好的密码；4 回到面板：结果是数据帧，可选的表达式在服务器上做计算、归约、SQL，转换在浏览器里做连接、过滤、改名，最后由可视化画出来；查询缓存只有企业版有"
+alt_en = "How a panel gets its data: 1 in the browser: the panel builds its query with the time range and variables, a request queue sends 5 at a time (1000 with HTTP/2), then POST /api/ds/query; Explore in the browser sends the same call; 2 on the server: check the caller is signed in and may query data sources, split by data source, run them in parallel, up to one per CPU core by default; in open source members may query any source, per-source permissions are Enterprise; 3 fetch from the source: a built-in plugin runs inside Grafana, an installed plugin is its own program that talks gRPC, and your system (Prometheus, MySQL, CloudWatch ...) answers; browser-only plugins use a proxy that adds the stored password; 4 back to the panel: data frames come back, optional expressions do maths, reduce or SQL on the server, transformations join, filter or rename in the browser, and the visualization draws it; query caching is Enterprise only"
+caption_zh = "一个面板的数据：浏览器发查询，服务器按数据源拆开并行去问，结果画成图"
+caption_en = "A panel's data: the browser sends the query, the server asks each data source in parallel, the answer is drawn"
+
+[[figures]]
+file = "plugins.svg"
+alt_zh = "插件：1 三种：数据源连一种系统，面板是一种画法，应用加整页功能（如 Drilldown）；2 从哪来：内置的 28 种面板和少数数据源，启动时从 grafana.com 安装的默认 18 个，管理员从插件目录再装；Prometheus、Loki、MySQL 等是安装的，不是内置的；3 加载检查：找到并读 plugin.json，检查签名（没签名默认拦下），启动它的程序并加上权限；签名来自 Grafana、公司、社区，或只给一个站点用的私有签名；4 运行时两半：前一半是浏览器里的 JavaScript，后一半（如果有）是单独的程序、用 gRPC 通信，负责查询、健康检查、流式数据和自己的 HTTP 路由；扩展点让应用在别的页面加链接"
+alt_en = "Plugins: 1 three kinds: a data source connects to one kind of system, a panel is one way to draw data, an app adds whole pages such as Drilldown; 2 where they come from: built in (28 panels, a few data sources), installed at start from grafana.com (18 by default), or added by admins from the catalog; Prometheus, Loki, MySQL ... are installed, not built in; 3 loading checks: find it and read plugin.json, check the signature (unsigned is blocked by default), start it by running its program and adding permissions; signed by Grafana, a company, the community, or privately for one site; 4 two halves at run time: the front half is JavaScript in the browser, the back half (if any) is its own program that talks gRPC and handles queries, health checks, streaming and its own HTTP routes; extension points let apps add links to other pages"
+caption_zh = "插件：大多数数据源都是插件，先验签名再加载，前端一半、后端一半"
+caption_en = "Plugins: most data sources are plugins, checked for a signature before loading, with a browser half and a server half"
+
+[[figures]]
+file = "dashboards.svg"
+alt_zh = "仪表盘：1 怎么进来：在网页里拖面板、选查询，从 grafana.com 或 JSON 文件导入，启动时从配置目录加载，Git Sync 同步 GitHub、git 或本地目录；同步到 Bitbucket、GitLab 是企业版；2 一个仪表盘里有什么：面板（每个是一条查询加一张图），变量（顶部的下拉框），时间范围和刷新（如最近 6 小时、每 30 秒），布局（网格、行、标签页、自动网格）；3 怎么理顺：文件夹可嵌套最多 4 层，版本保留最近 20 个、可还原，库面板一个面板多处复用，播放列表和收藏；4 保存和查找：存成 Grafana 数据库里的一份 JSON 文档，每台服务器自己建搜索索引，按标题、标签或文件夹搜"
+alt_en = "Dashboards: 1 how they get in: build in the web app by dragging panels and picking queries, import from grafana.com or a JSON file, load from a provisioning folder at start, or Git Sync with GitHub, git or a local folder; Git Sync to Bitbucket or GitLab is Enterprise; 2 what one holds: panels (each a query plus a chart), variables (drop-downs at the top), time range and refresh (e.g. last 6 hours, every 30 s), layout (grid, rows, tabs or auto grid); 3 kept in order: folders nested up to 4 levels, the last 20 versions kept with restore, library panels reused on many dashboards, playlists and stars; 4 saved and found: one JSON document in Grafana's database, a search index built on each server, search by title, tag or folder"
+caption_zh = "仪表盘：一份 JSON 文档，可以手画、导入、从文件或 Git 来"
+caption_en = "Dashboards: one JSON document, drawn by hand, imported, or loaded from files or Git"
+
+[[figures]]
+file = "storage.svg"
+alt_zh = "Grafana 自己存什么：1 两个接口入口：经典 /api（每个功能各一种风格），资源接口 /apis（有版本、Kubernetes 风格），计划是用 /apis 取代 /api；仪表盘和文件夹从哪个入口进来都存进统一存储；2 统一存储：仪表盘、文件夹、播放列表、短链接、偏好设置，每次修改都带版本号保留下来，基于旧版本的修改会被拒绝，不会悄悄覆盖；4 经典表：用户、组织、团队、数据源、告警规则，注释、快照、收藏、库面板；3 都落在一个 SQL 数据库：默认 SQLite 文件，一台服务器够用，多台共享时用 MySQL 或 Postgres；缓存默认也放在这里，也可以用 Redis 或 Memcached"
+alt_en = "What Grafana keeps: 1 two API doors: the classic /api with one style per feature, and the resource API /apis, versioned and Kubernetes-style; /apis is meant to replace /api; dashboards and folders reach unified storage through either door; 2 unified storage: dashboards, folders, playlists, short links and preferences, every change kept with a version number, and an edit made from an old version is refused, so nothing is overwritten silently; 4 classic tables: users, organisations, teams, data sources, alert rules, annotations, snapshots, stars, library panels; 3 all in one SQL database: a SQLite file by default, fine for one server, or MySQL or Postgres for several servers sharing it; the cache lives here by default, or in Redis / Memcached"
+caption_zh = "存储：一个 SQL 数据库，新旧两套存法正在合一"
+caption_en = "Storage: one SQL database, with an old and a new way of storing being merged into one"
+
+[[figures]]
+file = "alerting.svg"
+alt_zh = "告警规则：1 一条规则：查询加条件（如 CPU 超过 90%），多久查一次、要持续多久（如每 1 分钟查、持续 5 分钟），标签和备注说明给谁、怎么处理；存在 Prometheus 或 Loki 里的规则由它们自己检查，不在 Grafana 检查；2 调度器：每 10 秒走一次，运行到点的规则，用和面板同一个查询引擎；记录规则把结果存成一条新指标；3 每条告警的状态：正常 → 待定 → 告警，恢复时经过恢复中；无数据和出错按规则自己的设置处理；历史默认记在注释里，也可以记到 Loki 或 Prometheus；4 交出去：内置的 Alertmanager，每个组织一个，也可以换成或加上外部 Alertmanager；下一步是通知策略、静默和联系点"
+alt_en = "Alert rules: 1 an alert rule: queries plus a condition (e.g. CPU above 90%), how often and how long (e.g. every 1 min, holds 5 min), labels and notes on who it is for and what to do; rules kept in Prometheus or Loki are checked there, not in Grafana; 2 the scheduler ticks every 10 s and runs the rules that are due, using the same engine as panels; recording rules save a result as a new metric; 3 state of each alert: Normal → Pending → Alerting, Recovering on the way back; No data and Error are treated as each rule says; history goes to annotations, or Loki / Prometheus; 4 hand-off: the built-in Alertmanager, one per organisation, or an external Alertmanager instead or as well; next come notification policies, silences and contact points"
+caption_zh = "告警规则：调度器定时跑查询，判断每条告警处在什么状态"
+caption_en = "Alert rules: a scheduler runs the queries on a timer and decides each alert's state"
+
+[[figures]]
+file = "notify.svg"
+alt_zh = "通知：1 分派：通知策略是一棵按标签匹配的树，默认按文件夹和告警名分组，时间设置决定等多久、多久重发；规则也可以直接指定联系点；2 先压住：静默在一段时间内屏蔽匹配的告警，屏蔽时段如夜里或周末；3 联系点共 23 种：聊天（Slack、Teams、Discord、Telegram），值班（PagerDuty、Opsgenie、OnCall），邮件、webhook、Kafka、MQTT、SNS 等；4 其它：模板决定消息文字，截图默认关闭、要装图片渲染器，多台服务器设好告警高可用后，共享静默、同一条通知只发一次"
+alt_en = "Notifications: 1 route: notification policies are a tree that matches labels, grouping is by folder and alert name by default, timing says how long to wait and when to repeat; a rule can also name a contact point directly; 2 hold back: silences mute matching alerts for a while, mute timings mute them at set times such as nights or weekends; 3 contact points, 23 kinds: chat (Slack, Teams, Discord, Telegram), on-call (PagerDuty, Opsgenie, OnCall), email, webhook, Kafka, MQTT, SNS and more; 4 extras: templates shape the message text, screenshots are off by default and need the image renderer, and several servers with alerting HA set up share silences and send each notification once"
+caption_zh = "通知：分组、静默，再发到 23 种联系点"
+caption_en = "Notifications: group, silence, then send to 23 kinds of contact point"
+
+[[figures]]
+file = "access.svg"
+alt_zh = "谁能进来、能做什么：1 登录：用户名加密码（Grafana 自己的用户或 LDAP），单点登录（GitHub、Google、Okta、Azure AD 等），脚本用服务账号令牌；SAML 是企业版，匿名、JWT、认证代理默认关闭；2 你是谁：用户属于一个或多个组织，团队是一组用户，服务账号给脚本用、不能登录；组织是一台服务器里互相隔开的空间；3 你能做什么：每个组织一个角色（None、Viewer、Editor、Admin），文件夹和仪表盘权限（查看、编辑、管理），服务器管理员管所有组织；自定义角色和数据源权限是企业版；4 保管密钥：数据源密码保存前加密，从不发给浏览器，由服务器在调用时加上；要改掉默认的 secret_key，它在每个安装里都一样；外部密钥库是企业版"
+alt_en = "Who gets in and what they may do: 1 sign in: username and password (Grafana's own users, or LDAP), single sign-on (GitHub, Google, Okta, Azure AD ...), tokens for scripts from service accounts; SAML is Enterprise; anonymous, JWT and auth proxy are off by default; 2 who you are: a user in one or more organisations, a team is a group of users, a service account is for scripts and has no login; organisations are separate spaces inside one server; 3 what you may do: a role per organisation (None, Viewer, Editor, Admin), folder and dashboard rights (view, edit, admin), and a server admin who manages every organisation; custom roles and data source rights are Enterprise; 4 secrets kept safe: data source passwords are encrypted before saving and never sent to the browser, the server adds them to calls; change secret_key, the default is the same everywhere; external key vaults are Enterprise"
+caption_zh = "访问控制：先认人，再按组织里的角色和文件夹权限放行"
+caption_en = "Access: first who you are, then your role in the organisation and your folder rights"
+
+[[figures]]
+file = "sharing.svg"
+alt_zh = "分享给团队以外的人：1 链接：指向实时仪表盘，看的人要登录，可以缩成短链接，也能把仪表盘导出成 JSON；2 快照：数据的副本，去掉了查询和链接，有钥匙的人都能看，默认会显示发布到 raintank.io 的选项；3 公开仪表盘：有链接的人都能看、不用登录，只运行保存好的查询，以 Grafana 的身份而不是某个用户，时间选择器和注释可选；只分享给指定邮箱是企业版；4 图片：图片渲染器是单独的服务、要自己装，能出面板或整个仪表盘的 PNG；定时 PDF 报告是企业版；从最封闭（1）到最开放（3），只有 3 既不用登录也不用钥匙"
+alt_en = "Sharing outside the team: 1 a link: to the live dashboard, the viewer must sign in, it can be a short link, and the dashboard can be exported as JSON; 2 a snapshot: a copy of the data with queries and links removed, anyone with the key can view it, and an option to publish to raintank.io is shown by default; 3 a public dashboard: anyone with the link, no sign-in, runs saved queries only, as Grafana and not as a user, time picker and annotations optional; sharing only with named emails is Enterprise; 4 an image: the image renderer is a separate service that must be set up, and makes a PNG of a panel or a whole dashboard; scheduled PDF reports are Enterprise; from most closed (1) to most open (3): only 3 needs no sign-in and no key"
+caption_zh = "分享：链接要登录，快照靠钥匙，公开仪表盘谁都能看"
+caption_en = "Sharing: a link needs sign-in, a snapshot needs its key, a public dashboard is open to anyone with the link"
+
+[[figures]]
+file = "ops.svg"
+alt_zh = "运行 Grafana：1 一个程序：grafana server 在 3000 端口提供网页和接口，有 Docker、deb、rpm、Windows、Mac 包，两个版本：开源版（AGPLv3）和企业版；2 多台服务器：负载均衡分流用户，共享 MySQL 或 Postgres 数据库，共享缓存（数据库、Redis 或 Memcached）；3 保持一致：告警在 9094 端口互相同步或用 Redis，实时推送要 Redis、否则只能一台，搜索索引每台自己建；4 盯着 Grafana 自己：/metrics 给 Prometheus 抓，OpenTelemetry 链路追踪默认关闭，功能开关共 398 个、59 个已正式可用；使用统计默认发到 stats.grafana.org"
+alt_en = "Running Grafana: 1 one program: grafana server serves the web app and APIs on port 3000, packaged for Docker, deb, rpm, Windows and Mac, in two editions: open source (AGPLv3) and Enterprise; 2 several servers: a load balancer spreads users, a shared MySQL or Postgres database, a shared cache (database, Redis or Memcached); 3 keep them in step: alerting gossips on port 9094 or uses Redis, live streaming needs Redis or works on one server only, each server builds its own search index; 4 watching Grafana: /metrics for Prometheus to scrape, OpenTelemetry tracing off by default, 398 feature flags of which 59 are generally available; usage stats go to stats.grafana.org by default"
+caption_zh = "运行：一台起步，多台时共享数据库，再让告警和实时推送互相同步"
+caption_en = "Running it: start with one server; for more, share the database and keep alerting and live streaming in step"

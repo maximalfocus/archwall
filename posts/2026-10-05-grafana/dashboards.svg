@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Grafana: dashboards</title>
+<desc id="d">1 How dashboards get in: built in the web app, imported from grafana.com or a JSON file, loaded from files when Grafana starts, or synced from Git (GitHub, any git server or a local folder; Bitbucket and GitLab are Enterprise). 2 What a dashboard holds: panels, each a query plus a chart; variables shown as drop-downs; a time range and refresh; a layout of grid, rows, tabs or auto grid. 3 Kept in order: nested folders up to 4 levels, the last 20 versions with restore, library panels reused across dashboards, playlists and stars. 4 Saved and found: each dashboard is one JSON document in Grafana's database; every server keeps its own search index for finding dashboards by title, tag or folder.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="188.75" cy="43" r="14" class="num"/>
+<text x="188.75" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="208.75" y="52" class="gt" text-anchor="start" >How they get in</text>
+<rect x="54" y="80" width="492" height="64" rx="8" class="agent"/>
+<text x="303.0" y="107.0" class="ag" text-anchor="middle" >Build in the web app</text>
+<text x="303.0" y="131.0" class="ag" text-anchor="middle" >drag panels, pick queries</text>
+<rect x="54" y="156" width="492" height="64" rx="8" class="agent"/>
+<text x="303.0" y="183.0" class="ag" text-anchor="middle" >Import</text>
+<text x="303.0" y="207.0" class="ag" text-anchor="middle" >from grafana.com or a JSON file</text>
+<rect x="54" y="232" width="492" height="64" rx="8" class="agent"/>
+<text x="303.0" y="259.0" class="ag" text-anchor="middle" >Files at start</text>
+<text x="303.0" y="283.0" class="ag" text-anchor="middle" >a provisioning folder</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Git Sync</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >GitHub, git, a local folder</text>
+<text x="300.0" y="410" class="lb" text-anchor="middle" >Git Sync to Bitbucket or GitLab: Enterprise</text>
+<rect x="624" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="795.5" cy="43" r="14" class="num"/>
+<text x="795.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="815.5" y="52" class="gt" text-anchor="start" >What one holds</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >Panels</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >each a query plus a chart</text>
+<rect x="654" y="156" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="166" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="183.0" class="ag" text-anchor="middle" >Variables</text>
+<text x="903.0" y="207.0" class="ag" text-anchor="middle" >drop-downs at the top</text>
+<rect x="654" y="232" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="242" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="259.0" class="ag" text-anchor="middle" >Time range and refresh</text>
+<text x="903.0" y="283.0" class="ag" text-anchor="middle" >e.g. last 6 hours, every 30 s</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Layout</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >grid, rows, tabs or auto grid</text>
+<rect x="624" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="802.25" cy="483" r="14" class="num"/>
+<text x="802.25" y="489" class="numt" text-anchor="middle" >3</text>
+<text x="822.25" y="492" class="gt" text-anchor="start" >Kept in order</text>
+<rect x="654" y="520" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="530" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="547.0" class="ag" text-anchor="middle" >Folders</text>
+<text x="903.0" y="571.0" class="ag" text-anchor="middle" >nested, up to 4 levels</text>
+<rect x="654" y="596" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="606" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="623.0" class="ag" text-anchor="middle" >Versions</text>
+<text x="903.0" y="647.0" class="ag" text-anchor="middle" >last 20 kept, restore any</text>
+<rect x="654" y="672" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="682" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="699.0" class="ag" text-anchor="middle" >Library panels</text>
+<text x="903.0" y="723.0" class="ag" text-anchor="middle" >one panel reused on many</text>
+<rect x="654" y="748" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="758" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >Playlists and stars</text>
+<text x="903.0" y="799.0" class="ag" text-anchor="middle" >cycle on a TV, mark favourites</text>
+<rect x="24" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="188.75" cy="483" r="14" class="num"/>
+<text x="188.75" y="489" class="numt" text-anchor="middle" >4</text>
+<text x="208.75" y="492" class="gt" text-anchor="start" >Saved and found</text>
+<rect x="54" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="530" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="551.0" class="ag" text-anchor="middle" >One JSON document</text>
+<text x="303.0" y="575.0" class="ag" text-anchor="middle" >in Grafana's database</text>
+<rect x="54" y="616" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="626" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="303.0" y="647.0" class="ag" text-anchor="middle" >Search index</text>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >built on each server</text>
+<path d="M300.0 592V614" class="flow"/>
+<rect x="54" y="712" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="722" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="743.0" class="ag" text-anchor="middle" >Search</text>
+<text x="303.0" y="767.0" class="ag" text-anchor="middle" >by title, tag or folder</text>
+<path d="M300.0 688V710" class="flow"/>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >JSON</text>
+<path d="M900.0 432V454" class="flow"/>
+<text x="955.4" y="453" class="al" text-anchor="middle" >dashboard</text>
+<path d="M624 656H578" class="flow"/>
+<text x="600" y="644" class="al" text-anchor="middle" >saved</text>
+</svg>

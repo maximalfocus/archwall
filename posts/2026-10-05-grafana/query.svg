@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Grafana: how a panel gets its data</title>
+<desc id="d">1 In the browser: a panel builds its query with the dashboard's time range and variables; a queue sends at most 5 data requests at a time, or 1000 with HTTP/2, and sends them to /api/ds/query. 2 On the server: Grafana checks the caller is signed in and may query data sources, then the query service splits the request by data source and runs them in parallel, up to one per CPU core by default. In open source any member of an organisation may query any data source; per data source permissions are Enterprise. 3 Fetch from the source: a data source plugin asks your system. A few plugins are built into Grafana; the rest run as their own program and talk to Grafana over gRPC. Browser-only plugins go through a proxy that adds the stored password. 4 Back to the panel: answers come back as data frames; optional expressions do maths, reduce, resample or SQL on the server, transformations join or filter in the browser, and the visualization draws the result. Query caching is Enterprise only.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="195.5" cy="43" r="14" class="num"/>
+<text x="195.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="215.5" y="52" class="gt" text-anchor="start" >In the browser</text>
+<rect x="54" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="111.0" class="ag" text-anchor="middle" >Panel builds its query</text>
+<text x="303.0" y="135.0" class="ag" text-anchor="middle" >with time range and variables</text>
+<rect x="54" y="172" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="182" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="203.0" class="ag" text-anchor="middle" >Request queue</text>
+<text x="303.0" y="227.0" class="ag" text-anchor="middle" >5 at a time, 1000 with HTTP/2</text>
+<path d="M300.0 152V170" class="flow"/>
+<rect x="54" y="264" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="274" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="295.0" class="ag" text-anchor="middle" >Send to the server</text>
+<text x="303.0" y="319.0" class="ag" text-anchor="middle" >POST /api/ds/query</text>
+<path d="M300.0 244V262" class="flow"/>
+<text x="300.0" y="384" class="lb" text-anchor="middle" >Explore in the browser sends</text>
+<text x="300.0" y="410" class="lb" text-anchor="middle" >the same call</text>
+<rect x="624" y="16" width="552" height="416" rx="12" class="grp"/>
+<circle cx="802.25" cy="43" r="14" class="num"/>
+<text x="802.25" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="52" class="gt" text-anchor="start" >On the server</text>
+<rect x="654" y="80" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="52" rx="2" fill="#d64545"/>
+<text x="903.0" y="111.0" class="ag" text-anchor="middle" >Check the caller</text>
+<text x="903.0" y="135.0" class="ag" text-anchor="middle" >signed in, may query data sources</text>
+<rect x="654" y="172" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="182" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="203.0" class="ag" text-anchor="middle" >Split by data source</text>
+<text x="903.0" y="227.0" class="ag" text-anchor="middle" >one query list per source</text>
+<path d="M900.0 152V170" class="flow"/>
+<rect x="654" y="264" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="274" width="5" height="52" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="295.0" class="ag" text-anchor="middle" >Run them in parallel</text>
+<text x="903.0" y="319.0" class="ag" text-anchor="middle" >up to one per CPU core</text>
+<path d="M900.0 244V262" class="flow"/>
+<text x="900.0" y="384" class="lb" text-anchor="middle" >open source: members may query any source</text>
+<text x="900.0" y="410" class="lb" text-anchor="middle" >per-source permissions: Enterprise</text>
+<rect x="624" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="748.25" cy="483" r="14" class="num"/>
+<text x="748.25" y="489" class="numt" text-anchor="middle" >3</text>
+<text x="768.25" y="492" class="gt" text-anchor="start" >Fetch from the source</text>
+<rect x="654" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="530" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="551.0" class="ag" text-anchor="middle" >Built-in plugin</text>
+<text x="903.0" y="575.0" class="ag" text-anchor="middle" >runs inside Grafana</text>
+<rect x="654" y="612" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="622" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="643.0" class="ag" text-anchor="middle" >Installed plugin</text>
+<text x="903.0" y="667.0" class="ag" text-anchor="middle" >own program, talks gRPC</text>
+<rect x="654" y="704" width="492" height="72" rx="8" class="agent"/>
+<rect x="654" y="714" width="5" height="52" rx="2" fill="#5b6675"/>
+<text x="903.0" y="735.0" class="ag" text-anchor="middle" >Your system answers</text>
+<text x="903.0" y="759.0" class="ag" text-anchor="middle" >Prometheus, MySQL, CloudWatch ...</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >browser-only plugins use a proxy</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >that adds the stored password</text>
+<rect x="24" y="456" width="552" height="404" rx="12" class="grp"/>
+<circle cx="175.25" cy="483" r="14" class="num"/>
+<text x="175.25" y="489" class="numt" text-anchor="middle" >4</text>
+<text x="195.25" y="492" class="gt" text-anchor="start" >Back to the panel</text>
+<rect x="54" y="520" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="530" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="551.0" class="ag" text-anchor="middle" >Expressions (optional)</text>
+<text x="303.0" y="575.0" class="ag" text-anchor="middle" >maths, reduce, SQL on the server</text>
+<rect x="54" y="612" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="622" width="5" height="52" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="643.0" class="ag" text-anchor="middle" >Transformations</text>
+<text x="303.0" y="667.0" class="ag" text-anchor="middle" >join, filter, rename in the browser</text>
+<path d="M300.0 592V610" class="flow"/>
+<rect x="54" y="704" width="492" height="72" rx="8" class="agent"/>
+<rect x="54" y="714" width="5" height="52" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="735.0" class="ag" text-anchor="middle" >Visualization draws it</text>
+<text x="303.0" y="759.0" class="ag" text-anchor="middle" >time series, table, gauge ...</text>
+<path d="M300.0 684V702" class="flow"/>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >query caching: Enterprise only</text>
+<path d="M576 222H622" class="flow"/>
+<text x="600" y="210" class="al" text-anchor="middle" >request</text>
+<path d="M900.0 432V454" class="flow"/>
+<text x="1001.4" y="453" class="al" text-anchor="middle" >one call per source</text>
+<path d="M624 656H578" class="flow"/>
+<text x="600" y="644" class="al" text-anchor="middle" >frames</text>
+</svg>
