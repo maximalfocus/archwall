@@ -35,7 +35,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="303.0" y="175.0" class="ag" text-anchor="middle" >Which repo?</text>
-<text x="303.0" y="199.0" class="ag" text-anchor="middle" >flag --repo, a URL, or here</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >flag --repo, a URL, or this checkout</text>
 <rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="238" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="303.0" y="255.0" class="ag" text-anchor="middle" >Search open and closed issues</text>

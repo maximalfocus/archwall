@@ -43,7 +43,7 @@ d.pill(L, 16, W, 48, "You ask to file, create or open one issue")
 d.arrow(f"M{L + W / 2} 64V{T1 - 2}")
 
 d.group(L, T1, W, H1, "Pin it down", 1)
-column(L, T1, [("Which repo?|flag --repo, a URL, or here", "plan"),
+column(L, T1, [("Which repo?|flag --repo, a URL, or this checkout", "plan"),
                ("Search open and closed issues|duplicate? stop, return it", "review"),
                ("Only the evidence needed|no made-up paths or labels", "review")])
 notes(L, T1, H1, "One question, only if scope", "or behaviour is really unclear")

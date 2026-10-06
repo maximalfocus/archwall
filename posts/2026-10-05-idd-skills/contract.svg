@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">idd-skills product contract</title>
-<desc id="d">Inside the private {project}-prd repository. 1 PRD.md is one coherent model: requirements with stable IDs, the accepted behaviour; slices, small and in order, one issue each; the domain boundary with explicit non-goals; and preserved artifacts, the files a rewrite must keep. 2 PROGRESS.md, using the same IDs, is a control panel: status per slice (ready, active, blocked, or missing acceptance), a baseline of what is done and verified, and an update rule for how rows may change. Its table cells carry no dates, since Git and GitHub keep the history. 3 Budgets checked by scripts: PRD.md at most 1,000 words a section and 10,000 in all; PROGRESS.md at most 80 words a cell and a baseline of at most 20 lines. They change only through /idd-evolve, never per project, and were set from 4 real contracts and 11 trackers. 4 Once a slice is validated, its acceptance moves into the requirement it extends, or becomes a new one, and the slice shrinks to one row; the fold gate flags a slice still holding a section. So the PRD grows with the model, not with the number of deliveries. A product too big for one model splits its PRD into contexts, each with its own scope.</desc>
+<desc id="d">Inside the private {project}-prd repository. 1 PRD.md is one coherent model: requirements with stable IDs, the accepted behaviour; slices, small and in order, one issue each; the domain boundary with explicit non-goals; and preserved artifacts, the files a rewrite must keep. 2 PROGRESS.md, using the same IDs, is a control panel: status per slice (ready, active, blocked, or missing acceptance), a baseline of what is done and verified, and an update rule for how rows may change. Its table cells carry no dates, since Git and GitHub keep the history. 3 Budgets checked by scripts: PRD.md at most 1,000 words a section and 10,000 in all; PROGRESS.md at most 80 words a cell and a baseline of at most 20 lines. They change only through /idd-evolve, never per project, and were set from 4 real contracts and 11 trackers. 4 Once a slice is validated, its acceptance moves into the requirement it extends, or becomes a new one, and the slice shrinks to one row; the fold gate flags a slice still holding a section. So the PRD grows with the model, not with the number of deliveries. A product too large for one coherent contract splits its PRD into contexts, each with its own scope.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -64,8 +64,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="318" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Update rule</text>
 <text x="903.0" y="359.0" class="ag" text-anchor="middle" >how rows may change</text>
-<text x="900.0" y="412" class="lb" text-anchor="middle" >No dates in cells: Git and</text>
-<text x="900.0" y="438" class="lb" text-anchor="middle" >GitHub keep the history</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >No dates in cells;</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >Git and GitHub keep the history</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="707.75" cy="527" r="14" class="num"/>
 <text x="707.75" y="533" class="numt" text-anchor="middle" >3</text>
@@ -108,5 +108,5 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="946.0" y="488" class="al" text-anchor="middle" >checked</text>
 <path d="M300.0 500V466" class="flow"/>
 <text x="362.0" y="488" class="al" text-anchor="middle" >folds into</text>
-<text x="600" y="888" class="lb" text-anchor="middle" >Too big for one model? The PRD splits into contexts, each with its own scope</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >A product too large for one coherent contract splits the PRD into contexts, each with its own scope</text>
 </svg>

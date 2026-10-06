@@ -13,16 +13,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from archdiagram import Diagram  # noqa: E402
 
 d = Diagram("idd-skills contexts",
-            "One coherent product contract can be too big for one model; then the private PRD splits "
-            "into contexts. The root PRD.md is the index: a Contexts table, a portfolio panel with a "
-            "row for every context, and the manifest and cross-context invariants. A context is "
-            "admitted only when work is planned there, and it is one coherent model with its own Scope "
-            "of implementation paths, a Depends on list naming the contexts it references without "
-            "restating them, and its own non-goals. An issue carries its context's name as a label, "
-            "changed files must resolve to that context, and one context per issue goes dependency "
-            "first; a change that crosses contexts is a design decision in the index first. The "
-            "--context flag works on one context at a time, the contract gate runs over the index and "
-            "then every context, and the portfolio order picks the earliest unmet dependency.")
+            "A product too large for one coherent contract partitions the private PRD into contexts. "
+            "The root PRD.md is the index: a Contexts table, a portfolio panel with a row for every "
+            "context, and the manifest and cross-context invariants. A context is admitted only when "
+            "work is planned there, and it is one coherent model with its own Scope of implementation "
+            "paths, a Depends on list naming the contexts it references without restating them, and its "
+            "own non-goals. An issue carries its context's name as a label, changed files must resolve "
+            "to that context, and one context per issue goes dependency first; a change that crosses "
+            "contexts is a design decision in the index first. The --context flag works on one context "
+            "at a time, the contract gate runs over the index and then every context, the portfolio "
+            "picks active work or the earliest unmet dependency, and acceptance goes context by context "
+            "plus the index's cross-context invariants.")
 
 L, R, W = 24, 624, 552
 T1, H1 = 84, 380
@@ -40,7 +41,7 @@ def notes(x, top, h, a, b):
     d.note(x + W / 2, top + h - 26, b)
 
 
-d.pill(L, 16, W, 48, "One coherent contract, too big for one model")
+d.pill(L, 16, W, 48, "A product too large for one coherent contract")
 d.arrow(f"M{L + W / 2} 64V{T1 - 2}")
 
 d.group(L, T1, W, H1, "The root contract: an index", 1)
@@ -53,7 +54,7 @@ d.group(R, T1, W, H1, "One context: its own model", 2)
 column(R, T1, [("contexts/<name>/|PRD.md and PROGRESS.md", "write"),
                ("Scope|the implementation paths it owns", "plan"),
                ("Depends on|names contexts, never restates", "plan")])
-notes(R, T1, H1, "Kebab-case name; its own non-goals", "and its own gate")
+notes(R, T1, H1, "A file in no context, or in two,", "is a scope question, not a cheap fix")
 
 d.group(R, T2, W, H2, "Kept in step", 3)
 column(R, T2, [("Issue label|the context name", "write"),
@@ -64,12 +65,12 @@ notes(R, T2, H2, "A change that crosses contexts is a", "design decision in the 
 d.group(L, T2, W, H2, "Modes and gates", 4)
 column(L, T2, [("Flag --context <name>|one context at a time", "plan"),
                ("contract.sh gate|index, then every context", "review"),
-               ("Portfolio order|earliest unmet dependency", "plan")])
+               ("Portfolio order|active work, or earliest unmet", "plan")])
 notes(L, T2, H2, "Every gate runs over the index", "and each context")
 
 d.arrow(f"M{L + W} {T1 + 200}H{R - 2}", label="indexes", at=(600, T1 + 188))
 d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="labels the issue", at=(R + W / 2 + 44, T1 + H1 + 24))
 
-d.note(600, 888, "A context is one coherent model with its own Scope, Depends on and non-goals")
+d.note(600, 888, "Acceptance goes context by context, plus the index's cross-context invariants")
 
 d.save(Path(__file__).with_name("contexts.svg"))

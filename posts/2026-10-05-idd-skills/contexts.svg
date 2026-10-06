@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">idd-skills contexts</title>
-<desc id="d">One coherent product contract can be too big for one model; then the private PRD splits into contexts. The root PRD.md is the index: a Contexts table, a portfolio panel with a row for every context, and the manifest and cross-context invariants. A context is admitted only when work is planned there, and it is one coherent model with its own Scope of implementation paths, a Depends on list naming the contexts it references without restating them, and its own non-goals. An issue carries its context's name as a label, changed files must resolve to that context, and one context per issue goes dependency first; a change that crosses contexts is a design decision in the index first. The --context flag works on one context at a time, the contract gate runs over the index and then every context, and the portfolio order picks the earliest unmet dependency.</desc>
+<desc id="d">A product too large for one coherent contract partitions the private PRD into contexts. The root PRD.md is the index: a Contexts table, a portfolio panel with a row for every context, and the manifest and cross-context invariants. A context is admitted only when work is planned there, and it is one coherent model with its own Scope of implementation paths, a Depends on list naming the contexts it references without restating them, and its own non-goals. An issue carries its context's name as a label, changed files must resolve to that context, and one context per issue goes dependency first; a change that crosses contexts is a design decision in the index first. The --context flag works on one context at a time, the contract gate runs over the index and then every context, the portfolio picks active work or the earliest unmet dependency, and acceptance goes context by context plus the index's cross-context invariants.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -26,7 +26,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
 <rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
-<text x="300.0" y="46.0" class="q" text-anchor="middle" >One coherent contract, too big for one model</text>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >A product too large for one coherent contract</text>
 <path d="M300.0 64V82" class="flow"/>
 <rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
 <circle cx="107.75" cy="111" r="14" class="num"/>
@@ -62,8 +62,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="318" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Depends on</text>
 <text x="903.0" y="359.0" class="ag" text-anchor="middle" >names contexts, never restates</text>
-<text x="900.0" y="412" class="lb" text-anchor="middle" >Kebab-case name; its own non-goals</text>
-<text x="900.0" y="438" class="lb" text-anchor="middle" >and its own gate</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >A file in no context, or in two,</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >is a scope question, not a cheap fix</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="809.0" cy="527" r="14" class="num"/>
 <text x="809.0" y="533" class="numt" text-anchor="middle" >3</text>
@@ -97,12 +97,12 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="303.0" y="751.0" class="ag" text-anchor="middle" >Portfolio order</text>
-<text x="303.0" y="775.0" class="ag" text-anchor="middle" >earliest unmet dependency</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >active work, or earliest unmet</text>
 <text x="300.0" y="812" class="lb" text-anchor="middle" >Every gate runs over the index</text>
 <text x="300.0" y="838" class="lb" text-anchor="middle" >and each context</text>
 <path d="M576 284H622" class="flow"/>
 <text x="600" y="272" class="al" text-anchor="middle" >indexes</text>
 <path d="M900.0 464V498" class="flow"/>
 <text x="944.0" y="488" class="al" text-anchor="middle" >labels the issue</text>
-<text x="600" y="888" class="lb" text-anchor="middle" >A context is one coherent model with its own Scope, Depends on and non-goals</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Acceptance goes context by context, plus the index's cross-context invariants</text>
 </svg>

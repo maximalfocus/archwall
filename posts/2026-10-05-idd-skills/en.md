@@ -20,7 +20,7 @@ idd-skills is ten skills that have an AI coding agent build software one GitHub 
 
 ![](plan.svg)
 
-**The PRD** has word budgets. A validated slice folds into its requirement, so the PRD stays small. A contract too big for one model splits into contexts.
+**The PRD** has word budgets. A validated slice folds into its requirement, so the PRD stays small. A product too large for one coherent contract splits its PRD into contexts.
 
 ![](contract.svg)
 

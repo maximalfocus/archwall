@@ -24,7 +24,7 @@ d = Diagram("idd-skills product contract",
             "4 Once a slice is validated, its acceptance moves into the requirement it extends, or becomes a "
             "new one, and the slice "
             "shrinks to one row; the fold gate flags a slice still holding a section. So the PRD grows with the "
-            "model, not with the number of deliveries. A product too big for one model splits its PRD into "
+            "model, not with the number of deliveries. A product too large for one coherent contract splits its PRD into "
             "contexts, each with its own scope.")
 
 L, R, W = 24, 624, 552
@@ -56,7 +56,7 @@ d.group(R, T1, W, H1, "PROGRESS.md: a control panel", 2)
 column(R, T1, [("Status per slice|ready, active, blocked, missing acceptance", "write"),
                ("Baseline|what is done and verified", "data"),
                ("Update rule|how rows may change", "plan")])
-notes(R, T1, H1, "No dates in cells: Git and", "GitHub keep the history")
+notes(R, T1, H1, "No dates in cells;", "Git and GitHub keep the history")
 
 d.group(R, T2, W, H2, "Budgets, checked by scripts", 3)
 column(R, T2, [("PRD.md|≤ 1,000 words a section, ≤ 10,000 in all", "review"),
@@ -74,6 +74,6 @@ d.arrow(f"M{L + W} {T1 + 200}H{R - 2}", label="same IDs", at=(600, T1 + 188))
 d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="checked", at=(R + W / 2 + 46, T1 + H1 + 24))
 d.arrow(f"M{L + W / 2} {T2}V{T1 + H1 + 2}", label="folds into", at=(L + W / 2 + 62, T1 + H1 + 24))
 
-d.note(600, 888, "Too big for one model? The PRD splits into contexts, each with its own scope")
+d.note(600, 888, "A product too large for one coherent contract splits the PRD into contexts, each with its own scope")
 
 d.save(Path(__file__).with_name("contract.svg"))

@@ -79,7 +79,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Gates</text>
 <text x="903.0" y="359.0" class="ag" text-anchor="middle" >PRD size, tracker, line width, exposure</text>
 <text x="900.0" y="412" class="lb" text-anchor="middle" >Fixed steps are scripts;</text>
-<text x="900.0" y="438" class="lb" text-anchor="middle" >the agent runs git and gh too</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >judgment stays in the skill text</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="714.5" cy="527" r="14" class="num"/>
 <text x="714.5" y="533" class="numt" text-anchor="middle" >3</text>
@@ -117,6 +117,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <path d="M576 284H622" class="flow"/>
 <text x="600" y="272" class="al" text-anchor="middle" >run</text>
 <path d="M900.0 464V498" class="flow"/>
-<text x="944.0" y="488" class="al" text-anchor="middle" >git, gh</text>
+<text x="948.0" y="488" class="al" text-anchor="middle" >fixed steps</text>
+<path d="M300.0 464V482H700V498" class="flow"/>
+<text x="500" y="476" class="al" text-anchor="middle" >issues, PRs, visibility</text>
 <text x="600" y="888" class="lb" text-anchor="middle" >Install all ten: npx skills add maximalfocus/idd-skills --skill '*'</text>
 </svg>
