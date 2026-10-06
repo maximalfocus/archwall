@@ -13,7 +13,7 @@ d = Diagram("idd-skills progress batch",
             "In: a landed issue, its pull request and its squash commit. "
             "1 Who writes: /idd-land after every merge, automatically; /idd-plan with the --reconcile flag "
             "to repair or resync; /idd-publish for the publication row. Only PROGRESS.md is edited, never PRD.md. "
-            "2 Checks first: the tracker gate (80-word cells, no dates), the PRD size and fold gates, which only "
+            "2 Checks first: the tracker gate (80-word cells, no dates in cells), the PRD size and fold gates, which "
             "report, the manifest drift check for unlisted files, and line width within 100 characters. "
             "3 One open batch pull request: the branch progress/batch with docs(progress) commits; it stays open "
             "for review and each update adds a commit; if two batches are open, it stops until there is one. "
@@ -48,7 +48,7 @@ column(L, T1, [("/idd-land|after every merge, automatically", "review"),
 notes(L, T1, H1, "Only PROGRESS.md,", "never PRD.md")
 
 d.group(R, T1, W, H1, "Checks first", 2)
-column(R, T1, [("Tracker gate|80-word cells, no dates", "review"),
+column(R, T1, [("Tracker gate|80-word cells, no dates in cells", "review"),
                ("PRD size and fold gates|report only", "review"),
                ("Manifest drift|no unlisted files", "review"),
                ("Line width|≤ 100 characters", "review")])
