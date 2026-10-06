@@ -24,30 +24,43 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
    optional parts too (`optional-dependencies`, extras, feature flags), and check the docs against
    each other and the code.
 3. **Diagrams.** `posts/<YYYY-MM-DD-slug>/diagram.py` → `diagram.svg`, the home-page card: an overview of
-   the whole system. Then one `<name>.py` → `<name>.svg` for every phase, part or concern the overview only names,
-   with no cap on the count, until a non-technical manager could explain the architecture from the pictures alone.
+   the whole system. Then one `<name>.py` → `<name>.svg` for every phase, part or concern that a diagram (the
+   overview or any other) only names, with no cap on the count, until a non-technical manager could explain
+   the architecture from the pictures alone. Check it from the source's side too: list the source's own parts
+   (components, scripts, services, config, doc sections) and make sure each is drawn, is detail of something
+   drawn, or is left out on purpose; name the ones left out in the PR.
    List them under `[[figures]]` in `meta.toml`; place each with `![](<name>.svg)` in both bodies.
-4. **Look at it.** `python3 build.py && python3 tools/render.py posts/<slug>`, then Read every PNG in
-   `_render/<slug>/`. Fix overflow, overlap, arrows through text, notes that should be arrow labels,
-   colours that break the role meanings. Then check what the picture claims, against the code: what
-   each arrow carries, which stage each part sits in, and that every stage really produces what the
-   next one takes. Repeat until clean; a diagram nobody looked at is not done.
+4. **Look at it.** First `python3 tools/check.py posts/<slug>`: counts, figure list, every SVG fresh from
+   its `.py`, and the layout Chrome measures (text in its box, overlaps, cards in groups, line and note
+   limits, arrows through cards or text). Fix every failure. Then `python3 build.py && python3
+   tools/render.py posts/<slug>`, and Read every PNG in `_render/<slug>/`. Fix overflow, overlap, arrows
+   through text, notes that should be arrow labels, colours that break the role meanings. Then check what
+   the picture claims, against the code: what each arrow carries, which stage each part sits in, and that
+   every stage really produces what the next one takes. Keep each claim as narrow as its source: a
+   qualifier it states (only where, unless, or else, which first) stays in. A claim usually sits in
+   several places (the card, the `.py`'s Diagram description, alt_zh, alt_en, the body or a caption):
+   change them together. Repeat until clean; a diagram nobody looked at is not done.
 5. **Text.** `meta.toml` (titles, date, tags, figure, alt_zh/alt_en, source; captions for extra
    figures), `en.md`, `zh.md`: same content, plain voice. `build.py` prints each post's counts and warns past
    300 words / 300 hanzi; no warning allowed. Quote its counts in the PR, not your own. The diagrams carry few words, so the details go here.
-6. **Commit, push, PR.** The repo is maximalfocus/archwall and gh's active account is usually another
-   one: `gh auth switch -u maximalfocus`, create the PR (what the diagrams show, source + commit,
-   word counts), switch back. The git hooks rebuild the preview on commit; give the owner the link
-   once for a new post: `http://100.73.23.11:8765/post-<slug>/p/<slug>/`. Check
-   `~/personal/archwall-preview/.build.log` if it doesn't show.
-7. Revisions go on the same branch. Never merge without the owner's go-ahead.
+6. **Commit, push, PR.** The repo is maximalfocus/archwall. Check `gh auth status`: if maximalfocus is
+   not the active account, `gh auth switch -u maximalfocus` and switch back when done. Create the PR
+   (what the diagrams show, source + commit, word counts, what was left out on purpose). The git hooks
+   rebuild a preview on commit only where `python3 tools/preview.py install` has run ("archwall preview"
+   in `$(git rev-parse --git-common-dir)/hooks/post-commit`). There, give the owner the link once for a
+   new post: `http://100.73.23.11:8765/post-<branch slug>/p/<post folder>/`, e.g.
+   `post-idd-skills/p/2026-10-05-idd-skills/`, and check `~/personal/archwall-preview/.build.log` if it
+   doesn't show. Without the hooks, say in the PR that no preview was built.
+7. Revisions go on the same branch; after each one (or each /peerreview round), refresh the PR's counts
+   and diagram list. Never merge without the owner's go-ahead.
 
 Big batches (several diagrams to redraw) can fan out to parallel agents, one per diagram file; they
 must not commit, and you look at their PNGs before committing.
 
 ## Land: `/archwall land <PR#> [PR#...]`
 
-Only on the owner's explicit go-ahead, in the order given. With gh switched to maximalfocus:
+Only on the owner's explicit go-ahead, in the order given. With gh on maximalfocus (`gh auth status`;
+switch only if it isn't):
 
 1. For each PR: if its base is not `main`, first `gh pr edit <n> --base main`, then rebase its branch
    onto `origin/main` past the already-merged commits (`git rebase --onto origin/main <old base tip>`)
@@ -55,7 +68,7 @@ Only on the owner's explicit go-ahead, in the order given. With gh switched to m
    disappears, and a closed PR whose head was force-pushed can't be reopened.
 2. `gh pr merge <n> --squash --delete-branch` (one commit per post on `main`). Check the PR now shows
    only its own files (`gh pr view <n> --json files`) before merging.
-3. After the last one: switch gh back, `git switch main && git pull`, remove worktrees of merged
+3. After the last one: switch gh back if you switched, `git switch main && git pull`, remove worktrees of merged
    branches, wait for the "Deploy to GitHub Pages" run (`gh run list --limit 1`) to succeed, and curl
    the live post at https://maximalfocus.github.io/archwall/p/<slug>/.
 

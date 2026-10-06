@@ -44,7 +44,7 @@ for i, t in enumerate(["REST API|wrappers", "Debugger|test runner", "ATC|tracing
 d.note(R + W / 2, 382, "2.9 million lines, one codebase")
 
 # 1 -> 2
-d.arrow("M520 156H650", label="LSP", at=(586, 146))
+d.arrow("M544 156H650", label="LSP", at=(597, 146))
 d.arrow("M142 192V290H622", label="runs", at=(590, 280))
 
 # 3 ABAP server

@@ -60,6 +60,6 @@ d.pill(L + 76, T2 + 292, 400, 46, "finished tree joins the pool", "front")
 d.arrow(f"M{L + W} 200H{R - 2}", label="picks", at=(600, 188))
 d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="attempt", at=(R + W / 2 + 50, T1 + H1 + 30))
 d.arrow(f"M{R} {T2 + 160}H{L + W + 2}", label="tree", at=(600, T2 + 148))
-d.arrow(f"M{L + W / 2} {T2 + 64}V{T1 + H1 + 2}", back=True, label="next round", at=(L + W / 2 + 70, T1 + H1 + 30))
+d.arrow(f"M{L + W - 80} {T2 + 64}V{T1 + H1 + 2}", back=True, label="next round", at=(L + W - 150, T1 + H1 + 30))
 
 d.save(Path(__file__).with_name("explore.svg"))

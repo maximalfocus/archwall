@@ -12,6 +12,8 @@ Phones show the 1200-wide frame at about a third of its size, so type is big and
 - Card labels 20px, notes 17px, nothing smaller. A card label fits in two short lines.
 - At most two note lines per group. Anything longer belongs in the post text, not the picture.
 - Name what an arrow carries with arrow(..., label=..., at=(x, y)) instead of a note beside it.
+  A label sitting on its own line hides the line with a white halo, but not after a comma:
+  write such labels without commas ("issues · PRs", not "issues, PRs").
 - KIND colours mean the card's role (below). If colour encodes anything else in a diagram,
   for example "active branch", add a legend() for it.
 
@@ -21,6 +23,14 @@ Phones show the 1200-wide frame at about a third of its size, so type is big and
     d.card(48, 96, "Coding|Agent", "coding")    # "|" breaks lines
     d.arrow("M212 126H236", label="calls", at=(224, 116))
     d.save("diagram.svg")
+
+The two-column snake most diagrams use (a pill on top, then 1 top left, 2 top right, 3 bottom
+right, 4 bottom left) has its numbers here: groups at (L, T1), (R, T1), (R, T2), (L, T2), GW wide,
+H1 or H2 high. d.column(x, top, cards) stacks cards in a group and d.notes(x, top, h, a, b) puts
+up to two note lines at its foot. A bottom-row group holds three cards and two notes, or four
+cards with d.column(..., h=60, gap=14, first=60).
+
+python3 tools/check.py posts/<slug> checks what of this can be measured.
 """
 
 # Card accent colours, by role.  Keep the meaning stable across posts.
@@ -59,6 +69,10 @@ def esc(s):
 
 
 W, H = 1200, 900
+
+# The two-column snake: group x positions and width; top row (under a pill at y 16) and bottom row.
+L, R, GW = 24, 624, 552
+T1, H1, T2, H2 = 84, 380, 500, 364
 
 
 class Diagram:
@@ -104,6 +118,17 @@ class Diagram:
         y0 = y + h / 2 - (len(lines) - 1) * 12 + 7
         for i, ln in enumerate(lines):
             self.text(x + w / 2 + 3, y0 + i * 24, ln, "ag")
+
+    def column(self, x, top, cards, h=64, gap=16, first=64, w=GW - 60):
+        """Cards [(label, kind), ...] stacked in the group whose top left is (x, top), 30 px in."""
+        for i, (label, kind) in enumerate(cards):
+            self.card(x + 30, top + first + i * (h + gap), label, kind, w=w, h=h)
+
+    def notes(self, x, top, h, a, b="", w=GW):
+        """Up to two note lines at the foot of the group at (x, top), w wide and h high."""
+        self.note(x + w / 2, top + h - 52, a)
+        if b:
+            self.note(x + w / 2, top + h - 26, b)
 
     def note(self, x, y, s, anchor="middle"):
         self.text(x, y, s, "lb", anchor)

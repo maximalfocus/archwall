@@ -19,7 +19,8 @@ Writing or landing a post: use the `archwall` skill (`.claude/skills/archwall/`)
 - The figure is an SVG, redrawn (no raster screenshots), and appears both on the home page and in the post.
 - Show the whole architecture, so a non-technical manager can follow it from the diagrams alone. There is no cap on
   how many diagrams a post has: start with an overview (the home-page card), then add one for each phase, part or
-  concern the overview only names (data flow, safety rails, models, operations, ...), as many as it takes.
+  concern that a diagram (the overview or any other) only names (data flow, safety rails, models, operations, ...),
+  as many as it takes.
   List the extra ones under `[[figures]]` in `meta.toml` (file, alt, a caption saying in plain words what the
   diagram shows) and place each with a line `![](name.svg)` in both zh.md and en.md. The first diagram stays the home-page card.
   Each extra one follows the same rules below, with its source `<name>.py` next to `<name>.svg`.
