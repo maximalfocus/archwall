@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Connections</title>
+<desc id="d">In: a call names a connection, or none. 1 Pick: a named connection is never swapped for another account; with no name, the stored default comes first, then no_auth, then the Marketplace; a token can be limited to some connection IDs. 2 Stored here: API key or custom fields that each provider declares, and OAuth2 through your own OAuth app, refreshed automatically when the access token has expired and the provider gave a refresh token. Secrets sit in the runtime database, encrypted only when OOMOL_CONNECT_ENCRYPTION_KEY is set. 3 No account secret: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with one deployment Marketplace API key; only the action ID and input are sent. 4 Kept on SaaS: an OAuth account authorised through an OOMOL SaaS project; its tokens stay on SaaS and its actions run there. Agents only ever see an account label, never a secret.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: a call names a connection, or none</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="263.0" cy="111" r="14" class="num"/>
+<text x="263.0" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="283.0" y="120" class="gt" text-anchor="start" >Pick</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Named</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >never swapped for another account</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >No name</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >default → no_auth → Marketplace</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Token grant</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >only the allowed IDs</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Agents see an account label,</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >never the secret</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="815.75" cy="111" r="14" class="num"/>
+<text x="815.75" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="835.75" y="120" class="gt" text-anchor="start" >Stored here</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >API key · custom</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >fields the provider declares</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >OAuth2</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >your own OAuth app</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Auto refresh</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >expired, with a refresh token</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Encrypted only with</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >OOMOL_CONNECT_ENCRYPTION_KEY</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="775.25" cy="527" r="14" class="num"/>
+<text x="775.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="795.25" y="536" class="gt" text-anchor="start" >No account secret</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >no_auth</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >e.g. Hacker News</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Marketplace</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >actions run by OOMOL</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >One Marketplace key</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >sends only action + input</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="209.0" cy="527" r="14" class="num"/>
+<text x="209.0" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="229.0" y="536" class="gt" text-anchor="start" >Kept on SaaS</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >SaaS OAuth account</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >via an OOMOL project key</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Tokens stay on SaaS</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >only a reference here</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Runs remotely</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >no local fallback</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >local</text>
+<path d="M576 374H600V600H622" class="flow"/>
+<text x="600" y="488" class="al" text-anchor="middle" >virtual</text>
+<path d="M300.0 464V498" class="flow"/>
+<text x="300.0" y="488" class="al" text-anchor="middle" >SaaS</text>
+</svg>

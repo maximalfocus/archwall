@@ -1,0 +1,50 @@
+title_zh = "OpenConnector：AI 智能体连你的应用，只连一次，不碰密钥"
+title_en = "OpenConnector: agents use your apps without seeing your keys"
+date = "2026-10-06"
+tags = ["agents", "mcp", "oauth", "gateway", "security"]
+figure = "diagram.svg"
+alt_zh = "OpenConnector 总览：输入是需要用你账号的 AI 智能体和应用；1 入口：MCP（POST /mcp，5 个工具）、HTTP API /v1（SDK、oo CLI、OpenAPI）、Web 控制台（管理 API /api），每个入口用同样的动作 ID 和 schema；2 检查：配置了认证时查 Bearer 令牌（运行时令牌、JWT 或管理令牌）、每个动作的允许和禁止规则、选用哪个账号，被拒的调用在读任何密钥之前就停下；3 运行：按动作的 schema 查输入，服务的代码第一次用到时才加载，请求走受保护的 fetch，到不了内网地址，出去到 1,000+ 个服务的 API，或交给 OOMOL Marketplace / SaaS；4 记录：脱敏的运行日志（默认保留最近 5,000 条）、连接和它们的密钥（设了密钥才加密）、临时中转文件，存在 SQLite、PostgreSQL 或 Cloudflare D1"
+alt_en = "OpenConnector overview: in come AI agents and apps that need your accounts; 1 way in: MCP (POST /mcp, 5 tools), the HTTP API /v1 (SDK, oo CLI, OpenAPI) and the Web Console (admin API /api), with the same action IDs and schemas on every way in; 2 checks: a bearer token when one is set (runtime token, JWT or admin), allow and block rules per action, and which account to act as; a denied call stops before any secret is read; 3 run: the input is checked against the action schema, the provider's code loads the first time it runs, and requests go through a guarded fetch with no private addresses, out to 1,000+ provider APIs or to OOMOL Marketplace / SaaS; 4 records: a redacted run log (last 5,000 by default), connections with their secrets (encrypted when a key is set) and temporary transit files, in SQLite, PostgreSQL or Cloudflare D1"
+source = "https://github.com/oomol-lab/open-connector (commit 20c6c44)"
+
+[[figures]]
+file = "action-run.svg"
+alt_zh = "一次动作调用：输入是 POST /v1/actions/<id> 或 MCP 的 execute_action；1 谁在调用：环境变量里的引导令牌、持久令牌（oct_…，只存哈希）、JWT（只在 Node 上，要配 3 项设置），配置了运行时认证时用 Authorization: Bearer 发送；2 允不允许：部署、运行时、令牌三层的动作规则，选命名连接或默认连接，令牌允许的连接 ID，不行就拒绝，不读任何密钥；3 运行：按 JSON schema 查输入，不对返回 400，跑本地服务代码，或交给 Marketplace / SaaS，本地代码请求服务 API 默认 30 秒超时；4 记录和回答：运行日志里输入输出都脱敏，带 Idempotency-Key（只限 HTTP）的重试在 24 小时内重放第一次的回答，回答带 data 和 executionId"
+alt_en = "One action call: in comes POST /v1/actions/<id> or MCP execute_action; 1 who is calling: a bootstrap token from an env variable, a persistent token (oct_…, only its hash stored) or a JWT (Node only, needs 3 settings), sent as Authorization: Bearer when runtime auth is configured; 2 is it allowed: action rules from deployment, runtime and token, then a named or the default connection, then the token's allowed connection IDs; no means denied before any secret is read; 3 run: the input is checked against the JSON schema (else 400), then local provider code runs, or Marketplace / SaaS; local code has a 30 s timeout on provider API requests by default; 4 record and answer: a run log with input and output redacted; with an Idempotency-Key, HTTP only, a retry within 24 h replays the first answer; the answer has data and an executionId"
+caption_zh = "一次调用：查令牌、查规则、选账号、跑、记日志"
+caption_en = "One call: token, rules, account, run, log"
+
+[[figures]]
+file = "connections.svg"
+alt_zh = "连接：输入是一次调用，点了连接名或没点；1 选择：点名的连接不会换成别的账号；没点名就按 默认 → no_auth → Marketplace 的顺序；令牌可限定到允许的连接 ID；智能体只看到账号名，看不到密钥；2 存在本地：API 密钥或自定义字段（服务声明的字段）、OAuth2（用你自己的 OAuth 应用），访问令牌过期且有刷新令牌就自动刷新，只有设了 OOMOL_CONNECT_ENCRYPTION_KEY 才加密；3 不存账号密钥：no_auth（比如 Hacker News），Marketplace 的动作由 OOMOL 跑，一把部署用的 Marketplace 密钥，只发动作和输入；4 留在 SaaS：通过 OOMOL 项目密钥授权的 SaaS OAuth 账号，令牌留在 SaaS，本地只有引用，在远端运行，不回退到本地"
+alt_en = "Connections: in comes a call that names a connection, or none; 1 pick: a named one is never swapped for another account; with no name the order is default, then no_auth, then Marketplace; a token can be limited to its allowed connection IDs; agents see an account label, never the secret; 2 stored here: API key or custom fields the provider declares, and OAuth2 through your own OAuth app, refreshed automatically when the access token has expired and a refresh token exists; encrypted only with OOMOL_CONNECT_ENCRYPTION_KEY; 3 no account secret: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with one deployment Marketplace key that sends only the action and input; 4 kept on SaaS: a SaaS OAuth account through an OOMOL project key; its tokens stay on SaaS, only a reference is kept here, and it runs remotely with no local fallback"
+caption_zh = "连接：调用用哪个账号，密钥放在哪"
+caption_en = "Connections: which account a call uses, and where its secret lives"
+
+[[figures]]
+file = "safety.svg"
+alt_zh = "安全护栏：1 管理端：管理令牌守着 /api、/docs 和控制台，默认只绑定 127.0.0.1，设 HOST=0.0.0.0 才对外，运行时令牌在这里生成、只显示一次；控制台能从你机器以外访问时就要设管理令牌；2 调用方令牌：持久令牌自带动作规则、代理授权（空就不能调 /v1/proxy）、连接授权（准确的连接 ID）、触发器授权（空就没有触发器）；3 层层叠加：部署层的环境变量允许和禁止列表、控制台里保存的运行时策略、令牌授权只能收窄；每一层都要放行，禁止永远优先；4 数据和出站：受保护的 fetch 挡住内网和云元数据地址，内网要开开关、只给自托管的服务，有密钥时存储的密钥用 AES-256-GCM 加密"
+alt_en = "Safety rails: 1 admin side: the admin token guards /api, /docs and the Console; the server binds to 127.0.0.1 and needs HOST=0.0.0.0 to open; runtime tokens are made here and shown once; set it whenever the Console is reachable beyond your machine; 2 caller tokens: a persistent token carries action rules, a proxy grant (empty means no /v1/proxy), a connection grant (exact connection IDs) and a trigger grant (empty means no triggers); 3 layers: deployment allow and block lists from env, the runtime policy saved in the Console, and token grants that can only narrow; every layer must allow and a block always wins; 4 data and egress: the guarded fetch blocks private and cloud metadata addresses, private networks need a flag and are for self-hosted providers only, and secrets at rest use AES-256-GCM when a key is set"
+caption_zh = "安全护栏：管理令牌、调用方令牌、三层规则、出站和存储"
+caption_en = "Safety rails: admin token, caller tokens, three rule layers, egress and storage"
+
+[[figures]]
+file = "catalog.svg"
+alt_zh = "服务和目录：输入是 1,000+ 个服务，每个一个文件夹；1 源码：src/providers/<service>/ 里的 definition.ts（动作、schema、权限范围）和 executors.ts（调服务 API）；2 生成：npm run generate:catalog 给每个服务写一个 JSON，外加一个索引；服务注册表把服务映射到延迟加载；3 运行时：启动时加载目录，用来列出和搜索，开了下面的开关就读索引、不读每个服务文件，服务代码第一次用到时才加载，schema 留在磁盘上是可选开关 OOMOL_CONNECT_CATALOG_LAZY_SCHEMAS，只在 Node 和单个可执行文件上；4 调用方看到的：每个动作一份 agent.md 指南、/openapi.json、读 / 写 / 破坏性的标签，以及能在本地跑还是只在目录里"
+alt_en = "Providers and the catalog: in come 1,000+ providers, one folder each; 1 source: definition.ts (actions, schemas, scopes) and executors.ts (calls the provider API) under src/providers/<service>/; 2 build: npm run generate:catalog writes a JSON per provider plus an index, and the provider registry maps each service to a lazy import; 3 runtime: the catalog loads at startup for list and search, with the optional flag below the generated index is read instead of every provider file, provider code loads on first use, and keeping schemas on disk is that same flag OOMOL_CONNECT_CATALOG_LAZY_SCHEMAS, on Node and the single binary; 4 what callers see: an agent.md guide per action, /openapi.json, read / write / destructive labels, and whether an action runs locally or is catalog only"
+caption_zh = "目录：每个服务一个文件夹，生成目录，用到时才加载代码"
+caption_en = "The catalog: one folder per provider, generated, code loaded on first use"
+
+[[figures]]
+file = "triggers.svg"
+alt_zh = "触发器：输入是 Open Flow 工作流引擎，它管检查点、调度和去重；1 轮询：带上次的检查点 read，每页最多 100 个事件，hasMore 就再读；2 webhook：reconcile 建立或保持服务那边的 hook，receive 校验签名、正文最多 64 KiB；hook ID 和密钥留在服务器上；3 状态：订阅加密存储、用 SQL 租约，有状态的操作要持久令牌；只支持本地连接，不支持 SaaS 和 Marketplace；4 清理：Node 上的维护循环或 Workers 的定时任务清掉被撤销的 hook，管理员可以取消或放弃订阅"
+alt_en = "Triggers: in comes Open Flow, the workflow engine, which keeps checkpoints, schedules and de-duplicates; 1 poll: read with the last checkpoint, at most 100 events a page, read again while hasMore; 2 webhook: reconcile creates or keeps the provider hook, receive checks the signature on bodies up to 64 KiB; hook IDs and secrets stay on the server; 3 state: subscriptions are encrypted with SQL leases, stateful operations need a persistent token, and only local connections work, not SaaS or Marketplace; 4 cleanup: a maintenance loop on Node or a cron on Workers removes revoked hooks, and admins can cancel or abandon a subscription"
+caption_zh = "触发器：轮询或 webhook，把事件交给 Open Flow"
+caption_en = "Triggers: polling or webhooks, handing events to Open Flow"
+
+[[figures]]
+file = "deploy.svg"
+alt_zh = "部署在哪：1 Node 服务：GHCR 上的 Docker 镜像（端口 3000）、Bun 构建的单个可执行文件（6 个平台）、Helm chart 和 Fly.io（同一个 Dockerfile）；默认 SQLite，可用 PostgreSQL 15+，中转文件放本地磁盘或 S3；2 Cloudflare：Workers 跑网关，D1 存记录，R2 或 Workers KV 存中转文件，每分钟一次定时清理；3 嵌进你的应用：npm 库 @oomol-lab/open-connector，HTTP、配置和进程归你的服务，没有 Web 控制台，每个进程一个运行时；4 OOMOL 托管：OAuth 应用现成，不用自己建，运行时由 OOMOL 管，服务和动作 ID 相同，以后可以搬到自托管"
+alt_en = "Where it runs: 1 Node server: the Docker image from GHCR on port 3000, a single binary for 6 platforms built with Bun, or the Helm chart and Fly.io from the same Dockerfile; SQLite by default or PostgreSQL 15+, transit files on local disk or S3; 2 Cloudflare: Workers run the gateway, D1 keeps records, R2 or Workers KV keeps transit files, and a cron runs cleanup once a minute; 3 inside your app: the npm library @oomol-lab/open-connector, your server owns HTTP, config and the process, no Web Console, one runtime per process; 4 OOMOL hosted: OAuth apps ready with no app setup, a hosted runtime managed by OOMOL, the same provider and action IDs so you can move to self-hosting later"
+caption_zh = "部署：Node 服务、Cloudflare、嵌进应用、OOMOL 托管"
+caption_en = "Where it runs: Node server, Cloudflare, inside your app, OOMOL hosted"
