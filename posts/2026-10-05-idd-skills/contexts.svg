@@ -97,7 +97,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="303.0" y="751.0" class="ag" text-anchor="middle" >Portfolio order</text>
-<text x="303.0" y="775.0" class="ag" text-anchor="middle" >active work, or earliest unmet</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >active work or earliest unmet dependency</text>
 <text x="300.0" y="812" class="lb" text-anchor="middle" >Every gate runs over the index</text>
 <text x="300.0" y="838" class="lb" text-anchor="middle" >and each context</text>
 <path d="M576 284H622" class="flow"/>

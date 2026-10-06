@@ -65,7 +65,7 @@ notes(R, T2, H2, "A change that crosses contexts is a", "design decision in the 
 d.group(L, T2, W, H2, "Modes and gates", 4)
 column(L, T2, [("Flag --context <name>|one context at a time", "plan"),
                ("contract.sh gate|index, then every context", "review"),
-               ("Portfolio order|active work, or earliest unmet", "plan")])
+               ("Portfolio order|active work or earliest unmet dependency", "plan")])
 notes(L, T2, H2, "Every gate runs over the index", "and each context")
 
 d.arrow(f"M{L + W} {T1 + 200}H{R - 2}", label="indexes", at=(600, T1 + 188))

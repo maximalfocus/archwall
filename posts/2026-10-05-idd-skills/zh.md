@@ -1,4 +1,4 @@
-idd-skills 是十个技能，让 AI 编程助手一次一个 GitHub issue，把软件做出来。固定的 git 和 GitHub 步骤归脚本。
+idd-skills 是十个技能，让 AI 编程助手一次做一个 GitHub issue，把软件做出来。固定的 git 和 GitHub 步骤归脚本。
 
 **工具包**在 Claude Code、Codex、Pi 或 OpenCode 里跑。
 

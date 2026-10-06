@@ -16,7 +16,7 @@ d = Diagram("idd-plan modes",
             "1 New product, greenfield: ask about the product one decision at a time, draft PRD.md and "
             "PROGRESS.md with small slices in dependency order, and push a private, protected repository, or "
             "only show the drafts if you ask for a draft. It picks the technology itself unless that changes the "
-            "product. "
+            "product, or you state a preference. "
             "2 Existing code, reconstruct: read the whole repository with its tests, docs and history, describe "
             "what it does at one named commit, and record one verified baseline; past commits never become "
             "slices. The --scope flag limits it to some paths in a repository too big to read at once. "
@@ -51,7 +51,7 @@ d.group(L, T1, W, H1, "New product: greenfield", 1)
 column(L, T1, [("Ask about the product|one decision at a time", "plan"),
                ("Draft PRD.md, PROGRESS.md|small slices, in dependency order", "write"),
                ("Push a private repo, protected|or just drafts, if you ask", "write")])
-notes(L, T1, H1, "Picks the tech itself, unless", "it changes the product")
+notes(L, T1, H1, "Picks the tech itself, unless the", "product changes, or you choose")
 
 d.group(R, T1, W, H1, "Existing code: reconstruct", 2)
 column(R, T1, [("Read the whole repo|code, tests, docs, history", "plan"),

@@ -70,7 +70,7 @@ notes(L, T2, H2, "validate.sh checks them,", "run before every commit")
 d.arrow(f"M{L + W} {T1 + 200}H{R - 2}", label="run", at=(600, T1 + 188))
 d.arrow(f"M{R + W / 2} {T1 + H1}V{T2 - 2}", label="fixed steps", at=(R + W / 2 + 48, T1 + H1 + 24))
 d.arrow(f"M{L + W / 2} {T1 + H1}V{T1 + H1 + 18}H700V{T2 - 2}", label="issues, PRs, visibility",
-        at=(500, T1 + H1 + 12))
+        at=(500, T1 + H1 + 24))
 
 d.note(600, 888, "Install all ten: npx skills add maximalfocus/idd-skills --skill '*'")
 
