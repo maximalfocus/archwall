@@ -19,10 +19,9 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
    another branch or has changes that aren't yours, don't touch them: `git worktree add ../archwall-<slug>
    -b post/<slug> origin/main` and work there.
 2. **Research.** Clone repos shallowly into the scratchpad. Read the project's own architecture or
-   "how it works" docs and the package manifests before code. Note the commit hash: claims and the
-   diagram docstring cite it. Every number and claim must be in the source. Read the manifest's
-   optional parts too (`optional-dependencies`, extras, feature flags), and check the docs against
-   each other and the code.
+   "how it works" docs and the package manifests before code. Note the commit hash: claims and the diagram
+   docstring cite it. Every number and claim must be in the source. Read the manifest's optional parts too
+   (`optional-dependencies`, extras, feature flags), and check the docs against each other and the code.
 3. **Diagrams.** `posts/<YYYY-MM-DD-slug>/diagram.py` → `diagram.svg`, the home-page card: an overview of
    the whole system. One `<name>.py` → `<name>.svg` for every phase, part or concern that a diagram (the
    overview or any other) only names, with no cap on the count, until a non-technical manager could
@@ -75,6 +74,7 @@ switch only if it isn't):
 
 Tooling or style changes (not a post) use `site/<topic>` and the same PR → land flow.
 `SKILL.md`: 80 lines, 110 chars max. `CLAUDE.md`: 40 lines, 130 chars max. Merge or delete before adding.
-Name the post or PR that caused a change, in the PR description. What a script can check goes in
-`tools/check.py`, not prose; replace a sentence instead of adding one. A look-changing `tools/archdiagram.py`
-edit re-renders each diagram (`python3 posts/*/*.py`), looks at each, redrawing what breaks, in the same PR.
+Name the post or PR that caused a change, in the PR description. A site PR runs `python3 tools/check.py` on
+any post first; that also checks the caps. What a script can check goes in `tools/check.py`, not prose;
+replace a sentence instead of adding one. If a change alters the look, re-render every diagram (`python3
+posts/*/*.py`), look at each, and redraw what breaks, in the same PR.
