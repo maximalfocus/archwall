@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Connections</title>
-<desc id="d">In: a call names a connection, or none. 1 Pick: a named connection must exist and is never swapped for another; with no name, the stored default comes first, then no_auth, then the Marketplace; a token can be limited to some connection IDs. 2 Stored here: API key or custom fields that each provider declares, and OAuth2 through your own OAuth app, refreshed automatically when the provider gave a refresh token. Secrets sit in the runtime database, encrypted only when OOMOL_CONNECT_ENCRYPTION_KEY is set. 3 No account secret: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with one deployment Marketplace API key; only the action ID and input are sent. 4 Kept on SaaS: an OAuth account authorised through an OOMOL SaaS project; its tokens stay on SaaS and its actions run there. Agents only ever see an account label, never a secret.</desc>
+<desc id="d">In: a call names a connection, or none. 1 Pick: a named connection is never swapped for another account; with no name, the stored default comes first, then no_auth, then the Marketplace; a token can be limited to some connection IDs. 2 Stored here: API key or custom fields that each provider declares, and OAuth2 through your own OAuth app, refreshed automatically when the access token has expired and the provider gave a refresh token. Secrets sit in the runtime database, encrypted only when OOMOL_CONNECT_ENCRYPTION_KEY is set. 3 No account secret: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with one deployment Marketplace API key; only the action ID and input are sent. 4 Kept on SaaS: an OAuth account authorised through an OOMOL SaaS project; its tokens stay on SaaS and its actions run there. Agents only ever see an account label, never a secret.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -35,7 +35,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="303.0" y="175.0" class="ag" text-anchor="middle" >Named</text>
-<text x="303.0" y="199.0" class="ag" text-anchor="middle" >must exist · no fallback</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >never swapped for another account</text>
 <rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="303.0" y="255.0" class="ag" text-anchor="middle" >No name</text>
@@ -61,7 +61,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Auto refresh</text>
-<text x="903.0" y="359.0" class="ag" text-anchor="middle" >when a refresh token exists</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >expired, with a refresh token</text>
 <text x="900.0" y="412" class="lb" text-anchor="middle" >Encrypted only with</text>
 <text x="900.0" y="438" class="lb" text-anchor="middle" >OOMOL_CONNECT_ENCRYPTION_KEY</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>

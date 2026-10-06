@@ -15,8 +15,8 @@ d = Diagram("Providers and the catalog",
             "registry maps each provider to a lazy import of its executors. "
             "3 Runtime: the catalog loads at startup for listing and search; with the optional flag below the "
             "generated index is read instead of every provider file, and a provider's code loads the first time "
-            "one of its actions, its proxy or its credential check runs; keeping schemas on disk is that flag, "
-            "OOMOL_CONNECT_CATALOG_LAZY_SCHEMAS. "
+            "one of its actions, its proxy or its credential check runs; keeping schemas on disk is that flag on "
+            "Node and the single binary, OOMOL_CONNECT_CATALOG_LAZY_SCHEMAS. "
             "4 What callers see: an agent-readable guide per action, an OpenAPI document, and for each action "
             "whether it reads, writes or destroys, and whether it can run locally or is catalog only.")
 
@@ -35,7 +35,7 @@ d.column(R, T1, [("npm run generate:catalog|a JSON per provider + index", "write
 d.group(R, T2, GW, H2, "Runtime", 3)
 d.column(R, T2, [("Catalog at startup|list · search", "data"),
                  ("Provider code|loaded on first use", "coding"),
-                 ("Schemas on disk|optional flag", "data")])
+                 ("Schemas on disk|optional flag · Node only", "data")])
 d.notes(R, T2, H2, "OOMOL_CONNECT_CATALOG_LAZY_SCHEMAS", "")
 
 d.group(L, T2, GW, H2, "What callers see", 4)

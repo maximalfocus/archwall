@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Providers and the catalog</title>
-<desc id="d">1 Source: one folder per provider under src/providers, with definition.ts for actions, schemas and scopes, and executors.ts for the code that calls the provider's API. 2 Build: npm run generate:catalog writes one JSON file per provider plus an index, and a generated registry maps each provider to a lazy import of its executors. 3 Runtime: the catalog loads at startup for listing and search; with the optional flag below the generated index is read instead of every provider file, and a provider's code loads the first time one of its actions, its proxy or its credential check runs; keeping schemas on disk is that flag, OOMOL_CONNECT_CATALOG_LAZY_SCHEMAS. 4 What callers see: an agent-readable guide per action, an OpenAPI document, and for each action whether it reads, writes or destroys, and whether it can run locally or is catalog only.</desc>
+<desc id="d">1 Source: one folder per provider under src/providers, with definition.ts for actions, schemas and scopes, and executors.ts for the code that calls the provider's API. 2 Build: npm run generate:catalog writes one JSON file per provider plus an index, and a generated registry maps each provider to a lazy import of its executors. 3 Runtime: the catalog loads at startup for listing and search; with the optional flag below the generated index is read instead of every provider file, and a provider's code loads the first time one of its actions, its proxy or its credential check runs; keeping schemas on disk is that flag on Node and the single binary, OOMOL_CONNECT_CATALOG_LAZY_SCHEMAS. 4 What callers see: an agent-readable guide per action, an OpenAPI document, and for each action whether it reads, writes or destroys, and whether it can run locally or is catalog only.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -68,7 +68,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="903.0" y="751.0" class="ag" text-anchor="middle" >Schemas on disk</text>
-<text x="903.0" y="775.0" class="ag" text-anchor="middle" >optional flag</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >optional flag · Node only</text>
 <text x="900.0" y="812" class="lb" text-anchor="middle" >OOMOL_CONNECT_CATALOG_LAZY_SCHEMAS</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="182.0" cy="527" r="14" class="num"/>

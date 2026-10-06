@@ -13,9 +13,9 @@ d = Diagram("One action call",
             "1 Who is calling: a bootstrap token from an environment variable, a persistent token made in the "
             "Console whose hash is all that is stored, or a JWT, which is Node only and needs three settings; sent as a bearer token when runtime authentication is configured. "
             "2 Is it allowed: the action rules of deployment, runtime and token; then the named connection, "
-            "or the default one; then the token's connection grant. A denial is a 403 before any secret is read. "
+            "or the default one; then the token's connection grant. A denial stops before any secret is read. "
             "3 Run: the input is checked against the action's JSON schema, then the local provider code runs, "
-            "or the call goes to the Marketplace or to SaaS; local provider requests time out after 30 seconds. "
+            "or the call goes to the Marketplace or to SaaS; local provider requests time out after 30 seconds by default. "
             "4 Record: a redacted run log entry; with an Idempotency-Key header, HTTP only, a retry within "
             "24 hours replays the first answer; the answer carries the data and an executionId.")
 
@@ -32,12 +32,12 @@ d.group(R, T1, GW, H1, "Is it allowed", 2)
 d.column(R, T1, [("Action rules|deployment · runtime · token", "review"),
                  ("Pick a connection|named, or the default", "plan"),
                  ("Connection grant|the token's allowed IDs", "review")])
-d.notes(R, T1, H1, "No → 403, before any secret is read", "")
+d.notes(R, T1, H1, "No → denied, before any secret is read", "")
 
 d.group(R, T2, GW, H2, "Run", 3)
 d.column(R, T2, [("Check the input|JSON schema · else 400", "critic"),
                  ("Local provider code|or Marketplace / SaaS", "coding"),
-                 ("Provider API|30 s timeout, local code", "coding")])
+                 ("Provider API|30 s by default, local code", "coding")])
 
 d.group(L, T2, GW, H2, "Record and answer", 4)
 d.column(L, T2, [("Run log|input and output redacted", "data"),

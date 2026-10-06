@@ -10,7 +10,7 @@ from archdiagram import Diagram, L, R, GW, T1, H1, T2, H2  # noqa: E402
 
 d = Diagram("Where it runs",
             "1 Node server: the Docker image from GHCR on port 3000, a single binary for six platforms built "
-            "with Bun, or the same image through the Helm chart or Fly.io; SQLite by default, PostgreSQL 15 or newer with a database URL, "
+            "with Bun, or the Helm chart and Fly.io, both from that Dockerfile; SQLite by default, PostgreSQL 15 or newer with a database URL, "
             "and transit files on local disk or S3. "
             "2 Cloudflare: Workers run it, D1 keeps the records, R2 or Workers KV keeps transit files, and a "
             "once-a-minute cron does cleanup. "
@@ -22,7 +22,7 @@ d = Diagram("Where it runs",
 d.group(L, 16, GW, H1 + 68, "Node server", 1)
 d.column(L, 16, [("Docker image|ghcr.io · port 3000", "coding"),
                  ("Single binary|6 platforms · built with Bun", "coding"),
-                 ("Helm chart · Fly.io|same Docker image", "coding")])
+                 ("Helm chart · Fly.io|same Dockerfile", "coding")])
 d.notes(L, 16, H1 + 68, "SQLite by default · PostgreSQL 15+", "transit files: local disk or S3")
 
 d.group(R, 16, GW, H1 + 68, "Cloudflare", 2)

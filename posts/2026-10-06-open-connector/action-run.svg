@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">One action call</title>
-<desc id="d">In: one call, for example POST /v1/actions/github.get_current_user or the MCP tool execute_action. 1 Who is calling: a bootstrap token from an environment variable, a persistent token made in the Console whose hash is all that is stored, or a JWT, which is Node only and needs three settings; sent as a bearer token when runtime authentication is configured. 2 Is it allowed: the action rules of deployment, runtime and token; then the named connection, or the default one; then the token's connection grant. A denial is a 403 before any secret is read. 3 Run: the input is checked against the action's JSON schema, then the local provider code runs, or the call goes to the Marketplace or to SaaS; local provider requests time out after 30 seconds. 4 Record: a redacted run log entry; with an Idempotency-Key header, HTTP only, a retry within 24 hours replays the first answer; the answer carries the data and an executionId.</desc>
+<desc id="d">In: one call, for example POST /v1/actions/github.get_current_user or the MCP tool execute_action. 1 Who is calling: a bootstrap token from an environment variable, a persistent token made in the Console whose hash is all that is stored, or a JWT, which is Node only and needs three settings; sent as a bearer token when runtime authentication is configured. 2 Is it allowed: the action rules of deployment, runtime and token; then the named connection, or the default one; then the token's connection grant. A denial stops before any secret is read. 3 Run: the input is checked against the action's JSON schema, then the local provider code runs, or the call goes to the Marketplace or to SaaS; local provider requests time out after 30 seconds by default. 4 Record: a redacted run log entry; with an Idempotency-Key header, HTTP only, a retry within 24 hours replays the first answer; the answer carries the data and an executionId.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -62,7 +62,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="318" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Connection grant</text>
 <text x="903.0" y="359.0" class="ag" text-anchor="middle" >the token's allowed IDs</text>
-<text x="900.0" y="412" class="lb" text-anchor="middle" >No → 403, before any secret is read</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >No → denied, before any secret is read</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="869.75" cy="527" r="14" class="num"/>
 <text x="869.75" y="533" class="numt" text-anchor="middle" >3</text>
@@ -78,7 +78,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
 <text x="903.0" y="751.0" class="ag" text-anchor="middle" >Provider API</text>
-<text x="903.0" y="775.0" class="ag" text-anchor="middle" >30 s timeout, local code</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >30 s by default, local code</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="175.25" cy="527" r="14" class="num"/>
 <text x="175.25" y="533" class="numt" text-anchor="middle" >4</text>

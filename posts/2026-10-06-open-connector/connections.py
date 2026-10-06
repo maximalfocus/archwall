@@ -10,10 +10,10 @@ from archdiagram import Diagram, L, R, GW, T1, H1, T2, H2  # noqa: E402
 
 d = Diagram("Connections",
             "In: a call names a connection, or none. "
-            "1 Pick: a named connection must exist and is never swapped for another; with no name, the stored "
+            "1 Pick: a named connection is never swapped for another account; with no name, the stored "
             "default comes first, then no_auth, then the Marketplace; a token can be limited to some connection IDs. "
             "2 Stored here: API key or custom fields that each provider declares, and OAuth2 through your own "
-            "OAuth app, refreshed automatically when the provider gave a refresh token. Secrets sit in the runtime "
+            "OAuth app, refreshed automatically when the access token has expired and the provider gave a refresh token. Secrets sit in the runtime "
             "database, encrypted only when OOMOL_CONNECT_ENCRYPTION_KEY is set. "
             "3 No account secret: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with "
             "one deployment Marketplace API key; only the action ID and input are sent. "
@@ -24,7 +24,7 @@ d.pill(L, 16, GW, 48, "In: a call names a connection, or none")
 d.arrow(f"M{L + GW / 2} 64V{T1 - 2}")
 
 d.group(L, T1, GW, H1, "Pick", 1)
-d.column(L, T1, [("Named|must exist · no fallback", "plan"),
+d.column(L, T1, [("Named|never swapped for another account", "plan"),
                  ("No name|default → no_auth → Marketplace", "plan"),
                  ("Token grant|only the allowed IDs", "review")])
 d.notes(L, T1, H1, "Agents see an account label,", "never the secret")
@@ -32,7 +32,7 @@ d.notes(L, T1, H1, "Agents see an account label,", "never the secret")
 d.group(R, T1, GW, H1, "Stored here", 2)
 d.column(R, T1, [("API key · custom|fields the provider declares", "write"),
                  ("OAuth2|your own OAuth app", "write"),
-                 ("Auto refresh|when a refresh token exists", "coding")])
+                 ("Auto refresh|expired, with a refresh token", "coding")])
 d.notes(R, T1, H1, "Encrypted only with", "OOMOL_CONNECT_ENCRYPTION_KEY")
 
 d.group(R, T2, GW, H2, "No account secret", 3)
