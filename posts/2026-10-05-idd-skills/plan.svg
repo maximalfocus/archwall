@@ -43,8 +43,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
 <text x="303.0" y="335.0" class="ag" text-anchor="middle" >Push a private repo, protected</text>
 <text x="303.0" y="359.0" class="ag" text-anchor="middle" >or just drafts, if you ask</text>
-<text x="300.0" y="412" class="lb" text-anchor="middle" >Picks the tech itself, unless the</text>
-<text x="300.0" y="438" class="lb" text-anchor="middle" >product changes, or you choose</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Picks the tech itself, unless that changes</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >the product, or you state a preference</text>
 <rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
 <circle cx="714.5" cy="111" r="14" class="num"/>
 <text x="714.5" y="117" class="numt" text-anchor="middle" >2</text>

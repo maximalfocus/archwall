@@ -119,6 +119,6 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <path d="M900.0 464V498" class="flow"/>
 <text x="948.0" y="488" class="al" text-anchor="middle" >fixed steps</text>
 <path d="M300.0 464V482H700V498" class="flow"/>
-<text x="500" y="488" class="al" text-anchor="middle" >issues, PRs, visibility</text>
+<text x="500" y="488" class="al" text-anchor="middle" >issues · PRs · visibility</text>
 <text x="600" y="888" class="lb" text-anchor="middle" >Install all ten: npx skills add maximalfocus/idd-skills --skill '*'</text>
 </svg>
