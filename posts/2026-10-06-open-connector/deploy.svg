@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Where it runs</title>
+<desc id="d">1 Node server: the Docker image from GHCR on port 3000, a single binary for six platforms built with Bun, or the same image through the Helm chart or Fly.io; SQLite by default, PostgreSQL 15 or newer with a database URL, and transit files on local disk or S3. 2 Cloudflare: Workers run it, D1 keeps the records, R2 or Workers KV keeps transit files, and a once-a-minute cron does cleanup. 3 Inside your app: the npm package @oomol-lab/open-connector; your server owns HTTP, configuration and the process; there is no Web Console and one runtime per process. 4 OOMOL hosted: OOMOL's OAuth apps and runtime, with the same provider and action IDs, so you can move to self-hosting later.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="448" rx="12" class="grp"/>
+<circle cx="215.75" cy="43" r="14" class="num"/>
+<text x="215.75" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="235.75" y="52" class="gt" text-anchor="start" >Node server</text>
+<rect x="54" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="107.0" class="ag" text-anchor="middle" >Docker image</text>
+<text x="303.0" y="131.0" class="ag" text-anchor="middle" >ghcr.io · port 3000</text>
+<rect x="54" y="160" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="170" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="187.0" class="ag" text-anchor="middle" >Single binary</text>
+<text x="303.0" y="211.0" class="ag" text-anchor="middle" >6 platforms · built with Bun</text>
+<rect x="54" y="240" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="250" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="267.0" class="ag" text-anchor="middle" >Helm chart · Fly.io</text>
+<text x="303.0" y="291.0" class="ag" text-anchor="middle" >same Docker image</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >SQLite by default · PostgreSQL 15+</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >transit files: local disk or S3</text>
+<rect x="624" y="16" width="552" height="448" rx="12" class="grp"/>
+<circle cx="822.5" cy="43" r="14" class="num"/>
+<text x="822.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="842.5" y="52" class="gt" text-anchor="start" >Cloudflare</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >Workers</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >runs the gateway</text>
+<rect x="654" y="160" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="170" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="187.0" class="ag" text-anchor="middle" >D1</text>
+<text x="903.0" y="211.0" class="ag" text-anchor="middle" >records</text>
+<rect x="654" y="240" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="250" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="267.0" class="ag" text-anchor="middle" >R2 or Workers KV</text>
+<text x="903.0" y="291.0" class="ag" text-anchor="middle" >transit files</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Cron once a minute for cleanup</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="788.75" cy="527" r="14" class="num"/>
+<text x="788.75" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="808.75" y="536" class="gt" text-anchor="start" >Inside your app</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >npm library</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >@oomol-lab/open-connector</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Your server</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >owns HTTP · config · process</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >No Web Console;</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >one runtime per process</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="209.0" cy="527" r="14" class="num"/>
+<text x="209.0" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="229.0" y="536" class="gt" text-anchor="start" >OOMOL hosted</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >OAuth apps ready</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >no app setup</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Hosted runtime</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >managed by OOMOL</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Same provider and action IDs:</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >move to self-hosting later</text>
+</svg>
