@@ -24,25 +24,24 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
    optional parts too (`optional-dependencies`, extras, feature flags), and check the docs against
    each other and the code.
 3. **Diagrams.** `posts/<YYYY-MM-DD-slug>/diagram.py` → `diagram.svg`, the home-page card: an overview of
-   the whole system. Then one `<name>.py` → `<name>.svg` for every phase, part or concern that a diagram (the
-   overview or any other) only names, with no cap on the count, until a non-technical manager could explain
-   the architecture from the pictures alone. Check it from the source's side too: list the source's own parts
-   (components, scripts, services, config, doc sections) and make sure each is drawn, is detail of something
-   drawn, or is left out on purpose; name the ones left out in the PR.
-   List them under `[[figures]]` in `meta.toml`; place each with `![](<name>.svg)` in both bodies.
-4. **Look at it.** First `python3 tools/check.py posts/<slug>`: counts, figure list, every SVG fresh from
-   its `.py`, and the layout Chrome measures (text in its box, overlaps, cards in groups, line and note
-   limits, arrows through cards or text). Fix every failure. Then `python3 build.py && python3
-   tools/render.py posts/<slug>`, and Read every PNG in `_render/<slug>/`. Fix overflow, overlap, arrows
-   through text, notes that should be arrow labels, colours that break the role meanings. Then check what
-   the picture claims, against the code: what each arrow carries, which stage each part sits in, and that
-   every stage really produces what the next one takes. Keep each claim as narrow as its source: a
-   qualifier it states (only where, unless, or else, which first) stays in. A claim usually sits in
-   several places (the card, the `.py`'s Diagram description, alt_zh, alt_en, the body or a caption):
-   change them together. Repeat until clean; a diagram nobody looked at is not done.
+   the whole system. One `<name>.py` → `<name>.svg` for every phase, part or concern that a diagram (the
+   overview or any other) only names, with no cap on the count, until a non-technical manager could
+   explain the architecture from the pictures alone. Check it from the source's side too: list the source's
+   own parts (components, scripts, services, config, doc sections) and make sure each is drawn, is detail of
+   something drawn, or is left out on purpose; name the ones left out in the PR. List them under `[[figures]]`
+   in `meta.toml`; place each with `![](<name>.svg)` in both bodies.
+4. **Look at it.** First `python3 tools/check.py posts/<slug>`: counts, figure list, every SVG fresh from its
+   `.py`, and the layout Chrome measures (text in its box, overlaps, cards in groups, line and note limits,
+   arrows through cards or text). Fix every failure. Then `python3 build.py && python3 tools/render.py
+   posts/<slug>`, and Read every PNG in `_render/<slug>/` for what only eyes catch: a note that should be an
+   arrow label, a colour that breaks its role. Then check the picture's claims against the code: what each
+   arrow carries, which stage each part sits in, and that every stage produces what the next one takes. Keep
+   each claim as narrow as its source: a qualifier (only where, unless, or else, which first) stays in; a
+   claim in several places (card, `.py` description, alt texts, body or caption) changes together. Repeat
+   until clean; a diagram nobody looked at is not done.
 5. **Text.** `meta.toml` (titles, date, tags, figure, alt_zh/alt_en, source; captions for extra
-   figures), `en.md`, `zh.md`: same content, plain voice. `build.py` prints each post's counts and warns past
-   300 words / 300 hanzi; no warning allowed. Quote its counts in the PR, not your own. The diagrams carry few words, so the details go here.
+   figures), `en.md`, `zh.md`: same content, plain voice. `build.py` prints each post's counts and warns
+   past 300 words / 300 hanzi; no warning allowed. Quote its counts in the PR, not your own; details go here.
 6. **Commit, push, PR.** The repo is maximalfocus/archwall. Check `gh auth status`: if maximalfocus is
    not the active account, `gh auth switch -u maximalfocus` and switch back when done. Create the PR
    (what the diagrams show, source + commit, word counts, what was left out on purpose). The git hooks
@@ -68,12 +67,14 @@ switch only if it isn't):
    disappears, and a closed PR whose head was force-pushed can't be reopened.
 2. `gh pr merge <n> --squash --delete-branch` (one commit per post on `main`). Check the PR now shows
    only its own files (`gh pr view <n> --json files`) before merging.
-3. After the last one: switch gh back if you switched, `git switch main && git pull`, remove worktrees of merged
-   branches, wait for the "Deploy to GitHub Pages" run (`gh run list --limit 1`) to succeed, and curl
+3. After the last one: switch gh back if you switched, `git switch main && git pull`, remove worktrees of
+   merged branches, wait for the "Deploy to GitHub Pages" run (`gh run list --limit 1`) to succeed, and curl
    the live post at https://maximalfocus.github.io/archwall/p/<slug>/.
 
 ## Site changes
 
-Tooling or style changes (not a post) use `site/<topic>` and the same PR → land flow. A change to
-`tools/archdiagram.py` that alters the look means re-rendering every diagram (`python3 posts/*/*.py`),
-looking at each, and redrawing the ones that break, in the same PR.
+Tooling or style changes (not a post) use `site/<topic>` and the same PR → land flow.
+`SKILL.md`: 80 lines, 110 chars max. `CLAUDE.md`: 40 lines, 130 chars max. Merge or delete before adding.
+Name the post or PR that caused a change, in the PR description. What a script can check goes in
+`tools/check.py`, not prose; replace a sentence instead of adding one. A look-changing `tools/archdiagram.py`
+edit re-renders each diagram (`python3 posts/*/*.py`), looks at each, redrawing what breaks, in the same PR.

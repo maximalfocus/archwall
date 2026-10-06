@@ -15,6 +15,8 @@
   card and two notes per group or sub-group (legend labels, a note beside a card and the labels of a
   dashed boundary line do not count);
   no arrow crosses a card or runs through text (an arrow's own label may sit on it).
+- Size: the skill (.claude/skills/archwall/SKILL.md) stays within 80 lines of at most 110 characters,
+  CLAUDE.md within 40 lines of at most 130; over a cap, merge or delete before adding.
 
 It does not judge whether a picture is right or readable: render it and look (tools/render.py).
 """
@@ -98,13 +100,16 @@ LAYOUT_JS = r"""
       const g = smallest(groups.concat(subs), cx, cy);
       if (!inside(t.b, g ? pad(g, 8, 0) : frame)) out.push(`note overflows: ${t.s}`);
       for (const k of cards) if (hit(t.b, k)) out.push(`note covers a card: ${t.s}`);
-      const legend = swatches.some(w => t.b.x - (w.x + w.w) >= 0 && t.b.x - (w.x + w.w) <= 12 && cy >= w.y && cy <= w.y + w.h);
+      const legend = g && swatches.some(w => t.b.x - (w.x + w.w) >= 0 && t.b.x - (w.x + w.w) <= 12 && cy >= w.y && cy <= w.y + w.h &&
+        smallest(groups.concat(subs), w.x + w.w / 2, w.y + w.h / 2) === g);
       // A note beside a card is exempt only if that card is in the note's own group or sub-group
       // and the note is left or right of it, not under it.
       const beside = g && cards.some(k => cy >= k.y && cy <= k.y + k.h &&
         (t.b.x + t.b.w <= k.x || t.b.x >= k.x + k.w) &&
         smallest(groups.concat(subs), k.x + k.w / 2, k.y + k.h / 2) === g);
-      const boundary = dividers.some(v => cx >= v.x1 && cx <= v.x2 && Math.abs(cy - v.y) <= 40);
+      // A dashed boundary's labels sit just above and below the line, in that line's own group.
+      const boundary = g && dividers.some(v => cx >= v.x1 && cx <= v.x2 && Math.abs(cy - v.y) <= 30 &&
+        smallest(groups.concat(subs), (v.x1 + v.x2) / 2, v.y) === g);
       if (g && !legend && !beside && !boundary) lines.set(g, (lines.get(g) || 0) + 1);
     } else if (t.cls === 'al') {
       for (const k of cards) if (hit(t.b, k)) out.push(`arrow label covers a card: ${t.s}`);
@@ -179,6 +184,13 @@ def measure(svg, tmp):
 
 def check(post):
     fails = []
+    for name, max_lines, max_w in ((".claude/skills/archwall/SKILL.md", 80, 110), ("CLAUDE.md", 40, 130)):
+        lines = (ROOT / name).read_text().splitlines()
+        if len(lines) > max_lines:
+            fails.append(f"{name} is {len(lines)} lines, over the cap {max_lines}: merge or delete before adding")
+        for i, line in enumerate(lines, 1):
+            if len(line) > max_w:
+                fails.append(f"{name} line {i} is {len(line)} characters, over {max_w}")
     meta = tomllib.loads((post / "meta.toml").read_text())
     zh, en = (post / "zh.md").read_text(), (post / "en.md").read_text()
 
