@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">idd-issue</title>
+<desc id="d">You ask to file, create or open one issue. 1 Pin it down: which repository, from the flag --repo, a URL or this checkout; search open and closed issues and stop with the existing one if it is a likely duplicate; gather only the evidence needed and invent no paths or labels. Ask one question only if scope or behaviour is really unclear. 2 Draft it small: a title that states the outcome, with no type prefix, number or IDs; the problem and its evidence; testable acceptance criteria; and non-goals only if they prevent confusion. 3 Gate before creating: one coherent issue, small enough for one run; claims backed by evidence, with criteria enough to judge when it is done; and it fits the product model, or names a new concept or special case as a design decision. Nothing private goes in: no credentials, account names or home paths. 4 Create once and read back: gh issue create with the body from a file; if the result is unclear, search before any retry; then read the issue back and check its repository, title, body and OPEN state. A request to draft or suggest creates nothing; /idd-auto may file its one next issue.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >You ask to file, create or open one issue</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="215.75" cy="111" r="14" class="num"/>
+<text x="215.75" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="235.75" y="120" class="gt" text-anchor="start" >Pin it down</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Which repo?</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >flag --repo, a URL, or this checkout</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Search open and closed issues</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >duplicate? stop, return it</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Only the evidence needed</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >no made-up paths or labels</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >One question, only if scope</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >or behaviour is really unclear</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="795.5" cy="111" r="14" class="num"/>
+<text x="795.5" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="815.5" y="120" class="gt" text-anchor="start" >Draft it small</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Title: the outcome</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >no type prefix, number or IDs</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="267.0" class="ag" text-anchor="middle" >Problem and evidence</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Acceptance criteria</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >each one testable</text>
+<rect x="654" y="388" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="398" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="415.0" class="ag" text-anchor="middle" >Non-goals</text>
+<text x="903.0" y="439.0" class="ag" text-anchor="middle" >only if they prevent confusion</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="755.0" cy="527" r="14" class="num"/>
+<text x="755.0" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="775.0" y="536" class="gt" text-anchor="start" >Gate before creating</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >One coherent issue</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >small enough for one run</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Claims backed by evidence</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >criteria enough to judge done</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Fits the product model</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >or names a design decision</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Nothing private: no credentials,</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >account names or home paths</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="141.5" cy="527" r="14" class="num"/>
+<text x="141.5" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="161.5" y="536" class="gt" text-anchor="start" >Create once, read back</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >gh issue create</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >body from a file</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Unclear result?</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >search before any retry</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Read it back</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >repo, title, body, OPEN</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >unique</text>
+<path d="M900.0 464V498" class="flow"/>
+<text x="936.0" y="488" class="al" text-anchor="middle" >draft</text>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >passes</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Draft or suggest creates nothing; /idd-auto may file its one next issue</text>
+</svg>

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">idd-skills product contract</title>
+<desc id="d">Inside the private {project}-prd repository. 1 PRD.md is one coherent model: requirements with stable IDs, the accepted behaviour; slices, small and in order, one issue each; the domain boundary with explicit non-goals; and preserved artifacts, the files a rewrite must keep. 2 PROGRESS.md, using the same IDs, is a control panel: status per slice (ready, active, blocked, or missing acceptance), a baseline of what is done and verified, and an update rule for how rows may change. Its table cells carry no dates, since Git and GitHub keep the history. 3 Budgets checked by scripts: PRD.md at most 1,000 words a section and 10,000 in all; PROGRESS.md at most 80 words a cell and a baseline of at most 20 lines. They change only through /idd-evolve, never per project, and were set from 4 real contracts and 11 trackers. 4 Once a slice is validated, its acceptance moves into the requirement it extends, or becomes a new one, and the slice shrinks to one row; the fold gate flags a slice still holding a section. So the PRD grows with the model, not with the number of deliveries. A product too large for one coherent contract splits its PRD into contexts, each with its own scope.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >Inside the private {project}-prd</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="114.5" cy="111" r="14" class="num"/>
+<text x="114.5" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="134.5" y="120" class="gt" text-anchor="start" >PRD.md: one coherent model</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Requirements</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >stable IDs, the accepted behaviour</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Slices</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >small, in order, one issue each</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Domain boundary</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >explicit non-goals</text>
+<rect x="54" y="388" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="398" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="415.0" class="ag" text-anchor="middle" >Preserved artifacts</text>
+<text x="303.0" y="439.0" class="ag" text-anchor="middle" >files a rewrite must keep</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="701.0" cy="111" r="14" class="num"/>
+<text x="701.0" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="721.0" y="120" class="gt" text-anchor="start" >PROGRESS.md: a control panel</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Status per slice</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >ready, active, blocked, missing acceptance</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Baseline</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >what is done and verified</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Update rule</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >how rows may change</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >No dates in cells;</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >Git and GitHub keep the history</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="707.75" cy="527" r="14" class="num"/>
+<text x="707.75" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="727.75" y="536" class="gt" text-anchor="start" >Budgets, checked by scripts</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >PRD.md</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >≤ 1,000 words a section, ≤ 10,000 in all</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >PROGRESS.md</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >≤ 80 words a cell, baseline ≤ 20 lines</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Changed only by /idd-evolve</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >never per project</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Set from 4 real contracts</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >and 11 trackers</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="134.75" cy="527" r="14" class="num"/>
+<text x="134.75" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="154.75" y="536" class="gt" text-anchor="start" >A slice, once validated</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Acceptance moves</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >into its requirement, or a new one</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Slice shrinks to one row</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >in the slices table</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Fold gate</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >flags a slice still holding a section</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >The PRD grows with the model,</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >not with the number of deliveries</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >same IDs</text>
+<path d="M900.0 464V498" class="flow"/>
+<text x="946.0" y="488" class="al" text-anchor="middle" >checked</text>
+<path d="M300.0 500V466" class="flow"/>
+<text x="362.0" y="488" class="al" text-anchor="middle" >folds into</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >A product too large for one coherent contract splits the PRD into contexts, each with its own scope</text>
+</svg>

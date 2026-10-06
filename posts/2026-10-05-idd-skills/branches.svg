@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">idd-skills branches</title>
+<desc id="d">Delivery phases start with protect-main.sh ensure. 1 dev, the integration branch: one issue/&lt;N&gt;-&lt;slug&gt; branch per issue; dev is the default branch every issue pull request targets; squash only, one commit per issue pull request; linear history, no force-push, no deletion. 2 main, the release branch: changed only by the optional /idd-promote, one dev to main pull request merged as a merge commit so main never drifts from dev, and only when GitHub reports it clean; the --open-only flag waits for review. Promoting is not deploying: nothing is hosted or published. 3 The PRD repository has one branch, main: the tracker changes through a progress/batch pull request merged at milestones, the contract through your own docs(prd) pull request on a prd/&lt;slug&gt; branch, and a local pre-push hook refuses a direct push. It never uses dev, and the first commit at bootstrap is its only direct push. 4 Set up by protect-main.sh: a pull request is required, with no bypass and review threads resolved. On a private repository only the merge settings apply, and the rules are applied once it is public. A line Integration-branch: main opts a repository out of dev. Protection is set at bootstrap and checked before every landing. Names are rules too: the pull request title equals the issue title, commit subjects are typed, and added lines stay within 100 characters.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >Delivery phases start with protect-main.sh ensure</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="182.0" cy="111" r="14" class="num"/>
+<text x="182.0" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="202.0" y="120" class="gt" text-anchor="start" >dev: integration</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >issue/&lt;N&gt;-&lt;slug&gt;</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >one branch per issue</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Default branch</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >every issue PR targets it</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Squash only</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >one commit per issue PR</text>
+<rect x="54" y="388" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="398" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="415.0" class="ag" text-anchor="middle" >Linear history</text>
+<text x="303.0" y="439.0" class="ag" text-anchor="middle" >no force-push, no deletion</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="802.25" cy="111" r="14" class="num"/>
+<text x="802.25" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="120" class="gt" text-anchor="start" >main: release</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Only /idd-promote</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >optional, one dev → main PR</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Merge commit</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >so main never drifts from dev</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Only when CLEAN</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >flag --open-only waits for review</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Promoting is not deploying:</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >nothing is hosted or published</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="761.75" cy="527" r="14" class="num"/>
+<text x="761.75" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="781.75" y="536" class="gt" text-anchor="start" >PRD repo: main only</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Tracker</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >progress/batch PR, merged at milestones</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Contract changes</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >your own docs(prd) PR on prd/&lt;slug&gt;</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Local pre-push hook</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >refuses a direct push</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Never uses dev. Bootstrap's first</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >commit is its only direct push</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="121.25" cy="527" r="14" class="num"/>
+<text x="121.25" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="141.25" y="536" class="gt" text-anchor="start" >Set up by protect-main.sh</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >PR required, no bypass</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >review threads resolved</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Private repo: settings only</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >rules applied once public</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Opt out of dev with a line</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >Integration-branch: main</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Set at bootstrap,</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >checked before every landing</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >promote</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >Names are rules too: PR title = issue title, typed commit subjects, lines ≤ 100 chars</text>
+</svg>

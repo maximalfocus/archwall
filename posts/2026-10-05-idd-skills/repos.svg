@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">idd-skills two repositories</title>
+<desc id="d">One product, two GitHub repositories, cloned side by side. 1 {project}, the code: code, tests and docs; issues and pull requests, one pull request for each issue; branches dev, main and issue/&lt;N&gt;-&lt;slug&gt;. It is private when IDD creates it, and /idd-publish can make it public. 2 {project}-prd, the plan: PRD.md with requirements, slices and non-goals; PROGRESS.md with what is ready, active or blocked; a single main branch changed by pull request. It is always private. The PRD side sends the next issue to the code side, and landed work flows back to the tracker. 3 How they find each other: sibling folders such as widget and widget-prd, the same GitHub owner checked from both origins, or for another owner the local setting git config idd.prdRepo. With no PRD repository, issues still work and landing skips the tracker. 4 Who is right about what: GitHub about what happened, PRD.md about what is wanted, and PROGRESS.md is checked evidence, not permission. Commits, issues and pull requests never name the private PRD repository. For a new product the PRD repository comes first, and /idd-auto can create the code repository, private.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >One product, two GitHub repositories, cloned side by side</text>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="161.75" cy="111" r="14" class="num"/>
+<text x="161.75" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="181.75" y="120" class="gt" text-anchor="start" >{project}: the code</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Code, tests, docs</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >the product itself</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Issues and PRs</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >one PR for each issue</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Branches</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >dev, main, issue/&lt;N&gt;-&lt;slug&gt;</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Private when IDD creates it;</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >/idd-publish can make it public</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="734.75" cy="111" r="14" class="num"/>
+<text x="734.75" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="754.75" y="120" class="gt" text-anchor="start" >{project}-prd: the plan</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >PRD.md</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >requirements, slices, non-goals</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >PROGRESS.md</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >what's ready, active, blocked</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >One branch, main</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >changed by pull request</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Always private:</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >never published</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="728.0" cy="527" r="14" class="num"/>
+<text x="728.0" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="748.0" y="536" class="gt" text-anchor="start" >How they find each other</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Sibling folders</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >widget and widget-prd</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Same GitHub owner</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >checked from both origins</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Another owner?</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >setting: git config idd.prdRepo</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >No PRD repo: issues still work,</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >landing skips the tracker</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="134.75" cy="527" r="14" class="num"/>
+<text x="134.75" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="154.75" y="536" class="gt" text-anchor="start" >Who is right about what</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >GitHub</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >what happened: issues, PRs, merges</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >PRD.md</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >what is wanted</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >PROGRESS.md</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >checked evidence, not permission</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Commits, issues and PRs never</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >name the private PRD repo</text>
+<path d="M624 234H578" class="flow"/>
+<text x="600" y="222" class="al" text-anchor="middle" >next issue</text>
+<path d="M576 344H622" class="flow"/>
+<text x="600" y="332" class="al" text-anchor="middle" >landed</text>
+<text x="600" y="888" class="lb" text-anchor="middle" >New product: the PRD repo comes first, and /idd-auto can create the code repo, private</text>
+</svg>
