@@ -10,7 +10,7 @@ from archdiagram import Diagram  # noqa: E402
 
 d = Diagram("idd-issue",
             "You ask to file, create or open one issue. "
-            "1 Pin it down: which repository, from --repo, a URL or this checkout; search open and closed issues "
+            "1 Pin it down: which repository, from the flag --repo, a URL or this checkout; search open and closed issues "
             "and stop with the existing one if it is a likely duplicate; gather only the evidence needed and "
             "invent no paths or labels. Ask one question only if scope or behaviour is really unclear. "
             "2 Draft it small: a title that states the outcome, with no type prefix, number or IDs; the problem "
@@ -43,7 +43,7 @@ d.pill(L, 16, W, 48, "You ask to file, create or open one issue")
 d.arrow(f"M{L + W / 2} 64V{T1 - 2}")
 
 d.group(L, T1, W, H1, "Pin it down", 1)
-column(L, T1, [("Which repo?|--repo, a URL, or this checkout", "plan"),
+column(L, T1, [("Which repo?|flag --repo, a URL, or here", "plan"),
                ("Search open and closed issues|duplicate? stop, return it", "review"),
                ("Only the evidence needed|no made-up paths or labels", "review")])
 notes(L, T1, H1, "One question, only if scope", "or behaviour is really unclear")

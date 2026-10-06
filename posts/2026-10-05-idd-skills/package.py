@@ -15,9 +15,9 @@ d = Diagram("idd-skills package",
             "2 They run bundled scripts: repo setup and merges (init-*.sh, land.sh, promote.sh), branch rules "
             "(protect-main.sh), and gates for PRD size, the tracker, line width and exposure. Fixed steps are "
             "scripts; judgment stays in the skill text. "
-            "3 The scripts act on GitHub through git and the gh command: issues and pull requests, merges and "
-            "branches, repository settings, rulesets and visibility. Per product: a code repository, plus a "
-            "private PRD repository for planning. "
+            "3 GitHub is reached through git and the gh command: the fixed steps by the bundled scripts, and the "
+            "issues, pull requests and visibility change by the agent following the skill text. Per product: a "
+            "code repository, plus a private PRD repository for planning. "
             "4 Rules in the box: CONSTITUTION.md says how the method may change, conventions.md sets names, "
             "branches and line width, and each skill file has a size cap between 60 and 160 lines. validate.sh "
             "checks them and is run before every commit. "
@@ -53,7 +53,7 @@ d.group(R, T1, W, H1, "Bundled scripts", 2)
 column(R, T1, [("Repo setup and merges|init-*.sh, land.sh, promote.sh", "coding"),
                ("Branch rules on GitHub|protect-main.sh", "review"),
                ("Gates|PRD size, tracker, line width, exposure", "review")])
-notes(R, T1, H1, "Fixed steps are scripts;", "judgment stays in the skill text")
+notes(R, T1, H1, "Fixed steps are scripts;", "the agent runs git and gh too")
 
 d.group(R, T2, W, H2, "GitHub, through git and gh", 3)
 column(R, T2, [("Issues and pull requests", "write"),

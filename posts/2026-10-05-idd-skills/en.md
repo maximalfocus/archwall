@@ -12,7 +12,7 @@ idd-skills is ten skills that have an AI coding agent build software one GitHub 
 
 ![](branches.svg)
 
-**One way in.** `/idd` sends each request to one phase. Merging, publishing and other big steps run only when you name them.
+**One way in.** `/idd` sends one request to the phase that owns it. Merging, publishing and other big steps run only when you name them.
 
 ![](router.svg)
 
@@ -20,9 +20,11 @@ idd-skills is ten skills that have an AI coding agent build software one GitHub 
 
 ![](plan.svg)
 
-**The PRD** has word budgets. A validated slice folds into its requirement, so the PRD stays small.
+**The PRD** has word budgets. A validated slice folds into its requirement, so the PRD stays small. A contract too big for one model splits into contexts.
 
 ![](contract.svg)
+
+![](contexts.svg)
 
 **Issue.** `/idd-issue` files one issue, after a duplicate search.
 

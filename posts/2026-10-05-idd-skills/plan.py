@@ -22,7 +22,7 @@ d = Diagram("idd-plan modes",
             "slices. The --scope flag limits it to some paths in a repository too big to read at once. "
             "Both then push the PRD repository and go on in default mode. "
             "3 Default, what next: read the PRD, the tracker and GitHub without changing them, pick one next "
-            "issue at the earliest unmet dependency, and write an issue contract with outcome, acceptance and "
+            "issue in dependency order, and write an issue contract with outcome, acceptance and "
             "non-goals. "
             "4 Reconcile, the tracker: run by the --reconcile flag or automatically after /idd-land; edit "
             "PROGRESS.md only, never PRD.md; run the gates, then commit to the batch pull request, which is "
@@ -61,7 +61,7 @@ notes(R, T1, H1, "Flag --scope <paths>: for a repo", "too big to read at once")
 
 d.group(R, T2, W, H2, "Default: what next?", 3)
 column(R, T2, [("Read PRD, tracker, GitHub|read-only", "plan"),
-               ("One next issue|earliest unmet dependency", "plan"),
+               ("One next issue|in dependency order", "plan"),
                ("Issue contract|outcome, acceptance, non-goals", "write")])
 
 d.group(L, T2, W, H2, "Reconcile: the tracker", 4)

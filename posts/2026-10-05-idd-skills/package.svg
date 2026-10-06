@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">idd-skills package</title>
-<desc id="d">The skills run inside Claude Code, Codex, Pi or OpenCode. 1 Ten skills, plain text: /idd, /idd-plan, /idd-issue, /idd-implement, /idd-land, /idd-auto, /idd-acceptance, /idd-promote, /idd-publish and /idd-evolve. 2 They run bundled scripts: repo setup and merges (init-*.sh, land.sh, promote.sh), branch rules (protect-main.sh), and gates for PRD size, the tracker, line width and exposure. Fixed steps are scripts; judgment stays in the skill text. 3 The scripts act on GitHub through git and the gh command: issues and pull requests, merges and branches, repository settings, rulesets and visibility. Per product: a code repository, plus a private PRD repository for planning. 4 Rules in the box: CONSTITUTION.md says how the method may change, conventions.md sets names, branches and line width, and each skill file has a size cap between 60 and 160 lines. validate.sh checks them and is run before every commit. Install all ten with npx skills add maximalfocus/idd-skills --skill '*'.</desc>
+<desc id="d">The skills run inside Claude Code, Codex, Pi or OpenCode. 1 Ten skills, plain text: /idd, /idd-plan, /idd-issue, /idd-implement, /idd-land, /idd-auto, /idd-acceptance, /idd-promote, /idd-publish and /idd-evolve. 2 They run bundled scripts: repo setup and merges (init-*.sh, land.sh, promote.sh), branch rules (protect-main.sh), and gates for PRD size, the tracker, line width and exposure. Fixed steps are scripts; judgment stays in the skill text. 3 GitHub is reached through git and the gh command: the fixed steps by the bundled scripts, and the issues, pull requests and visibility change by the agent following the skill text. Per product: a code repository, plus a private PRD repository for planning. 4 Rules in the box: CONSTITUTION.md says how the method may change, conventions.md sets names, branches and line width, and each skill file has a size cap between 60 and 160 lines. validate.sh checks them and is run before every commit. Install all ten with npx skills add maximalfocus/idd-skills --skill '*'.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -79,7 +79,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Gates</text>
 <text x="903.0" y="359.0" class="ag" text-anchor="middle" >PRD size, tracker, line width, exposure</text>
 <text x="900.0" y="412" class="lb" text-anchor="middle" >Fixed steps are scripts;</text>
-<text x="900.0" y="438" class="lb" text-anchor="middle" >judgment stays in the skill text</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >the agent runs git and gh too</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="714.5" cy="527" r="14" class="num"/>
 <text x="714.5" y="533" class="numt" text-anchor="middle" >3</text>

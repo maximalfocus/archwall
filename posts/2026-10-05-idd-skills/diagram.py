@@ -23,7 +23,7 @@ d = Diagram("idd-skills overview",
             "4 Finish, once every issue has landed: /idd-acceptance tests the whole product end to end; "
             "/idd-promote, whenever you choose, moves dev to main with one merge commit, and the optional "
             "/idd-publish makes the code public while the PRD stays private. "
-            "/idd routes any request to its phase, and /idd-evolve improves the method itself.")
+            "/idd routes one request to the phase that owns it, and /idd-evolve improves the method itself.")
 
 L, R, W = 24, 624, 552
 T1, H1 = 84, 380
@@ -71,6 +71,6 @@ d.arrow(f"M{R + 120} {T2}V{T1 + H1 + 18}H{L + W / 2}V{T1 + H1 + 2}", back=True,
         label="next round (/idd-auto loops)", at=(522, T1 + H1 + 24))
 d.arrow(f"M{R} {T2 + 176}H{L + W + 2}", label="all landed", at=(600, T2 + 164))
 
-d.note(600, 888, "/idd routes any request to its phase · /idd-evolve improves the method itself")
+d.note(600, 888, "/idd routes one request to the owning phase · /idd-evolve improves the method itself")
 
 d.save(Path(__file__).with_name("diagram.svg"))
