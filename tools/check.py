@@ -48,7 +48,7 @@ LAYOUT_JS = r"""
   const num = v => parseFloat(v || '0');
   const R = [...svg.querySelectorAll('rect')].filter(r => !r.closest('defs') && !r.closest('g')).map(r => ({
     cls: r.getAttribute('class') || '', x: num(r.getAttribute('x')), y: num(r.getAttribute('y')),
-    w: num(r.getAttribute('width')), h: num(r.getAttribute('height'))}));
+    w: num(r.getAttribute('width')), h: num(r.getAttribute('height')), rx: num(r.getAttribute('rx'))}));
   const cards = R.filter(r => ['agent', 'human', 'front'].includes(r.cls));
   const groups = R.filter(r => r.cls === 'grp'), subs = R.filter(r => r.cls === 'sub');
   const frame = {x: 0, y: 0, w: 1200, h: 900};
@@ -74,7 +74,8 @@ LAYOUT_JS = r"""
   for (const t of texts) if (!inside(t.b, frame)) out.push(`text leaves the frame: ${t.s}`);
   for (let i = 0; i < groups.length; i++) for (let j = i + 1; j < groups.length; j++)
     if (hit(groups[i], groups[j])) out.push(`groups at ${at(groups[i])} and ${at(groups[j])} overlap`);
-  for (const c of cards.filter(c => c.cls === 'agent'))
+  // A rounded pill (rx = h/2) sits outside the flow on purpose; every other card belongs in a group.
+  for (const c of cards.filter(c => c.cls === 'agent' || c.rx < c.h / 2 - 0.5))
     if (!groups.some(g => inside(c, pad(g, 4, 4)))) out.push(`card at ${at(c)} is not inside a group`);
   for (let i = 0; i < cards.length; i++) for (let j = i + 1; j < cards.length; j++)
     if (hit(cards[i], cards[j]) && !stacked(cards[i], cards[j])) out.push(`cards at ${at(cards[i])} and ${at(cards[j])} overlap`);
@@ -98,7 +99,11 @@ LAYOUT_JS = r"""
       if (!inside(t.b, g ? pad(g, 8, 0) : frame)) out.push(`note overflows: ${t.s}`);
       for (const k of cards) if (hit(t.b, k)) out.push(`note covers a card: ${t.s}`);
       const legend = swatches.some(w => t.b.x - (w.x + w.w) >= 0 && t.b.x - (w.x + w.w) <= 12 && cy >= w.y && cy <= w.y + w.h);
-      const beside = cards.some(k => cy >= k.y && cy <= k.y + k.h);
+      // A note beside a card is exempt only if that card is in the note's own group or sub-group
+      // and the note is left or right of it, not under it.
+      const beside = g && cards.some(k => cy >= k.y && cy <= k.y + k.h &&
+        (t.b.x + t.b.w <= k.x || t.b.x >= k.x + k.w) &&
+        smallest(groups.concat(subs), k.x + k.w / 2, k.y + k.h / 2) === g);
       const boundary = dividers.some(v => cx >= v.x1 && cx <= v.x2 && Math.abs(cy - v.y) <= 40);
       if (g && !legend && !beside && !boundary) lines.set(g, (lines.get(g) || 0) + 1);
     } else if (t.cls === 'al') {
