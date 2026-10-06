@@ -15,8 +15,8 @@ d = Diagram("Connections",
             "2 Stored here: API key or custom fields that each provider declares, and OAuth2 through your own "
             "OAuth app, refreshed automatically when the provider gave a refresh token. Secrets sit in the runtime "
             "database, encrypted only when OOMOL_CONNECT_ENCRYPTION_KEY is set. "
-            "3 Nothing stored: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with one "
-            "Marketplace API key; only the action ID and input are sent. "
+            "3 No account secret: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with "
+            "one deployment Marketplace API key; only the action ID and input are sent. "
             "4 Kept on SaaS: an OAuth account authorised through an OOMOL SaaS project; its tokens stay on SaaS "
             "and its actions run there. Agents only ever see an account label, never a secret.")
 
@@ -35,7 +35,7 @@ d.column(R, T1, [("API key · custom|fields the provider declares", "write"),
                  ("Auto refresh|when a refresh token exists", "coding")])
 d.notes(R, T1, H1, "Encrypted only with", "OOMOL_CONNECT_ENCRYPTION_KEY")
 
-d.group(R, T2, GW, H2, "Nothing stored", 3)
+d.group(R, T2, GW, H2, "No account secret", 3)
 d.column(R, T2, [("no_auth|e.g. Hacker News", "data"),
                  ("Marketplace|actions run by OOMOL", "coding"),
                  ("One Marketplace key|sends only action + input", "review")])

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Connections</title>
-<desc id="d">In: a call names a connection, or none. 1 Pick: a named connection must exist and is never swapped for another; with no name, the stored default comes first, then no_auth, then the Marketplace; a token can be limited to some connection IDs. 2 Stored here: API key or custom fields that each provider declares, and OAuth2 through your own OAuth app, refreshed automatically when the provider gave a refresh token. Secrets sit in the runtime database, encrypted only when OOMOL_CONNECT_ENCRYPTION_KEY is set. 3 Nothing stored: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with one Marketplace API key; only the action ID and input are sent. 4 Kept on SaaS: an OAuth account authorised through an OOMOL SaaS project; its tokens stay on SaaS and its actions run there. Agents only ever see an account label, never a secret.</desc>
+<desc id="d">In: a call names a connection, or none. 1 Pick: a named connection must exist and is never swapped for another; with no name, the stored default comes first, then no_auth, then the Marketplace; a token can be limited to some connection IDs. 2 Stored here: API key or custom fields that each provider declares, and OAuth2 through your own OAuth app, refreshed automatically when the provider gave a refresh token. Secrets sit in the runtime database, encrypted only when OOMOL_CONNECT_ENCRYPTION_KEY is set. 3 No account secret: no_auth providers such as Hacker News, and Marketplace actions run by OOMOL with one deployment Marketplace API key; only the action ID and input are sent. 4 Kept on SaaS: an OAuth account authorised through an OOMOL SaaS project; its tokens stay on SaaS and its actions run there. Agents only ever see an account label, never a secret.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -65,9 +65,9 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="900.0" y="412" class="lb" text-anchor="middle" >Encrypted only with</text>
 <text x="900.0" y="438" class="lb" text-anchor="middle" >OOMOL_CONNECT_ENCRYPTION_KEY</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
-<circle cx="795.5" cy="527" r="14" class="num"/>
-<text x="795.5" y="533" class="numt" text-anchor="middle" >3</text>
-<text x="815.5" y="536" class="gt" text-anchor="start" >Nothing stored</text>
+<circle cx="775.25" cy="527" r="14" class="num"/>
+<text x="775.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="795.25" y="536" class="gt" text-anchor="start" >No account secret</text>
 <rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="903.0" y="591.0" class="ag" text-anchor="middle" >no_auth</text>

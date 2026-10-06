@@ -8,7 +8,7 @@ OpenConnector is an open-source gateway between AI agents and the apps you use. 
 
 ![](connections.svg)
 
-**Safety rails.** An admin token guards the console. Each caller token carries its own grants. Every layer must allow a call, and a block always wins. Requests can't reach private addresses unless you turn on a flag.
+**Safety rails.** An admin token guards the console. Each persistent caller token carries its own grants. Every layer must allow a call, and a block always wins. Requests can't reach private addresses unless you turn on a flag.
 
 ![](safety.svg)
 
