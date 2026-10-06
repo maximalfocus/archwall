@@ -30,6 +30,11 @@ MAX_WORDS_EN, MAX_HANZI_ZH = 300, 300
 esc = html.escape
 
 
+def counts(en, zh):
+    """English words and Chinese hanzi, as the 300 / 300 limits count them (tools/check.py uses it too)."""
+    return len(re.findall(r"[A-Za-z0-9][\w'’.-]*", en)), len(re.findall(r"[一-鿿]", zh))
+
+
 def inline(s):
     s = esc(s, quote=False)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
@@ -107,8 +112,7 @@ def load_posts():
             continue
         meta = tomllib.loads((d / "meta.toml").read_text())
         zh, en = (d / "zh.md").read_text(), (d / "en.md").read_text()
-        words = len(re.findall(r"[A-Za-z0-9][\w'’.-]*", en))
-        hanzi = len(re.findall(r"[一-鿿]", zh))
+        words, hanzi = counts(en, zh)
         if words > MAX_WORDS_EN or hanzi > MAX_HANZI_ZH:
             print(f"warning: {d.name} is long (en {words} words, zh {hanzi} hanzi; limit {MAX_WORDS_EN}/{MAX_HANZI_ZH})")
         else:

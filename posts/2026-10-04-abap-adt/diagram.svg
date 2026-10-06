@@ -66,8 +66,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="1031.0" y="285.0" class="ag" text-anchor="middle" >Old releases</text>
 <text x="1031.0" y="309.0" class="ag" text-anchor="middle" >still work</text>
 <text x="900.0" y="382" class="lb" text-anchor="middle" >2.9 million lines, one codebase</text>
-<path d="M520 156H650" class="flow"/>
-<text x="586" y="146" class="al" text-anchor="middle" >LSP</text>
+<path d="M544 156H650" class="flow"/>
+<text x="597" y="146" class="al" text-anchor="middle" >LSP</text>
 <path d="M142 192V290H622" class="flow"/>
 <text x="590" y="280" class="al" text-anchor="middle" >runs</text>
 <rect x="624" y="452" width="552" height="432" rx="12" class="grp"/>
