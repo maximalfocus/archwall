@@ -5,8 +5,9 @@
     python3 build.py --serve    # build, then serve on http://localhost:8000
 
 Each post is a folder posts/<YYYY-MM-DD-slug>/ with:
-    meta.toml   title_zh, title_en, date, tags, figure, alt_zh, alt_en, [source]
-                optional [[figures]] (file, alt_zh, alt_en, [caption_zh, caption_en]): more diagrams
+    meta.toml   title_zh, title_en, date, tags, figure, alt_zh, [alt_en], [source]
+                optional [[figures]] (file, alt_zh, [alt_en], [caption_zh, caption_en]): more diagrams
+                alt_en, when absent, is the SVG's "<title>: <desc>" (svg_alt), so the .py holds the only copy
     zh.md       Chinese body (small Markdown subset); a line "![](file.svg)" places an extra figure
     en.md       English body
     <figure>    the vector diagram shown on the home page and in the article
@@ -19,6 +20,7 @@ import re
 import shutil
 import sys
 import tomllib
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -44,6 +46,14 @@ def inline(s):
 
 
 FIG_LINE = r"!\[[^\]]*\]\(([^)\s]+)\)"
+
+
+def svg_alt(svg):
+    """The English alt text drawn into an SVG by tools/archdiagram.py: "<title>: <desc>"."""
+    root = ET.parse(svg).getroot()
+    ns = {"s": "http://www.w3.org/2000/svg"}
+    title, desc = (" ".join((root.findtext(f"s:{k}", "", ns) or "").split()) for k in ("title", "desc"))
+    return f"{title}: {desc}" if title and desc else ""
 
 
 def figure(f, lang=None):
@@ -120,6 +130,9 @@ def load_posts():
         for f in [meta["figure"]] + [x["file"] for x in meta.get("figures", [])]:
             if not (d / f).exists():
                 sys.exit(f"error: {d.name}: figure {f} missing")
+        meta.setdefault("alt_en", svg_alt(d / meta["figure"]))
+        for x in meta.get("figures", []):
+            x.setdefault("alt_en", svg_alt(d / x["file"]))
         posts.append({**meta, "slug": d.name, "dir": d, "zh": zh, "en": en})
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
     return posts
