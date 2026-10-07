@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Other ways to use a secret</title>
-<desc id="d">1 Blessed Scripts: av bless reviews a script once; the script declares the secret names and tool capabilities it needs; editing it ends the Blessing. 2 av inject: puts named secrets into a program's environment; --mode=fd hands each secret through its own pipe and needs fresh Approval every time; a Direct Access Rule lets one launcher use one secret name with any program, the broadest and least preferred option. 3 Secret Proxy: av proxy gives the app a random stand-in reference; a separately signed proxy helper puts the real secret into outbound HTTPS requests only for destinations you approve, for that session; the references are still bearer values. 4 Varlock: the Varlock plugin asks for all its secrets in one request, with one Approval per run and no standing rules or Blessings.</desc>
+<desc id="d">1 Blessed Scripts: av bless reviews a script once; the script declares the secret names and tool capabilities it needs; editing it ends the Blessing. 2 av inject: puts named secrets into a program's environment; --mode=fd hands each secret through its own pipe and needs fresh Approval every time; a Direct Access Rule lets one launcher use one secret name with any program, the broadest and least preferred option. 3 Secret Proxy: av proxy gives the app a random stand-in reference; a separately signed proxy helper puts the real secret into outbound HTTPS requests only for destinations you approve, for that session; the references are still bearer values. 4 Varlock, optional: the Varlock plugin asks for all its secrets in one request, with one Approval per run and no standing rules or Blessings.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -80,9 +80,9 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="775.0" class="ag" text-anchor="middle" >for this session only</text>
 <text x="900.0" y="812" class="lb" text-anchor="middle" >Stand-ins are still bearer values</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
-<circle cx="242.75" cy="527" r="14" class="num"/>
-<text x="242.75" y="533" class="numt" text-anchor="middle" >4</text>
-<text x="262.75" y="536" class="gt" text-anchor="start" >Varlock</text>
+<circle cx="175.25" cy="527" r="14" class="num"/>
+<text x="175.25" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="195.25" y="536" class="gt" text-anchor="start" >Varlock, optional</text>
 <rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
 <text x="303.0" y="591.0" class="ag" text-anchor="middle" >Varlock plugin</text>

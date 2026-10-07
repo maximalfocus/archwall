@@ -16,7 +16,7 @@ d = Diagram("Other ways to use a secret",
             "3 Secret Proxy: av proxy gives the app a random stand-in reference; a separately signed proxy helper "
             "puts the real secret into outbound HTTPS requests only for destinations you approve, for that session; "
             "the references are still bearer values. "
-            "4 Varlock: the Varlock plugin asks for all its secrets in one request, with one Approval per run and no "
+            "4 Varlock, optional: the Varlock plugin asks for all its secrets in one request, with one Approval per run and no "
             "standing rules or Blessings.")
 
 d.pill(L, 16, GW, 48, "In: a hardened tool does not fit")
@@ -39,7 +39,7 @@ d.column(R, T2, [("av proxy|the app gets a stand-in", "coding"),
                  ("Approved destinations|for this session only", "review")])
 d.notes(R, T2, H2, "Stand-ins are still bearer values", "")
 
-d.group(L, T2, GW, H2, "Varlock", 4)
+d.group(L, T2, GW, H2, "Varlock, optional", 4)
 d.column(L, T2, [("Varlock plugin|all its secrets in one request", "coding"),
                  ("One Approval per run|no rules or Blessings", "review")])
 

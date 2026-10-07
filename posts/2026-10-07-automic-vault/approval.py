@@ -17,7 +17,8 @@ d = Diagram("Human Approval",
             "3 The Mac checks the answer: it must match the exact request, the first valid answer wins and replays "
             "are rejected, and the record is saved before release. "
             "4 Limits: when the Mac is locked only secrets marked available while locked can be used; with iPhone "
-            "Approval on, the Mac has no click-to-allow; if the phone or relay is unreachable the request fails closed.")
+            "Approval on, the Mac has no click-to-allow; if the phone or relay is unreachable the request fails "
+            "closed unless Touch ID Approval is also enabled.")
 
 d.pill(L, 16, GW, 48, "In: a request policy cannot allow")
 d.arrow(f"M{L + GW / 2} 64V{T1 - 2}")
@@ -40,7 +41,7 @@ d.column(R, T2, [("Exact match|bound to this request", "review"),
 d.group(L, T2, GW, H2, "Limits", 4)
 d.column(L, T2, [("Mac locked|only secrets available while locked", "data"),
                  ("iPhone Approval on|no click-to-allow on the Mac", "review"),
-                 ("Phone or relay down|fails closed", "review")])
+                 ("Phone or relay down|fails closed unless Touch ID", "review")])
 
 d.arrow(f"M{L + GW} {T1 + 200}H{R - 2}", label="or", at=(600, T1 + 188))
 d.arrow(f"M{R + 430} {T1 + H1}V{T2 - 2}", label="answer", at=(R + 430, T1 + H1 + 24))

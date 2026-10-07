@@ -15,8 +15,8 @@ d = Diagram("The pieces",
             "over authenticated XPC. "
             "3 Phone side, optional: the iPhone app approves or denies; the approval relay is a Rust server that "
             "passes encrypted messages over WebSocket and wakes the phone through Apple push notifications. "
-            "4 Install: Automic Vault.app from a release or the Homebrew cask; Isotopes come from the signed "
-            "Isotopes tap; the app installs its CLI with administrator approval.")
+            "4 Install: Automic Vault.app from a release or the Homebrew cask; signed fork Isotope releases "
+            "come from the Isotopes tap; the app installs its CLI with administrator approval.")
 
 d.group(L, 16, GW, H1 + 68, "Command-line side", 1)
 d.column(L, 16, [("av CLI|Rust · the Gate Client", "coding"),
