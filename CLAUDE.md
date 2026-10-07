@@ -27,8 +27,9 @@ Writing or landing a post: use the `archwall` skill (`.claude/skills/archwall/`)
 - One look for every diagram, whatever the source figure looks like: draw it with `tools/archdiagram.py`
   (grey groups, lighter sub-groups, white cards with a coloured role bar, slate arrows, no icons).
   Keep the source as `posts/<slug>/diagram.py` next to the generated `diagram.svg`.
-- Every diagram is 1200 x 900 (4:3), the same frame as the home-page cards. Wrap stages into two columns
-  (snake order) rather than one long flat row, so it stays readable on a phone.
+- Every diagram is 1200 x 900 (4:3), the same frame as the home-page cards. Pick the shape from the content, not a habit
+  of four boxes: steps in order snake in two columns (3 to 6 stages), a catalogue is a grid, options sit side by side,
+  one-to-many is a stack. Numbers and arrows only where the source has a real order; the tool's docstring has the shapes.
 - Few words in the picture: card labels of two short lines, at most two note lines per group, labelled arrows
   for what flows. Details go in the post text. The tool's docstring has the type sizes; don't go below them.
 - Numbers and claims must match the source; cite it in `source`.
