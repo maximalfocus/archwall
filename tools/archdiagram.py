@@ -24,7 +24,7 @@ Phones show the 1200-wide frame at about a third of its size, so type is big and
     d.save("diagram.svg")
 
 Pick the shape from what the content is, not from habit; the frame and the look stay the same:
-- Steps in order: the two-column snake below, with as many stages as the source has. Three stages
+- Steps in order: a snake, with as many stages as the source has. Three stages
   use the snake's top row plus one wide bottom group (x L, width WIDE); five or six use three columns
   (C3 x positions, CW3 wide, d.column(..., w=CW3 - 60), d.notes(..., w=CW3)) in two rows, snaking
   right along the top and left along the bottom. Numbered groups, arrows between them.
@@ -36,7 +36,7 @@ Pick the shape from what the content is, not from habit; the frame and the look 
 - One-to-many (one control plane, many data planes): d.stack(...) draws offset copies of a card.
 - A loop: the snake plus a back arrow (arrow(..., back=True)) or d.cycle(x, y).
 
-The two-column snake most diagrams use (a pill on top, then 1 top left, 2 top right, 3 bottom
+The two-column snake (a pill on top, then 1 top left, 2 top right, 3 bottom
 right, 4 bottom left) has its numbers here: groups at (L, T1), (R, T1), (R, T2), (L, T2), GW wide,
 H1 or H2 high. d.column(x, top, cards) stacks cards in a group and d.notes(x, top, h, a, b) puts
 up to two note lines at its foot. A bottom-row group holds three cards and two notes, or four
