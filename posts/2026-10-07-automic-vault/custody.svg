@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Secrets and history</title>
+<desc id="d">1 Stored in the Keychain: secret bytes sit in the app's private group of the macOS Data Protection Keychain; gate policy and the history key each sit in a separate Keychain service. 2 Which value: the nearest Project Value in the working folder or a folder above it wins, otherwise the Global Value; if the chosen value cannot be read the request is denied, with no fallback. The folder only picks a value and grants nothing. 3 Release rules: there is no call that simply loads a secret; an allowed use is recorded and read back before the secret leaves; on a locked Mac only secrets marked available while locked can be used. 4 History: encrypted rows in one SQLite file on this Mac, kept up to 30 days or until a size cap, 25 MiB by default, whichever comes first; reading it with av history needs Approval or a separate grant. It is not tamper-proof.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="448" rx="12" class="grp"/>
+<circle cx="141.5" cy="43" r="14" class="num"/>
+<text x="141.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="161.5" y="52" class="gt" text-anchor="start" >Stored in the Keychain</text>
+<rect x="54" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="107.0" class="ag" text-anchor="middle" >Secret bytes</text>
+<text x="303.0" y="131.0" class="ag" text-anchor="middle" >app-only Keychain group</text>
+<rect x="54" y="160" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="170" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="187.0" class="ag" text-anchor="middle" >Gate policy</text>
+<text x="303.0" y="211.0" class="ag" text-anchor="middle" >separate Keychain service</text>
+<rect x="54" y="240" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="250" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="267.0" class="ag" text-anchor="middle" >History key</text>
+<text x="303.0" y="291.0" class="ag" text-anchor="middle" >separate Keychain service</text>
+<rect x="624" y="16" width="552" height="448" rx="12" class="grp"/>
+<circle cx="815.75" cy="43" r="14" class="num"/>
+<text x="815.75" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="835.75" y="52" class="gt" text-anchor="start" >Which value</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >Project Value</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >nearest folder at or above</text>
+<rect x="654" y="160" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="170" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="187.0" class="ag" text-anchor="middle" >Global Value</text>
+<text x="903.0" y="211.0" class="ag" text-anchor="middle" >when no Project Value</text>
+<rect x="654" y="240" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="250" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="267.0" class="ag" text-anchor="middle" >Read fails</text>
+<text x="903.0" y="291.0" class="ag" text-anchor="middle" >denied · no fallback</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >The folder picks a value,</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >it grants nothing</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="802.25" cy="527" r="14" class="num"/>
+<text x="802.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="822.25" y="536" class="gt" text-anchor="start" >Release rules</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >No 'just load it' call</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >only after a decision</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Record before release</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >saved and read back</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Mac locked</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >only if available while locked</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="242.75" cy="527" r="14" class="num"/>
+<text x="242.75" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="262.75" y="536" class="gt" text-anchor="start" >History</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Encrypted SQLite</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >on this Mac only</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Up to 30 days</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >or 25 MiB by default</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >av history</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >needs Approval or a grant</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Not tamper-proof</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >secret</text>
+<path d="M1054 464V498" class="flow"/>
+<text x="1054" y="488" class="al" text-anchor="middle" >chosen value</text>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >record</text>
+</svg>

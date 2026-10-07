@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Set up a tool</title>
+<desc id="d">1 Detect: Detectors check over 100 developer-tool configurations and report each Finding, an Exposure or a Hazard, with a fix; they never use a secret, and a clean scan is not a guarantee. 2 Harden: a Hardener moves the credential from a file or helper into the macOS Data Protection Keychain and changes how the tool asks for it, through a credential helper, a wrapper or an Isotope; examples are gh, aws, docker and Homebrew. 3 Isotopes: an Isotope is an Automic Vault-compatible build of a tool; signed fork releases are pinned in the Isotopes Homebrew tap, some vendor releases are kept signed in a protected folder under /opt/av, and without Homebrew executable-only Isotopes are verified and installed directly. 4 Verify: av doctor checks identity, ownership, permissions and which command runs first; wrappers guard only the command path they sit on, not every way to run a program.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="448" rx="12" class="grp"/>
+<circle cx="249.5" cy="43" r="14" class="num"/>
+<text x="249.5" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="269.5" y="52" class="gt" text-anchor="start" >Detect</text>
+<rect x="54" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="303.0" y="107.0" class="ag" text-anchor="middle" >Detectors</text>
+<text x="303.0" y="131.0" class="ag" text-anchor="middle" >100+ tool configurations</text>
+<rect x="54" y="160" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="170" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="187.0" class="ag" text-anchor="middle" >Findings</text>
+<text x="303.0" y="211.0" class="ag" text-anchor="middle" >exposure or hazard + a fix</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Read only: never uses a secret</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >A clean scan is not a guarantee</text>
+<rect x="624" y="16" width="552" height="448" rx="12" class="grp"/>
+<circle cx="849.5" cy="43" r="14" class="num"/>
+<text x="849.5" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="869.5" y="52" class="gt" text-anchor="start" >Harden</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >Move the secret</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >file → macOS Keychain</text>
+<rect x="654" y="160" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="170" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="187.0" class="ag" text-anchor="middle" >Change how the tool asks</text>
+<text x="903.0" y="211.0" class="ag" text-anchor="middle" >helper · wrapper · Isotope</text>
+<rect x="654" y="240" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="250" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="267.0" class="ag" text-anchor="middle" >Examples</text>
+<text x="903.0" y="291.0" class="ag" text-anchor="middle" >gh · aws · docker · Homebrew</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="836.0" cy="527" r="14" class="num"/>
+<text x="836.0" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="856.0" y="536" class="gt" text-anchor="start" >Isotopes</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Isotope</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >an AV-compatible build</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Signed fork releases</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >pinned in a Homebrew tap</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Some vendor releases</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >kept signed under /opt/av</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >No Homebrew: verified, installed directly</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="249.5" cy="527" r="14" class="num"/>
+<text x="249.5" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="269.5" y="536" class="gt" text-anchor="start" >Verify</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >av doctor</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >identity · owner · permissions</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Which command runs</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >the protected one first</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Wrappers guard their own path,</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >not every way to run a program</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >findings</text>
+<path d="M1054 464V498" class="flow"/>
+<text x="1054" y="488" class="al" text-anchor="middle" >installs</text>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >then</text>
+</svg>
