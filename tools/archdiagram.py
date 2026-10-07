@@ -5,8 +5,7 @@ grey rounded groups, lighter sub-groups, white cards with a coloured left bar, s
 system sans-serif text, white background. No icons or clip-art.
 
 Every diagram is W x H = 1200 x 900 (4:3), so cards on the home page line up and a phone
-screen gets a tall enough picture. Lay stages out in two columns and wrap (snake) instead of
-stretching them into one long row.
+screen gets a tall enough picture, whatever shape the content calls for.
 
 Phones show the 1200-wide frame at about a third of its size, so type is big and words are few:
 - Card labels 20px, notes 17px, nothing smaller. A card label fits in two short lines.
@@ -157,7 +156,8 @@ class Diagram:
             cx += 14 + len(lbl) * 9 + 28
 
     def stack(self, x, y, label, kind=None, n=3, w=180, h=64, step=10):
-        """n offset copies of one card, front copy at (x, y): many of the same thing (data planes, workers)."""
+        """n offset copies of one card, front copy at (x, y): many of the same thing (data planes, workers).
+        Keep (n - 1) * step within 24 px, or check.py reads the copies as overlapping cards, not a stack."""
         for i in range(n - 1, 0, -1):
             self.rect(x + i * step, y + i * step, w, h, "agent", 8)
         self.card(x, y, label, kind, w, h)
