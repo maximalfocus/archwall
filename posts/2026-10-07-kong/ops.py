@@ -16,7 +16,7 @@ d = Diagram("Running Kong",
             "2 Inside a node, after kong start: Nginx runs worker processes, auto by default; on data planes "
             "an extra worker handles config, on by default; values in the config can be vault references such as "
             "{vault://env/...}, and env is the one bundled vault. "
-            "3 Watch it: the Status API on port 8007, local only and read-only by default; /status/ready, which says whether the router and plugins are built; "
+            "3 Watch it: the Status API on port 8007, local only by default; /status/ready, which says whether the router and plugins are built; "
             "Prometheus metrics with its plugin, and tracing, which is off by default. Anonymous usage "
             "reports to Kong are on by default. "
             "4 Day to day: kong reload starts new workers with the changed config, kong drain makes /status/ready "
@@ -37,7 +37,7 @@ d.column(R, T1, [("Nginx workers|count: auto by default", "coding"),
 d.notes(R, T1, H1, "env is the one bundled vault", "")
 
 d.group(R, T2, GW, H2, "Watch it", 3)
-d.column(R, T2, [("Status API|port 8007 · local · read-only", "critic"),
+d.column(R, T2, [("Status API|port 8007 · local only by default", "critic"),
                  ("/status/ready|router · plugins built?", "critic"),
                  ("Metrics · traces|Prometheus plugin · tracing off", "data")])
 d.notes(R, T2, H2, "Usage reports to Kong: on by default", "")

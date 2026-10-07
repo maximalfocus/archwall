@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">What the bundled plugins do</title>
-<desc id="d">In: a call that matched a route. Kong bundles 45 plugins; within each phase, the higher priority runs first. The 6 AI plugins have their own figure. 1 Who is calling, 9 plugins: keys and tokens (key-auth, jwt, oauth2), passwords and signatures (basic-auth, ldap-auth, hmac-auth, standard-webhooks), sessions and groups (session, acl). 2 Guard traffic, 9 plugins: limits (rate-limiting, response-ratelimiting, request-size-limiting), who may come in (ip-restriction, bot-detection, cors), and cache, stop or certificates (proxy-cache, request-termination, acme). 3 Change or forward, 9 plugins: rewrite the call (request-transformer, response-transformer, redirect), other backends (aws-lambda, azure-functions, grpc-gateway, grpc-web), and your own code (pre-function runs first, post-function last). 4 Watch and log, 12 plugins: metrics (prometheus, statsd, datadog), traces (opentelemetry, zipkin, correlation-id) and logs (http-log, file-log, tcp-log, udp-log, syslog, loggly). Most of them run in the log phase, after the reply.</desc>
+<desc id="d">In: a call that matched a route. Kong bundles 45 plugins, grouped here by job, not by run order: within each phase the higher priority runs first, and priorities interleave across the groups. The 6 AI plugins have their own figure. Who is calling, 9 plugins: keys and tokens (key-auth, jwt, oauth2), passwords and signatures (basic-auth, ldap-auth, hmac-auth, standard-webhooks), sessions and groups (session, acl). Guard traffic, 9 plugins: limits (rate-limiting, response-ratelimiting, request-size-limiting), who may come in (ip-restriction, bot-detection, cors), and cache, stop or certificates (proxy-cache, request-termination, acme). Change or forward, 9 plugins: rewrite the call (request-transformer, response-transformer, redirect), other backends (aws-lambda, azure-functions, grpc-gateway, grpc-web), and your own code (pre-function runs first, post-function last). Watch and log, 12 plugins: metrics (prometheus, statsd, datadog), traces (opentelemetry, zipkin, correlation-id) and logs (http-log, file-log, tcp-log, udp-log, syslog, loggly); most of them run in the log phase, after the reply.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -26,12 +26,9 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
 <rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
-<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: a call that matched a route · 45 bundled plugins · higher priority first · 6 AI ones: own figure</text>
-<path d="M300.0 64V82" class="flow"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: a call that matched a route · 45 bundled plugins grouped by job · within a phase priority runs first · 6 AI ones: own figure</text>
 <rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
-<circle cx="195.5" cy="111" r="14" class="num"/>
-<text x="195.5" y="117" class="numt" text-anchor="middle" >1</text>
-<text x="215.5" y="120" class="gt" text-anchor="start" >Who is calling</text>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >Who is calling</text>
 <rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="158" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="303.0" y="175.0" class="ag" text-anchor="middle" >Keys and tokens</text>
@@ -46,9 +43,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="359.0" class="ag" text-anchor="middle" >session · acl</text>
 <text x="300.0" y="412" class="lb" text-anchor="middle" >9 plugins</text>
 <rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
-<circle cx="802.25" cy="111" r="14" class="num"/>
-<text x="802.25" y="117" class="numt" text-anchor="middle" >2</text>
-<text x="822.25" y="120" class="gt" text-anchor="start" >Guard traffic</text>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >Guard traffic</text>
 <rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="158" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="903.0" y="175.0" class="ag" text-anchor="middle" >Limits</text>
@@ -63,9 +58,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="359.0" class="ag" text-anchor="middle" >proxy-cache · request-termination · acme</text>
 <text x="900.0" y="412" class="lb" text-anchor="middle" >9 plugins</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
-<circle cx="775.25" cy="527" r="14" class="num"/>
-<text x="775.25" y="533" class="numt" text-anchor="middle" >3</text>
-<text x="795.25" y="536" class="gt" text-anchor="start" >Change or forward</text>
+<text x="900.0" y="536" class="gt" text-anchor="middle" >Change or forward</text>
 <rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
 <text x="903.0" y="591.0" class="ag" text-anchor="middle" >Rewrite the call</text>
@@ -80,9 +73,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="775.0" class="ag" text-anchor="middle" >pre-function · post-function</text>
 <text x="900.0" y="812" class="lb" text-anchor="middle" >9 plugins · pre-function first, post-function last</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
-<circle cx="202.25" cy="527" r="14" class="num"/>
-<text x="202.25" y="533" class="numt" text-anchor="middle" >4</text>
-<text x="222.25" y="536" class="gt" text-anchor="start" >Watch and log</text>
+<text x="300.0" y="536" class="gt" text-anchor="middle" >Watch and log</text>
 <rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="303.0" y="591.0" class="ag" text-anchor="middle" >Metrics</text>
@@ -96,10 +87,4 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="751.0" class="ag" text-anchor="middle" >Logs</text>
 <text x="303.0" y="775.0" class="ag" text-anchor="middle" >http · file · tcp · udp · syslog · loggly</text>
 <text x="300.0" y="812" class="lb" text-anchor="middle" >12 plugins · most run after the reply</text>
-<path d="M576 284H622" class="flow"/>
-<text x="600" y="272" class="al" text-anchor="middle" >caller known</text>
-<path d="M1054 464V498" class="flow"/>
-<text x="1054" y="488" class="al" text-anchor="middle" >allowed</text>
-<path d="M624 676H578" class="flow"/>
-<text x="600" y="664" class="al" text-anchor="middle" >sent</text>
 </svg>

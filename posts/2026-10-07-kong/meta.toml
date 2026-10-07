@@ -14,13 +14,13 @@ caption_en = "One call: arrive, match a route, run plugins, proxy and return"
 
 [[figures]]
 file = "plugins.svg"
-alt_zh = "内置插件做什么：输入是一个匹配到路由的调用；Kong 内置 45 个插件，同一阶段里优先级高的先跑，6 个 AI 插件另有一张图；1 认出调用方（9 个）：密钥和令牌（key-auth、jwt、oauth2），密码和签名（basic-auth、ldap-auth、hmac-auth、standard-webhooks），会话和分组（session、acl）；2 把住流量（9 个）：限额（rate-limiting、response-ratelimiting、request-size-limiting），谁能进（ip-restriction、bot-detection、cors），缓存、拦下或证书（proxy-cache、request-termination、acme）；3 改写或转发（9 个）：改写调用（request-transformer、response-transformer、redirect），别的后端（aws-lambda、azure-functions、grpc-gateway、grpc-web），你自己的代码（pre-function 最先跑，post-function 最后）；4 观测和日志（12 个）：指标（prometheus、statsd、datadog），追踪（opentelemetry、zipkin、correlation-id），日志（http-log、file-log、tcp-log、udp-log、syslog、loggly），大多在回复之后的 log 阶段跑"
+alt_zh = "内置插件做什么：输入是一个匹配到路由的调用；Kong 内置 45 个插件，按工作分成四类，不是先后顺序，同一阶段里优先级高的先跑，优先级在各类之间交错；6 个 AI 插件另有一张图；认出调用方（9 个）：密钥和令牌（key-auth、jwt、oauth2），密码和签名（basic-auth、ldap-auth、hmac-auth、standard-webhooks），会话和分组（session、acl）；把住流量（9 个）：限额（rate-limiting、response-ratelimiting、request-size-limiting），谁能进（ip-restriction、bot-detection、cors），缓存、拦下或证书（proxy-cache、request-termination、acme）；改写或转发（9 个）：改写调用（request-transformer、response-transformer、redirect），别的后端（aws-lambda、azure-functions、grpc-gateway、grpc-web），你自己的代码（pre-function 最先跑，post-function 最后）；观测和日志（12 个）：指标（prometheus、statsd、datadog），追踪（opentelemetry、zipkin、correlation-id），日志（http-log、file-log、tcp-log、udp-log、syslog、loggly），大多在回复之后的 log 阶段跑"
 caption_zh = "内置插件：认人、把关、改写转发、观测"
 caption_en = "Bundled plugins: who calls, guard, change or forward, watch"
 
 [[figures]]
 file = "plugin-rules.svg"
-alt_zh = "插件怎么选、按什么顺序跑：输入是一个插件，自带的或你自己写的；1 写或选：自带 45 个插件，管认证、限流、日志等；也可以用 Lua 和插件开发工具包（PDK）自己写，或用 Go、JavaScript 通过插件服务器写，要配置 pluginserver_names；Wasm 过滤器要配置 wasm = on，默认关；2 加载：配置项 plugins 默认 bundled，只加载代码；插件实体才让它生效，经 Admin API 或配置文件；配置了却没加载的插件会让 Kong 启动不了；3 范围：插件可以全局设，也可以设在路由、服务、消费者或它们的组合上；每次调用在 8 个级别里取最具体的，路由加服务加消费者最先，全局最后；4 顺序：按 PRIORITY 从高到低跑，每个阶段（rewrite、access 到 header_filter、body_filter、log）依次进行；例如 correlation-id 100001、key-auth 1250、rate-limiting 910；pre-function 很早跑，post-function 很晚跑"
+alt_zh = "插件怎么选、按什么顺序跑：输入是一个插件，自带的或你自己写的；1 写或选：自带 45 个插件，管认证、限流、日志等；也可以用 Lua 和插件开发工具包（PDK）自己写，或用 Go、JavaScript 通过插件服务器写，要配置 pluginserver_names；Wasm 过滤器要配置 wasm = on，默认关；2 加载：配置项 plugins 默认 bundled，只加载代码；插件实体才让它生效，经 Admin API 或配置文件；配置了却没加载的插件会让 Kong 启动不了；3 范围：插件可以全局设，也可以设在路由、服务、消费者或它们的组合上；每次调用在 8 个级别里取最具体的，路由加服务加消费者最先，全局最后；4 顺序：按 PRIORITY 从高到低跑，每个阶段（rewrite、access 到 header_filter、body_filter、log）依次进行；例如 correlation-id 100001、key-auth 1250、rate-limiting 910、syslog 4；pre-function 很早跑，post-function 很晚跑"
 caption_zh = "插件规则：加载、范围、顺序"
 caption_en = "Plugin rules: what loads, where it applies, what runs first"
 
@@ -50,6 +50,6 @@ caption_en = "Kong in front of LLMs: shape the prompt, translate, answer back"
 
 [[figures]]
 file = "ops.svg"
-alt_zh = "运行 Kong：输入是运维人员运行 kong 命令；1 准备：kong check 检查配置文件，kong migrations 的 bootstrap、up、finish 建立或升级 Postgres 表结构，kong hybrid gen_cert 生成混合模式用的证书对；2 节点内部（kong start 之后）：Nginx 运行多个工作进程，数量默认 auto；数据面上默认多一个专门处理配置的工作进程；配置里的值可以写成 {vault://env/...} 这样的密钥引用，env 是唯一自带的 vault；3 监看：Status API 在 8007 端口，默认只在本机、只读；/status/ready 说明路由和插件是否已建好；Prometheus 插件出指标，追踪默认关闭；默认会向 Kong 发送匿名使用数据；4 日常：kong reload 用新配置起新的工作进程，kong drain 让 /status/ready 返回 503，kong quit 等请求处理完再关，kong stop 直接发 SIGTERM"
+alt_zh = "运行 Kong：输入是运维人员运行 kong 命令；1 准备：kong check 检查配置文件，kong migrations 的 bootstrap、up、finish 建立或升级 Postgres 表结构，kong hybrid gen_cert 生成混合模式用的证书对；2 节点内部（kong start 之后）：Nginx 运行多个工作进程，数量默认 auto；数据面上默认多一个专门处理配置的工作进程；配置里的值可以写成 {vault://env/...} 这样的密钥引用，env 是唯一自带的 vault；3 监看：Status API 在 8007 端口，默认只在本机；/status/ready 说明路由和插件是否已建好；Prometheus 插件出指标，追踪默认关闭；默认会向 Kong 发送匿名使用数据；4 日常：kong reload 用新配置起新的工作进程，kong drain 让 /status/ready 返回 503，kong quit 等请求处理完再关，kong stop 直接发 SIGTERM"
 caption_zh = "运行 Kong：准备、节点内部、监看、日常命令"
 caption_en = "Running Kong: prepare, inside a node, watch it, day-to-day commands"

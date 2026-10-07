@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Running Kong</title>
-<desc id="d">In: an operator runs Kong with the kong command. 1 Prepare: kong check validates a config file, kong migrations bootstrap, up and finish set up or update the Postgres schema, and kong hybrid gen_cert makes the certificate pair for hybrid mode. 2 Inside a node, after kong start: Nginx runs worker processes, auto by default; on data planes an extra worker handles config, on by default; values in the config can be vault references such as {vault://env/...}, and env is the one bundled vault. 3 Watch it: the Status API on port 8007, local only and read-only by default; /status/ready, which says whether the router and plugins are built; Prometheus metrics with its plugin, and tracing, which is off by default. Anonymous usage reports to Kong are on by default. 4 Day to day: kong reload starts new workers with the changed config, kong drain makes /status/ready return 503, and kong quit lets requests finish before shutting down, while kong stop sends a plain SIGTERM.</desc>
+<desc id="d">In: an operator runs Kong with the kong command. 1 Prepare: kong check validates a config file, kong migrations bootstrap, up and finish set up or update the Postgres schema, and kong hybrid gen_cert makes the certificate pair for hybrid mode. 2 Inside a node, after kong start: Nginx runs worker processes, auto by default; on data planes an extra worker handles config, on by default; values in the config can be vault references such as {vault://env/...}, and env is the one bundled vault. 3 Watch it: the Status API on port 8007, local only by default; /status/ready, which says whether the router and plugins are built; Prometheus metrics with its plugin, and tracing, which is off by default. Anonymous usage reports to Kong are on by default. 4 Day to day: kong reload starts new workers with the changed config, kong drain makes /status/ready return 503, and kong quit lets requests finish before shutting down, while kong stop sends a plain SIGTERM.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -68,7 +68,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="574" width="5" height="44" rx="2" fill="#e8973a"/>
 <text x="903.0" y="591.0" class="ag" text-anchor="middle" >Status API</text>
-<text x="903.0" y="615.0" class="ag" text-anchor="middle" >port 8007 · local · read-only</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >port 8007 · local only by default</text>
 <rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="654" width="5" height="44" rx="2" fill="#e8973a"/>
 <text x="903.0" y="671.0" class="ag" text-anchor="middle" >/status/ready</text>
