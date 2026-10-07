@@ -11,7 +11,7 @@ from archdiagram import Diagram, L, R, GW, T1, H1, T2, H2  # noqa: E402
 d = Diagram("Kong in front of LLMs",
             "In: an app sends a chat call to a Kong route. "
             "1 The app calls a route: a chat call (llm/v1/chat), a completions call (llm/v1/completions), "
-            "or preserve, which is passed on without translation. "
+            "or preserve, which is passed on without translation. The same call shape works for every provider. "
             "2 Shape the request, in priority order: AI Request Transformer asks an LLM to rewrite the body, "
             "AI Prompt Template fills a named template's placeholders, AI Prompt Decorator adds chat messages "
             "before or after, and AI Prompt Guard checks allow and deny patterns. "

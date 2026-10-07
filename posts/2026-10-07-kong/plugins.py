@@ -39,16 +39,16 @@ d.column(R, T1, [("Limits|rate · response rate · request size", "review"),
                  ("Cache · stop · certificates|proxy-cache · request-termination · acme", "coding")])
 d.notes(R, T1, H1, "9 plugins", "")
 
-d.group(R, T2, GW, H2, "Change or forward")
-d.column(R, T2, [("Rewrite the call|request · response-transformer · redirect", "coding"),
+d.group(L, T2, GW, H2, "Change or forward")
+d.column(L, T2, [("Rewrite the call|request · response-transformer · redirect", "coding"),
                  ("Other backends|aws-lambda · azure-functions · gRPC", "coding"),
                  ("Your own code|pre-function · post-function", "coding")])
-d.notes(R, T2, H2, "9 plugins · pre-function first, post-function last", "")
+d.notes(L, T2, H2, "9 plugins · pre-function first, post-function last", "")
 
-d.group(L, T2, GW, H2, "Watch and log")
-d.column(L, T2, [("Metrics|prometheus · statsd · datadog", "data"),
+d.group(R, T2, GW, H2, "Watch and log")
+d.column(R, T2, [("Metrics|prometheus · statsd · datadog", "data"),
                  ("Traces|opentelemetry · zipkin · correlation-id", "data"),
                  ("Logs|http · file · tcp · udp · syslog · loggly", "write")])
-d.notes(L, T2, H2, "12 plugins · most run after the reply", "")
+d.notes(R, T2, H2, "12 plugins · most run after the reply", "")
 
 d.save(Path(__file__).with_name("plugins.svg"))

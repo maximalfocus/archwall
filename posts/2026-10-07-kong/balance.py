@@ -18,6 +18,7 @@ d = Diagram("Picking a backend",
             "the path, a query argument or a URI capture, or least-connections, or latency. "
             "3 Health checks: active probing sends test requests to targets; it is off by default. "
             "Passive checks watch real responses as a circuit breaker; also off by default. "
+            "Unhealthy targets get no calls. "
             "4 Retries and timeouts: on a failure Kong reports it to the health checker and tries again, "
             "up to the service's retries, 5 by default; connect, write and read timeouts are 60 seconds by default.")
 
