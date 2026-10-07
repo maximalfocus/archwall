@@ -26,8 +26,8 @@ Phones show the 1200-wide frame at about a third of its size, so type is big and
 Pick the shape from what the content is, not from habit; the frame and the look stay the same:
 - Steps in order: the two-column snake below, with as many stages as the source has. Three stages
   use the snake's top row plus one wide bottom group (x L, width WIDE); five or six use three columns
-  (C3 x positions, CW3 wide) in two rows, snaking right along the top and left along the bottom.
-  Numbered groups, arrows between them.
+  (C3 x positions, CW3 wide, d.column(..., w=CW3 - 60), d.notes(..., w=CW3)) in two rows, snaking
+  right along the top and left along the bottom. Numbered groups, arrows between them.
 - A catalogue (parts sorted by job, with no order between them): groups with no number and no
   arrows between them, in reading order. A map of parts may join unnumbered groups with arrows that
   name a relation ("uses"), never a step. tools/check.py fails an arrow from a numbered group to an
