@@ -4,12 +4,15 @@
     python3 tools/check.py posts/<slug>      # prints each failure; exit 0 = clean
 
 - Length: the counts build.py enforces (en <= 300 words, zh <= 300 hanzi).
-- Figures: meta figure is diagram.svg; every other SVG is listed under [[figures]] with alt_zh, alt_en,
-  caption_zh and caption_en; every SVG has its .py; each listed figure sits on its own line, once, in
-  both bodies, in the same order.
+- Figures: meta figure is diagram.svg; every other SVG is listed under [[figures]] with alt_zh,
+  caption_zh and caption_en; every SVG has its .py and a non-empty <title> and <desc>; each listed figure
+  sits on its own line, once, in both bodies, in the same order. A post not in OLD must leave out alt_en
+  (top level and figures): build.py derives it from the SVG, so the .py holds the only copy.
 - Fresh: each committed SVG equals a new run of its .py (run outside the repo, so nothing here changes).
 - Look: 1200 x 900, no raster, no type of its own, role bars in KIND colours; no em dash in the
-  bodies, titles, captions or alt texts.
+  bodies, titles, captions or alt texts (derived ones included).
+- Build: the whole site builds (build.main into a temp dir) with no error or warning. This one command
+  is the /peerreview gate for a post.
 - Layout, measured by Chrome with real fonts: text inside its card, pill, group or the frame; cards
   inside a group; no overlaps (a stack of offset copies of one card is fine); at most two lines per
   card and two notes per group or sub-group (legend labels, a note beside a card and the labels of a
@@ -20,7 +23,9 @@
 
 It does not judge whether a picture is right or readable: render it and look (tools/render.py).
 """
+import contextlib
 import html
+import io
 import json
 import os
 import re
@@ -41,6 +46,10 @@ import archdiagram  # noqa: E402
 import build  # noqa: E402
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+# Posts from before alt_en was derived (650dcb5); they keep their hand-written alt_en.
+OLD = {"2026-10-03-dream-rsi", "2026-10-03-herdr", "2026-10-03-scientisttwo-pipeline", "2026-10-04-abap-adt",
+       "2026-10-04-graphify", "2026-10-04-mcp", "2026-10-04-pi", "2026-10-05-grafana", "2026-10-05-idd-skills",
+       "2026-10-05-peerreview-skills", "2026-10-05-vvah", "2026-10-06-open-connector", "2026-10-07-automic-vault"}
 FIG = re.compile(r"(?m)^!\[[^\]]*\]\(([^)\s]+)\)$")
 
 # Runs in the page Chrome renders: measures every text box and checks the boxes against each other.
@@ -204,10 +213,18 @@ def check(post):
     svgs = sorted(p.name for p in post.glob("*.svg"))
     if meta.get("figure") != "diagram.svg":
         fails.append("meta figure must be diagram.svg, the home-page card")
+    old = post.name in OLD
     for f in figs:
-        for k in ("file", "alt_zh", "alt_en", "caption_zh", "caption_en"):
+        for k in ("file", "alt_zh", "caption_zh", "caption_en") + (("alt_en",) if old else ()):
             if not str(f.get(k, "")).strip():
                 fails.append(f"[[figures]] {f.get('file')}: no {k}")
+    if not old:
+        stray = (["meta"] if "alt_en" in meta else []) + [f"[[figures]] {f.get('file')}" for f in figs if "alt_en" in f]
+        fails += [f"{w}: leave out alt_en, build.py takes it from the SVG <title> and <desc>" for w in stray]
+    alt = {s: build.svg_alt(post / s) if (post / s).exists() else "" for s in svgs}
+    for s, a in alt.items():
+        if not a:
+            fails.append(f"{s}: empty <title> or <desc>")
     if sorted(listed + ["diagram.svg"]) != svgs or len(set(listed)) != len(listed):
         fails.append(f"SVGs on disk {svgs} differ from diagram.svg plus [[figures]] {listed}")
     for s in svgs:
@@ -223,7 +240,8 @@ def check(post):
     for where, text in ([("en.md", en), ("zh.md", zh)]
                         + [(f"meta {k}", meta.get(k, "")) for k in ("title_zh", "title_en", "alt_zh", "alt_en")]
                         + [(f"{f.get('file')} {k}", f.get(k, "")) for f in figs
-                           for k in ("alt_zh", "alt_en", "caption_zh", "caption_en")]):
+                           for k in ("alt_zh", "alt_en", "caption_zh", "caption_en")]
+                        + [(f"{s} title/desc", a) for s, a in alt.items()]):
         if "—" in str(text):
             fails.append(f"{where}: em dash")
 
@@ -261,7 +279,23 @@ def check(post):
                 if fill not in kinds:
                     fails.append(f"{s}: role colour {fill} is not one of KIND")
             fails += [f"{s}: {v}" for v in measure(post / s, tmp)]
+    fails += site_builds()
     return fails
+
+
+def site_builds():
+    """Run build.main into a temp dir, as GitHub Pages will; any error or warning, in any post, fails."""
+    out, saved = io.StringIO(), build.OUT
+    with tempfile.TemporaryDirectory() as t:
+        build.OUT = Path(t) / "_site"
+        try:
+            with contextlib.redirect_stdout(out):
+                build.main()
+        except (Exception, SystemExit) as e:
+            return [f"build fails: {e!r}"]
+        finally:
+            build.OUT = saved
+    return [f"build: {line}" for line in out.getvalue().splitlines() if line.startswith(("warning", "error"))]
 
 
 def main():
