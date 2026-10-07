@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Where the config lives</title>
+<desc id="d">In: an admin changes routes, plugins or upstreams. 1 Change it: the Admin API listens on 127.0.0.1 port 8001, or 8444 with TLS, and should stay with admins; Kong Manager is a web UI on port 8002; a declarative config file is used with no database. 2 What it describes: services and routes say where calls go, consumers and plugins say who calls and what runs, upstreams and targets list backend addresses; also certificates, SNIs, vaults and keys. 3 Store it: Postgres is the default; with database set to off the file is loaded into LMDB, the Admin API cannot create, update or delete single entities, and POST /config replaces the whole config. 4 Spread to workers: each node keeps two memory caches of 128 MB each, nodes on Postgres poll for changes every 5 seconds, and every 5 seconds each worker rebuilds its router and plugin list if needed.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: an admin changes routes · plugins · upstreams</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="229.25" cy="111" r="14" class="num"/>
+<text x="229.25" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="249.25" y="120" class="gt" text-anchor="start" >Change it</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Admin API</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >127.0.0.1:8001 · 8444 with TLS</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Kong Manager</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >web UI · port 8002</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Config file</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >declarative · for DB-less</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Keep the Admin API to admins</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="775.25" cy="111" r="14" class="num"/>
+<text x="775.25" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="795.25" y="120" class="gt" text-anchor="start" >What it describes</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Services · routes</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >where calls go</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Consumers · plugins</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >who calls · what runs</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Upstreams · targets</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >backend addresses</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Also certificates · SNIs · vaults · keys</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="836.0" cy="527" r="14" class="num"/>
+<text x="836.0" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="856.0" y="536" class="gt" text-anchor="start" >Store it</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Postgres</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >database = postgres · default</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >DB-less</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >database = off · file in LMDB</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >POST /config</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >DB-less: replaces it all</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >DB-less: no edits to single entities</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="175.25" cy="527" r="14" class="num"/>
+<text x="175.25" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="195.25" y="536" class="gt" text-anchor="start" >Spread to workers</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Memory caches</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >two per node · 128 MB each</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Poll for changes</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >Postgres · every 5 s</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Workers rebuild</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >router · plugin list every 5 s</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >describes</text>
+<path d="M1054 464V498" class="flow"/>
+<text x="1054" y="488" class="al" text-anchor="middle" >saved</text>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >loaded</text>
+</svg>

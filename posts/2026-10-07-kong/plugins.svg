@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">What the bundled plugins do</title>
+<desc id="d">In: a call that matched a route. Kong bundles 45 plugins, grouped here by job, not by run order: within each phase the higher priority runs first, and priorities interleave across the groups. The 6 AI plugins have their own figure. Who is calling, 9 plugins: keys and tokens (key-auth, jwt, oauth2), passwords and signatures (basic-auth, ldap-auth, hmac-auth, standard-webhooks), sessions and groups (session, acl). Guard traffic, 9 plugins: limits (rate-limiting, response-ratelimiting, request-size-limiting), who may come in (ip-restriction, bot-detection, cors), and cache, stop or certificates (proxy-cache, request-termination, acme). Change or forward, 9 plugins: rewrite the call (request-transformer, response-transformer, redirect), other backends (aws-lambda, azure-functions, grpc-gateway, grpc-web), and your own code (pre-function runs first, post-function last). Watch and log, 12 plugins: metrics (prometheus, statsd, datadog), traces (opentelemetry, zipkin, correlation-id) and logs (http-log, file-log, tcp-log, udp-log, syslog, loggly); most of them run in the log phase, after the reply.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: a call that matched a route · 45 bundled plugins grouped by job · within a phase priority runs first · 6 AI ones: own figure</text>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >Who is calling</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Keys and tokens</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >key-auth · jwt · oauth2</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Passwords and signatures</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >basic · ldap · hmac · webhooks</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Sessions and groups</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >session · acl</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >9 plugins</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >Guard traffic</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Limits</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >rate · response rate · request size</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Who may come in</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >ip-restriction · bot-detection · cors</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Cache · stop · certificates</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >proxy-cache · request-termination · acme</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >9 plugins</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="300.0" y="536" class="gt" text-anchor="middle" >Change or forward</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Rewrite the call</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >request · response-transformer · redirect</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Other backends</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >aws-lambda · azure-functions · gRPC</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Your own code</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >pre-function · post-function</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >9 plugins · pre-function first, post-function last</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="900.0" y="536" class="gt" text-anchor="middle" >Watch and log</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Metrics</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >prometheus · statsd · datadog</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Traces</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >opentelemetry · zipkin · correlation-id</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Logs</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >http · file · tcp · udp · syslog · loggly</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >12 plugins · most run after the reply</text>
+</svg>

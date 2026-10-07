@@ -1,0 +1,55 @@
+title_zh = "Kong Gateway：一个 API 网关怎么处理每一次调用"
+title_en = "Kong Gateway: how an API gateway handles each call"
+date = "2026-10-07"
+tags = ["api-gateway", "nginx", "plugins", "proxy", "ai-gateway"]
+figure = "diagram.svg"
+alt_zh = "Kong Gateway 总览：输入是管理员把 API 设好，之后应用和 AI 客户端通过 Kong 调用它们；1 设置：用 8001 端口的 Admin API、8002 端口的 Kong Manager，或一个声明式配置文件，描述服务、路由、插件和上游；2 保存配置：放在 Postgres 里；或不用数据库，把配置文件放在内存里；或用混合模式，由控制面推给数据面；3 处理每次调用：应用调用 8000 或 8443 端口，Kong 匹配一条路由，运行它的插件，比如认证、限流和日志，再挑一个健康的目标；4 到达后端：你的服务、通过 AI 插件接入的 LLM 提供方，以及日志和指标工具"
+source = "https://github.com/Kong/kong (commit 8927af6)"
+
+[[figures]]
+file = "request.svg"
+alt_zh = "一次调用经过 Kong：输入是一个应用发来的 HTTP 调用；1 到达：代理在 8000 端口收 HTTP、8443 端口收 HTTPS；HTTPS 按服务器名（SNI）挑 TLS 证书；全局插件在路由之前先跑 rewrite 这一步；TCP 和 UDP 端口默认关闭；2 匹配路由：路由器看主机、路径、方法等，找到 Route 和它后面的 Service；匹配不到就回 404，no Route matched；3 运行插件：access 这一步运行这条路由、服务或消费者的插件，比如认证、限流和改写；插件可以提前回复，调用就此停下；4 转发并返回：负载均衡器挑一个目标，上游回复，响应插件改头部和正文，回复发出后日志插件运行"
+caption_zh = "一次调用：到达、匹配路由、运行插件、转发并返回"
+caption_en = "One call: arrive, match a route, run plugins, proxy and return"
+
+[[figures]]
+file = "plugins.svg"
+alt_zh = "内置插件做什么：输入是一个匹配到路由的调用；Kong 内置 45 个插件，按工作分成四类，不是先后顺序，同一阶段里优先级高的先跑，优先级在各类之间交错；6 个 AI 插件另有一张图；认出调用方（9 个）：密钥和令牌（key-auth、jwt、oauth2），密码和签名（basic-auth、ldap-auth、hmac-auth、standard-webhooks），会话和分组（session、acl）；把住流量（9 个）：限额（rate-limiting、response-ratelimiting、request-size-limiting），谁能进（ip-restriction、bot-detection、cors），缓存、拦下或证书（proxy-cache、request-termination、acme）；改写或转发（9 个）：改写调用（request-transformer、response-transformer、redirect），别的后端（aws-lambda、azure-functions、grpc-gateway、grpc-web），你自己的代码（pre-function 最先跑，post-function 最后）；观测和日志（12 个）：指标（prometheus、statsd、datadog），追踪（opentelemetry、zipkin、correlation-id），日志（http-log、file-log、tcp-log、udp-log、syslog、loggly），大多在回复之后的 log 阶段跑"
+caption_zh = "内置插件：认人、把关、改写转发、观测"
+caption_en = "Bundled plugins: who calls, guard, change or forward, watch"
+
+[[figures]]
+file = "plugin-rules.svg"
+alt_zh = "插件怎么选、按什么顺序跑：输入是一个插件，自带的或你自己写的；1 写或选：自带 45 个插件，管认证、限流、日志等；也可以用 Lua 和插件开发工具包（PDK）自己写，或用 Go、JavaScript 通过插件服务器写，要配置 pluginserver_names；Wasm 过滤器要配置 wasm = on，默认关；2 加载：配置项 plugins 默认 bundled，只加载代码；插件实体才让它生效，经 Admin API 或配置文件；配置了却没加载的插件会让 Kong 启动不了；3 范围：插件可以全局设，也可以设在路由、服务、消费者或它们的组合上；每次调用在 8 个级别里取最具体的，路由加服务加消费者最先，全局最后；4 顺序：按 PRIORITY 从高到低跑，每个阶段（rewrite、access 到 header_filter、body_filter、log）依次进行；例如 correlation-id 100001、key-auth 1250、rate-limiting 910、syslog 4；pre-function 很早跑，post-function 很晚跑"
+caption_zh = "插件规则：加载、范围、顺序"
+caption_en = "Plugin rules: what loads, where it applies, what runs first"
+
+[[figures]]
+file = "balance.svg"
+alt_zh = "选后端：输入是一个已匹配到路由和服务的调用；1 去哪：服务写一个主机名；如果它是某个 upstream 的名字，Kong 就在这个 upstream 的 target 之间分配调用，每个 target 是地址和端口加权重，默认 100；否则直接发给那一个主机；2 算法：默认轮询，也可按 consumer、IP、请求头、cookie、路径、查询参数或 URI 片段做一致性哈希，或选最少连接、最低延迟；3 健康检查：主动探测定时发测试请求，默认关闭；被动检查看真实响应、当熔断器用，也默认关闭；不健康的 target 不再收到调用；4 重试和超时：失败时 Kong 报给健康检查再试，最多重试服务设的次数，默认 5 次；连接、写、读超时默认各 60 秒"
+caption_zh = "选后端：upstream、算法、健康检查、重试"
+caption_en = "Picking a backend: upstreams, algorithms, health checks, retries"
+
+[[figures]]
+file = "config.svg"
+alt_zh = "配置放在哪里：输入是管理员修改路由、插件或上游；1 修改：Admin API 监听 127.0.0.1 的 8001 端口（TLS 用 8444），应只给管理员用；Kong Manager 是 8002 端口上的网页界面；不用数据库时用声明式配置文件；2 描述什么：服务和路由说明调用去哪里，消费者和插件说明谁在调用、运行什么，上游和目标列出后端地址；还有证书、SNI、vault 和密钥；3 存储：默认是 Postgres；database 设为 off 时，文件加载进 LMDB，Admin API 不能新建、修改或删除单个实体，POST /config 整体替换配置；4 分发到 worker：每个节点有两个各 128 MB 的内存缓存，用 Postgres 的节点每 5 秒查一次变化，每个 worker 每 5 秒按需重建路由和插件列表"
+caption_zh = "配置放在哪里：修改、内容、存储、分发到 worker"
+caption_en = "Where the config lives: change it, what it holds, store it, spread it"
+
+[[figures]]
+file = "hybrid.svg"
+alt_zh = "混合模式：输入是管理员在控制面上改配置。混合模式是一个设置项 role，默认是 traditional；1 控制面，role = control_plane：必须开 Admin API 和数据库，在集群端口 8005 上等数据面连接；2 打包配置：导出整份配置并算出哈希，按每个数据面的版本调整（主版本相同，数据面的次版本不能更新），再用 gzip 压缩，默认最大 16 MB；3 数据面接收，role = data_plane：通过双向 TLS 保护的 WebSocket 接收，默认用共享证书，也可以用 CA 签发的证书（pki）；数据面必须设 database = off，把配置载入 Kong 的本地配置库 LMDB；4 处理流量：数据面在 8000 和 8443 端口代理调用，每 30 秒带着配置哈希 ping 一次控制面，还没有缓存配置时可以先用声明式配置文件启动"
+caption_zh = "混合模式：控制面打包整份配置，推给不带数据库的数据面"
+caption_en = "Hybrid mode: the control plane pushes the whole config to data planes with no database"
+
+[[figures]]
+file = "ai.svg"
+alt_zh = "Kong 接在 LLM 前面：输入是一个应用向 Kong 的路由发出聊天调用；1 应用调用路由：聊天调用（llm/v1/chat）、补全调用（llm/v1/completions），或 preserve，原样转发不做转换；每家提供方的调用形状都一样；2 整理请求，按优先级顺序：AI Request Transformer 请一个 LLM 改写请求体，AI Prompt Template 填好模板里的占位符，AI Prompt Decorator 在前后加聊天消息，AI Prompt Guard 按允许和拒绝的模式检查；3 AI Proxy：把调用翻译成提供方的格式，把提供方的密钥加成请求头或参数，发给 9 家提供方之一：OpenAI、Azure、Anthropic、Cohere、Mistral、Llama 2、Gemini、Bedrock 和 Hugging Face；4 返回：回复翻译回同样的调用形状，AI Response Transformer 可以请 LLM 改写它；只有开了 log_statistics 才把 token 统计交给日志插件，只有开了 log_payloads 才记录提示和回复，两者默认都关"
+caption_zh = "Kong 接在 LLM 前面：整理提示、翻译、返回"
+caption_en = "Kong in front of LLMs: shape the prompt, translate, answer back"
+
+[[figures]]
+file = "ops.svg"
+alt_zh = "运行 Kong：输入是运维人员运行 kong 命令；1 准备：kong check 检查配置文件，kong migrations 的 bootstrap、up、finish 建立或升级 Postgres 表结构，kong hybrid gen_cert 生成混合模式用的证书对；2 节点内部（kong start 之后）：Nginx 运行多个工作进程，数量默认 auto；数据面上默认多一个专门处理配置的工作进程；配置里的值可以写成 {vault://env/...} 这样的密钥引用，env 是唯一自带的 vault；3 监看：Status API 在 8007 端口，默认只在本机；/status/ready 说明路由和插件是否已建好；Prometheus 插件出指标，追踪默认关闭；默认会向 Kong 发送匿名使用数据；4 日常：kong reload 用新配置起新的工作进程，kong drain 让 /status/ready 返回 503，kong quit 等请求处理完再关，kong stop 直接发 SIGTERM"
+caption_zh = "运行 Kong：准备、节点内部、监看、日常命令"
+caption_en = "Running Kong: prepare, inside a node, watch it, day-to-day commands"
