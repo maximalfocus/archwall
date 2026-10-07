@@ -1,0 +1,71 @@
+title_zh = "Automic Vault：让 AI 智能体用你的凭据前，先过一道闸"
+title_en = "Automic Vault: a gate between AI agents and your credentials"
+date = "2026-10-07"
+tags = ["security", "credentials", "macos", "agents", "keychain"]
+figure = "diagram.svg"
+alt_zh = "Automic Vault 总览：输入是你、终端或 AI 智能体在 Mac 上运行 gh、aws、brew 这类工具；1 设置一次：av scan 检查 100 多种开发工具配置里暴露的凭据，av harden 把支持的工具的凭据挪进 macOS 钥匙串并改掉工具取凭据的方式，av doctor 检查这层保护；2 命令发出请求：启动器（终端、IDE 或智能体应用）启动工具，签过名的 Automic Vault 闸门客户端发出请求，Mac 上对应的授权闸门接收，它属于这个工具，或者是内置闸门；3 决定：Mac 现场检查启动器的代码签名，按闸门的默认访问级别或给这个启动器的规则处理，规则不能放行时在 Mac、Touch ID 或 iPhone 上请求批准；没见过的操作永远要批准；4 记录并放行：先保存授权记录并读回确认，再把密钥交给需要它的程序；没有记录就没有密钥"
+alt_en = "Automic Vault overview: In: you, a terminal or an AI agent runs a tool such as gh, aws or brew on a Mac. 1 Set up once: av scan checks over 100 developer-tool configurations for exposed credentials, av harden moves a supported tool's credentials into the macOS Keychain and changes how the tool asks for them, and av doctor checks that protection. 2 A command asks: the Launcher (a terminal, IDE or agent app) starts the tool, a signed Automic Vault Gate Client sends the request, and the Authorization Gate for that request, the tool's own or a built-in one, receives it on the Mac. 3 Decide: the Mac checks the Launcher's live code signature, applies the gate's default Access Level or a rule for that Launcher, and asks for Approval on the Mac, with Touch ID or on an iPhone when policy cannot allow it; unknown operations always need Approval. 4 Record and release: an Authorization Record is saved and read back first, then the secret goes to the program that needs it; with no record there is no secret."
+source = "https://github.com/automic-vault/automic-vault (commit d1011a5)"
+
+[[figures]]
+file = "setup.svg"
+alt_zh = "设置一个工具：1 检测：检测器检查 100 多种开发工具配置，每个发现（暴露或隐患）都附修复办法；从不使用密钥，扫描干净也不等于安全；2 加固：加固器把凭据从文件或助手挪进 macOS 数据保护钥匙串，并通过凭据助手、包装器或 Isotope 改掉工具取凭据的方式；例子有 gh、aws、docker 和 Homebrew；3 Isotope：与 Automic Vault 兼容的工具构建；签名的分支发布钉在 Isotopes Homebrew tap 里，部分厂商发布保持原签名放在 /opt/av 下受保护的目录；没有 Homebrew 时，只有单个可执行文件的 Isotope 校验后直接安装；4 验证：av doctor 检查身份、属主、权限，以及先运行的是哪个命令；包装器只守它所在的命令路径，管不到所有运行程序的方式"
+alt_en = "Set up a tool: 1 Detect: Detectors check over 100 developer-tool configurations and report each Finding, an Exposure or a Hazard, with a fix; they never use a secret, and a clean scan is not a guarantee. 2 Harden: a Hardener moves the credential from a file or helper into the macOS Data Protection Keychain and changes how the tool asks for it, through a credential helper, a wrapper or an Isotope; examples are gh, aws, docker and Homebrew. 3 Isotopes: an Isotope is an Automic Vault-compatible build of a tool; signed fork releases are pinned in the Isotopes Homebrew tap, some vendor releases are kept signed in a protected folder under /opt/av, and without Homebrew executable-only Isotopes are verified and installed directly. 4 Verify: av doctor checks identity, ownership, permissions and which command runs first; wrappers guard only the command path they sit on, not every way to run a program."
+caption_zh = "设置：扫描、加固、Isotope、验证"
+caption_en = "Set up: scan, harden, Isotopes, verify"
+
+[[figures]]
+file = "request.svg"
+alt_zh = "一次请求：输入是一个只读权限的 AI 智能体运行 gh issue create；1 谁在要：启动器（这里是智能体应用）、闸门客户端（签过名、负责发请求）、目标（要用密钥的程序），客户端和目标分开；2 检查：启动器身份看现场的代码签名，完整请求包括命令、参数、文件夹和密钥名，拒绝规则最先检查；任何一项不过就拒绝；3 决定：Blessing、闸门策略或临时访问授权可以放行；没见过或范围太大的操作要批准，可以批准或拒绝；只读权限下 gh issue create 要批准；4 放行：先保存授权记录并读回，再应用密钥或运行目标，菜单栏显示正在使用"
+alt_en = "One request: In: an AI agent with Read Only access runs gh issue create. 1 Who is asking: the Launcher, here the agent app; the Gate Client, the signed piece that sends the request; and the Target, the program that will use the secret. Client and Target are kept apart. 2 Check: the Launcher's identity from its live code signature; the complete request, meaning command, arguments, folder and secret names; and denial rules, which are checked first. Any failed check denies. 3 Decide: a Blessing, the gate's policy or a Temporary Access Grant may allow it; an unknown or too broad operation needs Approval, which can allow or deny. With Read Only, gh issue create needs Approval. 4 Release: the Authorization Record is saved and read back, then the secret is applied or the Target runs, and the menu bar shows the live use."
+caption_zh = "一次请求：谁在要、检查、决定、先记录再放行"
+caption_en = "One request: who asks, checks, decision, record before release"
+
+[[figures]]
+file = "launchers.svg"
+alt_zh = "谁在要：1 已验证启动器：你挑的终端、IDE 和智能体应用；身份是代码签名，每次请求现场检查；Hardened Runtime 是自动放行的前提，校验不过就回落到批准（有人可批时），苹果系统程序等同受保护；路径和名字不算身份；2 应用里的助手：Claude Code 的助手内置，Codex 的签名命令行预选、等你审核，其他助手要你批准才算；发现助手不给任何权限；3 没签名的命令行：Launcher Bundle 包住一个没签名的单文件 Mach-O 命令行工具，用 Hardened Runtime 签名，每次请求都重新检查；改过或重新签名直接拒绝；不支持脚本；4 脚本和智能体任务：Blessed Script 按审过的确切内容被信任；Codex 或 Claude Code 的任务 ID 可以收窄临时授权，但软件能伪造它，所以不算身份"
+alt_en = "Who is asking: 1 Verified Launchers: the terminals, IDEs and agent apps you pick; identity is the code signature, checked live on every request; Hardened Runtime is needed to allow a request automatically, while a failed runtime check falls back to Approval when human approval is available, and an Apple system binary counts as protected. Paths and names are not identity. 2 Helpers inside apps: Claude Code's helper is built in, Codex's signed CLI is preselected for your review, and other helpers count only if you approve them; finding a helper grants nothing. 3 Unsigned CLIs: a Launcher Bundle wraps one unsigned single-file Mach-O CLI, signs it with Hardened Runtime and rechecks it on every request; a changed or re-signed bundle is denied outright. Scripts are not supported. 4 Scripts and agent tasks: a Blessed Script is trusted for its exact reviewed contents; a Codex or Claude Code task ID can narrow a Temporary Access Grant, but software can forge it, so it is not identity."
+caption_zh = "谁在要：身份看代码签名，不看路径和名字"
+caption_en = "Who is asking: identity is the code signature, not a path or name"
+
+[[figures]]
+file = "policy.svg"
+alt_zh = "访问规则：1 访问级别，闸门提供的预设：Approval Required 每次都问，Read Only 放行认得的读操作，Write Access 放行认得的读写，Full Access 可能放行认得的敏感操作；有的闸门在中间加 Read & Update（Homebrew）或 Local Write；2 每个闸门：有默认级别，新的密钥闸门从只读开始，给某个已验证启动器的规则覆盖默认，没见过的操作在任何级别都要批准；3 例子，一个 GitHub 令牌在只读下：gh issue list 自动放行，gh issue create 要批准，gh auth token 会显示密钥，要批准；4 短期调整：临时访问授权给一个闸门、一个启动器、一个智能体任务 10 分钟有效时间的写权限；拒绝规则先于任何放行；临时拒绝在一个闸门上挡住一个启动器 2 分钟"
+alt_en = "Access rules: 1 Access Levels, presets a gate offers: Approval Required asks every time, Read Only allows recognized reads, Write Access allows recognized reads and writes, and Full Access may allow recognized sensitive operations; some gates add Read & Update (Homebrew) or Local Write between them. 2 Per gate: each gate has a default level, new secret gates start at Read Only, rules for a Verified Launcher override the default, and unknown operations need Approval at every level. 3 Example, one GitHub token at Read Only: gh issue list is allowed automatically, gh issue create needs Approval, and gh auth token, which shows the secret, needs Approval. 4 Short-lived changes: a Temporary Access Grant gives Write Access for ten active minutes to one gate, launcher and agent task; denial rules are checked before anything that allows; a temporary denial blocks one launcher at one gate for two minutes."
+caption_zh = "访问规则：访问级别、每个闸门的默认、短期调整"
+caption_en = "Access rules: Access Levels, gate defaults, short-lived changes"
+
+[[figures]]
+file = "approval.svg"
+alt_zh = "人工批准：输入是规则放行不了的请求；1 在 Mac 上：批准窗口显示完整请求和背后的程序链；可选的 Touch ID 每次都要新按指纹；Mac 上批准需要活动会话和亮着的屏幕；2 在 iPhone 上，可选：同一 iCloud 钥匙串账号下的 iPhone 应用；加密中继服务器转发请求和回答，但读不了也伪造不了；批准需要订阅，拒绝不需要；3 Mac 核对回答：必须对得上这一个请求，第一个有效回答为准，重放被拒，先存记录再放行；4 限制：Mac 锁屏时只能用标为锁屏可用的密钥；开了 iPhone 批准，Mac 上就没有点击放行；手机或中继联系不上时请求失败、不放行，除非也开了 Touch ID 批准"
+alt_en = "Human Approval: In: a request that policy cannot allow. 1 On the Mac: an Approval window shows the complete request and the chain of programs behind it; optional Touch ID needs a fresh fingerprint each time. Mac approval needs an active session and awake displays. 2 On an iPhone, optional: the iPhone app on the same iCloud Keychain account; an encrypted relay server passes requests and answers but cannot read or forge them; allowing needs a subscription, denying does not. 3 The Mac checks the answer: it must match the exact request, the first valid answer wins and replays are rejected, and the record is saved before release. 4 Limits: when the Mac is locked only secrets marked available while locked can be used; with iPhone Approval on, the Mac has no click-to-allow; if the phone or relay is unreachable the request fails closed unless Touch ID Approval is also enabled."
+caption_zh = "人工批准：Mac、Touch ID 或 iPhone，Mac 核对每个回答"
+caption_en = "Approval: Mac, Touch ID or iPhone, and the Mac checks every answer"
+
+[[figures]]
+file = "custody.svg"
+alt_zh = "密钥和记录：1 存在钥匙串：密钥字节在 macOS 数据保护钥匙串里应用私有的分组，闸门策略和记录密钥各在单独的钥匙串服务；2 用哪个值：同一卷上，工作文件夹或上层文件夹里最近的项目值优先，否则用全局值；选中的值读不出来就拒绝，不退而求其次；文件夹只挑值，不给权限；3 放行规则：没有直接取密钥的调用；放行的使用先记录并读回，密钥才离开；Mac 锁屏时只能用标为锁屏可用的密钥；4 记录：加密的行存在这台 Mac 上一个 SQLite 文件里，最多保留 30 天或到大小上限（默认 25 MiB），先到为准；用 av history 读要批准或单独授权；不防篡改"
+alt_en = "Secrets and history: 1 Stored in the Keychain: secret bytes sit in the app's private group of the macOS Data Protection Keychain; gate policy and the history key each sit in a separate Keychain service. 2 Which value: the nearest Project Value in the working folder or a folder above it on the same volume wins, otherwise the Global Value; if the chosen value cannot be read the request is denied, with no fallback. The folder only picks a value and grants nothing. 3 Release rules: there is no call that simply loads a secret; an allowed use is recorded and read back before the secret leaves; on a locked Mac only secrets marked available while locked can be used. 4 History: encrypted rows in one SQLite file on this Mac, kept up to 30 days or until a size cap, 25 MiB by default, whichever comes first; reading it with av history needs Approval or a separate grant. It is not tamper-proof."
+caption_zh = "密钥和记录：存在钥匙串，先记录再放行"
+caption_en = "Secrets and history: kept in the Keychain, recorded before release"
+
+[[figures]]
+file = "mechanisms.svg"
+alt_zh = "其他用法，当加固的工具不合适时：1 Blessed Script：av bless 审一次脚本，脚本声明要用的密钥名和工具能力，改了脚本 Blessing 就失效；2 av inject：把指定密钥放进程序的环境变量；--mode=fd 每个密钥走自己的管道，每次都要重新批准；Direct Access Rule 让一个启动器拿一个密钥名给任何程序用，范围最大、最不推荐；3 Secret Proxy：av proxy 给应用一个随机的替身；单独签名的代理助手只在你批准的目的地、只在这次会话里把真密钥放进发出的 HTTPS 请求；替身本身仍然谁拿到谁能用；4 Varlock（可选）：Varlock 插件一次请求要齐它的所有密钥，每次运行批准一次，没有常设规则或 Blessing"
+alt_en = "Other ways to use a secret: 1 Blessed Scripts: av bless reviews a script once; the script declares the secret names and tool capabilities it needs; editing it ends the Blessing. 2 av inject: puts named secrets into a program's environment; --mode=fd hands each secret through its own pipe and needs fresh Approval every time; a Direct Access Rule lets one launcher use one secret name with any program, the broadest and least preferred option. 3 Secret Proxy: av proxy gives the app a random stand-in reference; a separately signed proxy helper puts the real secret into outbound HTTPS requests only for destinations you approve, for that session; the references are still bearer values. 4 Varlock, optional: the Varlock plugin asks for all its secrets in one request, with one Approval per run and no standing rules or Blessings."
+caption_zh = "其他用法：脚本、av inject、Secret Proxy、Varlock"
+caption_en = "Other ways: scripts, av inject, the Secret Proxy, Varlock"
+
+[[figures]]
+file = "gates.svg"
+alt_zh = "签名、SSH 和 Homebrew：1 GPG 签名：Git 把提交交给 av-gpg，私钥留在钥匙串，Git 看不到；闸门默认 Approval Required，也可设 Allow Signing；2 SSH 代理，可选：av ssh-agent 有自己的套接字，每把钥匙有自己的闸门和策略，在内存里签名，私钥从不加进系统代理；3 Homebrew：执行闸门在不涉及密钥时也管 brew；默认 Read & Update 放行读操作和 brew update，不放行安装、升级、删除；4 走 HTTPS 的 Git：av git 是受保护的 HTTPS 路径，收窄 gh 凭据的使用；仍在验证中"
+alt_en = "Signing, SSH and Homebrew: 1 GPG signing: Git hands the commit to av-gpg; the private key stays in the Keychain and Git never sees it; the gate offers Approval Required, its default, or Allow Signing. 2 SSH agent, optional: av ssh-agent serves its own socket; each key has its own gate and policy; it signs in memory and private keys are never added to the system agent. 3 Homebrew: an Execution Gate controls brew even when no secret is involved; its default, Read & Update, allows reads and brew update but not install, upgrade or remove. 4 Git over HTTPS: av git is a protected HTTPS path that narrows use of the gh credential; it is still under validation."
+caption_zh = "签名、SSH 和 Homebrew 各自的闸门"
+caption_en = "Signing, SSH and Homebrew gates"
+
+[[figures]]
+file = "components.svg"
+alt_zh = "组成部分：1 命令行这边，在 Mac 上：Rust 写的 av 命令是闸门客户端；签过名的小助手有 av-gpg、Homebrew 的 brew stub 和代理助手；Isotope 是工具的加固构建；2 菜单栏应用，在 Mac 上：Swift 写的，是批准服务；只有它掌管钥匙串里的密钥、策略和记录，登录时作为 macOS LaunchAgent 启动；命令行通过认证过的 XPC 和它通信；3 手机这边，可选：iPhone 应用批准或拒绝；批准中继是 Rust 写的服务器，通过 WebSocket 转发加密消息，用苹果推送唤醒手机；4 安装：Automic Vault.app 来自发布页或 Homebrew cask，签名的分支 Isotope 发布来自 Isotopes tap，应用在管理员批准后安装自己的命令行"
+alt_en = "The pieces: 1 Command-line side, on the Mac: the av CLI in Rust is the Gate Client; small signed helpers are av-gpg, the Homebrew brew stub and the proxy helper; Isotopes are the hardened builds of tools. 2 Menu bar app, on the Mac: written in Swift, it is the approval service; it alone owns the Keychain with secrets, policy and history, and starts at login as a macOS LaunchAgent. The CLI talks to it over authenticated XPC. 3 Phone side, optional: the iPhone app approves or denies; the approval relay is a Rust server that passes encrypted messages over WebSocket and wakes the phone through Apple push notifications. 4 Install: Automic Vault.app from a release or the Homebrew cask; signed fork Isotope releases come from the Isotopes tap; the app installs its CLI with administrator approval."
+caption_zh = "组成部分：命令行、菜单栏应用、iPhone 和中继、安装"
+caption_en = "The pieces: CLI, menu bar app, iPhone and relay, install"

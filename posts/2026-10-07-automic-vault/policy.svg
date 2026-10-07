@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Access rules</title>
+<desc id="d">1 Access Levels, presets a gate offers: Approval Required asks every time, Read Only allows recognized reads, Write Access allows recognized reads and writes, and Full Access may allow recognized sensitive operations; some gates add Read &amp; Update (Homebrew) or Local Write between them. 2 Per gate: each gate has a default level, new secret gates start at Read Only, rules for a Verified Launcher override the default, and unknown operations need Approval at every level. 3 Example, one GitHub token at Read Only: gh issue list is allowed automatically, gh issue create needs Approval, and gh auth token, which shows the secret, needs Approval. 4 Short-lived changes: a Temporary Access Grant gives Write Access for ten active minutes to one gate, launcher and agent task; denial rules are checked before anything that allows; a temporary denial blocks one launcher at one gate for two minutes.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="448" rx="12" class="grp"/>
+<circle cx="202.25" cy="43" r="14" class="num"/>
+<text x="202.25" y="49" class="numt" text-anchor="middle" >1</text>
+<text x="222.25" y="52" class="gt" text-anchor="start" >Access Levels</text>
+<rect x="54" y="80" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="90" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="303.0" y="105.0" class="ag" text-anchor="middle" >Approval Required</text>
+<text x="303.0" y="129.0" class="ag" text-anchor="middle" >asks every time</text>
+<rect x="54" y="154" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="164" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="179.0" class="ag" text-anchor="middle" >Read Only</text>
+<text x="303.0" y="203.0" class="ag" text-anchor="middle" >recognized reads</text>
+<rect x="54" y="228" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="253.0" class="ag" text-anchor="middle" >Write Access</text>
+<text x="303.0" y="277.0" class="ag" text-anchor="middle" >recognized reads and writes</text>
+<rect x="54" y="302" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="312" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="327.0" class="ag" text-anchor="middle" >Full Access</text>
+<text x="303.0" y="351.0" class="ag" text-anchor="middle" >sensitive operations too</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Some gates add Read &amp; Update</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >or Local Write</text>
+<rect x="624" y="16" width="552" height="448" rx="12" class="grp"/>
+<circle cx="836.0" cy="43" r="14" class="num"/>
+<text x="836.0" y="49" class="numt" text-anchor="middle" >2</text>
+<text x="856.0" y="52" class="gt" text-anchor="start" >Per gate</text>
+<rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="90" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="107.0" class="ag" text-anchor="middle" >Gate default</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >Read Only for new secret gates</text>
+<rect x="654" y="160" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="170" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="187.0" class="ag" text-anchor="middle" >Launcher rules</text>
+<text x="903.0" y="211.0" class="ag" text-anchor="middle" >override the default</text>
+<rect x="654" y="240" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="250" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="267.0" class="ag" text-anchor="middle" >Unknown operation</text>
+<text x="903.0" y="291.0" class="ag" text-anchor="middle" >always needs Approval</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="728.0" cy="527" r="14" class="num"/>
+<text x="728.0" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="748.0" y="536" class="gt" text-anchor="start" >Example: gh at Read Only</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >gh issue list</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >allowed automatically</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >gh issue create</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >needs Approval</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >gh auth token</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >shows the secret · Approval</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="161.75" cy="527" r="14" class="num"/>
+<text x="161.75" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="181.75" y="536" class="gt" text-anchor="start" >Short-lived changes</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Temporary Access Grant</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >Write for 10 min · one agent task</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Denial rules</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >checked before any allow</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Temporary denial</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >one launcher · 2 minutes</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >pick one</text>
+<path d="M1054 464V498" class="flow"/>
+<text x="1054" y="488" class="al" text-anchor="middle" >e.g.</text>
+</svg>
