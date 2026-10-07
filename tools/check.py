@@ -13,6 +13,7 @@
   bodies, titles, captions or alt texts (derived ones included).
 - Build: the whole site builds (build.main into a temp dir) with no error or warning. This one command
   is the /peerreview gate for a post.
+- Order: an arrow may not join a numbered and an unnumbered group; between unnumbered groups it needs a label.
 - Layout, measured by Chrome with real fonts: text inside its card, pill, group or the frame; cards
   inside a group; no overlaps (a stack of offset copies of one card is fine); at most two lines per
   card and two notes per group or sub-group (legend labels, a note beside a card and the labels of a
@@ -131,6 +132,13 @@ LAYOUT_JS = r"""
   }
   const paths = [...svg.querySelectorAll('path')].filter(p => !p.closest('defs') && !p.closest('g') &&
     (/(^| )flow( |$)/.test(p.getAttribute('class') || '') || (!p.getAttribute('class') && p.getAttribute('stroke'))));
+  // A group is numbered when a number dot sits in its title band. Between numbered groups an arrow is a step;
+  // it may not join a numbered group to an unnumbered one, and between unnumbered groups (a map) it must carry
+  // a label naming the relation ("uses"), since a bare arrow there reads as a step the source lacks.
+  const dots = [...svg.querySelectorAll('circle.num')].filter(c => !c.closest('g'))
+    .map(c => [num(c.getAttribute('cx')), num(c.getAttribute('cy'))]);
+  const numbered = g => dots.some(([x, y]) => holds({x: g.x, y: g.y, w: g.w, h: 60}, x, y));
+  const groupAt = (x, y) => groups.find(g => holds({x: g.x - 6, y: g.y - 6, w: g.w + 12, h: g.h + 12}, x, y));
   for (const p of paths) {
     const d = p.getAttribute('d'), toks = d.match(/[A-Za-z]|-?\d*\.?\d+(?:e-?\d+)?/g) || [];
     let cmd = null, x = 0, y = 0;
@@ -148,6 +156,15 @@ LAYOUT_JS = r"""
         }
         x = x3; y = y3;
       } else { out.push(`arrow ${d}: path command ${cmd} is not checked; use M, L, H, V or C`); break; }
+    }
+    if (pts.length > 1) {
+      const a = groupAt(...pts[0]), b = groupAt(...pts[pts.length - 1]);
+      if (a && b && a !== b && numbered(a) !== numbered(b))
+        out.push(`arrow ${d} joins a numbered and an unnumbered group (${at(a)}, ${at(b)})`);
+      const near = t => pts.slice(1).some(([x2, y2], i) => { const [x1, y1] = pts[i];
+        return hit(t.b, {x: Math.min(x1, x2) - 30, y: Math.min(y1, y2) - 30, w: Math.abs(x2 - x1) + 60, h: Math.abs(y2 - y1) + 60}); });
+      if (a && b && a !== b && !numbered(a) && !numbered(b) && !texts.some(t => t.cls === 'al' && near(t)))
+        out.push(`arrow ${d} joins unnumbered groups with no label: name the relation (uses), or drop it`);
     }
     for (let i = 1; i < pts.length; i++) {
       const [x1, y1] = pts[i - 1], [x2, y2] = pts[i];

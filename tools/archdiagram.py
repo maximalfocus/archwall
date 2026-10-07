@@ -5,8 +5,7 @@ grey rounded groups, lighter sub-groups, white cards with a coloured left bar, s
 system sans-serif text, white background. No icons or clip-art.
 
 Every diagram is W x H = 1200 x 900 (4:3), so cards on the home page line up and a phone
-screen gets a tall enough picture. Lay stages out in two columns and wrap (snake) instead of
-stretching them into one long row.
+screen gets a tall enough picture, whatever shape the content calls for.
 
 Phones show the 1200-wide frame at about a third of its size, so type is big and words are few:
 - Card labels 20px, notes 17px, nothing smaller. A card label fits in two short lines.
@@ -24,7 +23,20 @@ Phones show the 1200-wide frame at about a third of its size, so type is big and
     d.arrow("M212 126H236", label="calls", at=(224, 116))
     d.save("diagram.svg")
 
-The two-column snake most diagrams use (a pill on top, then 1 top left, 2 top right, 3 bottom
+Pick the shape from what the content is, not from habit; the frame and the look stay the same:
+- Steps in order: a snake, with as many stages as the source has. Three stages
+  use the snake's top row plus one wide bottom group (x L, width WIDE); five or six use three columns
+  (C3 x positions, CW3 wide, d.column(..., w=CW3 - 60), d.notes(..., w=CW3)) in two rows, snaking
+  right along the top and left along the bottom. Numbered groups, arrows between them.
+- A catalogue (parts sorted by job, with no order between them): groups with no number and no
+  arrows between them, in reading order. A map of parts may join unnumbered groups with arrows that
+  name a relation ("uses"), never a step. tools/check.py fails an arrow from a numbered group to an
+  unnumbered one, and an unlabelled one between unnumbered groups; whether the label is true is for eyes.
+- Options, pick one (e.g. with or without a database): side by side, unnumbered, a note each on when.
+- One-to-many (one control plane, many data planes): d.stack(...) draws offset copies of a card.
+- A loop: the snake plus a back arrow (arrow(..., back=True)) or d.cycle(x, y).
+
+The two-column snake (a pill on top, then 1 top left, 2 top right, 3 bottom
 right, 4 bottom left) has its numbers here: groups at (L, T1), (R, T1), (R, T2), (L, T2), GW wide,
 H1 or H2 high. d.column(x, top, cards) stacks cards in a group and d.notes(x, top, h, a, b) puts
 up to two note lines at its foot. A bottom-row group holds three cards and two notes, or four
@@ -73,6 +85,8 @@ W, H = 1200, 900
 # The two-column snake: group x positions and width; top row (under a pill at y 16) and bottom row.
 L, R, GW = 24, 624, 552
 T1, H1, T2, H2 = 84, 380, 500, 364
+WIDE = 1152                    # one group across the frame, e.g. the third stage of three
+C3, CW3 = (24, 416, 808), 368  # three columns, for five or six stages or a wider catalogue
 
 
 class Diagram:
@@ -140,6 +154,13 @@ class Diagram:
             self.raw(f'<rect x="{cx}" y="{y - 14}" width="6" height="20" rx="2" fill="{KIND[k]}"/>')
             self.text(cx + 14, y + 2, lbl, "lb", "start")
             cx += 14 + len(lbl) * 9 + 28
+
+    def stack(self, x, y, label, kind=None, n=3, w=180, h=64, step=10):
+        """n offset copies of one card, front copy at (x, y): many of the same thing (data planes, workers).
+        Keep (n - 1) * step within 24 px, or check.py reads the copies as overlapping cards, not a stack."""
+        for i in range(n - 1, 0, -1):
+            self.rect(x + i * step, y + i * step, w, h, "agent", 8)
+        self.card(x, y, label, kind, w, h)
 
     def pill(self, x, y, w, h, label, cls="human"):
         """Rounded input/output box outside the main flow (the human ask, the final output)."""

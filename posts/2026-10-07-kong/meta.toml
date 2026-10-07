@@ -32,13 +32,13 @@ caption_en = "Picking a backend: upstreams, algorithms, health checks, retries"
 
 [[figures]]
 file = "config.svg"
-alt_zh = "配置放在哪里：输入是管理员修改路由、插件或上游；1 修改：Admin API 监听 127.0.0.1 的 8001 端口（TLS 用 8444），应只给管理员用；Kong Manager 是 8002 端口上的网页界面；不用数据库时用声明式配置文件；2 描述什么：服务和路由说明调用去哪里，消费者和插件说明谁在调用、运行什么，上游和目标列出后端地址；还有证书、SNI、vault 和密钥；3 存储：默认是 Postgres；database 设为 off 时，文件加载进 LMDB，Admin API 不能新建、修改或删除单个实体，POST /config 整体替换配置；4 分发到 worker：每个节点有两个各 128 MB 的内存缓存，用 Postgres 的节点每 5 秒查一次变化，每个 worker 每 5 秒按需重建路由和插件列表"
+alt_zh = "配置放在哪里：输入是管理员修改路由、插件或上游；1 修改：Admin API 监听 127.0.0.1 的 8001 端口（TLS 用 8444），应只给管理员用；Kong Manager 是 8002 端口上的网页界面；不用数据库时用声明式配置文件；2 描述什么：服务和路由说明调用去哪里，消费者和插件说明谁在调用、运行什么，上游和目标列出后端地址；还有证书、SNI、vault 和密钥；3 存储，用 database 设置在两种里选一种：默认的 Postgres，Admin API 可以逐个编辑实体；或者 DB-less，database = off，配置文件载入 LMDB，Admin API 不能新建、修改或删除单个实体，POST /config 整体替换配置；4 分发到 worker：每个节点有两个各 128 MB 的内存缓存，用 Postgres 的节点每 5 秒查一次变化，每个 worker 每 5 秒按需重建路由和插件列表"
 caption_zh = "配置放在哪里：修改、内容、存储、分发到 worker"
 caption_en = "Where the config lives: change it, what it holds, store it, spread it"
 
 [[figures]]
 file = "hybrid.svg"
-alt_zh = "混合模式：输入是管理员在控制面上改配置。混合模式是一个设置项 role，默认是 traditional；1 控制面，role = control_plane：必须开 Admin API 和数据库，在集群端口 8005 上等数据面连接；2 打包配置：导出整份配置并算出哈希，按每个数据面的版本调整（主版本相同，数据面的次版本不能更新），再用 gzip 压缩，默认最大 16 MB；3 数据面接收，role = data_plane：通过双向 TLS 保护的 WebSocket 接收，默认用共享证书，也可以用 CA 签发的证书（pki）；数据面必须设 database = off，把配置载入 Kong 的本地配置库 LMDB；4 处理流量：数据面在 8000 和 8443 端口代理调用，每 30 秒带着配置哈希 ping 一次控制面，还没有缓存配置时可以先用声明式配置文件启动"
+alt_zh = "混合模式：输入是管理员在控制面上改配置。混合模式是一个设置项 role，默认是 traditional；1 控制面，role = control_plane：必须开 Admin API 和数据库，在集群端口 8005 上等数据面连接；2 打包配置：导出整份配置并算出哈希，按每个数据面的版本调整（主版本相同，数据面的次版本不能更新），再用 gzip 压缩，默认最大 16 MB；3 数据面，你运行多少就有多少，role = data_plane：每一个都通过双向 TLS 保护的 WebSocket 接收配置，默认用共享证书，也可以用 CA 签发的证书（pki）；设 database = off，把配置载入 Kong 的本地配置库 LMDB；在 8000 和 8443 端口代理调用；每 30 秒带着配置哈希 ping 一次控制面。还没有缓存配置的数据面可以先用声明式配置文件启动"
 caption_zh = "混合模式：控制面打包整份配置，推给不带数据库的数据面"
 caption_en = "Hybrid mode: the control plane pushes the whole config to data planes with no database"
 

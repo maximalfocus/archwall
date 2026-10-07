@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Where the config lives</title>
-<desc id="d">In: an admin changes routes, plugins or upstreams. 1 Change it: the Admin API listens on 127.0.0.1 port 8001, or 8444 with TLS, and should stay with admins; Kong Manager is a web UI on port 8002; a declarative config file is used with no database. 2 What it describes: services and routes say where calls go, consumers and plugins say who calls and what runs, upstreams and targets list backend addresses; also certificates, SNIs, vaults and keys. 3 Store it: Postgres is the default; with database set to off the file is loaded into LMDB, the Admin API cannot create, update or delete single entities, and POST /config replaces the whole config. 4 Spread to workers: each node keeps two memory caches of 128 MB each, nodes on Postgres poll for changes every 5 seconds, and every 5 seconds each worker rebuilds its router and plugin list if needed.</desc>
+<desc id="d">In: an admin changes routes, plugins or upstreams. 1 Change it: the Admin API listens on 127.0.0.1 port 8001, or 8444 with TLS, and should stay with admins; Kong Manager is a web UI on port 8002; a declarative config file is used with no database. 2 What it describes: services and routes say where calls go, consumers and plugins say who calls and what runs, upstreams and targets list backend addresses; also certificates, SNIs, vaults and keys. 3 Store it, one of two options picked with the database setting: Postgres, the default, where the Admin API edits each entity; or DB-less, database = off, where the config file is loaded into LMDB, the Admin API cannot create, update or delete single entities, and POST /config replaces the whole config. 4 Spread to workers: each node keeps two memory caches of 128 MB each, nodes on Postgres poll for changes every 5 seconds, and every 5 seconds each worker rebuilds its router and plugin list if needed.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -66,19 +66,29 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <circle cx="836.0" cy="527" r="14" class="num"/>
 <text x="836.0" y="533" class="numt" text-anchor="middle" >3</text>
 <text x="856.0" y="536" class="gt" text-anchor="start" >Store it</text>
-<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="564" width="226" height="64" rx="8" class="agent"/>
 <rect x="654" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
-<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Postgres</text>
-<text x="903.0" y="615.0" class="ag" text-anchor="middle" >database = postgres · default</text>
-<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
-<rect x="654" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
-<text x="903.0" y="671.0" class="ag" text-anchor="middle" >DB-less</text>
-<text x="903.0" y="695.0" class="ag" text-anchor="middle" >database = off · file in LMDB</text>
-<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
-<rect x="654" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
-<text x="903.0" y="751.0" class="ag" text-anchor="middle" >POST /config</text>
-<text x="903.0" y="775.0" class="ag" text-anchor="middle" >DB-less: replaces it all</text>
-<text x="900.0" y="812" class="lb" text-anchor="middle" >DB-less: no edits to single entities</text>
+<text x="770.0" y="591.0" class="ag" text-anchor="middle" >Postgres</text>
+<text x="770.0" y="615.0" class="ag" text-anchor="middle" >the default</text>
+<rect x="654" y="644" width="226" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="770.0" y="671.0" class="ag" text-anchor="middle" >Admin API</text>
+<text x="770.0" y="695.0" class="ag" text-anchor="middle" >edits each entity</text>
+<rect x="920" y="564" width="226" height="64" rx="8" class="agent"/>
+<rect x="920" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="1036.0" y="591.0" class="ag" text-anchor="middle" >DB-less</text>
+<text x="1036.0" y="615.0" class="ag" text-anchor="middle" >database = off</text>
+<rect x="920" y="644" width="226" height="64" rx="8" class="agent"/>
+<rect x="920" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="1036.0" y="671.0" class="ag" text-anchor="middle" >Config file</text>
+<text x="1036.0" y="695.0" class="ag" text-anchor="middle" >loaded into LMDB</text>
+<rect x="920" y="724" width="226" height="64" rx="8" class="agent"/>
+<rect x="920" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="1036.0" y="751.0" class="ag" text-anchor="middle" >POST /config</text>
+<text x="1036.0" y="775.0" class="ag" text-anchor="middle" >replaces it all</text>
+<text x="900" y="602" class="lb" text-anchor="middle" >or</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Pick one: the database setting</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >DB-less: no edits to single entities</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="175.25" cy="527" r="14" class="num"/>
 <text x="175.25" y="533" class="numt" text-anchor="middle" >4</text>
