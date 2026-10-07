@@ -14,7 +14,8 @@ d = Diagram("Automic Vault overview",
             "av harden moves a supported tool's credentials into the macOS Keychain and changes how the tool asks "
             "for them, and av doctor checks that protection. "
             "2 A command asks: the Launcher (a terminal, IDE or agent app) starts the tool, a signed Automic Vault "
-            "Gate Client sends the request, and the tool's Authorization Gate on the Mac receives it. "
+            "Gate Client sends the request, and the Authorization Gate for that request, the tool's own or a "
+            "built-in one, receives it on the Mac. "
             "3 Decide: the Mac checks the Launcher's live code signature, applies the gate's default Access Level or a rule for that "
             "Launcher, and asks for Approval on the Mac, with Touch ID or on an iPhone when policy cannot allow it; "
             "unknown operations always need Approval. "
@@ -33,7 +34,7 @@ d.notes(L, T1, H1, "Over 100 tool configurations checked", "")
 d.group(R, T1, GW, H1, "A command asks", 2)
 d.column(R, T1, [("Launcher|terminal · IDE · agent app", "coding"),
                  ("Gate Client|signed piece that sends the request", "coding"),
-                 ("Authorization Gate|one per tool · on the Mac", "review")])
+                 ("Authorization Gate|per tool · or a built-in gate", "review")])
 
 d.group(R, T2, GW, H2, "Decide", 3)
 d.column(R, T2, [("Who is asking?|live code signature check", "review"),

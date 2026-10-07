@@ -9,8 +9,9 @@ from archdiagram import Diagram, L, R, GW, T1, H1, T2, H2  # noqa: E402
 
 d = Diagram("Who is asking",
             "1 Verified Launchers: the terminals, IDEs and agent apps you pick; identity is the code signature, "
-            "checked live on every request, and Hardened Runtime is required unless the program is an Apple "
-            "system binary. Paths and names are not identity. "
+            "checked live on every request; Hardened Runtime is needed to allow a request automatically, while a "
+            "failed runtime check falls back to Approval when human approval is available, and an Apple system "
+            "binary counts as protected. Paths and names are not identity. "
             "2 Helpers inside apps: Claude Code's helper is built in, Codex's signed CLI is preselected for your "
             "review, and other helpers count only if you approve them; finding a helper grants nothing. "
             "3 Unsigned CLIs: a Launcher Bundle wraps one unsigned single-file Mach-O CLI, signs it with Hardened "
@@ -22,7 +23,7 @@ d = Diagram("Who is asking",
 d.group(L, 16, GW, H1 + 68, "Verified Launchers", 1)
 d.column(L, 16, [("Apps you pick|terminal · IDE · agent app", "coding"),
                  ("Identity|code signature · checked live", "review"),
-                 ("Hardened Runtime|required · or an Apple binary", "review")])
+                 ("Hardened Runtime|needed for auto-allow · or Apple binary", "review")])
 d.notes(L, 16, H1 + 68, "Paths and names are not identity", "")
 
 d.group(R, 16, GW, H1 + 68, "Helpers inside apps", 2)

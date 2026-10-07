@@ -10,9 +10,9 @@ from archdiagram import Diagram, L, R, GW, T1, H1, T2, H2  # noqa: E402
 d = Diagram("Secrets and history",
             "1 Stored in the Keychain: secret bytes sit in the app's private group of the macOS Data Protection "
             "Keychain; gate policy and the history key each sit in a separate Keychain service. "
-            "2 Which value: the nearest Project Value in the working folder or a folder above it wins, otherwise "
-            "the Global Value; if the chosen value cannot be read the request is denied, with no fallback. The "
-            "folder only picks a value and grants nothing. "
+            "2 Which value: the nearest Project Value in the working folder or a folder above it on the same "
+            "volume wins, otherwise the Global Value; if the chosen value cannot be read the request is denied, with no "
+            "fallback. The folder only picks a value and grants nothing. "
             "3 Release rules: there is no call that simply loads a secret; an allowed use is recorded and read back "
             "before the secret leaves; on a locked Mac only secrets marked available while locked can be used. "
             "4 History: encrypted rows in one SQLite file on this Mac, kept up to 30 days or until a size cap, 25 MiB by default, "
@@ -24,7 +24,7 @@ d.column(L, 16, [("Secret bytes|app-only Keychain group", "write"),
                  ("History key|separate Keychain service", "write")])
 
 d.group(R, 16, GW, H1 + 68, "Which value", 2)
-d.column(R, 16, [("Project Value|nearest folder at or above", "data"),
+d.column(R, 16, [("Project Value|nearest folder at or above · same volume", "data"),
                  ("Global Value|when no Project Value", "data"),
                  ("Read fails|denied · no fallback", "review")])
 d.notes(R, 16, H1 + 68, "The folder picks a value,", "it grants nothing")

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Who is asking</title>
-<desc id="d">1 Verified Launchers: the terminals, IDEs and agent apps you pick; identity is the code signature, checked live on every request, and Hardened Runtime is required unless the program is an Apple system binary. Paths and names are not identity. 2 Helpers inside apps: Claude Code's helper is built in, Codex's signed CLI is preselected for your review, and other helpers count only if you approve them; finding a helper grants nothing. 3 Unsigned CLIs: a Launcher Bundle wraps one unsigned single-file Mach-O CLI, signs it with Hardened Runtime and rechecks it on every request; a changed or re-signed bundle is denied outright. Scripts are not supported. 4 Scripts and agent tasks: a Blessed Script is trusted for its exact reviewed contents; a Codex or Claude Code task ID can narrow a Temporary Access Grant, but software can forge it, so it is not identity.</desc>
+<desc id="d">1 Verified Launchers: the terminals, IDEs and agent apps you pick; identity is the code signature, checked live on every request; Hardened Runtime is needed to allow a request automatically, while a failed runtime check falls back to Approval when human approval is available, and an Apple system binary counts as protected. Paths and names are not identity. 2 Helpers inside apps: Claude Code's helper is built in, Codex's signed CLI is preselected for your review, and other helpers count only if you approve them; finding a helper grants nothing. 3 Unsigned CLIs: a Launcher Bundle wraps one unsigned single-file Mach-O CLI, signs it with Hardened Runtime and rechecks it on every request; a changed or re-signed bundle is denied outright. Scripts are not supported. 4 Scripts and agent tasks: a Blessed Script is trusted for its exact reviewed contents; a Codex or Claude Code task ID can narrow a Temporary Access Grant, but software can forge it, so it is not identity.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -40,7 +40,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="240" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="250" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="303.0" y="267.0" class="ag" text-anchor="middle" >Hardened Runtime</text>
-<text x="303.0" y="291.0" class="ag" text-anchor="middle" >required · or an Apple binary</text>
+<text x="303.0" y="291.0" class="ag" text-anchor="middle" >needed for auto-allow · or Apple binary</text>
 <text x="300.0" y="412" class="lb" text-anchor="middle" >Paths and names are not identity</text>
 <rect x="624" y="16" width="552" height="448" rx="12" class="grp"/>
 <circle cx="761.75" cy="43" r="14" class="num"/>

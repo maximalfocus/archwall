@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Secrets and history</title>
-<desc id="d">1 Stored in the Keychain: secret bytes sit in the app's private group of the macOS Data Protection Keychain; gate policy and the history key each sit in a separate Keychain service. 2 Which value: the nearest Project Value in the working folder or a folder above it wins, otherwise the Global Value; if the chosen value cannot be read the request is denied, with no fallback. The folder only picks a value and grants nothing. 3 Release rules: there is no call that simply loads a secret; an allowed use is recorded and read back before the secret leaves; on a locked Mac only secrets marked available while locked can be used. 4 History: encrypted rows in one SQLite file on this Mac, kept up to 30 days or until a size cap, 25 MiB by default, whichever comes first; reading it with av history needs Approval or a separate grant. It is not tamper-proof.</desc>
+<desc id="d">1 Stored in the Keychain: secret bytes sit in the app's private group of the macOS Data Protection Keychain; gate policy and the history key each sit in a separate Keychain service. 2 Which value: the nearest Project Value in the working folder or a folder above it on the same volume wins, otherwise the Global Value; if the chosen value cannot be read the request is denied, with no fallback. The folder only picks a value and grants nothing. 3 Release rules: there is no call that simply loads a secret; an allowed use is recorded and read back before the secret leaves; on a locked Mac only secrets marked available while locked can be used. 4 History: encrypted rows in one SQLite file on this Mac, kept up to 30 days or until a size cap, 25 MiB by default, whichever comes first; reading it with av history needs Approval or a separate grant. It is not tamper-proof.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -48,7 +48,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="80" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="90" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="903.0" y="107.0" class="ag" text-anchor="middle" >Project Value</text>
-<text x="903.0" y="131.0" class="ag" text-anchor="middle" >nearest folder at or above</text>
+<text x="903.0" y="131.0" class="ag" text-anchor="middle" >nearest folder at or above · same volume</text>
 <rect x="654" y="160" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="170" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="903.0" y="187.0" class="ag" text-anchor="middle" >Global Value</text>

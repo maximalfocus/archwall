@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Automic Vault overview</title>
-<desc id="d">In: you, a terminal or an AI agent runs a tool such as gh, aws or brew on a Mac. 1 Set up once: av scan checks over 100 developer-tool configurations for exposed credentials, av harden moves a supported tool's credentials into the macOS Keychain and changes how the tool asks for them, and av doctor checks that protection. 2 A command asks: the Launcher (a terminal, IDE or agent app) starts the tool, a signed Automic Vault Gate Client sends the request, and the tool's Authorization Gate on the Mac receives it. 3 Decide: the Mac checks the Launcher's live code signature, applies the gate's default Access Level or a rule for that Launcher, and asks for Approval on the Mac, with Touch ID or on an iPhone when policy cannot allow it; unknown operations always need Approval. 4 Record and release: an Authorization Record is saved and read back first, then the secret goes to the program that needs it; with no record there is no secret.</desc>
+<desc id="d">In: you, a terminal or an AI agent runs a tool such as gh, aws or brew on a Mac. 1 Set up once: av scan checks over 100 developer-tool configurations for exposed credentials, av harden moves a supported tool's credentials into the macOS Keychain and changes how the tool asks for them, and av doctor checks that protection. 2 A command asks: the Launcher (a terminal, IDE or agent app) starts the tool, a signed Automic Vault Gate Client sends the request, and the Authorization Gate for that request, the tool's own or a built-in one, receives it on the Mac. 3 Decide: the Mac checks the Launcher's live code signature, applies the gate's default Access Level or a rule for that Launcher, and asks for Approval on the Mac, with Touch ID or on an iPhone when policy cannot allow it; unknown operations always need Approval. 4 Record and release: an Authorization Record is saved and read back first, then the secret goes to the program that needs it; with no record there is no secret.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -60,7 +60,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="318" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Authorization Gate</text>
-<text x="903.0" y="359.0" class="ag" text-anchor="middle" >one per tool · on the Mac</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >per tool · or a built-in gate</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="849.5" cy="527" r="14" class="num"/>
 <text x="849.5" y="533" class="numt" text-anchor="middle" >3</text>
