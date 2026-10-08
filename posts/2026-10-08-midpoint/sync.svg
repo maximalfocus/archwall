@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">How a change gets into midPoint</title>
-<desc id="d">In: an account changes on a resource, for example a new hire in the HR system. 1 Spot the change: live sync polls the resource's change log every few seconds; reconciliation is a scheduled full compare, the safety net; import usually runs once; asynchronous update takes messages and is experimental. Discovery is a change found during an unrelated operation. 2 Find the owner: an account already linked to a user keeps that owner; otherwise correlation rules (items, filter, expression, idmatch) look for a user and give a confidence; 1.0 means a sure match by default. Correlation runs before the inbound mappings. 3 Name the situation, one of five: linked (has its owner), unlinked (owner found, not yet linked), unmatched (no owner), disputed (not sure who), deleted (the account is gone). Situations are only about links, not about whether the person should have the account. 4 React: each situation has its reactions, such as link, add focus or synchronize; delete or inactivate the user or the account; create a correlation case so a person picks the owner. Then inbound mappings copy account data into the user.</desc>
+<desc id="d">In: an account changes on a resource, for example a new hire in the HR system. 1 Spot the change: live sync polls the resource's change log every few seconds; reconciliation is a scheduled full compare, the safety net; import usually runs once; asynchronous update takes messages and is experimental. Discovery is a change found during an unrelated operation. 2 Find the owner: an account already linked to a user keeps that owner; otherwise correlation rules (items, filter, expression, idMatch) look for a user and give a confidence; 1.0 means a sure match by default. The expression correlator is experimental, filter is the legacy kind, and idMatch uses an external ID Match service. Correlation runs before the inbound mappings. 3 Name the situation, one of five: linked (has its owner), unlinked (owner found, not yet linked), unmatched (no owner), disputed (not sure who), deleted (the account is gone). Situations are only about links, not about whether the person should have the account. 4 React: each situation has its reactions, such as link, add focus or synchronize; delete or inactivate the user or the account; create a correlation case so a person picks the owner. Then inbound mappings copy account data into the user.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -60,12 +60,13 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="903.0" y="255.0" class="ag" text-anchor="middle" >Correlation rules</text>
-<text x="903.0" y="279.0" class="ag" text-anchor="middle" >items · filter · expression · idmatch</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >items · filter · expression · idMatch</text>
 <rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="318" width="5" height="44" rx="2" fill="#e8973a"/>
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Confidence</text>
 <text x="903.0" y="359.0" class="ag" text-anchor="middle" >1.0 = sure match by default</text>
 <text x="900.0" y="412" class="lb" text-anchor="middle" >Runs before the inbound mappings</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >expression: experimental · idMatch: external service · filter: legacy</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="768.5" cy="527" r="14" class="num"/>
 <text x="768.5" y="533" class="numt" text-anchor="middle" >3</text>

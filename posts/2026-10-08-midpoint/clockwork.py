@@ -24,7 +24,7 @@ d = Diagram("One change through the model",
             "3 Compute the accounts, one by one: outbound mappings turn user data into account data, the values "
             "are consolidated, strong and weak mappings merged, and the account's policy rules are evaluated. "
             "Nothing is changed yet; the result is a preview. "
-            "4 Check, state PRIMARY: rules with the enforce action stop the change; the approvals hook may "
+            "4 Check, state PRIMARY: rules with the enforcement action stop the change; the approvals hook may "
             "take the change into an approval case and continue in the background. "
             "5 Execute, state SECONDARY: the model is computed again, then the changes are written to the "
             "repository and through provisioning to the accounts, and audited; with provisioning dependencies "
@@ -55,7 +55,7 @@ d.column(x3, T1, [("Outbound|user data → account", "plan"),
 d.notes(x3, T1, H1, "Nothing changed yet: a preview", w=CW3)
 
 d.group(x3, T2, CW3, H2, "Check", 4)
-d.column(x3, T2, [("Enforce|a violation stops it", "review"),
+d.column(x3, T2, [("Enforcement|a violation stops it", "review"),
                   ("Approvals hook|may open a case", "review")], w=W3)
 d.notes(x3, T2, H2, "State PRIMARY", "Waits for approval in the background", w=CW3)
 

@@ -19,8 +19,9 @@ d = Diagram("How a change gets into midPoint",
             "is a scheduled full compare, the safety net; import usually runs once; asynchronous update takes "
             "messages and is experimental. Discovery is a change found during an unrelated operation. "
             "2 Find the owner: an account already linked to a user keeps that owner; otherwise correlation "
-            "rules (items, filter, expression, idmatch) look for a user and give a confidence; 1.0 means a "
-            "sure match by default. Correlation runs before the inbound mappings. "
+            "rules (items, filter, expression, idMatch) look for a user and give a confidence; 1.0 means a "
+            "sure match by default. The expression correlator is experimental, filter is the legacy kind, and "
+            "idMatch uses an external ID Match service. Correlation runs before the inbound mappings. "
             "3 Name the situation, one of five: linked (has its owner), unlinked (owner found, not yet linked), "
             "unmatched (no owner), disputed (not sure who), deleted (the account is gone). Situations are only "
             "about links, not about whether the person should have the account. "
@@ -40,9 +41,10 @@ d.notes(L, T1, H1, "Discovery: found during another operation", "")
 
 d.group(R, T1, GW, H1, "Find the owner", 2)
 d.column(R, T1, [("Already linked?|then it keeps that owner", "plan"),
-                 ("Correlation rules|items · filter · expression · idmatch", "plan"),
+                 ("Correlation rules|items · filter · expression · idMatch", "plan"),
                  ("Confidence|1.0 = sure match by default", "critic")])
-d.notes(R, T1, H1, "Runs before the inbound mappings", "")
+d.notes(R, T1, H1, "Runs before the inbound mappings",
+        "expression: experimental · idMatch: external service · filter: legacy")
 
 d.group(R, T2, GW, H2, "Name the situation", 3)
 d.column(R, T2, [("linked|has its owner", "data"),

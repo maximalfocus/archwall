@@ -8,13 +8,13 @@ source = "https://github.com/Evolveum/midpoint (commit 160887ba)"
 
 [[figures]]
 file = "components.svg"
-alt_zh = "midPoint 的组成部分：这是一张部件图，不是步骤。最上面是 Model API 之上的客户端，各个部署改动最多：管理界面，用 Apache Wicket 写的网页界面；REST API，就是网络上的 Model API，用 JSON、XML 或 YAML；还有你自己写的代码，比如定制服务和界面。客户端通过 Model API 调用 IDM 模型。IDM 模型是每个改动都要经过的地方，在这里执行策略：身份逻辑（映射、角色、策略），审批（案例和工作项），认证、报表和通知，以及智能集成，由外部服务给出映射和关联的 AI 建议，要配置 smartIntegration 才有。模型通过 provisioning 读写账号，把对象存进存储库。Provisioning 用影子把用户和账号连起来，通过 ConnId 连接器或内置的手工、异步连接器连接 HR、目录和应用，影子也存进存储库。存储库是原生 PostgreSQL，从 midPoint 4.10 起是唯一支持的数据库，通用数据库支持已经去掉；审计记录写进它自己的表或日志。共享服务：数据结构（Prism，用 XSD 写成），Quartz 调度器运行的任务，以及检查授权的安全模块。"
+alt_zh = "midPoint 的组成部分：这是一张部件图，不是步骤。最上面是 Model API 之上的客户端，各个部署改动最多：管理界面，用 Apache Wicket 写的网页界面；REST API，就是网络上的 Model API，用 JSON、XML 或 YAML；还有你自己写的代码，比如定制服务和界面。客户端通过 Model API 调用 IDM 模型。IDM 模型是每个改动都要经过的地方，在这里执行策略：身份逻辑（映射、角色、策略），审批（案例和工作项），认证、报表和通知，以及智能集成，由外部服务给出映射和关联的 AI 建议，要配置 smartIntegration 才有。模型通过 provisioning 读写账号，把对象存进存储库。Provisioning 用影子把用户和账号连起来，通过 ConnId 连接器或内置的手工、异步连接器（异步连接器是实验功能）连接 HR、目录和应用，影子也存进存储库。存储库是原生 PostgreSQL，从 midPoint 4.10 起是唯一支持的数据库，通用数据库支持已经去掉；审计记录写进它自己的表或日志。共享服务：数据结构（Prism，用 XSD 写成），Quartz 调度器运行的任务，以及检查授权的安全模块。"
 caption_zh = "midPoint 的组成：客户端、IDM 模型、provisioning、存储库、共享服务"
 caption_en = "midPoint's parts: clients, the IDM model, provisioning, the repository, shared services"
 
 [[figures]]
 file = "sync.svg"
-alt_zh = "一个变化怎么进到 midPoint：输入是某个资源上的账号变了，比如 HR 系统里来了新员工；1 发现变化：实时同步（live sync）每隔几秒轮询资源的变更日志；对账（reconciliation）是定时的全量比对，是兜底的安全网；导入通常只跑一次；异步更新接收消息，属于实验功能；发现（discovery）是在别的操作中顺带发现的变化；2 找主人：已经关联到用户的账号保持原主人；否则用关联规则（items、filter、expression、idmatch）找用户并给出可信度，默认 1.0 算确定匹配；关联在入站映射之前运行；3 判定情形，五种之一：linked（有主人），unlinked（找到主人但还没关联），unmatched（没有主人），disputed（不确定是谁），deleted（账号没了）；情形只看关联，不管这个人该不该有这个账号；4 反应：每种情形配有反应，比如关联、新建用户或同步；删除或停用用户或账号；建一个关联工单，让人来挑主人；之后入站映射把账号数据写进用户"
+alt_zh = "一个变化怎么进到 midPoint：输入是某个资源上的账号变了，比如 HR 系统里来了新员工；1 发现变化：实时同步（live sync）每隔几秒轮询资源的变更日志；对账（reconciliation）是定时的全量比对，是兜底的安全网；导入通常只跑一次；异步更新接收消息，属于实验功能；发现（discovery）是在别的操作中顺带发现的变化；2 找主人：已经关联到用户的账号保持原主人；否则用关联规则（items、filter、expression、idMatch）找用户并给出可信度，默认 1.0 算确定匹配；expression 是实验功能，filter 是旧的做法，idMatch 要用外部 ID Match 服务；关联在入站映射之前运行；3 判定情形，五种之一：linked（有主人），unlinked（找到主人但还没关联），unmatched（没有主人），disputed（不确定是谁），deleted（账号没了）；情形只看关联，不管这个人该不该有这个账号；4 反应：每种情形配有反应，比如关联、新建用户或同步；删除或停用用户或账号；建一个关联工单，让人来挑主人；之后入站映射把账号数据写进用户"
 caption_zh = "同步：发现变化、找主人、判定情形、反应"
 caption_en = "Sync: spot the change, find the owner, name the situation, react"
 

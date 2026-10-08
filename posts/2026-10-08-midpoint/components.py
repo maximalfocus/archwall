@@ -23,7 +23,8 @@ d = Diagram("midPoint's parts",
             "the smartIntegration setting. "
             "The model reads and writes accounts through provisioning and stores objects in the repository. "
             "Provisioning keeps shadows that link users to accounts and talks to apps through ConnId "
-            "connectors, or built-in manual and asynchronous ones; it stores the shadows in the repository. "
+            "connectors, or built-in manual and asynchronous ones (the asynchronous connector is experimental); "
+            "it stores the shadows in the repository. "
             "The repository is native PostgreSQL, the only database since midPoint 4.10; the audit trail "
             "goes to its own tables or to a log. "
             "Shared services: the schema (Prism, written in XSD), tasks run by the Quartz scheduler, "
@@ -56,7 +57,7 @@ d.arrow(f"M{x2 + CW3 / 2} 512V590", label="stores objects", at=(x2 + CW3 / 2, 55
 d.group(x1, 592, CW3, 292, "Provisioning")
 d.column(x1, 592, [("Shadows|link users to accounts", "data"),
                    ("Connectors|ConnId · manual · async", "coding")], w=CW3 - 60)
-d.notes(x1, 592, 292, "Talks to HR · directories · apps", "Keeps its shadows in the repository", w=CW3)
+d.notes(x1, 592, 292, "Talks to HR · directories · apps", "Async connector: experimental", w=CW3)
 
 d.group(x2, 592, CW3, 292, "Repository")
 d.column(x2, 592, [("Native PostgreSQL|the only database", "write"),
