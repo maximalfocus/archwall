@@ -20,7 +20,7 @@ caption_en = "Sync: spot the change, find the owner, name the situation, react"
 
 [[figures]]
 file = "clockwork.svg"
-alt_zh = "一次修改怎样经过 midPoint 的模型：输入是来自 GUI、某个服务或同步发现的一次修改；1 接下请求，状态 INITIAL：clockwork 载入用户和它的账号，并审计这次请求；2 算出用户，在 projector 里：inbound 映射把账号数据带进用户，对象模板补全用户数据，按角色的 inducement 计算分配，再评估用户的策略规则；3 算出账号，逐个处理：outbound 映射把用户数据变成账号数据，合并各个值（strong 和 weak 映射），再评估账号的策略规则；这时还什么都没改，只是一份预览；4 检查，状态 PRIMARY：带 enforce 动作的规则会拦下修改；审批钩子可以把修改转成一个审批 case，在后台等审批；5 执行，状态 SECONDARY：模型再算一遍，然后把修改写进仓库，并通过 provisioning 写到账号上，再记审计；有 provisioning 依赖时分几轮执行；6 收尾，状态 FINAL：审计最终执行结果，通知钩子发出通知"
+alt_zh = "一次修改怎样经过 midPoint 的模型：输入是来自 GUI、某个服务或同步发现的一次修改；1 接下请求，状态 INITIAL：clockwork 载入用户和它的账号，并审计这次请求；2 算出用户，在 projector 里：inbound 映射把账号数据带进用户，对象模板补全用户数据，按角色的 inducement 计算分配，再评估用户的策略规则；3 算出账号，逐个处理：outbound 映射把用户数据变成账号数据，合并各个值（strong 和 weak 映射），再评估账号的策略规则；这时还什么都没改，只是一份预览；4 检查，状态 PRIMARY：带 enforcement 动作的规则会拦下修改；审批钩子可以把修改转成一个审批 case，在后台等审批；5 执行，状态 SECONDARY：模型再算一遍，然后把修改写进仓库，并通过 provisioning 写到账号上，再记审计；有 provisioning 依赖时分几轮执行；6 收尾，状态 FINAL：审计最终执行结果，通知钩子发出通知"
 caption_zh = "一次修改经过模型：接下、算用户、算账号、检查、执行、收尾"
 caption_en = "One change through the model: take it, compute the user and accounts, check, execute, finish"
 
