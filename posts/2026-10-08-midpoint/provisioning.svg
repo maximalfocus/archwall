@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">How midPoint writes to a target system</title>
-<desc id="d">In: the model decides that an account on a target system must be created, changed or deleted. 1 The resource: a resource definition names the connector and its settings; the resource schema lists the object classes and attributes the connector reads from the system; object types say which objects are accounts and which are entitlements such as groups. Capabilities are native to the resource or simulated by midPoint. 2 The shadow: midPoint keeps a shadow in its repository that links the user to the real account, groups are shadows too, and attributes are cached in the shadow (passive caching, on by default for new installations). 3 The connector does the work, one of three kinds: ConnId connectors such as the bundled LDAP, CSV and DatabaseTable connectors; the built-in manual connector, which opens a case for a person; or the built-in asynchronous connector, which sends a message to a queue. Changes can be grouped and sent together if operationGroupingInterval is set. 4 Wait or retry: an operation that is not done yet, because the resource is down, a person still has to do it, or the resource is in maintenance mode set by an admin, is kept in the shadow as a pending operation; a failed one is retried after 30 minutes, up to 3 times by default.</desc>
+<desc id="d">In: the model decides that an account on a target system must be created, changed or deleted. 1 The resource: a resource definition names the connector and its settings; the resource schema lists the object classes and attributes the connector reads from the system; object types say which objects are accounts and which are entitlements such as groups. Capabilities are native to the resource or simulated by midPoint. 2 The shadow: midPoint keeps a shadow in its repository that links the user to the real account, groups are shadows too, and attributes are cached in the shadow (passive caching, on by default for new installations). 3 The connector does the work, one of three kinds: ConnId connectors such as the bundled LDAP, CSV and DatabaseTable connectors; the built-in manual connector, which opens a case for a person; or the built-in asynchronous connector (experimental), which sends a message to a queue. Changes can be grouped and sent together with operation grouping: a grouping interval on the resource and a propagation task. 4 Wait or retry: an operation that is not done yet, because the resource is down, a person still has to do it, or the resource is in maintenance mode (experimental) set by an admin, is kept in the shadow as a pending operation; a failed one is retried after 30 minutes, up to 3 times by default.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -77,8 +77,9 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
 <text x="903.0" y="751.0" class="ag" text-anchor="middle" >Async connector</text>
-<text x="903.0" y="775.0" class="ag" text-anchor="middle" >sends a message to a queue</text>
-<text x="900.0" y="812" class="lb" text-anchor="middle" >Optional: operationGroupingInterval groups changes</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >queue message · experimental</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Optional grouping: an interval on the resource</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >plus a propagation task</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="202.25" cy="527" r="14" class="num"/>
 <text x="202.25" y="533" class="numt" text-anchor="middle" >4</text>
@@ -94,7 +95,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="303.0" y="751.0" class="ag" text-anchor="middle" >Maintenance mode</text>
-<text x="303.0" y="775.0" class="ag" text-anchor="middle" >set by an admin · queued</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >admin sets it · experimental</text>
 <text x="300.0" y="812" class="lb" text-anchor="middle" >Manual: done when the case is closed</text>
 <path d="M576 284H622" class="flow"/>
 <text x="600" y="272" class="al" text-anchor="middle" >change</text>

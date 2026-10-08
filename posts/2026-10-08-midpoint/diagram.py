@@ -18,7 +18,7 @@ d = Diagram("midPoint overview",
             "3 Govern: requests wait for approval, certification campaigns ask people to confirm or revoke "
             "access, and the audit trail and reports record it all. "
             "4 Write it out: connectors create, change and delete accounts and groups on the targets; "
-            "midPoint keeps a shadow that links to each account and stores everything in a PostgreSQL repository.")
+            "midPoint keeps a shadow that links to each account and stores its objects in a PostgreSQL repository.")
 
 d.pill(L, 16, GW, 48, "In: HR · apps · directories hold who has what")
 d.arrow(f"M{L + GW / 2} 64V{T1 - 2}")

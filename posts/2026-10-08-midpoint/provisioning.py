@@ -22,10 +22,10 @@ d = Diagram("How midPoint writes to a target system",
             "for new installations). "
             "3 The connector does the work, one of three kinds: ConnId connectors such as the bundled LDAP, CSV "
             "and DatabaseTable connectors; the built-in manual connector, which opens a case for a person; "
-            "or the built-in asynchronous connector, which sends a message to a queue. Changes can be grouped "
-            "and sent together if operationGroupingInterval is set. "
+            "or the built-in asynchronous connector (experimental), which sends a message to a queue. Changes can be grouped "
+            "and sent together with operation grouping: a grouping interval on the resource and a propagation task. "
             "4 Wait or retry: an operation that is not done yet, because the resource is down, a person still "
-            "has to do it, or the resource is in maintenance mode set by an admin, is kept in the shadow as a "
+            "has to do it, or the resource is in maintenance mode (experimental) set by an admin, is kept in the shadow as a "
             "pending operation; a failed one is retried after 30 minutes, up to 3 times by default.")
 
 d.pill(L, 16, GW, 48, "In: the model says an account must change")
@@ -46,13 +46,13 @@ d.notes(R, T1, H1, "Caching: on by default for new installs", "")
 d.group(R, T2, GW, H2, "The connector", 3)
 d.column(R, T2, [("ConnId connectors|LDAP · CSV · DatabaseTable …", "coding"),
                  ("Manual connector|opens a case for a person", "coding"),
-                 ("Async connector|sends a message to a queue", "coding")])
-d.notes(R, T2, H2, "Optional: operationGroupingInterval groups changes", "")
+                 ("Async connector|queue message · experimental", "coding")])
+d.notes(R, T2, H2, "Optional grouping: an interval on the resource", "plus a propagation task")
 
 d.group(L, T2, GW, H2, "Wait or retry", 4)
 d.column(L, T2, [("Pending operation|kept in the shadow", "data"),
                  ("Retry|after 30 min · up to 3 times", "coding"),
-                 ("Maintenance mode|set by an admin · queued", "plan")])
+                 ("Maintenance mode|admin sets it · experimental", "plan")])
 d.notes(L, T2, H2, "Manual: done when the case is closed", "")
 
 d.arrow(f"M{L + GW} {T1 + 200}H{R - 2}", label="change", at=(600, T1 + 188))
