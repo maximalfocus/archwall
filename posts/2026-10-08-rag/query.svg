@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Fix the question first</title>
+<desc id="d">In: the user's question, as typed. Naive RAG searches with it directly, and a poor question finds poor chunks. Why fix it: words can be ambiguous, for example "LLM" can mean a large language model or a Master of Laws; and a question can be complex and not well organized. Three ways to fix it, with no order between them. Expand, one question becomes many: multi-query has an LLM write several queries and runs them in parallel; sub-query breaks a complex question into simpler sub-questions with least-to-most prompting; Chain-of-Verification has an LLM check the expanded queries to cut hallucinations. Transform, search with a changed question: rewrite it with an LLM or a smaller model such as RRR; HyDE writes a hypothetical answer and searches with that; step-back prompting writes a more general question and searches with it and the original. Taobao's rewrite, BEQUE, raised recall for long-tail queries. Route, send each question to a fitting RAG pipeline: a metadata router pulls keywords from the question and filters chunks on them; a semantic router goes by what the question means; or mix both.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: the user's question, as typed · three ways to fix it before the search</text>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >Why fix it</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Ambiguous words</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >"LLM": language model or law degree?</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Messy questions</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >complex · not well organized</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Naive RAG searches as is</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >poor question · poor chunks</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >Expand: one becomes many</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Multi-query</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >LLM writes several · run in parallel</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Sub-query</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >split into simpler questions</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Chain-of-Verification</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >LLM checks the new queries</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Sub-query uses least-to-most prompting</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >Checked queries: fewer hallucinations</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="300.0" y="536" class="gt" text-anchor="middle" >Transform: search with a new question</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Rewrite</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >by an LLM or a small model (RRR)</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >HyDE</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >search with a made-up answer</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Step-back question</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >searched along with the original</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Taobao's BEQUE rewrite: better recall</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >for long-tail queries</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="900.0" y="536" class="gt" text-anchor="middle" >Route: pick the right pipeline</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Metadata router</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >keywords filter the chunks</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Semantic router</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >by what the question means</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Hybrid routing</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >semantic + metadata</text>
+</svg>

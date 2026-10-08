@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">RAG overview</title>
+<desc id="d">In: your documents, and a user's question. 1 Index, done ahead of time: clean the raw files (PDF, HTML, Word, Markdown) into plain text, split the text into chunks, turn each chunk into a vector with an embedding model, and store the vectors in a vector database. 2 Retrieve, for each question: Advanced RAG first rewrites or expands the question; the same embedding model turns the question into a vector, and the system takes the top K chunks most similar to it. 3 Curate, added by Advanced RAG: rerank the chunks so the most relevant come first, and compress them so the LLM is not flooded with noise. 4 Generate: the question and the chosen chunks, plus any chat history, go into one prompt, and the LLM writes the answer from it. Naive RAG is steps 1, 2 and 4 only.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: your documents</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="624" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="900.0" y="46.0" class="q" text-anchor="middle" >In: a user's question</text>
+<path d="M900.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="155.0" cy="111" r="14" class="num"/>
+<text x="155.0" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="175.0" y="120" class="gt" text-anchor="start" >Index, ahead of time</text>
+<rect x="54" y="144" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="154" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="169.0" class="ag" text-anchor="middle" >Clean the files</text>
+<text x="303.0" y="193.0" class="ag" text-anchor="middle" >PDF · HTML · Word → plain text</text>
+<rect x="54" y="218" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="228" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="243.0" class="ag" text-anchor="middle" >Split into chunks</text>
+<text x="303.0" y="267.0" class="ag" text-anchor="middle" >small enough for the LLM</text>
+<rect x="54" y="292" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="302" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="317.0" class="ag" text-anchor="middle" >Embed each chunk</text>
+<text x="303.0" y="341.0" class="ag" text-anchor="middle" >an embedding model → a vector</text>
+<rect x="54" y="366" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="376" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="303.0" y="391.0" class="ag" text-anchor="middle" >Store the vectors</text>
+<text x="303.0" y="415.0" class="ag" text-anchor="middle" >in a vector database</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="741.5" cy="111" r="14" class="num"/>
+<text x="741.5" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="761.5" y="120" class="gt" text-anchor="start" >Retrieve, per question</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Rewrite the question</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >Advanced RAG</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Embed the question</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >same model as the index</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Take the top K chunks</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >most similar vectors</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="775.25" cy="527" r="14" class="num"/>
+<text x="775.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="795.25" y="536" class="gt" text-anchor="start" >Curate the chunks</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Rerank</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >most relevant first</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Compress</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >cut the noise</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Added by Advanced RAG</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >Naive RAG skips this step</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="236.0" cy="527" r="14" class="num"/>
+<text x="236.0" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="256.0" y="536" class="gt" text-anchor="start" >Generate</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Build the prompt</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >question + chunks + history</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >LLM</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >answers from the prompt</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Answer</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >back to the user</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >vector index</text>
+<path d="M900 464V498" class="flow"/>
+<text x="900" y="488" class="al" text-anchor="middle" >top K chunks</text>
+<path d="M624 636H578" class="flow"/>
+<text x="600" y="624" class="al" text-anchor="middle" >best chunks</text>
+</svg>

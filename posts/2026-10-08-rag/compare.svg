@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">RAG next to the other options</title>
+<desc id="d">Three ways to improve an LLM, side by side. Prompt engineering uses what the model can already do: it needs little outside knowledge and little change to the model, the least of the three on both. RAG is like giving the model a tailored textbook to look facts up in. Good: knowledge can be updated in real time from outside sources, and answers are easy to trace. Bad: answers are slower, and fetching data raises ethical questions. Early, naive RAG needs little change to the model; modular RAG leans more on fine-tuning. Fine-tuning is like a student learning the material over time, by training the model further. Good: it can copy a specific structure, style or format. Bad: it is static, so updates mean retraining, and it needs a lot of computing for data preparation and training. It can cut hallucinations but may struggle with unfamiliar data. What the survey reports: RAG beat unsupervised fine-tuning on knowledge-heavy tasks, for both known and new knowledge; LLMs struggle to learn new facts through unsupervised fine-tuning; and a long context of over 200,000 tokens does not replace RAG, because it is slower and a black box, while RAG shows the original sources so users can check the answer. RAG and fine-tuning are not either-or: used together they may work best.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >Three ways to improve an LLM · side by side</text>
+<rect x="24" y="84" width="368" height="456" rx="12" class="grp"/>
+<text x="208.0" y="120" class="gt" text-anchor="middle" >Prompt engineering</text>
+<rect x="54" y="148" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="211.0" y="175.0" class="ag" text-anchor="middle" >Uses what the model</text>
+<text x="211.0" y="199.0" class="ag" text-anchor="middle" >can already do</text>
+<rect x="54" y="228" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="255.0" class="ag" text-anchor="middle" >Outside knowledge</text>
+<text x="211.0" y="279.0" class="ag" text-anchor="middle" >little needed</text>
+<rect x="54" y="308" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="335.0" class="ag" text-anchor="middle" >Change to the model</text>
+<text x="211.0" y="359.0" class="ag" text-anchor="middle" >little needed</text>
+<text x="208.0" y="488" class="lb" text-anchor="middle" >Needs the least of both</text>
+<rect x="416" y="84" width="368" height="456" rx="12" class="grp"/>
+<text x="600.0" y="120" class="gt" text-anchor="middle" >RAG</text>
+<rect x="446" y="148" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="175.0" class="ag" text-anchor="middle" >A tailored textbook</text>
+<text x="603.0" y="199.0" class="ag" text-anchor="middle" >look the facts up</text>
+<rect x="446" y="228" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="238" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="255.0" class="ag" text-anchor="middle" >Real-time updates</text>
+<text x="603.0" y="279.0" class="ag" text-anchor="middle" >from outside sources</text>
+<rect x="446" y="308" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="318" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="603.0" y="335.0" class="ag" text-anchor="middle" >Easy to trace</text>
+<text x="603.0" y="359.0" class="ag" text-anchor="middle" >high interpretability</text>
+<rect x="446" y="388" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="398" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="603.0" y="415.0" class="ag" text-anchor="middle" >Slower answers</text>
+<text x="603.0" y="439.0" class="ag" text-anchor="middle" >ethics of fetching data</text>
+<g transform="translate(734 260)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<g transform="translate(734 340)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<g transform="translate(734 420)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
+<text x="600.0" y="488" class="lb" text-anchor="middle" >Naive RAG: little model change</text>
+<text x="600.0" y="514" class="lb" text-anchor="middle" >Modular RAG: leans on fine-tuning</text>
+<rect x="808" y="84" width="368" height="456" rx="12" class="grp"/>
+<text x="992.0" y="120" class="gt" text-anchor="middle" >Fine-tuning (FT)</text>
+<rect x="838" y="148" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="175.0" class="ag" text-anchor="middle" >A student learns it</text>
+<text x="995.0" y="199.0" class="ag" text-anchor="middle" >train the model more</text>
+<rect x="838" y="228" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="995.0" y="255.0" class="ag" text-anchor="middle" >Fits a structure</text>
+<text x="995.0" y="279.0" class="ag" text-anchor="middle" >style or format</text>
+<rect x="838" y="308" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="995.0" y="335.0" class="ag" text-anchor="middle" >Static</text>
+<text x="995.0" y="359.0" class="ag" text-anchor="middle" >retrain to update</text>
+<rect x="838" y="388" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="398" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="995.0" y="415.0" class="ag" text-anchor="middle" >Heavy compute</text>
+<text x="995.0" y="439.0" class="ag" text-anchor="middle" >data prep and training</text>
+<g transform="translate(1126 260)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#2f9e6e"/><path d="M-5 0l3.5 4 6.5-8" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<g transform="translate(1126 340)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
+<g transform="translate(1126 420)"><rect x="-9" y="-9" width="18" height="18" rx="4" fill="#d64545"/><path d="M-4.5-4.5l9 9M4.5-4.5l-9 9" stroke="#fff" stroke-width="2.4"/></g>
+<text x="992.0" y="488" class="lb" text-anchor="middle" >Can cut hallucinations</text>
+<text x="992.0" y="514" class="lb" text-anchor="middle" >may struggle with unfamiliar data</text>
+<rect x="24" y="560" width="1152" height="304" rx="12" class="grp"/>
+<text x="600.0" y="596" class="gt" text-anchor="middle" >What the survey reports</text>
+<rect x="54" y="624" width="352" height="64" rx="8" class="agent"/>
+<rect x="54" y="634" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="233.0" y="651.0" class="ag" text-anchor="middle" >RAG beat unsupervised FT</text>
+<text x="233.0" y="675.0" class="ag" text-anchor="middle" >on known and new facts</text>
+<rect x="434" y="624" width="352" height="64" rx="8" class="agent"/>
+<rect x="434" y="634" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="613.0" y="651.0" class="ag" text-anchor="middle" >Unsupervised FT</text>
+<text x="613.0" y="675.0" class="ag" text-anchor="middle" >struggles with new facts</text>
+<rect x="814" y="624" width="352" height="64" rx="8" class="agent"/>
+<rect x="814" y="634" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="993.0" y="651.0" class="ag" text-anchor="middle" >200,000+ token context</text>
+<text x="993.0" y="675.0" class="ag" text-anchor="middle" >does not replace RAG</text>
+<text x="600.0" y="746" class="lb" text-anchor="middle" >Long context is slower and a black box; RAG shows its sources</text>
+<rect x="250" y="782" width="700" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="812.0" class="q" text-anchor="middle" >Not either-or: RAG + fine-tuning together may work best</text>
+</svg>
