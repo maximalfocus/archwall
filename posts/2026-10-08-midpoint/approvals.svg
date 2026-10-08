@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Access requests and approvals</title>
+<desc id="d">In: a user asks for a role in Request access. 1 Request: pick the people, myself or a group, pick roles from a role catalog sorted like an e-shop, and submit the shopping cart after solving conflicts. The request is just the change itself: adding an assignment. 2 Check the rules: policy rules say who must approve; with no such rule the default rule asks the role's approvers; a role with no approvers is assigned at once. 3 Approve: approval runs in stages, one after another; all approvers in a stage must approve by default, or the first one decides; each approver gets a work item to approve or reject; deputies can decide for the approver; timed actions at a deadline escalate, delegate or complete the work item, for example reject it. 4 Finish: approved, the change goes ahead; rejected, it is dropped; notifications go out as cases and work items open and close. A configured stage that finds no approvers rejects by default.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: a user asks for a role in Request access</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="242.75" cy="111" r="14" class="num"/>
+<text x="242.75" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="262.75" y="120" class="gt" text-anchor="start" >Request</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Pick people</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >myself or a group</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Role catalog</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >roles sorted like an e-shop</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Shopping cart</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >solve conflicts · submit</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >The request is the change itself: a new assignment</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="788.75" cy="111" r="14" class="num"/>
+<text x="788.75" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="808.75" y="120" class="gt" text-anchor="start" >Check the rules</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Policy rules</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >say who must approve</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Default rule</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >the role's approvers</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Role has no approvers</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >assigned at once</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="842.75" cy="527" r="14" class="num"/>
+<text x="842.75" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="862.75" y="536" class="gt" text-anchor="start" >Approve</text>
+<rect x="654" y="560" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="570" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="903.0" y="585.0" class="ag" text-anchor="middle" >Stages</text>
+<text x="903.0" y="609.0" class="ag" text-anchor="middle" >all must approve by default</text>
+<rect x="654" y="634" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="644" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="903.0" y="659.0" class="ag" text-anchor="middle" >Work items</text>
+<text x="903.0" y="683.0" class="ag" text-anchor="middle" >approve or reject</text>
+<rect x="654" y="708" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="718" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="903.0" y="733.0" class="ag" text-anchor="middle" >Deputies</text>
+<text x="903.0" y="757.0" class="ag" text-anchor="middle" >decide for the approver</text>
+<rect x="654" y="782" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="792" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="903.0" y="807.0" class="ag" text-anchor="middle" >Timed actions</text>
+<text x="903.0" y="831.0" class="ag" text-anchor="middle" >escalate · delegate · reject</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="249.5" cy="527" r="14" class="num"/>
+<text x="249.5" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="269.5" y="536" class="gt" text-anchor="start" >Finish</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Approved</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >the change goes ahead</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Rejected</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >the change is dropped</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Notifications</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >cases · work items</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >A rule stage with no approvers rejects by default</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >assignment</text>
+<path d="M1054 464V498" class="flow"/>
+<text x="1054" y="488" class="al" text-anchor="middle" >approval needed</text>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >decision</text>
+</svg>

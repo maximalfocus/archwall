@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">How midPoint writes to a target system</title>
+<desc id="d">In: the model decides that an account on a target system must be created, changed or deleted. 1 The resource: a resource definition names the connector and its settings; the resource schema lists the object classes and attributes the connector reads from the system; object types say which objects are accounts and which are entitlements such as groups. Capabilities are native to the resource or simulated by midPoint. 2 The shadow: midPoint keeps a shadow in its repository that links the user to the real account, groups are shadows too, and attributes are cached in the shadow (passive caching, on by default for new installations). 3 The connector does the work, one of three kinds: ConnId connectors such as the bundled LDAP, CSV and DatabaseTable connectors; the built-in manual connector, which opens a case for a person; or the built-in asynchronous connector, which sends a message to a queue. Changes can be grouped and sent together if operationGroupingInterval is set. 4 Wait or retry: an operation that is not done yet, because the resource is down, a person still has to do it, or the resource is in maintenance mode set by an admin, is kept in the shadow as a pending operation; a failed one is retried after 30 minutes, up to 3 times by default.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: the model says an account must change</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="209.0" cy="111" r="14" class="num"/>
+<text x="209.0" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="229.0" y="120" class="gt" text-anchor="start" >The resource</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Resource definition</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >which connector · its settings</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Resource schema</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >object classes · attributes</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Object types</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >accounts · entitlements (groups)</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Capabilities: native, or simulated by midPoint</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="822.5" cy="111" r="14" class="num"/>
+<text x="822.5" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="842.5" y="120" class="gt" text-anchor="start" >The shadow</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Shadow</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >links the user to the account</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Groups</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >are shadows too</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Cached attributes</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >kept in the shadow</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Caching: on by default for new installs</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="802.25" cy="527" r="14" class="num"/>
+<text x="802.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="822.25" y="536" class="gt" text-anchor="start" >The connector</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >ConnId connectors</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >LDAP · CSV · DatabaseTable …</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Manual connector</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >opens a case for a person</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Async connector</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >sends a message to a queue</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Optional: operationGroupingInterval groups changes</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="202.25" cy="527" r="14" class="num"/>
+<text x="202.25" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="222.25" y="536" class="gt" text-anchor="start" >Wait or retry</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Pending operation</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >kept in the shadow</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Retry</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >after 30 min · up to 3 times</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Maintenance mode</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >set by an admin · queued</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Manual: done when the case is closed</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >change</text>
+<path d="M1054 464V498" class="flow"/>
+<text x="1054" y="488" class="al" text-anchor="middle" >operation</text>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >not done yet</text>
+</svg>

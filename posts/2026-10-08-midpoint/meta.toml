@@ -1,0 +1,73 @@
+title_zh = "midPoint：开源身份治理系统怎么管谁能用什么"
+title_en = "midPoint: how an open-source identity governance system manages who gets what"
+date = "2026-10-08"
+tags = ["iga", "identity", "governance", "provisioning", "rbac"]
+figure = "diagram.svg"
+alt_zh = "midPoint 总览：输入是 HR、应用和目录各自掌握一部分“谁在这里工作、能用什么”；1 读取来源：连接器读取 HR 系统、应用和目录，导入、实时同步和对账把变化带进来；账号总是关联到用户，从不账号对账号；2 决定应该是什么样：映射把账号数据变成用户数据，再变回去；角色给出权限；策略规则（比如职责分离）检查它；3 治理：申请要等审批，认证活动请人确认或收回权限，审计记录和报表记下这一切；4 写出去：连接器在目标系统上新建、修改和删除账号和组；midPoint 为每个账号存一个影子把它连起来，所有数据存在 PostgreSQL 仓库里"
+source = "https://github.com/Evolveum/midpoint (commit 160887ba)"
+
+[[figures]]
+file = "components.svg"
+alt_zh = "midPoint 的组成部分：这是一张部件图，不是步骤。最上面是 Model API 之上的客户端，各个部署改动最多：管理界面，用 Apache Wicket 写的网页界面；REST API，就是网络上的 Model API，用 JSON、XML 或 YAML；还有你自己写的代码，比如定制服务和界面。客户端通过 Model API 调用 IDM 模型。IDM 模型是每个改动都要经过的地方，在这里执行策略：身份逻辑（映射、角色、策略），审批（案例和工作项），认证、报表和通知，以及智能集成，由外部服务给出映射和关联的 AI 建议，要配置 smartIntegration 才有。模型通过 provisioning 读写账号，把对象存进存储库。Provisioning 用影子把用户和账号连起来，通过 ConnId 连接器或内置的手工、异步连接器连接 HR、目录和应用，影子也存进存储库。存储库是原生 PostgreSQL，从 midPoint 4.10 起是唯一支持的数据库，通用数据库支持已经去掉；审计记录写进它自己的表或日志。共享服务：数据结构（Prism，用 XSD 写成），Quartz 调度器运行的任务，以及检查授权的安全模块。"
+caption_zh = "midPoint 的组成：客户端、IDM 模型、provisioning、存储库、共享服务"
+caption_en = "midPoint's parts: clients, the IDM model, provisioning, the repository, shared services"
+
+[[figures]]
+file = "sync.svg"
+alt_zh = "一个变化怎么进到 midPoint：输入是某个资源上的账号变了，比如 HR 系统里来了新员工；1 发现变化：实时同步（live sync）每隔几秒轮询资源的变更日志；对账（reconciliation）是定时的全量比对，是兜底的安全网；导入通常只跑一次；异步更新接收消息，属于实验功能；发现（discovery）是在别的操作中顺带发现的变化；2 找主人：已经关联到用户的账号保持原主人；否则用关联规则（items、filter、expression、idmatch）找用户并给出可信度，默认 1.0 算确定匹配；关联在入站映射之前运行；3 判定情形，五种之一：linked（有主人），unlinked（找到主人但还没关联），unmatched（没有主人），disputed（不确定是谁），deleted（账号没了）；情形只看关联，不管这个人该不该有这个账号；4 反应：每种情形配有反应，比如关联、新建用户或同步；删除或停用用户或账号；建一个关联工单，让人来挑主人；之后入站映射把账号数据写进用户"
+caption_zh = "同步：发现变化、找主人、判定情形、反应"
+caption_en = "Sync: spot the change, find the owner, name the situation, react"
+
+[[figures]]
+file = "clockwork.svg"
+alt_zh = "一次修改怎样经过 midPoint 的模型：输入是来自 GUI、某个服务或同步发现的一次修改；1 接下请求，状态 INITIAL：clockwork 载入用户和它的账号，并审计这次请求；2 算出用户，在 projector 里：inbound 映射把账号数据带进用户，对象模板补全用户数据，按角色的 inducement 计算分配，再评估用户的策略规则；3 算出账号，逐个处理：outbound 映射把用户数据变成账号数据，合并各个值（strong 和 weak 映射），再评估账号的策略规则；这时还什么都没改，只是一份预览；4 检查，状态 PRIMARY：带 enforce 动作的规则会拦下修改；审批钩子可以把修改转成一个审批 case，在后台等审批；5 执行，状态 SECONDARY：模型再算一遍，然后把修改写进仓库，并通过 provisioning 写到账号上，再记审计；有 provisioning 依赖时分几轮执行；6 收尾，状态 FINAL：审计最终执行结果，通知钩子发出通知"
+caption_zh = "一次修改经过模型：接下、算用户、算账号、检查、执行、收尾"
+caption_en = "One change through the model: take it, compute the user and accounts, check, execute, finish"
+
+[[figures]]
+file = "roles.svg"
+alt_zh = "怎么给权限：输入是一个需要权限的用户；1 分配：用户在角色目录里申请角色，再走审批；或由 midPoint 通过原型（archetype）、组织结构或自动分配规则自动分配；分配可以带生效和失效日期；组织和服务也能当角色用；2 业务角色：把一个岗位需要的权限归在一起；条件和参数让一个角色用在多处，关系（成员、所有者、审批人）决定它给什么；角色挖掘从现有权限里建议新的业务角色；3 应用角色：一个应用里的权限，由业务角色引入，不该直接分给用户；现有权限可以导入成应用角色；业务角色和应用角色是 midPoint 自带的两个原型；4 到目标系统：引入（inducement）建出账号，并把权限项（比如一个组）挂到账号上，目标可以是 LDAP、Active Directory 等；权限项挂在账号上，不挂在用户上"
+caption_zh = "怎么给权限：分配、业务角色、应用角色、目标系统上的账号和组"
+caption_en = "Giving access: assign, business role, application role, account and group on the target"
+
+[[figures]]
+file = "policies.svg"
+alt_zh = "midPoint 策略规则：输入是对用户、角色或分配的一次修改；1 规则放在哪：全局规则写在系统配置里，每次操作都检查；写在策略或元角色里的规则，通过 inducement 作用到分配了它的每个角色；从 midPoint 4.11 起，规则也能放在任务活动里，比如导入改动太多时停下；直接写进单个角色也行，但不推荐；2 什么时候触发（约束）：冲突，exclusion 让两个角色不能同时给一个人（职责分离），requirement 要求它们一起给；数量和修改，比如分配的人太少或太多、对象被修改或被分配；状态，比如对象处于某种状态、有某个分配；约束可以用 and、or、not 组合；3 触发后做什么（动作）：拦下，enforcement 让修改报错，prune 去掉冲突的分配；交给人，现在审批，或以后进认证活动；只记下，打标记、发通知或运行脚本；suspendTask 停掉一个任务；remediation 是实验功能；4 留下什么：对象上的标记，报表靠它找出违规的对象；批准的例外存在分配里，对这个用户和这个分配关掉规则；4.8 及以前用的 policySituation 已弃用，改用标记"
+caption_zh = "策略规则：放在哪、何时触发、做什么、留下什么"
+caption_en = "Policy rules: where they live, when they fire, what they do, what they leave"
+
+[[figures]]
+file = "approvals.svg"
+alt_zh = "访问申请和审批：输入是用户在“申请访问”里要一个角色；1 申请：选人（自己或一组人），在像网店一样分类的角色目录里挑角色，在购物车里解决冲突后提交；申请本身就是那个修改：加一个分配；2 查规则：策略规则规定谁必须审批；没有这类规则时，默认规则请角色的审批人审批；角色没有审批人就直接分配；3 审批：审批分阶段，一个接一个；默认一个阶段里所有审批人都要同意，也可以设成第一个人说了算；每个审批人收到一个工作项，同意或拒绝；代理人可以替审批人决定；到了期限，定时动作可以升级、转交，或直接完成工作项，比如拒绝；4 结束：通过就执行这个修改，拒绝就丢弃；案件和工作项打开、关闭时发通知；规则里的阶段找不到审批人时，默认拒绝"
+caption_zh = "访问申请：申请、查规则、分阶段审批、结束"
+caption_en = "Access requests: ask, check the rules, approve in stages, finish"
+
+[[figures]]
+file = "certification.svg"
+alt_zh = "访问认证：输入是一个认证活动模板，可以手动启动、由定时任务启动，或由策略规则触发一次临时（ad-hoc）认证；1 定义：范围选出要认证的对象和对象上的内容，比如用户和他们的角色，可加过滤条件，每一对就是一个案例；审核人是对象的经理、目标的所有者等，找不到时用默认审核人；每个阶段有时长和结果规则；2 审核一个阶段：审核人逐个案例决定：接受、撤销或缩减，或者未决定、转交他人；没人决定就记为无回应；截止前可以提醒和升级；3 关闭阶段：阶段结果默认是一个接受就接受；撤销和缩减让审核到此为止，接受和未决定的案例进入下一阶段；跨阶段的默认规则是必须全部接受；4 执行：设成自动修复时，midPoint 收回被撤销的权限，否则只出报告，由管理员处理；未解决的案例可以重新跑一轮，默认手动，除非设了延迟；报告覆盖定义、活动、案例和工作项"
+caption_zh = "访问认证：定义、逐阶段审核、关闭阶段、执行决定"
+caption_en = "Access certification: define, review each stage, close it, carry it out"
+
+[[figures]]
+file = "provisioning.svg"
+alt_zh = "系统怎样把一次改动写到目标系统：输入是模型判定目标系统上的某个账号要新建、修改或删除；1 资源：资源定义写明用哪个连接器和它的设置，资源模式列出连接器从系统读到的对象类和属性，对象类型说明哪些对象是账号、哪些是权限对象（比如组）；能力要么是资源自带的，要么由 midPoint 模拟；2 影子：midPoint 在自己的库里为每个账号存一个影子，把用户和真实账号连起来，组也是影子；属性缓存在影子里（被动缓存，新装默认开启）；3 连接器干活，三种之一：ConnId 连接器，比如自带的 LDAP、CSV、DatabaseTable；内置的手工连接器，给人开一个工单（case）；内置的异步连接器，往队列里发一条消息；设了 operationGroupingInterval 就把改动攒起来一起发；4 等待或重试：还没做完的操作，不论是资源宕了、要等人去做，还是管理员把资源设成维护模式，都作为待办操作存在影子里；失败的操作 30 分钟后重试，默认最多 3 次；手工的操作在工单关闭时算完成"
+caption_zh = "写到目标系统：资源、影子、连接器、等待或重试"
+caption_en = "Writing to a target: resource, shadow, connector, wait or retry"
+
+[[figures]]
+file = "security.svg"
+alt_zh = "midPoint 自身的安全：输入是一个人或客户端通过网页界面、REST 或 actuator 调用 midPoint；1 登录：安全策略把全局的、用户所在组织的和所属原型的合并起来，为每个通道挑一个认证序列；序列依次运行认证模块，比如登录表单、LDAP、SAML、OIDC 和 TOTP；密码默认用 AES 加密保存，也可以改成哈希；重置密码有自己的通道；2 检查权限：角色里的授权语句允许或拒绝；没有明确允许的都拒绝，拒绝总是优先；先检查能不能进这个页面或服务；Superuser 角色只靠一条语句就允许一切；3 执行改动：请求检查在映射和策略运行之前，执行检查在重新计算之后，连同所有连带效果一起查；表达式可以用另一个用户的身份或以完全权限运行；代理人可以处理别人的审批工作项；4 记录：审计记下一条请求记录、一条执行记录和若干资源记录；自带的 config.xml 把审计写进 PostgreSQL 表，也写进日志文件"
+caption_zh = "midPoint 自身的安全：登录、检查权限、执行、记录"
+caption_en = "midPoint's own security: sign in, check rights, run the change, record it"
+
+[[figures]]
+file = "simulation.svg"
+alt_zh = "模拟：先试一遍配置改动，再正式启用。输入是一段新的或改过的配置，比如一条映射、一个对象类型或整个资源；1 标成 proposed：每个配置项都有生命周期状态，顺序是 draft、proposed、active、deprecated、archived；draft 和 archived 完全不用，proposed 只有模拟能看到，active 和 deprecated 是生产用的；2 运行模拟：导入、对账、实时同步、重算等任务在 preview 模式下运行，算出改动但不执行；用开发配置（active 加 proposed）或生产配置（active 加 deprecated）；开发配置不能在 full 模式下运行；审批和通知会跳过；3 看结果：模拟结果列出会改什么，带内置指标（新增、修改、删除）和事件标记，比如 focus activated；可以在界面里看，也可以导出成报表；4 正式启用：把新项从 proposed 改成 active，把旧项从 deprecated 改成 archived，两步同时做，中间没有空档；之后 full 模式把改动写进仓库和资源，并记入审计日志"
+caption_zh = "模拟：标成 proposed、预演、看结果、启用"
+caption_en = "Simulations: mark it proposed, preview, read the result, switch it on"
+
+[[figures]]
+file = "ops.svg"
+alt_zh = "运行 midPoint：输入是管理员安装并运行 midPoint；1 安装：发行包用 bin/start.sh 启动，监听 8080 端口，网页应用在 /midpoint 下；容器镜像需要旁边再跑一个数据库容器；midpoint.home 目录放 config.xml、密钥、日志和连接器文件；2 准备仓库：config.xml 指向原生 PostgreSQL 仓库（类型 native）；建表脚本建主表、审计表和 Quartz 表；安装时载入初始对象，比如 administrator 用户和 Superuser 角色；3 运行任务：任务管理器用 Quartz 调度，默认每个节点 10 个工作线程；后台任务跑实时同步、对账和导入；集群里多个节点共用一个仓库，先到先得地领任务；clustered 默认 false，每个节点都要设成 true；4 监看和维护：报表和仪表盘，报表格式有 CSV、HTML、XLSX；通知可走邮件、短信、文件或自定义通道；midpoint.log 和 Spring Boot actuator 端点，比如 health 和 metrics；ninja 命令行工具负责导入、导出和升级"
+caption_zh = "运行 midPoint：安装、仓库、后台任务、监看"
+caption_en = "Running midPoint: install, repository, background tasks, watch"
