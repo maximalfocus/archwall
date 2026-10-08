@@ -230,6 +230,9 @@ def check(post):
     svgs = sorted(p.name for p in post.glob("*.svg"))
     if meta.get("figure") != "diagram.svg":
         fails.append("meta figure must be diagram.svg, the home-page card")
+    src = meta.get("source", "")
+    if src and not re.fullmatch(r"https?://\S+", src):
+        fails.append(f"source must be one URL, it is the link's href: {src!r} (pin a commit as .../tree/<sha>)")
     old = post.name in OLD
     for f in figs:
         for k in ("file", "alt_zh", "caption_zh", "caption_en") + (("alt_en",) if old else ()):

@@ -4,7 +4,7 @@ date = "2026-10-08"
 tags = ["iga", "identity", "governance", "provisioning", "rbac"]
 figure = "diagram.svg"
 alt_zh = "midPoint 总览：输入是 HR、应用和目录各自掌握一部分“谁在这里工作、能用什么”；1 读取来源：连接器读取 HR 系统、应用和目录，导入、实时同步和对账把变化带进来；账号总是关联到用户，从不账号对账号；2 决定应该是什么样：映射把账号数据变成用户数据，再变回去；角色给出权限；策略规则（比如职责分离）检查它；3 治理：申请要等审批，认证活动请人确认或收回权限，审计记录和报表记下这一切；4 写出去：连接器在目标系统上新建、修改和删除账号和组；midPoint 为每个账号存一个影子把它连起来，对象都存在 PostgreSQL 仓库里"
-source = "https://github.com/Evolveum/midpoint (commit 160887ba)"
+source = "https://github.com/Evolveum/midpoint/tree/160887ba"
 
 [[figures]]
 file = "components.svg"
