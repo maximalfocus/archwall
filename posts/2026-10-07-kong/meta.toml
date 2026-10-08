@@ -4,7 +4,7 @@ date = "2026-10-07"
 tags = ["api-gateway", "nginx", "plugins", "proxy", "ai-gateway"]
 figure = "diagram.svg"
 alt_zh = "Kong Gateway 总览：输入是管理员把 API 设好，之后应用和 AI 客户端通过 Kong 调用它们；1 设置：用 8001 端口的 Admin API、8002 端口的 Kong Manager，或一个声明式配置文件，描述服务、路由、插件和上游；2 保存配置：放在 Postgres 里；或不用数据库，把配置文件放在内存里；或用混合模式，由控制面推给数据面；3 处理每次调用：应用调用 8000 或 8443 端口，Kong 匹配一条路由，运行它的插件，比如认证、限流和日志，再挑一个健康的目标；4 到达后端：你的服务、通过 AI 插件接入的 LLM 提供方，以及日志和指标工具"
-source = "https://github.com/Kong/kong (commit 8927af6)"
+source = "https://github.com/Kong/kong/tree/8927af6"
 
 [[figures]]
 file = "request.svg"

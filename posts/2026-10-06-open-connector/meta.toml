@@ -5,7 +5,7 @@ tags = ["agents", "mcp", "oauth", "gateway", "security"]
 figure = "diagram.svg"
 alt_zh = "OpenConnector 总览：输入是需要用你账号的 AI 智能体和应用；1 入口：MCP（POST /mcp，5 个工具）、HTTP API /v1（SDK、oo CLI、OpenAPI）、Web 控制台（管理 API /api），每个入口用同样的动作 ID 和 schema；2 检查：配置了认证时查 Bearer 令牌（运行时令牌、JWT 或管理令牌）、每个动作的允许和禁止规则、选用哪个账号，被拒的调用在读任何密钥之前就停下；3 运行：按动作的 schema 查输入，服务的代码第一次用到时才加载，请求走受保护的 fetch，到不了内网地址，出去到 1,000+ 个服务的 API，或交给 OOMOL Marketplace / SaaS；4 记录：脱敏的运行日志（默认保留最近 5,000 条）、连接和它们的密钥（设了密钥才加密）、临时中转文件，存在 SQLite、PostgreSQL 或 Cloudflare D1"
 alt_en = "OpenConnector overview: in come AI agents and apps that need your accounts; 1 way in: MCP (POST /mcp, 5 tools), the HTTP API /v1 (SDK, oo CLI, OpenAPI) and the Web Console (admin API /api), with the same action IDs and schemas on every way in; 2 checks: a bearer token when one is set (runtime token, JWT or admin), allow and block rules per action, and which account to act as; a denied call stops before any secret is read; 3 run: the input is checked against the action schema, the provider's code loads the first time it runs, and requests go through a guarded fetch with no private addresses, out to 1,000+ provider APIs or to OOMOL Marketplace / SaaS; 4 records: a redacted run log (last 5,000 by default), connections with their secrets (encrypted when a key is set) and temporary transit files, in SQLite, PostgreSQL or Cloudflare D1"
-source = "https://github.com/oomol-lab/open-connector (commit 20c6c44)"
+source = "https://github.com/oomol-lab/open-connector/tree/20c6c44"
 
 [[figures]]
 file = "action-run.svg"

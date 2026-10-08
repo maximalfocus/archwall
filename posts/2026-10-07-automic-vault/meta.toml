@@ -5,7 +5,7 @@ tags = ["security", "credentials", "macos", "agents", "keychain"]
 figure = "diagram.svg"
 alt_zh = "Automic Vault 总览：输入是你、终端或 AI 智能体在 Mac 上运行 gh、aws、brew 这类工具；1 设置一次：av scan 检查 100 多种开发工具配置里暴露的凭据，av harden 把支持的工具的凭据挪进 macOS 钥匙串并改掉工具取凭据的方式，av doctor 检查这层保护；2 命令发出请求：启动器（终端、IDE 或智能体应用）启动工具，签过名的 Automic Vault 闸门客户端发出请求，Mac 上对应的授权闸门接收，它属于这个工具，或者是内置闸门；3 决定：Mac 现场检查启动器的代码签名，按闸门的默认访问级别或给这个启动器的规则处理，规则不能放行时在 Mac、Touch ID 或 iPhone 上请求批准；没见过的操作永远要批准；4 记录并放行：先保存授权记录并读回确认，再把密钥交给需要它的程序；没有记录就没有密钥"
 alt_en = "Automic Vault overview: In: you, a terminal or an AI agent runs a tool such as gh, aws or brew on a Mac. 1 Set up once: av scan checks over 100 developer-tool configurations for exposed credentials, av harden moves a supported tool's credentials into the macOS Keychain and changes how the tool asks for them, and av doctor checks that protection. 2 A command asks: the Launcher (a terminal, IDE or agent app) starts the tool, a signed Automic Vault Gate Client sends the request, and the Authorization Gate for that request, the tool's own or a built-in one, receives it on the Mac. 3 Decide: the Mac checks the Launcher's live code signature, applies the gate's default Access Level or a rule for that Launcher, and asks for Approval on the Mac, with Touch ID or on an iPhone when policy cannot allow it; unknown operations always need Approval. 4 Record and release: an Authorization Record is saved and read back first, then the secret goes to the program that needs it; with no record there is no secret."
-source = "https://github.com/automic-vault/automic-vault (commit d1011a5)"
+source = "https://github.com/automic-vault/automic-vault/tree/d1011a5"
 
 [[figures]]
 file = "setup.svg"
