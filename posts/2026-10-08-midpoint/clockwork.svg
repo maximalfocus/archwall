@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">One change through the model</title>
+<desc id="d">In: a change from the GUI, from a service or found by synchronization. 1 Take the request, state INITIAL: the clockwork loads the user and its accounts and audits the request. 2 Compute the user, in the projector: inbound mappings bring account data into the user, the object template fills in user data, assignments are evaluated with the roles' inducements, and the user's policy rules are evaluated. 3 Compute the accounts, one by one: outbound mappings turn user data into account data, the values are consolidated, strong and weak mappings merged, and the account's policy rules are evaluated. Nothing is changed yet; the result is a preview. 4 Check, state PRIMARY: rules with the enforcement action stop the change; the approvals hook may take the change into an approval case and continue in the background. 5 Execute, state SECONDARY: the model is computed again, then the changes are written to the repository and through provisioning to the accounts, and audited; with provisioning dependencies this runs in several waves. 6 Finish, state FINAL: the final execution is audited and the notifications hook sends notifications.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: a change from the GUI · a service · synchronization</text>
+<path d="M208.0 64V82" class="flow"/>
+<rect x="24" y="84" width="368" height="380" rx="12" class="grp"/>
+<circle cx="90.0" cy="111" r="14" class="num"/>
+<text x="90.0" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="110.0" y="120" class="gt" text-anchor="start" >Take the request</text>
+<rect x="54" y="148" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="175.0" class="ag" text-anchor="middle" >Load</text>
+<text x="211.0" y="199.0" class="ag" text-anchor="middle" >the user · its accounts</text>
+<rect x="54" y="228" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="255.0" class="ag" text-anchor="middle" >Audit</text>
+<text x="211.0" y="279.0" class="ag" text-anchor="middle" >stage: request</text>
+<text x="208.0" y="412" class="lb" text-anchor="middle" >State INITIAL</text>
+<rect x="416" y="84" width="368" height="380" rx="12" class="grp"/>
+<circle cx="482.0" cy="111" r="14" class="num"/>
+<text x="482.0" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="502.0" y="120" class="gt" text-anchor="start" >Compute the user</text>
+<rect x="446" y="144" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="154" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="169.0" class="ag" text-anchor="middle" >Inbound</text>
+<text x="603.0" y="193.0" class="ag" text-anchor="middle" >account data → user</text>
+<rect x="446" y="218" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="228" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="243.0" class="ag" text-anchor="middle" >Object template</text>
+<text x="603.0" y="267.0" class="ag" text-anchor="middle" >fills in user data</text>
+<rect x="446" y="292" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="302" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="317.0" class="ag" text-anchor="middle" >Assignments</text>
+<text x="603.0" y="341.0" class="ag" text-anchor="middle" >roles · inducements</text>
+<rect x="446" y="366" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="376" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="603.0" y="391.0" class="ag" text-anchor="middle" >Policy rules</text>
+<text x="603.0" y="415.0" class="ag" text-anchor="middle" >for the user</text>
+<rect x="808" y="84" width="368" height="380" rx="12" class="grp"/>
+<circle cx="847.0" cy="111" r="14" class="num"/>
+<text x="847.0" y="117" class="numt" text-anchor="middle" >3</text>
+<text x="867.0" y="120" class="gt" text-anchor="start" >Compute the accounts</text>
+<rect x="838" y="148" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="995.0" y="175.0" class="ag" text-anchor="middle" >Outbound</text>
+<text x="995.0" y="199.0" class="ag" text-anchor="middle" >user data → account</text>
+<rect x="838" y="228" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="995.0" y="255.0" class="ag" text-anchor="middle" >Consolidate</text>
+<text x="995.0" y="279.0" class="ag" text-anchor="middle" >merge strong · weak</text>
+<rect x="838" y="308" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="995.0" y="335.0" class="ag" text-anchor="middle" >Policy rules</text>
+<text x="995.0" y="359.0" class="ag" text-anchor="middle" >for each account</text>
+<text x="992.0" y="412" class="lb" text-anchor="middle" >Nothing changed yet: a preview</text>
+<rect x="808" y="500" width="368" height="364" rx="12" class="grp"/>
+<circle cx="948.25" cy="527" r="14" class="num"/>
+<text x="948.25" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="968.25" y="536" class="gt" text-anchor="start" >Check</text>
+<rect x="838" y="564" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="574" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="995.0" y="591.0" class="ag" text-anchor="middle" >Enforcement</text>
+<text x="995.0" y="615.0" class="ag" text-anchor="middle" >a violation stops it</text>
+<rect x="838" y="644" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="995.0" y="671.0" class="ag" text-anchor="middle" >Approvals hook</text>
+<text x="995.0" y="695.0" class="ag" text-anchor="middle" >may open a case</text>
+<text x="992.0" y="812" class="lb" text-anchor="middle" >State PRIMARY</text>
+<text x="992.0" y="838" class="lb" text-anchor="middle" >Waits for approval in the background</text>
+<rect x="416" y="500" width="368" height="364" rx="12" class="grp"/>
+<circle cx="542.75" cy="527" r="14" class="num"/>
+<text x="542.75" y="533" class="numt" text-anchor="middle" >5</text>
+<text x="562.75" y="536" class="gt" text-anchor="start" >Execute</text>
+<rect x="446" y="564" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="591.0" class="ag" text-anchor="middle" >Execute</text>
+<text x="603.0" y="615.0" class="ag" text-anchor="middle" >repository · provisioning</text>
+<rect x="446" y="644" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="603.0" y="671.0" class="ag" text-anchor="middle" >Audit</text>
+<text x="603.0" y="695.0" class="ag" text-anchor="middle" >stage: execution</text>
+<text x="600.0" y="812" class="lb" text-anchor="middle" >State SECONDARY · computed again</text>
+<text x="600.0" y="838" class="lb" text-anchor="middle" >Dependencies: several waves</text>
+<rect x="24" y="500" width="368" height="364" rx="12" class="grp"/>
+<circle cx="157.5" cy="527" r="14" class="num"/>
+<text x="157.5" y="533" class="numt" text-anchor="middle" >6</text>
+<text x="177.5" y="536" class="gt" text-anchor="start" >Finish</text>
+<rect x="54" y="564" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="591.0" class="ag" text-anchor="middle" >Audit</text>
+<text x="211.0" y="615.0" class="ag" text-anchor="middle" >final execution</text>
+<rect x="54" y="644" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="211.0" y="671.0" class="ag" text-anchor="middle" >Notifications</text>
+<text x="211.0" y="695.0" class="ag" text-anchor="middle" >hook in FINAL</text>
+<text x="208.0" y="812" class="lb" text-anchor="middle" >State FINAL</text>
+<path d="M392 364H414" class="flow"/>
+<text x="404.0" y="352" class="al" text-anchor="middle" >request</text>
+<path d="M784 364H806" class="flow"/>
+<text x="796.0" y="352" class="al" text-anchor="middle" >user</text>
+<path d="M992.0 464V498" class="flow"/>
+<text x="1042.0" y="488" class="al" text-anchor="middle" >preview</text>
+<path d="M808 740H786" class="flow"/>
+<text x="796.0" y="728" class="al" text-anchor="middle" >allowed</text>
+<path d="M416 740H394" class="flow"/>
+<text x="404.0" y="728" class="al" text-anchor="middle" >done</text>
+</svg>
