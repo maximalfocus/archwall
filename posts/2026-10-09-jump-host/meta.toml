@@ -1,0 +1,31 @@
+title_zh = "跳板机：从外面进内网服务器的那一道门"
+title_en = "Jump host: the one door into a private network"
+date = "2026-10-09"
+tags = ["jump-host", "bastion", "ssh", "openssh", "aws"]
+figure = "diagram.svg"
+alt_zh = "跳板机总览：输入是外面的管理员要上一台内网服务器；1 找到门：跳板机是唯一的入口；防火墙只让允许的地址进 22 端口；或者像 AWS 参考方案默认那样不开端口，经 AWS Session Manager 进来；2 证明你是谁：用密钥或证书，不用密码；用 AuthenticationMethods 加第二因素；只放 AllowUsers 列出的用户；3 跳到目标：用 ssh -J（ProxyJump）直接穿过去，或先登录跳板机，再从它的 shell 往下跳；服务器在私有子网里；4 留下记录：sshd 日志记下谁、用哪把钥匙、从哪里登录；AWS 方案把审计日志复制到 CloudWatch；可选的登录横幅提示会话被记录"
+source = "https://github.com/openssh/openssh-portable/tree/6a46ea6"
+
+[[figures]]
+file = "hop.svg"
+alt_zh = "穿过跳板机的两种方式，二选一。输入是你要上跳板机后面的一台服务器。直接穿过去：笔记本运行 ssh -J jump target，先和跳板机建 SSH，请它把字节转发到目标的 22 端口；你自己的 SSH 会话再连到目标，在目标上登录。跳板机要允许 TCP 转发，AWS 参考模板默认把它关掉。先登录再跳：你 ssh 到跳板机，拿到一个 shell，再从那里 ssh 到目标。命令在跳板机上运行，所以跳板机能记下它们。代理转发默认关闭；打开后，能绕过跳板机文件权限的人可以用你的钥匙。两种都用的客户端设置：-J a,b 按顺序经过多个跳板机；跳板机的设置写在 ~/.ssh/config 里，因为命令行选项作用于目标"
+caption_zh = "两种方式：直接穿过去，或先登录再跳"
+caption_en = "Two ways through: pass straight through, or log in and hop"
+
+[[figures]]
+file = "sshd.svg"
+alt_zh = "跳板机上 sshd 的设置，按用途分组，没有先后。输入是跳板机上的 sshd_config。谁能进：AllowUsers 只放列出的用户，也可以限定来源主机；PasswordAuthentication no 关掉密码，默认是 yes；AuthenticationMethods 可以要求钥匙加第二种方式。能做什么：AllowTcpForwarding local 允许 ssh -J 用的转发；PermitOpen 只许转发到列出的主机和端口；Match 块给部分用户或组另设规则。关掉闲着的：ClientAliveInterval 检查不说话的客户端，默认 0 即关闭；ChannelTimeout 关掉闲置的通道；PerSourcePenalties 默认开启，把像攻击的地址拒绝一段时间。日志和提示：LogLevel 默认 INFO，每次登录成功都记下钥匙指纹和来源地址；Banner 在登录前显示一段话，默认没有"
+caption_zh = "跳板机 sshd 设置：谁能进、能做什么、关掉闲着的、日志"
+caption_en = "The jump host's sshd: who gets in, what they may do, idle limits, logs"
+
+[[figures]]
+file = "certs.svg"
+alt_zh = "给跳板机用 SSH 证书：输入是人多、服务器多，信任一个证书颁发机构（CA），不用到处拷每个人的钥匙；1 建 CA：CA 钥匙给用户钥匙签名；sshd 的 TrustedUserCAKeys 列出这个 CA，服务器信 CA，不信单把钥匙；没有 principal 的证书会被拒绝；2 签用户的钥匙：ssh-keygen -s 用 CA 钥匙给用户公钥签名；-I 设一个钥匙 ID，会出现在日志里；-n 写 principal，通常是用户名；-V 设有效期；3 登录：笔记本出示钥匙和证书；sshd 检查 CA 签名、名字和日期；日志记下钥匙 ID、序号和 CA；4 吊销：ssh-keygen -k 写一个吊销列表；sshd 的 RevokedKeys 拒绝列表里的每把钥匙；这个文件读不了，所有钥匙登录都被拒；要整个替换，不要原地修改"
+caption_zh = "SSH 证书：建 CA、签钥匙、登录、吊销"
+caption_en = "SSH certificates: set up a CA, sign a key, sign in, revoke"
+
+[[figures]]
+file = "aws.svg"
+alt_zh = "AWS 的 Linux 跳板机参考方案：输入是 AWS 给 Linux 跳板机写的 CloudFormation 模板；这是部件图，不是步骤。外面：默认不开端口，管理员经 AWS Session Manager 进来；如果设了允许的地址段，从那里可以用 SSH 连 22 端口，也能 ping；公有子网，两个可用区：Auto Scaling 组运行 1 到 4 台跳板机，默认 1 台；只有设了地址段，每台才有弹性 IP；TCP 和 X11 转发默认关闭；新建 VPC 的模板还会建 NAT 网关；私有子网：你的服务器，经 NAT 网关上外网；跳板机用 SSH 连到它们；日志：auditd 在每台跳板机上写审计日志，CloudWatch 代理把它复制到一个 CloudWatch 日志组，每个实例 ID 一条流"
+caption_zh = "AWS 参考方案：外面、公有子网、私有子网、日志"
+caption_en = "AWS's reference setup: outside, public subnets, private subnets, logs"

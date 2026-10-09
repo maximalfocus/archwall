@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Two ways through a jump host</title>
+<desc id="d">In: you need a shell on a server behind the jump host. Two ways, pick one. Pass straight through: your laptop runs ssh -J jump target; it opens SSH to the jump host and asks it to forward bytes to the target's port 22; your own SSH session then runs to the target, and you sign in there directly. The jump host must allow TCP forwarding, which AWS's reference template turns off by default. Log in, then hop: you ssh to the jump host, get a shell there, and run ssh to the target from it. Commands run on the jump host, so it can log them. Agent forwarding is off by default; with it on, anyone who can get past file permissions on the jump host can use your keys. Client config, for both: -J a,b visits the jump hosts in order; settings for the jump hosts go in ~/.ssh/config, since command-line options apply to the target.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: you need a shell on a server behind the jump host · pick one way</text>
+<rect x="24" y="84" width="552" height="540" rx="12" class="grp"/>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >Pass straight through</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Your laptop</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >ssh -J jump target</text>
+<rect x="54" y="276" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="286" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="303.0" class="ag" text-anchor="middle" >Jump host</text>
+<text x="303.0" y="327.0" class="ag" text-anchor="middle" >forwards bytes to target:22</text>
+<rect x="54" y="404" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="414" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="431.0" class="ag" text-anchor="middle" >Target</text>
+<text x="303.0" y="455.0" class="ag" text-anchor="middle" >you sign in here directly</text>
+<path d="M300.0 212V274" class="flow"/>
+<text x="300.0" y="250" class="al" text-anchor="middle" >SSH · asks for a tunnel</text>
+<path d="M300.0 340V402" class="flow"/>
+<text x="300.0" y="378" class="al" text-anchor="middle" >your own SSH session</text>
+<text x="300.0" y="572" class="lb" text-anchor="middle" >The jump host must allow TCP forwarding</text>
+<text x="300.0" y="598" class="lb" text-anchor="middle" >AWS's template turns it off by default</text>
+<rect x="624" y="84" width="552" height="540" rx="12" class="grp"/>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >Log in, then hop</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Your laptop</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >ssh jump</text>
+<rect x="654" y="276" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="286" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >Jump host</text>
+<text x="903.0" y="327.0" class="ag" text-anchor="middle" >a shell · you run ssh target</text>
+<rect x="654" y="404" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="414" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="431.0" class="ag" text-anchor="middle" >Target</text>
+<text x="903.0" y="455.0" class="ag" text-anchor="middle" >signs in from the jump host</text>
+<path d="M900.0 212V274" class="flow"/>
+<text x="900.0" y="250" class="al" text-anchor="middle" >SSH · a shell</text>
+<path d="M900.0 340V402" class="flow"/>
+<text x="900.0" y="378" class="al" text-anchor="middle" >a second SSH session</text>
+<text x="900.0" y="572" class="lb" text-anchor="middle" >Commands run here, so the jump host can log them</text>
+<text x="900.0" y="598" class="lb" text-anchor="middle" >Agent forwarding: off by default, risky on</text>
+<rect x="24" y="644" width="1152" height="240" rx="12" class="grp"/>
+<text x="600.0" y="680" class="gt" text-anchor="middle" >On your laptop: ~/.ssh/config</text>
+<rect x="54" y="708" width="531" height="64" rx="8" class="agent"/>
+<rect x="54" y="718" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="322.5" y="735.0" class="ag" text-anchor="middle" >Many hops</text>
+<text x="322.5" y="759.0" class="ag" text-anchor="middle" >-J a,b visits them in order</text>
+<rect x="615" y="708" width="531" height="64" rx="8" class="agent"/>
+<rect x="615" y="718" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="883.5" y="735.0" class="ag" text-anchor="middle" >Jump host settings</text>
+<text x="883.5" y="759.0" class="ag" text-anchor="middle" >go in ~/.ssh/config</text>
+<text x="600.0" y="832" class="lb" text-anchor="middle" >Options on the command line apply to the target, not to the jump hosts</text>
+</svg>

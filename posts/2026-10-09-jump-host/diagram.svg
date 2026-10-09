@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Jump host overview</title>
+<desc id="d">In: an admin outside needs a server on a private network. 1 Reach the door: the jump host is the one way in; the firewall lets in port 22 only from allowed addresses, or, in AWS's reference setup by default, no port is open and you come in through AWS Session Manager. 2 Prove who you are: keys or certificates instead of passwords, a second factor with AuthenticationMethods, and only the users AllowUsers lists. 3 Hop to the target: pass straight through with ssh -J (ProxyJump), or log in to the jump host and go on from its shell; the servers sit in the private subnets. 4 Keep a record: sshd logs who signed in, with which key and from where; AWS's setup copies the audit log to CloudWatch; an optional banner warns that sessions are recorded.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="552" height="48" rx="24.0" class="human"/>
+<text x="300.0" y="46.0" class="q" text-anchor="middle" >In: an admin outside needs a private server</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="195.5" cy="111" r="14" class="num"/>
+<text x="195.5" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="215.5" y="120" class="gt" text-anchor="start" >Reach the door</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Jump host</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >the one way in</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Firewall</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >port 22 from allowed IPs only</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Or no open port</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >AWS Session Manager</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<circle cx="775.25" cy="111" r="14" class="num"/>
+<text x="775.25" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="795.25" y="120" class="gt" text-anchor="start" >Prove who you are</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Keys or certificates</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >no passwords</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Second factor</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >AuthenticationMethods</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Only listed users</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >AllowUsers</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="775.25" cy="527" r="14" class="num"/>
+<text x="775.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="795.25" y="536" class="gt" text-anchor="start" >Hop to the target</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Pass straight through</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >ssh -J · ProxyJump</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Or log in, then hop</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >from the jump host's shell</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >Your servers</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >in the private subnets</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="202.25" cy="527" r="14" class="num"/>
+<text x="202.25" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="222.25" y="536" class="gt" text-anchor="start" >Keep a record</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >sshd log</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >who · which key · from where</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Audit log</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >copied to CloudWatch (AWS)</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Banner (option)</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >sessions are recorded</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >a connection</text>
+<path d="M1054 464V498" class="flow"/>
+<text x="1054" y="488" class="al" text-anchor="middle" >signed in</text>
+<path d="M624 676H578" class="flow"/>
+<text x="600" y="664" class="al" text-anchor="middle" >who · what</text>
+</svg>
