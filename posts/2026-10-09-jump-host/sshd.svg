@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Settings on the jump host's sshd</title>
+<desc id="d">In: the sshd_config file on the jump host. Its settings grouped by job, not in any order. Who gets in: AllowUsers lets in only the listed users, optionally from listed hosts; PasswordAuthentication no turns passwords off, the default is yes; AuthenticationMethods can ask for a key plus a second method. What they may do: AllowTcpForwarding local allows the forwarding that ssh -J uses; PermitOpen limits forwarding to listed host and port pairs; Match blocks set other rules for some users or groups. Close what's idle: ClientAliveInterval checks on quiet clients, 0 by default, which means off; ChannelTimeout closes idle channels; PerSourcePenalties, on by default, refuses an address that looks like an attack for a while. Logs and notice: LogLevel is INFO by default, and each accepted login is logged with its key fingerprint and source address; Banner shows text before login, none by default.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: sshd_config on the jump host · grouped by job · defaults as sshd_config(5) gives them</text>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >Who gets in</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >AllowUsers</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >only the listed users</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >PasswordAuthentication no</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >default: yes</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >AuthenticationMethods</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >key plus a second factor</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >What they may do</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >AllowTcpForwarding local</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >what ssh -J needs</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >PermitOpen</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >only listed host:port</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Match</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >other rules per user or group</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="300.0" y="536" class="gt" text-anchor="middle" >Close what's idle</text>
+<rect x="54" y="560" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="570" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="303.0" y="585.0" class="ag" text-anchor="middle" >ClientAliveInterval</text>
+<text x="303.0" y="609.0" class="ag" text-anchor="middle" >default 0: off</text>
+<rect x="54" y="634" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="644" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="303.0" y="659.0" class="ag" text-anchor="middle" >ChannelTimeout</text>
+<text x="303.0" y="683.0" class="ag" text-anchor="middle" >close idle channels</text>
+<rect x="54" y="708" width="492" height="60" rx="8" class="agent"/>
+<rect x="54" y="718" width="5" height="40" rx="2" fill="#e8973a"/>
+<text x="303.0" y="733.0" class="ag" text-anchor="middle" >PerSourcePenalties</text>
+<text x="303.0" y="757.0" class="ag" text-anchor="middle" >on: refuse attackers a while</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="900.0" y="536" class="gt" text-anchor="middle" >Logs and notice</text>
+<rect x="654" y="560" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="570" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="903.0" y="585.0" class="ag" text-anchor="middle" >LogLevel</text>
+<text x="903.0" y="609.0" class="ag" text-anchor="middle" >default INFO</text>
+<rect x="654" y="634" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="644" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="903.0" y="659.0" class="ag" text-anchor="middle" >Accepted … from …</text>
+<text x="903.0" y="683.0" class="ag" text-anchor="middle" >names the key and the address</text>
+<rect x="654" y="708" width="492" height="60" rx="8" class="agent"/>
+<rect x="654" y="718" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="903.0" y="733.0" class="ag" text-anchor="middle" >Banner</text>
+<text x="903.0" y="757.0" class="ag" text-anchor="middle" >text before login · default none</text>
+</svg>
