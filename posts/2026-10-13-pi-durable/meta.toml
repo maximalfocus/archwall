@@ -1,0 +1,37 @@
+title_zh = "pi-durable：让智能体的进度落盘再显示"
+title_en = "pi-durable: store agent progress before showing it"
+date = "2026-10-13"
+tags = ["pi", "agents", "durable-execution", "storage"]
+figure = "diagram.svg"
+alt_zh = "宿主提供界面、模型、扩展和设置。Harness 接收输入并调度生成、工具和压缩任务。Session 把对话记录、任务检查点、提交请求和 Chord 文档一起存储，提交后的视图与事件返回宿主。存储可选内存、Node SQLite、JSONL 或 Cloudflare Durable Object SQLite。该包仍是实验状态。"
+source = "https://github.com/earendil-works/pi/tree/7d75a0e3eb273dff753d49c066ea29fbe7b3b6f6/packages/durable"
+
+[[figures]]
+file = "turn.svg"
+alt_zh = "输入落盘，忙时进入队列；生成任务准备上下文、提示词和工具，按设置启用自动压缩。pi-ai 请求或轮询模型，回复与进度落盘。工具任务校验参数、运行钩子、记录意图，经宿主环境执行工具，结果进入下一轮模型请求，最终答案结束输入。"
+caption_zh = "一次模型与工具调用"
+caption_en = "A turn: admit input, prepare context, call the model, run tools"
+
+[[figures]]
+file = "durability.svg"
+alt_zh = "先提交意图，再在事务外执行模型或工具，最后提交结果并发布。重启把存活的 running 任务恢复为 pending，从检查点继续。被打断的工具仅在已存和当前策略都为 replay safe 时重跑，否则返回 interrupted。安全重放仍需工具自己保证外部副作用幂等。存储错误关闭 Harness，重新打开已提交存储恢复。"
+caption_zh = "提交、外部执行与重启恢复"
+caption_en = "Intent, external work, outcome and recovery"
+
+[[figures]]
+file = "state.svg"
+alt_zh = "不可变记录组成对话；分叉继承指定记录前的历史，独立继续。重置保留旧记录，压缩用摘要缩短上下文。JSON 文档记录配置、进度、队列、费用和应用状态。Chord 视图、事件和任务图观察已提交状态。任务可拥有子任务或子对话；取消先处理子工作，background: true 让后台任务形成父级取消与空闲等待的边界。"
+caption_zh = "对话、文档与任务归属"
+caption_en = "Transcripts, documents, observation and owned work"
+
+[[figures]]
+file = "extensions.svg"
+alt_zh = "宿主注册工具、提示词段落、任务、钩子和包装器；对话保存名字，重启后重新安装代码，运行中的代码保持原实现。CodingTools 需显式安装，经宿主环境访问文件和进程；Photon 图片处理器可选。tool-search 和 codemode 也是可选扩展，后者需要宿主提供沙箱，用启动数据与结果日志重放脚本和嵌套工具调用。"
+caption_zh = "宿主安装的扩展"
+caption_en = "Host-installed extensions, environments and script execution"
+
+[[figures]]
+file = "storage.svg"
+alt_zh = "内存只是临时状态；Node SQLite 用事务存记录和文档，WAL 与 NORMAL 可应对进程崩溃，断电或宿主故障仍可能丢最近提交。JSONL 先写旁文件再写提交标记，只恢复已确认记录，也在内存保留历史；fsync 可选，仍可能丢断电前尾部提交。Cloudflare 使用 Durable Object SQLite。一个存储由一个进程拥有，无跨进程锁。自定义存储和环境可用共享一致性测试。"
+caption_zh = "存储后端与使用边界"
+caption_en = "Backend choices and their persistence boundaries"

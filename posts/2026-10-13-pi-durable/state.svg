@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">State and owned work</title>
+<desc id="d">Immutable entries form a conversation transcript. Forks inherit parent entries through a selected entry and continue independently. Reset changes the model context while retaining older stored entries. Compaction replaces older context with a summary. Typed JSON documents track live progress, inbox, agent configuration, provider identity, usage and application state. Chord delivers committed views and document changes; agent events and the task graph are derived views. Tasks may own child tasks or conversations; waiting and completing states keep ownership structured. Abort proceeds from owned children to parents. Background tasks form a boundary for parent abort and idle waits.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >Stored records describe both the conversation and its work</text>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >Transcript and context</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Immutable entries</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >user · system · assistant · result</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Fork at an entry</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >child continues independently</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Reset · compaction</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >new context or older summary</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >Typed JSON documents</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Agent · provider</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >choices and session identity</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Live · inbox · usage</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >progress · queue · cost</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >App documents</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >change alongside entries</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="300.0" y="536" class="gt" text-anchor="middle" >Committed observation</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Chord views · watches</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >snapshot and changes</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >Agent events</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >messages and tool updates</text>
+<rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="734" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="751.0" class="ag" text-anchor="middle" >Task graph · inspect</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >owned work and blocked tasks</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="900.0" y="536" class="gt" text-anchor="middle" >Owned tasks and conversations</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Child work</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >tasks or subagent conversations</text>
+<rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="654" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Wait · complete · abort</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >children settle with their owner</text>
+<rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="734" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="751.0" class="ag" text-anchor="middle" >background: true</text>
+<text x="903.0" y="775.0" class="ag" text-anchor="middle" >survives parent abort</text>
+<path d="M300 464V498" class="flow"/>
+<text x="300" y="488" class="al" text-anchor="middle" >committed entries</text>
+<path d="M660 464V480H540V498" class="flow"/>
+<text x="600" y="480" class="al" text-anchor="middle" >document changes</text>
+<path d="M624 740H578" class="flow"/>
+<text x="600" y="728" class="al" text-anchor="middle" >task state</text>
+</svg>
