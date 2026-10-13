@@ -8,7 +8,7 @@ source = "https://github.com/earendil-works/pi/tree/7d75a0e3eb273dff753d49c066ea
 
 [[figures]]
 file = "turn.svg"
-alt_zh = "输入先提交，忙时进入队列；生成任务准备上下文、提示词和工具，按设置启用自动压缩。pi-ai 请求或轮询模型，回复与进度提交后再发布。工具任务校验参数、运行钩子、记录意图，工具调用可使用宿主提供的执行环境，编码工具需要它，结果进入下一轮模型请求；无工具调用时结算输入，onYield 钩子可追加消息继续运行。"
+alt_zh = "输入先提交，忙时进入队列；生成任务准备上下文、提示词和工具，按设置启用自动压缩。pi-ai 请求或轮询模型，回复与进度提交后再发布。工具任务校验参数、运行钩子、记录意图，工具调用可使用宿主提供的执行环境，编码工具需要它，结果进入下一轮模型请求；无工具调用的答案结束本轮。到最终边界时，输入结算，除非符合条件的 onYield 续跑把运行交给后续生成任务。"
 caption_zh = "一次模型与工具调用"
 caption_en = "A turn: admit input, prepare context, call the model, run tools"
 
