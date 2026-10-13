@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Commit before publication</title>
+<desc id="d">An external effect is surrounded by durable commits: first record its intent, then call a model or tool outside the Session transaction, then record the outcome and publish committed state. On reopening, surviving running tasks become pending at their stored checkpoint; it dispatches nothing. Resume, a submission or a wait starts the scheduler. An interrupted tool reruns only when its stored and current policies both say replay safe; otherwise it produces an interrupted error. Replay-safe external effects need their own idempotency. A storage failure closes the Harness; reopen consistent committed storage to recover.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >External work sits between durable commits</text>
+<rect x="24" y="84" width="368" height="280" rx="12" class="grp"/>
+<circle cx="110.25" cy="111" r="14" class="num"/>
+<text x="110.25" y="117" class="numt" text-anchor="middle" >1</text>
+<text x="130.25" y="120" class="gt" text-anchor="start" >Commit intent</text>
+<rect x="54" y="154" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="164" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="211.0" y="181.0" class="ag" text-anchor="middle" >Task checkpoint</text>
+<text x="211.0" y="205.0" class="ag" text-anchor="middle" >what will run</text>
+<rect x="416" y="84" width="368" height="280" rx="12" class="grp"/>
+<circle cx="495.5" cy="111" r="14" class="num"/>
+<text x="495.5" y="117" class="numt" text-anchor="middle" >2</text>
+<text x="515.5" y="120" class="gt" text-anchor="start" >Perform effect</text>
+<rect x="446" y="154" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="164" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="181.0" class="ag" text-anchor="middle" >Model or tool</text>
+<text x="603.0" y="205.0" class="ag" text-anchor="middle" >outside the transaction</text>
+<rect x="808" y="84" width="368" height="280" rx="12" class="grp"/>
+<circle cx="887.5" cy="111" r="14" class="num"/>
+<text x="887.5" y="117" class="numt" text-anchor="middle" >3</text>
+<text x="907.5" y="120" class="gt" text-anchor="start" >Commit outcome</text>
+<rect x="838" y="154" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="164" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="995.0" y="181.0" class="ag" text-anchor="middle" >State → storage → UI</text>
+<text x="995.0" y="205.0" class="ag" text-anchor="middle" >publish after success</text>
+<path d="M392 248H414" class="flow"/>
+<text x="404" y="236" class="al" text-anchor="middle" >intent stored</text>
+<path d="M784 248H806" class="flow"/>
+<text x="796" y="236" class="al" text-anchor="middle" >result</text>
+<rect x="24" y="410" width="1152" height="454" rx="12" class="grp"/>
+<text x="600.0" y="446" class="gt" text-anchor="middle" >After a process restart</text>
+<rect x="54" y="492" width="288" height="64" rx="8" class="agent"/>
+<rect x="54" y="502" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="201.0" y="519.0" class="ag" text-anchor="middle" >Reopen storage</text>
+<text x="201.0" y="543.0" class="ag" text-anchor="middle" >running → pending</text>
+<rect x="430" y="492" width="320" height="64" rx="8" class="agent"/>
+<rect x="430" y="502" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="593.0" y="519.0" class="ag" text-anchor="middle" >Resume scheduler</text>
+<text x="593.0" y="543.0" class="ag" text-anchor="middle" >stored task checkpoint</text>
+<path d="M342 524H428" class="flow"/>
+<text x="386" y="512" class="al" text-anchor="middle" >recover</text>
+<rect x="54" y="644" width="288" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="201.0" y="671.0" class="ag" text-anchor="middle" >Tool replay: safe</text>
+<text x="201.0" y="695.0" class="ag" text-anchor="middle" >stored AND current policy</text>
+<rect x="430" y="644" width="320" height="64" rx="8" class="agent"/>
+<rect x="430" y="654" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="593.0" y="671.0" class="ag" text-anchor="middle" >Rerun tool</text>
+<text x="593.0" y="695.0" class="ag" text-anchor="middle" >make effects idempotent</text>
+<path d="M590 556V596H198V642" class="flow"/>
+<text x="394" y="596" class="al" text-anchor="middle" >check policy</text>
+<path d="M342 676H428" class="flow"/>
+<text x="386" y="664" class="al" text-anchor="middle" >both safe</text>
+<rect x="806" y="644" width="320" height="64" rx="8" class="agent"/>
+<rect x="806" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="969.0" y="671.0" class="ag" text-anchor="middle" >Otherwise interrupted</text>
+<text x="969.0" y="695.0" class="ag" text-anchor="middle" >return an error result</text>
+<path d="M198 708V746H966V710" class="flow"/>
+<text x="788" y="746" class="al" text-anchor="middle" >not both safe</text>
+<text x="600.0" y="812" class="lb" text-anchor="middle" >Storage failure closes the Harness; reopen to recover.</text>
+<text x="600.0" y="838" class="lb" text-anchor="middle" >Replay safety is a tool contract, not a guarantee against duplicate external effects.</text>
+</svg>
