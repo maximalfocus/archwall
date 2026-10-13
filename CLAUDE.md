@@ -7,7 +7,8 @@ Writing or landing a post: use the `archwall` skill (`.claude/skills/archwall/`)
 
 - Every new post (or substantive rewrite) goes on its own branch `post/<slug>` cut from `main`; commit freely there.
 - Push the branch and open a PR; the owner reviews and asks for revisions. Never merge without the owner's explicit go-ahead.
-- On approval: squash merge (`gh pr merge --squash --delete-branch`), so each post is one commit on `main`, then pull `main`.
+- On approval: squash merge (`gh pr merge --squash --delete-branch`), so each post is one commit on `main`;
+  run it with the host-specific gh command from the skill's step 6, then pull `main`.
 - Site/tooling changes that are not a post follow the same branch → PR → squash flow (branch `site/<topic>`).
 
 ## Post rules
