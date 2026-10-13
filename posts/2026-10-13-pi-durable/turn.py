@@ -4,7 +4,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from archdiagram import Diagram
 
-d = Diagram('A model and tool turn', 'Input is durably admitted and, when the conversation is busy, queued as a steer or follow-up. Generation prepares context, prompt sections and offered tools. Compaction summarizes older context when needed. pi-ai calls or polls the model; streamed progress and the response are committed. Tool calls become tasks with validated arguments and before/after hooks. Tools run with an ExecutionEnv when the host provides one; the built-in coding tools need it. Committed tool results feed the next model request. An answer without further tool calls ends the turn: the input settles, unless an onYield hook appends a message and a new generation takes over. Retry and deferred-provider polling are generation phases.')
+d = Diagram('A model and tool turn', 'Input is durably admitted and, when the conversation is busy, queued as a steer or follow-up. Generation prepares context, prompt sections and offered tools. Compaction summarizes older context when needed. pi-ai calls or polls the model; streamed progress and the response are committed. Tool calls become tasks with validated arguments and before/after hooks. Tool calls may use the host-provided ExecutionEnv; the built-in coding tools require it. Committed tool results feed the next model request. An answer without further tool calls ends the turn and settles the input; an onYield hook may append a message and continue the run in a new generation. Retry and deferred-provider polling are generation phases.')
 d.pill(24,16,1152,48,"Input → model → tools → another model turn or final answer")
 d.group(24,84,552,380,"Admit input",1)
 d.column(24,84,[("Submission|store input and request ID", "write"),("Busy inbox|steer or follow-up", "plan"),("User entry|start or join a run", "data")])
@@ -13,7 +13,7 @@ d.column(624,84,[("Context · agent|transcript and chosen model", "data"),("Prom
 d.group(624,500,552,364,"Ask the model",3)
 d.column(624,500,[("pi-ai provider|request or poll", "coding"),("Committed response|text · thinking · tool calls", "write"),("Final answer|settle or hook continues", "write")])
 d.group(24,500,552,364,"Run requested tools",4)
-d.column(24,500,[("Tool task|validate · hooks · intent", "review"),("Tool implementation|call env · coding needs it", "coding"),("Committed result|output · details · usage", "write")])
+d.column(24,500,[("Tool task|validate · hooks · intent", "review"),("Tool implementation|env for coding tools", "coding"),("Committed result|output · details · usage", "write")])
 d.arrow("M576 260H622",label="input",at=(600,248))
 d.arrow("M1000 464V498",label="prompt · tools",at=(1000,488))
 d.arrow("M624 660H578",label="tool calls",at=(600,648))
