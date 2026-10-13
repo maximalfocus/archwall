@@ -41,8 +41,9 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
 5. **Text.** `meta.toml` (titles, date, tags, figure, alt_zh, source; captions for extra figures; alt_en
    comes from the `.py`), `en.md`, `zh.md`: same content, plain voice, at most 300 words / 300 hanzi.
    Quote the counts check.py prints in the PR, not your own; details go here.
-6. **Commit, push, PR.** The repo is maximalfocus/archwall. Run every gh call as `gh-as maximalfocus <args>`
-   (never `gh auth switch`: the login is shared); no `gh-as` on PATH: stop and tell the owner. Create the PR
+6. **Commit, push, PR.** Repo: maximalfocus/archwall. On `focus@mini` (user `focus`, short hostname `mini`),
+   use `gh-as maximalfocus <args>`; if missing, stop and tell the owner. Never `gh auth switch` there.
+   On other machines, use `gh <args>` with the authorized GitHub account. Create the PR
    (what the diagrams show, source + commit, word counts, what was left out on purpose). The git hooks
    rebuild a preview on commit only where `python3 tools/preview.py install` has run ("archwall preview"
    in `$(git rev-parse --git-common-dir)/hooks/post-commit`). There, give the owner the link once for a
@@ -57,8 +58,7 @@ you look at every PNG and run check.py. Start each new post in a fresh session w
 
 ## Land: `/archwall land <PR#> [PR#...]`
 
-Only on the owner's explicit go-ahead, in the order given; every gh call below goes through
-`gh-as maximalfocus` (step 6):
+Only on the owner's explicit go-ahead, in the order given; use the host-specific gh command from step 6:
 
 1. For each PR: if its base is not `main`, first `gh pr edit <n> --base main`, then rebase its branch
    onto `origin/main` past the already-merged commits (`git rebase --onto origin/main <old base tip>`)
