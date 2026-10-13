@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">A model and tool turn</title>
-<desc id="d">Input is durably admitted and, when the conversation is busy, queued as a steer or follow-up. Generation prepares context, prompt sections and offered tools. Compaction summarizes older context when needed. pi-ai calls or polls the model; streamed progress and the response are committed. Tool calls become tasks with validated arguments and before/after hooks. Tool calls may use the host-provided ExecutionEnv; the built-in coding tools require it. Committed tool results feed the next model request. An answer without further tool calls ends the turn. At the final boundary, the input settles unless an eligible onYield continuation starts a new generation. Retry and deferred-provider polling are generation phases.</desc>
+<desc id="d">Input is durably admitted and, when the conversation is busy, queued as a steer or follow-up. Generation prepares context, prompt sections and offered tools. Compaction summarizes older context when needed. pi-ai calls or polls the model; streamed progress and the response are committed. Tool calls become tasks with validated arguments and before/after hooks. Tool calls may use the host-provided ExecutionEnv; the built-in coding tools require it. Committed tool results feed the next model request unless the round ends the run; when every result of the round sets control.terminate = true, the run ends instead. An answer without further tool calls ends the turn. At the final boundary, the input settles unless an eligible onYield continuation starts a new generation. Retry and deferred-provider polling are generation phases.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -91,6 +91,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="734" width="5" height="44" rx="2" fill="#8a5cc7"/>
 <text x="303.0" y="751.0" class="ag" text-anchor="middle" >Committed result</text>
 <text x="303.0" y="775.0" class="ag" text-anchor="middle" >output · details · usage</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >All results: control.terminate = true → end run</text>
 <path d="M576 260H622" class="flow"/>
 <text x="600" y="248" class="al" text-anchor="middle" >input</text>
 <path d="M1000 464V498" class="flow"/>
@@ -98,5 +99,5 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <path d="M624 660H578" class="flow"/>
 <text x="600" y="648" class="al" text-anchor="middle" >tool calls</text>
 <path d="M576 780H600V350H622" class="flow back"/>
-<text x="600" y="480" class="al" text-anchor="middle" >results → next turn</text>
+<text x="600" y="480" class="al" text-anchor="middle" >results · if continuing</text>
 </svg>

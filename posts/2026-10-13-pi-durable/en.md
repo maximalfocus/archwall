@@ -1,6 +1,6 @@
 pi-durable is an experimental agent runtime inside Pi. It commits conversations, task checkpoints and JSON documents together, then publishes progress to the UI.
 
-Input starts a model run or enters its inbox. Generation prepares context and prompt sections, calls pi-ai, then schedules requested tools. Their results feed the next turn. Compaction summarizes older context; settings enable automatic compaction.
+Input starts a model run or enters its inbox. Generation prepares context and prompt sections, calls pi-ai, then schedules requested tools. Their results feed the next turn unless the round ends the run. Compaction summarizes older context; settings enable automatic compaction.
 
 ![](turn.svg)
 
