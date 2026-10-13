@@ -1,4 +1,4 @@
-title_zh = "pi-durable：让智能体的进度落盘再显示"
+title_zh = "pi-durable：先把智能体进度存好再显示"
 title_en = "pi-durable: store agent progress before showing it"
 date = "2026-10-13"
 tags = ["pi", "agents", "durable-execution", "storage"]
@@ -8,13 +8,13 @@ source = "https://github.com/earendil-works/pi/tree/7d75a0e3eb273dff753d49c066ea
 
 [[figures]]
 file = "turn.svg"
-alt_zh = "输入落盘，忙时进入队列；生成任务准备上下文、提示词和工具，按设置启用自动压缩。pi-ai 请求或轮询模型，回复与进度落盘。工具任务校验参数、运行钩子、记录意图，经宿主环境执行工具，结果进入下一轮模型请求，最终答案结束输入。"
+alt_zh = "输入先提交，忙时进入队列；生成任务准备上下文、提示词和工具，按设置启用自动压缩。pi-ai 请求或轮询模型，回复与进度提交后再发布。工具任务校验参数、运行钩子、记录意图，工具按调用环境执行，编码工具没有环境会失败，结果进入下一轮模型请求；无工具调用的答案会结束本轮，除非 onYield 钩子追加消息再开一轮。"
 caption_zh = "一次模型与工具调用"
 caption_en = "A turn: admit input, prepare context, call the model, run tools"
 
 [[figures]]
 file = "durability.svg"
-alt_zh = "先提交意图，再在事务外执行模型或工具，最后提交结果并发布。重启把存活的 running 任务恢复为 pending，从检查点继续。被打断的工具仅在已存和当前策略都为 replay safe 时重跑，否则返回 interrupted。安全重放仍需工具自己保证外部副作用幂等。存储错误关闭 Harness，重新打开已提交存储恢复。"
+alt_zh = "先提交意图，再在事务外执行模型或工具，最后提交结果并发布。重启把存活的 running 任务恢复为 pending，但不派发；resume、新提交或等待才继续。被打断的工具仅在已存和当前策略都为 replay safe 时重跑，否则返回 interrupted。安全重放仍需工具自己保证外部副作用幂等。存储错误关闭 Harness，重新打开已提交存储恢复。"
 caption_zh = "提交、外部执行与重启恢复"
 caption_en = "Intent, external work, outcome and recovery"
 

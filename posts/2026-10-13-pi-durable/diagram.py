@@ -11,7 +11,7 @@ d.column(24,84,[("UI · API|submit and observe", "coding"),("pi-ai models|provid
 d.group(624,84,552,380,"Harness")
 d.column(624,84,[("Submissions · inbox|admit and queue requests", "plan"),("Scheduler|run task phases", "plan"),("Built-in tasks|generation · tools · compaction", "coding")])
 d.group(624,500,552,364,"Session")
-d.column(624,500,[("Transcripts|conversations and entries", "data"),("Task checkpoints|submissions and outcomes", "data"),("Chord documents|agent · live · app state", "write")])
+d.column(624,500,[("Transcripts|conversations and entries", "data"),("Tasks · submissions|checkpoints and outcomes", "data"),("Chord documents|agent · live · app state", "write")])
 d.group(24,500,552,364,"Storage · choose a backend")
 d.column(24,500,[("Memory|temporary state", "data"),("Node SQLite · JSONL|local persistence", "write"),("Durable Object SQLite|Cloudflare persistence", "write")])
 d.arrow("M576 284H622",label="requests",at=(600,272))

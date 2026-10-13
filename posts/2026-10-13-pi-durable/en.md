@@ -4,7 +4,7 @@ Input starts a model run or enters its inbox. Generation prepares context and pr
 
 ![](turn.svg)
 
-External work sits between an intent commit and an outcome commit. Reopening resumes stored checkpoints. An interrupted tool reruns only when its stored and current replay policies both say safe; otherwise it returns an interruption error. External effects still need idempotency.
+External work sits between an intent commit and an outcome commit. Reopening loads stored checkpoints but dispatches nothing; resume, a new submission or a wait starts the scheduler. An interrupted tool reruns only when its stored and current replay policies both say safe; otherwise it returns an interruption error. External effects still need idempotency.
 
 ![](durability.svg)
 

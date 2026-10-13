@@ -63,8 +63,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="615.0" class="ag" text-anchor="middle" >conversations and entries</text>
 <rect x="654" y="644" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="654" width="5" height="44" rx="2" fill="#5b6675"/>
-<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Task checkpoints</text>
-<text x="903.0" y="695.0" class="ag" text-anchor="middle" >submissions and outcomes</text>
+<text x="903.0" y="671.0" class="ag" text-anchor="middle" >Tasks · submissions</text>
+<text x="903.0" y="695.0" class="ag" text-anchor="middle" >checkpoints and outcomes</text>
 <rect x="654" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="734" width="5" height="44" rx="2" fill="#8a5cc7"/>
 <text x="903.0" y="751.0" class="ag" text-anchor="middle" >Chord documents</text>
