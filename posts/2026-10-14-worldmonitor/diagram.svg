@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">World Monitor: from sources to a shared picture</title>
+<desc id="d">External news, markets, conflict, climate, ships and aircraft feed Railway relay and seed jobs. Upstash Redis holds shared datasets and freshness metadata; Convex holds account state and intelligence history. Vercel APIs and the desktop Node sidecar serve the browser or desktop maps, panels and analysis, and API, CLI, SDK and MCP consumers. Configured AI providers enrich intelligence. The remaining figures explain ingestion, gateway, browser, intelligence, accounts, desktop and operations.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="24" width="552" height="386" rx="12" class="grp"/>
+<text x="300.0" y="60" class="gt" text-anchor="middle" >Sources and collection</text>
+<rect x="54" y="90" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="100" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="129.0" class="ag" text-anchor="middle" >News · markets · events</text>
+<rect x="54" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="180" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="209.0" class="ag" text-anchor="middle" >Ships · aircraft · climate</text>
+<rect x="54" y="250" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="260" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="289.0" class="ag" text-anchor="middle" >Railway relay · seed jobs</text>
+<text x="300.0" y="358" class="lb" text-anchor="middle" >RSS / WebSocket / HTTP / price scrapers</text>
+<rect x="624" y="24" width="552" height="386" rx="12" class="grp"/>
+<text x="900.0" y="60" class="gt" text-anchor="middle" >Shared stores</text>
+<rect x="654" y="104" width="492" height="76" rx="8" class="agent"/>
+<rect x="654" y="114" width="5" height="56" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="137.0" class="ag" text-anchor="middle" >Upstash Redis</text>
+<text x="903.0" y="161.0" class="ag" text-anchor="middle" >Datasets · cache · freshness</text>
+<rect x="654" y="212" width="492" height="76" rx="8" class="agent"/>
+<rect x="654" y="222" width="5" height="56" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="245.0" class="ag" text-anchor="middle" >Convex</text>
+<text x="903.0" y="269.0" class="ag" text-anchor="middle" >Accounts · intelligence history</text>
+<rect x="624" y="494" width="552" height="382" rx="12" class="grp"/>
+<text x="900.0" y="530" class="gt" text-anchor="middle" >Serving and runtime</text>
+<rect x="654" y="560" width="492" height="76" rx="8" class="agent"/>
+<rect x="654" y="570" width="5" height="56" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="593.0" class="ag" text-anchor="middle" >Vercel</text>
+<text x="903.0" y="617.0" class="ag" text-anchor="middle" >Domain APIs · operational routes</text>
+<rect x="654" y="666" width="492" height="76" rx="8" class="agent"/>
+<rect x="654" y="676" width="5" height="56" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="699.0" class="ag" text-anchor="middle" >Desktop Node sidecar</text>
+<text x="903.0" y="723.0" class="ag" text-anchor="middle" >Local handlers · cloud fallback</text>
+<text x="900.0" y="824" class="lb" text-anchor="middle" >Contracts · access checks · rate limits</text>
+<rect x="24" y="494" width="552" height="382" rx="12" class="grp"/>
+<text x="300.0" y="530" class="gt" text-anchor="middle" >People and software</text>
+<rect x="54" y="560" width="492" height="76" rx="8" class="agent"/>
+<rect x="54" y="570" width="5" height="56" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="593.0" class="ag" text-anchor="middle" >Browser / desktop</text>
+<text x="303.0" y="617.0" class="ag" text-anchor="middle" >Map · panels · analysis</text>
+<rect x="54" y="666" width="492" height="76" rx="8" class="agent"/>
+<rect x="54" y="676" width="5" height="56" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="699.0" class="ag" text-anchor="middle" >External clients</text>
+<text x="303.0" y="723.0" class="ag" text-anchor="middle" >SDK · CLI · MCP</text>
+<text x="300.0" y="824" class="lb" text-anchor="middle" >AI enrichment uses configured providers</text>
+<path d="M576 285H624" class="flow"/>
+<text x="600" y="267" class="al" text-anchor="middle" >datasets</text>
+<path d="M900 410V494" class="flow"/>
+<text x="900" y="455" class="al" text-anchor="middle" >data · state</text>
+<path d="M624 632H576" class="flow"/>
+<text x="600" y="617" class="al" text-anchor="middle" >results</text>
+<path d="M576 755H624" class="flow"/>
+<text x="600" y="739" class="al" text-anchor="middle" >requests</text>
+</svg>

@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Accounts, durable state and access</title>
+<desc id="d">Clerk signs in dashboard users. Edge APIs verify session JWTs and persist preferences, followed countries, notification settings and subscription state in Convex. Dodo checkout sends signed payment webhooks that update subscription records. External agents use API keys or MCP OAuth; MCP domain tools can call the same domain handlers through authenticated requests. Redis caches access rights while Convex holds durable records. Separately, seeders append intelligence events and vectors to Convex for timeline and semantic search.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="24" width="368" height="400" rx="12" class="grp"/>
+<text x="208.0" y="60" class="gt" text-anchor="middle" >Dashboard identity</text>
+<rect x="54" y="88" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="98" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="211.0" y="115.0" class="ag" text-anchor="middle" >Clerk sign-in</text>
+<text x="211.0" y="139.0" class="ag" text-anchor="middle" >session JWT</text>
+<rect x="54" y="180" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="190" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="211.0" y="207.0" class="ag" text-anchor="middle" >Edge account APIs</text>
+<text x="211.0" y="231.0" class="ag" text-anchor="middle" >verify JWT with JWKS</text>
+<rect x="54" y="272" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="282" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="211.0" y="299.0" class="ag" text-anchor="middle" >Preferences + alerts</text>
+<text x="211.0" y="323.0" class="ag" text-anchor="middle" >read / write requests</text>
+<path d="M208 152V180" class="flow"/>
+<text x="259" y="170" class="al" text-anchor="middle" >JWT</text>
+<path d="M208 244V272" class="flow"/>
+<text x="294" y="262" class="al" text-anchor="middle" >user identity</text>
+<text x="208" y="378" class="lb" text-anchor="middle" >Account routes relay to Convex.</text>
+<rect x="416" y="24" width="368" height="400" rx="12" class="grp"/>
+<text x="600.0" y="60" class="gt" text-anchor="middle" >Convex app state</text>
+<rect x="446" y="88" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="98" width="5" height="40" rx="2" fill="#8a5cc7"/>
+<text x="603.0" y="113.0" class="ag" text-anchor="middle" >User preferences</text>
+<text x="603.0" y="137.0" class="ag" text-anchor="middle" >per dashboard variant</text>
+<rect x="446" y="162" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="172" width="5" height="40" rx="2" fill="#8a5cc7"/>
+<text x="603.0" y="187.0" class="ag" text-anchor="middle" >Followed countries</text>
+<text x="603.0" y="211.0" class="ag" text-anchor="middle" >notification rules + channels</text>
+<rect x="446" y="236" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="246" width="5" height="40" rx="2" fill="#8a5cc7"/>
+<text x="603.0" y="261.0" class="ag" text-anchor="middle" >Subscription records</text>
+<text x="603.0" y="285.0" class="ag" text-anchor="middle" >plan + payment status</text>
+<rect x="446" y="310" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="320" width="5" height="40" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="335.0" class="ag" text-anchor="middle" >Access rights</text>
+<text x="603.0" y="359.0" class="ag" text-anchor="middle" >entitlement queries</text>
+<path d="M392 280H416" class="flow"/>
+<text x="404" y="267" class="al" text-anchor="middle" >sync</text>
+<rect x="808" y="24" width="368" height="400" rx="12" class="grp"/>
+<text x="992.0" y="60" class="gt" text-anchor="middle" >Convex history</text>
+<rect x="838" y="88" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="98" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="115.0" class="ag" text-anchor="middle" >Seeders</text>
+<text x="995.0" y="139.0" class="ag" text-anchor="middle" >events + embeddings</text>
+<rect x="838" y="180" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="190" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="995.0" y="207.0" class="ag" text-anchor="middle" >Intelligence history</text>
+<text x="995.0" y="231.0" class="ag" text-anchor="middle" >durable rows + vector index</text>
+<rect x="838" y="272" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="282" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="299.0" class="ag" text-anchor="middle" >Timeline + search</text>
+<text x="995.0" y="323.0" class="ag" text-anchor="middle" >chronology / similarity</text>
+<path d="M992 152V180" class="flow"/>
+<text x="1060" y="170" class="al" text-anchor="middle" >append</text>
+<path d="M992 244V272" class="flow"/>
+<text x="1050" y="262" class="al" text-anchor="middle" >query</text>
+<text x="992" y="378" class="lb" text-anchor="middle" >Separate from live Redis snapshots.</text>
+<rect x="24" y="500" width="368" height="364" rx="12" class="grp"/>
+<text x="208.0" y="536" class="gt" text-anchor="middle" >Payment flow</text>
+<rect x="54" y="560" width="308" height="60" rx="8" class="agent"/>
+<rect x="54" y="570" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="211.0" y="585.0" class="ag" text-anchor="middle" >Edge checkout API</text>
+<text x="211.0" y="609.0" class="ag" text-anchor="middle" >verified signed-in user</text>
+<rect x="54" y="656" width="308" height="60" rx="8" class="agent"/>
+<rect x="54" y="666" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="211.0" y="681.0" class="ag" text-anchor="middle" >Convex → Dodo</text>
+<text x="211.0" y="705.0" class="ag" text-anchor="middle" >create checkout session</text>
+<rect x="54" y="752" width="308" height="60" rx="8" class="agent"/>
+<rect x="54" y="762" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="211.0" y="777.0" class="ag" text-anchor="middle" >Signed Dodo webhook</text>
+<text x="211.0" y="801.0" class="ag" text-anchor="middle" >verify then update records</text>
+<path d="M208 620V656" class="flow"/>
+<text x="280" y="644" class="al" text-anchor="middle" >checkout</text>
+<path d="M208 716V752" class="flow"/>
+<text x="285" y="740" class="al" text-anchor="middle" >payment event</text>
+<path d="M208 424V500" class="flow"/>
+<text x="208" y="467" class="al" text-anchor="middle" >user request</text>
+<path d="M392 750H404V460H600V424" class="flow"/>
+<text x="505" y="450" class="al" text-anchor="middle" >subscription update</text>
+<rect x="416" y="500" width="368" height="364" rx="12" class="grp"/>
+<text x="600.0" y="536" class="gt" text-anchor="middle" >External agents</text>
+<rect x="446" y="560" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="570" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="585.0" class="ag" text-anchor="middle" >SDK / CLI / MCP client</text>
+<text x="603.0" y="609.0" class="ag" text-anchor="middle" >API key / MCP OAuth</text>
+<rect x="446" y="656" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="666" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="603.0" y="681.0" class="ag" text-anchor="middle" >REST / MCP entry</text>
+<text x="603.0" y="705.0" class="ag" text-anchor="middle" >resolve caller identity</text>
+<rect x="446" y="752" width="308" height="60" rx="8" class="agent"/>
+<rect x="446" y="762" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="777.0" class="ag" text-anchor="middle" >MCP domain tools</text>
+<text x="603.0" y="801.0" class="ag" text-anchor="middle" >authenticated HTTP calls</text>
+<path d="M600 620V656" class="flow"/>
+<text x="688" y="644" class="al" text-anchor="middle" >credentials</text>
+<path d="M600 716V752" class="flow"/>
+<text x="685" y="740" class="al" text-anchor="middle" >tool request</text>
+<text x="600" y="837" class="lb" text-anchor="middle" >MCP also has direct cache tools.</text>
+<rect x="808" y="500" width="368" height="364" rx="12" class="grp"/>
+<text x="992.0" y="536" class="gt" text-anchor="middle" >Domain access</text>
+<rect x="838" y="560" width="308" height="60" rx="8" class="agent"/>
+<rect x="838" y="570" width="5" height="40" rx="2" fill="#5b6675"/>
+<text x="995.0" y="585.0" class="ag" text-anchor="middle" >Redis entitlement cache</text>
+<text x="995.0" y="609.0" class="ag" text-anchor="middle" >Convex fallback on miss</text>
+<rect x="838" y="656" width="308" height="60" rx="8" class="agent"/>
+<rect x="838" y="666" width="5" height="40" rx="2" fill="#d64545"/>
+<text x="995.0" y="681.0" class="ag" text-anchor="middle" >Shared domain gateway</text>
+<text x="995.0" y="705.0" class="ag" text-anchor="middle" >access checks + limits</text>
+<rect x="838" y="752" width="308" height="60" rx="8" class="agent"/>
+<rect x="838" y="762" width="5" height="40" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="777.0" class="ag" text-anchor="middle" >Domain handlers</text>
+<text x="995.0" y="801.0" class="ag" text-anchor="middle" >execute admitted requests</text>
+<path d="M992 620V656" class="flow"/>
+<text x="1073" y="644" class="al" text-anchor="middle" >access rights</text>
+<path d="M992 716V752" class="flow"/>
+<text x="1070" y="740" class="al" text-anchor="middle" >admitted call</text>
+<text x="992" y="837" class="lb" text-anchor="middle" >Redis is a cache; Convex stores records.</text>
+<path d="M784 680H808" class="flow"/>
+<text x="796" y="667" class="al" text-anchor="middle" >call</text>
+<path d="M808 590H796V470H700V424" class="flow"/>
+<text x="732" y="460" class="al" text-anchor="middle" >read rights</text>
+</svg>

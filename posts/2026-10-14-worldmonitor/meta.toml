@@ -1,0 +1,49 @@
+title_zh = "World Monitor：从全球数据到同一张态势图"
+title_en = "World Monitor: from global feeds to a shared picture"
+date = "2026-10-14"
+tags = ["osint", "maps", "data-pipeline", "typescript", "desktop"]
+figure = "diagram.svg"
+alt_zh = "World Monitor 总览：外部新闻、市场、事件、船舶、航空与气候数据经过 Railway 中继和采集进入 Redis。Convex 保存账户与情报历史。Vercel 接口和桌面 Node 服务提供数据，浏览器及桌面显示地图、面板和分析结果，外部 SDK、CLI 和 MCP 客户端读取情报。"
+source = "https://github.com/koala73/worldmonitor/tree/a1f94681edb0d82968b7926353e538c4a518a591"
+
+[[figures]]
+file = "ingestion.svg"
+alt_zh = "中继和定时采集写入 Redis；价格核心将零售商观测存入 PostgreSQL，再聚合发布快照。启动接口读取，健康检查跟踪数据年龄。"
+caption_zh = "采集发布数据，读端与健康检查共用缓存。"
+caption_en = "Collectors publish data; readers and health checks share the cache."
+
+[[figures]]
+file = "gateway.svg"
+alt_zh = "Protobuf 生成客户端和路由；领域网关检查来源、凭证、权益与限流，执行处理器后控制缓存、可选投影和 ETag。"
+caption_zh = "HTTP 契约生成客户端和路由；网关检查访问权限并控制缓存。"
+caption_en = "HTTP contracts generate clients and routes; the gateway checks access and controls caching."
+
+[[figures]]
+file = "browser.svg"
+alt_zh = "浏览器初始化存储和语言，启动数据与加载器汇入 AppContext，面板和地图显示结果；后台线程分析，存储保留历史，隐藏标签页暂停刷新。"
+caption_zh = "启动缓存与实时加载汇入 AppContext，再交给面板、地图和后台线程。"
+caption_en = "Bootstrap data and live loaders meet in AppContext; panels, maps and workers share the result."
+
+[[figures]]
+file = "intelligence.svg"
+alt_zh = "新闻分类与定位形成上下文，再做聚类，观测数据支撑风险、关联和异常。可选模型提供向量、情感与实体识别；普通摘要依次尝试已配置且有权益的 Ollama、OpenRouter，再用可用的 T5 兜底，测试模式可先尝试已加载 T5。RSS 与 OREF 独立告警。"
+caption_zh = "新闻解析、风险信号、可选 AI 摘要与突发提醒各走不同路径。"
+caption_en = "News interpretation, risk signals, optional AI summaries and breaking alerts follow separate paths."
+
+[[figures]]
+file = "accounts.svg"
+alt_zh = "Clerk 登录后，账户接口验证 JWT，向 Convex 保存偏好、关注国家与通知规则。Dodo 签名支付事件更新订阅权益；外部客户端用 API 密钥或 OAuth，MCP 领域工具调用共享网关。Redis 缓存权益，未命中查询 Convex。情报事件与向量另存历史表，供时间线和语义检索。"
+caption_zh = "Clerk 识别用户，Convex 保存账户与历史记录，支付事件和缓存权益决定访问权限。"
+caption_en = "Clerk identifies users; Convex stores account and history records, while payment events and cached rights control access."
+
+[[figures]]
+file = "desktop.svg"
+alt_zh = "Tauri 页面经 Rust IPC 和本地鉴权请求 Node 接口，按路由与回退规则访问云端。前端 Docker 用 nginx 代理至可配置接口地址；完整 Docker 运行 nginx 与 Node，连接 Redis REST、Redis 和 AIS 中继。数据源密钥可选，完整容器禁用云回退。"
+caption_zh = "桌面端用系统密钥库保管密钥并运行本地接口；Docker 可只托管前端，也可一起运行接口、缓存和中继。"
+caption_en = "Desktop protects secrets in the OS keyring and runs a local sidecar. Docker can host the frontend alone or the API, cache and relay together."
+
+[[figures]]
+file = "ops.svg"
+alt_zh = "提交检查、云端部署、桌面和容器发行，以及生产数据新鲜度、权限、部署漂移和错误监控。"
+caption_zh = "检查、部署和生产监控由各自工作流负责。"
+caption_en = "Separate workflows check changes, deploy services and observe production."

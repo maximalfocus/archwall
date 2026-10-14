@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">From shared data to the dashboard</title>
+<desc id="d">App starts storage and language services, hydrates bootstrap data, and shares mutable AppContext with layout and data-loading managers. Variants choose defaults. Panels and lazy map renderers show the resulting data. Local storage preserves preferences and history; workers move analysis off the UI thread. Refresh pauses in hidden tabs and staggers stale work when they return.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="70" width="368" height="382" rx="12" class="grp"/>
+<text x="208.0" y="106" class="gt" text-anchor="middle" >Startup</text>
+<rect x="416" y="70" width="368" height="382" rx="12" class="grp"/>
+<text x="600.0" y="106" class="gt" text-anchor="middle" >Shared application</text>
+<rect x="808" y="70" width="368" height="382" rx="12" class="grp"/>
+<text x="992.0" y="106" class="gt" text-anchor="middle" >Visible dashboard</text>
+<rect x="54" y="134" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="144" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="211.0" y="173.0" class="ag" text-anchor="middle" >main.ts → App.init</text>
+<rect x="54" y="214" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="224" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="211.0" y="253.0" class="ag" text-anchor="middle" >Storage + language</text>
+<rect x="54" y="294" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="304" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="321.0" class="ag" text-anchor="middle" >Bootstrap</text>
+<text x="211.0" y="345.0" class="ag" text-anchor="middle" >fast + background slow</text>
+<text x="208.0" y="400" class="lb" text-anchor="middle" >Fast tier precedes layout.</text>
+<text x="208.0" y="426" class="lb" text-anchor="middle" >Slow tier feeds visible data.</text>
+<rect x="446" y="134" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="144" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="161.0" class="ag" text-anchor="middle" >Variant config</text>
+<text x="603.0" y="185.0" class="ag" text-anchor="middle" >panels · layers · defaults</text>
+<rect x="446" y="214" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="224" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="603.0" y="241.0" class="ag" text-anchor="middle" >AppContext</text>
+<text x="603.0" y="265.0" class="ag" text-anchor="middle" >data + UI references</text>
+<rect x="446" y="294" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="304" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="321.0" class="ag" text-anchor="middle" >Layout + data loaders</text>
+<text x="603.0" y="345.0" class="ag" text-anchor="middle" >near-viewport loading</text>
+<text x="600.0" y="400" class="lb" text-anchor="middle" >Web: hostname / build variant.</text>
+<text x="600.0" y="426" class="lb" text-anchor="middle" >Desktop: stored choice / build.</text>
+<rect x="838" y="134" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="144" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="995.0" y="161.0" class="ag" text-anchor="middle" >Panels</text>
+<text x="995.0" y="185.0" class="ag" text-anchor="middle" >news · markets · signals</text>
+<rect x="838" y="214" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="224" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="995.0" y="241.0" class="ag" text-anchor="middle" >Flat map</text>
+<text x="995.0" y="265.0" class="ag" text-anchor="middle" >deck.gl / mobile SVG</text>
+<rect x="838" y="294" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="304" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="995.0" y="321.0" class="ag" text-anchor="middle" >Optional globe</text>
+<text x="995.0" y="345.0" class="ag" text-anchor="middle" >globe.gl</text>
+<text x="992.0" y="400" class="lb" text-anchor="middle" >MapContainer loads its renderer</text>
+<text x="992.0" y="426" class="lb" text-anchor="middle" >after painting a stable shell.</text>
+<path d="M360 452V475H448V452" class="flow"/>
+<text x="404" y="480" class="al" text-anchor="middle" >hydrated data</text>
+<path d="M752 452V475H840V452" class="flow"/>
+<text x="796" y="480" class="al" text-anchor="middle" >view data</text>
+<rect x="24" y="522" width="368" height="354" rx="12" class="grp"/>
+<text x="208.0" y="558" class="gt" text-anchor="middle" >Browser storage</text>
+<rect x="416" y="522" width="368" height="354" rx="12" class="grp"/>
+<text x="600.0" y="558" class="gt" text-anchor="middle" >Background workers</text>
+<rect x="808" y="522" width="368" height="354" rx="12" class="grp"/>
+<text x="992.0" y="558" class="gt" text-anchor="middle" >Refresh loop</text>
+<rect x="54" y="586" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="596" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="211.0" y="613.0" class="ag" text-anchor="middle" >localStorage</text>
+<text x="211.0" y="637.0" class="ag" text-anchor="middle" >preferences + panel layout</text>
+<rect x="54" y="666" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="676" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="211.0" y="693.0" class="ag" text-anchor="middle" >IndexedDB</text>
+<text x="211.0" y="717.0" class="ag" text-anchor="middle" >baselines + snapshots</text>
+<text x="208.0" y="824" class="lb" text-anchor="middle" >Preferences restore the view.</text>
+<text x="208.0" y="850" class="lb" text-anchor="middle" >Baselines and snapshots persist.</text>
+<rect x="446" y="586" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="596" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="613.0" class="ag" text-anchor="middle" >Analysis worker</text>
+<text x="603.0" y="637.0" class="ag" text-anchor="middle" >clustering + correlation</text>
+<rect x="446" y="666" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="676" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="693.0" class="ag" text-anchor="middle" >Optional ML worker</text>
+<text x="603.0" y="717.0" class="ag" text-anchor="middle" >web setting / desktop</text>
+<text x="600.0" y="824" class="lb" text-anchor="middle" >Messages return computed results.</text>
+<text x="600.0" y="850" class="lb" text-anchor="middle" >Local AI starts in background.</text>
+<rect x="838" y="586" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="596" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="995.0" y="613.0" class="ag" text-anchor="middle" >RefreshScheduler</text>
+<text x="995.0" y="637.0" class="ag" text-anchor="middle" >per-source poll lanes</text>
+<rect x="838" y="666" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="676" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="995.0" y="693.0" class="ag" text-anchor="middle" >Visibility events</text>
+<text x="995.0" y="717.0" class="ag" text-anchor="middle" >pause + stale catch-up</text>
+<text x="992.0" y="824" class="lb" text-anchor="middle" >In-flight guard bounds overlap.</text>
+<text x="992.0" y="850" class="lb" text-anchor="middle" >Catch-up starts in staggered order.</text>
+<path d="M208 522V452" class="flow"/>
+<text x="208" y="490" class="al" text-anchor="middle" >saved state</text>
+<path d="M600 452V522" class="flow"/>
+<text x="600" y="490" class="al" text-anchor="middle" >jobs / results</text>
+<path d="M992 522V452" class="flow"/>
+<text x="992" y="490" class="al" text-anchor="middle" >fresh data</text>
+</svg>
