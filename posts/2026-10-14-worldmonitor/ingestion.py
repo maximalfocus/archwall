@@ -2,7 +2,7 @@
 Source: koala73/worldmonitor@a1f94681edb0d82968b7926353e538c4a518a591.
 Evidence: scripts/ais-relay.cjs:3-4,12593-12606,15110 (AIS WebSocket and RSS);
 scripts/_bundle-runner.mjs:5-25 (scheduled members, freshness, time budget);
-scripts/_seed-utils.mjs:572-640,1230-1271,2443-2466,2868-2955
+scripts/ais-relay.cjs:12357-12358 (/ais/snapshot served to Vercel); scripts/_seed-utils.mjs:572-640,1230-1271,2443-2466,2868-2955
 (validation, canonical publish, opt-in envelopes, atomic extra-key/meta pair);
 consumer-prices-core/src/jobs/publish.ts:139-220 (snapshot freshness gates);
 consumer-prices-core/src/db/client.ts:1-17,consumer-prices-core/src/jobs/scrape.ts:343-372,
@@ -22,7 +22,7 @@ d = Diagram('Data collection and delivery', 'Railway relays collect streams and 
 for x, title in [(24,'Relay'),(416,'Seed bundles'),(808,'Consumer prices')]:
     d.group(x,24,368,368,title)
 d.column(24,24,[('AIS WebSocket|RSS proxy','coding'),('Upstream polling|Cached snapshots','coding')],w=308,h=70,gap=36)
-d.notes(24,24,368,'Railway service','Up to 10 browser sockets',w=368)
+d.notes(24,24,368,'Railway service','Serves snapshots to Vercel APIs',w=368)
 d.column(416,24,[('Scheduled members|Freshness checks','plan'),('Fetch · validate|Publish keys','coding')],w=308,h=70,gap=36)
 d.notes(416,24,368,'Member time budgets','Failed validation keeps old data',w=368)
 d.column(808,24,[('Retailer scrape|Price observations','coding'),('PostgreSQL|Price history','write'),('Aggregate prices|Publish snapshots','coding')],w=308,h=64,gap=22)

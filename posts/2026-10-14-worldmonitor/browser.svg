@@ -55,7 +55,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="446" y="304" width="5" height="44" rx="2" fill="#2f6fd6"/>
 <text x="603.0" y="321.0" class="ag" text-anchor="middle" >Layout + data loaders</text>
 <text x="603.0" y="345.0" class="ag" text-anchor="middle" >near-viewport loading</text>
-<text x="600.0" y="400" class="lb" text-anchor="middle" >Web: subdomain; localhost uses build.</text>
+<text x="600.0" y="400" class="lb" text-anchor="middle" >Web: subdomain; localhost stored or build.</text>
 <text x="600.0" y="426" class="lb" text-anchor="middle" >Desktop: stored choice / build.</text>
 <rect x="838" y="134" width="308" height="64" rx="8" class="agent"/>
 <rect x="838" y="144" width="5" height="44" rx="2" fill="#8a5cc7"/>

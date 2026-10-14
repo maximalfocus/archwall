@@ -1,5 +1,5 @@
 """Intelligence paths at worldmonitor a1f94681edb0d82968b7926353e538c4a518a591.
-Sources: src/services/rss.ts:341-354,399-407; src/services/clustering.ts:51-112;
+Sources: server/worldmonitor/intelligence/v1/get-risk-scores.ts:752-790 (server reads its own Redis keys, not browser clusters); src/app/data-loader.ts:113,2227-2269 (browser geo convergence and clustering); src/services/rss.ts:341-354,399-407; src/services/clustering.ts:51-112;
 src/app/data-loader.ts:2227-2269; src/services/threat-classifier.ts:84-92;
 src/services/geo-convergence.ts:38-83; src/services/signal-aggregator.ts:1-5;
 server/worldmonitor/intelligence/v1/get-risk-scores.ts:872-878,1245-1280,
@@ -20,20 +20,19 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools'))
 from archdiagram import Diagram
 
 d=Diagram('From observations to signals and summaries',
- 'News items receive keyword threat labels and locations, then word-overlap clustering with '
+ 'In the browser, news items receive keyword threat labels and locations, then word-overlap clustering with '
  'optional semantic refinement. Cached physical and news observations also feed server country '
  'and strategic risk, geographic correlations and seasonal-count anomalies. Risk health checks '
  'source coverage; anomalies require enough baseline samples. Optional local ML supplies '
  'embeddings, sentiment and named entities. Summary requests use configured entitled APIs '
  'Ollama then OpenRouter in normal mode, followed by available browser T5; beta can try '
  'already-loaded local T5 first. RSS breaking alerts and OREF sirens form distinct notification inputs.')
-d.group(24,70,552,400,'News interpretation')
+d.group(24,70,552,400,'Browser news interpretation')
 d.column(24,70,[('RSS / feed digest|headlines + article context','data'),('Keyword classification|threat level + category','critic'),('Location extraction|map markers + country context','coding'),('News clustering|word overlap + optional vectors','coding')],first=56,h=58,gap=14,w=492)
 d.notes(24,70,400,'Clustering: analysis worker or local fallback.','Optional API reclassification requires entitlement.')
-d.group(624,70,552,400,'Scores and signal products')
-d.column(624,70,[('Cached upstream observations|news · conflict · cyber · more','data'),('Server country + strategic risk|baselines + observed activity','critic'),('Geographic correlations|signals overlap by location','critic'),('Temporal anomalies|counts vs seasonal baseline','critic')],first=56,h=58,gap=14,w=492)
+d.group(624,70,552,400,'Server scores and browser signals')
+d.column(624,70,[('Redis observations|news · conflict · cyber · more','data'),('Server country + strategic risk|baselines + observed activity','critic'),('Geographic correlations|browser · signal overlap','critic'),('Temporal anomalies|counts vs seasonal baseline','critic')],first=56,h=58,gap=14,w=492)
 d.notes(624,70,400,'Risk health tracks source coverage.','Anomalies need enough baseline samples.')
-d.arrow('M552 70V40H648V70',label='observations',at=(600,45))
 d.group(24,540,552,336,'Optional AI and summaries')
 d.column(24,540,[('Optional browser ML|embeddings · sentiment · entities','coding'),('Configured entitled API chain|Ollama → OpenRouter','coding'),('Browser T5 summary fallback|when its worker is available','write')],first=56,h=58,gap=14,w=492)
 d.notes(24,540,336,'Normal summaries: APIs then browser T5.','Beta: loaded local T5 gets the first try.')

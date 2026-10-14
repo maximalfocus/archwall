@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Quote reads: seed first, live fill for gaps</title>
+<desc id="d">A quote request first reads the fixed market seed snapshot and keeps the requested symbols it has. Symbols missing from the seed, such as custom tickers, go to a provider one at a time. Each lookup uses a per-symbol Redis cache; not-found answers are cached briefly and transient errors are not. The response merges seed hits and live fills in the requested order, and lists a reason for each unavailable symbol.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="24" width="552" height="440" rx="12" class="grp"/>
+<circle cx="242.75" cy="51" r="14" class="num"/>
+<text x="242.75" y="57" class="numt" text-anchor="middle" >1</text>
+<text x="262.75" y="60" class="gt" text-anchor="start" >Request</text>
+<rect x="54" y="88" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="98" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="115.0" class="ag" text-anchor="middle" >Symbol list</text>
+<text x="303.0" y="139.0" class="ag" text-anchor="middle" >default or custom</text>
+<rect x="54" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="180" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="197.0" class="ag" text-anchor="middle" >Seed read</text>
+<text x="303.0" y="221.0" class="ag" text-anchor="middle" >market:stocks-bootstrap</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Seed hits keep the requested order.</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >Seed answers the default symbols.</text>
+<rect x="624" y="24" width="552" height="440" rx="12" class="grp"/>
+<circle cx="815.75" cy="51" r="14" class="num"/>
+<text x="815.75" y="57" class="numt" text-anchor="middle" >2</text>
+<text x="835.75" y="60" class="gt" text-anchor="start" >Seed misses</text>
+<rect x="654" y="88" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="98" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="903.0" y="115.0" class="ag" text-anchor="middle" >Missing symbols</text>
+<text x="903.0" y="139.0" class="ag" text-anchor="middle" >custom or dropped</text>
+<rect x="654" y="170" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="180" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="197.0" class="ag" text-anchor="middle" >Gap cache</text>
+<text x="903.0" y="221.0" class="ag" text-anchor="middle" >per symbol · 5 min Redis</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Not-found answers are cached briefly.</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >Provider errors are not cached.</text>
+<path d="M576 260H624" class="flow"/>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="829.25" cy="527" r="14" class="num"/>
+<text x="829.25" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="849.25" y="536" class="gt" text-anchor="start" >Live fill</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Provider quote</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >deadline-bounded</text>
+<rect x="654" y="646" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="656" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="673.0" class="ag" text-anchor="middle" >Outcome</text>
+<text x="903.0" y="697.0" class="ag" text-anchor="middle" >quote · not found · reason</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Rate limits and timeouts are reported.</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >The whole fill shares one deadline.</text>
+<path d="M900 464V500" class="flow"/>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<circle cx="188.75" cy="527" r="14" class="num"/>
+<text x="188.75" y="533" class="numt" text-anchor="middle" >4</text>
+<text x="208.75" y="536" class="gt" text-anchor="start" >Merged response</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >Seed hits + live fills</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >requested order</text>
+<rect x="54" y="646" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="656" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="673.0" class="ag" text-anchor="middle" >Unavailable reasons</text>
+<text x="303.0" y="697.0" class="ag" text-anchor="middle" >one per symbol</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Unknown symbols get a reason, not a guess.</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >Hits then fills form one list.</text>
+<path d="M624 700H576" class="flow"/>
+</svg>

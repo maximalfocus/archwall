@@ -14,7 +14,7 @@ d = Diagram('World Monitor: from sources to a shared picture',
     'Upstash Redis holds shared datasets and freshness metadata; Convex holds account state and intelligence history. '
     'Vercel APIs and the desktop Node sidecar serve the browser or desktop maps, panels and analysis, '
     'and API, CLI, SDK and MCP consumers. Configured AI providers enrich intelligence. '
-    'The remaining figures explain ingestion, gateway, browser, intelligence, accounts, desktop and operations.')
+    'The remaining figures explain ingestion, gateway, quote reads, queued jobs, browser, intelligence, accounts, desktop and operations.')
 d.group(24, 24, 552, 386, 'Sources and collection')
 d.column(24, 24, [('News · markets · events', 'data'), ('Ships · aircraft · climate', 'data'),
                        ('Railway relay · seed jobs', 'coding')], first=66)

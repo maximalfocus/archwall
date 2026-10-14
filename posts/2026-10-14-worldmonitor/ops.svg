@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Build, deploy and observe</title>
-<desc id="d">GitHub checks types, code, tests, security, proto generation and stacked merges; Deploy Gate aggregates results for a commit. Vercel serves the web app and API; Railway runs ingestion; Convex and Cloudflare have separate deployment workflows. Desktop releases build the Tauri app with its Node sidecar; GHCR publishes container images. Scheduled probes check data freshness, API cache and authentication, and Railway drift; Sentry reports client faults. These are independent checks and deployment surfaces, not one ordered release pipeline.</desc>
+<desc id="d">GitHub checks types, code, tests, security, proto generation and stacked merges; Deploy Gate aggregates results for a commit. Vercel serves the web app and API; Railway runs ingestion; Convex and Cloudflare have separate deployment workflows. Desktop releases build the Tauri app with its Node sidecar; GHCR publishes container images. Scheduled probes check data freshness, API cache and authentication, and Railway drift; Sentry reports client faults when a DSN is set. These are independent checks and deployment surfaces, not one ordered release pipeline.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -82,5 +82,5 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="738" width="492" height="72" rx="8" class="agent"/>
 <rect x="654" y="748" width="5" height="52" rx="2" fill="#e8973a"/>
 <text x="903.0" y="769.0" class="ag" text-anchor="middle" >Sentry</text>
-<text x="903.0" y="793.0" class="ag" text-anchor="middle" >Client errors · field performance</text>
+<text x="903.0" y="793.0" class="ag" text-anchor="middle" >Errors · vitals if DSN set</text>
 </svg>

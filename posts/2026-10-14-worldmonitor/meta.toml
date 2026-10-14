@@ -19,6 +19,18 @@ caption_zh = "HTTP 契约生成客户端和路由；网关检查访问权限并�
 caption_en = "HTTP contracts generate clients and routes; the gateway checks access and controls caching."
 
 [[figures]]
+file = "reads.svg"
+alt_zh = "行情请求先读取固定种子快照，保留已有代码；缺失或自定义代码逐个向供应商取价，并按代码缓存。合并结果按请求顺序返回，并说明不可用原因。"
+caption_zh = "行情先读种子，缺失代码再取价。"
+caption_en = "Quotes read a seed first; missing symbols go to a provider and are cached per symbol."
+
+[[figures]]
+file = "jobs.svg"
+alt_zh = "情景请求经网关检查后，写入所有者记录并推入 Redis 队列，立即返回 202 和状态地址。常驻工作进程取任务、计算并保存 24 小时结果，客户端轮询状态接口。"
+caption_zh = "情景任务排队：返回任务号，工人计算，客户端轮询。"
+caption_en = "Scenario runs are queued: a job id returns at once, a worker computes, and clients poll for the result."
+
+[[figures]]
 file = "browser.svg"
 alt_zh = "浏览器初始化存储和语言，启动数据与加载器汇入 AppContext，面板和地图显示结果；后台线程分析，存储保留历史，隐藏标签页暂停刷新。"
 caption_zh = "启动缓存与实时加载汇入 AppContext，再交给面板、地图和后台线程。"
@@ -26,13 +38,13 @@ caption_en = "Bootstrap data and live loaders meet in AppContext; panels, maps a
 
 [[figures]]
 file = "intelligence.svg"
-alt_zh = "新闻分类与定位形成上下文，再做聚类，观测数据支撑风险、关联和异常。可选模型提供向量、情感与实体识别；普通摘要依次尝试已配置且有权益的 Ollama、OpenRouter，再用可用的 T5 兜底，测试模式可先尝试已加载 T5。RSS 与 OREF 独立告警。"
+alt_zh = "浏览器内对新闻分类、定位并聚类；服务端风险与异常读取缓存数据，浏览器计算地理关联。可选模型提供向量、情感与实体识别；普通摘要依次尝试已配置且有权益的 Ollama、OpenRouter，再用可用的 T5 兜底，测试模式可先尝试已加载 T5。RSS 与 OREF 独立告警。"
 caption_zh = "新闻解析、风险信号、可选 AI 摘要与突发提醒各走不同路径。"
 caption_en = "News interpretation, risk signals, optional AI summaries and breaking alerts follow separate paths."
 
 [[figures]]
 file = "accounts.svg"
-alt_zh = "Clerk 登录后，账户接口验证 JWT，向 Convex 保存偏好、关注国家与通知规则。Dodo 签名支付事件更新订阅权益；外部客户端用 API 密钥或 OAuth，MCP 领域工具调用共享网关。Redis 缓存权益，未命中查询 Convex。情报事件与向量另存历史表，供时间线和语义检索。"
+alt_zh = "Clerk 登录后，账户接口验证 JWT，向 Convex 保存偏好、关注国家与通知规则。Dodo 签名支付事件更新订阅权益；外部客户端用 API 密钥或 OAuth，MCP 领域工具调用共享网关。Redis 缓存权益，未命中查询 Convex。情报事件与向量另存历史表（配置齐全时写入），供时间线和语义检索。"
 caption_zh = "Clerk 识别用户，Convex 保存账户与历史记录，支付事件和缓存权益决定访问权限。"
 caption_en = "Clerk identifies users; Convex stores account and history records, while payment events and cached rights control access."
 
@@ -44,6 +56,6 @@ caption_en = "Desktop protects secrets in the OS keyring and runs a local sideca
 
 [[figures]]
 file = "ops.svg"
-alt_zh = "提交检查、云端部署、桌面和容器发行，以及生产数据新鲜度、权限、部署漂移和错误监控。"
+alt_zh = "提交检查、云端部署、桌面和容器发行，以及生产数据新鲜度、权限、部署漂移；配 DSN 的网页版上报错误。"
 caption_zh = "检查、部署和生产监控由各自工作流负责。"
 caption_en = "Separate workflows check changes, deploy services and observe production."

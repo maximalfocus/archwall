@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Contracts and the API gateway</title>
-<desc id="d">HTTP-annotated protobuf services generate TypeScript clients, server routes and OpenAPI. Browser clients send requests through a shared domain gateway. It checks origins, credentials and entitlements, limits requests and invokes handwritten handlers. Successful GET or HEAD bodies receive cache policy, optional JSON projection and ETag validation. Operational APIs and MCP have separate entry points.</desc>
+<desc id="d">HTTP-annotated protobuf services generate TypeScript clients, server routes and OpenAPI. Browser clients send requests through a shared domain gateway. It checks origins, credentials and entitlements, limits requests and invokes handwritten handlers. Status-200 GET or HEAD bodies receive cache policy, optional JSON projection and ETag validation. Operational APIs and MCP have separate entry points.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -104,7 +104,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="380" y="645" class="al" text-anchor="middle" >body</text>
 <path d="M300 718V748" class="flow"/>
 <text x="410" y="739" class="al" text-anchor="middle" >response bytes</text>
-<text x="300" y="841" class="lb" text-anchor="middle" >Successful GET / HEAD responses with a body.</text>
+<text x="300" y="841" class="lb" text-anchor="middle" >Status 200 GET / HEAD responses with a body.</text>
 <path d="M624 812H600V592H576" class="flow"/>
 <text x="600" y="730" class="al" text-anchor="middle" >result</text>
 </svg>

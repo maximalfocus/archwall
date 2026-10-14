@@ -8,7 +8,7 @@ server/gateway.ts:1171-1186: CORS preflight and origin rejection.
 server/gateway.ts:1497-2104: credential admission and entitlements.
 server/gateway.ts:2123-2318: endpoint/user/IP rate limits.
 server/gateway.ts:2424-2447: handler execution and error boundary.
-server/gateway.ts:2484-2538: successful GET/HEAD-body cache policy, privacy and CDN guard.
+server/gateway.ts:2484-2538: status-200 GET/HEAD-body cache policy, privacy and CDN guard.
 server/gateway.ts:2551-2562: optional jmespath projection precedes ETag.
 server/gateway.ts:2610-2624: body-derived ETag and conditional 304.
 Scope: generated domain RPC routes; operational routes and MCP use separate entry points.
@@ -18,7 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools'))
 from archdiagram import Diagram
 
-d = Diagram('Contracts and the API gateway', 'HTTP-annotated protobuf services generate TypeScript clients, server routes and OpenAPI. Browser clients send requests through a shared domain gateway. It checks origins, credentials and entitlements, limits requests and invokes handwritten handlers. Successful GET or HEAD bodies receive cache policy, optional JSON projection and ETag validation. Operational APIs and MCP have separate entry points.')
+d = Diagram('Contracts and the API gateway', 'HTTP-annotated protobuf services generate TypeScript clients, server routes and OpenAPI. Browser clients send requests through a shared domain gateway. It checks origins, credentials and entitlements, limits requests and invokes handwritten handlers. Status-200 GET or HEAD bodies receive cache policy, optional JSON projection and ETag validation. Operational APIs and MCP have separate entry points.')
 d.group(24, 24, 552, 400, 'Contract and generation')
 d.card(54, 88, 'Protobuf services|HTTP paths + types', 'data', w=492)
 d.arrow('M300 152V174', label='Buf + sebuf', at=(420,168))
@@ -47,6 +47,6 @@ d.card(54, 654, 'Optional JSON projection|?jmespath=expression', 'coding', w=492
 d.card(54, 748, 'ETag comparison|unchanged → 304', 'plan', w=492)
 d.arrow('M300 624V654', label='body', at=(380,645))
 d.arrow('M300 718V748', label='response bytes', at=(410,739))
-d.note(300, 841, 'Successful GET / HEAD responses with a body.')
+d.note(300, 841, 'Status 200 GET / HEAD responses with a body.')
 d.arrow('M624 812H600V592H576', label='result', at=(600,730))
 d.save(Path(__file__).with_suffix('.svg'))

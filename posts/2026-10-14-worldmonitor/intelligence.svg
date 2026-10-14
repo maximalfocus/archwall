@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">From observations to signals and summaries</title>
-<desc id="d">News items receive keyword threat labels and locations, then word-overlap clustering with optional semantic refinement. Cached physical and news observations also feed server country and strategic risk, geographic correlations and seasonal-count anomalies. Risk health checks source coverage; anomalies require enough baseline samples. Optional local ML supplies embeddings, sentiment and named entities. Summary requests use configured entitled APIs Ollama then OpenRouter in normal mode, followed by available browser T5; beta can try already-loaded local T5 first. RSS breaking alerts and OREF sirens form distinct notification inputs.</desc>
+<desc id="d">In the browser, news items receive keyword threat labels and locations, then word-overlap clustering with optional semantic refinement. Cached physical and news observations also feed server country and strategic risk, geographic correlations and seasonal-count anomalies. Risk health checks source coverage; anomalies require enough baseline samples. Optional local ML supplies embeddings, sentiment and named entities. Summary requests use configured entitled APIs Ollama then OpenRouter in normal mode, followed by available browser T5; beta can try already-loaded local T5 first. RSS breaking alerts and OREF sirens form distinct notification inputs.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -26,7 +26,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 </style>
 <rect width="1200" height="900" rx="18" fill="#ffffff"/>
 <rect x="24" y="70" width="552" height="400" rx="12" class="grp"/>
-<text x="300.0" y="106" class="gt" text-anchor="middle" >News interpretation</text>
+<text x="300.0" y="106" class="gt" text-anchor="middle" >Browser news interpretation</text>
 <rect x="54" y="126" width="492" height="58" rx="8" class="agent"/>
 <rect x="54" y="136" width="5" height="38" rx="2" fill="#5b6675"/>
 <text x="303.0" y="150.0" class="ag" text-anchor="middle" >RSS / feed digest</text>
@@ -46,10 +46,10 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="300.0" y="418" class="lb" text-anchor="middle" >Clustering: analysis worker or local fallback.</text>
 <text x="300.0" y="444" class="lb" text-anchor="middle" >Optional API reclassification requires entitlement.</text>
 <rect x="624" y="70" width="552" height="400" rx="12" class="grp"/>
-<text x="900.0" y="106" class="gt" text-anchor="middle" >Scores and signal products</text>
+<text x="900.0" y="106" class="gt" text-anchor="middle" >Server scores and browser signals</text>
 <rect x="654" y="126" width="492" height="58" rx="8" class="agent"/>
 <rect x="654" y="136" width="5" height="38" rx="2" fill="#5b6675"/>
-<text x="903.0" y="150.0" class="ag" text-anchor="middle" >Cached upstream observations</text>
+<text x="903.0" y="150.0" class="ag" text-anchor="middle" >Redis observations</text>
 <text x="903.0" y="174.0" class="ag" text-anchor="middle" >news · conflict · cyber · more</text>
 <rect x="654" y="198" width="492" height="58" rx="8" class="agent"/>
 <rect x="654" y="208" width="5" height="38" rx="2" fill="#e8973a"/>
@@ -58,15 +58,13 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="270" width="492" height="58" rx="8" class="agent"/>
 <rect x="654" y="280" width="5" height="38" rx="2" fill="#e8973a"/>
 <text x="903.0" y="294.0" class="ag" text-anchor="middle" >Geographic correlations</text>
-<text x="903.0" y="318.0" class="ag" text-anchor="middle" >signals overlap by location</text>
+<text x="903.0" y="318.0" class="ag" text-anchor="middle" >browser · signal overlap</text>
 <rect x="654" y="342" width="492" height="58" rx="8" class="agent"/>
 <rect x="654" y="352" width="5" height="38" rx="2" fill="#e8973a"/>
 <text x="903.0" y="366.0" class="ag" text-anchor="middle" >Temporal anomalies</text>
 <text x="903.0" y="390.0" class="ag" text-anchor="middle" >counts vs seasonal baseline</text>
 <text x="900.0" y="418" class="lb" text-anchor="middle" >Risk health tracks source coverage.</text>
 <text x="900.0" y="444" class="lb" text-anchor="middle" >Anomalies need enough baseline samples.</text>
-<path d="M552 70V40H648V70" class="flow"/>
-<text x="600" y="45" class="al" text-anchor="middle" >observations</text>
 <rect x="24" y="540" width="552" height="336" rx="12" class="grp"/>
 <text x="300.0" y="576" class="gt" text-anchor="middle" >Optional AI and summaries</text>
 <rect x="54" y="596" width="492" height="58" rx="8" class="agent"/>
