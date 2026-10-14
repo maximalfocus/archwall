@@ -1,7 +1,7 @@
 """Browser composition at worldmonitor a1f94681edb0d82968b7926353e538c4a518a591.
 Sources: src/main.ts:650-654; src/App.ts:1521-1625,2416-2422,2457-2476,
 2593-2603,2881-2885,2998-3030; src/app/app-context.ts:74-103;
-src/config/variant.ts:7,33-63; src/app/data-loader.ts:993-994;
+src/config/variant.ts:7,33-58; src/app/data-loader.ts:993-994;
 src/components/MapContainer.ts:732-743; src/services/storage.ts:28-54;
 src/utils/panel-storage.ts:25-47; src/workers/analysis.worker.ts:74-120;
 src/services/ml-worker.ts:260,551; src/app/refresh-scheduler.ts:135-159,174-199;
@@ -24,7 +24,7 @@ for x, title in [(24, 'Startup'), (416, 'Shared application'), (808, 'Visible da
 d.column(24,70,[('main.ts → App.init', 'coding'),('Storage + language', 'coding'),('Bootstrap|fast + background slow', 'data')],w=308)
 d.notes(24,70,382,'Fast tier precedes layout.','Slow tier feeds visible data.',w=368)
 d.column(416,70,[('Variant config|panels · layers · defaults', 'plan'),('AppContext|data + UI references', 'data'),('Layout + data loaders|near-viewport loading', 'coding')],w=308)
-d.notes(416,70,382,'Web: hostname / build variant.','Desktop: stored choice / build.',w=368)
+d.notes(416,70,382,'Web: subdomain; localhost uses build.','Desktop: stored choice / build.',w=368)
 d.column(808,70,[('Panels|news · markets · signals', 'write'),('Flat map|deck.gl / mobile SVG', 'write'),('Optional globe|globe.gl', 'write')],w=308)
 d.notes(808,70,382,'MapContainer loads its renderer','after painting a stable shell.',w=368)
 d.arrow('M360 452V475H448V452',label='hydrated data',at=(404,480))

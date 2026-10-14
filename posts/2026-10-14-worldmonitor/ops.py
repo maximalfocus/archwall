@@ -4,7 +4,7 @@ Source paths: .github/workflows/deploy-gate.yml:1-21 (aggregated PR checks);
 vercel.json:2-3 (build and ignore commands);
 workers/api-cors-preflight/src/index.js:1-6 (CORS preflight and response headers); .github/workflows/railway-registry-sync.yml:45-93;
 .github/workflows/convex-deploy.yml; .github/workflows/deploy-worker.yml;
-.github/workflows/build-desktop.yml:484-490; .github/workflows/docker-publish.yml:28-50;
+.github/workflows/build-desktop.yml:484-490; .github/workflows/docker-publish.yml:28-48;
 .github/workflows/seed-freshness-monitor.yml:125-150;
 .github/workflows/live-api-cache-auth.yml; .github/workflows/railway-deploy-drift.yml;
 src/main.ts:49-66 (deferred Sentry); vite.config.ts:1081-1120 (PWA cache rules); ARCHITECTURE.md:56-71 (hosting).

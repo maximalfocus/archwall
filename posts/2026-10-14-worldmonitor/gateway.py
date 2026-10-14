@@ -2,7 +2,7 @@
 Source: koala73/worldmonitor a1f94681edb0d82968b7926353e538c4a518a591.
 proto/worldmonitor/seismology/v1/service.proto:9-15: HTTP-annotated service contract.
 proto/buf.gen.yaml:14-46: TS client/server and OpenAPI generation.
-api/seismology/v1/[rpc].ts:1-10: generated routes + handwritten handler in edge gateway.
+api/seismology/v1/[rpc].ts:1-9: generated routes + handwritten handler in edge gateway.
 src/services/generated-rpc-clients.ts:69-77: browser-generated client loading.
 server/gateway.ts:1171-1186: CORS preflight and origin rejection.
 server/gateway.ts:1497-2104: credential admission and entitlements.

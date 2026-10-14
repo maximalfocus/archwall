@@ -5,8 +5,8 @@ scripts/_bundle-runner.mjs:5-25 (scheduled members, freshness, time budget);
 scripts/_seed-utils.mjs:572-640,1230-1271,2443-2466,2868-2955
 (validation, canonical publish, opt-in envelopes, atomic extra-key/meta pair);
 consumer-prices-core/src/jobs/publish.ts:139-220 (snapshot freshness gates);
-consumer-prices-core/src/db/client.ts:1-17,src/jobs/scrape.ts:343-372,
-src/jobs/aggregate.ts:157-178 (PostgreSQL observations and computed indices);
+consumer-prices-core/src/db/client.ts:1-17,consumer-prices-core/src/jobs/scrape.ts:343-372,
+consumer-prices-core/src/jobs/aggregate.ts:157-178 (PostgreSQL observations and computed indices);
 scripts/seed-consumer-prices.mjs:4-15 (core scrape/aggregate/publish owns writes);
 api/bootstrap.js:57-58,292-302 (tier registry and Redis GET pipeline);
 src/services/bootstrap.ts:128-131 (hydration Map read and eviction);
@@ -22,7 +22,7 @@ d = Diagram('Data collection and delivery', 'Railway relays collect streams and 
 for x, title in [(24,'Relay'),(416,'Seed bundles'),(808,'Consumer prices')]:
     d.group(x,24,368,368,title)
 d.column(24,24,[('AIS WebSocket|RSS proxy','coding'),('Upstream polling|Cached snapshots','coding')],w=308,h=70,gap=36)
-d.notes(24,24,368,'Railway service','Streams also reach browsers',w=368)
+d.notes(24,24,368,'Railway service','Up to 10 browser sockets',w=368)
 d.column(416,24,[('Scheduled members|Freshness checks','plan'),('Fetch · validate|Publish keys','coding')],w=308,h=70,gap=36)
 d.notes(416,24,368,'Member time budgets','Failed validation keeps old data',w=368)
 d.column(808,24,[('Retailer scrape|Price observations','coding'),('PostgreSQL|Price history','write'),('Aggregate prices|Publish snapshots','coding')],w=308,h=64,gap=22)
