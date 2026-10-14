@@ -1,5 +1,5 @@
 """WorldMonitor identity, payments, durable state and shared access.
-scripts/_seed-history.mjs:12-15 (history seeding skipped when Convex, relay secret or OpenRouter config is missing).
+scripts/_seed-history.mjs:9-17 (history append is a fail-open secondary artefact; skipped when Convex, relay secret or OpenRouter config is missing; core seed collection continues).
 Source: koala73/worldmonitor a1f94681edb0d82968b7926353e538c4a518a591.
 src/services/clerk.ts:876-881: Clerk session JWT retrieval.
 server/auth-session.ts:56-60,259-262: JWKS and JWT verification.
@@ -25,7 +25,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools'))
 from archdiagram import Diagram
 
-d = Diagram('Accounts, durable state and access', 'Clerk signs in dashboard users. Edge APIs verify session JWTs and persist preferences, followed countries, notification settings and subscription state in Convex. Dodo checkout sends signed payment webhooks that update subscription records. External agents use API keys or MCP OAuth; MCP domain tools can call the same domain handlers through authenticated requests. Redis caches access rights while Convex holds durable records. Separately, seeders append intelligence events and vectors to Convex for timeline and semantic search; they are skipped when their config is missing.')
+d = Diagram('Accounts, durable state and access', 'Clerk signs in dashboard users. Edge APIs verify session JWTs and persist preferences, followed countries, notification settings and subscription state in Convex. Dodo checkout sends signed payment webhooks that update subscription records. External agents use API keys or MCP OAuth; MCP domain tools can call the same domain handlers through authenticated requests. Redis caches access rights while Convex holds durable records. Separately, when its config is set, history append stores intelligence events and vectors in Convex for timeline and semantic search; seed collection runs without it.')
 
 d.group(24, 24, 368, 400, 'Dashboard identity')
 d.column(24,24,[('Clerk sign-in|session JWT', 'coding'),('Edge account APIs|verify JWT with JWKS','review'),('Preferences + alerts|read / write requests','coding')],w=308,gap=28)
@@ -38,10 +38,10 @@ d.column(416,24,[('User preferences|per dashboard variant','write'),('Followed c
 d.arrow('M392 280H416',label='sync',at=(404,267))
 
 d.group(808,24,368,400,'Convex history')
-d.column(808,24,[('Seeders|events + embeddings','coding'),('Intelligence history|durable rows + vector index','write'),('Timeline + search|chronology / similarity','coding')],w=308,gap=28)
+d.column(808,24,[('History append|events + embeddings','coding'),('Intelligence history|durable rows + vector index','write'),('Timeline + search|chronology / similarity','coding')],w=308,gap=28)
 d.arrow('M992 152V180',label='append',at=(1060,170))
 d.arrow('M992 244V272',label='query',at=(1050,262))
-d.note(992,378,'Skipped when its config is missing.')
+d.note(992,378,'Append runs only when configured.')
 
 d.group(24,500,368,364,'Payment flow')
 d.column(24,500,[('Edge checkout API|verified signed-in user','review'),('Convex → Dodo|create checkout session','coding'),('Signed Dodo webhook|verify then update records','review')],w=308,h=60,gap=36,first=60)

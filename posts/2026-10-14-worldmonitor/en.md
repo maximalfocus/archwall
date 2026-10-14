@@ -8,11 +8,11 @@ Protobuf contracts generate domain clients and routes. The gateway checks access
 
 ![](gateway.svg)
 
-Quotes read a seed first; missing symbols go to a provider and are cached per symbol.
+Stock and index quotes read a seed first. Missing symbols check a per-symbol cache before any provider call.
 
 ![](reads.svg)
 
-Scenario runs are queued. A job id returns at once, a worker computes, and clients poll for the result.
+Scenario runs are queued. The caller gets a job id at once; a background worker claims and computes it while clients poll for status.
 
 ![](jobs.svg)
 
@@ -20,7 +20,7 @@ AppContext connects loaders, panels and maps. Storage preserves preferences and 
 
 ![](browser.svg)
 
-The browser groups news and raises breaking alerts; server scores read cached feeds. Browser ML needs its runtime setting or desktop mode. API news summaries need entitlement and provider configuration; browser T5 offers a fallback.
+The browser groups news and raises breaking alerts; server scores read cached feeds. RSS and siren alerts stay separate. Browser ML needs its runtime setting or desktop mode. API news summaries need entitlement and provider configuration; browser T5 offers a fallback.
 
 ![](intelligence.svg)
 
