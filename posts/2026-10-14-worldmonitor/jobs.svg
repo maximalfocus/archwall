@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Queued scenario jobs</title>
-<desc id="d">A scenario request passes its checks, then the owner key and a pending queue entry are written in one transaction, and the caller gets a job id and status address. A background worker claims a pending job, records it as processing, and writes done or failed under the owner-scoped result key. The status route checks premium access and the owner key, then reads the result key. A missing owner key or result reads as pending, so polling can start at once. Simulation and deep-forecast use sorted-set queues instead.</desc>
+<desc id="d">A scenario request passes its checks, then the owner key and a pending queue entry are written in one transaction, and the caller gets a job id and status address. A background worker claims a pending job, records it as processing, and writes done or failed under the owner-scoped result key. On restart, requeued jobs with any saved result record are skipped; a saved processing record can leave an unfinished job uncomputed. The status route checks premium access and the owner key, then reads the result key. A missing owner key or result reads as pending, so polling can start at once. Simulation and deep-forecast use sorted-set queues instead.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -71,8 +71,8 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="656" width="5" height="44" rx="2" fill="#2f6fd6"/>
 <text x="903.0" y="673.0" class="ag" text-anchor="middle" >Write result key</text>
 <text x="903.0" y="697.0" class="ag" text-anchor="middle" >processing, then done or failed</text>
-<text x="900.0" y="812" class="lb" text-anchor="middle" >Restart moves claimed jobs to pending.</text>
-<text x="900.0" y="838" class="lb" text-anchor="middle" >Result key is owner-scoped.</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Restart requeues; a saved result record skips the job.</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >A saved processing record can leave a job uncomputed.</text>
 <path d="M900 464V500" class="flow"/>
 <text x="900" y="482" class="al" text-anchor="middle" >claimed job</text>
 <path d="M1040 500V464" class="flow"/>
