@@ -36,7 +36,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="170" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="180" width="5" height="44" rx="2" fill="#5b6675"/>
 <text x="303.0" y="197.0" class="ag" text-anchor="middle" >Seed snapshot</text>
-<text x="303.0" y="221.0" class="ag" text-anchor="middle" >market:stocks-bootstrap</text>
+<text x="303.0" y="221.0" class="ag" text-anchor="middle" >market:stocks-bootstrap:v1</text>
 <text x="300.0" y="412" class="lb" text-anchor="middle" >Invalid or empty seed: unavailable.</text>
 <text x="300.0" y="438" class="lb" text-anchor="middle" >All symbols found: answer now.</text>
 <rect x="624" y="24" width="552" height="440" rx="12" class="grp"/>
@@ -91,4 +91,6 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="300.0" y="838" class="lb" text-anchor="middle" >Unknown symbols get a reason.</text>
 <path d="M624 700H576" class="flow"/>
 <text x="600" y="690" class="al" text-anchor="middle" >answers</text>
+<path d="M760 464V482H300V500" class="flow"/>
+<text x="530" y="477" class="al" text-anchor="middle" >found symbols</text>
 </svg>

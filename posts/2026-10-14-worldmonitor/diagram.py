@@ -13,7 +13,7 @@ d = Diagram('World Monitor: from sources to a shared picture',
     'External news, markets, conflict, climate, ships and aircraft feed Railway relay and seed jobs. '
     'Upstash Redis holds shared datasets and freshness metadata; Convex holds account state and intelligence history. '
     'Vercel APIs and the desktop Node sidecar serve the browser or desktop maps, panels and analysis, '
-    'and API, CLI, SDK and MCP consumers. Relay vessel snapshots also reach Vercel APIs directly. Configured AI providers enrich intelligence. '
+    'and API, CLI, SDK and MCP consumers. When WS_RELAY_URL is set, relay vessel snapshots also reach Vercel APIs directly. Configured AI providers enrich intelligence. '
     'The remaining figures explain ingestion, gateway, quote reads, queued jobs, browser, intelligence, accounts, desktop and operations.')
 d.group(24, 24, 552, 386, 'Sources and collection')
 d.column(24, 24, [('News · markets · events', 'data'), ('Ships · aircraft · climate', 'data'),
@@ -33,6 +33,6 @@ d.notes(24, 494, 382, 'AI enrichment uses configured providers')
 d.arrow('M576 285H624', label='datasets', at=(600, 267))
 d.arrow('M900 410V494', label='data · state', at=(900, 455))
 d.arrow('M624 632H576', label='results', at=(600, 617))
-d.arrow('M546 300H600V598H654', label='live snapshots', at=(600, 452))
+d.arrow('M546 300H600V598H654', label='snapshots · if WS_RELAY_URL', at=(600, 452))
 d.arrow('M576 755H624', label='requests', at=(600, 739))
 d.save(Path(__file__).with_suffix('.svg'))

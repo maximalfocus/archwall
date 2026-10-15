@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">World Monitor: from sources to a shared picture</title>
-<desc id="d">External news, markets, conflict, climate, ships and aircraft feed Railway relay and seed jobs. Upstash Redis holds shared datasets and freshness metadata; Convex holds account state and intelligence history. Vercel APIs and the desktop Node sidecar serve the browser or desktop maps, panels and analysis, and API, CLI, SDK and MCP consumers. Relay vessel snapshots also reach Vercel APIs directly. Configured AI providers enrich intelligence. The remaining figures explain ingestion, gateway, quote reads, queued jobs, browser, intelligence, accounts, desktop and operations.</desc>
+<desc id="d">External news, markets, conflict, climate, ships and aircraft feed Railway relay and seed jobs. Upstash Redis holds shared datasets and freshness metadata; Convex holds account state and intelligence history. Vercel APIs and the desktop Node sidecar serve the browser or desktop maps, panels and analysis, and API, CLI, SDK and MCP consumers. When WS_RELAY_URL is set, relay vessel snapshots also reach Vercel APIs directly. Configured AI providers enrich intelligence. The remaining figures explain ingestion, gateway, quote reads, queued jobs, browser, intelligence, accounts, desktop and operations.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -76,7 +76,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <path d="M624 632H576" class="flow"/>
 <text x="600" y="617" class="al" text-anchor="middle" >results</text>
 <path d="M546 300H600V598H654" class="flow"/>
-<text x="600" y="452" class="al" text-anchor="middle" >live snapshots</text>
+<text x="600" y="452" class="al" text-anchor="middle" >snapshots · if WS_RELAY_URL</text>
 <path d="M576 755H624" class="flow"/>
 <text x="600" y="739" class="al" text-anchor="middle" >requests</text>
 </svg>

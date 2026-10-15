@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Queued scenario jobs</title>
-<desc id="d">A scenario request is checked, then the owner record and a pending queue entry are written together, and the caller gets a job id and status address. A background worker claims a pending job, records it as processing, and then records done or failed. The status route checks premium access and that the caller owns the job before it reads the record. A missing record reads as pending, so polling can start at once. Simulation and deep-forecast also use queues.</desc>
+<desc id="d">A scenario request passes its checks, then the owner key and a pending queue entry are written in one transaction, and the caller gets a job id and status address. A background worker claims a pending job, records it as processing, and writes done or failed under the owner-scoped result key. The status route checks premium access and the owner key, then reads the result key. A missing owner key or result reads as pending, so polling can start at once. Simulation and deep-forecast use sorted-set queues instead.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -34,25 +34,25 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="303.0" y="115.0" class="ag" text-anchor="middle" >Scenario request</text>
 <text x="303.0" y="139.0" class="ag" text-anchor="middle" >POST run-scenario</text>
 <rect x="54" y="170" width="492" height="64" rx="8" class="agent"/>
-<rect x="54" y="180" width="5" height="44" rx="2" fill="#5b6675"/>
-<text x="303.0" y="197.0" class="ag" text-anchor="middle" >Owner and queue</text>
-<text x="303.0" y="221.0" class="ag" text-anchor="middle" >one transaction</text>
+<rect x="54" y="180" width="5" height="44" rx="2" fill="#d64545"/>
+<text x="303.0" y="197.0" class="ag" text-anchor="middle" >Premium and queue checks</text>
+<text x="303.0" y="221.0" class="ag" text-anchor="middle" >before any write</text>
 <text x="300.0" y="412" class="lb" text-anchor="middle" >Caller gets a job id and status URL.</text>
-<text x="300.0" y="438" class="lb" text-anchor="middle" >Refused requests are not queued.</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >Refused requests write nothing.</text>
 <rect x="624" y="24" width="552" height="440" rx="12" class="grp"/>
-<circle cx="849.5" cy="51" r="14" class="num"/>
-<text x="849.5" y="57" class="numt" text-anchor="middle" >2</text>
-<text x="869.5" y="60" class="gt" text-anchor="start" >Queued</text>
+<circle cx="802.25" cy="51" r="14" class="num"/>
+<text x="802.25" y="57" class="numt" text-anchor="middle" >2</text>
+<text x="822.25" y="60" class="gt" text-anchor="start" >Redis records</text>
 <rect x="654" y="88" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="98" width="5" height="44" rx="2" fill="#5b6675"/>
-<text x="903.0" y="115.0" class="ag" text-anchor="middle" >Owner record</text>
-<text x="903.0" y="139.0" class="ag" text-anchor="middle" >binds the job to the caller</text>
+<text x="903.0" y="115.0" class="ag" text-anchor="middle" >Owner key</text>
+<text x="903.0" y="139.0" class="ag" text-anchor="middle" >bound to the caller</text>
 <rect x="654" y="170" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="180" width="5" height="44" rx="2" fill="#8a5cc7"/>
 <text x="903.0" y="197.0" class="ag" text-anchor="middle" >Pending queue</text>
-<text x="903.0" y="221.0" class="ag" text-anchor="middle" >waits for a worker</text>
-<text x="900.0" y="412" class="lb" text-anchor="middle" >Written in the same transaction.</text>
-<text x="900.0" y="438" class="lb" text-anchor="middle" >Unconfirmed writes fail the request.</text>
+<text x="903.0" y="221.0" class="ag" text-anchor="middle" >job entry for the worker</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >Owner key and queue entry: one transaction.</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >Failed transaction: 502, no job id.</text>
 <path d="M576 260H624" class="flow"/>
 <text x="600" y="250" class="al" text-anchor="middle" >job stored</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
@@ -65,12 +65,14 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="615.0" class="ag" text-anchor="middle" >pending to processing</text>
 <rect x="654" y="646" width="492" height="64" rx="8" class="agent"/>
 <rect x="654" y="656" width="5" height="44" rx="2" fill="#2f6fd6"/>
-<text x="903.0" y="673.0" class="ag" text-anchor="middle" >Record result</text>
+<text x="903.0" y="673.0" class="ag" text-anchor="middle" >Write result key</text>
 <text x="903.0" y="697.0" class="ag" text-anchor="middle" >processing, then done or failed</text>
 <text x="900.0" y="812" class="lb" text-anchor="middle" >Restart moves claimed jobs to pending.</text>
-<text x="900.0" y="838" class="lb" text-anchor="middle" >Processing is recorded before compute.</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >Result key is owner-scoped.</text>
 <path d="M900 464V500" class="flow"/>
 <text x="900" y="482" class="al" text-anchor="middle" >claimed job</text>
+<path d="M1040 500V464" class="flow"/>
+<text x="1095" y="482" class="al" text-anchor="middle" >result write</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
 <circle cx="249.5" cy="527" r="14" class="num"/>
 <text x="249.5" y="533" class="numt" text-anchor="middle" >4</text>
@@ -82,13 +84,13 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="646" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="656" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="303.0" y="673.0" class="ag" text-anchor="middle" >Status route</text>
-<text x="303.0" y="697.0" class="ag" text-anchor="middle" >premium and owner check</text>
+<text x="303.0" y="697.0" class="ag" text-anchor="middle" >premium, then owner key match</text>
 <rect x="54" y="728" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="738" width="5" height="44" rx="2" fill="#2f9e6e"/>
 <text x="303.0" y="755.0" class="ag" text-anchor="middle" >Reply</text>
 <text x="303.0" y="779.0" class="ag" text-anchor="middle" >pending · processing · done · failed</text>
-<text x="300.0" y="812" class="lb" text-anchor="middle" >Missing record reads as pending.</text>
-<text x="300.0" y="838" class="lb" text-anchor="middle" >Other callers get not found.</text>
-<path d="M624 700H576" class="flow"/>
-<text x="600" y="690" class="al" text-anchor="middle" >record read</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >Missing owner key or result: pending.</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >Another job owner gets not found.</text>
+<path d="M760 464V482H300V500" class="flow"/>
+<text x="530" y="477" class="al" text-anchor="middle" >owner and result read</text>
 </svg>

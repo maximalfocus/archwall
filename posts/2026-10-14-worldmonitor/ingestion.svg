@@ -40,7 +40,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="211.0" y="224.0" class="ag" text-anchor="middle" >Upstream polling</text>
 <text x="211.0" y="248.0" class="ag" text-anchor="middle" >Cached snapshots</text>
 <text x="208.0" y="340" class="lb" text-anchor="middle" >Railway service</text>
-<text x="208.0" y="366" class="lb" text-anchor="middle" >Serves snapshots to Vercel APIs</text>
+<text x="208.0" y="366" class="lb" text-anchor="middle" >Snapshots if WS_RELAY_URL is set</text>
 <rect x="446" y="88" width="308" height="70" rx="8" class="agent"/>
 <rect x="446" y="98" width="5" height="50" rx="2" fill="#2f9e6e"/>
 <text x="603.0" y="118.0" class="ag" text-anchor="middle" >Scheduled members</text>
