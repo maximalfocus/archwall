@@ -51,8 +51,12 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="654" y="180" width="5" height="44" rx="2" fill="#8a5cc7"/>
 <text x="903.0" y="197.0" class="ag" text-anchor="middle" >Pending queue</text>
 <text x="903.0" y="221.0" class="ag" text-anchor="middle" >job entry for the worker</text>
+<rect x="654" y="252" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="262" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >Result key</text>
+<text x="903.0" y="303.0" class="ag" text-anchor="middle" >owner-scoped, written by worker</text>
 <text x="900.0" y="412" class="lb" text-anchor="middle" >Owner key and queue entry: one transaction.</text>
-<text x="900.0" y="438" class="lb" text-anchor="middle" >Failed transaction: 502, no job id.</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >Failed transaction: 502, no job id returned.</text>
 <path d="M576 260H624" class="flow"/>
 <text x="600" y="250" class="al" text-anchor="middle" >job stored</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
