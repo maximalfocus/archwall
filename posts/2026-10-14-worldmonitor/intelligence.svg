@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">From observations to signals and summaries</title>
+<desc id="d">In the browser, news items receive keyword threat labels and locations, then word-overlap clustering with optional semantic refinement. Cached physical and news observations also feed server country and strategic risk, geographic correlations and seasonal-count anomalies. Risk health checks source coverage; anomalies require enough baseline samples. Optional local ML supplies embeddings, sentiment and named entities. Summary requests use configured entitled APIs Ollama then OpenRouter in normal mode, followed by available browser T5; beta can try already-loaded local T5 first. RSS breaking alerts and OREF sirens form distinct notification inputs.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="70" width="552" height="400" rx="12" class="grp"/>
+<text x="300.0" y="106" class="gt" text-anchor="middle" >Browser news interpretation</text>
+<rect x="54" y="126" width="492" height="58" rx="8" class="agent"/>
+<rect x="54" y="136" width="5" height="38" rx="2" fill="#5b6675"/>
+<text x="303.0" y="150.0" class="ag" text-anchor="middle" >RSS / feed digest</text>
+<text x="303.0" y="174.0" class="ag" text-anchor="middle" >headlines + article context</text>
+<rect x="54" y="198" width="492" height="58" rx="8" class="agent"/>
+<rect x="54" y="208" width="5" height="38" rx="2" fill="#e8973a"/>
+<text x="303.0" y="222.0" class="ag" text-anchor="middle" >Keyword classification</text>
+<text x="303.0" y="246.0" class="ag" text-anchor="middle" >threat level + category</text>
+<rect x="54" y="270" width="492" height="58" rx="8" class="agent"/>
+<rect x="54" y="280" width="5" height="38" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="294.0" class="ag" text-anchor="middle" >Location extraction</text>
+<text x="303.0" y="318.0" class="ag" text-anchor="middle" >map markers + country context</text>
+<rect x="54" y="342" width="492" height="58" rx="8" class="agent"/>
+<rect x="54" y="352" width="5" height="38" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="366.0" class="ag" text-anchor="middle" >News clustering</text>
+<text x="303.0" y="390.0" class="ag" text-anchor="middle" >word overlap + optional vectors</text>
+<text x="300.0" y="418" class="lb" text-anchor="middle" >Clustering: analysis worker or local fallback.</text>
+<text x="300.0" y="444" class="lb" text-anchor="middle" >Optional API reclassification requires entitlement.</text>
+<rect x="624" y="70" width="552" height="400" rx="12" class="grp"/>
+<text x="900.0" y="106" class="gt" text-anchor="middle" >Server scores and browser signals</text>
+<rect x="654" y="126" width="492" height="58" rx="8" class="agent"/>
+<rect x="654" y="136" width="5" height="38" rx="2" fill="#5b6675"/>
+<text x="903.0" y="150.0" class="ag" text-anchor="middle" >Redis observations</text>
+<text x="903.0" y="174.0" class="ag" text-anchor="middle" >news · conflict · cyber · more</text>
+<rect x="654" y="198" width="492" height="58" rx="8" class="agent"/>
+<rect x="654" y="208" width="5" height="38" rx="2" fill="#e8973a"/>
+<text x="903.0" y="222.0" class="ag" text-anchor="middle" >Server country + strategic risk</text>
+<text x="903.0" y="246.0" class="ag" text-anchor="middle" >baselines + observed activity</text>
+<rect x="654" y="270" width="492" height="58" rx="8" class="agent"/>
+<rect x="654" y="280" width="5" height="38" rx="2" fill="#e8973a"/>
+<text x="903.0" y="294.0" class="ag" text-anchor="middle" >Geographic correlations</text>
+<text x="903.0" y="318.0" class="ag" text-anchor="middle" >browser · signal overlap</text>
+<rect x="654" y="342" width="492" height="58" rx="8" class="agent"/>
+<rect x="654" y="352" width="5" height="38" rx="2" fill="#e8973a"/>
+<text x="903.0" y="366.0" class="ag" text-anchor="middle" >Temporal anomalies</text>
+<text x="903.0" y="390.0" class="ag" text-anchor="middle" >counts vs seasonal baseline</text>
+<text x="900.0" y="418" class="lb" text-anchor="middle" >Risk health tracks source coverage.</text>
+<text x="900.0" y="444" class="lb" text-anchor="middle" >Anomalies need enough baseline samples.</text>
+<rect x="24" y="540" width="552" height="336" rx="12" class="grp"/>
+<text x="300.0" y="576" class="gt" text-anchor="middle" >Optional AI and summaries</text>
+<rect x="54" y="596" width="492" height="58" rx="8" class="agent"/>
+<rect x="54" y="606" width="5" height="38" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="620.0" class="ag" text-anchor="middle" >Optional browser ML</text>
+<text x="303.0" y="644.0" class="ag" text-anchor="middle" >embeddings · sentiment · entities</text>
+<rect x="54" y="668" width="492" height="58" rx="8" class="agent"/>
+<rect x="54" y="678" width="5" height="38" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="692.0" class="ag" text-anchor="middle" >Configured entitled API chain</text>
+<text x="303.0" y="716.0" class="ag" text-anchor="middle" >Ollama → OpenRouter</text>
+<rect x="54" y="740" width="492" height="58" rx="8" class="agent"/>
+<rect x="54" y="750" width="5" height="38" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="764.0" class="ag" text-anchor="middle" >Browser T5 summary fallback</text>
+<text x="303.0" y="788.0" class="ag" text-anchor="middle" >when its worker is available</text>
+<text x="300.0" y="824" class="lb" text-anchor="middle" >Normal summaries: APIs then browser T5.</text>
+<text x="300.0" y="850" class="lb" text-anchor="middle" >Beta: loaded local T5 gets the first try.</text>
+<rect x="624" y="540" width="552" height="336" rx="12" class="grp"/>
+<text x="900.0" y="576" class="gt" text-anchor="middle" >Breaking alert delivery</text>
+<rect x="654" y="596" width="492" height="58" rx="8" class="agent"/>
+<rect x="654" y="606" width="5" height="38" rx="2" fill="#d64545"/>
+<text x="903.0" y="620.0" class="ag" text-anchor="middle" >RSS critical / high items</text>
+<text x="903.0" y="644.0" class="ag" text-anchor="middle" >recency + importance filters</text>
+<rect x="654" y="668" width="492" height="58" rx="8" class="agent"/>
+<rect x="654" y="678" width="5" height="38" rx="2" fill="#5b6675"/>
+<text x="903.0" y="692.0" class="ag" text-anchor="middle" >OREF sirens</text>
+<text x="903.0" y="716.0" class="ag" text-anchor="middle" >dedicated real-time input</text>
+<rect x="654" y="740" width="492" height="58" rx="8" class="agent"/>
+<rect x="654" y="750" width="5" height="38" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="764.0" class="ag" text-anchor="middle" >Banner + notifications</text>
+<text x="903.0" y="788.0" class="ag" text-anchor="middle" >dedupe · channel-specific gates</text>
+<text x="900.0" y="824" class="lb" text-anchor="middle" >RSS and sirens keep distinct origins.</text>
+<text x="900.0" y="850" class="lb" text-anchor="middle" >RSS cooldown does not gate sirens.</text>
+<path d="M300 470V540" class="flow"/>
+<text x="300" y="510" class="al" text-anchor="middle" >summary input</text>
+<path d="M550 470V505H900V540" class="flow"/>
+<text x="724" y="510" class="al" text-anchor="middle" >RSS alert items</text>
+</svg>

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Data collection and delivery</title>
+<desc id="d">Railway relays collect streams and RSS. Scheduled seed bundles validate upstream data before publishing Redis keys. Consumer Prices Core stores retailer observations in PostgreSQL and aggregates prices into snapshots. Redis carries canonical data, optional freshness envelopes and seed metadata. Bootstrap batches fast and slow tier reads into a browser hydration cache, while RPC handlers read domain keys. Health checks inspect freshness and service status.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="24" width="368" height="368" rx="12" class="grp"/>
+<text x="208.0" y="60" class="gt" text-anchor="middle" >Relay</text>
+<rect x="416" y="24" width="368" height="368" rx="12" class="grp"/>
+<text x="600.0" y="60" class="gt" text-anchor="middle" >Seed bundles</text>
+<rect x="808" y="24" width="368" height="368" rx="12" class="grp"/>
+<text x="992.0" y="60" class="gt" text-anchor="middle" >Consumer prices</text>
+<rect x="54" y="88" width="308" height="70" rx="8" class="agent"/>
+<rect x="54" y="98" width="5" height="50" rx="2" fill="#2f6fd6"/>
+<text x="211.0" y="118.0" class="ag" text-anchor="middle" >AIS WebSocket</text>
+<text x="211.0" y="142.0" class="ag" text-anchor="middle" >RSS proxy</text>
+<rect x="54" y="194" width="308" height="70" rx="8" class="agent"/>
+<rect x="54" y="204" width="5" height="50" rx="2" fill="#2f6fd6"/>
+<text x="211.0" y="224.0" class="ag" text-anchor="middle" >Upstream polling</text>
+<text x="211.0" y="248.0" class="ag" text-anchor="middle" >Cached snapshots</text>
+<text x="208.0" y="340" class="lb" text-anchor="middle" >Railway service</text>
+<text x="208.0" y="366" class="lb" text-anchor="middle" >Snapshots if WS_RELAY_URL is set</text>
+<rect x="446" y="88" width="308" height="70" rx="8" class="agent"/>
+<rect x="446" y="98" width="5" height="50" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="118.0" class="ag" text-anchor="middle" >Scheduled members</text>
+<text x="603.0" y="142.0" class="ag" text-anchor="middle" >Freshness checks</text>
+<rect x="446" y="194" width="308" height="70" rx="8" class="agent"/>
+<rect x="446" y="204" width="5" height="50" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="224.0" class="ag" text-anchor="middle" >Fetch · validate</text>
+<text x="603.0" y="248.0" class="ag" text-anchor="middle" >Publish keys</text>
+<text x="600.0" y="340" class="lb" text-anchor="middle" >Member time budgets</text>
+<text x="600.0" y="366" class="lb" text-anchor="middle" >Failed validation keeps old data</text>
+<rect x="838" y="88" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="98" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="115.0" class="ag" text-anchor="middle" >Retailer scrape</text>
+<text x="995.0" y="139.0" class="ag" text-anchor="middle" >Price observations</text>
+<rect x="838" y="174" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="184" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="995.0" y="201.0" class="ag" text-anchor="middle" >PostgreSQL</text>
+<text x="995.0" y="225.0" class="ag" text-anchor="middle" >Price history</text>
+<rect x="838" y="260" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="270" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="287.0" class="ag" text-anchor="middle" >Aggregate prices</text>
+<text x="995.0" y="311.0" class="ag" text-anchor="middle" >Publish snapshots</text>
+<text x="992.0" y="340" class="lb" text-anchor="middle" >Fresh data advances seed-meta</text>
+<text x="992.0" y="366" class="lb" text-anchor="middle" >Core owns price snapshot writes</text>
+<rect x="24" y="500" width="368" height="376" rx="12" class="grp"/>
+<text x="208.0" y="536" class="gt" text-anchor="middle" >Health</text>
+<rect x="416" y="500" width="368" height="376" rx="12" class="grp"/>
+<text x="600.0" y="536" class="gt" text-anchor="middle" >Upstash Redis</text>
+<rect x="808" y="500" width="368" height="376" rx="12" class="grp"/>
+<text x="992.0" y="536" class="gt" text-anchor="middle" >Data delivery</text>
+<rect x="54" y="564" width="308" height="70" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="50" rx="2" fill="#e8973a"/>
+<text x="211.0" y="594.0" class="ag" text-anchor="middle" >Seed metadata</text>
+<text x="211.0" y="618.0" class="ag" text-anchor="middle" >Content freshness</text>
+<rect x="54" y="670" width="308" height="70" rx="8" class="agent"/>
+<rect x="54" y="680" width="5" height="50" rx="2" fill="#e8973a"/>
+<text x="211.0" y="700.0" class="ag" text-anchor="middle" >Service probes</text>
+<text x="211.0" y="724.0" class="ag" text-anchor="middle" >Health endpoints</text>
+<text x="208.0" y="824" class="lb" text-anchor="middle" >Checks age and payload presence</text>
+<text x="208.0" y="850" class="lb" text-anchor="middle" >Relay status tracks sources</text>
+<rect x="446" y="564" width="308" height="70" rx="8" class="agent"/>
+<rect x="446" y="574" width="5" height="50" rx="2" fill="#8a5cc7"/>
+<text x="603.0" y="594.0" class="ag" text-anchor="middle" >Canonical data</text>
+<text x="603.0" y="618.0" class="ag" text-anchor="middle" >Optional envelopes</text>
+<rect x="446" y="670" width="308" height="70" rx="8" class="agent"/>
+<rect x="446" y="680" width="5" height="50" rx="2" fill="#8a5cc7"/>
+<text x="603.0" y="700.0" class="ag" text-anchor="middle" >seed-meta keys</text>
+<text x="603.0" y="724.0" class="ag" text-anchor="middle" >Atomic pair helper</text>
+<text x="600.0" y="824" class="lb" text-anchor="middle" >Envelopes need seed opt-in</text>
+<text x="600.0" y="850" class="lb" text-anchor="middle" >Pair helper uses a transaction</text>
+<rect x="838" y="564" width="308" height="70" rx="8" class="agent"/>
+<rect x="838" y="574" width="5" height="50" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="594.0" class="ag" text-anchor="middle" >Bootstrap tiers</text>
+<text x="995.0" y="618.0" class="ag" text-anchor="middle" >Batched Redis reads</text>
+<rect x="838" y="670" width="308" height="70" rx="8" class="agent"/>
+<rect x="838" y="680" width="5" height="50" rx="2" fill="#5b6675"/>
+<text x="995.0" y="700.0" class="ag" text-anchor="middle" >Hydration cache</text>
+<text x="995.0" y="724.0" class="ag" text-anchor="middle" >Domain RPC reads</text>
+<text x="992.0" y="824" class="lb" text-anchor="middle" >Fast and slow tier registry</text>
+<text x="992.0" y="850" class="lb" text-anchor="middle" >Hydration values read once</text>
+<path d="M208 392V440H474V500" class="flow"/>
+<text x="335" y="440" class="al" text-anchor="middle" >snapshots</text>
+<path d="M600 392V500" class="flow"/>
+<text x="600" y="450" class="al" text-anchor="middle" >validated data</text>
+<path d="M992 392V470H726V500" class="flow"/>
+<text x="905" y="470" class="al" text-anchor="middle" >price snapshots</text>
+<path d="M416 616H392" class="flow"/>
+<text x="404" y="606" class="al" text-anchor="middle" >freshness</text>
+<path d="M784 616H808" class="flow"/>
+<text x="796" y="606" class="al" text-anchor="middle" >data</text>
+</svg>
