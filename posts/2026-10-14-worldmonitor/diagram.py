@@ -11,7 +11,7 @@ from archdiagram import Diagram
 
 d = Diagram('World Monitor: from sources to a shared picture',
     'External news, markets, conflict, climate, ships and aircraft feed Railway relay and seed jobs. '
-    'Upstash Redis holds shared datasets and freshness metadata; Convex holds account state and intelligence history. '
+    'Upstash Redis holds shared datasets and freshness metadata; Convex holds account state and, when configured, intelligence history. '
     'Vercel APIs and the desktop Node sidecar serve the browser or desktop maps, panels and analysis, '
     'and API, CLI, SDK and MCP consumers. When WS_RELAY_URL is set, relay vessel snapshots also reach Vercel APIs directly. Configured AI providers enrich intelligence. '
     'The remaining figures explain ingestion, gateway, quote reads, queued jobs, browser, intelligence, accounts, desktop and operations.')
@@ -21,7 +21,7 @@ d.column(24, 24, [('News · markets · events', 'data'), ('Ships · aircraft · 
 d.notes(24, 24, 386, 'RSS / WebSocket / HTTP / price scrapers')
 d.group(624, 24, 552, 386, 'Shared stores')
 d.column(624, 24, [('Upstash Redis|Datasets · cache · freshness', 'write'),
-                       ('Convex|Accounts · intelligence history', 'write')], first=80, h=76, gap=32)
+                       ('Convex|Accounts · history if configured', 'write')], first=80, h=76, gap=32)
 d.group(624, 494, 552, 382, 'Serving and runtime')
 d.column(624, 494, [('Vercel|Domain APIs · operational routes', 'coding'),
                         ('Desktop Node sidecar|Local handlers · cloud fallback', 'coding')], first=66, h=76, gap=30)

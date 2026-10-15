@@ -3,7 +3,7 @@ title_en = "World Monitor: from global feeds to a shared picture"
 date = "2026-10-14"
 tags = ["osint", "maps", "data-pipeline", "typescript", "desktop"]
 figure = "diagram.svg"
-alt_zh = "World Monitor 总览：外部新闻、市场、事件、船舶、航空与气候数据经过 Railway 中继和采集进入 Redis；配置 WS_RELAY_URL 时，中继的船舶快照也直接交给 Vercel 接口。Convex 保存账户与情报历史。Vercel 接口和桌面 Node 服务提供数据，浏览器及桌面显示地图、面板和分析结果，外部 SDK、CLI 和 MCP 客户端读取情报。"
+alt_zh = "World Monitor 总览：外部新闻、市场、事件、船舶、航空与气候数据经过 Railway 中继和采集进入 Redis；配置 WS_RELAY_URL 时，中继的船舶快照也直接交给 Vercel 接口。Convex 保存账户，配置齐全时存情报历史。Vercel 接口和桌面 Node 服务提供数据，浏览器及桌面显示地图、面板和分析结果，外部 SDK、CLI 和 MCP 客户端读取情报。"
 source = "https://github.com/koala73/worldmonitor/tree/a1f94681edb0d82968b7926353e538c4a518a591"
 
 [[figures]]
@@ -45,8 +45,8 @@ caption_en = "News interpretation, risk signals, optional AI summaries and break
 [[figures]]
 file = "accounts.svg"
 alt_zh = "Clerk 登录后，账户接口验证 JWT，向 Convex 保存偏好、关注国家与通知规则。Dodo 签名支付事件更新订阅权益；外部客户端用 API 密钥或 OAuth，MCP 领域工具调用共享网关。Redis 缓存权益，未命中查询 Convex。情报事件与向量另存历史表（仅在配置齐全时追加），供时间线和语义检索。"
-caption_zh = "Clerk 识别用户，Convex 保存账户与历史记录，支付事件和缓存权益决定访问权限。"
-caption_en = "Clerk identifies users; Convex stores account and history records, while payment events and cached rights control access."
+caption_zh = "Clerk 识别用户，Convex 保存账户，配置齐全时另存历史记录，支付事件和缓存权益决定访问权限。"
+caption_en = "Clerk identifies users; Convex stores accounts and, when configured, history records, while payment events and cached rights control access."
 
 [[figures]]
 file = "desktop.svg"

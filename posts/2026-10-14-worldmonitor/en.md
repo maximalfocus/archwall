@@ -1,4 +1,4 @@
-World Monitor turns news, markets, tracking feeds and event records into maps and panels. Railway collects and publishes datasets; Redis shares them across readers. Convex keeps accounts and intelligence history.
+World Monitor turns news, markets, tracking feeds and event records into maps and panels. Railway collects and publishes datasets; Redis shares them across readers. Convex keeps accounts and, when configured, intelligence history.
 
 Relays, scheduled seed bundles and retailer scrapers have distinct publishing paths. Bootstrap loads cached datasets into the dashboard; health checks expose stale or missing data.
 
