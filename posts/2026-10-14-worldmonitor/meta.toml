@@ -3,7 +3,7 @@ title_en = "World Monitor: from global feeds to a shared picture"
 date = "2026-10-14"
 tags = ["osint", "maps", "data-pipeline", "typescript", "desktop"]
 figure = "diagram.svg"
-alt_zh = "World Monitor 总览：外部新闻、市场、事件、船舶、航空与气候数据经过 Railway 中继和采集进入 Redis。Convex 保存账户与情报历史。Vercel 接口和桌面 Node 服务提供数据，浏览器及桌面显示地图、面板和分析结果，外部 SDK、CLI 和 MCP 客户端读取情报。"
+alt_zh = "World Monitor 总览：外部新闻、市场、事件、船舶、航空与气候数据经过 Railway 中继和采集进入 Redis；中继的船舶快照也直接交给 Vercel 接口。Convex 保存账户与情报历史。Vercel 接口和桌面 Node 服务提供数据，浏览器及桌面显示地图、面板和分析结果，外部 SDK、CLI 和 MCP 客户端读取情报。"
 source = "https://github.com/koala73/worldmonitor/tree/a1f94681edb0d82968b7926353e538c4a518a591"
 
 [[figures]]
@@ -20,15 +20,15 @@ caption_en = "HTTP contracts generate clients and routes; the gateway checks acc
 
 [[figures]]
 file = "reads.svg"
-alt_zh = "股票和指数行情先读取种子快照；种子无效时直接返回不可用，不调用供应商。快照命中的代码直接返回；缺失代码先查按代码的缓存，缓存命中不调用供应商，未命中且已配置供应商时才调用。结果按请求顺序输出。"
-caption_zh = "股票指数行情先读种子，缺失代码查缓存，未中才取价。"
-caption_en = "Stock and index quotes read a seed first; missing symbols check a per-symbol cache before any provider call."
+alt_zh = "股票和指数行情先读种子。种子无效则返回不可用且不调用供应商。种子已有的代码直接返回。缺失代码须先通过准入：已配置供应商、支持该代码且在单次请求限额内。通过后才查按代码的缓存，命中不调用供应商，未命中才调用。结果按请求顺序输出。"
+caption_zh = "股票指数行情先读种子，缺失代码须先准入，再查缓存，未中才取价。"
+caption_en = "Stock and index quotes read a seed first; missing symbols must be admitted before a cache check and any provider call."
 
 [[figures]]
 file = "jobs.svg"
-alt_zh = "情景请求经网关检查后，写入所有者记录并放入待处理队列，返回任务号和状态地址。后台进程领取任务并标记为处理中，计算后记录完成或失败；客户端可随时轮询状态，记录尚未生成时显示待处理。"
-caption_zh = "情景任务先排队，后台进程计算，客户端随时轮询状态。"
-caption_en = "Scenario runs are queued; a background worker claims and computes them while clients poll for status."
+alt_zh = "情景请求检查后，写入所有者记录并把任务放入待处理队列，返回任务号和状态地址。后台进程领取任务并记为处理中，完成后记为完成或失败。状态接口先检查权限和所有者，记录尚未生成时显示待处理。"
+caption_zh = "情景任务先排队，后台进程领取计算，客户端可随时轮询状态。"
+caption_en = "Scenario jobs queue first; a background worker claims and computes them, and clients can poll for status at any time."
 
 [[figures]]
 file = "browser.svg"

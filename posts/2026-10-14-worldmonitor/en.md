@@ -8,7 +8,7 @@ Protobuf contracts generate domain clients and routes. The gateway checks access
 
 ![](gateway.svg)
 
-Stock and index quotes read a seed first. Missing symbols check a per-symbol cache before any provider call.
+Stock and index quotes read a seed first. Missing symbols must be admitted before a cache check, and a provider is called only on a miss.
 
 ![](reads.svg)
 
