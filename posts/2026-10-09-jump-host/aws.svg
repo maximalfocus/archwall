@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">AWS's reference Linux bastion</title>
+<desc id="d">In: AWS's CloudFormation templates for Linux bastion hosts; a map of parts, not steps. Outside: by default no port is open and admins come in through AWS Session Manager; if you set an allowed address range, admins from it may use SSH on port 22, and ping. Public subnets in two availability zones: an Auto Scaling group runs 1 to 4 bastions, 1 by default; each gets an Elastic IP only when an address range is set; TCP and X11 forwarding are off by default. The new-VPC template also adds NAT gateways. Private subnets: your servers, which reach the internet through the NAT gateways; the bastions reach them by SSH. Logs: auditd writes the audit log on each bastion, and the CloudWatch agent copies it to a CloudWatch log group, one stream per instance ID.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: AWS's CloudFormation templates for Linux bastion hosts · a map, not steps</text>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >Outside</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Session Manager</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >the default · no open port</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >SSH on port 22</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >only from the CIDR you set</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >No CIDR set: no inbound rule at all</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >Public subnets · 2 AZs</text>
+<rect x="670" y="164" width="468" height="64" rx="8" class="agent"/>
+<rect x="662" y="156" width="468" height="64" rx="8" class="agent"/>
+<rect x="654" y="148" width="468" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="891.0" y="175.0" class="ag" text-anchor="middle" >Bastions</text>
+<text x="891.0" y="199.0" class="ag" text-anchor="middle" >Auto Scaling · 1 to 4, default 1</text>
+<rect x="654" y="240" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="250" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="267.0" class="ag" text-anchor="middle" >Elastic IP</text>
+<text x="903.0" y="291.0" class="ag" text-anchor="middle" >only when a CIDR is set</text>
+<rect x="654" y="316" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="326" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="343.0" class="ag" text-anchor="middle" >NAT gateways</text>
+<text x="903.0" y="367.0" class="ag" text-anchor="middle" >new-VPC template only</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >TCP and X11 forwarding: off by default</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="300.0" y="536" class="gt" text-anchor="middle" >Logs</text>
+<rect x="54" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="303.0" y="591.0" class="ag" text-anchor="middle" >auditd</text>
+<text x="303.0" y="615.0" class="ag" text-anchor="middle" >audit.log on each bastion</text>
+<rect x="54" y="644" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="654" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="303.0" y="671.0" class="ag" text-anchor="middle" >CloudWatch log group</text>
+<text x="303.0" y="695.0" class="ag" text-anchor="middle" >one stream per instance ID</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="900.0" y="536" class="gt" text-anchor="middle" >Private subnets</text>
+<rect x="654" y="564" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="574" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="591.0" class="ag" text-anchor="middle" >Your servers</text>
+<text x="903.0" y="615.0" class="ag" text-anchor="middle" >EC2 and other resources</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Out to the internet through the NAT gateways</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >sign in</text>
+<path d="M1054 464V498" class="flow"/>
+<text x="1054" y="488" class="al" text-anchor="middle" >SSH</text>
+<path d="M714 464V482H324V498" class="flow"/>
+<text x="450" y="488" class="al" text-anchor="middle" >audit log</text>
+</svg>
