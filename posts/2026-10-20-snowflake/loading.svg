@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Snowflake loading: three paths into tables</title>
+<desc id="d">Files in internal or external stages can be loaded in bulk by COPY INTO using a chosen virtual warehouse, or continuously by Snowpipe using Snowflake-provided serverless compute. Snowpipe Streaming writes rows directly without a file stage. Loaded Snowflake table data is stored in compressed columnar micro-partitions in cloud storage.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="24" width="552" height="380" rx="12" class="grp"/>
+<text x="300.0" y="60" class="gt" text-anchor="middle" >Files in cloud storage</text>
+<rect x="54" y="104" width="492" height="76" rx="8" class="agent"/>
+<rect x="54" y="114" width="5" height="56" rx="2" fill="#5b6675"/>
+<text x="303.0" y="149.0" class="ag" text-anchor="middle" >Internal stage</text>
+<rect x="54" y="210" width="492" height="76" rx="8" class="agent"/>
+<rect x="54" y="220" width="5" height="56" rx="2" fill="#5b6675"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >External stage</text>
+<text x="300.0" y="352" class="lb" text-anchor="middle" >Files wait in a stage</text>
+<rect x="624" y="24" width="552" height="380" rx="12" class="grp"/>
+<text x="900.0" y="60" class="gt" text-anchor="middle" >File loading choices</text>
+<rect x="654" y="104" width="492" height="76" rx="8" class="agent"/>
+<rect x="654" y="114" width="5" height="56" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="137.0" class="ag" text-anchor="middle" >COPY INTO</text>
+<text x="903.0" y="161.0" class="ag" text-anchor="middle" >Chosen warehouse</text>
+<rect x="654" y="210" width="492" height="76" rx="8" class="agent"/>
+<rect x="654" y="220" width="5" height="56" rx="2" fill="#2f6fd6"/>
+<text x="903.0" y="243.0" class="ag" text-anchor="middle" >Snowpipe</text>
+<text x="903.0" y="267.0" class="ag" text-anchor="middle" >Serverless compute</text>
+<text x="900.0" y="352" class="lb" text-anchor="middle" >Batch or continuous file arrival</text>
+<rect x="624" y="492" width="552" height="384" rx="12" class="grp"/>
+<text x="900.0" y="528" class="gt" text-anchor="middle" >Table storage</text>
+<rect x="654" y="572" width="492" height="76" rx="8" class="agent"/>
+<rect x="654" y="582" width="5" height="56" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="617.0" class="ag" text-anchor="middle" >Snowflake tables</text>
+<rect x="654" y="678" width="492" height="76" rx="8" class="agent"/>
+<rect x="654" y="688" width="5" height="56" rx="2" fill="#8a5cc7"/>
+<text x="903.0" y="711.0" class="ag" text-anchor="middle" >Compressed columns</text>
+<text x="903.0" y="735.0" class="ag" text-anchor="middle" >Micro-partitions</text>
+<rect x="24" y="492" width="552" height="384" rx="12" class="grp"/>
+<text x="300.0" y="528" class="gt" text-anchor="middle" >Direct row stream</text>
+<rect x="54" y="572" width="492" height="76" rx="8" class="agent"/>
+<rect x="54" y="582" width="5" height="56" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="617.0" class="ag" text-anchor="middle" >Producer · Kafka connector</text>
+<rect x="54" y="678" width="492" height="76" rx="8" class="agent"/>
+<rect x="54" y="688" width="5" height="56" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="711.0" class="ag" text-anchor="middle" >Snowpipe Streaming</text>
+<text x="303.0" y="735.0" class="ag" text-anchor="middle" >No file stage</text>
+<text x="300.0" y="824" class="lb" text-anchor="middle" >Rows go straight to a table</text>
+<path d="M576 220H624" class="flow"/>
+<text x="600" y="202" class="al" text-anchor="middle" >staged files</text>
+<path d="M900 404V492" class="flow"/>
+<text x="900" y="449" class="al" text-anchor="middle" >loaded rows</text>
+<path d="M576 682H624" class="flow"/>
+<text x="600" y="662" class="al" text-anchor="middle" >rows</text>
+</svg>

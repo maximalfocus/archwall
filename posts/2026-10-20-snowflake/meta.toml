@@ -1,0 +1,31 @@
+title_zh = "Snowflake：共享数据与独立计算"
+title_en = "Snowflake: shared data, independent compute"
+date = "2026-10-20"
+tags = ["database", "data-warehouse", "cloud", "snowflake"]
+figure = "diagram.svg"
+alt_zh = "Snowflake 总览：客户端向云服务发送请求。云服务处理身份、权限、元数据和查询计划，再把工作交给独立的虚拟仓库。仓库读写共享数据。存储包括 Snowflake、Iceberg 和混合表；共享功能向其他账户开放选定对象。"
+source = "https://docs.snowflake.com/en/user-guide/intro-key-concepts"
+
+[[figures]]
+file = "loading.svg"
+alt_zh = "文件先进入内部或外部暂存区，再由使用虚拟仓库的 COPY INTO 批量加载，或由无服务器的 Snowpipe 持续加载。Snowpipe Streaming 不用文件暂存区，直接写入行。加载的数据进入表存储。"
+caption_zh = "文件可经 COPY 或 Snowpipe 加载，行流则直接写入。"
+caption_en = "Files load through COPY or Snowpipe; row streams write directly."
+
+[[figures]]
+file = "storage.svg"
+alt_zh = "Snowflake 表把压缩列存为微分区，利用范围元数据跳过无关数据。Iceberg 表使用外部云存储；混合表使用索引、行锁和约束。虚拟仓库读取相应数据。"
+caption_zh = "Snowflake、Iceberg 与混合表采用不同的存储方式。"
+caption_en = "Snowflake, Iceberg and hybrid tables use different storage paths."
+
+[[figures]]
+file = "query.svg"
+alt_zh = "查询从客户端进入云服务，经过身份和权限检查、解析与优化后发给虚拟仓库。仓库并行执行；对 Snowflake 表，利用微分区元数据筛选数据。查询输出由仓库产生，结果返回客户端。可配置仓库在闲置时暂停。"
+caption_zh = "云服务规划查询，虚拟仓库执行并读取共享数据。"
+caption_en = "Cloud services plan the query; a virtual warehouse executes it against shared data."
+
+[[figures]]
+file = "sharing.svg"
+alt_zh = "提供方把选定数据库对象授权给 share 并添加消费账户。消费方建立只读数据库，用自己的仓库查询；云服务和元数据提供访问，账户之间不复制数据。"
+caption_zh = "共享通过授权和元数据开放数据，消费方用自己的仓库查询。"
+caption_en = "Shares grant access through metadata; consumers query with their own warehouses."
