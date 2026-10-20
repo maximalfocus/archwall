@@ -1,7 +1,7 @@
 """Settings on the jump host's sshd, grouped by job; a catalogue, not steps.
 Defaults are the ones sshd_config.5 states.
 Drawn from openssh/openssh-portable at commit 6a46ea6 (sshd_config.5: AllowUsers, PasswordAuthentication,
-AuthenticationMethods, AllowTcpForwarding, PermitOpen, Match, ClientAliveInterval, ChannelTimeout,
+AuthenticationMethods, AllowTcpForwarding, PermitOpen, Match, ClientAliveInterval, ClientAliveCountMax, ChannelTimeout,
 PerSourcePenalties, LogLevel, Banner; auth.c auth_log).
 Run: python3 sshd.py"""
 import sys
@@ -18,8 +18,8 @@ d = Diagram("Settings on the jump host's sshd",
             "What they may do: AllowTcpForwarding local allows the forwarding that ssh -J uses; PermitOpen "
             "limits forwarding to listed host and port pairs; Match blocks set other rules for some users or "
             "groups. "
-            "Close what's idle: ClientAliveInterval checks on quiet clients, 0 by default, which means off; "
-            "ChannelTimeout closes idle channels; "
+            "Close what's idle or dead: ChannelTimeout closes idle channels; ClientAliveInterval drops clients "
+            "that stop answering, not idle ones, 0 by default, which means off; "
             "PerSourcePenalties, on by default, refuses an address that looks like an attack for a while. "
             "Logs and notice: LogLevel is INFO by default, and each accepted login is logged with its key "
             "fingerprint and source address; Banner shows text before login, none by default.")
@@ -36,9 +36,9 @@ d.column(R, T1, [("AllowTcpForwarding local|what ssh -J needs", "plan"),
                  ("PermitOpen|only listed host:port", "plan"),
                  ("Match|other rules per user or group", "plan")])
 
-d.group(L, T2, GW, H2, "Close what's idle")
-d.column(L, T2, [("ClientAliveInterval|default 0: off", "critic"),
-                 ("ChannelTimeout|close idle channels", "critic"),
+d.group(L, T2, GW, H2, "Close what's idle or dead")
+d.column(L, T2, [("ChannelTimeout|close idle channels", "critic"),
+                 ("ClientAliveInterval|drops dead clients · default 0", "critic"),
                  ("PerSourcePenalties|on: refuse attackers a while", "critic")], h=60, gap=14, first=60)
 
 d.group(R, T2, GW, H2, "Logs and notice")

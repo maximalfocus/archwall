@@ -16,7 +16,7 @@ d = Diagram("SSH certificates for a jump host",
             "1 Set up a CA: a CA key signs user keys; sshd's TrustedUserCAKeys lists the CA, so the server "
             "trusts the CA, not each key. A certificate with no principals is refused. "
             "2 Sign a user's key: ssh-keygen -s with the CA key signs the user's public key; -I sets a key ID "
-            "that shows in the logs; -n names the principals, usually user names; -V sets when it is valid. "
+            "that shows in the logs; -n names the principals, usually user names; -V sets when it is valid; without it the certificate never expires. "
             "3 Sign in: the laptop offers the key and its certificate; sshd checks the CA signature, the name "
             "and the dates; the log line names the key ID, serial and CA. "
             "4 Revoke: ssh-keygen -k writes a key revocation list; sshd's RevokedKeys refuses every key in "

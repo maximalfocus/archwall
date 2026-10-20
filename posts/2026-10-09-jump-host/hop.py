@@ -1,7 +1,7 @@
 """Two ways through a jump host, side by side: pass straight through (ProxyJump) or log in, then hop.
 Options, not steps: the two top groups are alternatives; the bottom group is client config for both.
 Drawn from openssh/openssh-portable at commit 6a46ea6 (ssh.1 -J and -W, ssh_config.5 ProxyJump and
-ForwardAgent, ssh.c ProxyJump -> ProxyCommand "ssh -W", serverloop.c direct-tcpip needs AllowTcpForwarding)
+ForwardAgent, session.c logs only the session type, ssh.c ProxyJump -> ProxyCommand "ssh -W", serverloop.c direct-tcpip needs AllowTcpForwarding)
 and aws-ia/cfn-ps-linux-bastion at commit 213dd9a (EnableTCPForwarding defaults to false).
 Run: python3 hop.py"""
 import sys
@@ -17,7 +17,8 @@ d = Diagram("Two ways through a jump host",
             "and you sign in there directly. The jump host must allow TCP forwarding, which AWS's reference "
             "template turns off by default. "
             "Log in, then hop: you ssh to the jump host, get a shell there, and run ssh to the target from it. "
-            "Commands run on the jump host, so it can log them. Agent forwarding is off by default; with it "
+            "The ssh command runs on the jump host, but sshd only logs the sign-in; recording commands takes "
+            "extra tools. Agent forwarding is off by default; with it "
             "on, anyone who can get past file permissions on the jump host can use your keys. "
             "Client config, for both: -J a,b visits the jump hosts in order; settings for the jump hosts go "
             "in ~/.ssh/config, since command-line options apply to the target.")
@@ -37,7 +38,7 @@ for x, title, cards, labels, notes in [
       ("Jump host|a shell · you run ssh target", "coding"),
       ("Target|signs in from the jump host", "data")],
      ["SSH · a shell", "a second SSH session"],
-     ("Commands run here, so the jump host can log them", "Agent forwarding: off by default, risky on")),
+     ("ssh target runs here · sshd logs only sign-ins", "Agent forwarding: off by default, risky on")),
 ]:
     d.group(x, TOP, GW, GH, title)
     for i, (label, kind) in enumerate(cards):

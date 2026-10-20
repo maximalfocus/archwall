@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Settings on the jump host's sshd</title>
-<desc id="d">In: the sshd_config file on the jump host. Its settings grouped by job, not in any order. Who gets in: AllowUsers lets in only the listed users, optionally from listed hosts; PasswordAuthentication no turns passwords off, the default is yes; AuthenticationMethods can ask for a key plus a second method. What they may do: AllowTcpForwarding local allows the forwarding that ssh -J uses; PermitOpen limits forwarding to listed host and port pairs; Match blocks set other rules for some users or groups. Close what's idle: ClientAliveInterval checks on quiet clients, 0 by default, which means off; ChannelTimeout closes idle channels; PerSourcePenalties, on by default, refuses an address that looks like an attack for a while. Logs and notice: LogLevel is INFO by default, and each accepted login is logged with its key fingerprint and source address; Banner shows text before login, none by default.</desc>
+<desc id="d">In: the sshd_config file on the jump host. Its settings grouped by job, not in any order. Who gets in: AllowUsers lets in only the listed users, optionally from listed hosts; PasswordAuthentication no turns passwords off, the default is yes; AuthenticationMethods can ask for a key plus a second method. What they may do: AllowTcpForwarding local allows the forwarding that ssh -J uses; PermitOpen limits forwarding to listed host and port pairs; Match blocks set other rules for some users or groups. Close what's idle or dead: ChannelTimeout closes idle channels; ClientAliveInterval drops clients that stop answering, not idle ones, 0 by default, which means off; PerSourcePenalties, on by default, refuses an address that looks like an attack for a while. Logs and notice: LogLevel is INFO by default, and each accepted login is logged with its key fingerprint and source address; Banner shows text before login, none by default.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -56,15 +56,15 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="335.0" class="ag" text-anchor="middle" >Match</text>
 <text x="903.0" y="359.0" class="ag" text-anchor="middle" >other rules per user or group</text>
 <rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
-<text x="300.0" y="536" class="gt" text-anchor="middle" >Close what's idle</text>
+<text x="300.0" y="536" class="gt" text-anchor="middle" >Close what's idle or dead</text>
 <rect x="54" y="560" width="492" height="60" rx="8" class="agent"/>
 <rect x="54" y="570" width="5" height="40" rx="2" fill="#e8973a"/>
-<text x="303.0" y="585.0" class="ag" text-anchor="middle" >ClientAliveInterval</text>
-<text x="303.0" y="609.0" class="ag" text-anchor="middle" >default 0: off</text>
+<text x="303.0" y="585.0" class="ag" text-anchor="middle" >ChannelTimeout</text>
+<text x="303.0" y="609.0" class="ag" text-anchor="middle" >close idle channels</text>
 <rect x="54" y="634" width="492" height="60" rx="8" class="agent"/>
 <rect x="54" y="644" width="5" height="40" rx="2" fill="#e8973a"/>
-<text x="303.0" y="659.0" class="ag" text-anchor="middle" >ChannelTimeout</text>
-<text x="303.0" y="683.0" class="ag" text-anchor="middle" >close idle channels</text>
+<text x="303.0" y="659.0" class="ag" text-anchor="middle" >ClientAliveInterval</text>
+<text x="303.0" y="683.0" class="ag" text-anchor="middle" >drops dead clients · default 0</text>
 <rect x="54" y="708" width="492" height="60" rx="8" class="agent"/>
 <rect x="54" y="718" width="5" height="40" rx="2" fill="#e8973a"/>
 <text x="303.0" y="733.0" class="ag" text-anchor="middle" >PerSourcePenalties</text>
