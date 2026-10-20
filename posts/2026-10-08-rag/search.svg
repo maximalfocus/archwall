@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">How the search works</title>
+<desc id="d">In: a user's question, and the chunk vectors already in the index. The search: embed the question with the same model used for the index, score each chunk by how similar its vector is to the question's, for example with cosine similarity, and keep the top K chunks for the prompt. The search uses an embedding model. There are two kinds: a sparse encoder such as BM25, and a dense retriever built on a BERT-style pre-trained model. Newer models include AngIE, Voyage and BGE. Leaderboards compare them: MTEB covers 8 tasks and 58 datasets; C-MTEB, for Chinese, covers 6 tasks and 35 datasets. No one model fits every use. Three ways to make it better, in no order. Mix sparse and dense: sparse retrieval helps dense retrieval with rare entities and zero-shot questions, its results can help train dense models, and a pre-trained language model can learn term weights to boost sparse retrieval. Fine-tune the model: on your own domain data, for fields full of jargon such as healthcare and legal; or to align the retriever with the LLM, using the LLM's output as the training signal (LSR). REPLUG trains with KL divergence; LLM-Embedder uses rewards from the LLM. Add an adapter, when you cannot fine-tune because the model is only behind an API or compute is limited: BGM keeps the retriever and the LLM fixed and trains a bridge model between them; UPRISE, AAR and PRCA are other add-on adapters.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: a user's question · chunk vectors already in the index</text>
+<path d="M300.0 64V82" class="flow"/>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >The search</text>
+<rect x="54" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="175.0" class="ag" text-anchor="middle" >Embed the question</text>
+<text x="303.0" y="199.0" class="ag" text-anchor="middle" >same model as the index</text>
+<rect x="54" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="303.0" y="255.0" class="ag" text-anchor="middle" >Score each chunk</text>
+<text x="303.0" y="279.0" class="ag" text-anchor="middle" >e.g. cosine similarity</text>
+<rect x="54" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="303.0" y="335.0" class="ag" text-anchor="middle" >Keep the top K</text>
+<text x="303.0" y="359.0" class="ag" text-anchor="middle" >most similar chunks</text>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >Out: top K chunks for the prompt</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >The embedding model</text>
+<rect x="654" y="148" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="175.0" class="ag" text-anchor="middle" >Sparse encoder</text>
+<text x="903.0" y="199.0" class="ag" text-anchor="middle" >BM25</text>
+<rect x="654" y="228" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="238" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="255.0" class="ag" text-anchor="middle" >Dense retriever</text>
+<text x="903.0" y="279.0" class="ag" text-anchor="middle" >BERT-style model</text>
+<rect x="654" y="308" width="492" height="64" rx="8" class="agent"/>
+<rect x="654" y="318" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="903.0" y="335.0" class="ag" text-anchor="middle" >Newer models</text>
+<text x="903.0" y="359.0" class="ag" text-anchor="middle" >AngIE · Voyage · BGE</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >MTEB: 8 tasks · 58 datasets</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >C-MTEB (Chinese): 6 tasks · 35 datasets</text>
+<path d="M576 284H622" class="flow"/>
+<text x="600" y="272" class="al" text-anchor="middle" >uses</text>
+<rect x="24" y="500" width="1152" height="364" rx="12" class="grp"/>
+<text x="600.0" y="536" class="gt" text-anchor="middle" >Ways to make it better</text>
+<rect x="48" y="556" width="352" height="284" rx="9" class="sub"/>
+<text x="224.0" y="584" class="st" text-anchor="middle" >Mix sparse and dense</text>
+<rect x="64" y="604" width="320" height="64" rx="8" class="agent"/>
+<rect x="64" y="614" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="227.0" y="631.0" class="ag" text-anchor="middle" >Sparse helps dense</text>
+<text x="227.0" y="655.0" class="ag" text-anchor="middle" >rare entities · zero-shot</text>
+<rect x="64" y="680" width="320" height="64" rx="8" class="agent"/>
+<rect x="64" y="690" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="227.0" y="707.0" class="ag" text-anchor="middle" >Sparse results</text>
+<text x="227.0" y="731.0" class="ag" text-anchor="middle" >help train dense models</text>
+<rect x="64" y="756" width="320" height="64" rx="8" class="agent"/>
+<rect x="64" y="766" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="227.0" y="783.0" class="ag" text-anchor="middle" >Learned term weights</text>
+<text x="227.0" y="807.0" class="ag" text-anchor="middle" >a PLM boosts sparse</text>
+<rect x="424" y="556" width="352" height="284" rx="9" class="sub"/>
+<text x="600.0" y="584" class="st" text-anchor="middle" >Fine-tune the model</text>
+<rect x="440" y="604" width="320" height="64" rx="8" class="agent"/>
+<rect x="440" y="614" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="603.0" y="631.0" class="ag" text-anchor="middle" >Your own domain data</text>
+<text x="603.0" y="655.0" class="ag" text-anchor="middle" >healthcare · legal jargon</text>
+<rect x="440" y="680" width="320" height="64" rx="8" class="agent"/>
+<rect x="440" y="690" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="603.0" y="707.0" class="ag" text-anchor="middle" >Align with the LLM</text>
+<text x="603.0" y="731.0" class="ag" text-anchor="middle" >LLM output as signal (LSR)</text>
+<rect x="440" y="756" width="320" height="64" rx="8" class="agent"/>
+<rect x="440" y="766" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="603.0" y="783.0" class="ag" text-anchor="middle" >REPLUG: KL divergence</text>
+<text x="603.0" y="807.0" class="ag" text-anchor="middle" >LLM-Embedder: LLM rewards</text>
+<rect x="800" y="556" width="352" height="284" rx="9" class="sub"/>
+<text x="976.0" y="584" class="st" text-anchor="middle" >Add an adapter</text>
+<rect x="816" y="604" width="320" height="64" rx="8" class="agent"/>
+<rect x="816" y="614" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="979.0" y="631.0" class="ag" text-anchor="middle" >Can't fine-tune?</text>
+<text x="979.0" y="655.0" class="ag" text-anchor="middle" >API only · little compute</text>
+<rect x="816" y="680" width="320" height="64" rx="8" class="agent"/>
+<rect x="816" y="690" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="979.0" y="707.0" class="ag" text-anchor="middle" >BGM bridge model</text>
+<text x="979.0" y="731.0" class="ag" text-anchor="middle" >fixed retriever ↔ fixed LLM</text>
+<rect x="816" y="756" width="320" height="64" rx="8" class="agent"/>
+<rect x="816" y="766" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="979.0" y="783.0" class="ag" text-anchor="middle" >Other adapters</text>
+<text x="979.0" y="807.0" class="ag" text-anchor="middle" >UPRISE · AAR · PRCA</text>
+<path d="M224 500V466" class="flow"/>
+<text x="224" y="488" class="al" text-anchor="middle" >improves</text>
+<path d="M976 500V466" class="flow"/>
+<text x="976" y="488" class="al" text-anchor="middle" >improves</text>
+</svg>

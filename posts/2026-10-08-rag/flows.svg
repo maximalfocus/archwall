@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">How many times to search</title>
+<desc id="d">In: a question. RAG can search its knowledge base in four ways, shown side by side. Once: search one time, then generate the answer. This is the most common way, but it is often not enough for hard problems that need several reasoning steps. Iterative: search, generate, and repeat; each search uses the question plus the text generated so far. ITER-RETGEN works this way. The risk is gaps in meaning and irrelevant information piling up. Recursive: refine the query and split the problem into sub-problems, then search and generate, and refine again. IRCoT guides this with chain-of-thought; ToC builds a clarification tree. With a structured index it searches a summary first, then inside the document. Adaptive: the LLM itself decides whether to search and when to stop, often with special tokens. FLARE searches when the probability of the words it generates falls below a threshold; Self-RAG uses retrieve and critic tokens.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="16" width="1152" height="48" rx="24.0" class="human"/>
+<text x="600.0" y="46.0" class="q" text-anchor="middle" >In: a question · how many times should RAG search?</text>
+<rect x="24" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="300.0" y="120" class="gt" text-anchor="middle" >Once</text>
+<rect x="54" y="156" width="360" height="64" rx="8" class="agent"/>
+<rect x="54" y="166" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="237.0" y="183.0" class="ag" text-anchor="middle" >Retrieve</text>
+<text x="237.0" y="207.0" class="ag" text-anchor="middle" >one search</text>
+<rect x="54" y="280" width="360" height="64" rx="8" class="agent"/>
+<rect x="54" y="290" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="237.0" y="307.0" class="ag" text-anchor="middle" >Generate</text>
+<text x="237.0" y="331.0" class="ag" text-anchor="middle" >the answer</text>
+<path d="M234.0 220V278" class="flow"/>
+<text x="300.0" y="412" class="lb" text-anchor="middle" >The most common way</text>
+<text x="300.0" y="438" class="lb" text-anchor="middle" >Often not enough for multi-step reasoning</text>
+<rect x="624" y="84" width="552" height="380" rx="12" class="grp"/>
+<text x="900.0" y="120" class="gt" text-anchor="middle" >Iterative</text>
+<rect x="654" y="156" width="360" height="64" rx="8" class="agent"/>
+<rect x="654" y="166" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="837.0" y="183.0" class="ag" text-anchor="middle" >Retrieve</text>
+<text x="837.0" y="207.0" class="ag" text-anchor="middle" >question + text so far</text>
+<rect x="654" y="280" width="360" height="64" rx="8" class="agent"/>
+<rect x="654" y="290" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="837.0" y="307.0" class="ag" text-anchor="middle" >Generate</text>
+<text x="837.0" y="331.0" class="ag" text-anchor="middle" >more text</text>
+<path d="M834.0 220V278" class="flow"/>
+<path d="M1014 312.0H1084V188.0H1016" class="flow back"/>
+<text x="1084" y="240.0" class="al" text-anchor="middle" >repeat</text>
+<text x="900.0" y="412" class="lb" text-anchor="middle" >e.g. ITER-RETGEN</text>
+<text x="900.0" y="438" class="lb" text-anchor="middle" >Risk: irrelevant info piles up</text>
+<rect x="24" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="300.0" y="536" class="gt" text-anchor="middle" >Recursive</text>
+<rect x="54" y="560" width="360" height="56" rx="8" class="agent"/>
+<rect x="54" y="570" width="5" height="36" rx="2" fill="#2f9e6e"/>
+<text x="237.0" y="583.0" class="ag" text-anchor="middle" >Refine the query</text>
+<text x="237.0" y="607.0" class="ag" text-anchor="middle" >split into sub-problems</text>
+<rect x="54" y="640" width="360" height="56" rx="8" class="agent"/>
+<rect x="54" y="650" width="5" height="36" rx="2" fill="#2f6fd6"/>
+<text x="237.0" y="675.0" class="ag" text-anchor="middle" >Retrieve</text>
+<rect x="54" y="720" width="360" height="56" rx="8" class="agent"/>
+<rect x="54" y="730" width="5" height="36" rx="2" fill="#8a5cc7"/>
+<text x="237.0" y="755.0" class="ag" text-anchor="middle" >Generate</text>
+<path d="M234.0 616V638" class="flow"/>
+<path d="M234.0 696V718" class="flow"/>
+<path d="M414 748.0H484V588.0H416" class="flow back"/>
+<text x="484" y="660.0" class="al" text-anchor="middle" >refine</text>
+<text x="300.0" y="812" class="lb" text-anchor="middle" >IRCoT: chain-of-thought · ToC: clarification tree</text>
+<text x="300.0" y="838" class="lb" text-anchor="middle" >Or: search a summary, then inside the document</text>
+<rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
+<text x="900.0" y="536" class="gt" text-anchor="middle" >Adaptive</text>
+<rect x="654" y="560" width="360" height="56" rx="8" class="agent"/>
+<rect x="654" y="570" width="5" height="36" rx="2" fill="#2f9e6e"/>
+<text x="837.0" y="583.0" class="ag" text-anchor="middle" >LLM decides</text>
+<text x="837.0" y="607.0" class="ag" text-anchor="middle" >search now? stop?</text>
+<rect x="654" y="640" width="360" height="56" rx="8" class="agent"/>
+<rect x="654" y="650" width="5" height="36" rx="2" fill="#2f6fd6"/>
+<text x="837.0" y="663.0" class="ag" text-anchor="middle" >Retrieve</text>
+<text x="837.0" y="687.0" class="ag" text-anchor="middle" >only when needed</text>
+<rect x="654" y="720" width="360" height="56" rx="8" class="agent"/>
+<rect x="654" y="730" width="5" height="36" rx="2" fill="#8a5cc7"/>
+<text x="837.0" y="755.0" class="ag" text-anchor="middle" >Generate</text>
+<path d="M834.0 616V638" class="flow"/>
+<path d="M834.0 696V718" class="flow"/>
+<path d="M1014 748.0H1084V588.0H1016" class="flow back"/>
+<text x="1084" y="660.0" class="al" text-anchor="middle" >until it stops</text>
+<text x="900.0" y="812" class="lb" text-anchor="middle" >Often steered by special tokens</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >FLARE: search when word probability drops</text>
+</svg>

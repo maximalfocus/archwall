@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
+<title id="t">Three kinds of RAG</title>
+<desc id="d">Three ways to build RAG, side by side; each grew out of the one before. Naive RAG, the earliest: index the documents, retrieve the top K chunks, and let the LLM generate the answer, also called Retrieve-Read. Its gaps: retrieval misses, picking wrong chunks or missing key facts; hallucination, an answer the chunks do not support; and redundancy, the same facts from several sources, so the answer repeats itself. Advanced RAG fixes those gaps but is still one chain. Before retrieval it improves the index with a sliding window and metadata, cuts finer chunks, and makes the question clearer by rewriting or expanding it. Retrieve and generate stay as in Naive RAG. After retrieval it reranks the chunks, moving the most relevant to the edges of the prompt, and compresses them to the key parts. Modular RAG builds on both and opens the chain into modules. You can add new modules, such as search, memory and routing, or swap existing ones. The flow need not be one pass: it can retrieve iteratively, or adaptively, deciding whether to retrieve at all. Parts such as the retriever and the generator can be fine-tuned.</desc>
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+<marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;fill:#1f2a37}
+.gt{font-size:26px;font-weight:700}
+.st{font-size:20px;font-weight:700}
+.ag{font-size:20px}
+.q{font-size:18px;fill:#3d4a5c}
+.lb{font-size:17px;fill:#4a5565}
+.al{font-size:16px;font-weight:600;fill:#3d4a5c;paint-order:stroke;stroke:#ffffff;stroke-width:6px;stroke-linejoin:round}
+.grp{fill:#f2f5f9;stroke:#9aa4b2;stroke-width:1.6}
+.sub{fill:#e8edf3;stroke:#b8c1cc;stroke-width:1.2}
+.agent{fill:#ffffff;stroke:#b8c1cc;stroke-width:1.2}
+.human{fill:#d6e6fb;stroke:#9cbbe6;stroke-width:1.2}
+.front{fill:#dcf0e0;stroke:#9ccfa8;stroke-width:1.2}
+.flow{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#arr)}
+.back{stroke-dasharray:7 5}
+.cyc{stroke:#5b6675;stroke-width:2;fill:none;marker-end:url(#ca)}
+.num{fill:#1f2a37}
+.numt{font-size:16px;font-weight:700;fill:#ffffff}
+</style>
+<rect width="1200" height="900" rx="18" fill="#ffffff"/>
+<rect x="24" y="84" width="368" height="800" rx="12" class="grp"/>
+<text x="208.0" y="120" class="gt" text-anchor="middle" >Naive RAG</text>
+<rect x="54" y="148" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="158" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="175.0" class="ag" text-anchor="middle" >Index</text>
+<text x="211.0" y="199.0" class="ag" text-anchor="middle" >split · embed · store</text>
+<rect x="54" y="228" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="238" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="211.0" y="255.0" class="ag" text-anchor="middle" >Retrieve</text>
+<text x="211.0" y="279.0" class="ag" text-anchor="middle" >top K similar chunks</text>
+<rect x="54" y="308" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="318" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="211.0" y="335.0" class="ag" text-anchor="middle" >Generate</text>
+<text x="211.0" y="359.0" class="ag" text-anchor="middle" >the LLM answers</text>
+<rect x="40" y="400" width="336" height="292" rx="9" class="sub"/>
+<text x="208.0" y="428" class="st" text-anchor="middle" >Its gaps</text>
+<rect x="54" y="448" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="458" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="475.0" class="ag" text-anchor="middle" >Retrieval misses</text>
+<text x="211.0" y="499.0" class="ag" text-anchor="middle" >wrong or missing chunks</text>
+<rect x="54" y="528" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="538" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="555.0" class="ag" text-anchor="middle" >Hallucination</text>
+<text x="211.0" y="579.0" class="ag" text-anchor="middle" >not backed by the chunks</text>
+<rect x="54" y="608" width="308" height="64" rx="8" class="agent"/>
+<rect x="54" y="618" width="5" height="44" rx="2" fill="#5b6675"/>
+<text x="211.0" y="635.0" class="ag" text-anchor="middle" >Redundancy</text>
+<text x="211.0" y="659.0" class="ag" text-anchor="middle" >repeats the same facts</text>
+<text x="208.0" y="832" class="lb" text-anchor="middle" >Also called Retrieve-Read</text>
+<text x="208.0" y="858" class="lb" text-anchor="middle" >The earliest kind</text>
+<rect x="416" y="84" width="368" height="800" rx="12" class="grp"/>
+<text x="600.0" y="120" class="gt" text-anchor="middle" >Advanced RAG</text>
+<rect x="432" y="148" width="336" height="292" rx="9" class="sub"/>
+<text x="600.0" y="176" class="st" text-anchor="middle" >Before retrieval</text>
+<rect x="446" y="196" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="206" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="223.0" class="ag" text-anchor="middle" >Better index</text>
+<text x="603.0" y="247.0" class="ag" text-anchor="middle" >sliding window · metadata</text>
+<rect x="446" y="276" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="286" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="303.0" class="ag" text-anchor="middle" >Finer chunks</text>
+<text x="603.0" y="327.0" class="ag" text-anchor="middle" >smaller pieces</text>
+<rect x="446" y="356" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="366" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="603.0" y="383.0" class="ag" text-anchor="middle" >Clearer question</text>
+<text x="603.0" y="407.0" class="ag" text-anchor="middle" >rewrite · expand</text>
+<rect x="446" y="464" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="474" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="603.0" y="491.0" class="ag" text-anchor="middle" >Retrieve · generate</text>
+<text x="603.0" y="515.0" class="ag" text-anchor="middle" >as in Naive RAG</text>
+<rect x="432" y="552" width="336" height="212" rx="9" class="sub"/>
+<text x="600.0" y="580" class="st" text-anchor="middle" >After retrieval</text>
+<rect x="446" y="600" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="610" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="603.0" y="627.0" class="ag" text-anchor="middle" >Rerank</text>
+<text x="603.0" y="651.0" class="ag" text-anchor="middle" >most relevant to the edges</text>
+<rect x="446" y="680" width="308" height="64" rx="8" class="agent"/>
+<rect x="446" y="690" width="5" height="44" rx="2" fill="#e8973a"/>
+<text x="603.0" y="707.0" class="ag" text-anchor="middle" >Compress</text>
+<text x="603.0" y="731.0" class="ag" text-anchor="middle" >keep the key parts</text>
+<text x="600.0" y="832" class="lb" text-anchor="middle" >Still one chain</text>
+<text x="600.0" y="858" class="lb" text-anchor="middle" >like Naive RAG</text>
+<rect x="808" y="84" width="368" height="800" rx="12" class="grp"/>
+<text x="992.0" y="120" class="gt" text-anchor="middle" >Modular RAG</text>
+<rect x="824" y="148" width="336" height="212" rx="9" class="sub"/>
+<text x="992.0" y="176" class="st" text-anchor="middle" >Modules</text>
+<rect x="838" y="196" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="206" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="995.0" y="223.0" class="ag" text-anchor="middle" >Add new ones</text>
+<text x="995.0" y="247.0" class="ag" text-anchor="middle" >search · memory · routing</text>
+<rect x="838" y="276" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="286" width="5" height="44" rx="2" fill="#2f9e6e"/>
+<text x="995.0" y="303.0" class="ag" text-anchor="middle" >Swap old ones</text>
+<text x="995.0" y="327.0" class="ag" text-anchor="middle" >to fit the task</text>
+<rect x="824" y="384" width="336" height="212" rx="9" class="sub"/>
+<text x="992.0" y="412" class="st" text-anchor="middle" >Flows, not one pass</text>
+<rect x="838" y="432" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="442" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="459.0" class="ag" text-anchor="middle" >Iterative</text>
+<text x="995.0" y="483.0" class="ag" text-anchor="middle" >retrieve · read · repeat</text>
+<rect x="838" y="512" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="522" width="5" height="44" rx="2" fill="#2f6fd6"/>
+<text x="995.0" y="539.0" class="ag" text-anchor="middle" >Adaptive</text>
+<text x="995.0" y="563.0" class="ag" text-anchor="middle" >retrieve only when needed</text>
+<rect x="824" y="620" width="336" height="132" rx="9" class="sub"/>
+<text x="992.0" y="648" class="st" text-anchor="middle" >Training</text>
+<rect x="838" y="668" width="308" height="64" rx="8" class="agent"/>
+<rect x="838" y="678" width="5" height="44" rx="2" fill="#8a5cc7"/>
+<text x="995.0" y="695.0" class="ag" text-anchor="middle" >Fine-tune the parts</text>
+<text x="995.0" y="719.0" class="ag" text-anchor="middle" >retriever · generator</text>
+<text x="992.0" y="832" class="lb" text-anchor="middle" >Builds on Naive and</text>
+<text x="992.0" y="858" class="lb" text-anchor="middle" >Advanced RAG</text>
+<path d="M322 84V48H486V82" class="flow"/>
+<text x="404" y="36" class="al" text-anchor="middle" >fixes its gaps</text>
+<path d="M714 84V48H878V82" class="flow"/>
+<text x="796" y="36" class="al" text-anchor="middle" >opens it up</text>
+</svg>
