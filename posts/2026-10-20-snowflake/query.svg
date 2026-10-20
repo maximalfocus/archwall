@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Snowflake query: plan, execute, return</title>
-<desc id="d">A client sends a SQL statement to cloud services. Services authenticate and control access, parse and optimize the query, then dispatch it. An independent virtual warehouse executes the work using local data portions and shared persisted storage. Micro-partition metadata helps prune irrelevant partitions and columns. Results return to the client. Warehouses can auto-resume and auto-suspend when configured.</desc>
+<desc id="d">A client sends a SQL statement to cloud services. Services authenticate and control access, parse and optimize the query, then dispatch it. An independent virtual warehouse executes the work using local data portions and shared persisted storage. For Snowflake tables, micro-partition metadata helps prune irrelevant partitions and columns. The warehouse produces the query output and results return to the client. Warehouses can auto-resume and auto-suspend when configured.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -52,9 +52,9 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="313.0" class="ag" text-anchor="middle" >Parallel query workers</text>
 <text x="900.0" y="412" class="lb" text-anchor="middle" >Queues when capacity is used</text>
 <rect x="624" y="500" width="552" height="364" rx="12" class="grp"/>
-<circle cx="775.25" cy="527" r="14" class="num"/>
-<text x="775.25" y="533" class="numt" text-anchor="middle" >3</text>
-<text x="795.25" y="536" class="gt" text-anchor="start" >Shared table data</text>
+<circle cx="755.0" cy="527" r="14" class="num"/>
+<text x="755.0" y="533" class="numt" text-anchor="middle" >3</text>
+<text x="775.0" y="536" class="gt" text-anchor="start" >Snowflake table data</text>
 <rect x="654" y="572" width="492" height="76" rx="8" class="agent"/>
 <rect x="654" y="582" width="5" height="56" rx="2" fill="#5b6675"/>
 <text x="903.0" y="617.0" class="ag" text-anchor="middle" >Micro-partition metadata</text>
@@ -68,15 +68,15 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="269.5" y="536" class="gt" text-anchor="start" >Result</text>
 <rect x="54" y="600" width="492" height="82" rx="8" class="agent"/>
 <rect x="54" y="610" width="5" height="62" rx="2" fill="#5b6675"/>
-<text x="303.0" y="636.0" class="ag" text-anchor="middle" >Warehouse returns</text>
-<text x="303.0" y="660.0" class="ag" text-anchor="middle" >rows to client</text>
+<text x="303.0" y="636.0" class="ag" text-anchor="middle" >Rows return</text>
+<text x="303.0" y="660.0" class="ag" text-anchor="middle" >to the client</text>
 <text x="300.0" y="812" class="lb" text-anchor="middle" >Warehouse can pause when idle</text>
 <path d="M600 68V76H300V84" class="flow"/>
 <path d="M576 300H624" class="flow"/>
 <text x="600" y="281" class="al" text-anchor="middle" >plan</text>
 <path d="M900 464V500" class="flow"/>
 <text x="900" y="487" class="al" text-anchor="middle" >reads</text>
-<path d="M624 682H576" class="flow"/>
+<path d="M624 440H600V682H576" class="flow"/>
 <text x="600" y="663" class="al" text-anchor="middle" >query output</text>
 <path d="M24 700H12V40H365" class="flow back"/>
 <text x="170" y="29" class="al" text-anchor="middle" >result</text>

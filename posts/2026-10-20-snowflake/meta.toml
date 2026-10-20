@@ -20,7 +20,7 @@ caption_en = "Snowflake, Iceberg and hybrid tables use different storage paths."
 
 [[figures]]
 file = "query.svg"
-alt_zh = "查询从客户端进入云服务，经过身份和权限检查、解析与优化后发给虚拟仓库。仓库并行执行，利用微分区元数据筛选数据，再把结果返回客户端。可配置仓库在闲置时暂停。"
+alt_zh = "查询从客户端进入云服务，经过身份和权限检查、解析与优化后发给虚拟仓库。仓库并行执行；对 Snowflake 表，利用微分区元数据筛选数据。查询输出由仓库产生，结果返回客户端。可配置仓库在闲置时暂停。"
 caption_zh = "云服务规划查询，虚拟仓库执行并读取共享数据。"
 caption_en = "Cloud services plan the query; a virtual warehouse executes it against shared data."
 
