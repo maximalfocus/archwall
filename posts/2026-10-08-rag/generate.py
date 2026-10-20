@@ -1,6 +1,7 @@
 """RAG generation: from the retrieved chunks to the answer.
 Three stages: 1 rerank (top left) -> 2 select and compress (top right) -> 3 build the prompt and answer
 (wide bottom group), with fine-tuning the LLM as a side sub-group that feeds the LLM.
+Stages 1 and 2 are Advanced RAG's optional post-retrieval tactics; Naive RAG goes straight to 3.
 Drawn from Gao et al., "Retrieval-Augmented Generation for Large Language Models: A Survey",
 arXiv:2312.10997v5 (Section II.A Naive RAG: Generation; II.B Advanced RAG: Post-Retrieval Process;
 Section IV Generation: A. Context Curation, B. LLM Fine-tuning).
@@ -12,34 +13,36 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
 from archdiagram import Diagram, L, R, GW, WIDE, T1, H1, T2, H2  # noqa: E402
 
 d = Diagram("From chunks to answer",
-            "In: the question and its top K retrieved chunks. Feeding them all straight to the LLM is not "
-            "a good idea: too much context adds noise, and in long text LLMs focus on the start and the end "
-            "and lose the middle. "
-            "1 Rerank: put the most relevant chunks first, with rules (diversity, relevance, MRR) or with "
+            "In: the question and its top K retrieved chunks. Naive RAG puts them straight into the prompt, "
+            "step 3. Advanced RAG adds two optional steps first, because feeding everything to the LLM is "
+            "not a good idea: too much context adds noise, and in long text LLMs focus on the start and the "
+            "end and lose the middle. "
+            "1 Optional, rerank: put the most relevant chunks first, with rules (diversity, relevance, MRR) or with "
             "models (the BERT family, Cohere rerank, bge-reranker-large, or a general LLM like GPT), and move "
             "the best chunks to the edges of the prompt. "
-            "2 Select and compress: LLMLingua uses a small language model, GPT-2 Small or LLaMA-7B, to drop "
+            "2 Optional, select and compress: LLMLingua uses a small language model, GPT-2 Small or LLaMA-7B, to drop "
             "unimportant tokens; PRCA and RECOMP train a compressor; fewer documents also help: in "
             "Filter-Reranker small models filter and the LLM reorders, or the LLM critiques the retrieved "
             "documents and drops weak ones, as in Chatlaw. "
             "3 Build the prompt and answer: the question and the kept chunks go into one prompt, plus the chat "
             "history in a multi-turn chat; the LLM answers from its own knowledge or only from the documents, "
             "depending on the task. "
-            "Beside this, you can also adjust the LLM itself by fine-tuning it: add domain knowledge it lacks, "
+            "Also optional: adjust the LLM itself by fine-tuning it: add domain knowledge it lacks, "
             "set the format and style of its answers, align it with human or retriever preferences through "
             "reinforcement learning, or distill a stronger model such as GPT-4. RA-DIT tunes the LLM and the "
             "retriever together. It is a big plus of on-premise LLMs.")
 
 d.pill(L, 16, GW, 48, "In: the question · its top K chunks")
+d.pill(R, 16, GW, 48, "Advanced RAG adds 1 and 2 · Naive RAG skips to 3", "front")
 d.arrow(f"M{L + GW / 2} 64V{T1 - 2}")
 
-d.group(L, T1, GW, H1, "Rerank", 1)
+d.group(L, T1, GW, H1, "Optional: rerank", 1)
 d.column(L, T1, [("By rules|diversity · relevance · MRR", "critic"),
                  ("By a model|BERT · Cohere · bge · GPT", "critic"),
                  ("Best chunks to the edges|start and end of the prompt", "plan")])
 d.notes(L, T1, H1, "Lost in the middle: LLMs focus", "on the start and end of long text")
 
-d.group(R, T1, GW, H1, "Select and compress", 2)
+d.group(R, T1, GW, H1, "Optional: select · compress", 2)
 d.column(R, T1, [("Drop unimportant tokens|LLMLingua · a small model", "critic"),
                  ("Trained compressor|PRCA · RECOMP", "critic"),
                  ("Drop weak documents|small model filters · LLM critique", "review")])
@@ -52,7 +55,7 @@ d.column(L, T2, [("Prompt|question + kept chunks", "write"),
 d.note(L + GW / 2, T2 + H2 - 26, "Which one depends on the task")
 
 SX, SY, SW, SH = R, T2 + 56, WIDE - (R - L) - 24, H2 - 74
-d.sub(SX, SY, SW, SH, "Also: fine-tune the LLM")
+d.sub(SX, SY, SW, SH, "Optional: fine-tune the LLM")
 cw = (SW - 60) // 2
 for i, (label, kind) in enumerate([("Domain knowledge|it lacks", "write"),
                                    ("Format and style|of the answers", "plan"),

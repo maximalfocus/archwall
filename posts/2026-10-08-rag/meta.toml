@@ -14,9 +14,9 @@ caption_en = "Three kinds of RAG: naive, advanced, modular, each growing out of 
 
 [[figures]]
 file = "index.svg"
-alt_zh = "输入：原始文件，比如 PDF、HTML、Word 和 Markdown，清理成纯文本。1 收集来源：非结构化文本，比如维基百科转储，或医疗、法律这类领域数据；文字和表格混在一起的 PDF，可以对表格用 Text-2-SQL，或者把表格转成文字；知识图谱，经过核实、更精确，但搭建和维护要花功夫；还有 LLM 自己写的内容。2 选单元大小：文本从细到粗是词元、短语、句子、命题、文本块、整篇文档；知识图谱里是实体、三元组、子图。粗的单元信息多，噪声也多；细的单元检索更费事，还可能丢掉意思。3 切成文本块：最常见的是按固定词元数切，比如 100、256 或 512；也可以递归切分、用滑动窗口；或者用 Small2Big，拿句子去检索，再把前后的句子一起交给 LLM。块越大，上下文越多，噪声也越多；切分还可能把 PDF 里的表格切坏。4 加元数据：从文件里取页码、文件名、作者、类别和时间戳，检索时可以按这些过滤；还可以人工造元数据，比如段落摘要，或者让 LLM 写出这段文字能回答的假设问题，这叫 Reverse HyDE。5 加结构：层级索引，文件按父子关系排列，文本块挂在上面，每个节点存一份摘要，帮助挑块；或者知识图谱索引，把概念和实体连起来，KGP 用它在多篇文档之间建索引。6 向量化并存储：嵌入模型把每个文本块变成向量，存进向量数据库。索引建得好不好，决定了检索能不能找到对的上下文。"
-caption_zh = "建索引：收集来源、选单元大小、切块、加元数据、加结构、存进向量库"
-caption_en = "Building the index: gather sources, pick the unit size, split, tag, add structure, store as vectors"
+alt_zh = "朴素 RAG 建索引分三步，按顺序做，其余都是可选的。1 清理文件：原始文件，比如 PDF、HTML、Word 和 Markdown，或者维基百科转储、医疗和法律这类文本，清理成纯文本。2 切成文本块：最常见的是按固定词元数切，比如 100、256 或 512；也可以递归切分、用滑动窗口；或者用 Small2Big，拿句子去检索，再把前后的句子一起交给 LLM。单元可以从词元、短语、句子、命题，一直到文本块或整篇文档。单元越大，上下文越多，噪声也越多；越小，检索越费事，还可能丢掉意思。切分还可能把 PDF 里的表格切坏。3 向量化并存储：嵌入模型把每个文本块变成向量，存进向量数据库。索引建得好不好，决定了检索能不能找到对的上下文。可选，其他来源：PDF 里的表格可以转成文字，也可以留在数据库里，有问题时用 Text-2-SQL 查询；知识图谱，按实体、三元组或子图检索，经过核实、更精确，但搭建和维护要花功夫；还有 LLM 自己写的内容。可选，加元数据，高级 RAG 会用：从文件里取页码、文件名、作者、类别和时间戳，检索时可以按这些过滤；还可以人工造元数据，比如段落摘要，或者让 LLM 写出这段文字能回答的假设问题，这叫 Reverse HyDE。可选，加结构：层级索引，文件按父子关系排列，文本块挂在上面，每个节点存一份摘要，帮助挑块；或者知识图谱索引，把概念和实体连起来，KGP 用它在多篇文档之间建索引。"
+caption_zh = "建索引：清理、切块、向量化存储三步，外加可选的其他来源、元数据和结构"
+caption_en = "Building the index: clean, split, embed and store, plus optional sources, metadata and structure"
 
 [[figures]]
 file = "query.svg"
@@ -32,9 +32,9 @@ caption_en = "Search: embed the question, score the chunks, keep the top K, and 
 
 [[figures]]
 file = "generate.svg"
-alt_zh = "输入：问题，以及为它检索到的前 K 个片段。把它们全部直接交给大模型并不好：上下文太多会带进噪声，而且长文本里大模型只关注开头和结尾，会漏掉中间。1 重排：用规则（多样性、相关性、MRR）或用模型（BERT 系列、Cohere rerank、bge-reranker-large，或 GPT 这样的通用大模型）把最相关的片段排到前面，并把最好的片段放到提示词的两端。2 挑选与压缩：LLMLingua 用一个小模型（GPT-2 Small 或 LLaMA-7B）删掉不重要的 token；PRCA 和 RECOMP 训练一个压缩器；文档少一些也有帮助：Filter-Reranker 让小模型过滤、大模型重新排序，或者让大模型评判检索到的文档、去掉弱的，比如 Chatlaw。3 拼提示词并回答：问题和留下的片段放进同一个提示词，多轮对话时再加上聊天记录；大模型按任务需要，要么用自己的知识回答，要么只依据这些文档回答。此外，也可以微调大模型本身：补上它缺的领域知识，设定回答的格式和风格，用强化学习让它对齐人或检索器的偏好，或者从 GPT-4 这样更强的模型蒸馏。RA-DIT 把大模型和检索器一起调。这是本地部署大模型的一大好处。"
-caption_zh = "生成：重排、挑选压缩、拼提示词回答，旁边可微调大模型"
-caption_en = "Generation: rerank, select and compress, build the prompt and answer, with fine-tuning the LLM on the side"
+alt_zh = "输入：问题，以及为它检索到的前 K 个片段。朴素 RAG 直接把它们放进提示词，也就是第 3 步。高级 RAG 先加两个可选步骤，因为全部直接交给大模型并不好：上下文太多会带进噪声，而且长文本里大模型只关注开头和结尾，会漏掉中间。1 可选，重排：用规则（多样性、相关性、MRR）或用模型（BERT 系列、Cohere rerank、bge-reranker-large，或 GPT 这样的通用大模型）把最相关的片段排到前面，并把最好的片段放到提示词的两端。2 可选，挑选与压缩：LLMLingua 用一个小模型（GPT-2 Small 或 LLaMA-7B）删掉不重要的 token；PRCA 和 RECOMP 训练一个压缩器；文档少一些也有帮助：Filter-Reranker 让小模型过滤、大模型重新排序，或者让大模型评判检索到的文档、去掉弱的，比如 Chatlaw。3 拼提示词并回答：问题和留下的片段放进同一个提示词，多轮对话时再加上聊天记录；大模型按任务需要，要么用自己的知识回答，要么只依据这些文档回答。同样可选的是微调大模型本身：补上它缺的领域知识，设定回答的格式和风格，用强化学习让它对齐人或检索器的偏好，或者从 GPT-4 这样更强的模型蒸馏。RA-DIT 把大模型和检索器一起调。这是本地部署大模型的一大好处。"
+caption_zh = "生成：可选的重排和压缩（高级 RAG），再拼提示词回答，旁边可微调大模型"
+caption_en = "Generation: optional rerank and compress (Advanced RAG), then build the prompt and answer, with optional fine-tuning"
 
 [[figures]]
 file = "flows.svg"
@@ -56,6 +56,6 @@ caption_en = "Three options side by side: prompt engineering, RAG, fine-tuning, 
 
 [[figures]]
 file = "eval.svg"
-alt_zh = "输入：一个要检查的 RAG 系统，看两个目标：检索和生成，可以人工检查，也可以自动检查。测试用的任务：核心任务是问答，包括单跳、多跳和长篇问答，还有领域问答和选择题；其他任务有信息抽取、对话和代码搜索。综述共统计了 26 个任务、近 50 个数据集。基准和工具检查这两个目标：基准 RGB、RECALL 和 CRUD 测四种能力；工具 RAGAS、ARES 和 TruLens 用大模型给三项质量分打分。EM、F1、BLEU、ROUGE 这类经典指标是传统做法，还不是 RAG 的标准。检索质量：搜索指标 Hit Rate、MRR 和 NDCG；质量分\"上下文相关性\"，指检索到的内容切题、没有多余的东西；能力\"抗噪声\"，指文档和问题相关但没有有用信息时，系统也能应对。生成质量：没有标注时，答案要忠实、相关、无害；有标注时，答案要准确。质量分是答案忠实度和答案相关性。三种能力：拒答，文档里没有答案时不作答；信息整合，把多篇文档的内容合起来；反事实鲁棒性，忽略文档里已知的错误事实。"
+alt_zh = "输入：一个要检查的 RAG 系统，看两个目标：检索和生成，可以人工检查，也可以自动检查。测试用的任务：核心任务是问答，包括单跳、多跳和长篇问答，还有领域问答和选择题；其他任务有信息抽取、对话和代码搜索。综述共统计了 26 个任务、近 50 个数据集。基准和工具检查这两个目标：基准 RGB、RECALL 和 CRUD 测 RAG 的能力，只有 RGB 四种都测；工具 RAGAS、ARES 和 TruLens 用大模型给三项质量分打分。EM、F1、BLEU、ROUGE 这类经典指标是传统做法，还不是 RAG 的标准。检索质量：搜索指标 Hit Rate、MRR 和 NDCG；质量分\"上下文相关性\"，指检索到的内容切题、没有多余的东西；能力\"抗噪声\"，指文档和问题相关但没有有用信息时，系统也能应对。生成质量：没有标注时，答案要忠实、相关、无害；有标注时，答案要准确。质量分是答案忠实度和答案相关性。三种能力：拒答，文档里没有答案时不作答；信息整合，把多篇文档的内容合起来；反事实鲁棒性，忽略文档里已知的错误事实。"
 caption_zh = "检查 RAG：测哪些任务、检索质量、生成质量、用什么基准和工具"
 caption_en = "Checking RAG: the tasks, retrieval quality, generation quality, and the benchmarks and tools"

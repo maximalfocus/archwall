@@ -33,14 +33,6 @@ d.pill(L, 16, WIDE, 48, "Three ways to improve an LLM · side by side")
 TOP, GH = 84, 456
 CARD_W = CW3 - 60
 
-
-def mark(col, i, good):
-    """ok/bad mark at the right end of card i in column col."""
-    x = C3[col] + 30 + CARD_W - 20
-    y = TOP + 64 + i * 80 + 32
-    (d.ok if good else d.bad)(x, y)
-
-
 d.group(C3[0], TOP, CW3, GH, "Prompt engineering")
 d.column(C3[0], TOP, [("Uses what the model|can already do", "plan"),
                       ("Outside knowledge|little needed", "data"),
@@ -52,9 +44,6 @@ d.column(C3[1], TOP, [("A tailored textbook|look the facts up", "coding"),
                       ("Real-time updates|from outside sources", "coding"),
                       ("Easy to trace|high interpretability", "critic"),
                       ("Slower answers|ethics of fetching data", "data")], w=CARD_W)
-mark(1, 1, True)
-mark(1, 2, True)
-mark(1, 3, False)
 d.notes(C3[1], TOP, GH, "Naive RAG: little model change", "Modular RAG: leans on fine-tuning", w=CW3)
 
 d.group(C3[2], TOP, CW3, GH, "Fine-tuning (FT)")
@@ -62,9 +51,6 @@ d.column(C3[2], TOP, [("A student learns it|train the model more", "coding"),
                       ("Fits a structure|style or format", "write"),
                       ("Static|retrain to update", "data"),
                       ("Heavy compute|data prep and training", "data")], w=CARD_W)
-mark(2, 1, True)
-mark(2, 2, False)
-mark(2, 3, False)
 d.notes(C3[2], TOP, GH, "Can cut hallucinations", "may struggle with unfamiliar data", w=CW3)
 
 BT, BH = 560, 304

@@ -4,7 +4,7 @@ RAG (retrieval-augmented generation) lets an LLM answer from your documents, not
 
 ![](paradigms.svg)
 
-**The index.** Clean the files, split them into chunks, tag them with metadata, turn each chunk into a vector and store it.
+**The index.** Clean the files, split them into chunks, turn each chunk into a vector and store it. Other sources, metadata and structure are optional extras.
 
 ![](index.svg)
 
@@ -16,7 +16,7 @@ RAG (retrieval-augmented generation) lets an LLM answer from your documents, not
 
 ![](search.svg)
 
-**The answer.** Too many chunks bury the key facts. Rerank and trim them, then the LLM answers from one prompt.
+**The answer.** Too many chunks bury the key facts, so Advanced RAG can rerank and trim them first. Then the LLM answers from one prompt.
 
 ![](generate.svg)
 

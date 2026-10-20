@@ -16,8 +16,9 @@ d = Diagram("Checking a RAG system",
             "What it is tested on: question answering is the core task, single-hop, multi-hop and long-form, "
             "plus domain questions and multiple choice; other tasks include information extraction, dialogue "
             "and code search. The survey counts 26 tasks and nearly 50 datasets. "
-            "Benchmarks and tools check both targets: the benchmarks RGB, RECALL and CRUD test the four "
-            "abilities; the tools RAGAS, ARES and TruLens use an LLM to grade the three quality scores. "
+            "Benchmarks and tools check both targets: the benchmarks RGB, RECALL and CRUD test RAG's "
+            "abilities, and only RGB covers all four; the tools RAGAS, ARES and TruLens use an LLM to grade "
+            "the three quality scores. "
             "Classic metrics such as EM, F1, BLEU and ROUGE are traditional and not yet a standard for RAG. "
             "Retrieval quality: search metrics Hit Rate, MRR and NDCG; the score context relevance, meaning "
             "the retrieved text is on point with no extras; and the ability noise robustness, meaning the "
@@ -37,7 +38,7 @@ d.column(L, T1, [("Question answering|single-hop · multi-hop · long-form", "da
 d.notes(L, T1, H1, "Question answering is the core task", "26 tasks · nearly 50 datasets")
 
 d.group(R, T1, GW, H1, "Benchmarks and tools")
-d.column(R, T1, [("Benchmarks: RGB · RECALL · CRUD|test the four abilities", "critic"),
+d.column(R, T1, [("Benchmarks: RGB · RECALL · CRUD|test abilities · RGB all four", "critic"),
                  ("Tools: RAGAS · ARES · TruLens|an LLM grades the three scores", "critic"),
                  ("Classic: EM · F1 · BLEU · ROUGE|not yet a standard for RAG", "data")])
 
