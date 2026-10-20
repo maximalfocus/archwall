@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">Jump host overview</title>
-<desc id="d">In: an admin outside needs a server on a private network. 1 Reach the door: the jump host is the one way in; the firewall lets in port 22 only from allowed addresses, or, in AWS's reference setup by default, no port is open and you come in through AWS Session Manager. 2 Prove who you are: keys or certificates instead of passwords, a second factor with AuthenticationMethods, and only the users AllowUsers lists. 3 Hop to the target: pass straight through with ssh -J (ProxyJump), or log in to the jump host and go on from its shell; the servers sit in the private subnets. 4 Keep a record: sshd logs who signed in, with which key and from where; AWS's setup copies the audit log to CloudWatch; an optional banner warns that sessions are recorded.</desc>
+<desc id="d">In: an admin outside needs a server on a private network. 1 Reach the door: the jump host is the one way in; the firewall lets in port 22 only from allowed addresses, or, in AWS's reference setup by default, no port is open and you come in through AWS Session Manager. 2 Prove who you are: keys or certificates instead of passwords, a second factor with AuthenticationMethods, and only the users AllowUsers lists. 3 Hop to the target: pass straight through with ssh -J (ProxyJump), or log in to the jump host and go on from its shell; the servers sit in the private subnets. 4 Keep a record: sshd logs who signed in, with which key and from where; AWS's setup copies the audit log to CloudWatch; an optional banner only shows a notice before login and records nothing.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -91,11 +91,11 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <rect x="54" y="724" width="492" height="64" rx="8" class="agent"/>
 <rect x="54" y="734" width="5" height="44" rx="2" fill="#d64545"/>
 <text x="303.0" y="751.0" class="ag" text-anchor="middle" >Banner (option)</text>
-<text x="303.0" y="775.0" class="ag" text-anchor="middle" >sessions are recorded</text>
+<text x="303.0" y="775.0" class="ag" text-anchor="middle" >a notice before login</text>
 <path d="M576 284H622" class="flow"/>
 <text x="600" y="272" class="al" text-anchor="middle" >a connection</text>
 <path d="M1054 464V498" class="flow"/>
 <text x="1054" y="488" class="al" text-anchor="middle" >signed in</text>
 <path d="M624 676H578" class="flow"/>
-<text x="600" y="664" class="al" text-anchor="middle" >who · what</text>
+<text x="600" y="664" class="al" text-anchor="middle" >sign-ins</text>
 </svg>

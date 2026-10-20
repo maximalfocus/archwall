@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="t d">
 <title id="t">AWS's reference Linux bastion</title>
-<desc id="d">In: AWS's CloudFormation templates for Linux bastion hosts; a map of parts, not steps. Outside: by default no port is open and admins come in through AWS Session Manager; if you set an allowed address range, admins from it may use SSH on port 22, and ping. Bastions over two subnets, in two availability zones with the new-VPC template: an Auto Scaling group runs 1 to 4 bastions, 1 by default; by default they sit in the private subnets; only when an address range is set do they go in public subnets, each with an Elastic IP; TCP and X11 forwarding are off by default. The new-VPC template also adds NAT gateways in the public subnets. Private subnets: your servers, which reach the internet through the NAT gateways; the bastions reach them by SSH. Logs: auditd writes the audit log on each bastion, and the CloudWatch agent copies it to a CloudWatch log group, one stream per instance ID.</desc>
+<desc id="d">In: AWS's CloudFormation templates for Linux bastion hosts; a map of parts, not steps. Outside: by default no port is open and admins come in through AWS Session Manager; if you set an allowed address range, admins from it may use SSH on port 22, and ping. Bastions over two subnets, in two availability zones with the new-VPC template: an Auto Scaling group runs 1 to 4 bastions, 1 by default; by default they sit in the private subnets; only when an address range is set do they go in public subnets, each with an Elastic IP; TCP and X11 forwarding are off by default. The new-VPC template also adds NAT gateways in the public subnets. Private subnets: your servers, which with the new-VPC template reach the internet through the NAT gateways; the bastions reach them by SSH. Logs: auditd writes the audit log on each bastion, and the CloudWatch agent copies it to a CloudWatch log group, one stream per instance ID.</desc>
 <defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
 <marker id="ca" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6675"/></marker>
@@ -73,6 +73,7 @@ text{font-family:-apple-system,"Helvetica Neue",Arial,"PingFang SC",sans-serif;f
 <text x="903.0" y="591.0" class="ag" text-anchor="middle" >Your servers</text>
 <text x="903.0" y="615.0" class="ag" text-anchor="middle" >EC2 and other resources</text>
 <text x="900.0" y="812" class="lb" text-anchor="middle" >Out to the internet through the NAT gateways</text>
+<text x="900.0" y="838" class="lb" text-anchor="middle" >(new-VPC template only)</text>
 <path d="M576 284H622" class="flow"/>
 <text x="600" y="272" class="al" text-anchor="middle" >sign in</text>
 <path d="M1054 464V498" class="flow"/>

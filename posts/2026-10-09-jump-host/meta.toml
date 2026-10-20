@@ -3,7 +3,7 @@ title_en = "Jump host: the one door into a private network"
 date = "2026-10-09"
 tags = ["jump-host", "bastion", "ssh", "openssh", "aws"]
 figure = "diagram.svg"
-alt_zh = "跳板机总览：输入是外面的管理员要上一台内网服务器；1 找到门：跳板机是唯一的入口；防火墙只让允许的地址进 22 端口；或者像 AWS 参考方案默认那样不开端口，经 AWS Session Manager 进来；2 证明你是谁：用密钥或证书，不用密码；用 AuthenticationMethods 加第二因素；只放 AllowUsers 列出的用户；3 跳到目标：用 ssh -J（ProxyJump）直接穿过去，或先登录跳板机，再从它的 shell 往下跳；服务器在私有子网里；4 留下记录：sshd 日志记下谁、用哪把钥匙、从哪里登录；AWS 方案把审计日志复制到 CloudWatch；可选的登录横幅提示会话被记录"
+alt_zh = "跳板机总览：输入是外面的管理员要上一台内网服务器；1 找到门：跳板机是唯一的入口；防火墙只让允许的地址进 22 端口；或者像 AWS 参考方案默认那样不开端口，经 AWS Session Manager 进来；2 证明你是谁：用密钥或证书，不用密码；用 AuthenticationMethods 加第二因素；只放 AllowUsers 列出的用户；3 跳到目标：用 ssh -J（ProxyJump）直接穿过去，或先登录跳板机，再从它的 shell 往下跳；服务器在私有子网里；4 留下记录：sshd 日志记下谁、用哪把钥匙、从哪里登录；AWS 方案把审计日志复制到 CloudWatch；可选的登录横幅只在登录前显示一段提示，不做记录"
 source = "https://github.com/openssh/openssh-portable/tree/6a46ea6"
 
 [[figures]]
@@ -26,6 +26,6 @@ caption_en = "SSH certificates: set up a CA, sign a key, sign in, revoke"
 
 [[figures]]
 file = "aws.svg"
-alt_zh = "AWS 的 Linux 跳板机参考方案：输入是 AWS 给 Linux 跳板机写的 CloudFormation 模板；这是部件图，不是步骤。外面：默认不开端口，管理员经 AWS Session Manager 进来；如果设了允许的地址段，从那里可以用 SSH 连 22 端口，也能 ping；跳板机，两个子网（新建 VPC 时在两个可用区）：Auto Scaling 组运行 1 到 4 台跳板机，默认 1 台；默认放在私有子网里；只有设了地址段，才放进公有子网，每台有弹性 IP；TCP 和 X11 转发默认关闭；新建 VPC 的模板还会在公有子网建 NAT 网关；私有子网：你的服务器，经 NAT 网关上外网；跳板机用 SSH 连到它们；日志：auditd 在每台跳板机上写审计日志，CloudWatch 代理把它复制到一个 CloudWatch 日志组，每个实例 ID 一条流"
+alt_zh = "AWS 的 Linux 跳板机参考方案：输入是 AWS 给 Linux 跳板机写的 CloudFormation 模板；这是部件图，不是步骤。外面：默认不开端口，管理员经 AWS Session Manager 进来；如果设了允许的地址段，从那里可以用 SSH 连 22 端口，也能 ping；跳板机，两个子网（新建 VPC 时在两个可用区）：Auto Scaling 组运行 1 到 4 台跳板机，默认 1 台；默认放在私有子网里；只有设了地址段，才放进公有子网，每台有弹性 IP；TCP 和 X11 转发默认关闭；新建 VPC 的模板还会在公有子网建 NAT 网关；私有子网：你的服务器，新建 VPC 时经 NAT 网关上外网；跳板机用 SSH 连到它们；日志：auditd 在每台跳板机上写审计日志，CloudWatch 代理把它复制到一个 CloudWatch 日志组，每个实例 ID 一条流"
 caption_zh = "AWS 参考方案：外面、跳板机、私有子网、日志"
 caption_en = "AWS's reference setup: outside, bastions, private subnets, logs"

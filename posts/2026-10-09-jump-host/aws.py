@@ -21,7 +21,8 @@ d = Diagram("AWS's reference Linux bastion",
             "by default they sit in the private subnets; only when an address range is set do they go in "
             "public subnets, each with an Elastic IP; TCP and X11 forwarding are off by default. "
             "The new-VPC template also adds NAT gateways in the public subnets. "
-            "Private subnets: your servers, which reach the internet through the NAT gateways; the bastions "
+            "Private subnets: your servers, which with the new-VPC template reach the internet through the "
+            "NAT gateways; the bastions "
             "reach them by SSH. "
             "Logs: auditd writes the audit log on each bastion, and the CloudWatch agent copies it to a "
             "CloudWatch log group, one stream per instance ID.")
@@ -45,7 +46,7 @@ d.column(L, T2, [("auditd|audit.log on each bastion", "data"),
 
 d.group(R, T2, GW, H2, "Private subnets")
 d.column(R, T2, [("Your servers|EC2 and other resources", "data")])
-d.notes(R, T2, H2, "Out to the internet through the NAT gateways", "")
+d.notes(R, T2, H2, "Out to the internet through the NAT gateways", "(new-VPC template only)")
 
 d.arrow(f"M{L + GW} {T1 + 200}H{R - 2}", label="sign in", at=(600, T1 + 188))
 d.arrow(f"M{R + 430} {T1 + H1}V{T2 - 2}", label="SSH", at=(R + 430, T1 + H1 + 24))
