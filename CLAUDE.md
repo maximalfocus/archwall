@@ -13,6 +13,7 @@ Writing or landing a post: use the `archwall` skill (`.claude/skills/archwall/`)
 
 ## Post rules
 
+- Start with one reader question; the overview answers it, and detail diagrams resolve what it leaves unclear.
 - Body ≤ 300 words (en) / 300 hanzi (zh), both languages, same content.
 - Voice, everywhere from the home page to the post: short, plain, down-to-earth. Say it the way you'd explain it to a colleague.
   No AI filler: no "it's worth noting", no stacked adjectives, no em-dash asides, no summary that repeats the body.

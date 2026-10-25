@@ -22,6 +22,8 @@ Every architecture, drawn in full: a wall of overview diagrams, each opening a s
 
 ## 发文流程 / Workflow
 
+先写一个读者看图后应能回答的问题，再研究来源、画总览与详图。发布前脱离来源冷读图：只沿箭头复述主线，记下答不出的地方并修改。PR 写明问题、预期答案和冷读发现；请审稿人先只看图回答，再查来源。没有外部读者参与时，不把作者自查写成读者验证。
+
 1. 每篇文章从 `main` 开新分支 `post/<slug>`，在分支上自由提交。
 2. 推送分支、开 PR，审稿、修改，直到定稿。
 3. 定稿后 **squash merge** 到 `main`（一篇文章一个提交），删除分支；`main` 自动部署。
