@@ -18,10 +18,10 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
 1. **Workspace.** `git fetch`, then cut `post/<slug>` from `origin/main`. If the main checkout is on
    another branch or has changes that aren't yours, don't touch them: `git worktree add ../archwall-<slug>
    -b post/<slug> origin/main` and work there.
-2. **Research.** Clone repos shallowly into the scratchpad. Read the project's own architecture or
-   "how it works" docs and the package manifests before code. Note the commit hash: claims and the diagram
-   docstring cite it. Every number and claim must be in the source. Read the manifest's optional parts too
-   (`optional-dependencies`, extras, feature flags), and check the docs against each other and the code.
+2. **Reader question and research.** Write one question the reader should answer after seeing the diagrams.
+   Clone repos shallowly to the scratchpad. Read the project's architecture or "how it works" docs and
+   package manifests before code. Note the commit hash: claims and the diagram docstring cite it. Check every
+   claim against the source, including optional parts (extras, flags), and conflicts between docs and code.
 3. **Diagrams.** `posts/<YYYY-MM-DD-slug>/diagram.py` → `diagram.svg`, the home-page card: an overview of
    the whole system. One `<name>.py` → `<name>.svg` for every phase, part or concern that a diagram (the
    overview or any other) only names, with no cap on the count, until a non-technical manager could
@@ -32,26 +32,26 @@ Rules for the content (length, voice, diagram look, 1200 x 900, multiple figures
 4. **Look at it.** `python3 tools/check.py posts/<slug>` is the post's one gate (/peerreview too): counts,
    figures, fresh SVGs, the layout Chrome measures (text in its box, overlaps, line and note limits, arrows
    through cards or text), and a whole-site build. Fix every failure. Then `python3 build.py && python3
-   tools/render.py posts/<slug>` and Read every PNG in `_render/<slug>/` for what only eyes catch: a note that
-   should be an arrow label, a colour that breaks its role. Check what each arrow carries, which stage each
-   part sits in, and that each stage feeds the next. For each claim the post makes, read its source line; if
-   that has a number, default, optional/flag/config status or scope word (only, unless, or else, first, all,
-   never), add a row to the PR's `## Claims`: source `path:line` and every place the post says it (card, `.py`
-   text, alt_zh, body, caption). No source line: drop the claim. A diagram nobody looked at is not done.
+   tools/render.py posts/<slug>`; inspect every PNG for arrow labels, role colours, payloads, which stage each
+   part sits in, and that each stage feeds the next. Cold-read the PNGs alone, no sources: answer the reader
+   question by following the arrows; fix what you can't. Your own read is not a reader test. For each claim,
+   read its source line; if that has a number, default, optional/flag/config status or scope word (only,
+   unless, or else, first, all, never), add a row to the PR's `## Claims`: source `path:line` and every place
+   the post says it (card, `.py` text, alt_zh, body, caption). No source line: drop the claim.
 5. **Text.** `meta.toml` (titles, date, tags, figure, alt_zh, source; captions for extra figures; alt_en
    comes from the `.py`), `en.md`, `zh.md`: same content, plain voice, at most 300 words / 300 hanzi.
    Quote the counts check.py prints in the PR, not your own; details go here.
-6. **Commit, push, PR.** Repo: maximalfocus/archwall. On `focus@mini` (user `focus`, short hostname `mini`),
+6. **Commit, push, PR.** Repo: maximalfocus/archwall. On `focus@mini` (user `focus`, host `mini`),
    use `gh-as maximalfocus <args>`; if missing, stop and tell the owner. Never `gh auth switch` there.
-   On other machines, use `gh <args>` with the authorized GitHub account. Create the PR
-   (what the diagrams show, source + commit, word counts, what was left out on purpose). The git hooks
-   rebuild a preview on commit only where `python3 tools/preview.py install` has run ("archwall preview"
+   Elsewhere, use `gh <args>` with the authorized GitHub account. Create the PR (reader question,
+   expected answer, your cold-read findings, what the diagrams show, source + commit, counts, omissions).
+   The hooks rebuild a preview on commit where `python3 tools/preview.py install` ran ("archwall preview"
    in `$(git rev-parse --git-common-dir)/hooks/post-commit`). There, give the owner the link once for a
    new post: `http://100.73.23.11:8765/post-<branch slug>/p/<post folder>/`, e.g.
    `post-idd-skills/p/2026-10-05-idd-skills/`, and check `~/personal/archwall-preview/.build.log` if it
    doesn't show. Without the hooks, say in the PR that no preview was built.
-7. Revisions go on the same branch; after each one (or each /peerreview round), refresh the PR's counts,
-   diagram list and `## Claims` rows. Never merge without the owner's go-ahead.
+7. Revisions go on the same branch; after each one (or /peerreview round), redo the cold read; refresh the
+   PR's question, answer, findings, counts, figures and `## Claims`. Never merge without the owner's go-ahead.
 
 A post with over 6 diagrams, or a big redraw, fans out: one parallel agent per diagram file, no commits;
 you look at every PNG and run check.py. Start each new post in a fresh session where possible.
